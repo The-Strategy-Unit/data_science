@@ -1,0 +1,7 @@
+---
+title: "Data Science @ The Strategy Unit"
+---
+
+This is the home of the Data Science team at [The Strategy Unit][su_web].
+
+[su_web]: https://strategyunitwm.nhs.uk/

@@ -1,0 +1,39 @@
+# Project Structure
+
+* as a package
+* R/ for scripts
+* split files into separate scripts
+* use `{renv}`
+* use `{targets}`
+
+## Use RStudio Projects
+
+[RStudio projects][rs_proj] are a great way to organise your analytical projects into discrete units that are easier to
+work on and share.
+
+[rs_proj]: https://support.posit.co/hc/en-us/articles/200526207-Using-RStudio-Projects
+
+## Separate scripts
+
+## Functions
+
+## Standardise Folder Structures
+
+## `{renv}`
+
+One of the most common issues you will face when using a project someone else has created, or you created previously, is
+maintaining the required packages to run the project. Knowing what packages are needed to run a particular project isn't
+always obvious, and over time packages can change rendering code that once worked unusable.
+
+[`{renv}`][renv] solves this problem by:
+
+1. keeping track of the packages that are required for a particular project
+2. logging the installed version of all of the packages
+3. maintaining a per-project library of packages, so projects don't interfere with one another
+
+[renv]: https://rstudio.github.io/renv/articles/renv.html
+
+It's a good idea to use `{renv}` for all projects.
+
+## `{targets}`
+

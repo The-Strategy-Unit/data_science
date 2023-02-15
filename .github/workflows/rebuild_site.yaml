@@ -19,10 +19,6 @@ jobs:
 
       - uses: r-lib/actions/setup-renv@v2
 
-      - name: Generate manifest.json
-        run: rsconnect::writeManifest()
-        shell: Rscript {0}
-
       - name: Publish to GitHub Pages (and render)
         uses: quarto-dev/quarto-actions/publish@v2
         with:

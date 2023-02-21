@@ -1,0 +1,3 @@
+## Everything you ever wanted to know about data science...
+
+Please note that this repo includes copyrighted material. It is reproduced under [fair dealing](https://www.gov.uk/guidance/exceptions-to-copyright#fair-dealing) but should not be reproduced any further than this repo without explicit consideration of the licence conditions of the material.

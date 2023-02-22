@@ -12,8 +12,13 @@ website:
 format:
   html:
     theme:
-      - styles.scss
-      - cosmo
+      light:
+        - theme-light.scss
+        - cosmo
+      dark:
+        - theme-dark.scss
+        - cosmo
+
     toc: true
 
 

@@ -19,6 +19,9 @@ jobs:
 
       - uses: r-lib/actions/setup-renv@v2
 
+      - name: Setup Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
       - name: Publish to GitHub Pages (and render)
         uses: quarto-dev/quarto-actions/publish@v2
         with:

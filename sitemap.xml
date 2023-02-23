@@ -2,10 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://github.com/The-Strategy-Unit/data_science/about.html</loc>
-    <lastmod>2023-02-23T12:06:57.766Z</lastmod>
+    <lastmod>2023-02-23T12:19:55.385Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/The-Strategy-Unit/data_science/index.html</loc>
-    <lastmod>2023-02-23T12:06:58.406Z</lastmod>
+    <lastmod>2023-02-23T12:19:56.037Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/The-Strategy-Unit/data_science/presentations/index.html</loc>
+    <lastmod>2023-02-23T12:19:56.325Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/The-Strategy-Unit/data_science/presentations/what-is-data-science/index.html</loc>
+    <lastmod>2023-02-23T12:19:56.849Z</lastmod>
   </url>
 </urlset>

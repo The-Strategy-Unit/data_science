@@ -2,26 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://github.com/The-Strategy-Unit/data_science/about.html</loc>
-    <lastmod>2023-03-06T17:43:50.094Z</lastmod>
+    <lastmod>2023-03-06T17:52:05.801Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/The-Strategy-Unit/data_science/index.html</loc>
-    <lastmod>2023-03-06T17:43:50.718Z</lastmod>
+    <lastmod>2023-03-06T17:52:06.445Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/The-Strategy-Unit/data_science/presentations/2023-02-23_coffee-and-coding/2023-02-23_coffee_and_coding.html</loc>
-    <lastmod>2023-03-06T17:43:52.119Z</lastmod>
+    <loc>https://github.com/The-Strategy-Unit/data_science/presentations/2023-02-23_coffee-and-coding/index.html</loc>
+    <lastmod>2023-03-06T17:52:07.857Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/The-Strategy-Unit/data_science/presentations/2023-02-01_what-is-data-science/index.html</loc>
+    <lastmod>2023-03-06T17:52:08.337Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/The-Strategy-Unit/data_science/presentations/index.html</loc>
-    <lastmod>2023-03-06T17:43:52.739Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/The-Strategy-Unit/data_science/presentations/what-is-data-science/index.html</loc>
-    <lastmod>2023-03-06T17:43:53.151Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/The-Strategy-Unit/data_science/presentations/2023-02-23_coffee_and_coding.html</loc>
-    <lastmod>2023-03-06T17:43:53.479Z</lastmod>
+    <lastmod>2023-03-06T17:52:08.965Z</lastmod>
   </url>
 </urlset>

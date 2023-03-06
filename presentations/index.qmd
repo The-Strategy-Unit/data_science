@@ -1,4 +1,4 @@
 # Presentations
 
 - [What is data science?](/presentations/what-is-data-science/)
-- [Coffee and coding 23rd Februaruy 2023](/presentations/2023-02-23_coffee-and-coding)
+- [Coffee and coding 23rd February 2023](/presentations/2023-02-23_coffee-and-coding)

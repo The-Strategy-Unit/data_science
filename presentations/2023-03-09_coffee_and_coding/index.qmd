@@ -8,7 +8,7 @@ knitr:
     echo: true
 format:
   revealjs:
-    theme: [default, su_presentation.scss]
+    theme: [default, ./su_presentation.scss]
     transition: none
     chalkboard:
       buttons: false

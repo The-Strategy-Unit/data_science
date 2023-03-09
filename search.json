@@ -1,5 +1,47 @@
 [
   {
+    "objectID": "presentations/2023-03-09_coffee_and_coding/index.html#which-is-easier-to-read",
+    "href": "presentations/2023-03-09_coffee_and_coding/index.html#which-is-easier-to-read",
+    "title": "Good Coding Practices",
+    "section": "Which is easier to read?",
+    "text": "Which is easier to read?\n\n\n\n\nae_attendances|> filter(org_code%in%c(\"RNA\", \"RL4\"))|> mutate(performance=1+breaches/attendances) |>\n    filter(type== 1) |>\n  mutate(met_target=performance>=0.95)\n\nor\n\nae_attendances |>\n  filter(\n    org_code %in% c(\"RNA\", \"RL4\"),\n    type == 1\n  ) |>\n  mutate(\n    performance = 1 + breaches / attendances,\n    met_target = performance >= 0.95\n  )\n\n\n  spending a few seconds to neatly format your code can greatly improve the legibility to future readers, making the intent of the code far clearer, and will make finding bugs easier to spot.\n\n\n  (have you spotted the mistake in the snippets above?)"
+  },
+  {
+    "objectID": "presentations/2023-03-09_coffee_and_coding/index.html#tidyverse-style-guide",
+    "href": "presentations/2023-03-09_coffee_and_coding/index.html#tidyverse-style-guide",
+    "title": "Good Coding Practices",
+    "section": "Tidyverse Style Guide",
+    "text": "Tidyverse Style Guide\n\nGood coding style is like correct punctuation: you can manage without it, butitsuremakesthingseasiertoread\n\n\nAll style guides are fundamentally opinionated. Some decisions genuinely do make code easier to use (especially matching indenting to programming structure), but many decisions are arbitrary. The most important thing about a style guide is that it provides consistency, making code easier to write because you need to make fewer decisions.\n\ntidyverse style guide"
+  },
+  {
+    "objectID": "presentations/2023-03-09_coffee_and_coding/index.html#lintr-styler-are-your-new-best-friends",
+    "href": "presentations/2023-03-09_coffee_and_coding/index.html#lintr-styler-are-your-new-best-friends",
+    "title": "Good Coding Practices",
+    "section": "{lintr} + {styler} are your new best friends",
+    "text": "{lintr} + {styler} are your new best friends\n\n\n{lintr}\n\n{lintr} is a static code analysis tool that inspects your code (without running it)\nit checks for certain classes of errors (e.g. mismatched { and (’s)\nit warns about potential issues (e.g. using variables that aren’t defined)\nit warns about places where you are not adhering to the code style\n\n\n{styler}\n\n{styler} is an RStudio add in that automatically reformats your code, tidying it up to match the style guide\n99.9% of the time it will give you equivalent code, but there is the potential that it may change the behaviour of your code\nit will overwrite the files that you ask it to run on however, so it is vital to be using version control\na good workflow here is to save your file, “stage” the changes to your file, then run {styler}. You can then revert back to the staged changed if needed."
+  },
+  {
+    "objectID": "presentations/2023-03-09_coffee_and_coding/index.html#what-does-lintr-look-like",
+    "href": "presentations/2023-03-09_coffee_and_coding/index.html#what-does-lintr-look-like",
+    "title": "Good Coding Practices",
+    "section": "What does {lintr} look like?",
+    "text": "What does {lintr} look like?\n\n\n\nsource: Good practice for writing R code and R packages\n\nrunning lintr can be done in the console, e.g.\n\nlintr::lintr_dir(\".\")\n\nor via the Addins menu"
+  },
+  {
+    "objectID": "presentations/2023-03-09_coffee_and_coding/index.html#using-styler",
+    "href": "presentations/2023-03-09_coffee_and_coding/index.html#using-styler",
+    "title": "Good Coding Practices",
+    "section": "Using {styler}",
+    "text": "Using {styler}\n\nsource: Good practice for writing R code and R packages"
+  },
+  {
+    "objectID": "presentations/2023-03-09_coffee_and_coding/index.html#further-thoughts-on-improving-code-legibility",
+    "href": "presentations/2023-03-09_coffee_and_coding/index.html#further-thoughts-on-improving-code-legibility",
+    "title": "Good Coding Practices",
+    "section": "Further thoughts on improving code legibility",
+    "text": "Further thoughts on improving code legibility\n\ndo not let files grow too big\nbreak up logic into separate files, then you can use source(\"filename.R) to run the code in that file\nidealy, break up your logic into separate functions, each function having it’s own file, and then call those functions within your analysis\ndo not repeat yourself - if you are copying and pasting your code then you should be thinking about how to write a single function to handle this repeated logic\n\n\n\n\nview slides at the-strategy-unit.github.io/data_science/presentations"
+  },
+  {
     "objectID": "presentations/2023-02-01_what-is-data-science/index.html#what-is-data-science",
     "href": "presentations/2023-02-01_what-is-data-science/index.html#what-is-data-science",
     "title": "Everything you ever wanted to know about data science (but were too afraid to ask)",
@@ -221,7 +263,7 @@
     "href": "presentations/index.html",
     "title": "Data Science @ The Strategy Unit",
     "section": "",
-    "text": "Presentations\n\nWhat is data science?\nCoffee and coding 23rd February 2023"
+    "text": "Presentations\n\nWhat is data science?\nCoffee and coding 23rd February 2023\nCoffee and coding 9th March 2023"
   },
   {
     "objectID": "presentations/2023-02-23_coffee-and-coding/index.html#welcome-to-coffee-and-coding",

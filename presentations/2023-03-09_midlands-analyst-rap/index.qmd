@@ -1,0 +1,96 @@
+---
+title: "RAP- what is it and how can my team start using it effectively?"
+format: revealjs
+from: markdown+emoji
+author: Chris Beeley
+---
+
+## What is RAP
+
+* a process in which code is used to minimise manual, undocumented steps, and a clear, properly documented process is produced in code which can reliably give the same result from the same dataset
+* RAP should be:
+
+> the core working practice that must be supported by all platforms and teams; make this a core focus of NHS analyst training
+
+[Goldacre review](https://www.gov.uk/government/publications/better-broader-safer-using-health-data-for-research-and-analysis)
+
+## What are we trying to achieve?
+
+* Legibility
+* Reproducibility
+* Accuracy
+* Laziness
+
+## What are some of the fundamental principles?
+
+* Predictability, reducing mental load, and reducing truck factor
+* Making it easy to collaborate with yourself and others on different computers, in the cloud, in six months' time...
+* DRY
+
+## The road to RAP
+
+* We're roughly using NHS Digital's RAP stages
+* There is an incredibly large amount to learn!
+* Confession time! (everything I do not know...)
+* You don't need to do it all at once
+* You don't need to do it all at all ever
+* Each thing you learn will incrementally help you
+* Remember- that's why we learnt this stuff. Because it helped us. And it can help you too
+
+## Levels of RAP- Baseline
+
+* Data produced by code in an open-source language (e.g., Python, R, SQL).
+* Code is version controlled (see Git basics and using Git collaboratively guides).
+* Repository includes a README.md file (or equivalent) that clearly details steps a user must follow to reproduce the code
+* Code has been peer reviewed.
+* Code is published in the open and linked to & from accompanying publication (if relevant).
+
+[Source: NHS Digital RAP community of practice](https://nhsdigital.github.io/rap-community-of-practice/introduction_to_RAP/levels_of_RAP/)
+
+## Levels of RAP- Silver
+
+* Code is well-documented...
+* Code is well-organised following standard directory format
+* Reusable functions and/or classes are used where appropriate
+* Pipeline includes a testing framework
+* Repository includes dependency information (e.g. requirements.txt, PipFile, environment.yml
+* Data is handled and output in a [Tidy data](https://vita.had.co.nz/papers/tidy-data.pdf) format
+
+[Source: NHS Digital RAP community of practice](https://nhsdigital.github.io/rap-community-of-practice/introduction_to_RAP/levels_of_RAP/)
+
+## Levels of RAP- Gold
+
+* Code is fully packaged
+* Repository automatically runs tests etc. via CI/CD or a different integration/deployment tool e.g. GitHub Actions
+* Process runs based on event-based triggers (e.g., new data in database) or on a schedule
+* Changes to the RAP are clearly signposted. E.g. a changelog in the package, releases etc. (See gov.uk info on Semantic Versioning)
+
+[Source: NHS Digital RAP community of practice](https://nhsdigital.github.io/rap-community-of-practice/introduction_to_RAP/levels_of_RAP/)
+
+
+## A learning journey to get you there
+
+* Code style, organising your files
+* Functions and iteration
+* Git and GitHub
+* Packaging your code
+* Testing
+* Package management and versioning
+
+## How we can help each other get there
+
+* Work as a team!
+* Coffee and coding!
+* Ask for help!
+* Do pair coding!
+* Get your code reviewed!
+* Join the NHS-R/ NHSPycom communities
+
+## HACA
+
+* The first national analytics conference for health and care
+* Insight to action!
+* July 11th and 12th, University of Birmingham
+* Accepting abstracts for short and long talks and posters
+* Abstract deadline 27th March
+* Help is available (with abstract, poster, preparing presentation...)!

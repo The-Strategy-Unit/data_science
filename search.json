@@ -284,7 +284,7 @@
     "href": "presentations/2023-02-23_coffee-and-coding/index.html#what-are-some-of-the-fundamental-principles",
     "title": "Coffee and coding intro session",
     "section": "What are some of the fundamental principles?",
-    "text": "What are some of the fundamental principles?\n\nPredictability, reducing mental load, and reducing truck factor\nMaking it easy to collaborate with yourself and others on different computers, in the cloud, in six months’ time…"
+    "text": "What are some of the fundamental principles?\n\nPredictability, reducing mental load, and reducing truck factor\nMaking it easy to collaborate with yourself and others on different computers, in the cloud, in six months’ time…\nDRY"
   },
   {
     "objectID": "presentations/2023-02-23_coffee-and-coding/index.html#what-is-rap",
@@ -292,6 +292,13 @@
     "title": "Coffee and coding intro session",
     "section": "What is RAP",
     "text": "What is RAP\n\na process in which code is used to minimise manual, undocumented steps, and a clear, properly documented process is produced in code which can reliably give the same result from the same dataset\nRAP should be:\n\n\nthe core working practice that must be supported by all platforms and teams; make this a core focus of NHS analyst training\n\nGoldacre review"
+  },
+  {
+    "objectID": "presentations/2023-02-23_coffee-and-coding/index.html#the-road-to-rap",
+    "href": "presentations/2023-02-23_coffee-and-coding/index.html#the-road-to-rap",
+    "title": "Coffee and coding intro session",
+    "section": "The road to RAP",
+    "text": "The road to RAP\n\nWe’re roughly using NHS Digital’s RAP stages\nThere is an incredibly large amount to learn!\nConfession time! (everything I do not know…)\nYou don’t need to do it all at once\nYou don’t need to do it all at all ever\nEach thing you learn will incrementally help you\nRemember- that’s why we learnt this stuff. Because it helped us. And it can help you too"
   },
   {
     "objectID": "presentations/2023-02-23_coffee-and-coding/index.html#levels-of-rap--baseline",
@@ -313,6 +320,20 @@
     "title": "Coffee and coding intro session",
     "section": "Levels of RAP- Gold",
     "text": "Levels of RAP- Gold\n\nCode is fully packaged\nRepository automatically runs tests etc. via CI/CD or a different integration/deployment tool e.g. GitHub Actions\nProcess runs based on event-based triggers (e.g., new data in database) or on a schedule\nChanges to the RAP are clearly signposted. E.g. a changelog in the package, releases etc. (See gov.uk info on Semantic Versioning)\n\nSource: NHS Digital RAP community of practice"
+  },
+  {
+    "objectID": "presentations/2023-02-23_coffee-and-coding/index.html#a-learning-journey-to-get-us-there",
+    "href": "presentations/2023-02-23_coffee-and-coding/index.html#a-learning-journey-to-get-us-there",
+    "title": "Coffee and coding intro session",
+    "section": "A learning journey to get us there",
+    "text": "A learning journey to get us there\n\nCode style, organising your files\nFunctions and iteration\nGit and GitHub\nPackaging your code\nTesting\nPackage management and versioning"
+  },
+  {
+    "objectID": "presentations/2023-02-23_coffee-and-coding/index.html#how-we-can-help-each-other-get-there",
+    "href": "presentations/2023-02-23_coffee-and-coding/index.html#how-we-can-help-each-other-get-there",
+    "title": "Coffee and coding intro session",
+    "section": "How we can help each other get there",
+    "text": "How we can help each other get there\n\nWork as a team!\nCoffee and coding!\nAsk for help!\nDo pair coding!\nGet your code reviewed!\nJoin the NHS-R/ NHSPycom communities"
   },
   {
     "objectID": "about.html",

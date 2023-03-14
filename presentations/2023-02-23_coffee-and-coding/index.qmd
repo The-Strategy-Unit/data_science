@@ -23,6 +23,7 @@ author: Chris Beeley
 
 * Predictability, reducing mental load, and reducing truck factor
 * Making it easy to collaborate with yourself and others on different computers, in the cloud, in six months' time...
+* DRY
 
 ## What is RAP
 
@@ -32,6 +33,16 @@ author: Chris Beeley
 > the core working practice that must be supported by all platforms and teams; make this a core focus of NHS analyst training
 
 [Goldacre review](https://www.gov.uk/government/publications/better-broader-safer-using-health-data-for-research-and-analysis)
+
+## The road to RAP
+
+* We're roughly using NHS Digital's RAP stages
+* There is an incredibly large amount to learn!
+* Confession time! (everything I do not know...)
+* You don't need to do it all at once
+* You don't need to do it all at all ever
+* Each thing you learn will incrementally help you
+* Remember- that's why we learnt this stuff. Because it helped us. And it can help you too
 
 ## Levels of RAP- Baseline
 
@@ -62,4 +73,23 @@ author: Chris Beeley
 * Changes to the RAP are clearly signposted. E.g. a changelog in the package, releases etc. (See gov.uk info on Semantic Versioning)
 
 [Source: NHS Digital RAP community of practice](https://nhsdigital.github.io/rap-community-of-practice/introduction_to_RAP/levels_of_RAP/)
+
+
+## A learning journey to get us there
+
+* Code style, organising your files
+* Functions and iteration
+* Git and GitHub
+* Packaging your code
+* Testing
+* Package management and versioning
+
+## How we can help each other get there
+
+* Work as a team!
+* Coffee and coding!
+* Ask for help!
+* Do pair coding!
+* Get your code reviewed!
+* Join the NHS-R/ NHSPycom communities
 

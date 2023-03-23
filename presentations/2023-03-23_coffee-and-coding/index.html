@@ -9,7 +9,7 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.2.475">
 
-  <title>Data Science @ The Strategy Unit - Good Coding Practices</title>
+  <title>Data Science @ The Strategy Unit - {targets}</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -389,173 +389,175 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Good Coding Practices</h1>
+  <h1 class="title">{targets}</h1>
   <p class="subtitle">Tom Jemmett</p>
 
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">3/9/23</p>
+  <p class="date">3/23/23</p>
 </section>
-<section>
-<section id="you-should-care-about-your-work" class="title-slide slide level1 center">
-<h1>You should care about your work</h1>
+<section id="what-is-targets" class="slide level2">
+<h2>What is <code>{targets}</code>?</h2>
 <blockquote>
-<p>One of Guido’s key insights is that code is read much more often than it is written. The guidelines provided here are intended to improve the readability of code and make it consistent across the wide spectrum of Python code. As PEP 20 says, “Readability counts”.</p>
+<p>The targets package is a Make-like pipeline tool for Statistics and data science in R. With targets, you can maintain a reproducible workflow without repeating yourself. targets learns how your pipeline fits together, skips costly runtime for tasks that are already up to date, runs only the necessary computation, supports implicit parallel computing, abstracts files as R objects, and shows tangible evidence that the results match the underlying code and data.</p>
 </blockquote>
-<blockquote>
-<p>A style guide is about consistency. Consistency with this style guide is important. Consistency within a project is more important. Consistency within one module or function is the most important.</p>
-</blockquote>
-<p><a href="https://peps.python.org/pep-0008/">PEP 8 - Style Guide for Python Code</a></p>
-</section>
-<section id="which-is-easier-to-read" class="slide level2">
-<h2>Which is easier to read?</h2>
-<div class="cell">
-
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>ae_attendances<span class="sc">|&gt;</span> <span class="fu">filter</span>(org_code<span class="sc">%in%</span><span class="fu">c</span>(<span class="st">"RNA"</span>, <span class="st">"RL4"</span>))<span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">performance=</span><span class="dv">1</span><span class="sc">+</span>breaches<span class="sc">/</span>attendances) <span class="sc">|&gt;</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a>    <span class="fu">filter</span>(type<span class="sc">==</span> <span class="dv">1</span>) <span class="sc">|&gt;</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a>  <span class="fu">mutate</span>(<span class="at">met_target=</span>performance<span class="sc">&gt;=</span><span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>or</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>ae_attendances <span class="sc">|&gt;</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a>  <span class="fu">filter</span>(</span>
-<span id="cb2-3"><a href="#cb2-3"></a>    org_code <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"RNA"</span>, <span class="st">"RL4"</span>),</span>
-<span id="cb2-4"><a href="#cb2-4"></a>    type <span class="sc">==</span> <span class="dv">1</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb2-6"><a href="#cb2-6"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb2-7"><a href="#cb2-7"></a>    <span class="at">performance =</span> <span class="dv">1</span> <span class="sc">+</span> breaches <span class="sc">/</span> attendances,</span>
-<span id="cb2-8"><a href="#cb2-8"></a>    <span class="at">met_target =</span> performance <span class="sc">&gt;=</span> <span class="fl">0.95</span></span>
-<span id="cb2-9"><a href="#cb2-9"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <div class="fragment">
-<p><br> <br> spending a few seconds to neatly format your code can greatly improve the legibility to future readers, making the intent of the code far clearer, and will make finding bugs easier to spot.</p>
+<blockquote>
+<p>Data analysis can be slow. A round of scientific computation can take several minutes, hours, or even days to complete. After it finishes, if you update your code or data, your hard-earned results may no longer be valid. Unchecked, this invalidation creates chronic Sisyphean loop:</p>
+</blockquote>
+<ol type="1">
+<li class="fragment">Launch the code.</li>
+<li class="fragment">Wait while it runs.</li>
+<li class="fragment">Discover an issue.</li>
+<li class="fragment">Restart from scratch.</li>
+</ol>
+<div class="footer">
+<p>source: <a href="https://books.ropensci.org/targets/">The <code>{targets}</code> R package user manual</a></p>
 </div>
-<div class="fragment">
-<p><br> <br> (have you spotted the mistake in the snippets above?)</p>
 </div>
 </section>
-<section id="tidyverse-style-guide" class="slide level2">
-<h2>Tidyverse Style Guide</h2>
-<blockquote>
-<p>Good coding style is like correct punctuation: you can manage without it, butitsuremakesthingseasiertoread</p>
-</blockquote>
-<blockquote>
-<p>All style guides are fundamentally opinionated. Some decisions genuinely do make code easier to use (especially matching indenting to programming structure), but many decisions are arbitrary. The most important thing about a style guide is that it provides consistency, making code easier to write because you need to make fewer decisions.</p>
-</blockquote>
-<p><a href="https://style.tidyverse.org/">tidyverse style guide</a></p>
+<section id="what-is-it-actually-trying-to-do" class="slide level2">
+<h2>What is it actually trying to do?</h2>
+<div>
+<ul>
+<li class="fragment">Your analysis is built up of a number of steps that build one on top of another</li>
+<li class="fragment">but these steps need to run in a particular order</li>
+<li class="fragment">some of these steps may take a long time to run</li>
+<li class="fragment">so you only want to run the steps that have changed</li>
+</ul>
+</div>
 </section>
-<section class="slide level2">
-
-<h3 id="syntax-key-points">syntax key points</h3>
+<section id="typical-solution" class="slide level2">
+<h2>Typical solution</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
+<h3 id="steps">Steps</h3>
+<p>You have a folder with numbered scripts, such as:</p>
 <ul>
-<li>object (+column) names should be <code>snake_case</code>. Generally variables should be nouns, functions should be verbs.</li>
-<li>avoid re-using names of common functions and variables</li>
-<li>break lines at 80 characters. If your line is too long, that’s a good sign you should be encapsulating some of the logic into a separate function</li>
-<li>Use <code>"</code> instead of <code>'</code> for quoting text</li>
-<li>pipes should be on separate lines</li>
+<li><code>1. get data.R</code></li>
+<li><code>2. process data.R</code></li>
+<li><code>3. produce charts.R</code></li>
+<li><code>4. build model.R</code></li>
+<li><code>5. report.qmd</code></li>
 </ul>
 </div><div class="column" style="width:50%;">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># Good</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>day_one</span>
-<span id="cb3-3"><a href="#cb3-3"></a>day_1</span>
-<span id="cb3-4"><a href="#cb3-4"></a></span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="co"># Bad</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a>DayOne</span>
-<span id="cb3-7"><a href="#cb3-7"></a>dayone</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># Good</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a>day_one</span>
-<span id="cb4-3"><a href="#cb4-3"></a></span>
-<span id="cb4-4"><a href="#cb4-4"></a><span class="co"># Bad</span></span>
-<span id="cb4-5"><a href="#cb4-5"></a>first_day_of_the_month</span>
-<span id="cb4-6"><a href="#cb4-6"></a>djm1</span>
-<span id="cb4-7"><a href="#cb4-7"></a></span>
-<span id="cb4-8"><a href="#cb4-8"></a><span class="co"># Bad</span></span>
-<span id="cb4-9"><a href="#cb4-9"></a>T <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
-<span id="cb4-10"><a href="#cb4-10"></a>c <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb4-11"><a href="#cb4-11"></a>mean <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">sum</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># Good</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>iris <span class="sc">%&gt;%</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">group_by</span>(Species) <span class="sc">%&gt;%</span></span>
-<span id="cb5-4"><a href="#cb5-4"></a>  <span class="fu">summarize_if</span>(is.numeric, mean) <span class="sc">%&gt;%</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb5-6"><a href="#cb5-6"></a>  <span class="fu">gather</span>(measure, value, <span class="sc">-</span>Species) <span class="sc">%&gt;%</span></span>
-<span id="cb5-7"><a href="#cb5-7"></a>  <span class="fu">arrange</span>(value)</span>
-<span id="cb5-8"><a href="#cb5-8"></a></span>
-<span id="cb5-9"><a href="#cb5-9"></a><span class="co"># Bad</span></span>
-<span id="cb5-10"><a href="#cb5-10"></a>iris <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(Species) <span class="sc">%&gt;%</span> <span class="fu">summarize_all</span>(mean) <span class="sc">%&gt;%</span></span>
-<span id="cb5-11"><a href="#cb5-11"></a>ungroup <span class="sc">%&gt;%</span> <span class="fu">gather</span>(measure, value, <span class="sc">-</span>Species) <span class="sc">%&gt;%</span></span>
-<span id="cb5-12"><a href="#cb5-12"></a><span class="fu">arrange</span>(value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<h3 id="downsides">Downsides</h3>
+<div>
+<ul>
+<li class="fragment">it’s easy to accidentally skip a step: what happens if you went from 1 to 3?</li>
+<li class="fragment">performing one of the steps may take a long time, so you may want to skip it if it’s already been run… but how do you know that it’s already been run?</li>
+<li class="fragment">perhaps step 4 doesn’t depend on step 3, but is this obvious that you could skip step 4 if step 3 is updated?</li>
+<li class="fragment">what if someone labels the files terribly, or doesn’t number them at all?</li>
+<li class="fragment">what if the numbers become out of date and are in the wrong order?</li>
+<li class="fragment">do you need to create a procedure document that describes what to do, step-by-step?</li>
+</ul>
 </div>
 </div>
 </div>
 </section>
-<section id="lintr-styler-are-your-new-best-friends" class="slide level2">
-<h2><code>{lintr}</code> + <code>{styler}</code> are your new best friends</h2>
+<section id="targets-to-the-rescue" class="slide level2">
+<h2>{targets} to the rescue?</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<h4 id="lintr"><code>{lintr}</code></h4>
+<p>Using the previous example, if we were to create functions for each of the steps (all saved in the folder <code>R/</code>), we can start using targets using the function <code>use_targets()</code> which will create a file called <code>_targets.R</code>.</p>
+<p>We can then modify the file to match our pipeline, for example:</p>
+<p>Note that:</p>
 <ul>
-<li><code>{lintr}</code> is a static code analysis tool that inspects your code (without running it)</li>
-<li>it checks for certain classes of errors (e.g.&nbsp;mismatched <code>{</code> and <code>(</code>’s)</li>
-<li>it warns about potential issues (e.g.&nbsp;using variables that aren’t defined)</li>
-<li>it warns about places where you are not adhering to the code style</li>
+<li><code>processed_data</code> depends upon <code>raw_data</code>,</li>
+<li><code>chart</code> and <code>model</code> depend upon <code>processed_data</code>,</li>
+<li><code>report</code> depends upon <code>chart</code> and <code>model</code>.</li>
 </ul>
+<p>We can visualise our pipeline using <code>tar_visnetwork()</code>.</p>
 </div><div class="column" style="width:50%;">
-<h4 id="styler"><code>{styler}</code></h4>
-<ul>
-<li><code>{styler}</code> is an RStudio add in that automatically reformats your code, tidying it up to match the style guide</li>
-<li>99.9% of the time it will give you equivalent code, but there is the potential that it may change the behaviour of your code</li>
-<li>it will overwrite the files that you ask it to run on however, so it is vital to be using version control</li>
-<li>a good workflow here is to save your file, “stage” the changes to your file, then run <code>{styler}</code>. You can then revert back to the staged changed if needed.</li>
-</ul>
-</div>
-</div>
-</section>
-<section id="what-does-lintr-look-like" class="slide level2">
-<h2>What does <code>{lintr}</code> look like?</h2>
-<div class="columns">
-<div class="column" style="width:70%;">
-<p><img data-src="lintr_output.png"></p>
-<p>source: <a href="https://magrichard.github.io/good_coding_practices/rpresentation.html#12">Good practice for writing R code and R packages</a></p>
-</div><div class="column" style="width:30%;">
-<p>running lintr can be done in the console, e.g.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>lintr<span class="sc">::</span><span class="fu">lintr_dir</span>(<span class="st">"."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(targets)</span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">tar_option_set</span>(</span>
+<span id="cb1-4"><a href="#cb1-4"></a>  <span class="at">packages =</span> <span class="fu">c</span>(<span class="st">"tibble"</span>, <span class="st">"dplyr"</span>, <span class="st">"ggplot2"</span>),</span>
+<span id="cb1-5"><a href="#cb1-5"></a>)</span>
+<span id="cb1-6"><a href="#cb1-6"></a></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="fu">tar_source</span>()</span>
+<span id="cb1-8"><a href="#cb1-8"></a></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="fu">list</span>(</span>
+<span id="cb1-10"><a href="#cb1-10"></a>  <span class="fu">tar_target</span>(raw_data, <span class="fu">get_data</span>()),</span>
+<span id="cb1-11"><a href="#cb1-11"></a>  <span class="fu">tar_target</span>(processed_data, <span class="fu">process_data</span>(raw_data)),</span>
+<span id="cb1-12"><a href="#cb1-12"></a>  <span class="fu">tar_target</span>(chart, <span class="fu">produce_chart</span>(processed_data)),</span>
+<span id="cb1-13"><a href="#cb1-13"></a>  <span class="fu">tar_target</span>(model, <span class="fu">build_model</span>(processed_data)),</span>
+<span id="cb1-14"><a href="#cb1-14"></a>  <span class="fu">tar_target</span>(report, <span class="fu">generate_report</span>(chart, model))</span>
+<span id="cb1-15"><a href="#cb1-15"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>or via the Addins menu</p>
-<p><img data-src="lintr_addin.png"></p>
+<p><img data-src="visnetwork.png"></p>
 </div>
 </div>
 </section>
-<section id="using-styler" class="slide level2">
-<h2>Using <code>{styler}</code></h2>
+<section id="running-the-pipeline" class="slide level2">
+<h2>Running the pipeline</h2>
+<p>Running this pipeline is as simple as: <code>tar_make()</code>.</p>
+<p>This will output the following:</p>
+<pre><code>• start target raw_data
+• built target raw_data [1.05 seconds]
+• start target processed_data
+• built target processed_data [0.03 seconds]
+• start target chart
+• built target chart [0.02 seconds]
+• start target model
+• built target model [0.01 seconds]
+• start target report
+• built target report [0 seconds]
+• end pipeline [1.75 seconds]</code></pre>
+<div class="fragment">
+<p>Running <code>tar_make()</code> again will show these step’s being skipped:</p>
+<pre><code>✔ skip target raw_data
+✔ skip target processed_data
+✔ skip target chart
+✔ skip target model
+✔ skip target report
+✔ skip pipeline [0.12 seconds]</code></pre>
+</div>
+</section>
+<section id="changing-one-of-the-files" class="slide level2">
+<h2>Changing one of the files</h2>
+<p>If we change <code>produce_chart.R</code> slightly, this will cause <code>chart</code> and <code>report</code> to be invalidated, but it will skip over the other steps.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<pre><code>&gt; targets::tar_make()
 
-<img data-src="styler_0.1.gif" class="r-stretch"><p>source: <a href="https://magrichard.github.io/good_coding_practices/rpresentation.html#12">Good practice for writing R code and R packages</a></p>
+✔ skip target raw_data
+✔ skip target processed_data
+• start target chart
+• built target chart [0.03 seconds]
+✔ skip target model
+• start target report
+• built target report [0 seconds]
+• end pipeline [1.71 seconds]</code></pre>
+</div><div class="column" style="width:50%;">
+<p><img data-src="modified_visnetwork.png"></p>
+</div>
+</div>
 </section>
-<section id="further-thoughts-on-improving-code-legibility" class="slide level2">
-<h2>Further thoughts on improving code legibility</h2>
+<section id="using-the-results-of-our-pipeline" class="slide level2">
+<h2>Using the results of our pipeline</h2>
+<p>We can view the results of any step using <code>tar_read()</code> and <code>tar_load()</code>. These will either directly give you the results of a step, or load that step into your environment (as a variable with the same name as the step).</p>
+<p>This allows us to view intermediate steps as well as the final outputs of our pipelines.</p>
+<p>One thing you may want to consider doing is as a final step in a pipeline is to generate a quarto document, or save call a function like <code>saveRDS</code> to generate more useful outputs.</p>
+</section>
+<section id="current-examples-of-targets-in-action" class="slide level2">
+<h2>Current examples of {targets} in action</h2>
 <ul>
-<li>do not let files grow too big</li>
-<li>break up logic into separate files, then you can use <code>source("filename.R)</code> to run the code in that file</li>
-<li>idealy, break up your logic into separate functions, each function having it’s own file, and then call those functions within your analysis</li>
-<li>do not repeat yourself - if you are copying and pasting your code then you should be thinking about how to write a single function to handle this repeated logic</li>
+<li><a href="https://github.com/tomjemmett/targets_tutorial">code used in this presentation</a></li>
+<li><a href="https://github.com/The-Strategy-Unit/nhp_inputs">NHP Inputs</a> (all of the data processing steps are a targets pipeline)</li>
+<li><a href="https://github.com/The-Strategy-Unit/nhp_outputs">NHP Strategies</a> (runs Sql scripts to update tables in the data warehouse)</li>
+<li><a href="https://github.com/The-Strategy-Unit/nhp_outputs">NHP Model</a> (all of the data extraction, processing, and uploading for the model is a targets pipeline)</li>
+<li><a href="https://github.com/The-Strategy-Unit/MacmillanOnNCDR">Macmillan on NCDR</a> - Jacqueline has been using {targets} for her current project</li>
 </ul>
+<p>The <a href="https://books.ropensci.org/targets/walkthrough.html">{targets} documentation</a> is exceptionally detailed and easy to follow, and goes into more complex examples (such as dynamic branching of steps in a pipeline and high performance computing setups)</p>
 
 
 <img src="logo_yellow.svg" class="slide-logo r-stretch"><div class="footer footer-default">
-<p>view slides at <a href="https://the-strategy-unit.github.io/data_science/presentations/">the-strategy-unit.github.io/data_science/presentations</a></p>
+<p>view slides at [the-strategy-unit.github.io/data_science/presentations][ds_presentations]</p>
 </div>
-</section></section>
+</section>
     </div>
   </div>
 

@@ -1,5 +1,180 @@
 [
   {
+    "objectID": "presentations/2023-03-09_coffee-and-coding/index.html#which-is-easier-to-read",
+    "href": "presentations/2023-03-09_coffee-and-coding/index.html#which-is-easier-to-read",
+    "title": "Good Coding Practices",
+    "section": "Which is easier to read?",
+    "text": "Which is easier to read?\n\n\n\n\nae_attendances|> filter(org_code%in%c(\"RNA\", \"RL4\"))|> mutate(performance=1+breaches/attendances) |>\n    filter(type== 1) |>\n  mutate(met_target=performance>=0.95)\n\nor\n\nae_attendances |>\n  filter(\n    org_code %in% c(\"RNA\", \"RL4\"),\n    type == 1\n  ) |>\n  mutate(\n    performance = 1 + breaches / attendances,\n    met_target = performance >= 0.95\n  )\n\n\n  spending a few seconds to neatly format your code can greatly improve the legibility to future readers, making the intent of the code far clearer, and will make finding bugs easier to spot.\n\n\n  (have you spotted the mistake in the snippets above?)"
+  },
+  {
+    "objectID": "presentations/2023-03-09_coffee-and-coding/index.html#tidyverse-style-guide",
+    "href": "presentations/2023-03-09_coffee-and-coding/index.html#tidyverse-style-guide",
+    "title": "Good Coding Practices",
+    "section": "Tidyverse Style Guide",
+    "text": "Tidyverse Style Guide\n\nGood coding style is like correct punctuation: you can manage without it, butitsuremakesthingseasiertoread\n\n\nAll style guides are fundamentally opinionated. Some decisions genuinely do make code easier to use (especially matching indenting to programming structure), but many decisions are arbitrary. The most important thing about a style guide is that it provides consistency, making code easier to write because you need to make fewer decisions.\n\ntidyverse style guide"
+  },
+  {
+    "objectID": "presentations/2023-03-09_coffee-and-coding/index.html#lintr-styler-are-your-new-best-friends",
+    "href": "presentations/2023-03-09_coffee-and-coding/index.html#lintr-styler-are-your-new-best-friends",
+    "title": "Good Coding Practices",
+    "section": "{lintr} + {styler} are your new best friends",
+    "text": "{lintr} + {styler} are your new best friends\n\n\n{lintr}\n\n{lintr} is a static code analysis tool that inspects your code (without running it)\nit checks for certain classes of errors (e.g. mismatched { and (’s)\nit warns about potential issues (e.g. using variables that aren’t defined)\nit warns about places where you are not adhering to the code style\n\n\n{styler}\n\n{styler} is an RStudio add in that automatically reformats your code, tidying it up to match the style guide\n99.9% of the time it will give you equivalent code, but there is the potential that it may change the behaviour of your code\nit will overwrite the files that you ask it to run on however, so it is vital to be using version control\na good workflow here is to save your file, “stage” the changes to your file, then run {styler}. You can then revert back to the staged changed if needed."
+  },
+  {
+    "objectID": "presentations/2023-03-09_coffee-and-coding/index.html#what-does-lintr-look-like",
+    "href": "presentations/2023-03-09_coffee-and-coding/index.html#what-does-lintr-look-like",
+    "title": "Good Coding Practices",
+    "section": "What does {lintr} look like?",
+    "text": "What does {lintr} look like?\n\n\n\nsource: Good practice for writing R code and R packages\n\nrunning lintr can be done in the console, e.g.\n\nlintr::lintr_dir(\".\")\n\nor via the Addins menu"
+  },
+  {
+    "objectID": "presentations/2023-03-09_coffee-and-coding/index.html#using-styler",
+    "href": "presentations/2023-03-09_coffee-and-coding/index.html#using-styler",
+    "title": "Good Coding Practices",
+    "section": "Using {styler}",
+    "text": "Using {styler}\n\nsource: Good practice for writing R code and R packages"
+  },
+  {
+    "objectID": "presentations/2023-03-09_coffee-and-coding/index.html#further-thoughts-on-improving-code-legibility",
+    "href": "presentations/2023-03-09_coffee-and-coding/index.html#further-thoughts-on-improving-code-legibility",
+    "title": "Good Coding Practices",
+    "section": "Further thoughts on improving code legibility",
+    "text": "Further thoughts on improving code legibility\n\ndo not let files grow too big\nbreak up logic into separate files, then you can use source(\"filename.R) to run the code in that file\nidealy, break up your logic into separate functions, each function having it’s own file, and then call those functions within your analysis\ndo not repeat yourself - if you are copying and pasting your code then you should be thinking about how to write a single function to handle this repeated logic\n\n\n\n\nview slides at the-strategy-unit.github.io/data_science/presentations"
+  },
+  {
+    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#what-is-rap",
+    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#what-is-rap",
+    "title": "RAP- what is it and how can my team start using it effectively?",
+    "section": "What is RAP",
+    "text": "What is RAP\n\na process in which code is used to minimise manual, undocumented steps, and a clear, properly documented process is produced in code which can reliably give the same result from the same dataset\nRAP should be:\n\n\nthe core working practice that must be supported by all platforms and teams; make this a core focus of NHS analyst training\n\nGoldacre review"
+  },
+  {
+    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#what-are-we-trying-to-achieve",
+    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#what-are-we-trying-to-achieve",
+    "title": "RAP- what is it and how can my team start using it effectively?",
+    "section": "What are we trying to achieve?",
+    "text": "What are we trying to achieve?\n\nLegibility\nReproducibility\nAccuracy\nLaziness"
+  },
+  {
+    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#what-are-some-of-the-fundamental-principles",
+    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#what-are-some-of-the-fundamental-principles",
+    "title": "RAP- what is it and how can my team start using it effectively?",
+    "section": "What are some of the fundamental principles?",
+    "text": "What are some of the fundamental principles?\n\nPredictability, reducing mental load, and reducing truck factor\nMaking it easy to collaborate with yourself and others on different computers, in the cloud, in six months’ time…\nDRY"
+  },
+  {
+    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#the-road-to-rap",
+    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#the-road-to-rap",
+    "title": "RAP- what is it and how can my team start using it effectively?",
+    "section": "The road to RAP",
+    "text": "The road to RAP\n\nWe’re roughly using NHS Digital’s RAP stages\nThere is an incredibly large amount to learn!\nConfession time! (everything I do not know…)\nYou don’t need to do it all at once\nYou don’t need to do it all at all ever\nEach thing you learn will incrementally help you\nRemember- that’s why we learnt this stuff. Because it helped us. And it can help you too"
+  },
+  {
+    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#levels-of-rap--baseline",
+    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#levels-of-rap--baseline",
+    "title": "RAP- what is it and how can my team start using it effectively?",
+    "section": "Levels of RAP- Baseline",
+    "text": "Levels of RAP- Baseline\n\nData produced by code in an open-source language (e.g., Python, R, SQL).\nCode is version controlled (see Git basics and using Git collaboratively guides).\nRepository includes a README.md file (or equivalent) that clearly details steps a user must follow to reproduce the code\nCode has been peer reviewed.\nCode is published in the open and linked to & from accompanying publication (if relevant).\n\nSource: NHS Digital RAP community of practice"
+  },
+  {
+    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#levels-of-rap--silver",
+    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#levels-of-rap--silver",
+    "title": "RAP- what is it and how can my team start using it effectively?",
+    "section": "Levels of RAP- Silver",
+    "text": "Levels of RAP- Silver\n\nCode is well-documented…\nCode is well-organised following standard directory format\nReusable functions and/or classes are used where appropriate\nPipeline includes a testing framework\nRepository includes dependency information (e.g. requirements.txt, PipFile, environment.yml\nData is handled and output in a Tidy data format\n\nSource: NHS Digital RAP community of practice"
+  },
+  {
+    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#levels-of-rap--gold",
+    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#levels-of-rap--gold",
+    "title": "RAP- what is it and how can my team start using it effectively?",
+    "section": "Levels of RAP- Gold",
+    "text": "Levels of RAP- Gold\n\nCode is fully packaged\nRepository automatically runs tests etc. via CI/CD or a different integration/deployment tool e.g. GitHub Actions\nProcess runs based on event-based triggers (e.g., new data in database) or on a schedule\nChanges to the RAP are clearly signposted. E.g. a changelog in the package, releases etc. (See gov.uk info on Semantic Versioning)\n\nSource: NHS Digital RAP community of practice"
+  },
+  {
+    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#a-learning-journey-to-get-you-there",
+    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#a-learning-journey-to-get-you-there",
+    "title": "RAP- what is it and how can my team start using it effectively?",
+    "section": "A learning journey to get you there",
+    "text": "A learning journey to get you there\n\nCode style, organising your files\nFunctions and iteration\nGit and GitHub\nPackaging your code\nTesting\nPackage management and versioning"
+  },
+  {
+    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#how-we-can-help-each-other-get-there",
+    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#how-we-can-help-each-other-get-there",
+    "title": "RAP- what is it and how can my team start using it effectively?",
+    "section": "How we can help each other get there",
+    "text": "How we can help each other get there\n\nWork as a team!\nCoffee and coding!\nAsk for help!\nDo pair coding!\nGet your code reviewed!\nJoin the NHS-R/ NHSPycom communities"
+  },
+  {
+    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#haca",
+    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#haca",
+    "title": "RAP- what is it and how can my team start using it effectively?",
+    "section": "HACA",
+    "text": "HACA\n\nThe first national analytics conference for health and care\nInsight to action!\nJuly 11th and 12th, University of Birmingham\nAccepting abstracts for short and long talks and posters\nAbstract deadline 27th March\nHelp is available (with abstract, poster, preparing presentation…)!"
+  },
+  {
+    "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#what-is-targets",
+    "href": "presentations/2023-03-23_coffee-and-coding/index.html#what-is-targets",
+    "title": "{targets}",
+    "section": "What is {targets}?",
+    "text": "What is {targets}?\n\nThe targets package is a Make-like pipeline tool for Statistics and data science in R. With targets, you can maintain a reproducible workflow without repeating yourself. targets learns how your pipeline fits together, skips costly runtime for tasks that are already up to date, runs only the necessary computation, supports implicit parallel computing, abstracts files as R objects, and shows tangible evidence that the results match the underlying code and data.\n\n\n\nData analysis can be slow. A round of scientific computation can take several minutes, hours, or even days to complete. After it finishes, if you update your code or data, your hard-earned results may no longer be valid. Unchecked, this invalidation creates chronic Sisyphean loop:\n\n\nLaunch the code.\nWait while it runs.\nDiscover an issue.\nRestart from scratch.\n\n\nsource: The {targets} R package user manual"
+  },
+  {
+    "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#what-is-it-actually-trying-to-do",
+    "href": "presentations/2023-03-23_coffee-and-coding/index.html#what-is-it-actually-trying-to-do",
+    "title": "{targets}",
+    "section": "What is it actually trying to do?",
+    "text": "What is it actually trying to do?\n\n\nYour analysis is built up of a number of steps that build one on top of another\nbut these steps need to run in a particular order\nsome of these steps may take a long time to run\nso you only want to run the steps that have changed"
+  },
+  {
+    "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#typical-solution",
+    "href": "presentations/2023-03-23_coffee-and-coding/index.html#typical-solution",
+    "title": "{targets}",
+    "section": "Typical solution",
+    "text": "Typical solution\n\n\nSteps\nYou have a folder with numbered scripts, such as:\n\n1. get data.R\n2. process data.R\n3. produce charts.R\n4. build model.R\n5. report.qmd\n\n\nDownsides\n\n\nit’s easy to accidentally skip a step: what happens if you went from 1 to 3?\nperforming one of the steps may take a long time, so you may want to skip it if it’s already been run… but how do you know that it’s already been run?\nperhaps step 4 doesn’t depend on step 3, but is this obvious that you could skip step 4 if step 3 is updated?\nwhat if someone labels the files terribly, or doesn’t number them at all?\nwhat if the numbers become out of date and are in the wrong order?\ndo you need to create a procedure document that describes what to do, step-by-step?"
+  },
+  {
+    "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#targets-to-the-rescue",
+    "href": "presentations/2023-03-23_coffee-and-coding/index.html#targets-to-the-rescue",
+    "title": "{targets}",
+    "section": "{targets} to the rescue?",
+    "text": "{targets} to the rescue?\n\n\nUsing the previous example, if we were to create functions for each of the steps (all saved in the folder R/), we can start using targets using the function use_targets() which will create a file called _targets.R.\nWe can then modify the file to match our pipeline, for example:\nNote that:\n\nprocessed_data depends upon raw_data,\nchart and model depend upon processed_data,\nreport depends upon chart and model.\n\nWe can visualise our pipeline using tar_visnetwork().\n\n\nlibrary(targets)\n\ntar_option_set(\n  packages = c(\"tibble\", \"dplyr\", \"ggplot2\"),\n)\n\ntar_source()\n\nlist(\n  tar_target(raw_data, get_data()),\n  tar_target(processed_data, process_data(raw_data)),\n  tar_target(chart, produce_chart(processed_data)),\n  tar_target(model, build_model(processed_data)),\n  tar_target(report, generate_report(chart, model))\n)"
+  },
+  {
+    "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#running-the-pipeline",
+    "href": "presentations/2023-03-23_coffee-and-coding/index.html#running-the-pipeline",
+    "title": "{targets}",
+    "section": "Running the pipeline",
+    "text": "Running the pipeline\nRunning this pipeline is as simple as: tar_make().\nThis will output the following:\n• start target raw_data\n• built target raw_data [1.05 seconds]\n• start target processed_data\n• built target processed_data [0.03 seconds]\n• start target chart\n• built target chart [0.02 seconds]\n• start target model\n• built target model [0.01 seconds]\n• start target report\n• built target report [0 seconds]\n• end pipeline [1.75 seconds]\n\nRunning tar_make() again will show these step’s being skipped:\n✔ skip target raw_data\n✔ skip target processed_data\n✔ skip target chart\n✔ skip target model\n✔ skip target report\n✔ skip pipeline [0.12 seconds]"
+  },
+  {
+    "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#changing-one-of-the-files",
+    "href": "presentations/2023-03-23_coffee-and-coding/index.html#changing-one-of-the-files",
+    "title": "{targets}",
+    "section": "Changing one of the files",
+    "text": "Changing one of the files\nIf we change produce_chart.R slightly, this will cause chart and report to be invalidated, but it will skip over the other steps.\n\n\n> targets::tar_make()\n\n✔ skip target raw_data\n✔ skip target processed_data\n• start target chart\n• built target chart [0.03 seconds]\n✔ skip target model\n• start target report\n• built target report [0 seconds]\n• end pipeline [1.71 seconds]"
+  },
+  {
+    "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#using-the-results-of-our-pipeline",
+    "href": "presentations/2023-03-23_coffee-and-coding/index.html#using-the-results-of-our-pipeline",
+    "title": "{targets}",
+    "section": "Using the results of our pipeline",
+    "text": "Using the results of our pipeline\nWe can view the results of any step using tar_read() and tar_load(). These will either directly give you the results of a step, or load that step into your environment (as a variable with the same name as the step).\nThis allows us to view intermediate steps as well as the final outputs of our pipelines.\nOne thing you may want to consider doing is as a final step in a pipeline is to generate a quarto document, or save call a function like saveRDS to generate more useful outputs."
+  },
+  {
+    "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#current-examples-of-targets-in-action",
+    "href": "presentations/2023-03-23_coffee-and-coding/index.html#current-examples-of-targets-in-action",
+    "title": "{targets}",
+    "section": "Current examples of {targets} in action",
+    "text": "Current examples of {targets} in action\n\ncode used in this presentation\nNHP Inputs (all of the data processing steps are a targets pipeline)\nNHP Strategies (runs Sql scripts to update tables in the data warehouse)\nNHP Model (all of the data extraction, processing, and uploading for the model is a targets pipeline)\nMacmillan on NCDR - Jacqueline has been using {targets} for her current project\n\nThe {targets} documentation is exceptionally detailed and easy to follow, and goes into more complex examples (such as dynamic branching of steps in a pipeline and high performance computing setups)\n\n\n\nview slides at [the-strategy-unit.github.io/data_science/presentations][ds_presentations]"
+  },
+  {
+    "objectID": "presentations/index.html",
+    "href": "presentations/index.html",
+    "title": "Data Science @ The Strategy Unit",
+    "section": "",
+    "text": "Presentations\n\nWhat is data science?\nCoffee and coding 23rd February 2023\nCoffee and coding 9th March 2023\nCoffee and coding 23rd March 2023"
+  },
+  {
     "objectID": "presentations/2023-02-01_what-is-data-science/index.html#what-is-data-science",
     "href": "presentations/2023-02-01_what-is-data-science/index.html#what-is-data-science",
     "title": "Everything you ever wanted to know about data science (but were too afraid to ask)",
@@ -145,125 +320,6 @@
     "title": "Everything you ever wanted to know about data science (but were too afraid to ask)",
     "section": "Note",
     "text": "Note\nAll copyrighted material is reused under Fair Dealing"
-  },
-  {
-    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#what-is-rap",
-    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#what-is-rap",
-    "title": "RAP- what is it and how can my team start using it effectively?",
-    "section": "What is RAP",
-    "text": "What is RAP\n\na process in which code is used to minimise manual, undocumented steps, and a clear, properly documented process is produced in code which can reliably give the same result from the same dataset\nRAP should be:\n\n\nthe core working practice that must be supported by all platforms and teams; make this a core focus of NHS analyst training\n\nGoldacre review"
-  },
-  {
-    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#what-are-we-trying-to-achieve",
-    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#what-are-we-trying-to-achieve",
-    "title": "RAP- what is it and how can my team start using it effectively?",
-    "section": "What are we trying to achieve?",
-    "text": "What are we trying to achieve?\n\nLegibility\nReproducibility\nAccuracy\nLaziness"
-  },
-  {
-    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#what-are-some-of-the-fundamental-principles",
-    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#what-are-some-of-the-fundamental-principles",
-    "title": "RAP- what is it and how can my team start using it effectively?",
-    "section": "What are some of the fundamental principles?",
-    "text": "What are some of the fundamental principles?\n\nPredictability, reducing mental load, and reducing truck factor\nMaking it easy to collaborate with yourself and others on different computers, in the cloud, in six months’ time…\nDRY"
-  },
-  {
-    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#the-road-to-rap",
-    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#the-road-to-rap",
-    "title": "RAP- what is it and how can my team start using it effectively?",
-    "section": "The road to RAP",
-    "text": "The road to RAP\n\nWe’re roughly using NHS Digital’s RAP stages\nThere is an incredibly large amount to learn!\nConfession time! (everything I do not know…)\nYou don’t need to do it all at once\nYou don’t need to do it all at all ever\nEach thing you learn will incrementally help you\nRemember- that’s why we learnt this stuff. Because it helped us. And it can help you too"
-  },
-  {
-    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#levels-of-rap--baseline",
-    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#levels-of-rap--baseline",
-    "title": "RAP- what is it and how can my team start using it effectively?",
-    "section": "Levels of RAP- Baseline",
-    "text": "Levels of RAP- Baseline\n\nData produced by code in an open-source language (e.g., Python, R, SQL).\nCode is version controlled (see Git basics and using Git collaboratively guides).\nRepository includes a README.md file (or equivalent) that clearly details steps a user must follow to reproduce the code\nCode has been peer reviewed.\nCode is published in the open and linked to & from accompanying publication (if relevant).\n\nSource: NHS Digital RAP community of practice"
-  },
-  {
-    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#levels-of-rap--silver",
-    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#levels-of-rap--silver",
-    "title": "RAP- what is it and how can my team start using it effectively?",
-    "section": "Levels of RAP- Silver",
-    "text": "Levels of RAP- Silver\n\nCode is well-documented…\nCode is well-organised following standard directory format\nReusable functions and/or classes are used where appropriate\nPipeline includes a testing framework\nRepository includes dependency information (e.g. requirements.txt, PipFile, environment.yml\nData is handled and output in a Tidy data format\n\nSource: NHS Digital RAP community of practice"
-  },
-  {
-    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#levels-of-rap--gold",
-    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#levels-of-rap--gold",
-    "title": "RAP- what is it and how can my team start using it effectively?",
-    "section": "Levels of RAP- Gold",
-    "text": "Levels of RAP- Gold\n\nCode is fully packaged\nRepository automatically runs tests etc. via CI/CD or a different integration/deployment tool e.g. GitHub Actions\nProcess runs based on event-based triggers (e.g., new data in database) or on a schedule\nChanges to the RAP are clearly signposted. E.g. a changelog in the package, releases etc. (See gov.uk info on Semantic Versioning)\n\nSource: NHS Digital RAP community of practice"
-  },
-  {
-    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#a-learning-journey-to-get-you-there",
-    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#a-learning-journey-to-get-you-there",
-    "title": "RAP- what is it and how can my team start using it effectively?",
-    "section": "A learning journey to get you there",
-    "text": "A learning journey to get you there\n\nCode style, organising your files\nFunctions and iteration\nGit and GitHub\nPackaging your code\nTesting\nPackage management and versioning"
-  },
-  {
-    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#how-we-can-help-each-other-get-there",
-    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#how-we-can-help-each-other-get-there",
-    "title": "RAP- what is it and how can my team start using it effectively?",
-    "section": "How we can help each other get there",
-    "text": "How we can help each other get there\n\nWork as a team!\nCoffee and coding!\nAsk for help!\nDo pair coding!\nGet your code reviewed!\nJoin the NHS-R/ NHSPycom communities"
-  },
-  {
-    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#haca",
-    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#haca",
-    "title": "RAP- what is it and how can my team start using it effectively?",
-    "section": "HACA",
-    "text": "HACA\n\nThe first national analytics conference for health and care\nInsight to action!\nJuly 11th and 12th, University of Birmingham\nAccepting abstracts for short and long talks and posters\nAbstract deadline 27th March\nHelp is available (with abstract, poster, preparing presentation…)!"
-  },
-  {
-    "objectID": "presentations/2023-03-09_coffee-and-coding/index.html#which-is-easier-to-read",
-    "href": "presentations/2023-03-09_coffee-and-coding/index.html#which-is-easier-to-read",
-    "title": "Good Coding Practices",
-    "section": "Which is easier to read?",
-    "text": "Which is easier to read?\n\n\n\n\nae_attendances|> filter(org_code%in%c(\"RNA\", \"RL4\"))|> mutate(performance=1+breaches/attendances) |>\n    filter(type== 1) |>\n  mutate(met_target=performance>=0.95)\n\nor\n\nae_attendances |>\n  filter(\n    org_code %in% c(\"RNA\", \"RL4\"),\n    type == 1\n  ) |>\n  mutate(\n    performance = 1 + breaches / attendances,\n    met_target = performance >= 0.95\n  )\n\n\n  spending a few seconds to neatly format your code can greatly improve the legibility to future readers, making the intent of the code far clearer, and will make finding bugs easier to spot.\n\n\n  (have you spotted the mistake in the snippets above?)"
-  },
-  {
-    "objectID": "presentations/2023-03-09_coffee-and-coding/index.html#tidyverse-style-guide",
-    "href": "presentations/2023-03-09_coffee-and-coding/index.html#tidyverse-style-guide",
-    "title": "Good Coding Practices",
-    "section": "Tidyverse Style Guide",
-    "text": "Tidyverse Style Guide\n\nGood coding style is like correct punctuation: you can manage without it, butitsuremakesthingseasiertoread\n\n\nAll style guides are fundamentally opinionated. Some decisions genuinely do make code easier to use (especially matching indenting to programming structure), but many decisions are arbitrary. The most important thing about a style guide is that it provides consistency, making code easier to write because you need to make fewer decisions.\n\ntidyverse style guide"
-  },
-  {
-    "objectID": "presentations/2023-03-09_coffee-and-coding/index.html#lintr-styler-are-your-new-best-friends",
-    "href": "presentations/2023-03-09_coffee-and-coding/index.html#lintr-styler-are-your-new-best-friends",
-    "title": "Good Coding Practices",
-    "section": "{lintr} + {styler} are your new best friends",
-    "text": "{lintr} + {styler} are your new best friends\n\n\n{lintr}\n\n{lintr} is a static code analysis tool that inspects your code (without running it)\nit checks for certain classes of errors (e.g. mismatched { and (’s)\nit warns about potential issues (e.g. using variables that aren’t defined)\nit warns about places where you are not adhering to the code style\n\n\n{styler}\n\n{styler} is an RStudio add in that automatically reformats your code, tidying it up to match the style guide\n99.9% of the time it will give you equivalent code, but there is the potential that it may change the behaviour of your code\nit will overwrite the files that you ask it to run on however, so it is vital to be using version control\na good workflow here is to save your file, “stage” the changes to your file, then run {styler}. You can then revert back to the staged changed if needed."
-  },
-  {
-    "objectID": "presentations/2023-03-09_coffee-and-coding/index.html#what-does-lintr-look-like",
-    "href": "presentations/2023-03-09_coffee-and-coding/index.html#what-does-lintr-look-like",
-    "title": "Good Coding Practices",
-    "section": "What does {lintr} look like?",
-    "text": "What does {lintr} look like?\n\n\n\nsource: Good practice for writing R code and R packages\n\nrunning lintr can be done in the console, e.g.\n\nlintr::lintr_dir(\".\")\n\nor via the Addins menu"
-  },
-  {
-    "objectID": "presentations/2023-03-09_coffee-and-coding/index.html#using-styler",
-    "href": "presentations/2023-03-09_coffee-and-coding/index.html#using-styler",
-    "title": "Good Coding Practices",
-    "section": "Using {styler}",
-    "text": "Using {styler}\n\nsource: Good practice for writing R code and R packages"
-  },
-  {
-    "objectID": "presentations/2023-03-09_coffee-and-coding/index.html#further-thoughts-on-improving-code-legibility",
-    "href": "presentations/2023-03-09_coffee-and-coding/index.html#further-thoughts-on-improving-code-legibility",
-    "title": "Good Coding Practices",
-    "section": "Further thoughts on improving code legibility",
-    "text": "Further thoughts on improving code legibility\n\ndo not let files grow too big\nbreak up logic into separate files, then you can use source(\"filename.R) to run the code in that file\nidealy, break up your logic into separate functions, each function having it’s own file, and then call those functions within your analysis\ndo not repeat yourself - if you are copying and pasting your code then you should be thinking about how to write a single function to handle this repeated logic\n\n\n\n\nview slides at the-strategy-unit.github.io/data_science/presentations"
-  },
-  {
-    "objectID": "presentations/index.html",
-    "href": "presentations/index.html",
-    "title": "Data Science @ The Strategy Unit",
-    "section": "",
-    "text": "Presentations\n\nWhat is data science?\nCoffee and coding 23rd February 2023\nCoffee and coding 9th March 2023"
   },
   {
     "objectID": "presentations/2023-02-23_coffee-and-coding/index.html#welcome-to-coffee-and-coding",

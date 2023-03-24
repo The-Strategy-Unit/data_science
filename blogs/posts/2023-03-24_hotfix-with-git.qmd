@@ -3,15 +3,37 @@ title: "Creating a hotfix with git"
 author: "Tom Jemmett"
 date: "2023-03-24"
 categories: [git, tutorial]
+knitr:
+  opts_chunk:
+    fig.height: 2.5
+    echo: false
+    dev: png
+    dev.args:
+      bg: transparent
 ---
+```{r setup}
+library(ggplot2)
+theme_set(
+  theme_void() %+replace%
+    theme(
+      legend.position = "none",
+      panel.background = element_rect(fill = "transparent", colour = NA),
+      panel.grid.minor = element_blank(),
+      panel.grid.major = element_blank(),
+      plot.background = element_rect(fill = "transparent", colour = NA)
+    )
+)
+
+colours <- c(
+  "tag" = "#f9bf07",
+  "main" = "#5881c1",
+  "branch" = "#ec6555"
+)
+```
 
 I recently discovered a bug in a code-base which needed to be fixed and deployed back to production A.S.A.P., but since the last release the code has moved on significantly. The history looks something a bit like:
 
 ```{r}
-#! fig.height: 1
-#! echo: false
-library(ggplot2)
-
 data.frame(
   x = 1:6,
   y = c(1, 1, 1, 1, 2, 2),
@@ -22,8 +44,7 @@ data.frame(
   ggplot(aes(x, y, group = g)) +
   geom_line() +
   geom_label(aes(label = l, fill = t)) +
-  theme_void() +
-  theme(legend.position = "none")
+  scale_fill_manual(values = colours)
 ```
 
 That is, we have a tag which is the code that is currently in production (which we need to patch), a number of commits after that tag to main (which were separate branches merged via pull requests), and a current development branch.
@@ -62,10 +83,10 @@ git tag v0.2.1 -m "version 0.2.0"
 At this point, our history looks something like
 
 ```{r}
-#! fig.height: 1
-#! echo: false
+#| fig.height: 2.5
+#| echo: false
 data.frame(
-  x = c(1,2,2:6),
+  x = c(1, 2, 2:6),
   y = c(1, 2, 1, 1, 1, 2, 2),
   g = c(1, 1, 2, 2, 2, 2, 2),
   t = c("tag", "tag", "main", "main", "main", "branch", "branch"),
@@ -77,8 +98,7 @@ data.frame(
     data = data.frame(x = c(1, 2), y = c(1, 1), g = c(1, 1))
   ) +
   geom_label(aes(label = l, fill = t)) +
-  theme_void() +
-  theme(legend.position = "none")
+  scale_fill_manual(values = colours)
 ```
 
 What we want to do is break the link between main and `v0.2.0`, instead attaching to`v0.2.1`. First though, I want to make sure that if I make a mistake, I'm not making it on the main branch.
@@ -123,8 +143,8 @@ git rebase main
 Now, we should have a history like
 
 ```{r}
-#! fig.height: 1
-#! echo: false
+#| fig.height: 2.5
+#| echo: false
 data.frame(
   x = 1:7,
   y = c(1, 1, 1, 1, 1, 2, 2),
@@ -135,8 +155,5 @@ data.frame(
   ggplot(aes(x, y, group = g)) +
   geom_line() +
   geom_label(aes(label = l, fill = t)) +
-  theme_void() +
-  theme(legend.position = "none")
+  scale_fill_manual(values = colours)
 ```
-
-## 

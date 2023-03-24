@@ -25,6 +25,8 @@ editor:
     wrap: 120
 ---
 
+[ds_presentations]: https://the-strategy-unit.github.io/data_science/
+
 ## What is `{targets}`?
 
 > The targets package is a Make-like pipeline tool for Statistics and data science in R. With targets, you can maintain

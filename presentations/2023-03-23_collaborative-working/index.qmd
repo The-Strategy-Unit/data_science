@@ -1,0 +1,75 @@
+---
+title: "Collaborative working"
+author: "Chris Beeley"
+date: 2023/03/23
+date-format: "MMM D, YYYY"
+format: revealjs
+---
+
+## Introduction
+
+* This is definitely an art and not a science
+* I do not claim to have all, or even most of, the answers
+* How you use these tools is way more important than the tools themselves
+* This is a culture and not a technique
+
+## Costs
+
+* Delay and time
+* Stress and disagreement
+* Committee thinking
+* Learning and effort
+
+## Benefits
+
+* "From each according to their ability"
+* Learning
+* Reproducibility and reduced truck factor
+* Fun!
+
+## GitHub as an organising principle behind work
+
+* A project is just a set of milestones
+* A milestone is just a set of issues
+* An issue is just a set of commits
+* A commit is just text added and removed
+
+## The repo owner
+
+* Review milestones
+* Review issues
+  * Discuss the issue on the issue- NOT on email!
+* Review pull requests and get your pull requests reviewed!
+
+## Asynchronous communication
+
+* Involve others *before* you pull request
+* Involve others *when* you pull request
+* Read issues!
+* Comment on issues!
+* File issues- suggestions/ bug reports/ questions
+  * NOT in emails
+
+## Asynchronous work
+
+* Every piece of work has an issues associated with it
+* Every piece of work associated with an issue lives on its own branch
+* Every branch is incorporated to the main repo by a pull request
+* Every pull request is reviewed
+
+## Iteration and documentation
+
+* Analyse early, analyse often (using RAPs!)
+* Write down what you did
+* Write down what you did but then changed your mind about
+* Favour Quarto/ RMarkdown
+  * Clean sessions
+  * Documentation and graphics
+
+## Data and .gitignore
+
+* Your repo needs to be reproducible but also needs to be safe
+* The main branch should be reproducible by anyone at any time
+  * Document package dependencies (using renv)
+  * Document data loads if the data isn't in the repo
+

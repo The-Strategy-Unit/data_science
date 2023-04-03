@@ -175,6 +175,69 @@
     "text": "Presentations\n\nWhat is data science?\nCoffee and coding 23rd February 2023\nCoffee and coding 9th March 2023\nCoffee and coding 23rd March 2023"
   },
   {
+    "objectID": "presentations/2023-03-23_collaborative-working/index.html#introduction",
+    "href": "presentations/2023-03-23_collaborative-working/index.html#introduction",
+    "title": "Collaborative working",
+    "section": "Introduction",
+    "text": "Introduction\n\nThis is definitely an art and not a science\nI do not claim to have all, or even most of, the answers\nHow you use these tools is way more important than the tools themselves\nThis is a culture and not a technique"
+  },
+  {
+    "objectID": "presentations/2023-03-23_collaborative-working/index.html#costs",
+    "href": "presentations/2023-03-23_collaborative-working/index.html#costs",
+    "title": "Collaborative working",
+    "section": "Costs",
+    "text": "Costs\n\nDelay and time\nStress and disagreement\nCommittee thinking\nLearning and effort"
+  },
+  {
+    "objectID": "presentations/2023-03-23_collaborative-working/index.html#benefits",
+    "href": "presentations/2023-03-23_collaborative-working/index.html#benefits",
+    "title": "Collaborative working",
+    "section": "Benefits",
+    "text": "Benefits\n\n“From each according to their ability”\nLearning\nReproducibility and reduced truck factor\nFun!"
+  },
+  {
+    "objectID": "presentations/2023-03-23_collaborative-working/index.html#github-as-an-organising-principle-behind-work",
+    "href": "presentations/2023-03-23_collaborative-working/index.html#github-as-an-organising-principle-behind-work",
+    "title": "Collaborative working",
+    "section": "GitHub as an organising principle behind work",
+    "text": "GitHub as an organising principle behind work\n\nA project is just a set of milestones\nA milestone is just a set of issues\nAn issue is just a set of commits\nA commit is just text added and removed"
+  },
+  {
+    "objectID": "presentations/2023-03-23_collaborative-working/index.html#the-repo-owner",
+    "href": "presentations/2023-03-23_collaborative-working/index.html#the-repo-owner",
+    "title": "Collaborative working",
+    "section": "The repo owner",
+    "text": "The repo owner\n\nReview milestones\nReview issues\n\nDiscuss the issue on the issue- NOT on email!\n\nReview pull requests and get your pull requests reviewed!"
+  },
+  {
+    "objectID": "presentations/2023-03-23_collaborative-working/index.html#asynchronous-communication",
+    "href": "presentations/2023-03-23_collaborative-working/index.html#asynchronous-communication",
+    "title": "Collaborative working",
+    "section": "Asynchronous communication",
+    "text": "Asynchronous communication\n\nInvolve others before you pull request\nInvolve others when you pull request\nRead issues!\nComment on issues!\nFile issues- suggestions/ bug reports/ questions\n\nNOT in emails"
+  },
+  {
+    "objectID": "presentations/2023-03-23_collaborative-working/index.html#asynchronous-work",
+    "href": "presentations/2023-03-23_collaborative-working/index.html#asynchronous-work",
+    "title": "Collaborative working",
+    "section": "Asynchronous work",
+    "text": "Asynchronous work\n\nEvery piece of work has an issues associated with it\nEvery piece of work associated with an issue lives on its own branch\nEvery branch is incorporated to the main repo by a pull request\nEvery pull request is reviewed"
+  },
+  {
+    "objectID": "presentations/2023-03-23_collaborative-working/index.html#iteration-and-documentation",
+    "href": "presentations/2023-03-23_collaborative-working/index.html#iteration-and-documentation",
+    "title": "Collaborative working",
+    "section": "Iteration and documentation",
+    "text": "Iteration and documentation\n\nAnalyse early, analyse often (using RAPs!)\nWrite down what you did\nWrite down what you did but then changed your mind about\nFavour Quarto/ RMarkdown\n\nClean sessions\nDocumentation and graphics"
+  },
+  {
+    "objectID": "presentations/2023-03-23_collaborative-working/index.html#data-and-.gitignore",
+    "href": "presentations/2023-03-23_collaborative-working/index.html#data-and-.gitignore",
+    "title": "Collaborative working",
+    "section": "Data and .gitignore",
+    "text": "Data and .gitignore\n\nYour repo needs to be reproducible but also needs to be safe\nThe main branch should be reproducible by anyone at any time\n\nDocument package dependencies (using renv)\nDocument data loads if the data isn’t in the repo"
+  },
+  {
     "objectID": "presentations/2023-02-01_what-is-data-science/index.html#what-is-data-science",
     "href": "presentations/2023-02-01_what-is-data-science/index.html#what-is-data-science",
     "title": "Everything you ever wanted to know about data science (but were too afraid to ask)",

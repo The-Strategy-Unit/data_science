@@ -3,6 +3,8 @@ project:
 
 website:
   title: "Data Science @ The Strategy Unit"
+  site-url: https://the-strategy-unit.github.io/data_science
+  description: "Blogs from the Data Science Team at The Strategy Unit"
   navbar:
     left:
       - href: index.qmd
@@ -12,6 +14,9 @@ website:
         text: Blogs
       - href: presentations/index.qmd
         text: Presentations
+    right:
+      - icon: rss
+        href: blogs/index.xml
 
 format:
   html:

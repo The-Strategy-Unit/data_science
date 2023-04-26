@@ -26,6 +26,6 @@ I maintain a [list of the packages that I used](https://gist.github.com/tomjemme
 source("https://gist.githubusercontent.com/tomjemmett/c105d3e0fbea7558088f68c65e68e1ed/raw/a1db4b5fa0d24562d16d3f57fe8c25fb0d8aa53e/setup.R")
 ```
 
-to run the script. Generally, sourcing a url is a bad idea - the reason for this is if it's not a link that you control, then someone could update the contents and run arbritary code on your machine. In this case, I'm happy to run this as it's my own gist, but you should be mindful if running it yourself!
+Generally, sourcing a url is a bad idea - the reason for this is if it's not a link that you control, then someone could update the contents and run arbritary code on your machine. In this case, I'm happy to run this as it's my own gist, but you should be mindful if running it yourself!
 
 If you look at the script I first install a number of packages from CRAN, then I install packages that only exist on GitHub.

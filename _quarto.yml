@@ -30,6 +30,7 @@ website:
       background: light
       contents:
         - style/style_guide.qmd
+        - style/git_and_github.qmd
         - style/project_structure.qmd
         - style/data_storage.qmd
     

@@ -1,0 +1,18 @@
+# Using git and GitHub
+
+* Commits should be [atomic](https://dev.to/samuelfaure/how-atomic-git-commits-dramatically-increased-my-productivity-and-will-increase-yours-too-4a84)
+* All code should be committed via pull request to main. **Never** push to main
+
+Workflow for writing code with Git and GitHub:
+
+* If you haven't already file an issue that describes what you are doing- whether it be fixing a bug, adding a feature, or something else
+* Make a new branch to work on that feature. GitHub offers a button to do this automatically on the issue page, on the right hand side (see image)
+* Work on the branch, pushing your code regularly to GitHub so it can be run and inspected when you are not around
+* When it's ready merge the branch to main. If you used the create branch button on GitHUb this will automatically close the issue. If the issue is not automatically closed, then close it manually
+
+
+![](branch_img.png)
+
+## Preparing a package release of your code
+
+TODO

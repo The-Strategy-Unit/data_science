@@ -1,34 +1,7 @@
 ---
-title: "How to's"
+title: "About"
 ---
 
-This section records how the data science team writes code (style guide), uses git and GitHub, and described various other methods of working which we have agreed together.
-
-## Code style
-
-* On the whole we follow the conventions of the [tidyverse style guide](https://style.tidyverse.org/)
-* We prefer packages to be explicitly namespaced like this `dplyr::mutate(...)`. This is not essential in exploratory data analysis but is mandatory in all production code
-* For readability please insert line breaks in your code at or before column 80.
-* We prefer to avoid loading {tidyverse} because it brings in a lot of packages that are not being used. Again, not essential to follow this in exploratory data analysis but no code that is or will be deployed should ever load {tidyverse}
-
-## Using git and GitHub
-
-* Commits should be [atomic](https://dev.to/samuelfaure/how-atomic-git-commits-dramatically-increased-my-productivity-and-will-increase-yours-too-4a84)
-* All code should be committed via pull request to main. **Never** push to main
-
-Workflow for writing code with Git and GitHub:
-
-* If you haven't already file an issue that describes what you are doing- whether it be fixing a bug, adding a feature, or something else
-* Make a new branch to work on that feature. GitHub offers a button to do this automatically on the issue page, on the right hand side (see image)
-* Work on the branch, pushing your code regularly to GitHub so it can be run and inspected when you are not around
-* When it's ready merge the branch to main. If you used the create branch button on GitHUb this will automatically close the issue. If the issue is not automatically closed, then close it manually
-
-
-![](branch_img.png)
-
-## Preparing a package release of your code
-
 TODO
-
 
 

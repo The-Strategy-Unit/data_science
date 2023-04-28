@@ -1,5 +1,61 @@
 [
   {
+    "objectID": "style/data_storage.html",
+    "href": "style/data_storage.html",
+    "title": "Data Storage",
+    "section": "",
+    "text": "All projects should be commited to version control, with a repository created in the Strategy Unit’s GitHub organisation.\nIdeally, any data that is used within the project should be part of a targets pipeline.\nThere are a number of considerations about whether to add the data to version control or not. At a high level:\n\nis the data OK to release publicly?\nis the data in a text-based (non-binary) format, such as .csv, .json (rather than say .xlsx)?\nis the data relatively small in size?\n\n\n\nIf data is grabbed from a website, or via an API, create code to download the file/data. Consider whether this is likely to be a stable way of getting the data (does the data change over time? do you suspect that the location of the resource may disappear? is it quick to retrieve the data?). If so, then it doesn’t make much sense to commit the data to version control as it can always be quickly regenerated.\n\n\n\nLarge files tend not to work particularly well with version control. Specifically, files larger than 100MB will be blocked by GitHub, and files larger than 50MB will generate a warning. But you may even want to class any file over a few MB as large.\nAlternatives for storing large files:\n\nif the file is something that is generated (and reproducible) from other sources, then do not bother tracking the file\nif the file is something that you want tracking with version control, look at git LFS\nif the file needs to be shared publicly, but LFS is not suitable, the file could be stored in Azure blob storage\nif the file needs to be shared privately, also consider Azure blob storage (using something like SAS tokens)\nif the file needs to only be shared within the Strategy Unit then store in SharePoint (i.e. within a teams channel)\n\nUse of network drives should be deprecated and avoided at all costs due to issues of lack of versioning of files and the performance bottleneck that is created by using a network share. If a network share is truly the only way of storing the data for sharing with colleagues, then look at using ways of syncing the file to local storage to avoid performance bottlenecks, such as robocopy."
+  },
+  {
+    "objectID": "style/data_storage.html#data-from-websites",
+    "href": "style/data_storage.html#data-from-websites",
+    "title": "Data Storage",
+    "section": "",
+    "text": "If data is grabbed from a website, or via an API, create code to download the file/data. Consider whether this is likely to be a stable way of getting the data (does the data change over time? do you suspect that the location of the resource may disappear? is it quick to retrieve the data?). If so, then it doesn’t make much sense to commit the data to version control as it can always be quickly regenerated."
+  },
+  {
+    "objectID": "style/data_storage.html#filesize",
+    "href": "style/data_storage.html#filesize",
+    "title": "Data Storage",
+    "section": "",
+    "text": "Large files tend not to work particularly well with version control. Specifically, files larger than 100MB will be blocked by GitHub, and files larger than 50MB will generate a warning. But you may even want to class any file over a few MB as large.\nAlternatives for storing large files:\n\nif the file is something that is generated (and reproducible) from other sources, then do not bother tracking the file\nif the file is something that you want tracking with version control, look at git LFS\nif the file needs to be shared publicly, but LFS is not suitable, the file could be stored in Azure blob storage\nif the file needs to be shared privately, also consider Azure blob storage (using something like SAS tokens)\nif the file needs to only be shared within the Strategy Unit then store in SharePoint (i.e. within a teams channel)\n\nUse of network drives should be deprecated and avoided at all costs due to issues of lack of versioning of files and the performance bottleneck that is created by using a network share. If a network share is truly the only way of storing the data for sharing with colleagues, then look at using ways of syncing the file to local storage to avoid performance bottlenecks, such as robocopy."
+  },
+  {
+    "objectID": "style/project_structure.html",
+    "href": "style/project_structure.html",
+    "title": "Project Structure",
+    "section": "",
+    "text": "as a package\nR/ for scripts\nsplit files into separate scripts\nuse {renv}\nuse {targets}\n\n\n\nRStudio projects are a great way to organise your analytical projects into discrete units that are easier to work on and share.\n\n\n\n\n\n\n\n\n\n\n\n\nOne of the most common issues you will face when using a project someone else has created, or you created previously, is maintaining the required packages to run the project. Knowing what packages are needed to run a particular project isn’t always obvious, and over time packages can change rendering code that once worked unusable.\n{renv} solves this problem by:\n\nkeeping track of the packages that are required for a particular project\nlogging the installed version of all of the packages\nmaintaining a per-project library of packages, so projects don’t interfere with one another\n\nIt’s a good idea to use {renv} for all projects."
+  },
+  {
+    "objectID": "style/project_structure.html#use-rstudio-projects",
+    "href": "style/project_structure.html#use-rstudio-projects",
+    "title": "Project Structure",
+    "section": "",
+    "text": "RStudio projects are a great way to organise your analytical projects into discrete units that are easier to work on and share."
+  },
+  {
+    "objectID": "style/project_structure.html#renv",
+    "href": "style/project_structure.html#renv",
+    "title": "Project Structure",
+    "section": "",
+    "text": "One of the most common issues you will face when using a project someone else has created, or you created previously, is maintaining the required packages to run the project. Knowing what packages are needed to run a particular project isn’t always obvious, and over time packages can change rendering code that once worked unusable.\n{renv} solves this problem by:\n\nkeeping track of the packages that are required for a particular project\nlogging the installed version of all of the packages\nmaintaining a per-project library of packages, so projects don’t interfere with one another\n\nIt’s a good idea to use {renv} for all projects."
+  },
+  {
+    "objectID": "style/style_guide.html",
+    "href": "style/style_guide.html",
+    "title": "Style Guide",
+    "section": "",
+    "text": "This is a work in progress.\n\n\n\nfavour |&gt; over %&gt;%\nfavour .qmd over .rmd\nuse git for all projects, github being the home of all of the project code\nRAP everything\n{styler}\nhttps://style.tidyverse.org/\n{lintr}"
+  },
+  {
+    "objectID": "style/style_guide.html#unorganised-notes",
+    "href": "style/style_guide.html#unorganised-notes",
+    "title": "Style Guide",
+    "section": "",
+    "text": "favour |&gt; over %&gt;%\nfavour .qmd over .rmd\nuse git for all projects, github being the home of all of the project code\nRAP everything\n{styler}\nhttps://style.tidyverse.org/\n{lintr}"
+  },
+  {
     "objectID": "blogs/posts/2023-04-26-reinstalling-r-packages.html",
     "href": "blogs/posts/2023-04-26-reinstalling-r-packages.html",
     "title": "Reinstalling R Packages",

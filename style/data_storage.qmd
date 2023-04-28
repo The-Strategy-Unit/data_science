@@ -1,0 +1,44 @@
+# Data Storage
+
+All projects should be commited to version control, with a repository created in the [Strategy Unit's GitHub][su_gh]
+organisation.
+
+[su_gh]: https://github.com/the-strategy-unit.
+
+Ideally, any data that is used within the project should be part of a targets pipeline.
+
+There are a number of considerations about whether to add the data to version control or not. At a high level:
+
+* is the data OK to release publicly?
+* is the data in a text-based (non-binary) format, such as `.csv`, `.json` (rather than say `.xlsx`)?
+* is the data relatively small in size?
+
+## Data From Websites
+
+If data is grabbed from a website, or via an API, create code to download the file/data. Consider whether this is
+likely to be a stable way of getting the data (does the data change over time? do you suspect that the location of the
+resource may disappear? is it quick to retrieve the data?). If so, then it doesn't make much sense to commit the data to
+version control as it can always be quickly regenerated.
+
+## Filesize
+
+Large files tend not to work particularly well with version control. Specifically, [files larger than 100MB will be
+blocked by GitHub, and files larger than 50MB will generate a warning][gh_file_limits]. But you may even want to class
+any file over a few MB as large.
+
+[gh_file_limits]: https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github
+
+Alternatives for storing large files:
+
+* if the file is something that is generated (and reproducible) from other sources, then do not bother tracking the file
+* if the file is something that you want tracking with version control, look at [git LFS][git_lfs]
+* if the file needs to be shared publicly, but LFS is not suitable, the file could be stored in Azure blob storage
+* if the file needs to be shared privately, also consider Azure blob storage (using something like SAS tokens)
+* if the file needs to only be shared within the Strategy Unit then store in SharePoint (i.e. within a teams channel)
+
+[git_lfs]: https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-git-large-file-storage
+
+Use of network drives should be deprecated and avoided at all costs due to issues of lack of versioning of files and
+the performance bottleneck that is created by using a network share. If a network share is truly the only way of
+storing the data for sharing with colleagues, then look at using ways of syncing the file to local storage to avoid
+performance bottlenecks, such as robocopy.

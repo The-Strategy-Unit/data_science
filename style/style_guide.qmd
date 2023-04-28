@@ -1,0 +1,13 @@
+# Style Guide
+
+This is a work in progress.
+
+## unorganised notes
+
+* favour `|>` over `%>%`
+* favour `.qmd` over `.rmd`
+* use git for *all* projects, github being the home of all of the project code
+* RAP everything
+* `{styler}`
+* https://style.tidyverse.org/
+* `{lintr}`

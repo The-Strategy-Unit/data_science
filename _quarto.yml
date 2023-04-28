@@ -2,33 +2,13 @@ project:
   type: website
 
 website:
-  title: "Data Science @ The Strategy Unit"
-  site-url: https://the-strategy-unit.github.io/data_science
-  description: "Blogs from the Data Science Team at The Strategy Unit"
-  navbar:
-    left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
-      - href: blogs/index.qmd
-        text: Blogs
-      - href: presentations/index.qmd
-        text: Presentations
-    right:
-      - icon: rss
-        href: blogs/index.xml
+  sidebar:
+    style: "docked"
+    search: true
+    contents: auto
 
 format:
   html:
-    theme:
-      light:
-        - theme-light.scss
-        - cosmo
-      dark:
-        - theme-dark.scss
-        - cosmo
-
+    theme: cosmo
+    css: styles.css
     toc: true
-
-
-

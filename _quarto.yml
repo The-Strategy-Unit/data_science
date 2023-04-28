@@ -2,13 +2,44 @@ project:
   type: website
 
 website:
-  sidebar:
-    style: "docked"
+  title: "Data Science @ The Strategy Unit"
+  repo-url: https://github.com/the-strategy-unit/data_science
+  repo-actions: [edit, issue]
+  site-url: https://the-strategy-unit.github.io/data_science
+  description: "Blogs from the Data Science Team at The Strategy Unit"
+  navbar:
+    background: primary
     search: true
-    contents: auto
-
+    left:
+      - text: "Home"
+        file: index.qmd
+      - text: "About"
+        file: about.qmd
+      - href: blogs/index.qmd
+        text: Blogs
+      - text: "Presentations"
+        file: presentations/index.qmd
+      - sidebar:style
+    right:
+      - icon: rss
+        href: blogs/index.xml
+  sidebar:
+    - id: style
+      title: "Style Guide"
+      style: "docked"
+      background: light
+      contents:
+        - style/style_guide.qmd
+        - style/project_structure.qmd
+        - style/data_storage.qmd
+    
 format:
   html:
-    theme: cosmo
-    css: styles.css
+    theme:
+      light:
+        - theme-light.scss
+        - cosmo
+      dark:
+        - theme-dark.scss
+        - cosmo
     toc: true

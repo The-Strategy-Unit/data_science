@@ -37,9 +37,30 @@
   {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "About",
+    "title": "How to’s",
     "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
+    "text": "This section records how the data science team writes code (style guide), uses git and GitHub, and described various other methods of working which we have agreed together."
+  },
+  {
+    "objectID": "about.html#code-style",
+    "href": "about.html#code-style",
+    "title": "How to’s",
+    "section": "Code style",
+    "text": "Code style\n\nOn the whole we follow the conventions of the tidyverse style guide\nWe prefer packages to be explicitly namespaced like this dplyr::mutate(...). This is not essential in exploratory data analysis but is mandatory in all production code\nFor readability please insert line breaks in your code at or before column 80.\nWe prefer to avoid loading {tidyverse} because it brings in a lot of packages that are not being used. Again, not essential to follow this in exploratory data analysis but no code that is or will be deployed should ever load {tidyverse}"
+  },
+  {
+    "objectID": "about.html#using-git-and-github",
+    "href": "about.html#using-git-and-github",
+    "title": "How to’s",
+    "section": "Using git and GitHub",
+    "text": "Using git and GitHub\n\nCommits should be atomic\nAll code should be committed via pull request to main. Never push to main\n\nWorkflow for writing code with Git and GitHub:\n\nIf you haven’t already file an issue that describes what you are doing- whether it be fixing a bug, adding a feature, or something else\nMake a new branch to work on that feature. GitHub offers a button to do this automatically on the issue page, on the right hand side (see image)\nWork on the branch, pushing your code regularly to GitHub so it can be run and inspected when you are not around\nWhen it’s ready merge the branch to main. If you used the create branch button on GitHUb this will automatically close the issue. If the issue is not automatically closed, then close it manually"
+  },
+  {
+    "objectID": "about.html#preparing-a-package-release-of-your-code",
+    "href": "about.html#preparing-a-package-release-of-your-code",
+    "title": "How to’s",
+    "section": "Preparing a package release of your code",
+    "text": "Preparing a package release of your code\nTODO"
   },
   {
     "objectID": "index.html",

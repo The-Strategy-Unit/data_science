@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Science @ The Strategy Unit - About</title>
+<title>Data Science @ The Strategy Unit - How to’s</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -121,7 +87,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="./about.html" rel="" target="" aria-current="page">
- <span class="menu-text">About</span></a>
+ <span class="menu-text">How to’s</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./blogs/index.html" rel="" target="">
@@ -151,14 +117,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#code-style" id="toc-code-style" class="nav-link active" data-scroll-target="#code-style">Code style</a></li>
+  <li><a href="#using-git-and-github" id="toc-using-git-and-github" class="nav-link" data-scroll-target="#using-git-and-github">Using git and GitHub</a></li>
+  <li><a href="#preparing-a-package-release-of-your-code" id="toc-preparing-a-package-release-of-your-code" class="nav-link" data-scroll-target="#preparing-a-package-release-of-your-code">Preparing a package release of your code</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">About</h1>
+<h1 class="title">How to’s</h1>
 </div>
 
 
@@ -173,15 +147,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>About this site</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
-</div>
-</div>
+<p>This section records how the data science team writes code (style guide), uses git and GitHub, and described various other methods of working which we have agreed together.</p>
+<section id="code-style" class="level2">
+<h2 class="anchored" data-anchor-id="code-style">Code style</h2>
+<ul>
+<li>On the whole we follow the conventions of the <a href="https://style.tidyverse.org/">tidyverse style guide</a></li>
+<li>We prefer packages to be explicitly namespaced like this <code>dplyr::mutate(...)</code>. This is not essential in exploratory data analysis but is mandatory in all production code</li>
+<li>For readability please insert line breaks in your code at or before column 80.</li>
+<li>We prefer to avoid loading {tidyverse} because it brings in a lot of packages that are not being used. Again, not essential to follow this in exploratory data analysis but no code that is or will be deployed should ever load {tidyverse}</li>
+</ul>
+</section>
+<section id="using-git-and-github" class="level2">
+<h2 class="anchored" data-anchor-id="using-git-and-github">Using git and GitHub</h2>
+<ul>
+<li>Commits should be <a href="https://dev.to/samuelfaure/how-atomic-git-commits-dramatically-increased-my-productivity-and-will-increase-yours-too-4a84">atomic</a></li>
+<li>All code should be committed via pull request to main. <strong>Never</strong> push to main</li>
+</ul>
+<p>Workflow for writing code with Git and GitHub:</p>
+<ul>
+<li>If you haven’t already file an issue that describes what you are doing- whether it be fixing a bug, adding a feature, or something else</li>
+<li>Make a new branch to work on that feature. GitHub offers a button to do this automatically on the issue page, on the right hand side (see image)</li>
+<li>Work on the branch, pushing your code regularly to GitHub so it can be run and inspected when you are not around</li>
+<li>When it’s ready merge the branch to main. If you used the create branch button on GitHUb this will automatically close the issue. If the issue is not automatically closed, then close it manually</li>
+</ul>
+<p><img src="branch_img.png" class="img-fluid"></p>
+</section>
+<section id="preparing-a-package-release-of-your-code" class="level2">
+<h2 class="anchored" data-anchor-id="preparing-a-package-release-of-your-code">Preparing a package release of your code</h2>
+<p>TODO</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

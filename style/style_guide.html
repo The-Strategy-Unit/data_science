@@ -107,6 +107,10 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">Style Guide</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../style/git_and_github.html" rel="" target="">
+ <span class="dropdown-text">Using git and GitHub</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../style/project_structure.html" rel="" target="">
  <span class="dropdown-text">Project Structure</span></a>
   </li>  
@@ -155,6 +159,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../style/git_and_github.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Using git and GitHub</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../style/project_structure.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Project Structure</span></a>
   </div>
@@ -177,6 +187,7 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#style-guide" id="toc-style-guide" class="nav-link active" data-scroll-target="#style-guide">Style Guide</a>
   <ul class="collapse">
+  <li><a href="#code-style" id="toc-code-style" class="nav-link" data-scroll-target="#code-style">Code style</a></li>
   <li><a href="#unorganised-notes" id="toc-unorganised-notes" class="nav-link" data-scroll-target="#unorganised-notes">unorganised notes</a></li>
   </ul></li>
   </ul>
@@ -189,7 +200,15 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="style-guide" class="level1">
 <h1>Style Guide</h1>
-<p>This is a work in progress.</p>
+<section id="code-style" class="level2">
+<h2 class="anchored" data-anchor-id="code-style">Code style</h2>
+<ul>
+<li>On the whole we follow the conventions of the <a href="https://style.tidyverse.org/">tidyverse style guide</a></li>
+<li>We prefer packages to be explicitly namespaced like this <code>dplyr::mutate(...)</code>. This is not essential in exploratory data analysis but is mandatory in all production code</li>
+<li>For readability please insert line breaks in your code at or before column 80.</li>
+<li>We prefer to avoid loading {tidyverse} because it brings in a lot of packages that are not being used. Again, not essential to follow this in exploratory data analysis but no code that is or will be deployed should ever load {tidyverse}</li>
+</ul>
+</section>
 <section id="unorganised-notes" class="level2">
 <h2 class="anchored" data-anchor-id="unorganised-notes">unorganised notes</h2>
 <ul>

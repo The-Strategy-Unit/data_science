@@ -21,6 +21,20 @@
     "text": "Large files tend not to work particularly well with version control. Specifically, files larger than 100MB will be blocked by GitHub, and files larger than 50MB will generate a warning. But you may even want to class any file over a few MB as large.\nAlternatives for storing large files:\n\nif the file is something that is generated (and reproducible) from other sources, then do not bother tracking the file\nif the file is something that you want tracking with version control, look at git LFS\nif the file needs to be shared publicly, but LFS is not suitable, the file could be stored in Azure blob storage\nif the file needs to be shared privately, also consider Azure blob storage (using something like SAS tokens)\nif the file needs to only be shared within the Strategy Unit then store in SharePoint (i.e. within a teams channel)\n\nUse of network drives should be deprecated and avoided at all costs due to issues of lack of versioning of files and the performance bottleneck that is created by using a network share. If a network share is truly the only way of storing the data for sharing with colleagues, then look at using ways of syncing the file to local storage to avoid performance bottlenecks, such as robocopy."
   },
   {
+    "objectID": "style/git_and_github.html",
+    "href": "style/git_and_github.html",
+    "title": "Using git and GitHub",
+    "section": "",
+    "text": "Commits should be atomic\nAll code should be committed via pull request to main. Never push to main\n\nWorkflow for writing code with Git and GitHub:\n\nIf you haven’t already file an issue that describes what you are doing- whether it be fixing a bug, adding a feature, or something else\nMake a new branch to work on that feature. GitHub offers a button to do this automatically on the issue page, on the right hand side (see image)\nWork on the branch, pushing your code regularly to GitHub so it can be run and inspected when you are not around\nWhen it’s ready merge the branch to main. If you used the create branch button on GitHUb this will automatically close the issue. If the issue is not automatically closed, then close it manually\n\n\n\n\nTODO"
+  },
+  {
+    "objectID": "style/git_and_github.html#preparing-a-package-release-of-your-code",
+    "href": "style/git_and_github.html#preparing-a-package-release-of-your-code",
+    "title": "Using git and GitHub",
+    "section": "",
+    "text": "TODO"
+  },
+  {
     "objectID": "style/project_structure.html",
     "href": "style/project_structure.html",
     "title": "Project Structure",
@@ -46,7 +60,14 @@
     "href": "style/style_guide.html",
     "title": "Style Guide",
     "section": "",
-    "text": "This is a work in progress.\n\n\n\nfavour |&gt; over %&gt;%\nfavour .qmd over .rmd\nuse git for all projects, github being the home of all of the project code\nRAP everything\n{styler}\nhttps://style.tidyverse.org/\n{lintr}"
+    "text": "On the whole we follow the conventions of the tidyverse style guide\nWe prefer packages to be explicitly namespaced like this dplyr::mutate(...). This is not essential in exploratory data analysis but is mandatory in all production code\nFor readability please insert line breaks in your code at or before column 80.\nWe prefer to avoid loading {tidyverse} because it brings in a lot of packages that are not being used. Again, not essential to follow this in exploratory data analysis but no code that is or will be deployed should ever load {tidyverse}\n\n\n\n\n\nfavour |&gt; over %&gt;%\nfavour .qmd over .rmd\nuse git for all projects, github being the home of all of the project code\nRAP everything\n{styler}\nhttps://style.tidyverse.org/\n{lintr}"
+  },
+  {
+    "objectID": "style/style_guide.html#code-style",
+    "href": "style/style_guide.html#code-style",
+    "title": "Style Guide",
+    "section": "",
+    "text": "On the whole we follow the conventions of the tidyverse style guide\nWe prefer packages to be explicitly namespaced like this dplyr::mutate(...). This is not essential in exploratory data analysis but is mandatory in all production code\nFor readability please insert line breaks in your code at or before column 80.\nWe prefer to avoid loading {tidyverse} because it brings in a lot of packages that are not being used. Again, not essential to follow this in exploratory data analysis but no code that is or will be deployed should ever load {tidyverse}"
   },
   {
     "objectID": "style/style_guide.html#unorganised-notes",
@@ -93,30 +114,9 @@
   {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "How to’s",
+    "title": "About",
     "section": "",
-    "text": "This section records how the data science team writes code (style guide), uses git and GitHub, and described various other methods of working which we have agreed together."
-  },
-  {
-    "objectID": "about.html#code-style",
-    "href": "about.html#code-style",
-    "title": "How to’s",
-    "section": "Code style",
-    "text": "Code style\n\nOn the whole we follow the conventions of the tidyverse style guide\nWe prefer packages to be explicitly namespaced like this dplyr::mutate(...). This is not essential in exploratory data analysis but is mandatory in all production code\nFor readability please insert line breaks in your code at or before column 80.\nWe prefer to avoid loading {tidyverse} because it brings in a lot of packages that are not being used. Again, not essential to follow this in exploratory data analysis but no code that is or will be deployed should ever load {tidyverse}"
-  },
-  {
-    "objectID": "about.html#using-git-and-github",
-    "href": "about.html#using-git-and-github",
-    "title": "How to’s",
-    "section": "Using git and GitHub",
-    "text": "Using git and GitHub\n\nCommits should be atomic\nAll code should be committed via pull request to main. Never push to main\n\nWorkflow for writing code with Git and GitHub:\n\nIf you haven’t already file an issue that describes what you are doing- whether it be fixing a bug, adding a feature, or something else\nMake a new branch to work on that feature. GitHub offers a button to do this automatically on the issue page, on the right hand side (see image)\nWork on the branch, pushing your code regularly to GitHub so it can be run and inspected when you are not around\nWhen it’s ready merge the branch to main. If you used the create branch button on GitHUb this will automatically close the issue. If the issue is not automatically closed, then close it manually"
-  },
-  {
-    "objectID": "about.html#preparing-a-package-release-of-your-code",
-    "href": "about.html#preparing-a-package-release-of-your-code",
-    "title": "How to’s",
-    "section": "Preparing a package release of your code",
-    "text": "Preparing a package release of your code\nTODO"
+    "text": "TODO"
   },
   {
     "objectID": "index.html",

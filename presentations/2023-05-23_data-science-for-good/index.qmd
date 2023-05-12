@@ -1,0 +1,56 @@
+---
+title: "Text mining of patient experience data"
+author: "Chris Beeley"
+date: 2023/05/23
+date-format: "MMM D, YYYY"
+format: revealjs
+---
+
+## Patient experience
+
+* The NHS collects a lot of patient experience data
+* Rate the service 1-5 (Very poor... Excellent) but also give written feedback
+    * "Parking was difficult"
+    * "Doctor was rude"
+    * "You saved my life"
+* Many organisations lack the staffing to read all of the feedback in a systematic way
+
+## Text mining
+
+* We have built an algorithm to read it
+    * Theme
+    * "Criticality"
+* Fits alongside other work happening within NHSE
+    * A framework for understanding patient experience
+
+## Patient experience 101
+
+* Tick box scoring is not useful (or accurate)
+* Text based data is _complex_ and built on _human experience_
+* We're not making word clouds!
+* We're not classifying movie reviews or Reddit posts
+* The tool should enhance, not replace, human understanding
+* "A recommendation engine for feedback data"
+
+## Everything open, all the time
+
+* This project was [coded in the open](https://transform.england.nhs.uk/key-tools-and-info/digital-playbooks/open-source-digital-playbook/cdu-data-science-team/) and is MIT licensed
+* Engage with the organisations as we find them
+  * Do they want code or a docker image?
+  * Do they want to fetch their own themes from an API?
+  * Do they want to use our dashboard?
+  
+## Let's talk tech!
+
+* Blah
+
+## The future
+
+* Off the shelf, proprietary data collection systems dominate
+* They often offer bundled analytic products of low quality
+* The DS time can't and doesn't want to offer a complete data system
+* How can we best contribute to improving patient experience for patients in the NHS?
+    * If the patient experience data won't come to the mountain...
+
+
+

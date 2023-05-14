@@ -36,13 +36,33 @@ format: revealjs
 
 * This project was [coded in the open](https://transform.england.nhs.uk/key-tools-and-info/digital-playbooks/open-source-digital-playbook/cdu-data-science-team/) and is MIT licensed
 * Engage with the organisations as we find them
-  * Do they want code or a docker image?
-  * Do they want to fetch their own themes from an API?
-  * Do they want to use our dashboard?
+    * Do they want code or a docker image?
+    * Do they want to fetch their own themes from an API?
+    * Do they want to use our dashboard?
   
-## Let's talk tech!
+## Phase 1
 
-* Blah
+* 10 categories and moderate performance on criticality analysis
+* scikit-learn
+* Shiny
+* Reticulate
+* R package of Python code
+    
+## Phase 2
+
+* 30-50 categories and excellent criticality performance
+* scikit-learn/ BERT
+* Shiny
+* FastAPI
+* Separate the code bases
+* Inspired by the [Royal College of Paediatrics and Child Health API](https://www.rcpch.ac.uk/resources/growth-charts/digital)
+
+## Making it useful
+
+* Accurately rating low frequency categories
+* Per category precision and recall
+* Speed versus accuracy
+* Representing the thematic structure
 
 ## The future
 
@@ -52,5 +72,8 @@ format: revealjs
 * How can we best contribute to improving patient experience for patients in the NHS?
     * If the patient experience data won't come to the mountain...
 
+## Open source FTW!
 
-
+* Often individuals in the NHS don't want private companies to "benefit" from open code
+* But if they make their products better with open code the patients win
+* [Best practice as code](https://www.rcpch.ac.uk/news-events/news/royal-colleges-30-best-practice-code)

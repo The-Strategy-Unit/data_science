@@ -55,7 +55,7 @@ format: revealjs
 * Agnostic to deployment
 * Emphasises dependency management and testing
 * Separate "reactive" and "business" logic (see the [accompanying book](https://engineering-shiny.org/))
-    
+
 ## Phase 2
 
 * 30-50 categories and excellent criticality performance

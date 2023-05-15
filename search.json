@@ -1,94 +1,10 @@
 [
   {
-    "objectID": "style/data_storage.html",
-    "href": "style/data_storage.html",
-    "title": "Data Storage",
+    "objectID": "blogs/index.html",
+    "href": "blogs/index.html",
+    "title": "Data Science Blog",
     "section": "",
-    "text": "All projects should be commited to version control, with a repository created in the Strategy Unit’s GitHub organisation.\nIdeally, any data that is used within the project should be part of a targets pipeline.\nThere are a number of considerations about whether to add the data to version control or not. At a high level:\n\nis the data OK to release publicly?\nis the data in a text-based (non-binary) format, such as .csv, .json (rather than say .xlsx)?\nis the data relatively small in size?\n\n\n\nIf data is grabbed from a website, or via an API, create code to download the file/data. Consider whether this is likely to be a stable way of getting the data (does the data change over time? do you suspect that the location of the resource may disappear? is it quick to retrieve the data?). If so, then it doesn’t make much sense to commit the data to version control as it can always be quickly regenerated.\n\n\n\nLarge files tend not to work particularly well with version control. Specifically, files larger than 100MB will be blocked by GitHub, and files larger than 50MB will generate a warning. But you may even want to class any file over a few MB as large.\nAlternatives for storing large files:\n\nif the file is something that is generated (and reproducible) from other sources, then do not bother tracking the file\nif the file is something that you want tracking with version control, look at git LFS\nif the file needs to be shared publicly, but LFS is not suitable, the file could be stored in Azure blob storage\nif the file needs to be shared privately, also consider Azure blob storage (using something like SAS tokens)\nif the file needs to only be shared within the Strategy Unit then store in SharePoint (i.e. within a teams channel)\n\nUse of network drives should be deprecated and avoided at all costs due to issues of lack of versioning of files and the performance bottleneck that is created by using a network share. If a network share is truly the only way of storing the data for sharing with colleagues, then look at using ways of syncing the file to local storage to avoid performance bottlenecks, such as robocopy."
-  },
-  {
-    "objectID": "style/data_storage.html#data-from-websites",
-    "href": "style/data_storage.html#data-from-websites",
-    "title": "Data Storage",
-    "section": "",
-    "text": "If data is grabbed from a website, or via an API, create code to download the file/data. Consider whether this is likely to be a stable way of getting the data (does the data change over time? do you suspect that the location of the resource may disappear? is it quick to retrieve the data?). If so, then it doesn’t make much sense to commit the data to version control as it can always be quickly regenerated."
-  },
-  {
-    "objectID": "style/data_storage.html#filesize",
-    "href": "style/data_storage.html#filesize",
-    "title": "Data Storage",
-    "section": "",
-    "text": "Large files tend not to work particularly well with version control. Specifically, files larger than 100MB will be blocked by GitHub, and files larger than 50MB will generate a warning. But you may even want to class any file over a few MB as large.\nAlternatives for storing large files:\n\nif the file is something that is generated (and reproducible) from other sources, then do not bother tracking the file\nif the file is something that you want tracking with version control, look at git LFS\nif the file needs to be shared publicly, but LFS is not suitable, the file could be stored in Azure blob storage\nif the file needs to be shared privately, also consider Azure blob storage (using something like SAS tokens)\nif the file needs to only be shared within the Strategy Unit then store in SharePoint (i.e. within a teams channel)\n\nUse of network drives should be deprecated and avoided at all costs due to issues of lack of versioning of files and the performance bottleneck that is created by using a network share. If a network share is truly the only way of storing the data for sharing with colleagues, then look at using ways of syncing the file to local storage to avoid performance bottlenecks, such as robocopy."
-  },
-  {
-    "objectID": "style/git_and_github.html",
-    "href": "style/git_and_github.html",
-    "title": "Using git and GitHub",
-    "section": "",
-    "text": "Commits should be atomic\nAll code should be committed via pull request to main. Never push to main\n\nWorkflow for writing code with Git and GitHub:\n\nIf you haven’t already file an issue that describes what you are doing- whether it be fixing a bug, adding a feature, or something else\nMake a new branch to work on that feature. GitHub offers a button to do this automatically on the issue page, on the right hand side (see image)\nWork on the branch, pushing your code regularly to GitHub so it can be run and inspected when you are not around\nWhen it’s ready merge the branch to main. If you used the create branch button on GitHUb this will automatically close the issue. If the issue is not automatically closed, then close it manually\n\n\n\n\nTODO"
-  },
-  {
-    "objectID": "style/git_and_github.html#preparing-a-package-release-of-your-code",
-    "href": "style/git_and_github.html#preparing-a-package-release-of-your-code",
-    "title": "Using git and GitHub",
-    "section": "",
-    "text": "TODO"
-  },
-  {
-    "objectID": "style/project_structure.html",
-    "href": "style/project_structure.html",
-    "title": "Project Structure",
-    "section": "",
-    "text": "as a package\nR/ for scripts\nsplit files into separate scripts\nuse {renv}\nuse {targets}\n\n\n\nRStudio projects are a great way to organise your analytical projects into discrete units that are easier to work on and share.\n\n\n\n\n\n\n\n\n\n\n\n\nOne of the most common issues you will face when using a project someone else has created, or you created previously, is maintaining the required packages to run the project. Knowing what packages are needed to run a particular project isn’t always obvious, and over time packages can change rendering code that once worked unusable.\n{renv} solves this problem by:\n\nkeeping track of the packages that are required for a particular project\nlogging the installed version of all of the packages\nmaintaining a per-project library of packages, so projects don’t interfere with one another\n\nIt’s a good idea to use {renv} for all projects."
-  },
-  {
-    "objectID": "style/project_structure.html#use-rstudio-projects",
-    "href": "style/project_structure.html#use-rstudio-projects",
-    "title": "Project Structure",
-    "section": "",
-    "text": "RStudio projects are a great way to organise your analytical projects into discrete units that are easier to work on and share."
-  },
-  {
-    "objectID": "style/project_structure.html#renv",
-    "href": "style/project_structure.html#renv",
-    "title": "Project Structure",
-    "section": "",
-    "text": "One of the most common issues you will face when using a project someone else has created, or you created previously, is maintaining the required packages to run the project. Knowing what packages are needed to run a particular project isn’t always obvious, and over time packages can change rendering code that once worked unusable.\n{renv} solves this problem by:\n\nkeeping track of the packages that are required for a particular project\nlogging the installed version of all of the packages\nmaintaining a per-project library of packages, so projects don’t interfere with one another\n\nIt’s a good idea to use {renv} for all projects."
-  },
-  {
-    "objectID": "style/style_guide.html",
-    "href": "style/style_guide.html",
-    "title": "Style Guide",
-    "section": "",
-    "text": "On the whole we follow the conventions of the tidyverse style guide\nWe prefer packages to be explicitly namespaced like this dplyr::mutate(...). This is not essential in exploratory data analysis but is mandatory in all production code\nFor readability please insert line breaks in your code at or before column 80.\nWe prefer to avoid loading {tidyverse} because it brings in a lot of packages that are not being used. Again, not essential to follow this in exploratory data analysis but no code that is or will be deployed should ever load {tidyverse}\n\n\n\n\n\nfavour |&gt; over %&gt;%\nfavour .qmd over .rmd\nuse git for all projects, github being the home of all of the project code\nRAP everything\n{styler}\nhttps://style.tidyverse.org/\n{lintr}"
-  },
-  {
-    "objectID": "style/style_guide.html#code-style",
-    "href": "style/style_guide.html#code-style",
-    "title": "Style Guide",
-    "section": "",
-    "text": "On the whole we follow the conventions of the tidyverse style guide\nWe prefer packages to be explicitly namespaced like this dplyr::mutate(...). This is not essential in exploratory data analysis but is mandatory in all production code\nFor readability please insert line breaks in your code at or before column 80.\nWe prefer to avoid loading {tidyverse} because it brings in a lot of packages that are not being used. Again, not essential to follow this in exploratory data analysis but no code that is or will be deployed should ever load {tidyverse}"
-  },
-  {
-    "objectID": "style/style_guide.html#unorganised-notes",
-    "href": "style/style_guide.html#unorganised-notes",
-    "title": "Style Guide",
-    "section": "",
-    "text": "favour |&gt; over %&gt;%\nfavour .qmd over .rmd\nuse git for all projects, github being the home of all of the project code\nRAP everything\n{styler}\nhttps://style.tidyverse.org/\n{lintr}"
-  },
-  {
-    "objectID": "blogs/posts/2023-04-26-reinstalling-r-packages.html",
-    "href": "blogs/posts/2023-04-26-reinstalling-r-packages.html",
-    "title": "Reinstalling R Packages",
-    "section": "",
-    "text": "R 4.3.0 was released last week. Anytime you update R you will probably find yourself in the position where no packages are installed. This is by design - the packages that you have installed may need to be updated and recompiled to work under new versions of R.\nYou may find yourself wanting to have all of the packages that you previously used, so one approach that some people take is to copy the previous library folder to the new versions folder. This isn’t a good idea and could potentially break your R install.\nAnother approach would be to export the list of packages in R before updating and then using that list after you have updated R. This can cause issues though if you install from places other than CRAN, e.g. bioconductor, or from GitHub.\nSome of these approaches are discussed on the RStudio Community Forum. But I prefer an approach of having a “spring clean”, instead only installing the packages that I know that I need.\nI maintain a list of the packages that I used as a gist. Using this, I can then simply run this script on any new R install. In fact, if you click the “raw” button on the gist, and copy that url, you can simply run\nsource(\"https://gist.githubusercontent.com/tomjemmett/c105d3e0fbea7558088f68c65e68e1ed/raw/a1db4b5fa0d24562d16d3f57fe8c25fb0d8aa53e/setup.R\")\nGenerally, sourcing a url is a bad idea - the reason for this is if it’s not a link that you control, then someone could update the contents and run arbritary code on your machine. In this case, I’m happy to run this as it’s my own gist, but you should be mindful if running it yourself!\nIf you look at the script I first install a number of packages from CRAN, then I install packages that only exist on GitHub."
-  },
-  {
-    "objectID": "blogs/posts/2023-04-26_alternative_remotes.html",
-    "href": "blogs/posts/2023-04-26_alternative_remotes.html",
-    "title": "Alternative remote repositories",
-    "section": "",
-    "text": "It’s great when someone send’s you a pull request on GitHub to fix bugs or add new features to your project, but you probably always want to check the other persons work in someway before merging that pull request.\nAll of the steps below are intended to be entered via a terminal.\nLet’s imagine that we have a GitHub account called example and a repository called test, and we use https rather than ssh.\n$ git remote get-url origin\n# https://github.com/example/test.git\nNow, let’s say we have someone who has submitted a Pull Request (PR), and their username is friend. We can add a new remote for their fork with\n$ git remote add friend https://github.com/friend/test.git\nHere, I name the remote exactly as per the persons GitHub username for no other reason than making it easier to track things later on. You could name this remote whatever you like, but you will need to make sure that the remote url matches their repository correctly.\nWe are now able to checkout their remote branch. First, we will want to fetch their work:\n# make sure to replace the remote name to what you set it to before\n$ git fetch friend\nNow, hopefully they have commited to a branch with a name that you haven’t used. Let’s say they created a branch called my_work. You can then simply run\n$ git switch friend/my_work\nThis should checkout the my_work branch locally for you.\nNow, if they have happened to use a branch name that you are already using, or more likely, directly commited to their own main branch, you will need to do checkout to a new branch:\n# replace friend as above to be the name of the remote, and main to be the branch\n# that they have used\n# replace their_work with whatever you want to call this branch locally\n$ git checkout friend/main -b their_work\nYou are now ready to run their code and check everything is good to merge!\nFinally, If you want to clean up your local repository you can remove the new branch that you checked out and the new remote with the following steps:\n# switch back to one of your branches, e.g. main\n$ git checkout main\n\n# then remove the branch that you created above\n$ git branch -D their_work\n\n# you can remove the remote\n$ git remote remove friend"
+    "text": "Reinstalling R Packages\n\n\n\n\n\n\n\ngit\n\n\ntutorial\n\n\n\n\n\n\n\n\n\n\n\nApr 26, 2023\n\n\nTom Jemmett\n\n\n\n\n\n\n  \n\n\n\n\nAlternative remote repositories\n\n\n\n\n\n\n\ngit\n\n\ntutorial\n\n\n\n\n\n\n\n\n\n\n\nApr 26, 2023\n\n\nTom Jemmett\n\n\n\n\n\n\n  \n\n\n\n\nCreating a hotfix with git\n\n\n\n\n\n\n\ngit\n\n\ntutorial\n\n\n\n\n\n\n\n\n\n\n\nMar 24, 2023\n\n\nTom Jemmett\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "blogs/posts/2023-03-24_hotfix-with-git.html",
@@ -105,18 +21,18 @@
     "text": "Fixing my codebase\nFirst, we need to checkout the tag\ngit checkout -b hotfix v0.2.0\nThis creates a new branch called hotfix off of the tag v0.2.0.\nNow that I have the code base checked out at the point I need to fix, I can make the change that is needed, and commit the change\ngit add [FILENAME]\ngit commit -m \"fixes the code\"\n(Obviously, I used the actual file name and gave a better commit message. I Promise 😝)\nNow my code is fixed, I create a new tag for this “release”, as well as push the code to production (this step is omitted here)\ngit tag v0.2.1 -m \"version 0.2.0\"\nAt this point, our history looks something like\n\n\n\n\n\nWhat we want to do is break the link between main and v0.2.0, instead attaching tov0.2.1. First though, I want to make sure that if I make a mistake, I’m not making it on the main branch.\ngit checkout main\ngit checkout -b apply-hotfix\nThen we can fix our history using the rebase command\ngit rebase hotfix\nWhat this does is it rolls back to the point where the branch that we are rebasing (apply-hotfix) and the hotfix branch both share a common commit (v0.2.0 tag). It then applies the commits in the hotfix branch, before reapplying the commits from apply-hotfix (a.k.a. the main branch).\nOne thing to note, if you have any merge conflicts created by your fix, then the rebase will stop and ask you to fix the merge conflicts. There is some information in the GitHub doc’s for [resolving merge conflicts after a Git rebase][2].\n[2]: https://docs.github.com/en/get-started/using-git/resolving-merge-conflicts-after-a-git-rebase\nAt this point, we can check that the commit history looks correct\ngit log v0.2.0..HEAD\nIf we are happy, then we can apply this to the main branch. I do this by renaming the apply-hotfix branch as main. First, you have to delete the main branch to allow us to rename the branch.\ngit branch -D main\ngit branch -m main\nWe also need to update the other branches to use the new main branch\ngit checkout branch\ngit rebase main\nNow, we should have a history like"
   },
   {
-    "objectID": "blogs/index.html",
-    "href": "blogs/index.html",
-    "title": "Data Science Blog",
+    "objectID": "blogs/posts/2023-04-26-reinstalling-r-packages.html",
+    "href": "blogs/posts/2023-04-26-reinstalling-r-packages.html",
+    "title": "Reinstalling R Packages",
     "section": "",
-    "text": "Reinstalling R Packages\n\n\n\n\n\n\n\ngit\n\n\ntutorial\n\n\n\n\n\n\n\n\n\n\n\nApr 26, 2023\n\n\nTom Jemmett\n\n\n\n\n\n\n  \n\n\n\n\nAlternative remote repositories\n\n\n\n\n\n\n\ngit\n\n\ntutorial\n\n\n\n\n\n\n\n\n\n\n\nApr 26, 2023\n\n\nTom Jemmett\n\n\n\n\n\n\n  \n\n\n\n\nCreating a hotfix with git\n\n\n\n\n\n\n\ngit\n\n\ntutorial\n\n\n\n\n\n\n\n\n\n\n\nMar 24, 2023\n\n\nTom Jemmett\n\n\n\n\n\n\nNo matching items"
+    "text": "R 4.3.0 was released last week. Anytime you update R you will probably find yourself in the position where no packages are installed. This is by design - the packages that you have installed may need to be updated and recompiled to work under new versions of R.\nYou may find yourself wanting to have all of the packages that you previously used, so one approach that some people take is to copy the previous library folder to the new versions folder. This isn’t a good idea and could potentially break your R install.\nAnother approach would be to export the list of packages in R before updating and then using that list after you have updated R. This can cause issues though if you install from places other than CRAN, e.g. bioconductor, or from GitHub.\nSome of these approaches are discussed on the RStudio Community Forum. But I prefer an approach of having a “spring clean”, instead only installing the packages that I know that I need.\nI maintain a list of the packages that I used as a gist. Using this, I can then simply run this script on any new R install. In fact, if you click the “raw” button on the gist, and copy that url, you can simply run\nsource(\"https://gist.githubusercontent.com/tomjemmett/c105d3e0fbea7558088f68c65e68e1ed/raw/a1db4b5fa0d24562d16d3f57fe8c25fb0d8aa53e/setup.R\")\nGenerally, sourcing a url is a bad idea - the reason for this is if it’s not a link that you control, then someone could update the contents and run arbritary code on your machine. In this case, I’m happy to run this as it’s my own gist, but you should be mindful if running it yourself!\nIf you look at the script I first install a number of packages from CRAN, then I install packages that only exist on GitHub."
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "blogs/posts/2023-04-26_alternative_remotes.html",
+    "href": "blogs/posts/2023-04-26_alternative_remotes.html",
+    "title": "Alternative remote repositories",
     "section": "",
-    "text": "TODO"
+    "text": "It’s great when someone send’s you a pull request on GitHub to fix bugs or add new features to your project, but you probably always want to check the other persons work in someway before merging that pull request.\nAll of the steps below are intended to be entered via a terminal.\nLet’s imagine that we have a GitHub account called example and a repository called test, and we use https rather than ssh.\n$ git remote get-url origin\n# https://github.com/example/test.git\nNow, let’s say we have someone who has submitted a Pull Request (PR), and their username is friend. We can add a new remote for their fork with\n$ git remote add friend https://github.com/friend/test.git\nHere, I name the remote exactly as per the persons GitHub username for no other reason than making it easier to track things later on. You could name this remote whatever you like, but you will need to make sure that the remote url matches their repository correctly.\nWe are now able to checkout their remote branch. First, we will want to fetch their work:\n# make sure to replace the remote name to what you set it to before\n$ git fetch friend\nNow, hopefully they have commited to a branch with a name that you haven’t used. Let’s say they created a branch called my_work. You can then simply run\n$ git switch friend/my_work\nThis should checkout the my_work branch locally for you.\nNow, if they have happened to use a branch name that you are already using, or more likely, directly commited to their own main branch, you will need to do checkout to a new branch:\n# replace friend as above to be the name of the remote, and main to be the branch\n# that they have used\n# replace their_work with whatever you want to call this branch locally\n$ git checkout friend/main -b their_work\nYou are now ready to run their code and check everything is good to merge!\nFinally, If you want to clean up your local repository you can remove the new branch that you checked out and the new remote with the following steps:\n# switch back to one of your branches, e.g. main\n$ git checkout main\n\n# then remove the branch that you created above\n$ git branch -D their_work\n\n# you can remove the remote\n$ git remote remove friend"
   },
   {
     "objectID": "index.html",
@@ -124,6 +40,293 @@
     "title": "Data Science @ The Strategy Unit",
     "section": "",
     "text": "This is the home of the Data Science team at The Strategy Unit."
+  },
+  {
+    "objectID": "presentations/2023-02-23_coffee-and-coding/index.html#welcome-to-coffee-and-coding",
+    "href": "presentations/2023-02-23_coffee-and-coding/index.html#welcome-to-coffee-and-coding",
+    "title": "Coffee and coding intro session",
+    "section": "Welcome to coffee and coding",
+    "text": "Welcome to coffee and coding\n\nProject demos, showcasing work from a particular project\nMethod demos, showcasing how to use a particular method/tool/package\nSurgery and problem solving sessions\nDefining code standards and SOP"
+  },
+  {
+    "objectID": "presentations/2023-02-23_coffee-and-coding/index.html#what-are-we-trying-to-achieve",
+    "href": "presentations/2023-02-23_coffee-and-coding/index.html#what-are-we-trying-to-achieve",
+    "title": "Coffee and coding intro session",
+    "section": "What are we trying to achieve?",
+    "text": "What are we trying to achieve?\n\nLegibility\nReproducibility\nAccuracy\nLaziness"
+  },
+  {
+    "objectID": "presentations/2023-02-23_coffee-and-coding/index.html#what-are-some-of-the-fundamental-principles",
+    "href": "presentations/2023-02-23_coffee-and-coding/index.html#what-are-some-of-the-fundamental-principles",
+    "title": "Coffee and coding intro session",
+    "section": "What are some of the fundamental principles?",
+    "text": "What are some of the fundamental principles?\n\nPredictability, reducing mental load, and reducing truck factor\nMaking it easy to collaborate with yourself and others on different computers, in the cloud, in six months’ time…\nDRY"
+  },
+  {
+    "objectID": "presentations/2023-02-23_coffee-and-coding/index.html#what-is-rap",
+    "href": "presentations/2023-02-23_coffee-and-coding/index.html#what-is-rap",
+    "title": "Coffee and coding intro session",
+    "section": "What is RAP",
+    "text": "What is RAP\n\na process in which code is used to minimise manual, undocumented steps, and a clear, properly documented process is produced in code which can reliably give the same result from the same dataset\nRAP should be:\n\n\nthe core working practice that must be supported by all platforms and teams; make this a core focus of NHS analyst training\n\nGoldacre review"
+  },
+  {
+    "objectID": "presentations/2023-02-23_coffee-and-coding/index.html#the-road-to-rap",
+    "href": "presentations/2023-02-23_coffee-and-coding/index.html#the-road-to-rap",
+    "title": "Coffee and coding intro session",
+    "section": "The road to RAP",
+    "text": "The road to RAP\n\nWe’re roughly using NHS Digital’s RAP stages\nThere is an incredibly large amount to learn!\nConfession time! (everything I do not know…)\nYou don’t need to do it all at once\nYou don’t need to do it all at all ever\nEach thing you learn will incrementally help you\nRemember- that’s why we learnt this stuff. Because it helped us. And it can help you too"
+  },
+  {
+    "objectID": "presentations/2023-02-23_coffee-and-coding/index.html#levels-of-rap--baseline",
+    "href": "presentations/2023-02-23_coffee-and-coding/index.html#levels-of-rap--baseline",
+    "title": "Coffee and coding intro session",
+    "section": "Levels of RAP- Baseline",
+    "text": "Levels of RAP- Baseline\n\nData produced by code in an open-source language (e.g., Python, R, SQL).\nCode is version controlled (see Git basics and using Git collaboratively guides).\nRepository includes a README.md file (or equivalent) that clearly details steps a user must follow to reproduce the code\nCode has been peer reviewed.\nCode is published in the open and linked to & from accompanying publication (if relevant).\n\nSource: NHS Digital RAP community of practice"
+  },
+  {
+    "objectID": "presentations/2023-02-23_coffee-and-coding/index.html#levels-of-rap--silver",
+    "href": "presentations/2023-02-23_coffee-and-coding/index.html#levels-of-rap--silver",
+    "title": "Coffee and coding intro session",
+    "section": "Levels of RAP- Silver",
+    "text": "Levels of RAP- Silver\n\nCode is well-documented…\nCode is well-organised following standard directory format\nReusable functions and/or classes are used where appropriate\nPipeline includes a testing framework\nRepository includes dependency information (e.g. requirements.txt, PipFile, environment.yml\nData is handled and output in a Tidy data format\n\nSource: NHS Digital RAP community of practice"
+  },
+  {
+    "objectID": "presentations/2023-02-23_coffee-and-coding/index.html#levels-of-rap--gold",
+    "href": "presentations/2023-02-23_coffee-and-coding/index.html#levels-of-rap--gold",
+    "title": "Coffee and coding intro session",
+    "section": "Levels of RAP- Gold",
+    "text": "Levels of RAP- Gold\n\nCode is fully packaged\nRepository automatically runs tests etc. via CI/CD or a different integration/deployment tool e.g. GitHub Actions\nProcess runs based on event-based triggers (e.g., new data in database) or on a schedule\nChanges to the RAP are clearly signposted. E.g. a changelog in the package, releases etc. (See gov.uk info on Semantic Versioning)\n\nSource: NHS Digital RAP community of practice"
+  },
+  {
+    "objectID": "presentations/2023-02-23_coffee-and-coding/index.html#a-learning-journey-to-get-us-there",
+    "href": "presentations/2023-02-23_coffee-and-coding/index.html#a-learning-journey-to-get-us-there",
+    "title": "Coffee and coding intro session",
+    "section": "A learning journey to get us there",
+    "text": "A learning journey to get us there\n\nCode style, organising your files\nFunctions and iteration\nGit and GitHub\nPackaging your code\nTesting\nPackage management and versioning"
+  },
+  {
+    "objectID": "presentations/2023-02-23_coffee-and-coding/index.html#how-we-can-help-each-other-get-there",
+    "href": "presentations/2023-02-23_coffee-and-coding/index.html#how-we-can-help-each-other-get-there",
+    "title": "Coffee and coding intro session",
+    "section": "How we can help each other get there",
+    "text": "How we can help each other get there\n\nWork as a team!\nCoffee and coding!\nAsk for help!\nDo pair coding!\nGet your code reviewed!\nJoin the NHS-R/ NHSPycom communities"
+  },
+  {
+    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#what-is-rap",
+    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#what-is-rap",
+    "title": "RAP- what is it and how can my team start using it effectively?",
+    "section": "What is RAP",
+    "text": "What is RAP\n\na process in which code is used to minimise manual, undocumented steps, and a clear, properly documented process is produced in code which can reliably give the same result from the same dataset\nRAP should be:\n\n\nthe core working practice that must be supported by all platforms and teams; make this a core focus of NHS analyst training\n\nGoldacre review"
+  },
+  {
+    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#what-are-we-trying-to-achieve",
+    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#what-are-we-trying-to-achieve",
+    "title": "RAP- what is it and how can my team start using it effectively?",
+    "section": "What are we trying to achieve?",
+    "text": "What are we trying to achieve?\n\nLegibility\nReproducibility\nAccuracy\nLaziness"
+  },
+  {
+    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#what-are-some-of-the-fundamental-principles",
+    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#what-are-some-of-the-fundamental-principles",
+    "title": "RAP- what is it and how can my team start using it effectively?",
+    "section": "What are some of the fundamental principles?",
+    "text": "What are some of the fundamental principles?\n\nPredictability, reducing mental load, and reducing truck factor\nMaking it easy to collaborate with yourself and others on different computers, in the cloud, in six months’ time…\nDRY"
+  },
+  {
+    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#the-road-to-rap",
+    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#the-road-to-rap",
+    "title": "RAP- what is it and how can my team start using it effectively?",
+    "section": "The road to RAP",
+    "text": "The road to RAP\n\nWe’re roughly using NHS Digital’s RAP stages\nThere is an incredibly large amount to learn!\nConfession time! (everything I do not know…)\nYou don’t need to do it all at once\nYou don’t need to do it all at all ever\nEach thing you learn will incrementally help you\nRemember- that’s why we learnt this stuff. Because it helped us. And it can help you too"
+  },
+  {
+    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#levels-of-rap--baseline",
+    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#levels-of-rap--baseline",
+    "title": "RAP- what is it and how can my team start using it effectively?",
+    "section": "Levels of RAP- Baseline",
+    "text": "Levels of RAP- Baseline\n\nData produced by code in an open-source language (e.g., Python, R, SQL).\nCode is version controlled (see Git basics and using Git collaboratively guides).\nRepository includes a README.md file (or equivalent) that clearly details steps a user must follow to reproduce the code\nCode has been peer reviewed.\nCode is published in the open and linked to & from accompanying publication (if relevant).\n\nSource: NHS Digital RAP community of practice"
+  },
+  {
+    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#levels-of-rap--silver",
+    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#levels-of-rap--silver",
+    "title": "RAP- what is it and how can my team start using it effectively?",
+    "section": "Levels of RAP- Silver",
+    "text": "Levels of RAP- Silver\n\nCode is well-documented…\nCode is well-organised following standard directory format\nReusable functions and/or classes are used where appropriate\nPipeline includes a testing framework\nRepository includes dependency information (e.g. requirements.txt, PipFile, environment.yml\nData is handled and output in a Tidy data format\n\nSource: NHS Digital RAP community of practice"
+  },
+  {
+    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#levels-of-rap--gold",
+    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#levels-of-rap--gold",
+    "title": "RAP- what is it and how can my team start using it effectively?",
+    "section": "Levels of RAP- Gold",
+    "text": "Levels of RAP- Gold\n\nCode is fully packaged\nRepository automatically runs tests etc. via CI/CD or a different integration/deployment tool e.g. GitHub Actions\nProcess runs based on event-based triggers (e.g., new data in database) or on a schedule\nChanges to the RAP are clearly signposted. E.g. a changelog in the package, releases etc. (See gov.uk info on Semantic Versioning)\n\nSource: NHS Digital RAP community of practice"
+  },
+  {
+    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#a-learning-journey-to-get-you-there",
+    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#a-learning-journey-to-get-you-there",
+    "title": "RAP- what is it and how can my team start using it effectively?",
+    "section": "A learning journey to get you there",
+    "text": "A learning journey to get you there\n\nCode style, organising your files\nFunctions and iteration\nGit and GitHub\nPackaging your code\nTesting\nPackage management and versioning"
+  },
+  {
+    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#how-we-can-help-each-other-get-there",
+    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#how-we-can-help-each-other-get-there",
+    "title": "RAP- what is it and how can my team start using it effectively?",
+    "section": "How we can help each other get there",
+    "text": "How we can help each other get there\n\nWork as a team!\nCoffee and coding!\nAsk for help!\nDo pair coding!\nGet your code reviewed!\nJoin the NHS-R/ NHSPycom communities"
+  },
+  {
+    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#haca",
+    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#haca",
+    "title": "RAP- what is it and how can my team start using it effectively?",
+    "section": "HACA",
+    "text": "HACA\n\nThe first national analytics conference for health and care\nInsight to action!\nJuly 11th and 12th, University of Birmingham\nAccepting abstracts for short and long talks and posters\nAbstract deadline 27th March\nHelp is available (with abstract, poster, preparing presentation…)!"
+  },
+  {
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#patient-experience",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#patient-experience",
+    "title": "Text mining of patient experience data",
+    "section": "Patient experience",
+    "text": "Patient experience\n\nThe NHS collects a lot of patient experience data\nRate the service 1-5 (Very poor… Excellent) but also give written feedback\n\n“Parking was difficult”\n“Doctor was rude”\n“You saved my life”\n\nMany organisations lack the staffing to read all of the feedback in a systematic way"
+  },
+  {
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#text-mining",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#text-mining",
+    "title": "Text mining of patient experience data",
+    "section": "Text mining",
+    "text": "Text mining\n\nWe have built an algorithm to read it\n\nTheme\n“Criticality”\n\nFits alongside other work happening within NHSE\n\nA framework for understanding patient experience"
+  },
+  {
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#patient-experience-101",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#patient-experience-101",
+    "title": "Text mining of patient experience data",
+    "section": "Patient experience 101",
+    "text": "Patient experience 101\n\nTick box scoring is not useful (or accurate)\nText based data is complex and built on human experience\nWe’re not making word clouds!\nWe’re not classifying movie reviews or Reddit posts\nThe tool should enhance, not replace, human understanding\n“A recommendation engine for feedback data”"
+  },
+  {
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#everything-open-all-the-time",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#everything-open-all-the-time",
+    "title": "Text mining of patient experience data",
+    "section": "Everything open, all the time",
+    "text": "Everything open, all the time\n\nThis project was coded in the open and is MIT licensed\nEngage with the organisations as we find them\n\nDo they want code or a docker image?\nDo they want to fetch their own themes from an API?\nDo they want to use our dashboard?"
+  },
+  {
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#phase-1",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#phase-1",
+    "title": "Text mining of patient experience data",
+    "section": "Phase 1",
+    "text": "Phase 1\n\n10 categories and moderate performance on criticality analysis\nscikit-learn\nShiny\nReticulate\nR package of Python code"
+  },
+  {
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#golem-all-the-things",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#golem-all-the-things",
+    "title": "Text mining of patient experience data",
+    "section": "Golem all the things!",
+    "text": "Golem all the things!\n\nOpinionated way of building Shiny\nAllows flexibility in deployed versions using YAML\nAgnostic to deployment\nEmphasises dependency management and testing\nSeparate “reactive” and “business” logic (see the accompanying book)"
+  },
+  {
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#phase-2",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#phase-2",
+    "title": "Text mining of patient experience data",
+    "section": "Phase 2",
+    "text": "Phase 2\n\n30-50 categories and excellent criticality performance\nscikit-learn/ BERT\nMore Shiny\nSeparate the code bases\nFastAPI\nInspired by the Royal College of Paediatrics and Child Health API\nDocumentation, documentation, documentation"
+  },
+  {
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#making-it-useful",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#making-it-useful",
+    "title": "Text mining of patient experience data",
+    "section": "Making it useful",
+    "text": "Making it useful\n\nAccurately rating low frequency categories\nPer category precision and recall\nSpeed versus accuracy\nRepresenting the thematic structure"
+  },
+  {
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#the-future",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#the-future",
+    "title": "Text mining of patient experience data",
+    "section": "The future",
+    "text": "The future\n\nOff the shelf, proprietary data collection systems dominate\nThey often offer bundled analytic products of low quality\nThe DS time can’t and doesn’t want to offer a complete data system\nHow can we best contribute to improving patient experience for patients in the NHS?\n\nIf the patient experience data won’t come to the mountain…"
+  },
+  {
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#open-source-ftw",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#open-source-ftw",
+    "title": "Text mining of patient experience data",
+    "section": "Open source FTW!",
+    "text": "Open source FTW!\n\nOften individuals in the NHS don’t want private companies to “benefit” from open code\nBut if they make their products better with open code the patients win\nBest practice as code"
+  },
+  {
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#the-projects",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#the-projects",
+    "title": "Text mining of patient experience data",
+    "section": "The projects",
+    "text": "The projects\n\nhttps://github.com/CDU-data-science-team/pxtextmining\nhttps://github.com/CDU-data-science-team/experiencesdashboard\nhttps://github.com/CDU-data-science-team/PatientExperience-QDC"
+  },
+  {
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#the-team",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#the-team",
+    "title": "Text mining of patient experience data",
+    "section": "The team",
+    "text": "The team\n\nYiWen Hon (Python & Machine learning)\nOluwasegun Apejoye (Shiny)\n\nContact:\n\nchris.beeley1@nhs.net\nhttps://fosstodon.org/@chrisbeeley"
+  },
+  {
+    "objectID": "presentations/index.html",
+    "href": "presentations/index.html",
+    "title": "Presentations",
+    "section": "",
+    "text": "Presentations\n\nWhat is data science?\nCoffee and coding 23rd February 2023\nCoffee and coding 9th March 2023\nCoffee and coding 23rd March 2023\nCollaborative working\nText mining patient experience data"
+  },
+  {
+    "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#what-is-targets",
+    "href": "presentations/2023-03-23_coffee-and-coding/index.html#what-is-targets",
+    "title": "{targets}",
+    "section": "What is {targets}?",
+    "text": "What is {targets}?\n\nThe targets package is a Make-like pipeline tool for Statistics and data science in R. With targets, you can maintain a reproducible workflow without repeating yourself. targets learns how your pipeline fits together, skips costly runtime for tasks that are already up to date, runs only the necessary computation, supports implicit parallel computing, abstracts files as R objects, and shows tangible evidence that the results match the underlying code and data.\n\n\n\nData analysis can be slow. A round of scientific computation can take several minutes, hours, or even days to complete. After it finishes, if you update your code or data, your hard-earned results may no longer be valid. Unchecked, this invalidation creates chronic Sisyphean loop:\n\n\nLaunch the code.\nWait while it runs.\nDiscover an issue.\nRestart from scratch.\n\n\nsource: The {targets} R package user manual"
+  },
+  {
+    "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#what-is-it-actually-trying-to-do",
+    "href": "presentations/2023-03-23_coffee-and-coding/index.html#what-is-it-actually-trying-to-do",
+    "title": "{targets}",
+    "section": "What is it actually trying to do?",
+    "text": "What is it actually trying to do?\n\n\nYour analysis is built up of a number of steps that build one on top of another\nbut these steps need to run in a particular order\nsome of these steps may take a long time to run\nso you only want to run the steps that have changed"
+  },
+  {
+    "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#typical-solution",
+    "href": "presentations/2023-03-23_coffee-and-coding/index.html#typical-solution",
+    "title": "{targets}",
+    "section": "Typical solution",
+    "text": "Typical solution\n\n\nSteps\nYou have a folder with numbered scripts, such as:\n\n1. get data.R\n2. process data.R\n3. produce charts.R\n4. build model.R\n5. report.qmd\n\n\nDownsides\n\n\nit’s easy to accidentally skip a step: what happens if you went from 1 to 3?\nperforming one of the steps may take a long time, so you may want to skip it if it’s already been run… but how do you know that it’s already been run?\nperhaps step 4 doesn’t depend on step 3, but is this obvious that you could skip step 4 if step 3 is updated?\nwhat if someone labels the files terribly, or doesn’t number them at all?\nwhat if the numbers become out of date and are in the wrong order?\ndo you need to create a procedure document that describes what to do, step-by-step?"
+  },
+  {
+    "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#targets-to-the-rescue",
+    "href": "presentations/2023-03-23_coffee-and-coding/index.html#targets-to-the-rescue",
+    "title": "{targets}",
+    "section": "{targets} to the rescue?",
+    "text": "{targets} to the rescue?\n\n\nUsing the previous example, if we were to create functions for each of the steps (all saved in the folder R/), we can start using targets using the function use_targets() which will create a file called _targets.R.\nWe can then modify the file to match our pipeline, for example:\nNote that:\n\nprocessed_data depends upon raw_data,\nchart and model depend upon processed_data,\nreport depends upon chart and model.\n\nWe can visualise our pipeline using tar_visnetwork().\n\n\nlibrary(targets)\n\ntar_option_set(\n  packages = c(\"tibble\", \"dplyr\", \"ggplot2\"),\n)\n\ntar_source()\n\nlist(\n  tar_target(raw_data, get_data()),\n  tar_target(processed_data, process_data(raw_data)),\n  tar_target(chart, produce_chart(processed_data)),\n  tar_target(model, build_model(processed_data)),\n  tar_target(report, generate_report(chart, model))\n)"
+  },
+  {
+    "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#running-the-pipeline",
+    "href": "presentations/2023-03-23_coffee-and-coding/index.html#running-the-pipeline",
+    "title": "{targets}",
+    "section": "Running the pipeline",
+    "text": "Running the pipeline\nRunning this pipeline is as simple as: tar_make().\nThis will output the following:\n• start target raw_data\n• built target raw_data [1.05 seconds]\n• start target processed_data\n• built target processed_data [0.03 seconds]\n• start target chart\n• built target chart [0.02 seconds]\n• start target model\n• built target model [0.01 seconds]\n• start target report\n• built target report [0 seconds]\n• end pipeline [1.75 seconds]\n\nRunning tar_make() again will show these step’s being skipped:\n✔ skip target raw_data\n✔ skip target processed_data\n✔ skip target chart\n✔ skip target model\n✔ skip target report\n✔ skip pipeline [0.12 seconds]"
+  },
+  {
+    "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#changing-one-of-the-files",
+    "href": "presentations/2023-03-23_coffee-and-coding/index.html#changing-one-of-the-files",
+    "title": "{targets}",
+    "section": "Changing one of the files",
+    "text": "Changing one of the files\nIf we change produce_chart.R slightly, this will cause chart and report to be invalidated, but it will skip over the other steps.\n\n\n&gt; targets::tar_make()\n\n✔ skip target raw_data\n✔ skip target processed_data\n• start target chart\n• built target chart [0.03 seconds]\n✔ skip target model\n• start target report\n• built target report [0 seconds]\n• end pipeline [1.71 seconds]"
+  },
+  {
+    "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#using-the-results-of-our-pipeline",
+    "href": "presentations/2023-03-23_coffee-and-coding/index.html#using-the-results-of-our-pipeline",
+    "title": "{targets}",
+    "section": "Using the results of our pipeline",
+    "text": "Using the results of our pipeline\nWe can view the results of any step using tar_read() and tar_load(). These will either directly give you the results of a step, or load that step into your environment (as a variable with the same name as the step).\nThis allows us to view intermediate steps as well as the final outputs of our pipelines.\nOne thing you may want to consider doing is as a final step in a pipeline is to generate a quarto document, or save call a function like saveRDS to generate more useful outputs."
+  },
+  {
+    "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#current-examples-of-targets-in-action",
+    "href": "presentations/2023-03-23_coffee-and-coding/index.html#current-examples-of-targets-in-action",
+    "title": "{targets}",
+    "section": "Current examples of {targets} in action",
+    "text": "Current examples of {targets} in action\n\ncode used in this presentation\nNHP Inputs (all of the data processing steps are a targets pipeline)\nNHP Strategies (runs Sql scripts to update tables in the data warehouse)\nNHP Model (all of the data extraction, processing, and uploading for the model is a targets pipeline)\nMacmillan on NCDR - Jacqueline has been using {targets} for her current project\n\nThe {targets} documentation is exceptionally detailed and easy to follow, and goes into more complex examples (such as dynamic branching of steps in a pipeline and high performance computing setups)\n\n\n\nview slides at the-strategy-unit.github.io/data_science/presentations"
   },
   {
     "objectID": "presentations/2023-03-23_collaborative-working/index.html#introduction",
@@ -229,139 +432,6 @@
     "title": "Good Coding Practices",
     "section": "Further thoughts on improving code legibility",
     "text": "Further thoughts on improving code legibility\n\ndo not let files grow too big\nbreak up logic into separate files, then you can use source(\"filename.R) to run the code in that file\nidealy, break up your logic into separate functions, each function having it’s own file, and then call those functions within your analysis\ndo not repeat yourself - if you are copying and pasting your code then you should be thinking about how to write a single function to handle this repeated logic\n\n\n\n\nview slides at the-strategy-unit.github.io/data_science/presentations"
-  },
-  {
-    "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#what-is-targets",
-    "href": "presentations/2023-03-23_coffee-and-coding/index.html#what-is-targets",
-    "title": "{targets}",
-    "section": "What is {targets}?",
-    "text": "What is {targets}?\n\nThe targets package is a Make-like pipeline tool for Statistics and data science in R. With targets, you can maintain a reproducible workflow without repeating yourself. targets learns how your pipeline fits together, skips costly runtime for tasks that are already up to date, runs only the necessary computation, supports implicit parallel computing, abstracts files as R objects, and shows tangible evidence that the results match the underlying code and data.\n\n\n\nData analysis can be slow. A round of scientific computation can take several minutes, hours, or even days to complete. After it finishes, if you update your code or data, your hard-earned results may no longer be valid. Unchecked, this invalidation creates chronic Sisyphean loop:\n\n\nLaunch the code.\nWait while it runs.\nDiscover an issue.\nRestart from scratch.\n\n\nsource: The {targets} R package user manual"
-  },
-  {
-    "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#what-is-it-actually-trying-to-do",
-    "href": "presentations/2023-03-23_coffee-and-coding/index.html#what-is-it-actually-trying-to-do",
-    "title": "{targets}",
-    "section": "What is it actually trying to do?",
-    "text": "What is it actually trying to do?\n\n\nYour analysis is built up of a number of steps that build one on top of another\nbut these steps need to run in a particular order\nsome of these steps may take a long time to run\nso you only want to run the steps that have changed"
-  },
-  {
-    "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#typical-solution",
-    "href": "presentations/2023-03-23_coffee-and-coding/index.html#typical-solution",
-    "title": "{targets}",
-    "section": "Typical solution",
-    "text": "Typical solution\n\n\nSteps\nYou have a folder with numbered scripts, such as:\n\n1. get data.R\n2. process data.R\n3. produce charts.R\n4. build model.R\n5. report.qmd\n\n\nDownsides\n\n\nit’s easy to accidentally skip a step: what happens if you went from 1 to 3?\nperforming one of the steps may take a long time, so you may want to skip it if it’s already been run… but how do you know that it’s already been run?\nperhaps step 4 doesn’t depend on step 3, but is this obvious that you could skip step 4 if step 3 is updated?\nwhat if someone labels the files terribly, or doesn’t number them at all?\nwhat if the numbers become out of date and are in the wrong order?\ndo you need to create a procedure document that describes what to do, step-by-step?"
-  },
-  {
-    "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#targets-to-the-rescue",
-    "href": "presentations/2023-03-23_coffee-and-coding/index.html#targets-to-the-rescue",
-    "title": "{targets}",
-    "section": "{targets} to the rescue?",
-    "text": "{targets} to the rescue?\n\n\nUsing the previous example, if we were to create functions for each of the steps (all saved in the folder R/), we can start using targets using the function use_targets() which will create a file called _targets.R.\nWe can then modify the file to match our pipeline, for example:\nNote that:\n\nprocessed_data depends upon raw_data,\nchart and model depend upon processed_data,\nreport depends upon chart and model.\n\nWe can visualise our pipeline using tar_visnetwork().\n\n\nlibrary(targets)\n\ntar_option_set(\n  packages = c(\"tibble\", \"dplyr\", \"ggplot2\"),\n)\n\ntar_source()\n\nlist(\n  tar_target(raw_data, get_data()),\n  tar_target(processed_data, process_data(raw_data)),\n  tar_target(chart, produce_chart(processed_data)),\n  tar_target(model, build_model(processed_data)),\n  tar_target(report, generate_report(chart, model))\n)"
-  },
-  {
-    "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#running-the-pipeline",
-    "href": "presentations/2023-03-23_coffee-and-coding/index.html#running-the-pipeline",
-    "title": "{targets}",
-    "section": "Running the pipeline",
-    "text": "Running the pipeline\nRunning this pipeline is as simple as: tar_make().\nThis will output the following:\n• start target raw_data\n• built target raw_data [1.05 seconds]\n• start target processed_data\n• built target processed_data [0.03 seconds]\n• start target chart\n• built target chart [0.02 seconds]\n• start target model\n• built target model [0.01 seconds]\n• start target report\n• built target report [0 seconds]\n• end pipeline [1.75 seconds]\n\nRunning tar_make() again will show these step’s being skipped:\n✔ skip target raw_data\n✔ skip target processed_data\n✔ skip target chart\n✔ skip target model\n✔ skip target report\n✔ skip pipeline [0.12 seconds]"
-  },
-  {
-    "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#changing-one-of-the-files",
-    "href": "presentations/2023-03-23_coffee-and-coding/index.html#changing-one-of-the-files",
-    "title": "{targets}",
-    "section": "Changing one of the files",
-    "text": "Changing one of the files\nIf we change produce_chart.R slightly, this will cause chart and report to be invalidated, but it will skip over the other steps.\n\n\n&gt; targets::tar_make()\n\n✔ skip target raw_data\n✔ skip target processed_data\n• start target chart\n• built target chart [0.03 seconds]\n✔ skip target model\n• start target report\n• built target report [0 seconds]\n• end pipeline [1.71 seconds]"
-  },
-  {
-    "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#using-the-results-of-our-pipeline",
-    "href": "presentations/2023-03-23_coffee-and-coding/index.html#using-the-results-of-our-pipeline",
-    "title": "{targets}",
-    "section": "Using the results of our pipeline",
-    "text": "Using the results of our pipeline\nWe can view the results of any step using tar_read() and tar_load(). These will either directly give you the results of a step, or load that step into your environment (as a variable with the same name as the step).\nThis allows us to view intermediate steps as well as the final outputs of our pipelines.\nOne thing you may want to consider doing is as a final step in a pipeline is to generate a quarto document, or save call a function like saveRDS to generate more useful outputs."
-  },
-  {
-    "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#current-examples-of-targets-in-action",
-    "href": "presentations/2023-03-23_coffee-and-coding/index.html#current-examples-of-targets-in-action",
-    "title": "{targets}",
-    "section": "Current examples of {targets} in action",
-    "text": "Current examples of {targets} in action\n\ncode used in this presentation\nNHP Inputs (all of the data processing steps are a targets pipeline)\nNHP Strategies (runs Sql scripts to update tables in the data warehouse)\nNHP Model (all of the data extraction, processing, and uploading for the model is a targets pipeline)\nMacmillan on NCDR - Jacqueline has been using {targets} for her current project\n\nThe {targets} documentation is exceptionally detailed and easy to follow, and goes into more complex examples (such as dynamic branching of steps in a pipeline and high performance computing setups)\n\n\n\nview slides at the-strategy-unit.github.io/data_science/presentations"
-  },
-  {
-    "objectID": "presentations/index.html",
-    "href": "presentations/index.html",
-    "title": "Presentations",
-    "section": "",
-    "text": "Presentations\n\nWhat is data science?\nCoffee and coding 23rd February 2023\nCoffee and coding 9th March 2023\nCoffee and coding 23rd March 2023"
-  },
-  {
-    "objectID": "presentations/2023-02-23_coffee-and-coding/index.html#welcome-to-coffee-and-coding",
-    "href": "presentations/2023-02-23_coffee-and-coding/index.html#welcome-to-coffee-and-coding",
-    "title": "Coffee and coding intro session",
-    "section": "Welcome to coffee and coding",
-    "text": "Welcome to coffee and coding\n\nProject demos, showcasing work from a particular project\nMethod demos, showcasing how to use a particular method/tool/package\nSurgery and problem solving sessions\nDefining code standards and SOP"
-  },
-  {
-    "objectID": "presentations/2023-02-23_coffee-and-coding/index.html#what-are-we-trying-to-achieve",
-    "href": "presentations/2023-02-23_coffee-and-coding/index.html#what-are-we-trying-to-achieve",
-    "title": "Coffee and coding intro session",
-    "section": "What are we trying to achieve?",
-    "text": "What are we trying to achieve?\n\nLegibility\nReproducibility\nAccuracy\nLaziness"
-  },
-  {
-    "objectID": "presentations/2023-02-23_coffee-and-coding/index.html#what-are-some-of-the-fundamental-principles",
-    "href": "presentations/2023-02-23_coffee-and-coding/index.html#what-are-some-of-the-fundamental-principles",
-    "title": "Coffee and coding intro session",
-    "section": "What are some of the fundamental principles?",
-    "text": "What are some of the fundamental principles?\n\nPredictability, reducing mental load, and reducing truck factor\nMaking it easy to collaborate with yourself and others on different computers, in the cloud, in six months’ time…\nDRY"
-  },
-  {
-    "objectID": "presentations/2023-02-23_coffee-and-coding/index.html#what-is-rap",
-    "href": "presentations/2023-02-23_coffee-and-coding/index.html#what-is-rap",
-    "title": "Coffee and coding intro session",
-    "section": "What is RAP",
-    "text": "What is RAP\n\na process in which code is used to minimise manual, undocumented steps, and a clear, properly documented process is produced in code which can reliably give the same result from the same dataset\nRAP should be:\n\n\nthe core working practice that must be supported by all platforms and teams; make this a core focus of NHS analyst training\n\nGoldacre review"
-  },
-  {
-    "objectID": "presentations/2023-02-23_coffee-and-coding/index.html#the-road-to-rap",
-    "href": "presentations/2023-02-23_coffee-and-coding/index.html#the-road-to-rap",
-    "title": "Coffee and coding intro session",
-    "section": "The road to RAP",
-    "text": "The road to RAP\n\nWe’re roughly using NHS Digital’s RAP stages\nThere is an incredibly large amount to learn!\nConfession time! (everything I do not know…)\nYou don’t need to do it all at once\nYou don’t need to do it all at all ever\nEach thing you learn will incrementally help you\nRemember- that’s why we learnt this stuff. Because it helped us. And it can help you too"
-  },
-  {
-    "objectID": "presentations/2023-02-23_coffee-and-coding/index.html#levels-of-rap--baseline",
-    "href": "presentations/2023-02-23_coffee-and-coding/index.html#levels-of-rap--baseline",
-    "title": "Coffee and coding intro session",
-    "section": "Levels of RAP- Baseline",
-    "text": "Levels of RAP- Baseline\n\nData produced by code in an open-source language (e.g., Python, R, SQL).\nCode is version controlled (see Git basics and using Git collaboratively guides).\nRepository includes a README.md file (or equivalent) that clearly details steps a user must follow to reproduce the code\nCode has been peer reviewed.\nCode is published in the open and linked to & from accompanying publication (if relevant).\n\nSource: NHS Digital RAP community of practice"
-  },
-  {
-    "objectID": "presentations/2023-02-23_coffee-and-coding/index.html#levels-of-rap--silver",
-    "href": "presentations/2023-02-23_coffee-and-coding/index.html#levels-of-rap--silver",
-    "title": "Coffee and coding intro session",
-    "section": "Levels of RAP- Silver",
-    "text": "Levels of RAP- Silver\n\nCode is well-documented…\nCode is well-organised following standard directory format\nReusable functions and/or classes are used where appropriate\nPipeline includes a testing framework\nRepository includes dependency information (e.g. requirements.txt, PipFile, environment.yml\nData is handled and output in a Tidy data format\n\nSource: NHS Digital RAP community of practice"
-  },
-  {
-    "objectID": "presentations/2023-02-23_coffee-and-coding/index.html#levels-of-rap--gold",
-    "href": "presentations/2023-02-23_coffee-and-coding/index.html#levels-of-rap--gold",
-    "title": "Coffee and coding intro session",
-    "section": "Levels of RAP- Gold",
-    "text": "Levels of RAP- Gold\n\nCode is fully packaged\nRepository automatically runs tests etc. via CI/CD or a different integration/deployment tool e.g. GitHub Actions\nProcess runs based on event-based triggers (e.g., new data in database) or on a schedule\nChanges to the RAP are clearly signposted. E.g. a changelog in the package, releases etc. (See gov.uk info on Semantic Versioning)\n\nSource: NHS Digital RAP community of practice"
-  },
-  {
-    "objectID": "presentations/2023-02-23_coffee-and-coding/index.html#a-learning-journey-to-get-us-there",
-    "href": "presentations/2023-02-23_coffee-and-coding/index.html#a-learning-journey-to-get-us-there",
-    "title": "Coffee and coding intro session",
-    "section": "A learning journey to get us there",
-    "text": "A learning journey to get us there\n\nCode style, organising your files\nFunctions and iteration\nGit and GitHub\nPackaging your code\nTesting\nPackage management and versioning"
-  },
-  {
-    "objectID": "presentations/2023-02-23_coffee-and-coding/index.html#how-we-can-help-each-other-get-there",
-    "href": "presentations/2023-02-23_coffee-and-coding/index.html#how-we-can-help-each-other-get-there",
-    "title": "Coffee and coding intro session",
-    "section": "How we can help each other get there",
-    "text": "How we can help each other get there\n\nWork as a team!\nCoffee and coding!\nAsk for help!\nDo pair coding!\nGet your code reviewed!\nJoin the NHS-R/ NHSPycom communities"
   },
   {
     "objectID": "presentations/2023-02-01_what-is-data-science/index.html#what-is-data-science",
@@ -511,73 +581,87 @@
     "text": "Note\nAll copyrighted material is reused under Fair Dealing"
   },
   {
-    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#what-is-rap",
-    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#what-is-rap",
-    "title": "RAP- what is it and how can my team start using it effectively?",
-    "section": "What is RAP",
-    "text": "What is RAP\n\na process in which code is used to minimise manual, undocumented steps, and a clear, properly documented process is produced in code which can reliably give the same result from the same dataset\nRAP should be:\n\n\nthe core working practice that must be supported by all platforms and teams; make this a core focus of NHS analyst training\n\nGoldacre review"
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "TODO"
   },
   {
-    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#what-are-we-trying-to-achieve",
-    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#what-are-we-trying-to-achieve",
-    "title": "RAP- what is it and how can my team start using it effectively?",
-    "section": "What are we trying to achieve?",
-    "text": "What are we trying to achieve?\n\nLegibility\nReproducibility\nAccuracy\nLaziness"
+    "objectID": "style/data_storage.html",
+    "href": "style/data_storage.html",
+    "title": "Data Storage",
+    "section": "",
+    "text": "All projects should be commited to version control, with a repository created in the Strategy Unit’s GitHub organisation.\nIdeally, any data that is used within the project should be part of a targets pipeline.\nThere are a number of considerations about whether to add the data to version control or not. At a high level:\n\nis the data OK to release publicly?\nis the data in a text-based (non-binary) format, such as .csv, .json (rather than say .xlsx)?\nis the data relatively small in size?\n\n\n\nIf data is grabbed from a website, or via an API, create code to download the file/data. Consider whether this is likely to be a stable way of getting the data (does the data change over time? do you suspect that the location of the resource may disappear? is it quick to retrieve the data?). If so, then it doesn’t make much sense to commit the data to version control as it can always be quickly regenerated.\n\n\n\nLarge files tend not to work particularly well with version control. Specifically, files larger than 100MB will be blocked by GitHub, and files larger than 50MB will generate a warning. But you may even want to class any file over a few MB as large.\nAlternatives for storing large files:\n\nif the file is something that is generated (and reproducible) from other sources, then do not bother tracking the file\nif the file is something that you want tracking with version control, look at git LFS\nif the file needs to be shared publicly, but LFS is not suitable, the file could be stored in Azure blob storage\nif the file needs to be shared privately, also consider Azure blob storage (using something like SAS tokens)\nif the file needs to only be shared within the Strategy Unit then store in SharePoint (i.e. within a teams channel)\n\nUse of network drives should be deprecated and avoided at all costs due to issues of lack of versioning of files and the performance bottleneck that is created by using a network share. If a network share is truly the only way of storing the data for sharing with colleagues, then look at using ways of syncing the file to local storage to avoid performance bottlenecks, such as robocopy."
   },
   {
-    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#what-are-some-of-the-fundamental-principles",
-    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#what-are-some-of-the-fundamental-principles",
-    "title": "RAP- what is it and how can my team start using it effectively?",
-    "section": "What are some of the fundamental principles?",
-    "text": "What are some of the fundamental principles?\n\nPredictability, reducing mental load, and reducing truck factor\nMaking it easy to collaborate with yourself and others on different computers, in the cloud, in six months’ time…\nDRY"
+    "objectID": "style/data_storage.html#data-from-websites",
+    "href": "style/data_storage.html#data-from-websites",
+    "title": "Data Storage",
+    "section": "",
+    "text": "If data is grabbed from a website, or via an API, create code to download the file/data. Consider whether this is likely to be a stable way of getting the data (does the data change over time? do you suspect that the location of the resource may disappear? is it quick to retrieve the data?). If so, then it doesn’t make much sense to commit the data to version control as it can always be quickly regenerated."
   },
   {
-    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#the-road-to-rap",
-    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#the-road-to-rap",
-    "title": "RAP- what is it and how can my team start using it effectively?",
-    "section": "The road to RAP",
-    "text": "The road to RAP\n\nWe’re roughly using NHS Digital’s RAP stages\nThere is an incredibly large amount to learn!\nConfession time! (everything I do not know…)\nYou don’t need to do it all at once\nYou don’t need to do it all at all ever\nEach thing you learn will incrementally help you\nRemember- that’s why we learnt this stuff. Because it helped us. And it can help you too"
+    "objectID": "style/data_storage.html#filesize",
+    "href": "style/data_storage.html#filesize",
+    "title": "Data Storage",
+    "section": "",
+    "text": "Large files tend not to work particularly well with version control. Specifically, files larger than 100MB will be blocked by GitHub, and files larger than 50MB will generate a warning. But you may even want to class any file over a few MB as large.\nAlternatives for storing large files:\n\nif the file is something that is generated (and reproducible) from other sources, then do not bother tracking the file\nif the file is something that you want tracking with version control, look at git LFS\nif the file needs to be shared publicly, but LFS is not suitable, the file could be stored in Azure blob storage\nif the file needs to be shared privately, also consider Azure blob storage (using something like SAS tokens)\nif the file needs to only be shared within the Strategy Unit then store in SharePoint (i.e. within a teams channel)\n\nUse of network drives should be deprecated and avoided at all costs due to issues of lack of versioning of files and the performance bottleneck that is created by using a network share. If a network share is truly the only way of storing the data for sharing with colleagues, then look at using ways of syncing the file to local storage to avoid performance bottlenecks, such as robocopy."
   },
   {
-    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#levels-of-rap--baseline",
-    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#levels-of-rap--baseline",
-    "title": "RAP- what is it and how can my team start using it effectively?",
-    "section": "Levels of RAP- Baseline",
-    "text": "Levels of RAP- Baseline\n\nData produced by code in an open-source language (e.g., Python, R, SQL).\nCode is version controlled (see Git basics and using Git collaboratively guides).\nRepository includes a README.md file (or equivalent) that clearly details steps a user must follow to reproduce the code\nCode has been peer reviewed.\nCode is published in the open and linked to & from accompanying publication (if relevant).\n\nSource: NHS Digital RAP community of practice"
+    "objectID": "style/style_guide.html",
+    "href": "style/style_guide.html",
+    "title": "Style Guide",
+    "section": "",
+    "text": "On the whole we follow the conventions of the tidyverse style guide\nWe prefer packages to be explicitly namespaced like this dplyr::mutate(...). This is not essential in exploratory data analysis but is mandatory in all production code\nFor readability please insert line breaks in your code at or before column 80.\nWe prefer to avoid loading {tidyverse} because it brings in a lot of packages that are not being used. Again, not essential to follow this in exploratory data analysis but no code that is or will be deployed should ever load {tidyverse}\n\n\n\n\n\nfavour |&gt; over %&gt;%\nfavour .qmd over .rmd\nuse git for all projects, github being the home of all of the project code\nRAP everything\n{styler}\nhttps://style.tidyverse.org/\n{lintr}"
   },
   {
-    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#levels-of-rap--silver",
-    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#levels-of-rap--silver",
-    "title": "RAP- what is it and how can my team start using it effectively?",
-    "section": "Levels of RAP- Silver",
-    "text": "Levels of RAP- Silver\n\nCode is well-documented…\nCode is well-organised following standard directory format\nReusable functions and/or classes are used where appropriate\nPipeline includes a testing framework\nRepository includes dependency information (e.g. requirements.txt, PipFile, environment.yml\nData is handled and output in a Tidy data format\n\nSource: NHS Digital RAP community of practice"
+    "objectID": "style/style_guide.html#code-style",
+    "href": "style/style_guide.html#code-style",
+    "title": "Style Guide",
+    "section": "",
+    "text": "On the whole we follow the conventions of the tidyverse style guide\nWe prefer packages to be explicitly namespaced like this dplyr::mutate(...). This is not essential in exploratory data analysis but is mandatory in all production code\nFor readability please insert line breaks in your code at or before column 80.\nWe prefer to avoid loading {tidyverse} because it brings in a lot of packages that are not being used. Again, not essential to follow this in exploratory data analysis but no code that is or will be deployed should ever load {tidyverse}"
   },
   {
-    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#levels-of-rap--gold",
-    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#levels-of-rap--gold",
-    "title": "RAP- what is it and how can my team start using it effectively?",
-    "section": "Levels of RAP- Gold",
-    "text": "Levels of RAP- Gold\n\nCode is fully packaged\nRepository automatically runs tests etc. via CI/CD or a different integration/deployment tool e.g. GitHub Actions\nProcess runs based on event-based triggers (e.g., new data in database) or on a schedule\nChanges to the RAP are clearly signposted. E.g. a changelog in the package, releases etc. (See gov.uk info on Semantic Versioning)\n\nSource: NHS Digital RAP community of practice"
+    "objectID": "style/style_guide.html#unorganised-notes",
+    "href": "style/style_guide.html#unorganised-notes",
+    "title": "Style Guide",
+    "section": "",
+    "text": "favour |&gt; over %&gt;%\nfavour .qmd over .rmd\nuse git for all projects, github being the home of all of the project code\nRAP everything\n{styler}\nhttps://style.tidyverse.org/\n{lintr}"
   },
   {
-    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#a-learning-journey-to-get-you-there",
-    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#a-learning-journey-to-get-you-there",
-    "title": "RAP- what is it and how can my team start using it effectively?",
-    "section": "A learning journey to get you there",
-    "text": "A learning journey to get you there\n\nCode style, organising your files\nFunctions and iteration\nGit and GitHub\nPackaging your code\nTesting\nPackage management and versioning"
+    "objectID": "style/git_and_github.html",
+    "href": "style/git_and_github.html",
+    "title": "Using git and GitHub",
+    "section": "",
+    "text": "Commits should be atomic\nAll code should be committed via pull request to main. Never push to main\n\nWorkflow for writing code with Git and GitHub:\n\nIf you haven’t already file an issue that describes what you are doing- whether it be fixing a bug, adding a feature, or something else\nMake a new branch to work on that feature. GitHub offers a button to do this automatically on the issue page, on the right hand side (see image)\nWork on the branch, pushing your code regularly to GitHub so it can be run and inspected when you are not around\nWhen it’s ready merge the branch to main. If you used the create branch button on GitHUb this will automatically close the issue. If the issue is not automatically closed, then close it manually\n\n\n\n\nTODO"
   },
   {
-    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#how-we-can-help-each-other-get-there",
-    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#how-we-can-help-each-other-get-there",
-    "title": "RAP- what is it and how can my team start using it effectively?",
-    "section": "How we can help each other get there",
-    "text": "How we can help each other get there\n\nWork as a team!\nCoffee and coding!\nAsk for help!\nDo pair coding!\nGet your code reviewed!\nJoin the NHS-R/ NHSPycom communities"
+    "objectID": "style/git_and_github.html#preparing-a-package-release-of-your-code",
+    "href": "style/git_and_github.html#preparing-a-package-release-of-your-code",
+    "title": "Using git and GitHub",
+    "section": "",
+    "text": "TODO"
   },
   {
-    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#haca",
-    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#haca",
-    "title": "RAP- what is it and how can my team start using it effectively?",
-    "section": "HACA",
-    "text": "HACA\n\nThe first national analytics conference for health and care\nInsight to action!\nJuly 11th and 12th, University of Birmingham\nAccepting abstracts for short and long talks and posters\nAbstract deadline 27th March\nHelp is available (with abstract, poster, preparing presentation…)!"
+    "objectID": "style/project_structure.html",
+    "href": "style/project_structure.html",
+    "title": "Project Structure",
+    "section": "",
+    "text": "as a package\nR/ for scripts\nsplit files into separate scripts\nuse {renv}\nuse {targets}\n\n\n\nRStudio projects are a great way to organise your analytical projects into discrete units that are easier to work on and share.\n\n\n\n\n\n\n\n\n\n\n\n\nOne of the most common issues you will face when using a project someone else has created, or you created previously, is maintaining the required packages to run the project. Knowing what packages are needed to run a particular project isn’t always obvious, and over time packages can change rendering code that once worked unusable.\n{renv} solves this problem by:\n\nkeeping track of the packages that are required for a particular project\nlogging the installed version of all of the packages\nmaintaining a per-project library of packages, so projects don’t interfere with one another\n\nIt’s a good idea to use {renv} for all projects."
+  },
+  {
+    "objectID": "style/project_structure.html#use-rstudio-projects",
+    "href": "style/project_structure.html#use-rstudio-projects",
+    "title": "Project Structure",
+    "section": "",
+    "text": "RStudio projects are a great way to organise your analytical projects into discrete units that are easier to work on and share."
+  },
+  {
+    "objectID": "style/project_structure.html#renv",
+    "href": "style/project_structure.html#renv",
+    "title": "Project Structure",
+    "section": "",
+    "text": "One of the most common issues you will face when using a project someone else has created, or you created previously, is maintaining the required packages to run the project. Knowing what packages are needed to run a particular project isn’t always obvious, and over time packages can change rendering code that once worked unusable.\n{renv} solves this problem by:\n\nkeeping track of the packages that are required for a particular project\nlogging the installed version of all of the packages\nmaintaining a per-project library of packages, so projects don’t interfere with one another\n\nIt’s a good idea to use {renv} for all projects."
   }
 ]

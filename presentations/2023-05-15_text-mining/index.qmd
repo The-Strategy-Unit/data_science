@@ -1,0 +1,104 @@
+---
+title: "Text mining of patient experience data"
+author: "Chris Beeley"
+date: 2023/05/15
+date-format: "MMM D, YYYY"
+format: revealjs
+---
+
+## Patient experience
+
+* The NHS collects a lot of patient experience data
+* Rate the service 1-5 (Very poor... Excellent) but also give written feedback
+    * "Parking was difficult"
+    * "Doctor was rude"
+    * "You saved my life"
+* Many organisations lack the staffing to read all of the feedback in a systematic way
+
+## Text mining
+
+* We have built an algorithm to read it
+    * Theme
+    * "Criticality"
+* Fits alongside other work happening within NHSE
+    * A framework for understanding patient experience
+
+## Patient experience 101
+
+* Tick box scoring is not useful (or accurate)
+* Text based data is _complex_ and built on _human experience_
+* We're not making word clouds!
+* We're not classifying movie reviews or Reddit posts
+* The tool should enhance, not replace, human understanding
+* "A recommendation engine for feedback data"
+
+## Everything open, all the time
+
+* This project was [coded in the open](https://transform.england.nhs.uk/key-tools-and-info/digital-playbooks/open-source-digital-playbook/cdu-data-science-team/) and is MIT licensed
+* Engage with the organisations as we find them
+    * Do they want code or a docker image?
+    * Do they want to fetch their own themes from an API?
+    * Do they want to use our dashboard?
+  
+## Phase 1
+
+* 10 categories and moderate performance on criticality analysis
+* scikit-learn
+* Shiny
+* Reticulate
+* R package of Python code
+
+## Golem all the things!
+
+* Opinionated way of building Shiny
+* Allows flexibility in deployed versions using YAML
+* Agnostic to deployment
+* Emphasises dependency management and testing
+* Separate "reactive" and "business" logic (see the [accompanying book](https://engineering-shiny.org/))
+
+## Phase 2
+
+* 30-50 categories and excellent criticality performance
+* scikit-learn/ BERT
+* More Shiny
+* Separate the code bases
+* FastAPI
+* Inspired by the [Royal College of Paediatrics and Child Health API](https://www.rcpch.ac.uk/resources/growth-charts/digital)
+* [Documentation, documentation, documentation](https://github.com/CDU-data-science-team/PatientExperience-QDC)
+
+## Making it useful
+
+* Accurately rating low frequency categories
+* Per category precision and recall
+* Speed versus accuracy
+* Representing the thematic structure
+
+## The future
+
+* Off the shelf, proprietary data collection systems dominate
+* They often offer bundled analytic products of low quality
+* The DS time can't and doesn't want to offer a complete data system
+* How can we best contribute to improving patient experience for patients in the NHS?
+    * If the patient experience data won't come to the mountain...
+
+## Open source FTW!
+
+* Often individuals in the NHS don't want private companies to "benefit" from open code
+* But if they make their products better with open code the patients win
+* [Best practice as code](https://www.rcpch.ac.uk/news-events/news/royal-colleges-30-best-practice-code)
+
+## The projects
+
+* https://github.com/CDU-data-science-team/pxtextmining
+* https://github.com/CDU-data-science-team/experiencesdashboard
+* https://github.com/CDU-data-science-team/PatientExperience-QDC
+
+## The team
+
+* YiWen Hon (Python & Machine learning)
+* Oluwasegun Apejoye (Shiny)
+
+Contact:
+
+* chris.beeley1@nhs.net
+* https://fosstodon.org/@chrisbeeley

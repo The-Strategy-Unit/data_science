@@ -1,5 +1,5 @@
 ---
-title: "Text mining of patient experience data"
+title: "What good data science looks like"
 author: "Chris Beeley"
 date: 2023/05/23
 date-format: "MMM D, YYYY"
@@ -14,66 +14,89 @@ format: revealjs
     * "Doctor was rude"
     * "You saved my life"
 * Many organisations lack the staffing to read all of the feedback in a systematic way
+* Produce an algorithm to rate theme and "criticality"
 
-## Text mining
+## Help people to do their jobs
 
-* We have built an algorithm to read it
-    * Theme
-    * "Criticality"
+* Text based data is _complex_ and built on _human experience_
+* The tool should enhance, not replace, human understanding
+* Enhancing search and filtering
+    * If they read 100 comments today, which should they read?
+* "A recommendation engine for feedback data"
+
+## Reflect what users want
+
+* I have worked with this data since before it existed 
+* I came to realise that people were struggling to read all of their data 
 * Fits alongside other work happening within NHSE
     * A framework for understanding patient experience
 
-## Patient experience 101
+## Useful
 
-* Tick box scoring is not useful (or accurate)
-* Text based data is _complex_ and built on _human experience_
-* We're not making word clouds!
-* We're not classifying movie reviews or Reddit posts
-* The tool should enhance, not replace, human understanding
-* "A recommendation engine for feedback data"
+* A fundamental principle is that everyone can use
+* If you can run the code, run it
+* If you can use the API, use it 
+* If you just want the dashboard, use it
+* Credit to the [growth charts API](https://www.rcpch.ac.uk/resources/growth-charts/digital/about)
 
-## Everything open, all the time
+## Understandable
 
-* This project was [coded in the open](https://transform.england.nhs.uk/key-tools-and-info/digital-playbooks/open-source-digital-playbook/cdu-data-science-team/) and is MIT licensed
-* Engage with the organisations as we find them
-    * Do they want code or a docker image?
-    * Do they want to fetch their own themes from an API?
-    * Do they want to use our dashboard?
-  
-## Phase 1
+* Tuned to the users needs
+* Not simply tuning accuracy scores
+* Look at the type of mistake the model is making
+* Look at the category it's predicting
+    * We can lose a few of common unimportant categories 
+    * We need to get every rare and important category
+    
+## Iterative
 
-* 10 categories and moderate performance on criticality analysis
-* scikit-learn
-* Shiny
-* Reticulate
-* R package of Python code
+* Year one
+    * 10 categories
+    * Moderate criticality performance
+    * No deep learning
+    * Weak dashboard
+    * Positive evaluation
+    
+## Iterative
 
-## Golem all the things!
+* Year two
+    * 30-50 categories
+    * Strong criticality performance
+    * Deep learning
+    * Improved dashboard
+    * WIP
+* Overall five minor versions of algorithm and seven of dashboard
 
-* Opinionated way of building Shiny
-* Allows flexibility in deployed versions using YAML
-* Agnostic to deployment
-* Emphasises dependency management and testing
-* Separate "reactive" and "business" logic (see the [accompanying book](https://engineering-shiny.org/))
+## Documented
 
-## Phase 2
+* We've documented in the way you usually would
+* We were asked in year 1 to provide plain English documentation
+* We made [a website](https://cdu-data-science-team.github.io/PatientExperience-QDC/) with all the product details
 
-* 30-50 categories and excellent criticality performance
-* scikit-learn/ BERT
-* More Shiny
-* Separate the code bases
-* FastAPI
-* Inspired by the [Royal College of Paediatrics and Child Health API](https://www.rcpch.ac.uk/resources/growth-charts/digital)
-* [Documentation, documentation, documentation](https://github.com/CDU-data-science-team/PatientExperience-QDC)
+## Develop skills of the staff, technical and otherwise
 
-## Making it useful
+* Year one created a Python programmer
+* Year two created an R/ Shiny programmer
+* The team has learned: 
+    * Static website generation
+    * Text cleaning/ searching/ mining
+    * Collaborative coding practices
+    * Working with and communicating with users
+    * Linux, databases, APIs...
+    
+## Benefits from, and benefits, the community
 
-* Accurately rating low frequency categories
-* Per category precision and recall
-* Speed versus accuracy
-* Representing the thematic structure
+![[NHSBSA R Shiny template](https://github.com/nhsbsa-data-analytics/nhsbsaShinyR)](golem.png)
 
-## The future
+## Benefits from, and benefits, the community
+
+* We benefit and benefit from
+    * NHS-R
+    * NHS-Pycom
+    * Government Digital Service
+    * Colleagues and friends
+
+## Open and reproducible
 
 * Off the shelf, proprietary data collection systems dominate
 * They often offer bundled analytic products of low quality
@@ -87,18 +110,25 @@ format: revealjs
 * But if they make their products better with open code the patients win
 * [Best practice as code](https://www.rcpch.ac.uk/news-events/news/royal-colleges-30-best-practice-code)
 
-## The projects
+## Fun!
 
-* https://github.com/CDU-data-science-team/pxtextmining
-* https://github.com/CDU-data-science-team/experiencesdashboard
-* https://github.com/CDU-data-science-team/PatientExperience-QDC
+* Combing through spreadsheets looking for one comment is not fun
+* Doing things the same way you did them last year is not fun
+* Trying to implement a project that is too complicated is not fun
 
-## The team
+* Working with a diverse team with different skills is fun
+* Accessing high quality documentation to understand a project better is fun*
 
-* YiWen Hon (Python & Machine learning)
-* Oluwasegun Apejoye (Shiny)
+## Team and code
 
-Contact:
+* Andreas Soteriades (Y1)
+* YiWen Hon, Oluwasegun Apejoye (Y2)
+
+* [pxtextmining](https://github.com/CDU-data-science-team/pxtextmining)
+* [experiencesdashboard](https://github.com/CDU-data-science-team/experiencesdashboard)
+* [Documentation](https://github.com/CDU-data-science-team/PatientExperience-QDC)
+
+<hr>
 
 * chris.beeley1@nhs.net
 * https://fosstodon.org/@chrisbeeley

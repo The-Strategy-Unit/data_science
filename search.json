@@ -184,93 +184,114 @@
   {
     "objectID": "presentations/2023-05-23_data-science-for-good/index.html#patient-experience",
     "href": "presentations/2023-05-23_data-science-for-good/index.html#patient-experience",
-    "title": "Text mining of patient experience data",
+    "title": "What good data science looks like",
     "section": "Patient experience",
-    "text": "Patient experience\n\nThe NHS collects a lot of patient experience data\nRate the service 1-5 (Very poor… Excellent) but also give written feedback\n\n“Parking was difficult”\n“Doctor was rude”\n“You saved my life”\n\nMany organisations lack the staffing to read all of the feedback in a systematic way"
+    "text": "Patient experience\n\nThe NHS collects a lot of patient experience data\nRate the service 1-5 (Very poor… Excellent) but also give written feedback\n\n“Parking was difficult”\n“Doctor was rude”\n“You saved my life”\n\nMany organisations lack the staffing to read all of the feedback in a systematic way\nProduce an algorithm to rate theme and “criticality”"
   },
   {
-    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#text-mining",
-    "href": "presentations/2023-05-23_data-science-for-good/index.html#text-mining",
-    "title": "Text mining of patient experience data",
-    "section": "Text mining",
-    "text": "Text mining\n\nWe have built an algorithm to read it\n\nTheme\n“Criticality”\n\nFits alongside other work happening within NHSE\n\nA framework for understanding patient experience"
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#help-people-to-do-their-jobs",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#help-people-to-do-their-jobs",
+    "title": "What good data science looks like",
+    "section": "Help people to do their jobs",
+    "text": "Help people to do their jobs\n\nText based data is complex and built on human experience\nThe tool should enhance, not replace, human understanding\nEnhancing search and filtering\n\nIf they read 100 comments today, which should they read?\n\n“A recommendation engine for feedback data”"
   },
   {
-    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#patient-experience-101",
-    "href": "presentations/2023-05-23_data-science-for-good/index.html#patient-experience-101",
-    "title": "Text mining of patient experience data",
-    "section": "Patient experience 101",
-    "text": "Patient experience 101\n\nTick box scoring is not useful (or accurate)\nText based data is complex and built on human experience\nWe’re not making word clouds!\nWe’re not classifying movie reviews or Reddit posts\nThe tool should enhance, not replace, human understanding\n“A recommendation engine for feedback data”"
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#reflect-what-users-want",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#reflect-what-users-want",
+    "title": "What good data science looks like",
+    "section": "Reflect what users want",
+    "text": "Reflect what users want\n\nI have worked with this data since before it existed\nI came to realise that people were struggling to read all of their data\nFits alongside other work happening within NHSE\n\nA framework for understanding patient experience"
   },
   {
-    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#everything-open-all-the-time",
-    "href": "presentations/2023-05-23_data-science-for-good/index.html#everything-open-all-the-time",
-    "title": "Text mining of patient experience data",
-    "section": "Everything open, all the time",
-    "text": "Everything open, all the time\n\nThis project was coded in the open and is MIT licensed\nEngage with the organisations as we find them\n\nDo they want code or a docker image?\nDo they want to fetch their own themes from an API?\nDo they want to use our dashboard?"
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#useful",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#useful",
+    "title": "What good data science looks like",
+    "section": "Useful",
+    "text": "Useful\n\nA fundamental principle is that everyone can use\nIf you can run the code, run it\nIf you can use the API, use it\nIf you just want the dashboard, use it\nCredit to the growth charts API"
   },
   {
-    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#phase-1",
-    "href": "presentations/2023-05-23_data-science-for-good/index.html#phase-1",
-    "title": "Text mining of patient experience data",
-    "section": "Phase 1",
-    "text": "Phase 1\n\n10 categories and moderate performance on criticality analysis\nscikit-learn\nShiny\nReticulate\nR package of Python code"
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#understandable",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#understandable",
+    "title": "What good data science looks like",
+    "section": "Understandable",
+    "text": "Understandable\n\nTuned to the users needs\nNot simply tuning accuracy scores\nLook at the type of mistake the model is making\nLook at the category it’s predicting\n\nWe can lose a few of common unimportant categories\nWe need to get every rare and important category"
   },
   {
-    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#golem-all-the-things",
-    "href": "presentations/2023-05-23_data-science-for-good/index.html#golem-all-the-things",
-    "title": "Text mining of patient experience data",
-    "section": "Golem all the things!",
-    "text": "Golem all the things!\n\nOpinionated way of building Shiny\nAllows flexibility in deployed versions using YAML\nAgnostic to deployment\nEmphasises dependency management and testing\nSeparate “reactive” and “business” logic (see the accompanying book)"
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#iterative",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#iterative",
+    "title": "What good data science looks like",
+    "section": "Iterative",
+    "text": "Iterative\n\nYear one\n\n10 categories\nModerate criticality performance\nNo deep learning\nWeak dashboard\nPositive evaluation"
   },
   {
-    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#phase-2",
-    "href": "presentations/2023-05-23_data-science-for-good/index.html#phase-2",
-    "title": "Text mining of patient experience data",
-    "section": "Phase 2",
-    "text": "Phase 2\n\n30-50 categories and excellent criticality performance\nscikit-learn/ BERT\nMore Shiny\nSeparate the code bases\nFastAPI\nInspired by the Royal College of Paediatrics and Child Health API\nDocumentation, documentation, documentation"
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#iterative-1",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#iterative-1",
+    "title": "What good data science looks like",
+    "section": "Iterative",
+    "text": "Iterative\n\nYear two\n\n30-50 categories\nStrong criticality performance\nDeep learning\nImproved dashboard\nWIP\n\nOverall five minor versions of algorithm and seven of dashboard"
   },
   {
-    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#making-it-useful",
-    "href": "presentations/2023-05-23_data-science-for-good/index.html#making-it-useful",
-    "title": "Text mining of patient experience data",
-    "section": "Making it useful",
-    "text": "Making it useful\n\nAccurately rating low frequency categories\nPer category precision and recall\nSpeed versus accuracy\nRepresenting the thematic structure"
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#documented",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#documented",
+    "title": "What good data science looks like",
+    "section": "Documented",
+    "text": "Documented\n\nWe’ve documented in the way you usually would\nWe were asked in year 1 to provide plain English documentation\nWe made a website with all the product details"
   },
   {
-    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#the-future",
-    "href": "presentations/2023-05-23_data-science-for-good/index.html#the-future",
-    "title": "Text mining of patient experience data",
-    "section": "The future",
-    "text": "The future\n\nOff the shelf, proprietary data collection systems dominate\nThey often offer bundled analytic products of low quality\nThe DS time can’t and doesn’t want to offer a complete data system\nHow can we best contribute to improving patient experience for patients in the NHS?\n\nIf the patient experience data won’t come to the mountain…"
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#develop-skills-of-the-staff-technical-and-otherwise",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#develop-skills-of-the-staff-technical-and-otherwise",
+    "title": "What good data science looks like",
+    "section": "Develop skills of the staff, technical and otherwise",
+    "text": "Develop skills of the staff, technical and otherwise\n\nYear one created a Python programmer\nYear two created an R/ Shiny programmer\nThe team has learned:\n\nStatic website generation\nText cleaning/ searching/ mining\nCollaborative coding practices\nWorking with and communicating with users\nLinux, databases, APIs…"
+  },
+  {
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#benefits-from-and-benefits-the-community",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#benefits-from-and-benefits-the-community",
+    "title": "What good data science looks like",
+    "section": "Benefits from, and benefits, the community",
+    "text": "Benefits from, and benefits, the community\n\nNHSBSA R Shiny template"
+  },
+  {
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#benefits-from-and-benefits-the-community-1",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#benefits-from-and-benefits-the-community-1",
+    "title": "What good data science looks like",
+    "section": "Benefits from, and benefits, the community",
+    "text": "Benefits from, and benefits, the community\n\nWe benefit and benefit from\n\nNHS-R\nNHS-Pycom\nGovernment Digital Service\nColleagues and friends"
+  },
+  {
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#open-and-reproducible",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#open-and-reproducible",
+    "title": "What good data science looks like",
+    "section": "Open and reproducible",
+    "text": "Open and reproducible\n\nOff the shelf, proprietary data collection systems dominate\nThey often offer bundled analytic products of low quality\nThe DS time can’t and doesn’t want to offer a complete data system\nHow can we best contribute to improving patient experience for patients in the NHS?\n\nIf the patient experience data won’t come to the mountain…"
   },
   {
     "objectID": "presentations/2023-05-23_data-science-for-good/index.html#open-source-ftw",
     "href": "presentations/2023-05-23_data-science-for-good/index.html#open-source-ftw",
-    "title": "Text mining of patient experience data",
+    "title": "What good data science looks like",
     "section": "Open source FTW!",
     "text": "Open source FTW!\n\nOften individuals in the NHS don’t want private companies to “benefit” from open code\nBut if they make their products better with open code the patients win\nBest practice as code"
   },
   {
-    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#the-projects",
-    "href": "presentations/2023-05-23_data-science-for-good/index.html#the-projects",
-    "title": "Text mining of patient experience data",
-    "section": "The projects",
-    "text": "The projects\n\nhttps://github.com/CDU-data-science-team/pxtextmining\nhttps://github.com/CDU-data-science-team/experiencesdashboard\nhttps://github.com/CDU-data-science-team/PatientExperience-QDC"
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#fun",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#fun",
+    "title": "What good data science looks like",
+    "section": "Fun!",
+    "text": "Fun!\n\nCombing through spreadsheets looking for one comment is not fun\nDoing things the same way you did them last year is not fun\nTrying to implement a project that is too complicated is not fun\nWorking with a diverse team with different skills is fun\nAccessing high quality documentation to understand a project better is fun*"
   },
   {
-    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#the-team",
-    "href": "presentations/2023-05-23_data-science-for-good/index.html#the-team",
-    "title": "Text mining of patient experience data",
-    "section": "The team",
-    "text": "The team\n\nYiWen Hon (Python & Machine learning)\nOluwasegun Apejoye (Shiny)\n\nContact:\n\nchris.beeley1@nhs.net\nhttps://fosstodon.org/@chrisbeeley"
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#team-and-code",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#team-and-code",
+    "title": "What good data science looks like",
+    "section": "Team and code",
+    "text": "Team and code\n\nAndreas Soteriades (Y1)\nYiWen Hon, Oluwasegun Apejoye (Y2)\npxtextmining\nexperiencesdashboard\nDocumentation\n\n\n\nchris.beeley1@nhs.net\nhttps://fosstodon.org/@chrisbeeley"
   },
   {
     "objectID": "presentations/index.html",
     "href": "presentations/index.html",
     "title": "Presentations",
     "section": "",
-    "text": "Presentations\n\nWhat is data science?\nCoffee and coding 23rd February 2023\nCoffee and coding 9th March 2023\nCoffee and coding 23rd March 2023\nCollaborative working\nText mining patient experience data"
+    "text": "Presentations\n\nWhat is data science?\nCoffee and coding 23rd February 2023\nCoffee and coding 9th March 2023\nCoffee and coding 23rd March 2023\nCollaborative working\nText mining\nWhat makes good data science?"
   },
   {
     "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#what-is-targets",
@@ -327,6 +348,90 @@
     "title": "{targets}",
     "section": "Current examples of {targets} in action",
     "text": "Current examples of {targets} in action\n\ncode used in this presentation\nNHP Inputs (all of the data processing steps are a targets pipeline)\nNHP Strategies (runs Sql scripts to update tables in the data warehouse)\nNHP Model (all of the data extraction, processing, and uploading for the model is a targets pipeline)\nMacmillan on NCDR - Jacqueline has been using {targets} for her current project\n\nThe {targets} documentation is exceptionally detailed and easy to follow, and goes into more complex examples (such as dynamic branching of steps in a pipeline and high performance computing setups)\n\n\n\nview slides at the-strategy-unit.github.io/data_science/presentations"
+  },
+  {
+    "objectID": "presentations/2023-05-15_text-mining/index.html#patient-experience",
+    "href": "presentations/2023-05-15_text-mining/index.html#patient-experience",
+    "title": "Text mining of patient experience data",
+    "section": "Patient experience",
+    "text": "Patient experience\n\nThe NHS collects a lot of patient experience data\nRate the service 1-5 (Very poor… Excellent) but also give written feedback\n\n“Parking was difficult”\n“Doctor was rude”\n“You saved my life”\n\nMany organisations lack the staffing to read all of the feedback in a systematic way"
+  },
+  {
+    "objectID": "presentations/2023-05-15_text-mining/index.html#text-mining",
+    "href": "presentations/2023-05-15_text-mining/index.html#text-mining",
+    "title": "Text mining of patient experience data",
+    "section": "Text mining",
+    "text": "Text mining\n\nWe have built an algorithm to read it\n\nTheme\n“Criticality”\n\nFits alongside other work happening within NHSE\n\nA framework for understanding patient experience"
+  },
+  {
+    "objectID": "presentations/2023-05-15_text-mining/index.html#patient-experience-101",
+    "href": "presentations/2023-05-15_text-mining/index.html#patient-experience-101",
+    "title": "Text mining of patient experience data",
+    "section": "Patient experience 101",
+    "text": "Patient experience 101\n\nTick box scoring is not useful (or accurate)\nText based data is complex and built on human experience\nWe’re not making word clouds!\nWe’re not classifying movie reviews or Reddit posts\nThe tool should enhance, not replace, human understanding\n“A recommendation engine for feedback data”"
+  },
+  {
+    "objectID": "presentations/2023-05-15_text-mining/index.html#everything-open-all-the-time",
+    "href": "presentations/2023-05-15_text-mining/index.html#everything-open-all-the-time",
+    "title": "Text mining of patient experience data",
+    "section": "Everything open, all the time",
+    "text": "Everything open, all the time\n\nThis project was coded in the open and is MIT licensed\nEngage with the organisations as we find them\n\nDo they want code or a docker image?\nDo they want to fetch their own themes from an API?\nDo they want to use our dashboard?"
+  },
+  {
+    "objectID": "presentations/2023-05-15_text-mining/index.html#phase-1",
+    "href": "presentations/2023-05-15_text-mining/index.html#phase-1",
+    "title": "Text mining of patient experience data",
+    "section": "Phase 1",
+    "text": "Phase 1\n\n10 categories and moderate performance on criticality analysis\nscikit-learn\nShiny\nReticulate\nR package of Python code"
+  },
+  {
+    "objectID": "presentations/2023-05-15_text-mining/index.html#golem-all-the-things",
+    "href": "presentations/2023-05-15_text-mining/index.html#golem-all-the-things",
+    "title": "Text mining of patient experience data",
+    "section": "Golem all the things!",
+    "text": "Golem all the things!\n\nOpinionated way of building Shiny\nAllows flexibility in deployed versions using YAML\nAgnostic to deployment\nEmphasises dependency management and testing\nSeparate “reactive” and “business” logic (see the accompanying book)"
+  },
+  {
+    "objectID": "presentations/2023-05-15_text-mining/index.html#phase-2",
+    "href": "presentations/2023-05-15_text-mining/index.html#phase-2",
+    "title": "Text mining of patient experience data",
+    "section": "Phase 2",
+    "text": "Phase 2\n\n30-50 categories and excellent criticality performance\nscikit-learn/ BERT\nMore Shiny\nSeparate the code bases\nFastAPI\nInspired by the Royal College of Paediatrics and Child Health API\nDocumentation, documentation, documentation"
+  },
+  {
+    "objectID": "presentations/2023-05-15_text-mining/index.html#making-it-useful",
+    "href": "presentations/2023-05-15_text-mining/index.html#making-it-useful",
+    "title": "Text mining of patient experience data",
+    "section": "Making it useful",
+    "text": "Making it useful\n\nAccurately rating low frequency categories\nPer category precision and recall\nSpeed versus accuracy\nRepresenting the thematic structure"
+  },
+  {
+    "objectID": "presentations/2023-05-15_text-mining/index.html#the-future",
+    "href": "presentations/2023-05-15_text-mining/index.html#the-future",
+    "title": "Text mining of patient experience data",
+    "section": "The future",
+    "text": "The future\n\nOff the shelf, proprietary data collection systems dominate\nThey often offer bundled analytic products of low quality\nThe DS time can’t and doesn’t want to offer a complete data system\nHow can we best contribute to improving patient experience for patients in the NHS?\n\nIf the patient experience data won’t come to the mountain…"
+  },
+  {
+    "objectID": "presentations/2023-05-15_text-mining/index.html#open-source-ftw",
+    "href": "presentations/2023-05-15_text-mining/index.html#open-source-ftw",
+    "title": "Text mining of patient experience data",
+    "section": "Open source FTW!",
+    "text": "Open source FTW!\n\nOften individuals in the NHS don’t want private companies to “benefit” from open code\nBut if they make their products better with open code the patients win\nBest practice as code"
+  },
+  {
+    "objectID": "presentations/2023-05-15_text-mining/index.html#the-projects",
+    "href": "presentations/2023-05-15_text-mining/index.html#the-projects",
+    "title": "Text mining of patient experience data",
+    "section": "The projects",
+    "text": "The projects\n\nhttps://github.com/CDU-data-science-team/pxtextmining\nhttps://github.com/CDU-data-science-team/experiencesdashboard\nhttps://github.com/CDU-data-science-team/PatientExperience-QDC"
+  },
+  {
+    "objectID": "presentations/2023-05-15_text-mining/index.html#the-team",
+    "href": "presentations/2023-05-15_text-mining/index.html#the-team",
+    "title": "Text mining of patient experience data",
+    "section": "The team",
+    "text": "The team\n\nYiWen Hon (Python & Machine learning)\nOluwasegun Apejoye (Shiny)\n\nContact:\n\nchris.beeley1@nhs.net\nhttps://fosstodon.org/@chrisbeeley"
   },
   {
     "objectID": "presentations/2023-03-23_collaborative-working/index.html#introduction",

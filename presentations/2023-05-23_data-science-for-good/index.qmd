@@ -8,16 +8,13 @@ format: revealjs
 
 ## Data science should be... 
 
-* Help people to do their jobs 
-* Reflect what users want
 * Useful
 * Understandable
 * Iterative
+* Documented
 * Develop the skills of the staff, technical and otherwise
 * Open and reproducible
-* Fun
-* Documented
-* Benefits from, and benefits, the community
+* Fun!
 
 ## Patient experience
 
@@ -79,7 +76,55 @@ format: revealjs
     * Improved dashboard
     * WIP
 * Overall five minor versions of algorithm and seven of dashboard
+
+## Documented
+
+* We've documented in the way you usually would
+* We were asked in year 1 to provide plain English documentation
+* We made [a website](https://cdu-data-science-team.github.io/PatientExperience-QDC/) with all the product details
+
+## Develop skills of the staff, technical and otherwise
+
+* Year one created a Python programmer
+* Year two created an R/ Shiny programmer
+* The team has learned: 
+    * Static website generation
+    * Text cleaning/ searching/ mining
+    * Collaborative coding practices
+    * Working with and communicating with users
+    * Linux, databases, APIs...
     
 ## Benefits from, and benefits, the community
 
 ![[NHSBSA R Shiny template](https://github.com/nhsbsa-data-analytics/nhsbsaShinyR)](golem.png)
+
+## Benefits from, and benefits, the community
+
+* We benefit and benefit from
+    * NHS-R
+    * NHS-Pycom
+    * Government Digital Service
+    * Colleagues and friends
+
+## Open and reproducible
+
+* Off the shelf, proprietary data collection systems dominate
+* They often offer bundled analytic products of low quality
+* The DS time can't and doesn't want to offer a complete data system
+* How can we best contribute to improving patient experience for patients in the NHS?
+    * If the patient experience data won't come to the mountain...
+
+## Open source FTW!
+
+* Often individuals in the NHS don't want private companies to "benefit" from open code
+* But if they make their products better with open code the patients win
+* [Best practice as code](https://www.rcpch.ac.uk/news-events/news/royal-colleges-30-best-practice-code)
+
+## Fun!
+
+* Combing through spreadsheets looking for one comment is not fun
+* Doing things the same way you did them last year is not fun
+* Trying to implement a project that is too complicated is not fun
+
+* Working with a diverse team with different skills is fun
+* Accessing high quality documentation to understand a project better is fun*

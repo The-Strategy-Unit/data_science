@@ -8,15 +8,16 @@ format: revealjs
 
 ## Data science should be... 
 
-* Useful
 * Help people to do their jobs 
-* Solve a real problem
-* Open and reproducible
-* Understandable 
-* Tuned to the users needs
 * Reflect what users want
+* Useful
+* Understandable
+* Iterative
+* Develop the skills of the staff, technical and otherwise
+* Open and reproducible
 * Fun
-* Develop the skills of the staff, technical and otherwise 
+* Documented
+* Benefits from, and benefits, the community
 
 ## Patient experience
 
@@ -26,6 +27,7 @@ format: revealjs
     * "Doctor was rude"
     * "You saved my life"
 * Many organisations lack the staffing to read all of the feedback in a systematic way
+* Produce an algorithm to rate theme and "criticality"
 
 ## Help people to do their jobs
 
@@ -36,15 +38,48 @@ format: revealjs
 * The tool should enhance, not replace, human understanding
 * "A recommendation engine for feedback data"
 
-## Useful 
+## Reflect what users want
 
 * I have worked with this data since before it existed 
 * I came to realise that people were struggling to read all of their data 
 * Fits alongside other work happening within NHSE
     * A framework for understanding patient experience
 
-## Open and reproducible 
+## Useful
 
 * A fundamental principle is that everyone can use
 * If you can run the code, run it
 * If you can use the API, use it 
+* If you just want the dashboard, use it
+
+## Understandable
+
+* Tuned to the users needs
+* Not simply tuning accuracy scores
+* Look at the type of mistake the model is making
+* Look at the category it's predicting
+    * We can lose a few of common unimportant categories 
+    * We need to get every rare and important category
+    
+## Iterative
+
+* Year one
+    * 10 categories
+    * Moderate criticality performance
+    * No deep learning
+    * Weak dashboard
+    * Positive evaluation
+    
+## Iterative
+
+* Year two
+    * 30-50 categories
+    * Strong criticality performance
+    * Deep learning
+    * Improved dashboard
+    * WIP
+* Overall five minor versions of algorithm and seven of dashboard
+    
+## Benefits from, and benefits, the community
+
+![[NHSBSA R Shiny template](https://github.com/nhsbsa-data-analytics/nhsbsaShinyR)](golem.png)

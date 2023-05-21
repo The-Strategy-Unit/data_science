@@ -6,16 +6,6 @@ date-format: "MMM D, YYYY"
 format: revealjs
 ---
 
-## Data science should be... 
-
-* Useful
-* Understandable
-* Iterative
-* Documented
-* Develop the skills of the staff, technical and otherwise
-* Open and reproducible
-* Fun!
-
 ## Patient experience
 
 * The NHS collects a lot of patient experience data
@@ -28,11 +18,10 @@ format: revealjs
 
 ## Help people to do their jobs
 
-* Tick box scoring is not useful (or accurate)
 * Text based data is _complex_ and built on _human experience_
-* We're not making word clouds!
-* We're not classifying movie reviews or Reddit posts
 * The tool should enhance, not replace, human understanding
+* Enhancing search and filtering
+    * If they read 100 comments today, which should they read?
 * "A recommendation engine for feedback data"
 
 ## Reflect what users want
@@ -48,6 +37,7 @@ format: revealjs
 * If you can run the code, run it
 * If you can use the API, use it 
 * If you just want the dashboard, use it
+* Credit to the [growth charts API](https://www.rcpch.ac.uk/resources/growth-charts/digital/about)
 
 ## Understandable
 
@@ -128,3 +118,17 @@ format: revealjs
 
 * Working with a diverse team with different skills is fun
 * Accessing high quality documentation to understand a project better is fun*
+
+## Team and code
+
+* Andreas Soteriades (Y1)
+* YiWen Hon, Oluwasegun Apejoye (Y2)
+
+* [pxtextmining](https://github.com/CDU-data-science-team/pxtextmining)
+* [experiencesdashboard](https://github.com/CDU-data-science-team/experiencesdashboard)
+* [Documentation](https://github.com/CDU-data-science-team/PatientExperience-QDC)
+
+<hr>
+
+* chris.beeley1@nhs.net
+* https://fosstodon.org/@chrisbeeley

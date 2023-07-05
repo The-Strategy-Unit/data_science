@@ -7,3 +7,4 @@
 - [Collaborative working](/presentations/2023-03-23_collaborative-working)
 - [Text mining](/presentations/2023-05-15_text-mining)
 - [What makes good data science?](/presentations/2023-05-23_data-science-for-good)
+- [HACA 2023 - New Hospital Demand Model](/presentations/2023-07-11_haca-nhp-demand-model)

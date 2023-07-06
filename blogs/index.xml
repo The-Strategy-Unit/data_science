@@ -9,7 +9,7 @@
 <link>https://the-strategy-unit.github.io/data_science/blogs/index.html</link>
 <atom:link href="https://the-strategy-unit.github.io/data_science/blogs/index.xml" rel="self" type="application/rss+xml"/>
 <description>Blogs from the Data Science Team at The Strategy Unit</description>
-<generator>quarto-1.3.353</generator>
+<generator>quarto-1.3.433</generator>
 <lastBuildDate>Wed, 26 Apr 2023 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Reinstalling R Packages</title>

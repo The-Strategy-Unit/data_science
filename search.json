@@ -728,18 +728,39 @@
     "text": "The team\n\nYiWen Hon (Python & Machine learning)\nOluwasegun Apejoye (Shiny)\n\nContact:\n\nchris.beeley1@nhs.net\nhttps://fosstodon.org/@chrisbeeley"
   },
   {
+    "objectID": "presentations/2023-07-11_haca-nhp-demand-model/index.html#the-team",
+    "href": "presentations/2023-07-11_haca-nhp-demand-model/index.html#the-team",
+    "title": "An Introduction to the New Hospital Programme Demand Model",
+    "section": "The team",
+    "text": "The team"
+  },
+  {
+    "objectID": "presentations/2023-07-11_haca-nhp-demand-model/index.html#a-hospital-is-a-place-where-you-can-find-people",
+    "href": "presentations/2023-07-11_haca-nhp-demand-model/index.html#a-hospital-is-a-place-where-you-can-find-people",
+    "title": "An Introduction to the New Hospital Programme Demand Model",
+    "section": "A hospital is a place where you can find people…",
+    "text": "A hospital is a place where you can find people…\n\n\nhaving the best day of their life,\nthe worst day of their life,\nthe first day of their life,\nand the last day of their life."
+  },
+  {
     "objectID": "presentations/2023-07-11_haca-nhp-demand-model/index.html#planning-is-hard",
     "href": "presentations/2023-07-11_haca-nhp-demand-model/index.html#planning-is-hard",
     "title": "An Introduction to the New Hospital Programme Demand Model",
     "section": "Planning is hard",
-    "text": "Planning is hard\n\nBBC article"
+    "text": "Planning is hard\n\n\n\n\n\n\n\n\n\nbuilt with enough capacity to replace the existing school\nfailed to take into account a new housing estate\nlikely needs double the number of spaces within the next decade\n\nBBC article"
   },
   {
     "objectID": "presentations/2023-07-11_haca-nhp-demand-model/index.html#review-of-existing-models",
     "href": "presentations/2023-07-11_haca-nhp-demand-model/index.html#review-of-existing-models",
     "title": "An Introduction to the New Hospital Programme Demand Model",
     "section": "Review of existing models",
-    "text": "Review of existing models\n\nS.Wyatt - NHS-R 2022\n\n\nlots of models\nlots of external consultancies\nlots of similarities\n\n\n\n\nlots of repetition/duplication\nsufficiently different that comparing results is difficult\nmethodological progress slow\nno base to build from\n\n\n\nconsultancies don’t tend to offer products, but services\ndifficult to compare different models to understand if differences are methodological or due to assumptions\nsame issues seen 20/30 years ago\nlearning and expertise gathered tends to be trapped within trusts, or kept secret by consultancies"
+    "text": "Review of existing models\n\nSteven Wyatt - NHS-R 2022"
+  },
+  {
+    "objectID": "presentations/2023-07-11_haca-nhp-demand-model/index.html#review-of-existing-models-1",
+    "href": "presentations/2023-07-11_haca-nhp-demand-model/index.html#review-of-existing-models-1",
+    "title": "An Introduction to the New Hospital Programme Demand Model",
+    "section": "Review of existing models",
+    "text": "Review of existing models\n\nlots of models\nlots of external consultancies\nlots of similarities\n\n\n\nlots of repetition/duplication\nsufficiently different that comparing results is difficult\nmethodological progress slow\nno base to build from\n\n\n\nconsultancies don’t tend to offer products, but services\ndifficult to compare different models to understand if differences are methodological or due to assumptions\nsame issues seen 20/30 years ago\nlearning and expertise gathered tends to be trapped within trusts, or kept secret by consultancies"
   },
   {
     "objectID": "presentations/2023-07-11_haca-nhp-demand-model/index.html#common-issues",
@@ -756,60 +777,60 @@
     "text": "Our model\n\nopen source (not quite yet…)\nuses standard, well-known datasets (e.g. HES, ONS population projections)\ncurrently handles Inpatient admissions, Outpatient attendances, and A&E arrivals\nextensible and adaptable\ncovering all of the change factors\nstochastic Monte-Carlo model to handle uncertainty"
   },
   {
-    "objectID": "presentations/2023-07-11_haca-nhp-demand-model/index.html#structure",
-    "href": "presentations/2023-07-11_haca-nhp-demand-model/index.html#structure",
+    "objectID": "presentations/2023-07-11_haca-nhp-demand-model/index.html#project-structure",
+    "href": "presentations/2023-07-11_haca-nhp-demand-model/index.html#project-structure",
     "title": "An Introduction to the New Hospital Programme Demand Model",
-    "section": "Structure",
-    "text": "Structure\n\n\n\nData Extraction (R + {targets} & Sql)\nInputs App (R + {shiny})\nOutputs App (R + {shiny})\nModel Engine (Python & Docker)\nAzure Infrastructure (VM/ACR/ACI/Storage Accounts)\nAll of the code is stored on GitHub (currently, private repos 😔)\n\n\n\n\n\n\nflowchart TB\n  classDef orange fill:#f9bf07,stroke:#2c2825,color:#2c2825;\n  classDef lightslate fill:#b2b7b9,stroke:#2c2825,color:#2c2825;\n\n  A[Data Extraction]\n  B[Inputs App]\n  C[Model]\n  D[Outputs App]\n\n\n  SB[(input app data)]\n  SC[(model data)]\n  SD[(results data)]\n\n  A ---&gt; SB\n  A ---&gt; SC\n  \n  SB ---&gt; B\n  SC ---&gt; C\n\n  B ---&gt; C\n\n  C ---&gt; SD\n  SD ---&gt; D\n\n  B -.-&gt; D\n\n  class A,B,C,D orange\n  class SB,SC,SD lightslate"
+    "section": "Project Structure",
+    "text": "Project Structure\n\n\n\nData Extraction (R + {targets} & Sql)\nInputs App (R + {shiny})\nOutputs App (R + {shiny})\nModel Engine (Python & Docker)\nAzure Infrastructure (VM/ACR/ACI/Storage Accounts)\nAll of the code is stored on GitHub (currently, private repos 😔)\n\n\n\n\n\n\nflowchart TB\n  classDef orange fill:#f9bf07,stroke:#2c2825,color:#2c2825;\n  classDef lightslate fill:#b2b7b9,stroke:#2c2825,color:#2c2825;\n\n  A[Data Extraction]\n  B[Inputs App]\n  C[Model]\n  D[Outputs App]\n\n\n  SB[(input app data)]\n  SC[(model data)]\n  SD[(results data)]\n\n  A ---&gt; SB\n  A ---&gt; SC\n  \n  SB ---&gt; B\n  SC ---&gt; C\n\n  B ---&gt; C\n\n  C ---&gt; SD\n  SD ---&gt; D\n\n  B -.-&gt; D\n\n  class A,B,C,D orange\n  class SB,SC,SD lightslate"
   },
   {
     "objectID": "presentations/2023-07-11_haca-nhp-demand-model/index.html#model-overview",
     "href": "presentations/2023-07-11_haca-nhp-demand-model/index.html#model-overview",
     "title": "An Introduction to the New Hospital Programme Demand Model",
     "section": "Model Overview",
-    "text": "Model Overview\n\nthe baseline data is a year worth of a provider’s HES data (IP/OP/A&E)\neach row in the baseline data is run through a series of steps\neach step creates a factor that says how many times (on average) to sample that row\nall of the factors are multiplied together, and these values are used to create a random Poisson value\nthe rows from the baseline are then resampled using this random value\nefficiencies are then applied, e.g. LoS reductions, type conversions\na standard set of aggregations are applied to the results, and these aggregations are saved\n\n\n\ncomplex, but not complicated"
+    "text": "Model Overview\n\nthe baseline data is a year worth of a provider’s HES data\neach row in the baseline data is run through a series of steps\neach step creates a factor that says how many times (on average) to sample that row\nthe factors are multiplied together and used to create a random Poisson value\nwe resample the rows using this random values\nefficiencies are then applied, e.g. LoS reductions, type conversions\n\n\n\nIP/OP/A&E data\ncomplex, but not complicated"
   },
   {
     "objectID": "presentations/2023-07-11_haca-nhp-demand-model/index.html#model-diagram",
     "href": "presentations/2023-07-11_haca-nhp-demand-model/index.html#model-diagram",
     "title": "An Introduction to the New Hospital Programme Demand Model",
     "section": "Model Diagram",
-    "text": "Model Diagram\n\n\n\n\nflowchart TB\n    classDef blue fill:#5881c1,stroke:#2c2825,color:#2c2825;\n    classDef orange fill:#f9bf07,stroke:#2c2825,color:#2c2825;\n    classDef red fill:#ec6555,stroke:#2c2825,color:#2c2825;\n    classDef lightslate fill:#b2b7b9,stroke:#2c2825,color:#2c2825;\n    classDef slate fill:#e0e2e3,stroke:#2c2825,color:#2c2825;\n\n    S[Baseline Activity]\n    T[Future Activity]\n    C[Future Capacity]\n\n    class S,T,C red\n\n    subgraph rr[Row Resampling]\n        direction LR\n\n        subgraph pop[Population Changes]\n            direction TB\n            pop_p[Population Growth]\n            pop_a[Age/Sex Structure]\n            pop_h[Population Specific Health Status]\n\n            class pop_p,pop_a,pop_h orange\n\n            pop_p --- pop_a --- pop_h\n        end\n\n        subgraph dsi[Demand Supply Imbalances]\n            direction TB\n            dsi_w[Waiting List Adjustment]\n            dsi_r[Repatriation/Expatriation]\n            dsi_p[Private Healthcare Dynamics]\n\n            class dsi_w,dsi_r orange\n            class dsi_p blue\n\n            dsi_w --- dsi_r --- dsi_p\n        end\n\n        subgraph nsi[Need Supply Imbalances]\n            direction TB\n            nsi_g[Gaps in Care]\n            nsi_i[Inequalities]\n            nsi_t[Threshold Imbalances]\n\n            class nsi_g,nsi_i,nsi_t blue\n\n            nsi_g --- nsi_i --- nsi_t\n        end\n\n        subgraph nda [Non-Demographic Adjustment]\n            direction TB\n            nda_m[Medical Interventions]\n            nda_c[Changes to National Standards]\n            nda_p[Patient Expectations]\n\n            class nda_m,nda_c,nda_p blue\n\n            nda_m --- nda_c --- nda_p\n        end\n\n        subgraph mit[Activity Mitigators]\n            direction TB\n            mit_a[Activity Avoidance]\n            mit_t[Type Conversion]\n            mit_e[Efficiencies]\n            \n            class mit_a,mit_t,mit_e orange\n\n            mit_a --- mit_t --- mit_e\n        end\n\n        pop --- dsi --- nsi --- nda --- mit\n\n        class dsi,nsi,pop,nda,mit lightslate\n    end\n\n    class rr slate\n\n    subgraph cap[Capacity Conversion]\n        direction TB\n        cap_o[Occupancy Rates]\n        cap_r[Resource Availability]\n\n        class cap_o,cap_r orange\n    end\n\n    class cap lightslate\n    \n    S --&gt; rr --&gt; T\n    T --&gt; cap --&gt; C\n\n\n\n\n\n\n\nuses either patient-level data, or minimal aggregation\nrow resampling grouped into 5 broad groups\n\npopulation changes address the changes to the structure of the population and health status over the medium term\ndemand supply imbalances: hospitals are currently struggling to keep pace with demand, so we correct for this to not carry forwards these into the future\nneed supply imbalance: addressing gaps in care that currently exist\nnon-demographic: such as the development of new medical technologies\nactivity mitigators: strategies trusts adopt for reducing activity, or delivering activity more efficiently\n\nsome assumptions set nationally, such as population growth via ONS population projections\nother assumptions set locally, with support from a Shiny app"
+    "text": "Model Diagram\n\n\n\n\nflowchart TB\n    classDef blue fill:#5881c1,stroke:#2c2825,color:#2c2825;\n    classDef orange fill:#f9bf07,stroke:#2c2825,color:#2c2825;\n    classDef red fill:#ec6555,stroke:#2c2825,color:#2c2825;\n    classDef lightslate fill:#b2b7b9,stroke:#2c2825,color:#2c2825;\n    classDef slate fill:#e0e2e3,stroke:#2c2825,color:#2c2825;\n\n    S[Baseline Activity]\n    T[Future Activity]\n\n    class S,T red\n\n    subgraph rr[Row Resampling]\n        direction LR\n\n        subgraph pop[Population Changes]\n            direction TB\n            pop_p[Population Growth]\n            pop_a[Age/Sex Structure]\n            pop_h[Population Specific Health Status]\n\n            class pop_p,pop_a,pop_h orange\n\n            pop_p --- pop_a --- pop_h\n        end\n\n        subgraph dsi[Demand Supply Imbalances]\n            direction TB\n            dsi_w[Waiting List Adjustment]\n            dsi_r[Repatriation/Expatriation]\n            dsi_p[Private Healthcare Dynamics]\n\n            class dsi_w,dsi_r orange\n            class dsi_p blue\n\n            dsi_w --- dsi_r --- dsi_p\n        end\n\n        subgraph nsi[Need Supply Imbalances]\n            direction TB\n            nsi_g[Gaps in Care]\n            nsi_i[Inequalities]\n            nsi_t[Threshold Imbalances]\n\n            class nsi_g,nsi_i,nsi_t blue\n\n            nsi_g --- nsi_i --- nsi_t\n        end\n\n        subgraph nda [Non-Demographic Adjustment]\n            direction TB\n            nda_m[Medical Interventions]\n            nda_c[Changes to National Standards]\n            nda_p[Patient Expectations]\n\n            class nda_m,nda_c,nda_p blue\n\n            nda_m --- nda_c --- nda_p\n        end\n\n        subgraph mit[Activity Mitigators]\n            direction TB\n            mit_a[Activity Avoidance]\n            mit_t[Type Conversion]\n            mit_e[Efficiencies]\n            \n            class mit_a,mit_t,mit_e orange\n\n            mit_a --- mit_t --- mit_e\n        end\n\n        pop --- dsi --- nsi --- nda --- mit\n\n        class dsi,nsi,pop,nda,mit lightslate\n    end\n\n    class rr slate\n    \n    S --&gt; rr --&gt; T\n\n\n\n\n\n\n\nuses either patient-level data, or minimal aggregation\nrow resampling grouped into 5 broad groups\n\npopulation changes address the changes to the structure of the population and health status over the medium term\ndemand supply imbalances: hospitals are currently struggling to keep pace with demand, so we correct for this to not carry forwards these into the future\nneed supply imbalance: addressing gaps in care that currently exist\nnon-demographic: such as the development of new medical technologies\nactivity mitigators: strategies trusts adopt for reducing activity, or delivering activity more efficiently\n\nsome assumptions set nationally, such as population growth via ONS population projections\nother assumptions set locally, with support from a Shiny app"
   },
   {
     "objectID": "presentations/2023-07-11_haca-nhp-demand-model/index.html#monte-carlo-simulation",
     "href": "presentations/2023-07-11_haca-nhp-demand-model/index.html#monte-carlo-simulation",
     "title": "An Introduction to the New Hospital Programme Demand Model",
     "section": "Monte Carlo Simulation",
-    "text": "Monte Carlo Simulation\n\nWe run the model N times, varying the input parameters each time slightly to handle the uncertainty.\nThe model is run with the same baseline data each time\nThe results of the model are aggregated at the end of each model run\nThe aggregated results are combined at the end into a single file\n\n\n\n\n\nflowchart LR\n  classDef orange fill:#f9bf07,stroke:#2c2825,color:#2c2825;\n  classDef red fill:#ec6555,stroke:#2c2825,color:#2c2825;\n  \n  A[Baseline Activity]\n  Ba[Model Run 0]\n  Bb[Model Run 1]\n  Bc[Model Run 2]\n  Bd[Model Run 3]\n  Bn[Model Run n]\n  C[Results]\n\n  A ---&gt; Ba ---&gt; C\n  A ---&gt; Bb ---&gt; C\n  A ---&gt; Bc ---&gt; C\n  A ---&gt; Bd ---&gt; C\n  A ---&gt; Bn ---&gt; C\n  \n  class A,C red\n  class Ba,Bb,Bc,Bd,Bn orange\n  \n\n\n\n\n\nInspired by the ideas of MapReduce (Google, 2004) and Split, Apply, Combine (H. Wickham, 2011)."
+    "text": "Monte Carlo Simulation\n\n\n\nWe run the model N times, varying the input parameters each time slightly to handle the uncertainty.\nThe results of the model are aggregated at the end of each model run\nThe aggregated results are combined at the end into a single file\n\n\n\n\n\n\nflowchart LR\n  classDef orange fill:#f9bf07,stroke:#2c2825,color:#2c2825;\n  classDef red fill:#ec6555,stroke:#2c2825,color:#2c2825;\n  \n  A[Baseline Activity]\n  Ba[Model Run 0]\n  Bb[Model Run 1]\n  Bc[Model Run 2]\n  Bd[Model Run 3]\n  Bn[Model Run n]\n  C[Results]\n\n  A ---&gt; Ba ---&gt; C\n  A ---&gt; Bb ---&gt; C\n  A ---&gt; Bc ---&gt; C\n  A ---&gt; Bd ---&gt; C\n  A ---&gt; Bn ---&gt; C\n  \n  class A,C red\n  class Ba,Bb,Bc,Bd,Bn orange\n  \n\n\n\n\n\n\nInspired by\n\nMapReduce (Google, 2004)\nSplit, Apply, Combine (H. Wickham, 2011)"
   },
   {
     "objectID": "presentations/2023-07-11_haca-nhp-demand-model/index.html#model-parameters",
     "href": "presentations/2023-07-11_haca-nhp-demand-model/index.html#model-parameters",
     "title": "An Introduction to the New Hospital Programme Demand Model",
     "section": "Model Parameters",
-    "text": "Model Parameters\n\n\n\nWe ask users to provide parameters (for the most part) in the form of 90% confidence intervals\nWe can then convert these confidence intervals into distributions\nDuring the model we sample values from these distributions for each model parameter\nAll of the parameters represent the average rate to sample a row of data from the baseline\n\n1 means sample the row as often as in the baseline\n0.9 would be a 10% reduction\n1.1 would be a 10% increase"
+    "text": "Model Parameters\n\nWe ask users to provide parameters in the form of 90% confidence intervals\nWe can then convert these confidence intervals into distributions\nDuring the model we sample values from these distributions for each model parameter\nAll of the parameters represent the average rate to sample a row of data from the baseline"
   },
   {
     "objectID": "presentations/2023-07-11_haca-nhp-demand-model/index.html#model-parameters-1",
     "href": "presentations/2023-07-11_haca-nhp-demand-model/index.html#model-parameters-1",
     "title": "An Introduction to the New Hospital Programme Demand Model",
     "section": "Model Parameters",
-    "text": "Model Parameters\n\n\n\nWe ask users to provide parameters (for the most part) in the form of 90% confidence intervals (grey highlighted section)\nWe can then convert these confidence intervals into distributions (black line)\nDuring the model we sample values from these distributions for each model parameter (yellow points)\nAll of the parameters represent the average rate to sample a row of data from the baseline\n\n1 means sample the row as often as in the baseline\n0.9 would be a 10% reduction\n1.1 would be a 10% increase\n\n\n\n\n“We expect in the future to see between a 25% reduction and a 25% increase in this activity”"
+    "text": "Model Parameters\n\n“We expect in the future to see between a 25% reduction and a 25% increase in this activity”\n\n\n\n\ngrey highlighted section: 90% confidence intervals\nblack line: confidence intervals into distributions\nyellow points: sampled parameter for a model run"
   },
   {
     "objectID": "presentations/2023-07-11_haca-nhp-demand-model/index.html#model-parameters-2",
     "href": "presentations/2023-07-11_haca-nhp-demand-model/index.html#model-parameters-2",
     "title": "An Introduction to the New Hospital Programme Demand Model",
     "section": "Model Parameters",
-    "text": "Model Parameters\n\n\n\nWe ask users to provide parameters (for the most part) in the form of 90% confidence intervals (grey highlighted section)\nWe can then convert these confidence intervals into distributions (black line)\nDuring the model we sample values from these distributions for each model parameter (yellow points)\nAll of the parameters represent the average rate to sample a row of data from the baseline\n\n1 means sample the row as often as in the baseline\n0.9 would be a 10% reduction\n1.1 would be a 10% increase\n\n\n\n\n“We expect in the future to see between a 20% reduction and a 90% reduction in this activity”"
+    "text": "Model Parameters\n\n“We expect in the future to see between a 20% reduction and a 90% reduction in this activity”\n\n\n\n\ngrey highlighted section: 90% confidence intervals\nblack line: confidence intervals into distributions\nyellow points: sampled parameter for a model run"
   },
   {
     "objectID": "presentations/2023-07-11_haca-nhp-demand-model/index.html#model-parameters-3",
     "href": "presentations/2023-07-11_haca-nhp-demand-model/index.html#model-parameters-3",
     "title": "An Introduction to the New Hospital Programme Demand Model",
     "section": "Model Parameters",
-    "text": "Model Parameters\n\n\n\nWe ask users to provide parameters (for the most part) in the form of 90% confidence intervals (grey highlighted section)\nWe can then convert these confidence intervals into distributions (black line)\nDuring the model we sample values from these distributions for each model parameter (yellow points)\nAll of the parameters represent the average rate to sample a row of data from the baseline\n\n1 means sample the row as often as in the baseline\n0.9 would be a 10% reduction\n1.1 would be a 10% increase\n\n\n\n\n“We expect in the future to see between a 2% reduction and an 18% reduction in this activity”"
+    "text": "Model Parameters\n\n“We expect in the future to see between a 2% reduction and an 18% reduction in this activity”\n\n\n\n\ngrey highlighted section: 90% confidence intervals\nblack line: confidence intervals into distributions\nyellow points: sampled parameter for a model run"
   },
   {
     "objectID": "presentations/2023-07-11_haca-nhp-demand-model/index.html#model-run-example-1",
@@ -844,21 +865,35 @@
     "href": "presentations/2023-07-11_haca-nhp-demand-model/index.html#model-run-example-5",
     "title": "An Introduction to the New Hospital Programme Demand Model",
     "section": "Model Run Example (5)",
-    "text": "Model Run Example (5)\n\n\n\n\n\nid\nage\nsex\nspecialty\nlos\ng\n\n\n\n\n1\n50\nm\n100\n4\n0.75\n\n\n3\n51\nm\n120\n5\n0.50\n\n\n3\n51\nm\n120\n5\n1.00\n\n\n4\n50\nf\n100\n1\n0.90\n\n\n6\n52\nf\n120\n0\n0.80\n\n\n6\n52\nf\n120\n0\n0.80\n\n\n6\n52\nf\n120\n0\n0.80\n\n\n\n\n\n\n\nid\nage\nsex\nspecialty\nlos\n\n\n\n\n1\n50\nm\n100\n2\n\n\n3\n51\nm\n120\n1\n\n\n3\n51\nm\n120\n5\n\n\n4\n50\nf\n100\n0\n\n\n6\n52\nf\n120\n0\n\n\n6\n52\nf\n120\n0\n\n\n6\n52\nf\n120\n0\n\n\n\n\n\n\nAfter resampling has been performed, we apply efficiencies to reduce the length of stay. Similar joins are used to create column g, which is then used to sample a new LOS from a binomial distribution."
+    "text": "Model Run Example (5)\n\n\n\n\n\nid\nage\nsex\nspecialty\nlos\ng\n\n\n\n\n1\n50\nm\n100\n4\n0.75\n\n\n3\n51\nm\n120\n5\n0.50\n\n\n3\n51\nm\n120\n5\n1.00\n\n\n4\n50\nf\n100\n1\n0.90\n\n\n6\n52\nf\n120\n0\n0.80\n\n\n6\n52\nf\n120\n0\n0.80\n\n\n6\n52\nf\n120\n0\n0.80\n\n\n\n\n\n\n\nid\nage\nsex\nspecialty\nlos\n\n\n\n\n1\n50\nm\n100\n2\n\n\n3\n51\nm\n120\n1\n\n\n3\n51\nm\n120\n5\n\n\n4\n50\nf\n100\n0\n\n\n6\n52\nf\n120\n0\n\n\n6\n52\nf\n120\n0\n\n\n6\n52\nf\n120\n0\n\n\n\n\n\n\nAfter resampling, we apply efficiency steps. E.g., similar joins are used to create column g, which is then used to sample a new LOS from a binomial distribution."
   },
   {
     "objectID": "presentations/2023-07-11_haca-nhp-demand-model/index.html#how-the-model-is-built",
     "href": "presentations/2023-07-11_haca-nhp-demand-model/index.html#how-the-model-is-built",
     "title": "An Introduction to the New Hospital Programme Demand Model",
     "section": "How the model is built",
-    "text": "How the model is built\n\nThe model is built in Python and can be run on any machine you can install Python on\nUses various packages, such as numpy and pandas\nReads data in .parquet format for efficiency\nReturns aggregated results as a .json file\nCould also output full row level results if needed\n\n\n\nCode is built in a modular approach\nEach activity type (Inpatients/Outpatients/A&E) has its own model code\nCode is reused where possible (e.g. all three models share the code for demographic adjustment)\n\n\n\n\nDeployed as a Docker Container\nRuns in Azure Container Instances\nEach model run creates a new container, and the container is destroyed when the model run completes"
+    "text": "How the model is built\n\nThe model is built in Python and can be run on any machine you can install Python on\nUses various packages, such as numpy and pandas\nReads data in .parquet format for efficiency\nReturns aggregated results as a .json file\nCould also output full row level results if needed"
+  },
+  {
+    "objectID": "presentations/2023-07-11_haca-nhp-demand-model/index.html#how-the-model-is-built-1",
+    "href": "presentations/2023-07-11_haca-nhp-demand-model/index.html#how-the-model-is-built-1",
+    "title": "An Introduction to the New Hospital Programme Demand Model",
+    "section": "How the model is built",
+    "text": "How the model is built\n\nCode is built in a modular approach\nEach activity type (Inpatients/Outpatients/A&E) has its own model code\nCode is reused where possible (e.g. all three models share the code for demographic adjustment)"
+  },
+  {
+    "objectID": "presentations/2023-07-11_haca-nhp-demand-model/index.html#how-the-model-is-deployed",
+    "href": "presentations/2023-07-11_haca-nhp-demand-model/index.html#how-the-model-is-deployed",
+    "title": "An Introduction to the New Hospital Programme Demand Model",
+    "section": "How the model is deployed",
+    "text": "How the model is deployed\n\nDeployed as a Docker Container\nRuns in Azure Container Instances\nEach model run creates a new container, and the container is destroyed when the model run completes"
   },
   {
     "objectID": "presentations/2023-07-11_haca-nhp-demand-model/index.html#data-extraction",
     "href": "presentations/2023-07-11_haca-nhp-demand-model/index.html#data-extraction",
     "title": "An Introduction to the New Hospital Programme Demand Model",
     "section": "Data Extraction",
-    "text": "Data Extraction\n\n\n\nUses principles of RAP\nAll of the data required to run the model, including reference data\nData is extracted from various sources\n\nSql Datawarehouse (HES data)\nONS population projections + life expectancy tables\nCentral returns, e.g. KH03\nODS data (organisation names, successors)\n\nExtracted data is uploaded to Azure storage container\nAll steps are codified, only human interaction needed is to run the pipeline with targets::tar_make()\n\n\n\n\nexample of {targets}:\nlist(\n  tar_target(a, get_data()),\n  tar_target(b, summarise(a))\n)\n\nequivalent of\na &lt;- get_data()\nb &lt;- summarise(a)"
+    "text": "Data Extraction\n\nUses principles of RAP, using R + {targets} and Sql\nAll of the data required to run the model\nData is extracted from various sources\n\nSql Datawarehouse (HES data)\nONS population projections + life expectancy tables\nCentral returns, e.g. KH03\nODS data (organisation names, successors)\n\nExtracted data is uploaded to Azure storage containers"
   },
   {
     "objectID": "presentations/2023-07-11_haca-nhp-demand-model/index.html#inputs-app",
@@ -893,7 +928,7 @@
     "href": "presentations/2023-07-11_haca-nhp-demand-model/index.html#questions",
     "title": "An Introduction to the New Hospital Programme Demand Model",
     "section": "Questions?",
-    "text": "Questions?\n\nContact The Strategy Unit\n\n\n strategy.unit@nhs.net\n The-Strategy-Unit\n\n\n\nContact Me\n\n\n thomas.jemmett@nhs.net\n tomjemmett\n\n\n\n\n\nview slides at the-strategy-unit.github.io/data_science/presentations"
+    "text": "Questions?\n\nContact The Strategy Unit\n\n\n strategy.unit@nhs.net\n The-Strategy-Unit\n\n\nContact Me\n\n\n thomas.jemmett@nhs.net\n tomjemmett\n\n\n\n\n\nview slides at the-strategy-unit.github.io/data_science/presentations"
   },
   {
     "objectID": "style/data_storage.html",

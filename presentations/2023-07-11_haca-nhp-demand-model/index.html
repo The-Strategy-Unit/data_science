@@ -555,14 +555,16 @@
 </section>
 <section id="model-overview" class="slide level2">
 <h2>Model Overview</h2>
+<div>
 <ul>
-<li>the baseline data is a year worth of a provider’s HES data</li>
-<li>each row in the baseline data is run through a series of steps</li>
-<li>each step creates a factor that says how many times (on average) to sample that row</li>
-<li>the factors are multiplied together and used to create a random Poisson value</li>
-<li>we resample the rows using this random values</li>
-<li>efficiencies are then applied, e.g.&nbsp;LoS reductions, type conversions</li>
+<li class="fragment">the baseline data is a year worth of a provider’s HES data</li>
+<li class="fragment">each row in the baseline data is run through a series of steps</li>
+<li class="fragment">each step creates a factor that says how many times (on average) to sample that row</li>
+<li class="fragment">the factors are multiplied together and used to create a random Poisson value</li>
+<li class="fragment">we resample the rows using this random values</li>
+<li class="fragment">efficiencies are then applied, e.g.&nbsp;LoS reductions, type conversions</li>
 </ul>
+</div>
 <aside class="notes">
 <ul>
 <li>IP/OP/A&amp;E data</li>
@@ -595,6 +597,127 @@
 
     S[Baseline Activity]
     T[Future Activity]
+
+    class S,T red
+
+    subgraph rr[Row Resampling]
+        direction LR
+
+        subgraph pop[Population Changes]
+            direction TB
+            pop_p[Population Growth]
+            pop_a[Age/Sex Structure]
+            pop_h[Population Specific Health Status]
+
+            class pop_p,pop_a,pop_h orange
+
+            pop_p --- pop_a --- pop_h
+        end
+
+        subgraph dsi[Demand Supply Imbalances]
+            direction TB
+            dsi_w[Waiting List Adjustment]
+            dsi_r[Repatriation/Expatriation]
+            dsi_p[Private Healthcare Dynamics]
+
+            class dsi_w,dsi_r,dsi_p orange
+
+            dsi_w --- dsi_r --- dsi_p
+        end
+
+        subgraph nsi[Need Supply Imbalances]
+            direction TB
+            nsi_g[Gaps in Care]
+            nsi_i[Inequalities]
+            nsi_t[Threshold Imbalances]
+
+            class nsi_g,nsi_i,nsi_t orange
+
+            nsi_g --- nsi_i --- nsi_t
+        end
+
+        subgraph nda [Non-Demographic Adjustment]
+            direction TB
+            nda_m[Medical Interventions]
+            nda_c[Changes to National Standards]
+            nda_p[Patient Expectations]
+
+            class nda_m,nda_c,nda_p orange
+
+            nda_m --- nda_c --- nda_p
+        end
+
+        subgraph mit[Activity Mitigators]
+            direction TB
+            mit_a[Activity Avoidance]
+            mit_t[Type Conversion]
+            mit_e[Efficiencies]
+            
+            class mit_a,mit_t,mit_e orange
+
+            mit_a --- mit_t --- mit_e
+        end
+
+        pop --- dsi --- nsi --- nda --- mit
+
+        class dsi,nsi,pop,nda,mit lightslate
+    end
+
+    class rr slate
+    
+    S --&gt; rr --&gt; T
+</pre>
+</div>
+</div>
+</div>
+</div>
+<aside class="notes">
+<ul>
+<li>uses either patient-level data, or minimal aggregation</li>
+<li>row resampling grouped into 5 broad groups
+<ul>
+<li>population changes address the changes to the structure of the population and health status over the medium term</li>
+<li>demand supply imbalances: hospitals are currently struggling to keep pace with demand, so we correct for this to not carry forwards these into the future</li>
+<li>need supply imbalance: addressing gaps in care that currently exist</li>
+<li>non-demographic: such as the development of new medical technologies</li>
+<li>activity mitigators: strategies trusts adopt for reducing activity, or delivering activity more efficiently</li>
+</ul></li>
+<li>some assumptions set nationally, such as population growth via ONS population projections</li>
+<li>other assumptions set locally, with support from a Shiny app</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="model-diagram-1" class="slide level2">
+<h2>Model Diagram</h2>
+<div class="cell" data-reveal="true">
+<div class="cell-output-display">
+<div>
+<div>
+<pre class="mermaid mermaid-js">flowchart TB
+    classDef blue fill:#5881c1,stroke:#2c2825,color:#2c2825;
+    classDef orange fill:#f9bf07,stroke:#2c2825,color:#2c2825;
+    classDef red fill:#ec6555,stroke:#2c2825,color:#2c2825;
+    classDef lightslate fill:#b2b7b9,stroke:#2c2825,color:#2c2825;
+    classDef slate fill:#e0e2e3,stroke:#2c2825,color:#2c2825;
+
+    S[Baseline Activity]
+    T[Future Activity]
+
+    ORANGE[Implemented]
+    BLUE[Not yet implemented]
+
+    class ORANGE orange
+    class BLUE blue
 
     class S,T red
 
@@ -670,31 +793,6 @@
 </div>
 </div>
 </div>
-<aside class="notes">
-<ul>
-<li>uses either patient-level data, or minimal aggregation</li>
-<li>row resampling grouped into 5 broad groups
-<ul>
-<li>population changes address the changes to the structure of the population and health status over the medium term</li>
-<li>demand supply imbalances: hospitals are currently struggling to keep pace with demand, so we correct for this to not carry forwards these into the future</li>
-<li>need supply imbalance: addressing gaps in care that currently exist</li>
-<li>non-demographic: such as the development of new medical technologies</li>
-<li>activity mitigators: strategies trusts adopt for reducing activity, or delivering activity more efficiently</li>
-</ul></li>
-<li>some assumptions set nationally, such as population growth via ONS population projections</li>
-<li>other assumptions set locally, with support from a Shiny app</li>
-</ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 </section>
 <section id="monte-carlo-simulation" class="slide level2">
 <h2>Monte Carlo Simulation</h2>
@@ -770,7 +868,7 @@
 </div><div class="column">
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
 </div>
 </div>
 </div>
@@ -791,7 +889,7 @@
 </div><div class="column">
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
 </div>
 </div>
 </div>
@@ -812,7 +910,7 @@
 </div><div class="column">
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
 </div>
 </div>
 </div>
@@ -1519,7 +1617,7 @@
 
 
 <img src="logo_yellow.svg" class="slide-logo r-stretch"><div class="footer footer-default">
-<p>view slides at <a href="https://the-strategy-unit.github.io/data_science/presentations">the-strategy-unit.github.io/data_science/presentations</a></p>
+<p>view slides at <a href="https://tinyurl.com/haca23nhp">the-strategy-unit.github.io/data_science/presentations</a></p>
 </div>
 </section></section>
     </div>

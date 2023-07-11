@@ -12,10 +12,10 @@ format:
     slide-number: false
     auto-animate: true
     footer: |
-      view slides at [the-strategy-unit.github.io/data_science/presentations][ds_presentations]
+      view slides at [https://tinyurl.com/haca23nhp][ds_presentations]
 ---
 
-[ds_presentations]: https://the-strategy-unit.github.io/data_science/presentations
+[ds_presentations]: https://the-strategy-unit.github.io/data_science/presentations/2023-07-11_haca-nhp-demand-model/
 
 ## The team
 
@@ -184,12 +184,16 @@ flowchart TB
 
 ## Model Overview
 
+:::{.incremental}
+
 - the baseline data is a year worth of a provider's HES data
 - each row in the baseline data is run through a series of steps
 - each step creates a factor that says how many times (on average) to sample that row
 - the factors are multiplied together and used to create a random Poisson value
 - we resample the rows using this random values
 - efficiencies are then applied, e.g. LoS reductions, type conversions
+
+:::
 
 ::: {.notes}
 
@@ -211,6 +215,109 @@ flowchart TB
 
     S[Baseline Activity]
     T[Future Activity]
+
+    class S,T red
+
+    subgraph rr[Row Resampling]
+        direction LR
+
+        subgraph pop[Population Changes]
+            direction TB
+            pop_p[Population Growth]
+            pop_a[Age/Sex Structure]
+            pop_h[Population Specific Health Status]
+
+            class pop_p,pop_a,pop_h orange
+
+            pop_p --- pop_a --- pop_h
+        end
+
+        subgraph dsi[Demand Supply Imbalances]
+            direction TB
+            dsi_w[Waiting List Adjustment]
+            dsi_r[Repatriation/Expatriation]
+            dsi_p[Private Healthcare Dynamics]
+
+            class dsi_w,dsi_r,dsi_p orange
+
+            dsi_w --- dsi_r --- dsi_p
+        end
+
+        subgraph nsi[Need Supply Imbalances]
+            direction TB
+            nsi_g[Gaps in Care]
+            nsi_i[Inequalities]
+            nsi_t[Threshold Imbalances]
+
+            class nsi_g,nsi_i,nsi_t orange
+
+            nsi_g --- nsi_i --- nsi_t
+        end
+
+        subgraph nda [Non-Demographic Adjustment]
+            direction TB
+            nda_m[Medical Interventions]
+            nda_c[Changes to National Standards]
+            nda_p[Patient Expectations]
+
+            class nda_m,nda_c,nda_p orange
+
+            nda_m --- nda_c --- nda_p
+        end
+
+        subgraph mit[Activity Mitigators]
+            direction TB
+            mit_a[Activity Avoidance]
+            mit_t[Type Conversion]
+            mit_e[Efficiencies]
+            
+            class mit_a,mit_t,mit_e orange
+
+            mit_a --- mit_t --- mit_e
+        end
+
+        pop --- dsi --- nsi --- nda --- mit
+
+        class dsi,nsi,pop,nda,mit lightslate
+    end
+
+    class rr slate
+    
+    S --> rr --> T
+```
+
+::: {.notes}
+
+- uses either patient-level data, or minimal aggregation
+- row resampling grouped into 5 broad groups
+  - population changes address the changes to the structure of the population and health status over the medium term
+  - demand supply imbalances: hospitals are currently struggling to keep pace with demand, so we correct for this to not carry forwards these into the future
+  - need supply imbalance: addressing gaps in care that currently exist
+  - non-demographic: such as the development of new medical technologies
+  - activity mitigators: strategies trusts adopt for reducing activity, or delivering activity more efficiently
+- some assumptions set nationally, such as population growth via ONS population projections
+- other assumptions set locally, with support from a Shiny app
+
+:::
+
+## Model Diagram
+
+```{mermaid}
+flowchart TB
+    classDef blue fill:#5881c1,stroke:#2c2825,color:#2c2825;
+    classDef orange fill:#f9bf07,stroke:#2c2825,color:#2c2825;
+    classDef red fill:#ec6555,stroke:#2c2825,color:#2c2825;
+    classDef lightslate fill:#b2b7b9,stroke:#2c2825,color:#2c2825;
+    classDef slate fill:#e0e2e3,stroke:#2c2825,color:#2c2825;
+
+    S[Baseline Activity]
+    T[Future Activity]
+
+    ORANGE[Implemented]
+    BLUE[Not yet implemented]
+
+    class ORANGE orange
+    class BLUE blue
 
     class S,T red
 
@@ -282,20 +389,6 @@ flowchart TB
     
     S --> rr --> T
 ```
-
-::: {.notes}
-
-- uses either patient-level data, or minimal aggregation
-- row resampling grouped into 5 broad groups
-  - population changes address the changes to the structure of the population and health status over the medium term
-  - demand supply imbalances: hospitals are currently struggling to keep pace with demand, so we correct for this to not carry forwards these into the future
-  - need supply imbalance: addressing gaps in care that currently exist
-  - non-demographic: such as the development of new medical technologies
-  - activity mitigators: strategies trusts adopt for reducing activity, or delivering activity more efficiently
-- some assumptions set nationally, such as population growth via ONS population projections
-- other assumptions set locally, with support from a Shiny app
-
-:::
 
 ## Monte Carlo Simulation
 

@@ -1,0 +1,165 @@
+---
+title: "Travels with R and Python - the power of data science in healthcare"
+subtitle: "[Chris Beeley](mailto:chris.beeley1@nhs.net)"
+format:
+  revealjs:
+    theme: [default, ./su_presentation.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    logo: logo_yellow.svg
+    slide-number: false
+    auto-animate: true
+---
+
+[ds_presentations]: https://the-strategy-unit.github.io/data_science/presentations/2023-08-02_mlcsu-ksn-meeting
+
+## What is data science?
+
+* "A data scientist knows more about computer science than the average statistician, and more about statistics than the average computer scientist"
+
+## Drew Conway's famous Venn diagram
+
+<img src="Data_Science_VD.png" alt="Data science Venn diagram"></a>
+
+[Source](http://drewconway.com/zia/2013/3/26/the-data-science-venn-diagram)
+
+## What are the skills of data science?
+
+* Analysis
+  * ML
+  * Stats
+  * Data viz
+* Software engineering
+  * Programming
+  * SQL/ data
+  * DevOps
+  * RAP
+
+## What are the skills of data science?
+  
+* Domain knowledge
+  * Communication
+  * Problem formulation
+  * Dashboards and reports
+
+## Stats and data viz
+
+* ML leans a bit more towards atheoretical prediction
+* Stats leans a bit more towards inference (but they both do both)
+* Data scientists may use different visualisations
+  * Interactive web based tools
+  * Dashboard based visualisers e.g. [{stminsights}](https://github.com/cschwem2er/stminsights)
+  
+## Software engineering
+
+* Programming
+  * No/ low code data science?
+* SQL/ data
+  * Tend to use reproducible automated processes
+* DevOps
+  * Plan, code, build, test, release, deploy, operate, monitor
+* RAP
+  * I will come back to this
+
+## Domain knowledge
+
+* Do stuff that matters
+  * The best minds of my generation are thinking about how to make people click ads. That sucks. [Jeffrey Hammerbacher](https://www.fastcompany.com/3008436/why-data-god-jeffrey-hammerbacher-left-facebook-found-cloudera)
+* Convince other people that it matters
+* This is the hardest part of data science
+
+## RAP
+
+* Data science isn't RAP
+* RAP isn't data science
+* They are firm friends
+
+## Reproducibility
+
+* Reproducibility in science
+* The [$6B spreadsheet error](https://baselinescenario.com/2013/02/09/the-importance-of-excel/)
+* [George Osbourne's austerity was based on a spreadsheet error](https://www.theguardian.com/politics/2013/apr/18/uncovered-error-george-osborne-austerity)
+* For us, reproducibility also means we can do the same analysis 50 times in one minute
+  * Which is why I started down the road of data science
+  
+## What is RAP
+
+* a process in which code is used to minimise manual, undocumented steps, and a clear, properly documented process is produced in code which can reliably give the same result from the same dataset
+* RAP should be:
+
+> the core working practice that must be supported by all platforms and teams; make this a core focus of NHS analyst training
+
+[Goldacre review](https://www.gov.uk/government/publications/better-broader-safer-using-health-data-for-research-and-analysis)
+
+## Levels of RAP- Baseline
+
+* Data produced by code in an open-source language (e.g., Python, R, SQL).
+* Code is version controlled.
+* Repository includes a README.md file that clearly details steps a user must follow to reproduce the code
+* Code has been peer reviewed.
+* Code is published in the open and linked to & from accompanying publication (if relevant).
+
+[Source: NHS Digital RAP community of practice](https://nhsdigital.github.io/rap-community-of-practice/introduction_to_RAP/levels_of_RAP/)
+
+## Levels of RAP- Silver
+
+* Code is well-documented...
+* Code is well-organised following standard directory format
+* Reusable functions and/or classes are used where appropriate
+* Pipeline includes a testing framework
+* Repository includes dependency information (e.g. requirements.txt, PipFile, environment.yml
+* Data is handled and output in a [Tidy data](https://vita.had.co.nz/papers/tidy-data.pdf) format
+
+[Source: NHS Digital RAP community of practice](https://nhsdigital.github.io/rap-community-of-practice/introduction_to_RAP/levels_of_RAP/)
+
+## Levels of RAP- Gold
+
+* Code is fully packaged
+* Repository automatically runs tests etc. via CI/CD or a different integration/deployment tool e.g. GitHub Actions
+* Process runs based on event-based triggers (e.g., new data in database) or on a schedule
+* Changes to the RAP are clearly signposted. E.g. a changelog in the package, releases etc. (See gov.uk info on Semantic Versioning)
+
+[Source: NHS Digital RAP community of practice](https://nhsdigital.github.io/rap-community-of-practice/introduction_to_RAP/levels_of_RAP/)
+
+## Data science in healthcare
+
+* Forecasting
+  * Stats versus ML
+* Text mining
+  * R versus Python
+* Demand modelling
+  * DevOps as a way of life
+  
+## Get involved!
+
+* [NHS-R community](https://nhsrcommunity.com/)
+  * Webinars, training, conference, Slack
+* [NHS Pycom](https://nhs-pycom.net/)
+  * ditto...
+* MLCSU GitHub?
+* Build links with the other CSUs
+
+## Contact
+
+::: {.columns}
+
+:::: {.column}
+::: {.no-bullets}
+- {{< fa envelope >}} [strategy.unit@nhs.net](mailto:strategy.unit@nhs.net)
+- {{< fa brands github size=1x >}} [The-Strategy-Unit](https://github.com/The-Strategy-Unit)
+:::
+::::
+
+:::: {.column}
+::: {.no-bullets}
+- {{< fa envelope >}} [chris.beeley1@nhs.net](mailto:chris.beeley1@nhs.net)
+- {{< fa brands github size=1x >}} [chrisbeeley](https://github.com/ChrisBeeley)
+:::
+::::
+
+:::
+
+
+

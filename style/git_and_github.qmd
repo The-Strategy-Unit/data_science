@@ -1,15 +1,52 @@
-# Using git and GitHub
+# Using Git and GitHub
 
 * Commits should be [atomic](https://dev.to/samuelfaure/how-atomic-git-commits-dramatically-increased-my-productivity-and-will-increase-yours-too-4a84)
-* All code should be committed via pull request to main. **Never** push to main
+* All code should be committed via pull request to main. **Never** push to main.
 
 Workflow for writing code with Git and GitHub:
 
-* If you haven't already file an issue that describes what you are doing- whether it be fixing a bug, adding a feature, or something else
-* Make a new branch to work on that feature. GitHub offers a button to do this automatically on the issue page, on the right hand side (see image)
+* If you haven't already, file an issue that describes what you are doing- whether it be fixing a bug, adding a feature,
+  or something else
+* Make a new branch to work on that feature. GitHub offers a button to do this automatically on the issue page, on the
+  right-hand side (see image)
 * Work on the branch, pushing your code regularly to GitHub so it can be run and inspected when you are not around
-* When it's ready merge the branch to main. If you used the create branch button on GitHUb this will automatically close the issue. If the issue is not automatically closed, then close it manually
+* When it's ready merge the branch to main. If you used the create branch button on GitHub this will automatically close
+  the issue. If the issue is not automatically closed, then close it manually
 
+## Review workflow
+
+When you have created a pull request (PR) and marked it ready for review, you must do two things:
+
+1. immediately make someone an assignee - this is the person who will merge the pull request. Typically, this should be
+   the person creating the pull request, i.e. yourself.
+2. ask for reviews from others.
+
+Wait until the reviewers have completed their reviews and marked them as ready to merge. At this point, the person who
+is assigned to the pull request can complete the merge.
+
+By using this approach it ensures that code quality is maintained via requests, and it prevents code from being merged
+when it is not yet ready. For example, you may have started a pull request thinking your work is ready. A reviewer
+checks your code and agrees that it is ready to merge. However, there are occasions where you may realise that there are
+still things to work on before merging that PR, or there are issues that need to be addressed.
+
+The person who is assigned to the PR should be the only person making commits to the branch. This will prevent merge
+conflicts within the branch that is being worked on. If you wish for someone else to collaborate on the branch, then
+you should assign the PR to that person. At that point, they can pull your branch down and work on top of it, but you
+must stop using that branch locally (unless you are reassigned to the branch, at which point you should immediately pull
+changes).
+
+There are cases where you may not mark yourself as the assignee to merge. Typically, you should nominate someone else
+then to be in charge of the PR, the same rules as in the paragraph above would then apply.
+
+If as a reviewer you find that no one is assigned to the branch, you should get in contact with the person who created
+the branch and decide who is going to be the assigned owner of the PR.
+
+### outside collaborators
+
+In circumstances where the person who created the PR is an outside collaborator without permission to merge, then the
+reviewer should become the person assigned to the PR. In these circumstances, the collaborator will be working off of a
+local fork so they will be the only person who can push to the branch. The reviewer, once happy to mark the PR as ready
+to merge should at that point merge the request.
 
 ![](branch_img.png)
 

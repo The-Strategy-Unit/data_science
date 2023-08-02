@@ -88,7 +88,7 @@ $presentation-heading-color: $su-charcoal;
 }
 
 .slide-background:first-child .slide-background-content {
-  background-image: url("/logo_yellow.svg");
+  background-image: url("https://the-strategy-unit.github.io/assets/logo_yellow.svg");
   top: 0.5em;
   right: 0.5em;
   height: 4em;
@@ -111,6 +111,7 @@ $presentation-heading-color: $su-charcoal;
 
 #title-slide .quarto-title-authors {
   justify-content: left;
+  display: block;
 }
 
 #title-slide .quarto-title-author {

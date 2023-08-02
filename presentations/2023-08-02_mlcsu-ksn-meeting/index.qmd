@@ -19,9 +19,11 @@ format:
 
 * "A data scientist knows more about computer science than the average statistician, and more about statistics than the average computer scientist"
 
+[(Josh Wills, a former head of data engineering at Slack)](https://medium.com/odscjournal/data-scientists-versus-statisticians-8ea146b7a47f)
+
 ## Drew Conway's famous Venn diagram
 
-<img src="Data_Science_VD.png" alt="Data science Venn diagram"></a>
+![](Data_Science_VD.png){fig-alt="Data science Venn diagram" fig-align="center"}
 
 [Source](http://drewconway.com/zia/2013/3/26/the-data-science-venn-diagram)
 
@@ -95,11 +97,11 @@ format:
 
 ## Levels of RAP- Baseline
 
-* Data produced by code in an open-source language (e.g., Python, R, SQL).
-* Code is version controlled.
+* Data produced by code in an open-source language (e.g., Python, R, SQL)
+* Code is version controlled
 * Repository includes a README.md file that clearly details steps a user must follow to reproduce the code
-* Code has been peer reviewed.
-* Code is published in the open and linked to & from accompanying publication (if relevant).
+* Code has been peer reviewed
+* Code is published in the open and linked to & from accompanying publication (if relevant)
 
 [Source: NHS Digital RAP community of practice](https://nhsdigital.github.io/rap-community-of-practice/introduction_to_RAP/levels_of_RAP/)
 
@@ -109,7 +111,7 @@ format:
 * Code is well-organised following standard directory format
 * Reusable functions and/or classes are used where appropriate
 * Pipeline includes a testing framework
-* Repository includes dependency information (e.g. requirements.txt, PipFile, environment.yml
+* Repository includes dependency information (e.g. requirements.txt, PipFile, environment.yml)
 * Data is handled and output in a [Tidy data](https://vita.had.co.nz/papers/tidy-data.pdf) format
 
 [Source: NHS Digital RAP community of practice](https://nhsdigital.github.io/rap-community-of-practice/introduction_to_RAP/levels_of_RAP/)

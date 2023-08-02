@@ -1,11 +1,53 @@
 # Presentations
 
-- [What is data science?](/presentations/2023-02-01_what-is-data-science/)
-- [Coffee and coding 23rd February 2023](/presentations/2023-02-23_coffee-and-coding)
-- [Coffee and coding 9th March 2023](/presentations/2023-03-09_coffee-and-coding)
-- [Coffee and coding 23rd March 2023](/presentations/2023-03-23_coffee-and-coding)
-- [Collaborative working](/presentations/2023-03-23_collaborative-working)
-- [Text mining](/presentations/2023-05-15_text-mining)
-- [What makes good data science?](/presentations/2023-05-23_data-science-for-good)
-- [HACA 2023 - New Hospital Demand Model](/presentations/2023-07-11_haca-nhp-demand-model)
-- [MLCSU KSN meeting](/presentations/2023-08-02_mlcsu-ksn-meeting)
+```{r}
+#| echo: false
+
+# note: if you are running interactively then you will be in /
+# but quarto will be running this in /presentations
+
+path <- if (!getwd() |> stringr::str_ends("presentations")) {
+  path <- "presentations"
+} else {
+  path <- "."
+}
+
+dir(path, pattern = "index.qmd", recursive = TRUE, full.names = TRUE) |>
+  stringr::str_subset(paste0("^", path, "/index.qmd$"), TRUE) |>
+  purrr::set_names() |>
+  purrr::map(
+    \(f) {
+      i <- readr::read_lines(f)
+      i <- i[do.call(seq, as.list(which(i == "---")[1:2] + c(1, -1)))]
+      yaml::read_yaml(text = i) |>
+        purrr::keep(is.atomic) |>
+        tibble::as_tibble()
+    }
+  ) |>
+  dplyr::bind_rows(.id = "filename") |>
+  dplyr::mutate(
+    dplyr::across(
+      "author",
+      \(.x) stringr::str_replace(.x, "^\\[(.*)\\]\\(.*\\)$", "\\1")
+    ),
+    dplyr::across(
+      "date",
+      lubridate::ymd
+    ),
+    title = purrr::map(
+      paste0(
+        "<a href='", filename, "'>",
+        ifelse(
+          is.na(subtitle),
+          title,
+          paste0(title, ": ", subtitle)
+        ),
+        "</a>"
+      ),
+      gt::html
+    )
+  ) |>
+  dplyr::select(-"date-format", -"subtitle", -"filename") |>
+  gt::gt() |>
+  gt::cols_align("left")
+```

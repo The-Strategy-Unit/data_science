@@ -35,6 +35,8 @@
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
 
@@ -331,7 +333,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Chris Beeley 
+<a href="mailto:chris.beeley1@nhs.net">Chris Beeley</a> 
 </div>
 </div>
 </div>
@@ -487,21 +489,27 @@ Chris Beeley
 <section id="fun" class="slide level2">
 <h2>Fun!</h2>
 <ul>
-<li><p>Combing through spreadsheets looking for one comment is not fun</p></li>
-<li><p>Doing things the same way you did them last year is not fun</p></li>
-<li><p>Trying to implement a project that is too complicated is not fun</p></li>
-<li><p>Working with a diverse team with different skills is fun</p></li>
-<li><p>Accessing high quality documentation to understand a project better is fun*</p></li>
+<li>Combing through spreadsheets looking for one comment is not fun</li>
+<li>Doing things the same way you did them last year is not fun</li>
+<li>Trying to implement a project that is too complicated is not fun</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>Working with a diverse team with different skills is fun</li>
+<li>Accessing high quality documentation to understand a project better is fun*</li>
 </ul>
 </section>
 <section id="team-and-code" class="slide level2">
 <h2>Team and code</h2>
 <ul>
-<li><p>Andreas Soteriades (Y1)</p></li>
-<li><p>YiWen Hon, Oluwasegun Apejoye (Y2)</p></li>
-<li><p><a href="https://github.com/CDU-data-science-team/pxtextmining">pxtextmining</a></p></li>
-<li><p><a href="https://github.com/CDU-data-science-team/experiencesdashboard">experiencesdashboard</a></p></li>
-<li><p><a href="https://github.com/CDU-data-science-team/PatientExperience-QDC">Documentation</a></p></li>
+<li>Andreas Soteriades (Y1)</li>
+<li>YiWen Hon, Oluwasegun Apejoye (Y2)</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><a href="https://github.com/CDU-data-science-team/pxtextmining">pxtextmining</a></li>
+<li><a href="https://github.com/CDU-data-science-team/experiencesdashboard">experiencesdashboard</a></li>
+<li><a href="https://github.com/CDU-data-science-team/PatientExperience-QDC">Documentation</a></li>
 </ul>
 <hr>
 <ul>
@@ -510,7 +518,7 @@ Chris Beeley
 </ul>
 
 <div class="footer footer-default">
-
+<p>view slides at <a href="https://the-strategy-unit.github.io/data_science/">the-strategy-unit.github.io/data_science/presentations</a></p>
 </div>
 </section>
     </div>
@@ -523,6 +531,7 @@ Chris Beeley
   <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
   <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
   <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
@@ -538,13 +547,14 @@ Chris Beeley
       // https://revealjs.com/config/
       Reveal.initialize({
 'controlsAuto': true,
-'previewLinksAuto': false,
+'previewLinksAuto': true,
 'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":false},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -690,9 +700,9 @@ Chris Beeley
         // The "normal" size of the presentation, aspect ratio will be preserved
         // when the presentation is scaled to fit different resolutions. Can be
         // specified using percentage units.
-        width: 1050,
+        width: 1920,
 
-        height: 700,
+        height: 1080,
 
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
@@ -715,7 +725,7 @@ Chris Beeley
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
           RevealMath,
           RevealNotes,

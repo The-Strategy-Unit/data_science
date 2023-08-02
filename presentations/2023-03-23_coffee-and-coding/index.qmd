@@ -3,6 +3,7 @@ title: "Coffee and Coding"
 subtitle: "{targets}"
 author: "[Tom Jemmett](mailto:thomas.jemmett@nhs.net)"
 date: 2023-03-23
+date-format: "MMM D, YYYY"
 knitr:
   opts_chunk: 
     eval: false

@@ -1,6 +1,6 @@
 ---
 title: "An Introduction to the New Hospital Programme Demand Model"
-subtitle: "Health and Analytics Care Conference, 2023"
+subtitle: "HACA 2023"
 author: "[Tom Jemmett](mailto:thomas.jemmett@nhs.net)"
 date: 2023-07-11
 date-format: "MMM D, YYYY"

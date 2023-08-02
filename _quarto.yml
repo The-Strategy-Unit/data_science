@@ -1,5 +1,11 @@
 project:
   type: website
+  resources:
+    - logo_black.svg
+    - logo_yellow.svg
+    - theme-dark.scss
+    - theme-light.scss
+    - presentations/su_presentation.scss
 
 website:
   title: "Data Science @ The Strategy Unit"

@@ -1,14 +1,18 @@
 ---
-title: "Travels with R and Python - the power of data science in healthcare"
-subtitle: "[Chris Beeley](mailto:chris.beeley1@nhs.net)"
+title: Travels with R and Python
+subtitle: the power of data science in healthcare
+author: "[Chris Beeley](mailto:chris.beeley1@nhs.net)"
+date: 2023-08-02
+date-format: "MMM D, YYYY"
 format:
   revealjs:
-    theme: [default, ./su_presentation.scss]
+    theme: [default, ../su_presentation.scss]
     transition: none
     chalkboard:
       buttons: false
+    footer: |
+      view slides at [the-strategy-unit.github.io/data_science/presentations][ds_presentations]
     preview-links: auto
-    logo: logo_yellow.svg
     slide-number: false
     auto-animate: true
 ---
@@ -93,7 +97,9 @@ format:
 
 > the core working practice that must be supported by all platforms and teams; make this a core focus of NHS analyst training
 
+:::{.footer}
 [Goldacre review](https://www.gov.uk/government/publications/better-broader-safer-using-health-data-for-research-and-analysis)
+:::
 
 ## Levels of RAP- Baseline
 
@@ -103,7 +109,9 @@ format:
 * Code has been peer reviewed
 * Code is published in the open and linked to & from accompanying publication (if relevant)
 
+:::{.footer}
 [Source: NHS Digital RAP community of practice](https://nhsdigital.github.io/rap-community-of-practice/introduction_to_RAP/levels_of_RAP/)
+:::
 
 ## Levels of RAP- Silver
 
@@ -114,7 +122,9 @@ format:
 * Repository includes dependency information (e.g. requirements.txt, PipFile, environment.yml)
 * Data is handled and output in a [Tidy data](https://vita.had.co.nz/papers/tidy-data.pdf) format
 
+:::{.footer}
 [Source: NHS Digital RAP community of practice](https://nhsdigital.github.io/rap-community-of-practice/introduction_to_RAP/levels_of_RAP/)
+:::
 
 ## Levels of RAP- Gold
 
@@ -123,7 +133,9 @@ format:
 * Process runs based on event-based triggers (e.g., new data in database) or on a schedule
 * Changes to the RAP are clearly signposted. E.g. a changelog in the package, releases etc. (See gov.uk info on Semantic Versioning)
 
+:::{.footer}
 [Source: NHS Digital RAP community of practice](https://nhsdigital.github.io/rap-community-of-practice/introduction_to_RAP/levels_of_RAP/)
+:::
 
 ## Data science in healthcare
 

@@ -1,6 +1,7 @@
 ---
-title: "{targets}"
-subtitle: "Tom Jemmett"
+title: "Coffee and Coding"
+subtitle: "{targets}"
+author: "[Tom Jemmett](mailto:thomas.jemmett@nhs.net)"
 date: 2023-03-23
 knitr:
   opts_chunk: 
@@ -8,12 +9,11 @@ knitr:
     echo: true
 format:
   revealjs:
-    theme: [default, ./su_presentation.scss]
+    theme: [default, ../su_presentation.scss]
     transition: none
     chalkboard:
       buttons: false
     preview-links: auto
-    logo: logo_yellow.svg
     slide-number: false
     auto-animate: true
     footer: |

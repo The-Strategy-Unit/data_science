@@ -7,8 +7,8 @@ $su-charcoal-l80: lighten($su-charcoal, 80%);
 $su-yellow: #f9bd07;
 $su-blue: #5881c1;
 $su-white: #ffffff;
-
-
+$su-red: #ec6555;
+$su-slate: #686f73;
 
 // load in font awesome icons
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css");
@@ -101,16 +101,26 @@ $presentation-heading-color: $su-charcoal;
 }
 
 #title-slide h1 {
+  font-size: 2em;
   color: $su-yellow !important;
 }
 
-#title-slide p.subtitle {
+#title-slide .subtitle {
   color: $su-charcoal-l60;
 }
 
-#title-slide p.author {
+#title-slide .quarto-title-authors {
+  justify-content: left;
+}
+
+#title-slide .quarto-title-author {
   padding-top: 1em;
-  color: $su-yellow;
+  color: $su-red;
+  padding: 0;
+}
+
+#title-slide .quarto-title-author a {
+  color: $su-blue;
 }
 
 #title-slide p.institute {
@@ -149,4 +159,21 @@ $presentation-heading-color: $su-charcoal;
 .text-bottom {
   bottom: 1em;
   position: absolute;
+}
+
+.no-bullets ul {
+  list-style-type: none;
+  /* Remove bullets */
+  padding: 0;
+  /* Remove padding */
+  margin: 0;
+  /* Remove margins */
+}
+
+.small-table table {
+  font-size: 1.65rem;
+}
+
+.small {
+  font-size: 1.2rem;
 }

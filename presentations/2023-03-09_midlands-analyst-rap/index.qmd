@@ -1,9 +1,23 @@
 ---
-title: "RAP- what is it and how can my team start using it effectively?"
-format: revealjs
-from: markdown+emoji
-author: Chris Beeley
+title: RAP
+subtitle: what is it and how can my team start using it effectively?
+author: "[Chris Beeley](mailto:chris.beeley1@nhs.net)"
+date: 2023-03-09
+date-format: "MMM D, YYYY"
+format:
+  revealjs:
+    theme: [default, ../su_presentation.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    footer: |
+      view slides at [the-strategy-unit.github.io/data_science/presentations][ds_presentations]
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
 ---
+
+[ds_presentations]: https://the-strategy-unit.github.io/data_science/
 
 ## What is RAP
 

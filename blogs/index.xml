@@ -10,7 +10,7 @@
 <atom:link href="https://the-strategy-unit.github.io/data_science/blogs/index.xml" rel="self" type="application/rss+xml"/>
 <description>Blogs from the Data Science Team at The Strategy Unit</description>
 <generator>quarto-1.3.433</generator>
-<lastBuildDate>Tue, 25 Apr 2023 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Wed, 26 Apr 2023 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Reinstalling R Packages</title>
   <dc:creator>Tom Jemmett</dc:creator>
@@ -38,7 +38,7 @@ font-style: inherit;">"https://gist.githubusercontent.com/tomjemmett/c105d3e0fbe
   <category>git</category>
   <category>tutorial</category>
   <guid>https://the-strategy-unit.github.io/data_science/blogs/posts/2023-04-26-reinstalling-r-packages.html</guid>
-  <pubDate>Tue, 25 Apr 2023 23:00:00 GMT</pubDate>
+  <pubDate>Wed, 26 Apr 2023 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Alternative remote repositories</title>
@@ -84,7 +84,7 @@ $ git remote remove friend</code></pre>
   <category>git</category>
   <category>tutorial</category>
   <guid>https://the-strategy-unit.github.io/data_science/blogs/posts/2023-04-26_alternative_remotes.html</guid>
-  <pubDate>Tue, 25 Apr 2023 23:00:00 GMT</pubDate>
+  <pubDate>Wed, 26 Apr 2023 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Creating a hotfix with git</title>

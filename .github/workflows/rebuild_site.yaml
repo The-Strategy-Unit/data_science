@@ -2,6 +2,7 @@ name: rebuild-slides
 on:
   push:
     branches: [main]
+  workflow_dispatch:
 
 jobs:
   rebuild-slides:

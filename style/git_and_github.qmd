@@ -1,15 +1,17 @@
 # Using Git and GitHub
 
--   Commits should be [atomic](https://dev.to/samuelfaure/how-atomic-git-commits-dramatically-increased-my-productivity-and-will-increase-yours-too-4a84)
--   All code should be committed via pull request (PR) to `main`
+All commits should be [atomic](https://dev.to/samuelfaure/how-atomic-git-commits-dramatically-increased-my-productivity-and-will-increase-yours-too-4a84), in short,
+> Each commit does one, and only one simple thing, that can be summed up in a simple sentence.
+
+All of your commits should be in branches, the only changes that are made to the `main` branch would be via pull requests (PR's) that have been reviewed by at minimum one colleague.
 
 ::: {.callout-important appearance="default" icon="true"}
 **Never** push to `main`!
 :::
 
-Workflow for writing code with Git and GitHub:
+## Workflow for writing code with Git and GitHub:
 
-## Create an issue
+### Create an issue
 
 If you haven't already, file an issue that describes what you are doing - whether it be fixing a bug, adding a feature, or something else.
 Issues help to keep track of both the work to be done, and the work that has been done.
@@ -23,7 +25,7 @@ Issues are a good record to explain what a PR is for.
 It's also a useful area for input from other members of the team.
 :::
 
-## Create a branch
+### Create a branch
 
 Once the issue is created and you have decided that you are going to work on it, first assign yourself to the issue in GitHub.
 This is an indication to others and helps to prevent multiple people from independently working on the same issue.
@@ -41,7 +43,7 @@ When you think that your changes are ready to be merged, it's time to create a P
 If you used the `create branch` button on GitHub it will automatically close the issue when merged.
 :::
 
-## Reviewing a PR
+### Reviewing a PR
 
 When you create a PR, you must do two things:
 
@@ -57,10 +59,10 @@ Most merges will be the default `Create a merge commit` but sometimes you may wi
 As the person requesting the PR, you can select whichever option is wanted from the drop-down in GitHub as part of the PR.
 :::
 
-## Reviewing methodology
+### Reviewing methodology
 
 By using this approach of the assignee completing the merge, it ensures that code quality is maintained and prevents code from being merged when it is not yet ready.
-For example, you may have started a PR thinking your work is complete, a reviewer checks the code and agrees to merge, however, you may realise that there are still things to work on, or there are issues that need to be addressed.
+For example, you may have started a PR thinking your work is complete, and a reviewer checks the code and agrees to merge, however, you may realise that there are still things to work on, or there are issues that need to be addressed.
 
 The person who is assigned to the PR should be the only person making commits to the branch and this will prevent merge conflicts.
 If you wish for someone else to collaborate on the branch, then you should assign the PR to that person.
@@ -78,12 +80,12 @@ There may be times when you cannot be the assignee on a PR and in those situatio
 
 If, as a reviewer, you find that no one is assigned to the branch, you should get in contact with the person who created the branch and decide who is going to be the assigned owner of the PR.
 
-### Outside collaborators
+#### Outside collaborators
 
 In circumstances where the person who created the PR is an outside collaborator and doesn't have permission to merge, then the reviewer should also be the assignee.
 In these circumstances, the collaborator will be working from their local fork and will be the only person who can push to the branch.
 The reviewer, once happy to approve the changes, can merge the PR.
 
-## Preparing a package release of your code
+### Preparing a package release of your code
 
 TODO

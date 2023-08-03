@@ -12,6 +12,35 @@
 <generator>quarto-1.3.433</generator>
 <lastBuildDate>Wed, 26 Apr 2023 00:00:00 GMT</lastBuildDate>
 <item>
+  <title>Reinstalling R Packages</title>
+  <dc:creator>Tom Jemmett</dc:creator>
+  <link>https://the-strategy-unit.github.io/data_science/blogs/posts/2023-04-26-reinstalling-r-packages.html</link>
+  <description><![CDATA[ 
+
+
+
+<p><a href="https://stat.ethz.ch/pipermail/r-announce/2023/000691.html">R 4.3.0 was released</a> last week. Anytime you update R you will probably find yourself in the position where no packages are installed. This is by design - the packages that you have installed may need to be updated and recompiled to work under new versions of R.</p>
+<p>You may find yourself wanting to have all of the packages that you previously used, so one approach that some people take is to copy the previous library folder to the new versions folder. This isn’t a good idea and could potentially break your R install.</p>
+<p>Another approach would be to export the list of packages in R before updating and then using that list after you have updated R. This can cause issues though if you install from places other than CRAN, e.g.&nbsp;bioconductor, or from GitHub.</p>
+<p>Some of these approaches are discussed on the <a href="https://community.rstudio.com/t/reinstalling-packages-on-new-version-of-r/7670/4">RStudio Community Forum</a>. But I prefer an approach of having a “spring clean”, instead only installing the packages that I know that I need.</p>
+<p>I maintain a <a href="https://gist.github.com/tomjemmett/c105d3e0fbea7558088f68c65e68e1ed/">list of the packages that I used</a> as a gist. Using this, I can then simply run this script on any new R install. In fact, if you click the “raw” button on the gist, and copy that url, you can simply run</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">source</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"https://gist.githubusercontent.com/tomjemmett/c105d3e0fbea7558088f68c65e68e1ed/raw/a1db4b5fa0d24562d16d3f57fe8c25fb0d8aa53e/setup.R"</span>)</span></code></pre></div>
+<p>Generally, sourcing a url is a bad idea - the reason for this is if it’s not a link that you control, then someone could update the contents and run arbritary code on your machine. In this case, I’m happy to run this as it’s my own gist, but you should be mindful if running it yourself!</p>
+<p>If you look at the script I first install a number of packages from CRAN, then I install packages that only exist on GitHub.</p>
+
+
+
+ ]]></description>
+  <category>git</category>
+  <category>tutorial</category>
+  <guid>https://the-strategy-unit.github.io/data_science/blogs/posts/2023-04-26-reinstalling-r-packages.html</guid>
+  <pubDate>Wed, 26 Apr 2023 00:00:00 GMT</pubDate>
+</item>
+<item>
   <title>Alternative remote repositories</title>
   <dc:creator>Tom Jemmett</dc:creator>
   <link>https://the-strategy-unit.github.io/data_science/blogs/posts/2023-04-26_alternative_remotes.html</link>
@@ -55,35 +84,6 @@ $ git remote remove friend</code></pre>
   <category>git</category>
   <category>tutorial</category>
   <guid>https://the-strategy-unit.github.io/data_science/blogs/posts/2023-04-26_alternative_remotes.html</guid>
-  <pubDate>Wed, 26 Apr 2023 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Reinstalling R Packages</title>
-  <dc:creator>Tom Jemmett</dc:creator>
-  <link>https://the-strategy-unit.github.io/data_science/blogs/posts/2023-04-26-reinstalling-r-packages.html</link>
-  <description><![CDATA[ 
-
-
-
-<p><a href="https://stat.ethz.ch/pipermail/r-announce/2023/000691.html">R 4.3.0 was released</a> last week. Anytime you update R you will probably find yourself in the position where no packages are installed. This is by design - the packages that you have installed may need to be updated and recompiled to work under new versions of R.</p>
-<p>You may find yourself wanting to have all of the packages that you previously used, so one approach that some people take is to copy the previous library folder to the new versions folder. This isn’t a good idea and could potentially break your R install.</p>
-<p>Another approach would be to export the list of packages in R before updating and then using that list after you have updated R. This can cause issues though if you install from places other than CRAN, e.g.&nbsp;bioconductor, or from GitHub.</p>
-<p>Some of these approaches are discussed on the <a href="https://community.rstudio.com/t/reinstalling-packages-on-new-version-of-r/7670/4">RStudio Community Forum</a>. But I prefer an approach of having a “spring clean”, instead only installing the packages that I know that I need.</p>
-<p>I maintain a <a href="https://gist.github.com/tomjemmett/c105d3e0fbea7558088f68c65e68e1ed/">list of the packages that I used</a> as a gist. Using this, I can then simply run this script on any new R install. In fact, if you click the “raw” button on the gist, and copy that url, you can simply run</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">source</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"https://gist.githubusercontent.com/tomjemmett/c105d3e0fbea7558088f68c65e68e1ed/raw/a1db4b5fa0d24562d16d3f57fe8c25fb0d8aa53e/setup.R"</span>)</span></code></pre></div>
-<p>Generally, sourcing a url is a bad idea - the reason for this is if it’s not a link that you control, then someone could update the contents and run arbritary code on your machine. In this case, I’m happy to run this as it’s my own gist, but you should be mindful if running it yourself!</p>
-<p>If you look at the script I first install a number of packages from CRAN, then I install packages that only exist on GitHub.</p>
-
-
-
- ]]></description>
-  <category>git</category>
-  <category>tutorial</category>
-  <guid>https://the-strategy-unit.github.io/data_science/blogs/posts/2023-04-26-reinstalling-r-packages.html</guid>
   <pubDate>Wed, 26 Apr 2023 00:00:00 GMT</pubDate>
 </item>
 <item>

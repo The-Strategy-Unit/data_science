@@ -65,7 +65,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-sidebar docked nav-fixed">
+<body class="nav-sidebar docked nav-fixed slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -109,7 +109,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
         <li>
     <a class="dropdown-item" href="../style/git_and_github.html" rel="" target="">
- <span class="dropdown-text">Using git and GitHub</span></a>
+ <span class="dropdown-text">Using Git and GitHub</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../style/project_structure.html" rel="" target="">
@@ -140,7 +140,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../style/git_and_github.html">Using git and GitHub</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../style/git_and_github.html">Using Git and GitHub</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -161,7 +161,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../style/git_and_github.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Using git and GitHub</span></a>
+ <span class="menu-text">Using Git and GitHub</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -186,32 +186,104 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#using-git-and-github" id="toc-using-git-and-github" class="nav-link active" data-scroll-target="#using-git-and-github">Using git and GitHub</a>
+  <li><a href="#using-git-and-github" id="toc-using-git-and-github" class="nav-link active" data-scroll-target="#using-git-and-github">Using Git and GitHub</a>
   <ul class="collapse">
+  <li><a href="#create-an-issue" id="toc-create-an-issue" class="nav-link" data-scroll-target="#create-an-issue">Create an issue</a></li>
+  <li><a href="#create-a-branch" id="toc-create-a-branch" class="nav-link" data-scroll-target="#create-a-branch">Create a branch</a></li>
+  <li><a href="#reviewing-a-pr" id="toc-reviewing-a-pr" class="nav-link" data-scroll-target="#reviewing-a-pr">Reviewing a PR</a></li>
+  <li><a href="#reviewing-methodology" id="toc-reviewing-methodology" class="nav-link" data-scroll-target="#reviewing-methodology">Reviewing methodology</a>
+  <ul class="collapse">
+  <li><a href="#outside-collaborators" id="toc-outside-collaborators" class="nav-link" data-scroll-target="#outside-collaborators">Outside collaborators</a></li>
+  </ul></li>
   <li><a href="#preparing-a-package-release-of-your-code" id="toc-preparing-a-package-release-of-your-code" class="nav-link" data-scroll-target="#preparing-a-package-release-of-your-code">Preparing a package release of your code</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/the-strategy-unit/data_science/edit/main/style/git_and_github.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/the-strategy-unit/data_science/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 
 
-<section id="using-git-and-github" class="level1">
-<h1>Using git and GitHub</h1>
+<section id="using-git-and-github" class="level1 page-columns page-full">
+<h1>Using Git and GitHub</h1>
 <ul>
 <li>Commits should be <a href="https://dev.to/samuelfaure/how-atomic-git-commits-dramatically-increased-my-productivity-and-will-increase-yours-too-4a84">atomic</a></li>
-<li>All code should be committed via pull request to main. <strong>Never</strong> push to main</li>
+<li>All code should be committed via pull request (PR) to <code>main</code></li>
 </ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p><strong>Never</strong> push to <code>main</code>!</p>
+</div>
+</div>
+</div>
 <p>Workflow for writing code with Git and GitHub:</p>
+<section id="create-an-issue" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="create-an-issue">Create an issue</h2>
 <ul>
-<li>If you haven’t already file an issue that describes what you are doing- whether it be fixing a bug, adding a feature, or something else</li>
-<li>Make a new branch to work on that feature. GitHub offers a button to do this automatically on the issue page, on the right hand side (see image)</li>
-<li>Work on the branch, pushing your code regularly to GitHub so it can be run and inspected when you are not around</li>
-<li>When it’s ready merge the branch to main. If you used the create branch button on GitHUb this will automatically close the issue. If the issue is not automatically closed, then close it manually</li>
+<li>if you haven’t already, file an issue that describes what you are doing - whether it be fixing a bug, adding a feature, or something else</li>
+<li>ensure that the issue is as detailed as possible as it may need to be picked up by someone else. Even if only you intend to work on the issue, over time it can be easy to forget things if there isn’t enough information</li>
 </ul>
-<p><img src="branch_img.png" class="img-fluid"></p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>Issues are a good record to explain what a PR is for. It’s also a useful area for input from other members of the team.</p>
+</div></div></section>
+<section id="create-a-branch" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="create-a-branch">Create a branch</h2>
+<ul>
+<li>make a new branch to work on that feature. GitHub offers a button to do this automatically on the issue page, on the right-hand side</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://docs.github.com/en/issues/tracking-your-work-with-issues/creating-a-branch-for-an-issue"><img src="branch_img.png" class="img-fluid figure-img" alt="Screenshot of GitHub with the hyperlink to Create a branch highlighted under the category of Development."></a></p>
+<figcaption class="figure-caption">Screenshot links to specific GitHub help page</figcaption>
+</figure>
+</div>
+<ul>
+<li>work on the branch, pushing your code regularly to GitHub so it can be run and inspected when you are not around</li>
+<li>when it’s ready, merge the branch to <code>main</code></li>
+<li>delete the branch and close the issue</li>
+</ul>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>If you used the <code>create branch</code> button on GitHub it will automatically close the issue when merged.</p>
+</div></div></section>
+<section id="reviewing-a-pr" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="reviewing-a-pr">Reviewing a PR</h2>
+<p>For repositories where you are working collaboratively, you must do two things:</p>
+<ol type="1">
+<li>immediately make someone an assignee - this is the person who will merge the PR. Typically, this should be the person creating the PR (you)</li>
+<li>select a person (or people) to review</li>
+</ol>
+<p>Wait until the reviewer(s) has completed the review and marked it as ready to merge. At this point, the person who is assigned to the PR can complete the merge.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>Most merges will be the default <code>Create a merge commit</code> but sometimes you may wish to <code>Squash and merge</code>. As the person requesting the PR you can select whichever option is wanted from the drop down in GitHub as part of the PR.</p>
+</div></div></section>
+<section id="reviewing-methodology" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="reviewing-methodology">Reviewing methodology</h2>
+<p>By using this approach of the assignee completing the merge, it ensures that code quality is maintained and prevents code from being merged when it is not yet ready. For example, you may have started a PR thinking your work is complete, a reviewer checks the code and agrees to merge, however, you may realise that there are still things to work on, or there are issues that need to be addressed.</p>
+<p>The person who is assigned to the PR should be the only person making commits to the branch and this will prevent merge conflicts. If you wish for someone else to collaborate on the branch, then you should assign the PR to that person. At that point, they can pull your branch down and work on it, but you must stop using that branch locally.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>If the PR is later assigned back to you to you should immediately pull changes.</p>
+</div></div><p>There may be times where you cannot be the assignee on a PR and in those situations you should nominate someone else to be the assignee and in charge of the PR, the same rules as in the paragraph above would then apply.</p>
+<p>If, as a reviewer, you find that no one is assigned to the branch, you should get in contact with the person who created the branch and decide who is going to be the assigned owner of the PR.</p>
+<section id="outside-collaborators" class="level3">
+<h3 class="anchored" data-anchor-id="outside-collaborators">Outside collaborators</h3>
+<p>In circumstances where the person who created the PR is an outside collaborator and doesn’t have permission to merge, then the reviewer should also be the assignee. In these circumstances, the collaborator will be working from their local fork and will be the only person who can push to the branch. The reviewer, once happy to approve the changes, can merge the PR.</p>
+</section>
+</section>
 <section id="preparing-a-package-release-of-your-code" class="level2">
 <h2 class="anchored" data-anchor-id="preparing-a-package-release-of-your-code">Preparing a package release of your code</h2>
 <p>TODO</p>

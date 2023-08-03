@@ -1,6 +1,7 @@
 # Using Git and GitHub
 
 All commits should be [atomic](https://dev.to/samuelfaure/how-atomic-git-commits-dramatically-increased-my-productivity-and-will-increase-yours-too-4a84), in short,
+
 > Each commit does one, and only one simple thing, that can be summed up in a simple sentence.
 
 All of your commits should be in branches, the only changes that are made to the `main` branch would be via pull requests (PR's) that have been reviewed by at minimum one colleague.

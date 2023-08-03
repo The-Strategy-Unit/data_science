@@ -66,6 +66,10 @@ The person who is assigned to the PR should be the only person making commits to
 If you wish for someone else to collaborate on the branch, then you should assign the PR to that person.
 At that point, they can pull your branch down and work on it, but you must stop using that branch locally.
 
+::: {.callout-important appearance="default" icon="true"}
+Only one person should ever work on changes to a branch at any time, and it is important to communicate with colleagues so they know to pull the latest changes in.
+:::
+
 ::: aside
 If the PR is later assigned back to you then you must immediately pull changes.
 :::

@@ -23,149 +23,149 @@
   {
     "objectID": "presentations/2023-02-01_what-is-data-science/index.html#what-is-data-science",
     "href": "presentations/2023-02-01_what-is-data-science/index.html#what-is-data-science",
-    "title": "Everything you ever wanted to know about data science (but were too afraid to ask)",
+    "title": "Everything you ever wanted to know about data science",
     "section": "What is data science?",
     "text": "What is data science?\n\n“A data scientist knows more about computer science than the average statistician, and more about statistics than the average computer scientist”"
   },
   {
     "objectID": "presentations/2023-02-01_what-is-data-science/index.html#drew-conways-famous-venn-diagram",
     "href": "presentations/2023-02-01_what-is-data-science/index.html#drew-conways-famous-venn-diagram",
-    "title": "Everything you ever wanted to know about data science (but were too afraid to ask)",
+    "title": "Everything you ever wanted to know about data science",
     "section": "Drew Conway’s famous Venn diagram",
     "text": "Drew Conway’s famous Venn diagram\n\nSource"
   },
   {
     "objectID": "presentations/2023-02-01_what-is-data-science/index.html#around-the-web",
     "href": "presentations/2023-02-01_what-is-data-science/index.html#around-the-web",
-    "title": "Everything you ever wanted to know about data science (but were too afraid to ask)",
+    "title": "Everything you ever wanted to know about data science",
     "section": "Around the web…",
-    "text": "Around the web…\n\n\n\nThe difference between a statitician and a data scientist? About $30,000\n… an actual definition of data science. Taking a database and making it do something else. (warning: this quote is me! 😉)\nStatistics done on a Mac"
+    "text": "Around the web…\n\n\n\nThe difference between a statitician and a data scientist? About $30,000\n… an actual definition of data science. Taking a database and making it do something else. (warning: this quote is me! :wink:)\nStatistics done on a Mac"
   },
   {
     "objectID": "presentations/2023-02-01_what-is-data-science/index.html#what-are-the-skills-of-data-science",
     "href": "presentations/2023-02-01_what-is-data-science/index.html#what-are-the-skills-of-data-science",
-    "title": "Everything you ever wanted to know about data science (but were too afraid to ask)",
+    "title": "Everything you ever wanted to know about data science",
     "section": "What are the skills of data science?",
     "text": "What are the skills of data science?\n\nAnalysis\n\nML\nStats\nData viz\n\nSoftware engineering\n\nProgramming\nSQL/ data\nDevOps\nRAP"
   },
   {
     "objectID": "presentations/2023-02-01_what-is-data-science/index.html#what-are-the-skills-of-data-science-1",
     "href": "presentations/2023-02-01_what-is-data-science/index.html#what-are-the-skills-of-data-science-1",
-    "title": "Everything you ever wanted to know about data science (but were too afraid to ask)",
+    "title": "Everything you ever wanted to know about data science",
     "section": "What are the skills of data science?",
     "text": "What are the skills of data science?\n\nDomain knowledge\n\nCommunication\nProblem formulation\nDashboards and reports"
   },
   {
     "objectID": "presentations/2023-02-01_what-is-data-science/index.html#ml",
     "href": "presentations/2023-02-01_what-is-data-science/index.html#ml",
-    "title": "Everything you ever wanted to know about data science (but were too afraid to ask)",
+    "title": "Everything you ever wanted to know about data science",
     "section": "ML",
     "text": "ML\n\nSource"
   },
   {
     "objectID": "presentations/2023-02-01_what-is-data-science/index.html#inevitable-xkcd",
     "href": "presentations/2023-02-01_what-is-data-science/index.html#inevitable-xkcd",
-    "title": "Everything you ever wanted to know about data science (but were too afraid to ask)",
+    "title": "Everything you ever wanted to know about data science",
     "section": "Inevitable XKCD",
     "text": "Inevitable XKCD\n\n\n\nSource\n\n\nGoogle flu trends"
   },
   {
     "objectID": "presentations/2023-02-01_what-is-data-science/index.html#stats-and-data-viz",
     "href": "presentations/2023-02-01_what-is-data-science/index.html#stats-and-data-viz",
-    "title": "Everything you ever wanted to know about data science (but were too afraid to ask)",
+    "title": "Everything you ever wanted to know about data science",
     "section": "Stats and data viz",
     "text": "Stats and data viz\n\nML leans a bit more towards atheoretical prediction\nStats leans a bit more towards inference (but they both do both)\nData scientists may use different visualisations\n\nInteractive web based tools\nDashboard based visualisers e.g. {stminsights}"
   },
   {
     "objectID": "presentations/2023-02-01_what-is-data-science/index.html#software-engineering",
     "href": "presentations/2023-02-01_what-is-data-science/index.html#software-engineering",
-    "title": "Everything you ever wanted to know about data science (but were too afraid to ask)",
+    "title": "Everything you ever wanted to know about data science",
     "section": "Software engineering",
     "text": "Software engineering\n\nProgramming\n\nNo/ low code data science?\n\nSQL/ data\n\nTend to use reproducible automated processes\n\nDevOps\n\nPlan, code, build, test, release, deploy, operate, monitor\n\nRAP\n\nI will come back to this"
   },
   {
     "objectID": "presentations/2023-02-01_what-is-data-science/index.html#domain-knowledge",
     "href": "presentations/2023-02-01_what-is-data-science/index.html#domain-knowledge",
-    "title": "Everything you ever wanted to know about data science (but were too afraid to ask)",
+    "title": "Everything you ever wanted to know about data science",
     "section": "Domain knowledge",
     "text": "Domain knowledge\n\nDo stuff that matters\n\nThe best minds of my generation are thinking about how to make people click ads. That sucks. Jeffrey Hammerbacher\n\nConvince other people that it matters\nThis is the hardest part of data science\nCommunicate, communicate, communicate!\nMany of you are expert at this"
   },
   {
     "objectID": "presentations/2023-02-01_what-is-data-science/index.html#reproducibility",
     "href": "presentations/2023-02-01_what-is-data-science/index.html#reproducibility",
-    "title": "Everything you ever wanted to know about data science (but were too afraid to ask)",
+    "title": "Everything you ever wanted to know about data science",
     "section": "Reproducibility",
     "text": "Reproducibility\n\nReproducibility in science\nThe $6B spreadsheet error\nGeorge Osbourne’s austerity was based on a spreadsheet error\nFor us, reproducibility also means we can do the same analysis 50 times in one minute\n\nWhich is why I started down the road of data science"
   },
   {
     "objectID": "presentations/2023-02-01_what-is-data-science/index.html#what-is-rap",
     "href": "presentations/2023-02-01_what-is-data-science/index.html#what-is-rap",
-    "title": "Everything you ever wanted to know about data science (but were too afraid to ask)",
+    "title": "Everything you ever wanted to know about data science",
     "section": "What is RAP",
-    "text": "What is RAP\n\na process in which code is used to minimise manual, undocumented steps, and a clear, properly documented process is produced in code which can reliably give the same result from the same dataset\nRAP should be:\n\n\nthe core working practice that must be supported by all platforms and teams; make this a core focus of NHS analyst training\n\nGoldacre review"
+    "text": "What is RAP\n\na process in which code is used to minimise manual, undocumented steps, and a clear, properly documented process is produced in code which can reliably give the same result from the same dataset\nRAP should be:\n\n\nthe core working practice that must be supported by all platforms and teams; make this a core focus of NHS analyst training\n\n\nGoldacre review"
   },
   {
     "objectID": "presentations/2023-02-01_what-is-data-science/index.html#levels-of-rap--baseline",
     "href": "presentations/2023-02-01_what-is-data-science/index.html#levels-of-rap--baseline",
-    "title": "Everything you ever wanted to know about data science (but were too afraid to ask)",
+    "title": "Everything you ever wanted to know about data science",
     "section": "Levels of RAP- Baseline",
-    "text": "Levels of RAP- Baseline\n\nData produced by code in an open-source language (e.g., Python, R, SQL).\nCode is version controlled (see Git basics and using Git collaboratively guides).\nRepository includes a README.md file (or equivalent) that clearly details steps a user must follow to reproduce the code\nCode has been peer reviewed.\nCode is published in the open and linked to & from accompanying publication (if relevant).\n\nSource: NHS Digital RAP community of practice"
+    "text": "Levels of RAP- Baseline\n\nData produced by code in an open-source language (e.g., Python, R, SQL).\nCode is version controlled (see Git basics and using Git collaboratively guides).\nRepository includes a README.md file (or equivalent) that clearly details steps a user must follow to reproduce the code\nCode has been peer reviewed.\nCode is published in the open and linked to & from accompanying publication (if relevant).\n\n\nSource: NHS Digital RAP community of practice"
   },
   {
     "objectID": "presentations/2023-02-01_what-is-data-science/index.html#levels-of-rap--silver",
     "href": "presentations/2023-02-01_what-is-data-science/index.html#levels-of-rap--silver",
-    "title": "Everything you ever wanted to know about data science (but were too afraid to ask)",
+    "title": "Everything you ever wanted to know about data science",
     "section": "Levels of RAP- Silver",
-    "text": "Levels of RAP- Silver\n\nCode is well-documented…\nCode is well-organised following standard directory format\nReusable functions and/or classes are used where appropriate\nPipeline includes a testing framework\nRepository includes dependency information (e.g. requirements.txt, PipFile, environment.yml\nData is handled and output in a Tidy data format\n\nSource: NHS Digital RAP community of practice"
+    "text": "Levels of RAP- Silver\n\nCode is well-documented…\nCode is well-organised following standard directory format\nReusable functions and/or classes are used where appropriate\nPipeline includes a testing framework\nRepository includes dependency information (e.g. requirements.txt, PipFile, environment.yml\nData is handled and output in a Tidy data format\n\n\nSource: NHS Digital RAP community of practice"
   },
   {
     "objectID": "presentations/2023-02-01_what-is-data-science/index.html#levels-of-rap--gold",
     "href": "presentations/2023-02-01_what-is-data-science/index.html#levels-of-rap--gold",
-    "title": "Everything you ever wanted to know about data science (but were too afraid to ask)",
+    "title": "Everything you ever wanted to know about data science",
     "section": "Levels of RAP- Gold",
     "text": "Levels of RAP- Gold\n\nCode is fully packaged\nRepository automatically runs tests etc. via CI/CD or a different integration/deployment tool e.g. GitHub Actions\nProcess runs based on event-based triggers (e.g., new data in database) or on a schedule\nChanges to the RAP are clearly signposted. E.g. a changelog in the package, releases etc. (See gov.uk info on Semantic Versioning)\n\nSource: NHS Digital RAP community of practice"
   },
   {
     "objectID": "presentations/2023-02-01_what-is-data-science/index.html#the-data-science-unicorn",
     "href": "presentations/2023-02-01_what-is-data-science/index.html#the-data-science-unicorn",
-    "title": "Everything you ever wanted to know about data science (but were too afraid to ask)",
+    "title": "Everything you ever wanted to know about data science",
     "section": "The data science “Unicorn”",
     "text": "The data science “Unicorn”\n\nThe maybe-mythical data science “Unicorn” has mastered:\n\nDomain knowledge\nStats and ML\nSoftware engineering"
   },
   {
     "objectID": "presentations/2023-02-01_what-is-data-science/index.html#data-science-is-a-team-sport",
     "href": "presentations/2023-02-01_what-is-data-science/index.html#data-science-is-a-team-sport",
-    "title": "Everything you ever wanted to know about data science (but were too afraid to ask)",
+    "title": "Everything you ever wanted to know about data science",
     "section": "Data science is a team sport",
-    "text": "Data science is a team sport\n\nIn my extended DS team I have:\nStats and DevOps (and rabble rousing) [this one is me 😉]\nSQL, data, and training\nDevOps and programming\nText mining, Python, and APIs\nBilingual R/ Python, Shiny dashboards"
+    "text": "Data science is a team sport\n\nIn my extended DS team I have:\nStats and DevOps (and rabble rousing) [this one is me :wink:]\nSQL, data, and training\nDevOps and programming\nText mining, Python, and APIs\nBilingual R/ Python, Shiny dashboards"
   },
   {
     "objectID": "presentations/2023-02-01_what-is-data-science/index.html#data-science-is-an-mmo",
     "href": "presentations/2023-02-01_what-is-data-science/index.html#data-science-is-an-mmo",
-    "title": "Everything you ever wanted to know about data science (but were too afraid to ask)",
+    "title": "Everything you ever wanted to know about data science",
     "section": "Data science is an MMO",
     "text": "Data science is an MMO\n\nData scientists need help with:\n\nStakeholder communication and engagement\nQualitative analysis\nTranslating models and prediction into the real world\nEvidence review and problem definition"
   },
   {
     "objectID": "presentations/2023-02-01_what-is-data-science/index.html#data-science-is-an-mmo-1",
     "href": "presentations/2023-02-01_what-is-data-science/index.html#data-science-is-an-mmo-1",
-    "title": "Everything you ever wanted to know about data science (but were too afraid to ask)",
+    "title": "Everything you ever wanted to know about data science",
     "section": "Data science is an MMO",
     "text": "Data science is an MMO\n\nData scientists are an excellent help when you:\n\nNeed a lot of pretty graphs\nNeed the same analysis done 50+ times with different data\nHave too much text and not enough time to analyse it\nWant to carefully document your analysis and make it reproducible\nHave a hideously messy, large dataset that you can’t hack together yourself"
   },
   {
     "objectID": "presentations/2023-02-01_what-is-data-science/index.html#the-team",
     "href": "presentations/2023-02-01_what-is-data-science/index.html#the-team",
-    "title": "Everything you ever wanted to know about data science (but were too afraid to ask)",
+    "title": "Everything you ever wanted to know about data science",
     "section": "The team",
     "text": "The team\n\nWe will be organising code review and pair coding sessions\nWe will be running coffee and coding sessions\nWe can be relied on to get very excited about thorny data problems, especially if they involve:\n\nDrawing pretty graphs\nNHS-R and other communities and events\nSpending long hours in a bunker writing open source code\nProcessing text\nDocumenting and version controlling analyses"
   },
   {
     "objectID": "presentations/2023-02-01_what-is-data-science/index.html#note",
     "href": "presentations/2023-02-01_what-is-data-science/index.html#note",
-    "title": "Everything you ever wanted to know about data science (but were too afraid to ask)",
+    "title": "Everything you ever wanted to know about data science",
     "section": "Note",
-    "text": "Note\nAll copyrighted material is reused under Fair Dealing"
+    "text": "Note\nAll copyrighted material is reused under Fair Dealing\n\n\nview slides at the-strategy-unit.github.io/data_science/presentations"
   },
   {
     "objectID": "presentations/2023-03-23_collaborative-working/index.html#introduction",
@@ -228,175 +228,175 @@
     "href": "presentations/2023-03-23_collaborative-working/index.html#data-and-.gitignore",
     "title": "Collaborative working",
     "section": "Data and .gitignore",
-    "text": "Data and .gitignore\n\nYour repo needs to be reproducible but also needs to be safe\nThe main branch should be reproducible by anyone at any time\n\nDocument package dependencies (using renv)\nDocument data loads if the data isn’t in the repo"
+    "text": "Data and .gitignore\n\nYour repo needs to be reproducible but also needs to be safe\nThe main branch should be reproducible by anyone at any time\n\nDocument package dependencies (using renv)\nDocument data loads if the data isn’t in the repo\n\n\n\n\nview slides at the-strategy-unit.github.io/data_science/presentations"
   },
   {
     "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#what-is-data-science",
     "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#what-is-data-science",
-    "title": "Travels with R and Python - the power of data science in healthcare",
+    "title": "Travels with R and Python",
     "section": "What is data science?",
     "text": "What is data science?\n\n“A data scientist knows more about computer science than the average statistician, and more about statistics than the average computer scientist”\n\n(Josh Wills, a former head of data engineering at Slack)"
   },
   {
     "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#drew-conways-famous-venn-diagram",
     "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#drew-conways-famous-venn-diagram",
-    "title": "Travels with R and Python - the power of data science in healthcare",
+    "title": "Travels with R and Python",
     "section": "Drew Conway’s famous Venn diagram",
     "text": "Drew Conway’s famous Venn diagram\n\nSource"
   },
   {
     "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#what-are-the-skills-of-data-science",
     "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#what-are-the-skills-of-data-science",
-    "title": "Travels with R and Python - the power of data science in healthcare",
+    "title": "Travels with R and Python",
     "section": "What are the skills of data science?",
     "text": "What are the skills of data science?\n\nAnalysis\n\nML\nStats\nData viz\n\nSoftware engineering\n\nProgramming\nSQL/ data\nDevOps\nRAP"
   },
   {
     "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#what-are-the-skills-of-data-science-1",
     "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#what-are-the-skills-of-data-science-1",
-    "title": "Travels with R and Python - the power of data science in healthcare",
+    "title": "Travels with R and Python",
     "section": "What are the skills of data science?",
     "text": "What are the skills of data science?\n\nDomain knowledge\n\nCommunication\nProblem formulation\nDashboards and reports"
   },
   {
     "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#stats-and-data-viz",
     "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#stats-and-data-viz",
-    "title": "Travels with R and Python - the power of data science in healthcare",
+    "title": "Travels with R and Python",
     "section": "Stats and data viz",
     "text": "Stats and data viz\n\nML leans a bit more towards atheoretical prediction\nStats leans a bit more towards inference (but they both do both)\nData scientists may use different visualisations\n\nInteractive web based tools\nDashboard based visualisers e.g. {stminsights}"
   },
   {
     "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#software-engineering",
     "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#software-engineering",
-    "title": "Travels with R and Python - the power of data science in healthcare",
+    "title": "Travels with R and Python",
     "section": "Software engineering",
     "text": "Software engineering\n\nProgramming\n\nNo/ low code data science?\n\nSQL/ data\n\nTend to use reproducible automated processes\n\nDevOps\n\nPlan, code, build, test, release, deploy, operate, monitor\n\nRAP\n\nI will come back to this"
   },
   {
     "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#domain-knowledge",
     "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#domain-knowledge",
-    "title": "Travels with R and Python - the power of data science in healthcare",
+    "title": "Travels with R and Python",
     "section": "Domain knowledge",
     "text": "Domain knowledge\n\nDo stuff that matters\n\nThe best minds of my generation are thinking about how to make people click ads. That sucks. Jeffrey Hammerbacher\n\nConvince other people that it matters\nThis is the hardest part of data science"
   },
   {
     "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#rap",
     "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#rap",
-    "title": "Travels with R and Python - the power of data science in healthcare",
+    "title": "Travels with R and Python",
     "section": "RAP",
     "text": "RAP\n\nData science isn’t RAP\nRAP isn’t data science\nThey are firm friends"
   },
   {
     "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#reproducibility",
     "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#reproducibility",
-    "title": "Travels with R and Python - the power of data science in healthcare",
+    "title": "Travels with R and Python",
     "section": "Reproducibility",
     "text": "Reproducibility\n\nReproducibility in science\nThe $6B spreadsheet error\nGeorge Osbourne’s austerity was based on a spreadsheet error\nFor us, reproducibility also means we can do the same analysis 50 times in one minute\n\nWhich is why I started down the road of data science"
   },
   {
     "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#what-is-rap",
     "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#what-is-rap",
-    "title": "Travels with R and Python - the power of data science in healthcare",
+    "title": "Travels with R and Python",
     "section": "What is RAP",
-    "text": "What is RAP\n\na process in which code is used to minimise manual, undocumented steps, and a clear, properly documented process is produced in code which can reliably give the same result from the same dataset\nRAP should be:\n\n\nthe core working practice that must be supported by all platforms and teams; make this a core focus of NHS analyst training\n\nGoldacre review"
+    "text": "What is RAP\n\na process in which code is used to minimise manual, undocumented steps, and a clear, properly documented process is produced in code which can reliably give the same result from the same dataset\nRAP should be:\n\n\nthe core working practice that must be supported by all platforms and teams; make this a core focus of NHS analyst training\n\n\nGoldacre review"
   },
   {
     "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#levels-of-rap--baseline",
     "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#levels-of-rap--baseline",
-    "title": "Travels with R and Python - the power of data science in healthcare",
+    "title": "Travels with R and Python",
     "section": "Levels of RAP- Baseline",
-    "text": "Levels of RAP- Baseline\n\nData produced by code in an open-source language (e.g., Python, R, SQL)\nCode is version controlled\nRepository includes a README.md file that clearly details steps a user must follow to reproduce the code\nCode has been peer reviewed\nCode is published in the open and linked to & from accompanying publication (if relevant)\n\nSource: NHS Digital RAP community of practice"
+    "text": "Levels of RAP- Baseline\n\nData produced by code in an open-source language (e.g., Python, R, SQL)\nCode is version controlled\nRepository includes a README.md file that clearly details steps a user must follow to reproduce the code\nCode has been peer reviewed\nCode is published in the open and linked to & from accompanying publication (if relevant)\n\n\nSource: NHS Digital RAP community of practice"
   },
   {
     "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#levels-of-rap--silver",
     "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#levels-of-rap--silver",
-    "title": "Travels with R and Python - the power of data science in healthcare",
+    "title": "Travels with R and Python",
     "section": "Levels of RAP- Silver",
-    "text": "Levels of RAP- Silver\n\nCode is well-documented…\nCode is well-organised following standard directory format\nReusable functions and/or classes are used where appropriate\nPipeline includes a testing framework\nRepository includes dependency information (e.g. requirements.txt, PipFile, environment.yml)\nData is handled and output in a Tidy data format\n\nSource: NHS Digital RAP community of practice"
+    "text": "Levels of RAP- Silver\n\nCode is well-documented…\nCode is well-organised following standard directory format\nReusable functions and/or classes are used where appropriate\nPipeline includes a testing framework\nRepository includes dependency information (e.g. requirements.txt, PipFile, environment.yml)\nData is handled and output in a Tidy data format\n\n\nSource: NHS Digital RAP community of practice"
   },
   {
     "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#levels-of-rap--gold",
     "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#levels-of-rap--gold",
-    "title": "Travels with R and Python - the power of data science in healthcare",
+    "title": "Travels with R and Python",
     "section": "Levels of RAP- Gold",
-    "text": "Levels of RAP- Gold\n\nCode is fully packaged\nRepository automatically runs tests etc. via CI/CD or a different integration/deployment tool e.g. GitHub Actions\nProcess runs based on event-based triggers (e.g., new data in database) or on a schedule\nChanges to the RAP are clearly signposted. E.g. a changelog in the package, releases etc. (See gov.uk info on Semantic Versioning)\n\nSource: NHS Digital RAP community of practice"
+    "text": "Levels of RAP- Gold\n\nCode is fully packaged\nRepository automatically runs tests etc. via CI/CD or a different integration/deployment tool e.g. GitHub Actions\nProcess runs based on event-based triggers (e.g., new data in database) or on a schedule\nChanges to the RAP are clearly signposted. E.g. a changelog in the package, releases etc. (See gov.uk info on Semantic Versioning)\n\n\nSource: NHS Digital RAP community of practice"
   },
   {
     "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#data-science-in-healthcare",
     "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#data-science-in-healthcare",
-    "title": "Travels with R and Python - the power of data science in healthcare",
+    "title": "Travels with R and Python",
     "section": "Data science in healthcare",
     "text": "Data science in healthcare\n\nForecasting\n\nStats versus ML\n\nText mining\n\nR versus Python\n\nDemand modelling\n\nDevOps as a way of life"
   },
   {
     "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#get-involved",
     "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#get-involved",
-    "title": "Travels with R and Python - the power of data science in healthcare",
+    "title": "Travels with R and Python",
     "section": "Get involved!",
     "text": "Get involved!\n\nNHS-R community\n\nWebinars, training, conference, Slack\n\nNHS Pycom\n\nditto…\n\nMLCSU GitHub?\nBuild links with the other CSUs"
   },
   {
     "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#contact",
     "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#contact",
-    "title": "Travels with R and Python - the power of data science in healthcare",
+    "title": "Travels with R and Python",
     "section": "Contact",
-    "text": "Contact\n\n\n\n\n strategy.unit@nhs.net\n The-Strategy-Unit\n\n\n\n\n\n chris.beeley1@nhs.net\n chrisbeeley"
+    "text": "Contact\n\n\n\n\n strategy.unit@nhs.net\n The-Strategy-Unit\n\n\n\n\n\n chris.beeley1@nhs.net\n chrisbeeley\n\n\n\n\n\n\nview slides at the-strategy-unit.github.io/data_science/presentations"
   },
   {
     "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#what-is-targets",
     "href": "presentations/2023-03-23_coffee-and-coding/index.html#what-is-targets",
-    "title": "{targets}",
+    "title": "Coffee and Coding",
     "section": "What is {targets}?",
     "text": "What is {targets}?\n\nThe targets package is a Make-like pipeline tool for Statistics and data science in R. With targets, you can maintain a reproducible workflow without repeating yourself. targets learns how your pipeline fits together, skips costly runtime for tasks that are already up to date, runs only the necessary computation, supports implicit parallel computing, abstracts files as R objects, and shows tangible evidence that the results match the underlying code and data.\n\n\n\nData analysis can be slow. A round of scientific computation can take several minutes, hours, or even days to complete. After it finishes, if you update your code or data, your hard-earned results may no longer be valid. Unchecked, this invalidation creates chronic Sisyphean loop:\n\n\nLaunch the code.\nWait while it runs.\nDiscover an issue.\nRestart from scratch.\n\n\nsource: The {targets} R package user manual"
   },
   {
     "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#what-is-it-actually-trying-to-do",
     "href": "presentations/2023-03-23_coffee-and-coding/index.html#what-is-it-actually-trying-to-do",
-    "title": "{targets}",
+    "title": "Coffee and Coding",
     "section": "What is it actually trying to do?",
     "text": "What is it actually trying to do?\n\n\nYour analysis is built up of a number of steps that build one on top of another\nbut these steps need to run in a particular order\nsome of these steps may take a long time to run\nso you only want to run the steps that have changed"
   },
   {
     "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#typical-solution",
     "href": "presentations/2023-03-23_coffee-and-coding/index.html#typical-solution",
-    "title": "{targets}",
+    "title": "Coffee and Coding",
     "section": "Typical solution",
     "text": "Typical solution\n\n\nSteps\nYou have a folder with numbered scripts, such as:\n\n1. get data.R\n2. process data.R\n3. produce charts.R\n4. build model.R\n5. report.qmd\n\n\nDownsides\n\n\nit’s easy to accidentally skip a step: what happens if you went from 1 to 3?\nperforming one of the steps may take a long time, so you may want to skip it if it’s already been run… but how do you know that it’s already been run?\nperhaps step 4 doesn’t depend on step 3, but is this obvious that you could skip step 4 if step 3 is updated?\nwhat if someone labels the files terribly, or doesn’t number them at all?\nwhat if the numbers become out of date and are in the wrong order?\ndo you need to create a procedure document that describes what to do, step-by-step?"
   },
   {
     "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#targets-to-the-rescue",
     "href": "presentations/2023-03-23_coffee-and-coding/index.html#targets-to-the-rescue",
-    "title": "{targets}",
+    "title": "Coffee and Coding",
     "section": "{targets} to the rescue?",
     "text": "{targets} to the rescue?\n\n\nUsing the previous example, if we were to create functions for each of the steps (all saved in the folder R/), we can start using targets using the function use_targets() which will create a file called _targets.R.\nWe can then modify the file to match our pipeline, for example:\nNote that:\n\nprocessed_data depends upon raw_data,\nchart and model depend upon processed_data,\nreport depends upon chart and model.\n\nWe can visualise our pipeline using tar_visnetwork().\n\n\nlibrary(targets)\n\ntar_option_set(\n  packages = c(\"tibble\", \"dplyr\", \"ggplot2\"),\n)\n\ntar_source()\n\nlist(\n  tar_target(raw_data, get_data()),\n  tar_target(processed_data, process_data(raw_data)),\n  tar_target(chart, produce_chart(processed_data)),\n  tar_target(model, build_model(processed_data)),\n  tar_target(report, generate_report(chart, model))\n)"
   },
   {
     "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#running-the-pipeline",
     "href": "presentations/2023-03-23_coffee-and-coding/index.html#running-the-pipeline",
-    "title": "{targets}",
+    "title": "Coffee and Coding",
     "section": "Running the pipeline",
     "text": "Running the pipeline\nRunning this pipeline is as simple as: tar_make().\nThis will output the following:\n• start target raw_data\n• built target raw_data [1.05 seconds]\n• start target processed_data\n• built target processed_data [0.03 seconds]\n• start target chart\n• built target chart [0.02 seconds]\n• start target model\n• built target model [0.01 seconds]\n• start target report\n• built target report [0 seconds]\n• end pipeline [1.75 seconds]\n\nRunning tar_make() again will show these step’s being skipped:\n✔ skip target raw_data\n✔ skip target processed_data\n✔ skip target chart\n✔ skip target model\n✔ skip target report\n✔ skip pipeline [0.12 seconds]"
   },
   {
     "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#changing-one-of-the-files",
     "href": "presentations/2023-03-23_coffee-and-coding/index.html#changing-one-of-the-files",
-    "title": "{targets}",
+    "title": "Coffee and Coding",
     "section": "Changing one of the files",
     "text": "Changing one of the files\nIf we change produce_chart.R slightly, this will cause chart and report to be invalidated, but it will skip over the other steps.\n\n\n&gt; targets::tar_make()\n\n✔ skip target raw_data\n✔ skip target processed_data\n• start target chart\n• built target chart [0.03 seconds]\n✔ skip target model\n• start target report\n• built target report [0 seconds]\n• end pipeline [1.71 seconds]"
   },
   {
     "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#using-the-results-of-our-pipeline",
     "href": "presentations/2023-03-23_coffee-and-coding/index.html#using-the-results-of-our-pipeline",
-    "title": "{targets}",
+    "title": "Coffee and Coding",
     "section": "Using the results of our pipeline",
     "text": "Using the results of our pipeline\nWe can view the results of any step using tar_read() and tar_load(). These will either directly give you the results of a step, or load that step into your environment (as a variable with the same name as the step).\nThis allows us to view intermediate steps as well as the final outputs of our pipelines.\nOne thing you may want to consider doing is as a final step in a pipeline is to generate a quarto document, or save call a function like saveRDS to generate more useful outputs."
   },
   {
     "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#current-examples-of-targets-in-action",
     "href": "presentations/2023-03-23_coffee-and-coding/index.html#current-examples-of-targets-in-action",
-    "title": "{targets}",
+    "title": "Coffee and Coding",
     "section": "Current examples of {targets} in action",
-    "text": "Current examples of {targets} in action\n\ncode used in this presentation\nNHP Inputs (all of the data processing steps are a targets pipeline)\nNHP Strategies (runs Sql scripts to update tables in the data warehouse)\nNHP Model (all of the data extraction, processing, and uploading for the model is a targets pipeline)\nMacmillan on NCDR - Jacqueline has been using {targets} for her current project\n\nThe {targets} documentation is exceptionally detailed and easy to follow, and goes into more complex examples (such as dynamic branching of steps in a pipeline and high performance computing setups)\n\n\n\nview slides at the-strategy-unit.github.io/data_science/presentations"
+    "text": "Current examples of {targets} in action\n\ncode used in this presentation\nNHP Inputs (all of the data processing steps are a targets pipeline)\nNHP Strategies (runs Sql scripts to update tables in the data warehouse)\nNHP Model (all of the data extraction, processing, and uploading for the model is a targets pipeline)\nMacmillan on NCDR - Jacqueline has been using {targets} for her current project\n\nThe {targets} documentation is exceptionally detailed and easy to follow, and goes into more complex examples (such as dynamic branching of steps in a pipeline and high performance computing setups)\n\n\nview slides at the-strategy-unit.github.io/data_science/presentations"
   },
   {
     "objectID": "presentations/2023-05-15_text-mining/index.html#patient-experience",
@@ -480,7 +480,7 @@
     "href": "presentations/2023-05-15_text-mining/index.html#the-team",
     "title": "Text mining of patient experience data",
     "section": "The team",
-    "text": "The team\n\nYiWen Hon (Python & Machine learning)\nOluwasegun Apejoye (Shiny)\n\nContact:\n\nchris.beeley1@nhs.net\nhttps://fosstodon.org/@chrisbeeley"
+    "text": "The team\n\nYiWen Hon (Python & Machine learning)\nOluwasegun Apejoye (Shiny)\n\nContact:\n\nchris.beeley1@nhs.net\nhttps://fosstodon.org/@chrisbeeley\n\n\n\nview slides at the-strategy-unit.github.io/data_science/presentations"
   },
   {
     "objectID": "style/data_storage.html",
@@ -506,42 +506,14 @@
   {
     "objectID": "style/git_and_github.html",
     "href": "style/git_and_github.html",
-    "title": "Using Git and GitHub",
+    "title": "Using git and GitHub",
     "section": "",
-    "text": "Commits should be atomic\nAll code should be committed via pull request (PR) to main\n\n\n\n\n\n\n\nImportant\n\n\n\n\n\nNever push to main!\n\n\n\nWorkflow for writing code with Git and GitHub:\n\n\n\nif you haven’t already, file an issue that describes what you are doing - whether it be fixing a bug, adding a feature, or something else\nensure that the issue is as detailed as possible as it may need to be picked up by someone else. Even if only you intend to work on the issue, over time it can be easy to forget things if there isn’t enough information\n\n\n\nIssues are a good record to explain what a PR is for. It’s also a useful area for input from other members of the team.\n\n\n\n\nmake a new branch to work on that feature. GitHub offers a button to do this automatically on the issue page, on the right-hand side\n\n\n\n\nScreenshot links to specific GitHub help page\n\n\n\nwork on the branch, pushing your code regularly to GitHub so it can be run and inspected when you are not around\nwhen it’s ready, merge the branch to main\ndelete the branch and close the issue\n\n\n\nIf you used the create branch button on GitHub it will automatically close the issue when merged.\n\n\n\nFor repositories where you are working collaboratively, you must do two things:\n\nimmediately make someone an assignee - this is the person who will merge the PR. Typically, this should be the person creating the PR (you)\nselect a person (or people) to review\n\nWait until the reviewer(s) has completed the review and marked it as ready to merge. At this point, the person who is assigned to the PR can complete the merge.\n\n\nMost merges will be the default Create a merge commit but sometimes you may wish to Squash and merge. As the person requesting the PR you can select whichever option is wanted from the drop down in GitHub as part of the PR.\n\n\n\nBy using this approach of the assignee completing the merge, it ensures that code quality is maintained and prevents code from being merged when it is not yet ready. For example, you may have started a PR thinking your work is complete, a reviewer checks the code and agrees to merge, however, you may realise that there are still things to work on, or there are issues that need to be addressed.\nThe person who is assigned to the PR should be the only person making commits to the branch and this will prevent merge conflicts. If you wish for someone else to collaborate on the branch, then you should assign the PR to that person. At that point, they can pull your branch down and work on it, but you must stop using that branch locally.\n\n\nIf the PR is later assigned back to you to you should immediately pull changes.\nThere may be times where you cannot be the assignee on a PR and in those situations you should nominate someone else to be the assignee and in charge of the PR, the same rules as in the paragraph above would then apply.\nIf, as a reviewer, you find that no one is assigned to the branch, you should get in contact with the person who created the branch and decide who is going to be the assigned owner of the PR.\n\n\nIn circumstances where the person who created the PR is an outside collaborator and doesn’t have permission to merge, then the reviewer should also be the assignee. In these circumstances, the collaborator will be working from their local fork and will be the only person who can push to the branch. The reviewer, once happy to approve the changes, can merge the PR.\n\n\n\n\nTODO"
-  },
-  {
-    "objectID": "style/git_and_github.html#create-an-issue",
-    "href": "style/git_and_github.html#create-an-issue",
-    "title": "Using Git and GitHub",
-    "section": "",
-    "text": "if you haven’t already, file an issue that describes what you are doing - whether it be fixing a bug, adding a feature, or something else\nensure that the issue is as detailed as possible as it may need to be picked up by someone else. Even if only you intend to work on the issue, over time it can be easy to forget things if there isn’t enough information\n\n\n\nIssues are a good record to explain what a PR is for. It’s also a useful area for input from other members of the team."
-  },
-  {
-    "objectID": "style/git_and_github.html#create-a-branch",
-    "href": "style/git_and_github.html#create-a-branch",
-    "title": "Using Git and GitHub",
-    "section": "",
-    "text": "make a new branch to work on that feature. GitHub offers a button to do this automatically on the issue page, on the right-hand side\n\n\n\n\nScreenshot links to specific GitHub help page\n\n\n\nwork on the branch, pushing your code regularly to GitHub so it can be run and inspected when you are not around\nwhen it’s ready, merge the branch to main\ndelete the branch and close the issue\n\n\n\nIf you used the create branch button on GitHub it will automatically close the issue when merged."
-  },
-  {
-    "objectID": "style/git_and_github.html#reviewing-a-pr",
-    "href": "style/git_and_github.html#reviewing-a-pr",
-    "title": "Using Git and GitHub",
-    "section": "",
-    "text": "For repositories where you are working collaboratively, you must do two things:\n\nimmediately make someone an assignee - this is the person who will merge the PR. Typically, this should be the person creating the PR (you)\nselect a person (or people) to review\n\nWait until the reviewer(s) has completed the review and marked it as ready to merge. At this point, the person who is assigned to the PR can complete the merge.\n\n\nMost merges will be the default Create a merge commit but sometimes you may wish to Squash and merge. As the person requesting the PR you can select whichever option is wanted from the drop down in GitHub as part of the PR."
-  },
-  {
-    "objectID": "style/git_and_github.html#reviewing-methodology",
-    "href": "style/git_and_github.html#reviewing-methodology",
-    "title": "Using Git and GitHub",
-    "section": "",
-    "text": "By using this approach of the assignee completing the merge, it ensures that code quality is maintained and prevents code from being merged when it is not yet ready. For example, you may have started a PR thinking your work is complete, a reviewer checks the code and agrees to merge, however, you may realise that there are still things to work on, or there are issues that need to be addressed.\nThe person who is assigned to the PR should be the only person making commits to the branch and this will prevent merge conflicts. If you wish for someone else to collaborate on the branch, then you should assign the PR to that person. At that point, they can pull your branch down and work on it, but you must stop using that branch locally.\n\n\nIf the PR is later assigned back to you to you should immediately pull changes.\nThere may be times where you cannot be the assignee on a PR and in those situations you should nominate someone else to be the assignee and in charge of the PR, the same rules as in the paragraph above would then apply.\nIf, as a reviewer, you find that no one is assigned to the branch, you should get in contact with the person who created the branch and decide who is going to be the assigned owner of the PR.\n\n\nIn circumstances where the person who created the PR is an outside collaborator and doesn’t have permission to merge, then the reviewer should also be the assignee. In these circumstances, the collaborator will be working from their local fork and will be the only person who can push to the branch. The reviewer, once happy to approve the changes, can merge the PR."
+    "text": "Commits should be atomic\nAll code should be committed via pull request to main. Never push to main\n\nWorkflow for writing code with Git and GitHub:\n\nIf you haven’t already file an issue that describes what you are doing- whether it be fixing a bug, adding a feature, or something else\nMake a new branch to work on that feature. GitHub offers a button to do this automatically on the issue page, on the right hand side (see image)\nWork on the branch, pushing your code regularly to GitHub so it can be run and inspected when you are not around\nWhen it’s ready merge the branch to main. If you used the create branch button on GitHUb this will automatically close the issue. If the issue is not automatically closed, then close it manually\n\n\n\n\nTODO"
   },
   {
     "objectID": "style/git_and_github.html#preparing-a-package-release-of-your-code",
     "href": "style/git_and_github.html#preparing-a-package-release-of-your-code",
-    "title": "Using Git and GitHub",
+    "title": "Using git and GitHub",
     "section": "",
     "text": "TODO"
   },
@@ -599,7 +571,7 @@
     "href": "presentations/index.html",
     "title": "Presentations",
     "section": "",
-    "text": "Presentations\n\nWhat is data science?\nCoffee and coding 23rd February 2023\nCoffee and coding 9th March 2023\nCoffee and coding 23rd March 2023\nCollaborative working\nText mining\nWhat makes good data science?\nHACA 2023 - New Hospital Demand Model\nMLCSU KSN meeting"
+    "text": "Presentations\n\n\n\n\n\n\n  \n    \n    \n      title\n      author\n      date\n    \n  \n  \n    Everything you ever wanted to know about data science: but were too afraid to ask\nChris Beeley\n2023-08-02\n    Coffee and coding: Intro session\nChris Beeley\n2023-02-23\n    Coffee and Coding: Good Coding Practices\nTom Jemmett\n2023-03-09\n    RAP: what is it and how can my team start using it effectively?\nChris Beeley\n2023-03-09\n    Coffee and Coding: {targets}\nTom Jemmett\n2023-03-23\n    Collaborative working\nChris Beeley\n2023-03-23\n    Text mining of patient experience data\nChris Beeley\n2023-05-15\n    What good data science looks like\nChris Beeley\n2023-05-23\n    An Introduction to the New Hospital Programme Demand Model: HACA 2023\nTom Jemmett\n2023-07-11\n    Travels with R and Python: the power of data science in healthcare\nChris Beeley\n2023-08-02"
   },
   {
     "objectID": "presentations/2023-07-11_haca-nhp-demand-model/index.html#the-team",
@@ -809,189 +781,189 @@
     "href": "presentations/2023-07-11_haca-nhp-demand-model/index.html#questions",
     "title": "An Introduction to the New Hospital Programme Demand Model",
     "section": "Questions?",
-    "text": "Questions?\n\nContact The Strategy Unit\n\n\n strategy.unit@nhs.net\n The-Strategy-Unit\n\n\nContact Me\n\n\n thomas.jemmett@nhs.net\n tomjemmett\n\n\n\n\n\nview slides at https://tinyurl.com/haca23nhp"
+    "text": "Questions?\n\nContact The Strategy Unit\n\n\n strategy.unit@nhs.net\n The-Strategy-Unit\n\n\nContact Me\n\n\n thomas.jemmett@nhs.net\n tomjemmett\n\n\n\n\nview slides at https://tinyurl.com/haca23nhp"
   },
   {
     "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#what-is-rap",
     "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#what-is-rap",
-    "title": "RAP- what is it and how can my team start using it effectively?",
+    "title": "RAP",
     "section": "What is RAP",
     "text": "What is RAP\n\na process in which code is used to minimise manual, undocumented steps, and a clear, properly documented process is produced in code which can reliably give the same result from the same dataset\nRAP should be:\n\n\nthe core working practice that must be supported by all platforms and teams; make this a core focus of NHS analyst training\n\nGoldacre review"
   },
   {
     "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#what-are-we-trying-to-achieve",
     "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#what-are-we-trying-to-achieve",
-    "title": "RAP- what is it and how can my team start using it effectively?",
+    "title": "RAP",
     "section": "What are we trying to achieve?",
     "text": "What are we trying to achieve?\n\nLegibility\nReproducibility\nAccuracy\nLaziness"
   },
   {
     "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#what-are-some-of-the-fundamental-principles",
     "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#what-are-some-of-the-fundamental-principles",
-    "title": "RAP- what is it and how can my team start using it effectively?",
+    "title": "RAP",
     "section": "What are some of the fundamental principles?",
     "text": "What are some of the fundamental principles?\n\nPredictability, reducing mental load, and reducing truck factor\nMaking it easy to collaborate with yourself and others on different computers, in the cloud, in six months’ time…\nDRY"
   },
   {
     "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#the-road-to-rap",
     "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#the-road-to-rap",
-    "title": "RAP- what is it and how can my team start using it effectively?",
+    "title": "RAP",
     "section": "The road to RAP",
     "text": "The road to RAP\n\nWe’re roughly using NHS Digital’s RAP stages\nThere is an incredibly large amount to learn!\nConfession time! (everything I do not know…)\nYou don’t need to do it all at once\nYou don’t need to do it all at all ever\nEach thing you learn will incrementally help you\nRemember- that’s why we learnt this stuff. Because it helped us. And it can help you too"
   },
   {
     "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#levels-of-rap--baseline",
     "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#levels-of-rap--baseline",
-    "title": "RAP- what is it and how can my team start using it effectively?",
+    "title": "RAP",
     "section": "Levels of RAP- Baseline",
     "text": "Levels of RAP- Baseline\n\nData produced by code in an open-source language (e.g., Python, R, SQL).\nCode is version controlled (see Git basics and using Git collaboratively guides).\nRepository includes a README.md file (or equivalent) that clearly details steps a user must follow to reproduce the code\nCode has been peer reviewed.\nCode is published in the open and linked to & from accompanying publication (if relevant).\n\nSource: NHS Digital RAP community of practice"
   },
   {
     "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#levels-of-rap--silver",
     "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#levels-of-rap--silver",
-    "title": "RAP- what is it and how can my team start using it effectively?",
+    "title": "RAP",
     "section": "Levels of RAP- Silver",
     "text": "Levels of RAP- Silver\n\nCode is well-documented…\nCode is well-organised following standard directory format\nReusable functions and/or classes are used where appropriate\nPipeline includes a testing framework\nRepository includes dependency information (e.g. requirements.txt, PipFile, environment.yml\nData is handled and output in a Tidy data format\n\nSource: NHS Digital RAP community of practice"
   },
   {
     "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#levels-of-rap--gold",
     "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#levels-of-rap--gold",
-    "title": "RAP- what is it and how can my team start using it effectively?",
+    "title": "RAP",
     "section": "Levels of RAP- Gold",
     "text": "Levels of RAP- Gold\n\nCode is fully packaged\nRepository automatically runs tests etc. via CI/CD or a different integration/deployment tool e.g. GitHub Actions\nProcess runs based on event-based triggers (e.g., new data in database) or on a schedule\nChanges to the RAP are clearly signposted. E.g. a changelog in the package, releases etc. (See gov.uk info on Semantic Versioning)\n\nSource: NHS Digital RAP community of practice"
   },
   {
     "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#a-learning-journey-to-get-you-there",
     "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#a-learning-journey-to-get-you-there",
-    "title": "RAP- what is it and how can my team start using it effectively?",
+    "title": "RAP",
     "section": "A learning journey to get you there",
     "text": "A learning journey to get you there\n\nCode style, organising your files\nFunctions and iteration\nGit and GitHub\nPackaging your code\nTesting\nPackage management and versioning"
   },
   {
     "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#how-we-can-help-each-other-get-there",
     "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#how-we-can-help-each-other-get-there",
-    "title": "RAP- what is it and how can my team start using it effectively?",
+    "title": "RAP",
     "section": "How we can help each other get there",
     "text": "How we can help each other get there\n\nWork as a team!\nCoffee and coding!\nAsk for help!\nDo pair coding!\nGet your code reviewed!\nJoin the NHS-R/ NHSPycom communities"
   },
   {
     "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#haca",
     "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#haca",
-    "title": "RAP- what is it and how can my team start using it effectively?",
+    "title": "RAP",
     "section": "HACA",
-    "text": "HACA\n\nThe first national analytics conference for health and care\nInsight to action!\nJuly 11th and 12th, University of Birmingham\nAccepting abstracts for short and long talks and posters\nAbstract deadline 27th March\nHelp is available (with abstract, poster, preparing presentation…)!"
+    "text": "HACA\n\nThe first national analytics conference for health and care\nInsight to action!\nJuly 11th and 12th, University of Birmingham\nAccepting abstracts for short and long talks and posters\nAbstract deadline 27th March\nHelp is available (with abstract, poster, preparing presentation…)!\n\n\n\nview slides at the-strategy-unit.github.io/data_science/presentations"
   },
   {
     "objectID": "presentations/2023-02-23_coffee-and-coding/index.html#welcome-to-coffee-and-coding",
     "href": "presentations/2023-02-23_coffee-and-coding/index.html#welcome-to-coffee-and-coding",
-    "title": "Coffee and coding intro session",
+    "title": "Coffee and coding",
     "section": "Welcome to coffee and coding",
     "text": "Welcome to coffee and coding\n\nProject demos, showcasing work from a particular project\nMethod demos, showcasing how to use a particular method/tool/package\nSurgery and problem solving sessions\nDefining code standards and SOP"
   },
   {
     "objectID": "presentations/2023-02-23_coffee-and-coding/index.html#what-are-we-trying-to-achieve",
     "href": "presentations/2023-02-23_coffee-and-coding/index.html#what-are-we-trying-to-achieve",
-    "title": "Coffee and coding intro session",
+    "title": "Coffee and coding",
     "section": "What are we trying to achieve?",
     "text": "What are we trying to achieve?\n\nLegibility\nReproducibility\nAccuracy\nLaziness"
   },
   {
     "objectID": "presentations/2023-02-23_coffee-and-coding/index.html#what-are-some-of-the-fundamental-principles",
     "href": "presentations/2023-02-23_coffee-and-coding/index.html#what-are-some-of-the-fundamental-principles",
-    "title": "Coffee and coding intro session",
+    "title": "Coffee and coding",
     "section": "What are some of the fundamental principles?",
     "text": "What are some of the fundamental principles?\n\nPredictability, reducing mental load, and reducing truck factor\nMaking it easy to collaborate with yourself and others on different computers, in the cloud, in six months’ time…\nDRY"
   },
   {
     "objectID": "presentations/2023-02-23_coffee-and-coding/index.html#what-is-rap",
     "href": "presentations/2023-02-23_coffee-and-coding/index.html#what-is-rap",
-    "title": "Coffee and coding intro session",
+    "title": "Coffee and coding",
     "section": "What is RAP",
     "text": "What is RAP\n\na process in which code is used to minimise manual, undocumented steps, and a clear, properly documented process is produced in code which can reliably give the same result from the same dataset\nRAP should be:\n\n\nthe core working practice that must be supported by all platforms and teams; make this a core focus of NHS analyst training\n\nGoldacre review"
   },
   {
     "objectID": "presentations/2023-02-23_coffee-and-coding/index.html#the-road-to-rap",
     "href": "presentations/2023-02-23_coffee-and-coding/index.html#the-road-to-rap",
-    "title": "Coffee and coding intro session",
+    "title": "Coffee and coding",
     "section": "The road to RAP",
     "text": "The road to RAP\n\nWe’re roughly using NHS Digital’s RAP stages\nThere is an incredibly large amount to learn!\nConfession time! (everything I do not know…)\nYou don’t need to do it all at once\nYou don’t need to do it all at all ever\nEach thing you learn will incrementally help you\nRemember- that’s why we learnt this stuff. Because it helped us. And it can help you too"
   },
   {
     "objectID": "presentations/2023-02-23_coffee-and-coding/index.html#levels-of-rap--baseline",
     "href": "presentations/2023-02-23_coffee-and-coding/index.html#levels-of-rap--baseline",
-    "title": "Coffee and coding intro session",
+    "title": "Coffee and coding",
     "section": "Levels of RAP- Baseline",
     "text": "Levels of RAP- Baseline\n\nData produced by code in an open-source language (e.g., Python, R, SQL).\nCode is version controlled (see Git basics and using Git collaboratively guides).\nRepository includes a README.md file (or equivalent) that clearly details steps a user must follow to reproduce the code\nCode has been peer reviewed.\nCode is published in the open and linked to & from accompanying publication (if relevant).\n\nSource: NHS Digital RAP community of practice"
   },
   {
     "objectID": "presentations/2023-02-23_coffee-and-coding/index.html#levels-of-rap--silver",
     "href": "presentations/2023-02-23_coffee-and-coding/index.html#levels-of-rap--silver",
-    "title": "Coffee and coding intro session",
+    "title": "Coffee and coding",
     "section": "Levels of RAP- Silver",
     "text": "Levels of RAP- Silver\n\nCode is well-documented…\nCode is well-organised following standard directory format\nReusable functions and/or classes are used where appropriate\nPipeline includes a testing framework\nRepository includes dependency information (e.g. requirements.txt, PipFile, environment.yml\nData is handled and output in a Tidy data format\n\nSource: NHS Digital RAP community of practice"
   },
   {
     "objectID": "presentations/2023-02-23_coffee-and-coding/index.html#levels-of-rap--gold",
     "href": "presentations/2023-02-23_coffee-and-coding/index.html#levels-of-rap--gold",
-    "title": "Coffee and coding intro session",
+    "title": "Coffee and coding",
     "section": "Levels of RAP- Gold",
     "text": "Levels of RAP- Gold\n\nCode is fully packaged\nRepository automatically runs tests etc. via CI/CD or a different integration/deployment tool e.g. GitHub Actions\nProcess runs based on event-based triggers (e.g., new data in database) or on a schedule\nChanges to the RAP are clearly signposted. E.g. a changelog in the package, releases etc. (See gov.uk info on Semantic Versioning)\n\nSource: NHS Digital RAP community of practice"
   },
   {
     "objectID": "presentations/2023-02-23_coffee-and-coding/index.html#a-learning-journey-to-get-us-there",
     "href": "presentations/2023-02-23_coffee-and-coding/index.html#a-learning-journey-to-get-us-there",
-    "title": "Coffee and coding intro session",
+    "title": "Coffee and coding",
     "section": "A learning journey to get us there",
     "text": "A learning journey to get us there\n\nCode style, organising your files\nFunctions and iteration\nGit and GitHub\nPackaging your code\nTesting\nPackage management and versioning"
   },
   {
     "objectID": "presentations/2023-02-23_coffee-and-coding/index.html#how-we-can-help-each-other-get-there",
     "href": "presentations/2023-02-23_coffee-and-coding/index.html#how-we-can-help-each-other-get-there",
-    "title": "Coffee and coding intro session",
+    "title": "Coffee and coding",
     "section": "How we can help each other get there",
-    "text": "How we can help each other get there\n\nWork as a team!\nCoffee and coding!\nAsk for help!\nDo pair coding!\nGet your code reviewed!\nJoin the NHS-R/ NHSPycom communities"
+    "text": "How we can help each other get there\n\nWork as a team!\nCoffee and coding!\nAsk for help!\nDo pair coding!\nGet your code reviewed!\nJoin the NHS-R/ NHSPycom communities\n\n\n\nview slides at the-strategy-unit.github.io/data_science/presentations"
   },
   {
     "objectID": "presentations/2023-03-09_coffee-and-coding/index.html#which-is-easier-to-read",
     "href": "presentations/2023-03-09_coffee-and-coding/index.html#which-is-easier-to-read",
-    "title": "Good Coding Practices",
+    "title": "Coffee and Coding",
     "section": "Which is easier to read?",
-    "text": "Which is easier to read?\n\nae_attendances|&gt; filter(org_code%in%c(\"RNA\", \"RL4\"))|&gt; mutate(performance=1+breaches/attendances) |&gt;\n    filter(type== 1) |&gt;\n  mutate(met_target=performance&gt;=0.95)\n\nor\n\nae_attendances |&gt;\n  filter(\n    org_code %in% c(\"RNA\", \"RL4\"),\n    type == 1\n  ) |&gt;\n  mutate(\n    performance = 1 + breaches / attendances,\n    met_target = performance &gt;= 0.95\n  )\n\n\n  spending a few seconds to neatly format your code can greatly improve the legibility to future readers, making the intent of the code far clearer, and will make finding bugs easier to spot.\n\n\n  (have you spotted the mistake in the snippets above?)"
+    "text": "Which is easier to read?\n\nae_attendances |&gt;\n  filter(org_code %in% c(\"RNA\", \"RL4\")) |&gt;\n  mutate(performance = 1 + breaches / attendances) |&gt;\n  filter(type == 1) |&gt;\n  mutate(met_target = performance &gt;= 0.95)\n\nor\n\nae_attendances |&gt;\n  filter(\n    org_code %in% c(\"RNA\", \"RL4\"),\n    type == 1\n  ) |&gt;\n  mutate(\n    performance = 1 + breaches / attendances,\n    met_target = performance &gt;= 0.95\n  )\n\n\n  spending a few seconds to neatly format your code can greatly improve the legibility to future readers, making the intent of the code far clearer, and will make finding bugs easier to spot.\n\n\n  (have you spotted the mistake in the snippets above?)"
   },
   {
     "objectID": "presentations/2023-03-09_coffee-and-coding/index.html#tidyverse-style-guide",
     "href": "presentations/2023-03-09_coffee-and-coding/index.html#tidyverse-style-guide",
-    "title": "Good Coding Practices",
+    "title": "Coffee and Coding",
     "section": "Tidyverse Style Guide",
     "text": "Tidyverse Style Guide\n\nGood coding style is like correct punctuation: you can manage without it, butitsuremakesthingseasiertoread\n\n\nAll style guides are fundamentally opinionated. Some decisions genuinely do make code easier to use (especially matching indenting to programming structure), but many decisions are arbitrary. The most important thing about a style guide is that it provides consistency, making code easier to write because you need to make fewer decisions.\n\ntidyverse style guide"
   },
   {
     "objectID": "presentations/2023-03-09_coffee-and-coding/index.html#lintr-styler-are-your-new-best-friends",
     "href": "presentations/2023-03-09_coffee-and-coding/index.html#lintr-styler-are-your-new-best-friends",
-    "title": "Good Coding Practices",
+    "title": "Coffee and Coding",
     "section": "{lintr} + {styler} are your new best friends",
     "text": "{lintr} + {styler} are your new best friends\n\n\n{lintr}\n\n{lintr} is a static code analysis tool that inspects your code (without running it)\nit checks for certain classes of errors (e.g. mismatched { and (’s)\nit warns about potential issues (e.g. using variables that aren’t defined)\nit warns about places where you are not adhering to the code style\n\n\n{styler}\n\n{styler} is an RStudio add in that automatically reformats your code, tidying it up to match the style guide\n99.9% of the time it will give you equivalent code, but there is the potential that it may change the behaviour of your code\nit will overwrite the files that you ask it to run on however, so it is vital to be using version control\na good workflow here is to save your file, “stage” the changes to your file, then run {styler}. You can then revert back to the staged changed if needed."
   },
   {
     "objectID": "presentations/2023-03-09_coffee-and-coding/index.html#what-does-lintr-look-like",
     "href": "presentations/2023-03-09_coffee-and-coding/index.html#what-does-lintr-look-like",
-    "title": "Good Coding Practices",
+    "title": "Coffee and Coding",
     "section": "What does {lintr} look like?",
     "text": "What does {lintr} look like?\n\n\n\nsource: Good practice for writing R code and R packages\n\nrunning lintr can be done in the console, e.g.\n\nlintr::lintr_dir(\".\")\n\nor via the Addins menu"
   },
   {
     "objectID": "presentations/2023-03-09_coffee-and-coding/index.html#using-styler",
     "href": "presentations/2023-03-09_coffee-and-coding/index.html#using-styler",
-    "title": "Good Coding Practices",
+    "title": "Coffee and Coding",
     "section": "Using {styler}",
     "text": "Using {styler}\n\nsource: Good practice for writing R code and R packages"
   },
   {
     "objectID": "presentations/2023-03-09_coffee-and-coding/index.html#further-thoughts-on-improving-code-legibility",
     "href": "presentations/2023-03-09_coffee-and-coding/index.html#further-thoughts-on-improving-code-legibility",
-    "title": "Good Coding Practices",
+    "title": "Coffee and Coding",
     "section": "Further thoughts on improving code legibility",
-    "text": "Further thoughts on improving code legibility\n\ndo not let files grow too big\nbreak up logic into separate files, then you can use source(\"filename.R) to run the code in that file\nidealy, break up your logic into separate functions, each function having it’s own file, and then call those functions within your analysis\ndo not repeat yourself - if you are copying and pasting your code then you should be thinking about how to write a single function to handle this repeated logic\n\n\n\n\nview slides at the-strategy-unit.github.io/data_science/presentations"
+    "text": "Further thoughts on improving code legibility\n\ndo not let files grow too big\nbreak up logic into separate files, then you can use source(\"filename.R) to run the code in that file\nidealy, break up your logic into separate functions, each function having it’s own file, and then call those functions within your analysis\ndo not repeat yourself - if you are copying and pasting your code then you should be thinking about how to write a single function to handle this repeated logic\n\n\n\nview slides at the-strategy-unit.github.io/data_science/presentations"
   },
   {
     "objectID": "presentations/2023-05-23_data-science-for-good/index.html#patient-experience",
@@ -1089,14 +1061,14 @@
     "href": "presentations/2023-05-23_data-science-for-good/index.html#fun",
     "title": "What good data science looks like",
     "section": "Fun!",
-    "text": "Fun!\n\nCombing through spreadsheets looking for one comment is not fun\nDoing things the same way you did them last year is not fun\nTrying to implement a project that is too complicated is not fun\nWorking with a diverse team with different skills is fun\nAccessing high quality documentation to understand a project better is fun*"
+    "text": "Fun!\n\nCombing through spreadsheets looking for one comment is not fun\nDoing things the same way you did them last year is not fun\nTrying to implement a project that is too complicated is not fun\n\n \n\nWorking with a diverse team with different skills is fun\nAccessing high quality documentation to understand a project better is fun*"
   },
   {
     "objectID": "presentations/2023-05-23_data-science-for-good/index.html#team-and-code",
     "href": "presentations/2023-05-23_data-science-for-good/index.html#team-and-code",
     "title": "What good data science looks like",
     "section": "Team and code",
-    "text": "Team and code\n\nAndreas Soteriades (Y1)\nYiWen Hon, Oluwasegun Apejoye (Y2)\npxtextmining\nexperiencesdashboard\nDocumentation\n\n\n\nchris.beeley1@nhs.net\nhttps://fosstodon.org/@chrisbeeley"
+    "text": "Team and code\n\nAndreas Soteriades (Y1)\nYiWen Hon, Oluwasegun Apejoye (Y2)\n\n \n\npxtextmining\nexperiencesdashboard\nDocumentation\n\n\n\nchris.beeley1@nhs.net\nhttps://fosstodon.org/@chrisbeeley\n\n\n\nview slides at the-strategy-unit.github.io/data_science/presentations"
   },
   {
     "objectID": "blogs/posts/2023-03-24_hotfix-with-git.html",

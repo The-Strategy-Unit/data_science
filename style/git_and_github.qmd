@@ -52,6 +52,12 @@ When you create a PR, you must do two things:
     Typically, this should be the person creating the PR (you)
 2.  select a person (or people) to review the PR
 
+If your code is not yet ready to be merged then you should use a draft PR.
+
+::: aside
+Note that draft PR's are only available on public GitHub repos.
+:::
+
 Wait until the reviewer(s) has completed the review and marked it as ready to merge.
 At this point, the person who is assigned to the PR can complete the merge.
 

@@ -1,18 +1,98 @@
-# Using git and GitHub
+# Using Git and GitHub
 
-* Commits should be [atomic](https://dev.to/samuelfaure/how-atomic-git-commits-dramatically-increased-my-productivity-and-will-increase-yours-too-4a84)
-* All code should be committed via pull request to main. **Never** push to main
+All commits should be [atomic](https://dev.to/samuelfaure/how-atomic-git-commits-dramatically-increased-my-productivity-and-will-increase-yours-too-4a84), in short,
 
-Workflow for writing code with Git and GitHub:
+> Each commit does one, and only one simple thing, that can be summed up in a simple sentence.
 
-* If you haven't already file an issue that describes what you are doing- whether it be fixing a bug, adding a feature, or something else
-* Make a new branch to work on that feature. GitHub offers a button to do this automatically on the issue page, on the right hand side (see image)
-* Work on the branch, pushing your code regularly to GitHub so it can be run and inspected when you are not around
-* When it's ready merge the branch to main. If you used the create branch button on GitHUb this will automatically close the issue. If the issue is not automatically closed, then close it manually
+All of your commits should be in branches, the only changes that are made to the `main` branch would be via pull requests (PR) that have been reviewed by at minimum one colleague.
 
+::: {.callout-important appearance="default" icon="true"}
+**Never** push to `main`!
+:::
 
-![](branch_img.png)
+## Workflow for writing code with Git and GitHub:
 
-## Preparing a package release of your code
+### Create an issue
+
+If you haven't already, file an issue that describes what you are doing - whether it be fixing a bug, adding a feature, or something else.
+Issues help to keep track of both the work to be done, and the work that has been done.
+
+You should ensure that the issue is as detailed as possible as it may need to be picked up by someone else.
+Even if only you intend to work on the issue, over time it can be easy to forget things if there isn't enough information.
+They can also help you to remember what changes you have made to your code, and why you had to make these changes, which can be useful if you need to provide change logs when you release your code.
+
+::: aside
+Issues are a good record to explain what a PR is for.
+It's also a useful area for input from other members of the team.
+:::
+
+### Create a branch
+
+Once the issue is created and you have decided that you are going to work on it, first assign yourself to the issue in GitHub.
+This is an indication to others and helps to prevent multiple people from independently working on the same issue.
+
+Once you have assigned yourself, you must make a new branch to work on that feature.
+GitHub offers a button to do this automatically on the issue page, on the right-hand side.
+
+[![Screenshot links to specific GitHub help page](branch_img.png){fig-alt="Screenshot of GitHub with the hyperlink to Create a branch highlighted under the category of Development."}](https://docs.github.com/en/issues/tracking-your-work-with-issues/creating-a-branch-for-an-issue)
+
+::: aside
+If you used the `create branch` button on GitHub it will automatically close the issue when merged.
+:::
+
+Locally you can then work on the branch, pushing your code regularly to GitHub so it can be run and inspected when you are not around.
+
+When you think that your changes are ready to be merged, it's time to create a PR and request a code review.
+
+### Reviewing a PR
+
+When you create a PR, you must do two things:
+
+1.  immediately make someone an assignee - this is the person who will merge the PR.
+    Typically, this should be the person creating the PR (you)
+2.  select a person (or people) to review the PR
+
+If your code is not yet ready to be merged then you should use a draft PR.
+
+::: aside
+Note that draft PRs are only available on public GitHub repos.
+:::
+
+Wait until the reviewer(s) has completed the review and marked it as ready to merge.
+At this point, the person who is assigned to the PR can complete the merge.
+
+::: aside
+Most merges will be the default `Create a merge commit` but sometimes you may wish to `Squash and merge`.
+As the person requesting the PR, you can select whichever option is wanted from the drop-down in GitHub as part of the PR.
+:::
+
+### Reviewing methodology
+
+By using this approach of the assignee completing the merge, it ensures that code quality is maintained and prevents code from being merged when it is not yet ready.
+For example, you may have started a PR thinking your work is complete, and a reviewer checks the code and agrees to merge, however, you may realise that there are still things to work on, or there are issues that need to be addressed.
+
+The person who is assigned to the PR should be the only person making commits to the branch and this will prevent merge conflicts.
+If you wish for someone else to collaborate on the branch, then you should assign the PR to that person.
+At that point, they can pull your branch down and work on it, but you must stop using that branch locally.
+
+::: {.callout-important appearance="default" icon="true"}
+Only one person should ever work on changes to a branch at any time, and it is important to communicate with colleagues so they know to pull the latest changes in.
+:::
+
+::: aside
+If the PR is later assigned back to you then you must immediately pull changes.
+:::
+
+There may be times when you cannot be the assignee on a PR and in those situations you should nominate someone else to be the assignee and in charge of the PR, the same rules as in the paragraph above would then apply.
+
+If, as a reviewer, you find that no one is assigned to the branch, you should get in contact with the person who created the branch and decide who is going to be the assigned owner of the PR.
+
+#### Outside collaborators
+
+In circumstances where the person who created the PR is an outside collaborator and doesn't have permission to merge, then the reviewer should also be the assignee.
+In these circumstances, the collaborator will be working from their local fork and will be the only person who can push to the branch.
+The reviewer, once happy to approve the changes, can merge the PR.
+
+### Preparing a package release of your code
 
 TODO

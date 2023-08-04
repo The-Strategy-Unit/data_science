@@ -4,7 +4,7 @@ All commits should be [atomic](https://dev.to/samuelfaure/how-atomic-git-commits
 
 > Each commit does one, and only one simple thing, that can be summed up in a simple sentence.
 
-All of your commits should be in branches, the only changes that are made to the `main` branch would be via pull requests (PR's) that have been reviewed by at minimum one colleague.
+All of your commits should be in branches, the only changes that are made to the `main` branch would be via pull requests (PR) that have been reviewed by at minimum one colleague.
 
 ::: {.callout-important appearance="default" icon="true"}
 **Never** push to `main`!
@@ -55,7 +55,7 @@ When you create a PR, you must do two things:
 If your code is not yet ready to be merged then you should use a draft PR.
 
 ::: aside
-Note that draft PR's are only available on public GitHub repos.
+Note that draft PRs are only available on public GitHub repos.
 :::
 
 Wait until the reviewer(s) has completed the review and marked it as ready to merge.

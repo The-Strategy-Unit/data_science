@@ -33,6 +33,9 @@ website:
         - style/git_and_github.qmd
         - style/project_structure.qmd
         - style/data_storage.qmd
+
+filters:
+  - newpagelink.lua
     
 format:
   html:

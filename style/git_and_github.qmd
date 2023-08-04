@@ -36,13 +36,13 @@ GitHub offers a button to do this automatically on the issue page, on the right-
 
 [![Screenshot links to specific GitHub help page](branch_img.png){fig-alt="Screenshot of GitHub with the hyperlink to Create a branch highlighted under the category of Development."}](https://docs.github.com/en/issues/tracking-your-work-with-issues/creating-a-branch-for-an-issue)
 
-Locally you can then work on the branch, pushing your code regularly to GitHub so it can be run and inspected when you are not around.
-
-When you think that your changes are ready to be merged, it's time to create a PR and request a code review.
-
 ::: aside
 If you used the `create branch` button on GitHub it will automatically close the issue when merged.
 :::
+
+Locally you can then work on the branch, pushing your code regularly to GitHub so it can be run and inspected when you are not around.
+
+When you think that your changes are ready to be merged, it's time to create a PR and request a code review.
 
 ### Reviewing a PR
 

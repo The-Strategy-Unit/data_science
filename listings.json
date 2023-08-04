@@ -2,8 +2,8 @@
   {
     "listing": "/blogs/index.html",
     "items": [
-      "/blogs/posts/2023-04-26-reinstalling-r-packages.html",
       "/blogs/posts/2023-04-26_alternative_remotes.html",
+      "/blogs/posts/2023-04-26-reinstalling-r-packages.html",
       "/blogs/posts/2023-03-24_hotfix-with-git.html"
     ]
   }

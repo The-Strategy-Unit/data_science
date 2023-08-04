@@ -1,16 +1,16 @@
 # Using Git and GitHub
 
-Commits should be [atomic](https://dev.to/samuelfaure/how-atomic-git-commits-dramatically-increased-my-productivity-and-will-increase-yours-too-4a84)
+All commits should be [atomic](https://dev.to/samuelfaure/how-atomic-git-commits-dramatically-increased-my-productivity-and-will-increase-yours-too-4a84), in short,
 
 > Each commit does one, and only one simple thing, that can be summed up in a simple sentence.
 
 All of your commits should be in branches, the only changes that are made to the `main` branch would be via pull requests (PRs) that have been reviewed by at minimum one colleague.
 
-::: {.callout-important collapse="false" appearance="default" icon="true"}
+::: {.callout-important appearance="default" icon="true"}
 **Never** push to `main`!
 :::
 
-## Create an issue
+### Create an issue
 
 -   if you haven't already, file an issue that describes what you are doing - whether it be fixing a bug, adding a feature, or something else
 -   ensure that the issue is as detailed as possible as it may need to be picked up by someone else. 
@@ -20,7 +20,7 @@ Issues are a good record to explain what a PR is for.
 It's also a useful area for input from other members of the team.
 :::
 
-## Create a branch
+### Create a branch
 
 Once the issue is created and you have decided that you are going to work on it, first assign yourself to the issue in GitHub.
 This is an indication to others and helps to prevent multiple people from independently working on the same issue.
@@ -41,13 +41,13 @@ Locally you can then work on the branch, pushing your code regularly to GitHub s
 
 When you think that your changes are ready to be merged, it's time to create a PR and request a code review.
 
-## Reviewing a PR
+### Reviewing a PR
 
 When you create a PR, you must do two things:
 
 1.  immediately make someone an assignee - this is the person who will merge the PR. 
     Typically, this should be the person creating the PR (you)
-2.  select a person (or people) to review
+2.  select a person (or people) to review the PR
 
 If your code is not yet ready to be merged then you should use a draft PR.
 
@@ -60,13 +60,13 @@ At this point, the person who is assigned to the PR can complete the merge.
 
 ::: aside
 Most merges will be the default `Create a merge commit` but sometimes you may wish to `Squash and merge`. 
-As the person requesting the PR you can select whichever option is wanted from the drop down in GitHub as part of the PR.
+As the person requesting the PR, you can select whichever option is wanted from the drop-down in GitHub as part of the PR.
 :::
 
-## Reviewing methodology
+### Reviewing methodology
 
 By using this approach of the assignee completing the merge, it ensures that code quality is maintained and prevents code from being merged when it is not yet ready. 
-For example, you may have started a PR thinking your work is complete, a reviewer checks the code and agrees to merge, however, you may realise that there are still things to work on, or there are issues that need to be addressed.
+For example, you may have started a PR thinking your work is complete, and a reviewer checks the code and agrees to merge, however, you may realise that there are still things to work on, or there are issues that need to be addressed.
 
 The person who is assigned to the PR should be the only person making commits to the branch and this will prevent merge conflicts. 
 If you wish for someone else to collaborate on the branch, then you should assign the PR to that person. 
@@ -77,14 +77,14 @@ Only one person should ever work on changes to a branch at any time, and it is i
 :::
 
 ::: aside
-If the PR is later assigned back to you to you should immediately pull changes.
+If the PR is later assigned back to you then you should immediately pull changes.
 :::
 
-There may be times where you cannot be the assignee on a PR and in those situations you should nominate someone else to be the assignee and in charge of the PR, the same rules as in the paragraph above would then apply.
+There may be times when you cannot be the assignee on a PR and in those situations you should nominate someone else to be the assignee and in charge of the PR, the same rules as in the paragraph above would then apply.
 
 If, as a reviewer, you find that no one is assigned to the branch, you should get in contact with the person who created the branch and decide who is going to be the assigned owner of the PR.
 
-### Outside collaborators
+#### Outside collaborators
 
 In circumstances where the person who created the PR is an outside collaborator and doesn't have permission to merge, then the reviewer should also be the assignee. 
 In these circumstances, the collaborator will be working from their local fork and will be the only person who can push to the branch. 

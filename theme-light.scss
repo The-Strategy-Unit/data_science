@@ -1,8 +1,30 @@
 /*-- scss:defaults --*/
-// Base document colors
-$navbar-bg: #f9bf07;
-$navbar-fg: #2c2825;
+$su-charcoal: #2c2825;
+$su-charcoal-l20: lighten($su-charcoal, 20%);
+$su-charcoal-l40: lighten($su-charcoal, 40%);
+$su-charcoal-l60: lighten($su-charcoal, 60%);
+$su-charcoal-l80: lighten($su-charcoal, 80%);
 
-$body-bg: #f5f4f3;
-$body-fg: #2c2825;
-$link-color: #5881c1;
+$su-yellow: #f9bd07;
+$su-yellow-l20: lighten($su-yellow, 20%);
+$su-yellow-l40: lighten($su-yellow, 40%);
+$su-yellow-l60: lighten($su-yellow, 60%);
+$su-yellow-l80: lighten($su-yellow, 80%);
+
+$su-blue: #5881c1;
+$su-white: #f5f4f3;
+$su-red: #ec6555;
+$su-slate: #686f73;
+
+
+// Base document colors
+$navbar-bg: $su-yellow;
+$navbar-fg: $su-charcoal;
+
+$body-bg: $su-white;
+$body-fg: $su-charcoal;
+$link-color: $su-blue;
+
+.quarto-title-banner {
+  background: $su-yellow-l20 !important;
+}

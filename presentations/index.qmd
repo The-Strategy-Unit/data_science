@@ -1,4 +1,6 @@
-# Presentations
+---
+title: Presentations
+---
 
 ```{r}
 #| echo: false

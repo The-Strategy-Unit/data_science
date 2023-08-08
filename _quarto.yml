@@ -24,6 +24,9 @@ website:
       - icon: rss
         href: blogs/index.xml
   sidebar:
+    - id: default
+      title: ""
+      
     - id: style
       title: "Style Guide"
       style: "docked"

@@ -1,10 +1,24 @@
 ---
 title: "What good data science looks like"
-author: "Chris Beeley"
-date: 2023/05/23
+author: "[Chris Beeley](mailto:chris.beeley1@nhs.net)"
+date: 2023-05-23
 date-format: "MMM D, YYYY"
-format: revealjs
+format:
+  revealjs:
+    theme: [default, ../su_presentation.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    footer: |
+      view slides at [the-strategy-unit.github.io/data_science/presentations][ds_presentations]
+    width: 1920
+    height: 1080
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
 ---
+
+[ds_presentations]: https://the-strategy-unit.github.io/data_science/
 
 ## Patient experience
 
@@ -116,6 +130,8 @@ format: revealjs
 * Doing things the same way you did them last year is not fun
 * Trying to implement a project that is too complicated is not fun
 
+&nbsp;
+
 * Working with a diverse team with different skills is fun
 * Accessing high quality documentation to understand a project better is fun*
 
@@ -123,6 +139,8 @@ format: revealjs
 
 * Andreas Soteriades (Y1)
 * YiWen Hon, Oluwasegun Apejoye (Y2)
+
+&nbsp;
 
 * [pxtextmining](https://github.com/CDU-data-science-team/pxtextmining)
 * [experiencesdashboard](https://github.com/CDU-data-science-team/experiencesdashboard)

@@ -1,19 +1,20 @@
 ---
-title: "{targets}"
-subtitle: "Tom Jemmett"
+title: "Coffee and Coding"
+subtitle: "{targets}"
+author: "[Tom Jemmett](mailto:thomas.jemmett@nhs.net)"
 date: 2023-03-23
+date-format: "MMM D, YYYY"
 knitr:
   opts_chunk: 
     eval: false
     echo: true
 format:
   revealjs:
-    theme: [default, ./su_presentation.scss]
+    theme: [default, ../su_presentation.scss]
     transition: none
     chalkboard:
       buttons: false
     preview-links: auto
-    logo: logo_yellow.svg
     slide-number: false
     auto-animate: true
     footer: |

@@ -1,9 +1,23 @@
 ---
-title: "Everything you ever wanted to know about data science (but were too afraid to ask)"
-format: revealjs
-from: markdown+emoji
-author: Chris Beeley
+title: Everything you ever wanted to know about data science
+subtitle: but were too afraid to ask
+author: "[Chris Beeley](mailto:chris.beeley1@nhs.net)"
+date: 2023-08-02
+date-format: "MMM D, YYYY"
+format:
+  revealjs:
+    theme: [default, ../su_presentation.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    footer: |
+      view slides at [the-strategy-unit.github.io/data_science/presentations][ds_presentations]
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
 ---
+
+[ds_presentations]: https://the-strategy-unit.github.io/data_science/
 
 ## What is data science?
 
@@ -22,9 +36,7 @@ author: Chris Beeley
 ::: {.column width="50%"}
 
 * [The difference between a statitician and a data scientist? About $30,000](https://www.reddit.com/r/datascience/comments/ndpft6/comment/gyccuo7/?utm_source=share&utm_medium=web2x&context=3)
-
 * [... an actual definition of data science. Taking a database and making it do something else.](https://chrisbeeley.net/?p=1495) (warning: this quote is me! :wink:)
-
 * Statistics done on a Mac
 
 :::
@@ -126,7 +138,9 @@ author: Chris Beeley
 
 > the core working practice that must be supported by all platforms and teams; make this a core focus of NHS analyst training
 
+:::{.footer}
 [Goldacre review](https://www.gov.uk/government/publications/better-broader-safer-using-health-data-for-research-and-analysis)
+:::
 
 ## Levels of RAP- Baseline
 
@@ -136,7 +150,9 @@ author: Chris Beeley
 * Code has been peer reviewed.
 * Code is published in the open and linked to & from accompanying publication (if relevant).
 
+:::{.footer}
 [Source: NHS Digital RAP community of practice](https://nhsdigital.github.io/rap-community-of-practice/introduction_to_RAP/levels_of_RAP/)
+:::
 
 ## Levels of RAP- Silver
 
@@ -147,8 +163,9 @@ author: Chris Beeley
 * Repository includes dependency information (e.g. requirements.txt, PipFile, environment.yml
 * Data is handled and output in a [Tidy data](https://vita.had.co.nz/papers/tidy-data.pdf) format
 
+:::{.footer}
 [Source: NHS Digital RAP community of practice](https://nhsdigital.github.io/rap-community-of-practice/introduction_to_RAP/levels_of_RAP/)
-
+:::
 ## Levels of RAP- Gold
 
 * Code is fully packaged

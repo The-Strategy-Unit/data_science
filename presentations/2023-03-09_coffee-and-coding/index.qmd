@@ -1,19 +1,20 @@
 ---
-title: "Good Coding Practices"
-subtitle: "Tom Jemmett"
+title: "Coffee and Coding"
+subtitle: "Good Coding Practices"
+author: "[Tom Jemmett](mailto:thomas.jemmett@nhs.net)"
 date: 2023-03-09
+date-format: "MMM D, YYYY"
 knitr:
   opts_chunk: 
     eval: false
     echo: true
 format:
   revealjs:
-    theme: [default, ./su_presentation.scss]
+    theme: [default, ../su_presentation.scss]
     transition: none
     chalkboard:
       buttons: false
     preview-links: auto
-    logo: logo_yellow.svg
     slide-number: false
     auto-animate: true
     footer: |
@@ -47,9 +48,11 @@ library(NHSRdatasets)
 
 
 ```{r}
-ae_attendances|> filter(org_code%in%c("RNA", "RL4"))|> mutate(performance=1+breaches/attendances) |>
-    filter(type== 1) |>
-  mutate(met_target=performance>=0.95)
+ae_attendances |>
+  filter(org_code %in% c("RNA", "RL4")) |>
+  mutate(performance = 1 + breaches / attendances) |>
+  filter(type == 1) |>
+  mutate(met_target = performance >= 0.95)
 ```
 
 or
@@ -143,9 +146,12 @@ iris %>%
   arrange(value)
 
 # Bad
-iris %>% group_by(Species) %>% summarize_all(mean) %>%
-ungroup %>% gather(measure, value, -Species) %>%
-arrange(value)
+iris %>%
+  group_by(Species) %>%
+  summarize_all(mean) %>%
+  ungroup() %>%
+  gather(measure, value, -Species) %>%
+  arrange(value)
 ```
 
 :::

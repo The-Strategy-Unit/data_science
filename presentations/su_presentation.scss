@@ -4,9 +4,15 @@ $su-charcoal-l20: lighten($su-charcoal, 20%);
 $su-charcoal-l40: lighten($su-charcoal, 40%);
 $su-charcoal-l60: lighten($su-charcoal, 60%);
 $su-charcoal-l80: lighten($su-charcoal, 80%);
+
 $su-yellow: #f9bd07;
+$su-yellow-l20: lighten($su-yellow, 20%);
+$su-yellow-l40: lighten($su-yellow, 40%);
+$su-yellow-l60: lighten($su-yellow, 60%);
+$su-yellow-l80: lighten($su-yellow, 80%);
+
 $su-blue: #5881c1;
-$su-white: #ffffff;
+$su-white: #f5f4f3;
 $su-red: #ec6555;
 $su-slate: #686f73;
 
@@ -49,23 +55,25 @@ $presentation-heading-color: $su-charcoal;
   z-index: 2;
 }
 
-.reveal .slide ul li {
-  list-style: none;
-  /* Remove default bullets */
-}
+.reveal .slide ul :not(.panel-tabset-tabby) {
+  li {
+    list-style: none;
+    /* Remove default bullets */
+  }
 
-.reveal .slide ul li::before {
-  content: "\25FC";
-  /* Add content: \2022 is the CSS Code/unicode for a bullet; add a space for easier alignment! */
-  color: $highlight-color;
-  /* Change the color */
-  display: inline-block;
-  /* Needed to add space between the bullet and the text */
-  width: 1.5em;
-  /* Also needed for space (tweak if needed) */
-  margin-left: -1.5em;
-  /* Also needed for space (tweak if needed) */
-  font-size: 66%;
+  li::before {
+    content: "\25FC";
+    /* Add content: \2022 is the CSS Code/unicode for a bullet; add a space for easier alignment! */
+    color: $highlight-color;
+    /* Change the color */
+    display: inline-block;
+    /* Needed to add space between the bullet and the text */
+    width: 1.5em;
+    /* Also needed for space (tweak if needed) */
+    margin-left: -1.5em;
+    /* Also needed for space (tweak if needed) */
+    font-size: 66%;
+  }
 }
 
 .reveal .progress span {
@@ -138,15 +146,17 @@ $presentation-heading-color: $su-charcoal;
   display: none;
 }
 
-.slide-background .inverse {
-  background-color: $su-charcoal;
-}
+.inverse {
+  .slide-background-content {
+    background-color: $su-charcoal;
+  }
 
-.inverse h1,
-.inverse h2,
-.inverse h3,
-.inverse h4 {
-  color: $su-charcoal-l40 !important;
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: $su-charcoal-l40 !important;
+  }
 }
 
 .reveal .imitate-title {
@@ -177,4 +187,24 @@ $presentation-heading-color: $su-charcoal;
 
 .small {
   font-size: 1.2rem;
+}
+
+.yellow {
+  color: $su-yellow;
+}
+
+.light-yellow {
+  color: $su-yellow-l40;
+}
+
+.light-charcoal {
+  color: $su-charcoal-l40;
+}
+
+.very-light-charcoal {
+  color: $su-charcoal-l60;
+}
+
+.center {
+  text-align: center;
 }

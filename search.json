@@ -893,14 +893,14 @@
     "href": "presentations/2023-08-23_nhs-r_unit-testing/index.html#and-create-our-first-test-5",
     "title": "Unit testing in R",
     "section": "… and create our first test",
-    "text": "… and create our first test\n\ntest_that(\"my_function correctly divides values\", {\n  expect_equal(\n    my_function(4, 2),\n    2\n  )\n  expect_equal(\n    my_function(1, 4),\n    0.25\n  )\n  expect_equal(\n    my_function(c(4, 1), c(2, 4)),\n    c(2, 0.25)\n  )\n})\n\nTest passed 🌈"
+    "text": "… and create our first test\n\ntest_that(\"my_function correctly divides values\", {\n  expect_equal(\n    my_function(4, 2),\n    2\n  )\n  expect_equal(\n    my_function(1, 4),\n    0.25\n  )\n  expect_equal(\n    my_function(c(4, 1), c(2, 4)),\n    c(2, 0.25)\n  )\n})\n\nTest passed 🎉"
   },
   {
     "objectID": "presentations/2023-08-23_nhs-r_unit-testing/index.html#other-expect_-functions",
     "href": "presentations/2023-08-23_nhs-r_unit-testing/index.html#other-expect_-functions",
     "title": "Unit testing in R",
     "section": "other expect_*() functions…",
-    "text": "other expect_*() functions…\n\ntest_that(\"my_function correctly divides values\", {\n  expect_lt(\n    my_function(4, 2),\n    10\n  )\n  expect_gt(\n    my_function(1, 4),\n    0.2\n  )\n  expect_length(\n    my_function(c(4, 1), c(2, 4)),\n    2\n  )\n})\n\nTest passed 😸\n\n\n\n{testthat} documentation"
+    "text": "other expect_*() functions…\n\ntest_that(\"my_function correctly divides values\", {\n  expect_lt(\n    my_function(4, 2),\n    10\n  )\n  expect_gt(\n    my_function(1, 4),\n    0.2\n  )\n  expect_length(\n    my_function(c(4, 1), c(2, 4)),\n    2\n  )\n})\n\nTest passed 🎉\n\n\n\n{testthat} documentation"
   },
   {
     "objectID": "presentations/2023-08-23_nhs-r_unit-testing/index.html#arrange-act-assert",
@@ -942,14 +942,14 @@
     "href": "presentations/2023-08-23_nhs-r_unit-testing/index.html#tolerance-to-the-rescue",
     "title": "Unit testing in R",
     "section": "Tolerance to the rescue 🙂",
-    "text": "Tolerance to the rescue 🙂\n\ntest_that(\"my_function works\", {\n  # arrange\n  x &lt;- 5\n  y &lt;- 7\n  expected &lt;- 0.714285\n\n  # act\n  actual &lt;- my_function(x, y)\n\n  # assert\n  expect_equal(actual, expected, tolerance = 1e-6)\n})\n\nTest passed 😀\n\n\n\n(this is a slightly artificial example, usually the default tolerance is good enough)"
+    "text": "Tolerance to the rescue 🙂\n\ntest_that(\"my_function works\", {\n  # arrange\n  x &lt;- 5\n  y &lt;- 7\n  expected &lt;- 0.714285\n\n  # act\n  actual &lt;- my_function(x, y)\n\n  # assert\n  expect_equal(actual, expected, tolerance = 1e-6)\n})\n\nTest passed 🎉\n\n\n\n(this is a slightly artificial example, usually the default tolerance is good enough)"
   },
   {
     "objectID": "presentations/2023-08-23_nhs-r_unit-testing/index.html#testing-edge-cases",
     "href": "presentations/2023-08-23_nhs-r_unit-testing/index.html#testing-edge-cases",
     "title": "Unit testing in R",
     "section": "Testing edge cases",
-    "text": "Testing edge cases\n\n\nRemember the validation steps we built into our function to handle edge cases?\n\nLet’s write tests for these edge cases:\nwe expect errors\n\n\ntest_that(\"my_function works\", {\n  expect_error(my_function(5, 0))\n  expect_error(my_function(\"a\", 3))\n  expect_error(my_function(3, \"a\"))\n  expect_error(my_function(1:2, 4))\n})\n\nTest passed 😀"
+    "text": "Testing edge cases\n\n\nRemember the validation steps we built into our function to handle edge cases?\n\nLet’s write tests for these edge cases:\nwe expect errors\n\n\ntest_that(\"my_function works\", {\n  expect_error(my_function(5, 0))\n  expect_error(my_function(\"a\", 3))\n  expect_error(my_function(3, \"a\"))\n  expect_error(my_function(1:2, 4))\n})\n\nTest passed 🌈"
   },
   {
     "objectID": "presentations/2023-08-23_nhs-r_unit-testing/index.html#another-simple-example",
@@ -963,7 +963,7 @@
     "href": "presentations/2023-08-23_nhs-r_unit-testing/index.html#another-simple-example-1",
     "title": "Unit testing in R",
     "section": "Another (simple) example",
-    "text": "Another (simple) example\n\nmy_new_function &lt;- function(x, y) {\n  if (x &gt; y) {\n    \"x\"\n  } else {\n    \"y\"\n  }\n}\n\n\n\ntest_that(\"it returns 'x' if x is bigger than y\", {\n  expect_equal(my_new_function(4, 3), \"x\")\n})\n\nTest passed 😀\n\ntest_that(\"it returns 'y' if y is bigger than x\", {\n  expect_equal(my_new_function(3, 4), \"y\")\n  expect_equal(my_new_function(3, 3), \"y\")\n})\n\nTest passed 🥳"
+    "text": "Another (simple) example\n\nmy_new_function &lt;- function(x, y) {\n  if (x &gt; y) {\n    \"x\"\n  } else {\n    \"y\"\n  }\n}\n\n\n\ntest_that(\"it returns 'x' if x is bigger than y\", {\n  expect_equal(my_new_function(4, 3), \"x\")\n})\n\nTest passed 😀\n\ntest_that(\"it returns 'y' if y is bigger than x\", {\n  expect_equal(my_new_function(3, 4), \"y\")\n  expect_equal(my_new_function(3, 3), \"y\")\n})\n\nTest passed 😀"
   },
   {
     "objectID": "presentations/2023-08-23_nhs-r_unit-testing/index.html#how-to-design-good-tests",
@@ -980,11 +980,11 @@
     "text": "But, why create tests?\nanother non-exhaustive list\n\ngood tests will help you uncover existing issues in your code\nwill defend you from future changes that break existing functionality\nwill alert you to changes in dependencies that may have changed the functionality of your code\ncan act as documentation for other developers"
   },
   {
-    "objectID": "presentations/2023-08-23_nhs-r_unit-testing/index.html#testing-complex-function",
-    "href": "presentations/2023-08-23_nhs-r_unit-testing/index.html#testing-complex-function",
+    "objectID": "presentations/2023-08-23_nhs-r_unit-testing/index.html#testing-complex-functions",
+    "href": "presentations/2023-08-23_nhs-r_unit-testing/index.html#testing-complex-functions",
     "title": "Unit testing in R",
-    "section": "Testing complex function",
-    "text": "Testing complex function\n\n\n\nmy_big_function &lt;- function(type) {\n  con &lt;- dbConnect(RSQLite::SQLite(), \"data.db\")\n  df &lt;- tbl(con, \"data_table\") |&gt;\n    collect() |&gt;\n    mutate(across(date, lubridate::ymd))\n\n  conditions &lt;- read_csv(\n    \"conditions.csv\", col_types = \"cc\"\n  ) |&gt;\n    filter(condition_type == type)\n\n  df |&gt;\n    semi_join(conditions, by = \"condition\") |&gt;\n    count(date) |&gt;\n    ggplot(aes(date, n)) +\n    geom_line() +\n    geom_point()\n}\n\n\nWhere do you even begin to start writing tests for something so complex?\n\n\nNote: to get the code on the left to fit on one page, I skipped including a few library calls\n\nlibrary(tidyverse)\nlibrary(DBI)"
+    "section": "Testing complex functions",
+    "text": "Testing complex functions\n\n\n\nmy_big_function &lt;- function(type) {\n  con &lt;- dbConnect(RSQLite::SQLite(), \"data.db\")\n  df &lt;- tbl(con, \"data_table\") |&gt;\n    collect() |&gt;\n    mutate(across(date, lubridate::ymd))\n\n  conditions &lt;- read_csv(\n    \"conditions.csv\", col_types = \"cc\"\n  ) |&gt;\n    filter(condition_type == type)\n\n  df |&gt;\n    semi_join(conditions, by = \"condition\") |&gt;\n    count(date) |&gt;\n    ggplot(aes(date, n)) +\n    geom_line() +\n    geom_point()\n}\n\n\nWhere do you even begin to start writing tests for something so complex?\n\n\nNote: to get the code on the left to fit on one page, I skipped including a few library calls\n\nlibrary(tidyverse)\nlibrary(DBI)"
   },
   {
     "objectID": "presentations/2023-08-23_nhs-r_unit-testing/index.html#split-the-logic-into-smaller-functions",
@@ -1019,53 +1019,60 @@
     "href": "presentations/2023-08-23_nhs-r_unit-testing/index.html#split-the-logic-into-smaller-functions-4",
     "title": "Unit testing in R",
     "section": "Split the logic into smaller functions",
-    "text": "Split the logic into smaller functions\nThe original function refactored to use the new functions\n\nmy_big_function &lt;- function(type) {\n  conditions &lt;- get_conditions(type)\n\n  get_data_from_sql() |&gt;\n    summarise_data(conditions) |&gt;\n    create_plot()\n}\n\nThis is going to be significantly easier to test, because we now can verify that the individual components work correctly, rather than having to consider all of the possibilities at once."
+    "text": "Split the logic into smaller functions\nThe original function refactored to use the new functions\n\nmy_big_function &lt;- function(type) {\n  conditions &lt;- get_conditions(type)\n\n  get_data_from_sql() |&gt;\n    summarise_data(conditions) |&gt;\n    create_plot()\n}\n\n\nThis is going to be significantly easier to test, because we now can verify that the individual components work correctly, rather than having to consider all of the possibilities at once."
   },
   {
     "objectID": "presentations/2023-08-23_nhs-r_unit-testing/index.html#lets-test-summarise_data",
     "href": "presentations/2023-08-23_nhs-r_unit-testing/index.html#lets-test-summarise_data",
     "title": "Unit testing in R",
     "section": "Let’s test summarise_data",
-    "text": "Let’s test summarise_data\ntest_that(\"it summarises the data\", {\n  # arrange\n  \n\n\n\n\n\n\n  \n\n  \n  # act\n  \n  # assert\n  \n})"
+    "text": "Let’s test summarise_data\nsummarise_data &lt;- function(df, conditions) {\n  df |&gt;\n    semi_join(conditions, by = \"condition\") |&gt;\n    count(date)\n}"
   },
   {
     "objectID": "presentations/2023-08-23_nhs-r_unit-testing/index.html#lets-test-summarise_data-1",
     "href": "presentations/2023-08-23_nhs-r_unit-testing/index.html#lets-test-summarise_data-1",
     "title": "Unit testing in R",
     "section": "Let’s test summarise_data",
-    "text": "Let’s test summarise_data\n\n\ntest_that(\"it summarises the data\", {\n  # arrange\n  \n  df &lt;- tibble(\n    date = sample(1:10, 300, TRUE),\n    condition = sample(c(\"a\", \"b\", \"c\"), 300, TRUE)\n  )\n  \n\n\n\n\n  # act\n  \n  # assert\n  \n})\n\nGenerate some random data to build a reasonably sized data frame.\nYou could also create a table manually, but part of the trick of writing good tests for this function is to make it so the dates don’t all have the same count.\nThe reason for this is it’s harder to know for sure that the count worked if every row returns the same value.\nWe don’t need the values to be exactly like they are in the real data, just close enough. Instead of dates, we can use numbers, and instead of actual conditions, we can use letters."
+    "text": "Let’s test summarise_data\ntest_that(\"it summarises the data\", {\n  # arrange\n  \n\n\n\n\n\n\n  \n\n  \n  # act\n  \n  # assert\n  \n})"
   },
   {
     "objectID": "presentations/2023-08-23_nhs-r_unit-testing/index.html#lets-test-summarise_data-2",
     "href": "presentations/2023-08-23_nhs-r_unit-testing/index.html#lets-test-summarise_data-2",
     "title": "Unit testing in R",
     "section": "Let’s test summarise_data",
-    "text": "Let’s test summarise_data\n\n\ntest_that(\"it summarises the data\", {\n  # arrange\n  set.seed(123)\n  df &lt;- tibble(\n    date = sample(1:10, 300, TRUE),\n    condition = sample(c(\"a\", \"b\", \"c\"), 300, TRUE)\n  )\n  \n\n\n\n\n  # act\n  \n  # assert\n  \n})\n\nTests need to be reproducible, and generating our table at random will give us unpredictable results.\nSo, we need to set the random seed; now every time this test runs we will generate the same data."
+    "text": "Let’s test summarise_data\n\n\ntest_that(\"it summarises the data\", {\n  # arrange\n  \n  df &lt;- tibble(\n    date = sample(1:10, 300, TRUE),\n    condition = sample(c(\"a\", \"b\", \"c\"), 300, TRUE)\n  )\n  \n\n\n\n\n  # act\n  \n  # assert\n  \n})\n\nGenerate some random data to build a reasonably sized data frame.\nYou could also create a table manually, but part of the trick of writing good tests for this function is to make it so the dates don’t all have the same count.\nThe reason for this is it’s harder to know for sure that the count worked if every row returns the same value.\nWe don’t need the values to be exactly like they are in the real data, just close enough. Instead of dates, we can use numbers, and instead of actual conditions, we can use letters."
   },
   {
     "objectID": "presentations/2023-08-23_nhs-r_unit-testing/index.html#lets-test-summarise_data-3",
     "href": "presentations/2023-08-23_nhs-r_unit-testing/index.html#lets-test-summarise_data-3",
     "title": "Unit testing in R",
     "section": "Let’s test summarise_data",
-    "text": "Let’s test summarise_data\n\n\ntest_that(\"it summarises the data\", {\n  # arrange\n  set.seed(123)\n  df &lt;- tibble(\n    date = sample(1:10, 300, TRUE),\n    condition = sample(c(\"a\", \"b\", \"c\"), 300, TRUE)\n  )\n  conditions &lt;- tibble(condition = c(\"a\", \"b\"))    \n  \n\n\n\n  # act\n  \n  # assert\n  \n})\n\nCreate the conditions table. We don’t need all of the columns that are present in the real csv, just the ones that will make our code work.\nWe also need to test that the filtering join (semi_join) is working, so we want to use a subset of the conditions that were used in df."
+    "text": "Let’s test summarise_data\n\n\ntest_that(\"it summarises the data\", {\n  # arrange\n  set.seed(123)\n  df &lt;- tibble(\n    date = sample(1:10, 300, TRUE),\n    condition = sample(c(\"a\", \"b\", \"c\"), 300, TRUE)\n  )\n  \n\n\n\n\n  # act\n  \n  # assert\n  \n})\n\nTests need to be reproducible, and generating our table at random will give us unpredictable results.\nSo, we need to set the random seed; now every time this test runs we will generate the same data."
   },
   {
     "objectID": "presentations/2023-08-23_nhs-r_unit-testing/index.html#lets-test-summarise_data-4",
     "href": "presentations/2023-08-23_nhs-r_unit-testing/index.html#lets-test-summarise_data-4",
     "title": "Unit testing in R",
     "section": "Let’s test summarise_data",
-    "text": "Let’s test summarise_data\n\n\ntest_that(\"it summarises the data\", {\n  # arrange\n  set.seed(123)\n  df &lt;- tibble(\n    date = sample(1:10, 300, TRUE),\n    condition = sample(c(\"a\", \"b\", \"c\"), 300, TRUE)\n  )\n  conditions &lt;- tibble(condition = c(\"a\", \"b\"))    \n  \n  \n\n  \n  # act\n  actual &lt;- summarise_data(df, conditions)\n  # assert\n  \n})\n\nBecause we are generating df randomly, to figure out what our “expected” results are, I simply ran the code inside of the test to generate the “actual” results.\nGenerally, this isn’t a good idea. You are creating the results of your test from the code; ideally, you want to be thinking about what the results of your function should be.\nImagine your function doesn’t work as intended, there is some subtle bug that you are not yet aware of. By writing tests “backwards” you may write test cases that confirm the results, but not expose the bug. This is why it’s good to think about edge cases."
+    "text": "Let’s test summarise_data\n\n\ntest_that(\"it summarises the data\", {\n  # arrange\n  set.seed(123)\n  df &lt;- tibble(\n    date = sample(1:10, 300, TRUE),\n    condition = sample(c(\"a\", \"b\", \"c\"), 300, TRUE)\n  )\n  conditions &lt;- tibble(condition = c(\"a\", \"b\"))    \n  \n\n\n\n  # act\n  \n  # assert\n  \n})\n\nCreate the conditions table. We don’t need all of the columns that are present in the real csv, just the ones that will make our code work.\nWe also need to test that the filtering join (semi_join) is working, so we want to use a subset of the conditions that were used in df."
   },
   {
     "objectID": "presentations/2023-08-23_nhs-r_unit-testing/index.html#lets-test-summarise_data-5",
     "href": "presentations/2023-08-23_nhs-r_unit-testing/index.html#lets-test-summarise_data-5",
     "title": "Unit testing in R",
     "section": "Let’s test summarise_data",
-    "text": "Let’s test summarise_data\n\n\ntest_that(\"it summarises the data\", {\n  # arrange\n  set.seed(123)\n  df &lt;- tibble(\n    date = sample(1:10, 300, TRUE),\n    condition = sample(c(\"a\", \"b\", \"c\"), 300, TRUE)\n  )\n  conditions &lt;- tibble(condition = c(\"a\", \"b\"))    \n  expected &lt;- tibble(\n    date = 1:10,\n    n = c(19, 18, 12, 14, 17, 18, 24, 18, 31, 21)\n  )  \n  # act\n  actual &lt;- summarise_data(df, conditions)\n  # assert\n  \n})\n\nThat said, in cases where we can be confident (say by static analysis of our code) that it is correct, building tests in this way will give us the confidence going forwards that future changes do not break existing functionality.\nIn this case, I have created the expected data frame using the results from running the function."
+    "text": "Let’s test summarise_data\n\n\ntest_that(\"it summarises the data\", {\n  # arrange\n  set.seed(123)\n  df &lt;- tibble(\n    date = sample(1:10, 300, TRUE),\n    condition = sample(c(\"a\", \"b\", \"c\"), 300, TRUE)\n  )\n  conditions &lt;- tibble(condition = c(\"a\", \"b\"))    \n  \n  \n\n  \n  # act\n  actual &lt;- summarise_data(df, conditions)\n  # assert\n  \n})\n\nBecause we are generating df randomly, to figure out what our “expected” results are, I simply ran the code inside of the test to generate the “actual” results.\nGenerally, this isn’t a good idea. You are creating the results of your test from the code; ideally, you want to be thinking about what the results of your function should be.\nImagine your function doesn’t work as intended, there is some subtle bug that you are not yet aware of. By writing tests “backwards” you may write test cases that confirm the results, but not expose the bug. This is why it’s good to think about edge cases."
   },
   {
     "objectID": "presentations/2023-08-23_nhs-r_unit-testing/index.html#lets-test-summarise_data-6",
     "href": "presentations/2023-08-23_nhs-r_unit-testing/index.html#lets-test-summarise_data-6",
+    "title": "Unit testing in R",
+    "section": "Let’s test summarise_data",
+    "text": "Let’s test summarise_data\n\n\ntest_that(\"it summarises the data\", {\n  # arrange\n  set.seed(123)\n  df &lt;- tibble(\n    date = sample(1:10, 300, TRUE),\n    condition = sample(c(\"a\", \"b\", \"c\"), 300, TRUE)\n  )\n  conditions &lt;- tibble(condition = c(\"a\", \"b\"))    \n  expected &lt;- tibble(\n    date = 1:10,\n    n = c(19, 18, 12, 14, 17, 18, 24, 18, 31, 21)\n  )  \n  # act\n  actual &lt;- summarise_data(df, conditions)\n  # assert\n  \n})\n\nThat said, in cases where we can be confident (say by static analysis of our code) that it is correct, building tests in this way will give us the confidence going forwards that future changes do not break existing functionality.\nIn this case, I have created the expected data frame using the results from running the function."
+  },
+  {
+    "objectID": "presentations/2023-08-23_nhs-r_unit-testing/index.html#lets-test-summarise_data-7",
+    "href": "presentations/2023-08-23_nhs-r_unit-testing/index.html#lets-test-summarise_data-7",
     "title": "Unit testing in R",
     "section": "Let’s test summarise_data",
     "text": "Let’s test summarise_data\n\n\n\ntest_that(\"it summarises the data\", {\n  # arrange\n  set.seed(123)\n  df &lt;- tibble(\n    date = sample(1:10, 300, TRUE),\n    condition = sample(c(\"a\", \"b\", \"c\"), 300, TRUE)\n  )\n  conditions &lt;- tibble(condition = c(\"a\", \"b\"))\n  expected &lt;- tibble(\n    date = 1:10,\n    n = c(19, 18, 12, 14, 17, 18, 24, 18, 31, 21)\n  )\n  # act\n  actual &lt;- summarise_data(df, conditions)\n  # assert\n  expect_equal(actual, expected)\n})\n\nTest passed 😸\n\n\n\nThe test works!"

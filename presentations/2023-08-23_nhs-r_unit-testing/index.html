@@ -733,7 +733,7 @@
 <span id="cb10-13"><a href="#cb10-13"></a>  )</span>
 <span id="cb10-14"><a href="#cb10-14"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Test passed 🌈</code></pre>
+<pre><code>Test passed 🎉</code></pre>
 </div>
 </div>
 </section>
@@ -755,7 +755,7 @@
 <span id="cb12-13"><a href="#cb12-13"></a>  )</span>
 <span id="cb12-14"><a href="#cb12-14"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Test passed 😸</code></pre>
+<pre><code>Test passed 🎉</code></pre>
 </div>
 </div>
 <div class="footer">
@@ -908,7 +908,7 @@
 <span id="cb21-11"><a href="#cb21-11"></a>  <span class="fu">expect_equal</span>(actual, expected, <span class="at">tolerance =</span> <span class="fl">1e-6</span>)</span>
 <span id="cb21-12"><a href="#cb21-12"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Test passed 😀</code></pre>
+<pre><code>Test passed 🎉</code></pre>
 </div>
 </div>
 <div class="fragment">
@@ -932,7 +932,7 @@
 <span id="cb23-5"><a href="#cb23-5"></a>  <span class="fu">expect_error</span>(<span class="fu">my_function</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">4</span>))</span>
 <span id="cb23-6"><a href="#cb23-6"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Test passed 😀</code></pre>
+<pre><code>Test passed 🌈</code></pre>
 </div>
 </div>
 </div>
@@ -980,7 +980,7 @@
 <span id="cb29-3"><a href="#cb29-3"></a>  <span class="fu">expect_equal</span>(<span class="fu">my_new_function</span>(<span class="dv">3</span>, <span class="dv">3</span>), <span class="st">"y"</span>)</span>
 <span id="cb29-4"><a href="#cb29-4"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Test passed 🥳</code></pre>
+<pre><code>Test passed 😀</code></pre>
 </div>
 </div>
 </section>
@@ -1006,8 +1006,8 @@
 <li>can act as documentation for other developers</li>
 </ul>
 </section>
-<section id="testing-complex-function" class="slide level2">
-<h2>Testing complex function</h2>
+<section id="testing-complex-functions" class="slide level2">
+<h2>Testing complex functions</h2>
 <div class="columns">
 <div class="column" style="width:70%;">
 <div class="cell">
@@ -1102,56 +1102,37 @@
 <span id="cb37-6"><a href="#cb37-6"></a>    <span class="fu">create_plot</span>()</span>
 <span id="cb37-7"><a href="#cb37-7"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="fragment">
 <p>This is going to be significantly easier to test, because we now can verify that the individual components work correctly, rather than having to consider all of the possibilities at once.</p>
+</div>
 </section>
 <section id="lets-test-summarise_data" class="slide level2">
 <h2>Let’s test <code>summarise_data</code></h2>
-<div class="sourceCode" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="fu">test_that</span>(<span class="st">"it summarises the data"</span>, {</span>
-<span id="cb38-2"><a href="#cb38-2"></a>  <span class="co"># arrange</span></span>
-<span id="cb38-3"><a href="#cb38-3"></a>  </span>
-<span id="cb38-4"><a href="#cb38-4"></a></span>
-<span id="cb38-5"><a href="#cb38-5"></a></span>
-<span id="cb38-6"><a href="#cb38-6"></a></span>
-<span id="cb38-7"><a href="#cb38-7"></a></span>
-<span id="cb38-8"><a href="#cb38-8"></a></span>
-<span id="cb38-9"><a href="#cb38-9"></a></span>
-<span id="cb38-10"><a href="#cb38-10"></a>  </span>
-<span id="cb38-11"><a href="#cb38-11"></a></span>
-<span id="cb38-12"><a href="#cb38-12"></a>  </span>
-<span id="cb38-13"><a href="#cb38-13"></a>  <span class="co"># act</span></span>
-<span id="cb38-14"><a href="#cb38-14"></a>  </span>
-<span id="cb38-15"><a href="#cb38-15"></a>  <span class="co"># assert</span></span>
-<span id="cb38-16"><a href="#cb38-16"></a>  </span>
-<span id="cb38-17"><a href="#cb38-17"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a>summarise_data <span class="ot">&lt;-</span> <span class="cf">function</span>(df, conditions) {</span>
+<span id="cb38-2"><a href="#cb38-2"></a>  df <span class="sc">|&gt;</span></span>
+<span id="cb38-3"><a href="#cb38-3"></a>    <span class="fu">semi_join</span>(conditions, <span class="at">by =</span> <span class="st">"condition"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb38-4"><a href="#cb38-4"></a>    <span class="fu">count</span>(date)</span>
+<span id="cb38-5"><a href="#cb38-5"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="lets-test-summarise_data-1" class="slide level2">
 <h2>Let’s test <code>summarise_data</code></h2>
-<div class="columns">
-<div class="column" style="width:75%;">
 <div class="sourceCode" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="fu">test_that</span>(<span class="st">"it summarises the data"</span>, {</span>
 <span id="cb39-2"><a href="#cb39-2"></a>  <span class="co"># arrange</span></span>
 <span id="cb39-3"><a href="#cb39-3"></a>  </span>
-<span id="cb39-4"><a href="#cb39-4"></a>  df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb39-5"><a href="#cb39-5"></a>    <span class="at">date =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">300</span>, <span class="cn">TRUE</span>),</span>
-<span id="cb39-6"><a href="#cb39-6"></a>    <span class="at">condition =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>), <span class="dv">300</span>, <span class="cn">TRUE</span>)</span>
-<span id="cb39-7"><a href="#cb39-7"></a>  )</span>
-<span id="cb39-8"><a href="#cb39-8"></a>  </span>
+<span id="cb39-4"><a href="#cb39-4"></a></span>
+<span id="cb39-5"><a href="#cb39-5"></a></span>
+<span id="cb39-6"><a href="#cb39-6"></a></span>
+<span id="cb39-7"><a href="#cb39-7"></a></span>
+<span id="cb39-8"><a href="#cb39-8"></a></span>
 <span id="cb39-9"><a href="#cb39-9"></a></span>
-<span id="cb39-10"><a href="#cb39-10"></a></span>
+<span id="cb39-10"><a href="#cb39-10"></a>  </span>
 <span id="cb39-11"><a href="#cb39-11"></a></span>
-<span id="cb39-12"><a href="#cb39-12"></a></span>
+<span id="cb39-12"><a href="#cb39-12"></a>  </span>
 <span id="cb39-13"><a href="#cb39-13"></a>  <span class="co"># act</span></span>
 <span id="cb39-14"><a href="#cb39-14"></a>  </span>
 <span id="cb39-15"><a href="#cb39-15"></a>  <span class="co"># assert</span></span>
 <span id="cb39-16"><a href="#cb39-16"></a>  </span>
 <span id="cb39-17"><a href="#cb39-17"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><div class="column small" style="width:25%;">
-<p>Generate some random data to build a reasonably sized data frame.</p>
-<p>You could also create a table manually, but part of the trick of writing good tests for this function is to make it so the dates don’t all have the same count.</p>
-<p>The reason for this is it’s harder to know for sure that the count worked if every row returns the same value.</p>
-<p>We don’t need the values to be exactly like they are in the real data, just close enough. Instead of dates, we can use numbers, and instead of actual conditions, we can use letters.</p>
-</div>
-</div>
 </section>
 <section id="lets-test-summarise_data-2" class="slide level2">
 <h2>Let’s test <code>summarise_data</code></h2>
@@ -1159,7 +1140,7 @@
 <div class="column" style="width:75%;">
 <div class="sourceCode" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="fu">test_that</span>(<span class="st">"it summarises the data"</span>, {</span>
 <span id="cb40-2"><a href="#cb40-2"></a>  <span class="co"># arrange</span></span>
-<span id="cb40-3"><a href="#cb40-3"></a>  <span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb40-3"><a href="#cb40-3"></a>  </span>
 <span id="cb40-4"><a href="#cb40-4"></a>  df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
 <span id="cb40-5"><a href="#cb40-5"></a>    <span class="at">date =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">300</span>, <span class="cn">TRUE</span>),</span>
 <span id="cb40-6"><a href="#cb40-6"></a>    <span class="at">condition =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>), <span class="dv">300</span>, <span class="cn">TRUE</span>)</span>
@@ -1175,8 +1156,10 @@
 <span id="cb40-16"><a href="#cb40-16"></a>  </span>
 <span id="cb40-17"><a href="#cb40-17"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column small" style="width:25%;">
-<p>Tests need to be reproducible, and generating our table at random will give us unpredictable results.</p>
-<p>So, we need to set the random seed; now every time this test runs we will generate the same data.</p>
+<p>Generate some random data to build a reasonably sized data frame.</p>
+<p>You could also create a table manually, but part of the trick of writing good tests for this function is to make it so the dates don’t all have the same count.</p>
+<p>The reason for this is it’s harder to know for sure that the count worked if every row returns the same value.</p>
+<p>We don’t need the values to be exactly like they are in the real data, just close enough. Instead of dates, we can use numbers, and instead of actual conditions, we can use letters.</p>
 </div>
 </div>
 </section>
@@ -1191,8 +1174,8 @@
 <span id="cb41-5"><a href="#cb41-5"></a>    <span class="at">date =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">300</span>, <span class="cn">TRUE</span>),</span>
 <span id="cb41-6"><a href="#cb41-6"></a>    <span class="at">condition =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>), <span class="dv">300</span>, <span class="cn">TRUE</span>)</span>
 <span id="cb41-7"><a href="#cb41-7"></a>  )</span>
-<span id="cb41-8"><a href="#cb41-8"></a>  conditions <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">condition =</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>))    </span>
-<span id="cb41-9"><a href="#cb41-9"></a>  </span>
+<span id="cb41-8"><a href="#cb41-8"></a>  </span>
+<span id="cb41-9"><a href="#cb41-9"></a></span>
 <span id="cb41-10"><a href="#cb41-10"></a></span>
 <span id="cb41-11"><a href="#cb41-11"></a></span>
 <span id="cb41-12"><a href="#cb41-12"></a></span>
@@ -1202,8 +1185,8 @@
 <span id="cb41-16"><a href="#cb41-16"></a>  </span>
 <span id="cb41-17"><a href="#cb41-17"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column small" style="width:25%;">
-<p>Create the conditions table. We don’t need all of the columns that are present in the real csv, just the ones that will make our code work.</p>
-<p>We also need to test that the filtering join (<code>semi_join</code>) is working, so we want to use a subset of the conditions that were used in <code>df</code>.</p>
+<p>Tests need to be reproducible, and generating our table at random will give us unpredictable results.</p>
+<p>So, we need to set the random seed; now every time this test runs we will generate the same data.</p>
 </div>
 </div>
 </section>
@@ -1220,18 +1203,17 @@
 <span id="cb42-7"><a href="#cb42-7"></a>  )</span>
 <span id="cb42-8"><a href="#cb42-8"></a>  conditions <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">condition =</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>))    </span>
 <span id="cb42-9"><a href="#cb42-9"></a>  </span>
-<span id="cb42-10"><a href="#cb42-10"></a>  </span>
+<span id="cb42-10"><a href="#cb42-10"></a></span>
 <span id="cb42-11"><a href="#cb42-11"></a></span>
-<span id="cb42-12"><a href="#cb42-12"></a>  </span>
+<span id="cb42-12"><a href="#cb42-12"></a></span>
 <span id="cb42-13"><a href="#cb42-13"></a>  <span class="co"># act</span></span>
-<span id="cb42-14"><a href="#cb42-14"></a>  actual <span class="ot">&lt;-</span> <span class="fu">summarise_data</span>(df, conditions)</span>
+<span id="cb42-14"><a href="#cb42-14"></a>  </span>
 <span id="cb42-15"><a href="#cb42-15"></a>  <span class="co"># assert</span></span>
 <span id="cb42-16"><a href="#cb42-16"></a>  </span>
 <span id="cb42-17"><a href="#cb42-17"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column small" style="width:25%;">
-<p>Because we are generating <code>df</code> randomly, to figure out what our “expected” results are, I simply ran the code inside of the test to generate the “actual” results.</p>
-<p>Generally, this isn’t a good idea. You are creating the results of your test from the code; ideally, you want to be thinking about what the results of your function should be.</p>
-<p>Imagine your function doesn’t work as intended, there is some subtle bug that you are not yet aware of. By writing tests “backwards” you may write test cases that confirm the results, but not expose the bug. This is why it’s good to think about edge cases.</p>
+<p>Create the conditions table. We don’t need all of the columns that are present in the real csv, just the ones that will make our code work.</p>
+<p>We also need to test that the filtering join (<code>semi_join</code>) is working, so we want to use a subset of the conditions that were used in <code>df</code>.</p>
 </div>
 </div>
 </section>
@@ -1247,18 +1229,19 @@
 <span id="cb43-6"><a href="#cb43-6"></a>    <span class="at">condition =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>), <span class="dv">300</span>, <span class="cn">TRUE</span>)</span>
 <span id="cb43-7"><a href="#cb43-7"></a>  )</span>
 <span id="cb43-8"><a href="#cb43-8"></a>  conditions <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">condition =</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>))    </span>
-<span id="cb43-9"><a href="#cb43-9"></a>  expected <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb43-10"><a href="#cb43-10"></a>    <span class="at">date =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
-<span id="cb43-11"><a href="#cb43-11"></a>    <span class="at">n =</span> <span class="fu">c</span>(<span class="dv">19</span>, <span class="dv">18</span>, <span class="dv">12</span>, <span class="dv">14</span>, <span class="dv">17</span>, <span class="dv">18</span>, <span class="dv">24</span>, <span class="dv">18</span>, <span class="dv">31</span>, <span class="dv">21</span>)</span>
-<span id="cb43-12"><a href="#cb43-12"></a>  )  </span>
+<span id="cb43-9"><a href="#cb43-9"></a>  </span>
+<span id="cb43-10"><a href="#cb43-10"></a>  </span>
+<span id="cb43-11"><a href="#cb43-11"></a></span>
+<span id="cb43-12"><a href="#cb43-12"></a>  </span>
 <span id="cb43-13"><a href="#cb43-13"></a>  <span class="co"># act</span></span>
 <span id="cb43-14"><a href="#cb43-14"></a>  actual <span class="ot">&lt;-</span> <span class="fu">summarise_data</span>(df, conditions)</span>
 <span id="cb43-15"><a href="#cb43-15"></a>  <span class="co"># assert</span></span>
 <span id="cb43-16"><a href="#cb43-16"></a>  </span>
 <span id="cb43-17"><a href="#cb43-17"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column small" style="width:25%;">
-<p>That said, in cases where we can be confident (say by static analysis of our code) that it is correct, building tests in this way will give us the confidence going forwards that future changes do not break existing functionality.</p>
-<p>In this case, I have created the expected data frame using the results from running the function.</p>
+<p>Because we are generating <code>df</code> randomly, to figure out what our “expected” results are, I simply ran the code inside of the test to generate the “actual” results.</p>
+<p>Generally, this isn’t a good idea. You are creating the results of your test from the code; ideally, you want to be thinking about what the results of your function should be.</p>
+<p>Imagine your function doesn’t work as intended, there is some subtle bug that you are not yet aware of. By writing tests “backwards” you may write test cases that confirm the results, but not expose the bug. This is why it’s good to think about edge cases.</p>
 </div>
 </div>
 </section>
@@ -1266,24 +1249,51 @@
 <h2>Let’s test <code>summarise_data</code></h2>
 <div class="columns">
 <div class="column" style="width:75%;">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="fu">test_that</span>(<span class="st">"it summarises the data"</span>, {</span>
+<div class="sourceCode" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="fu">test_that</span>(<span class="st">"it summarises the data"</span>, {</span>
 <span id="cb44-2"><a href="#cb44-2"></a>  <span class="co"># arrange</span></span>
 <span id="cb44-3"><a href="#cb44-3"></a>  <span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
 <span id="cb44-4"><a href="#cb44-4"></a>  df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
 <span id="cb44-5"><a href="#cb44-5"></a>    <span class="at">date =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">300</span>, <span class="cn">TRUE</span>),</span>
 <span id="cb44-6"><a href="#cb44-6"></a>    <span class="at">condition =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>), <span class="dv">300</span>, <span class="cn">TRUE</span>)</span>
 <span id="cb44-7"><a href="#cb44-7"></a>  )</span>
-<span id="cb44-8"><a href="#cb44-8"></a>  conditions <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">condition =</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>))</span>
+<span id="cb44-8"><a href="#cb44-8"></a>  conditions <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">condition =</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>))    </span>
 <span id="cb44-9"><a href="#cb44-9"></a>  expected <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
 <span id="cb44-10"><a href="#cb44-10"></a>    <span class="at">date =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
 <span id="cb44-11"><a href="#cb44-11"></a>    <span class="at">n =</span> <span class="fu">c</span>(<span class="dv">19</span>, <span class="dv">18</span>, <span class="dv">12</span>, <span class="dv">14</span>, <span class="dv">17</span>, <span class="dv">18</span>, <span class="dv">24</span>, <span class="dv">18</span>, <span class="dv">31</span>, <span class="dv">21</span>)</span>
-<span id="cb44-12"><a href="#cb44-12"></a>  )</span>
+<span id="cb44-12"><a href="#cb44-12"></a>  )  </span>
 <span id="cb44-13"><a href="#cb44-13"></a>  <span class="co"># act</span></span>
 <span id="cb44-14"><a href="#cb44-14"></a>  actual <span class="ot">&lt;-</span> <span class="fu">summarise_data</span>(df, conditions)</span>
 <span id="cb44-15"><a href="#cb44-15"></a>  <span class="co"># assert</span></span>
-<span id="cb44-16"><a href="#cb44-16"></a>  <span class="fu">expect_equal</span>(actual, expected)</span>
+<span id="cb44-16"><a href="#cb44-16"></a>  </span>
 <span id="cb44-17"><a href="#cb44-17"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column small" style="width:25%;">
+<p>That said, in cases where we can be confident (say by static analysis of our code) that it is correct, building tests in this way will give us the confidence going forwards that future changes do not break existing functionality.</p>
+<p>In this case, I have created the expected data frame using the results from running the function.</p>
+</div>
+</div>
+</section>
+<section id="lets-test-summarise_data-7" class="slide level2">
+<h2>Let’s test <code>summarise_data</code></h2>
+<div class="columns">
+<div class="column" style="width:75%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a><span class="fu">test_that</span>(<span class="st">"it summarises the data"</span>, {</span>
+<span id="cb45-2"><a href="#cb45-2"></a>  <span class="co"># arrange</span></span>
+<span id="cb45-3"><a href="#cb45-3"></a>  <span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb45-4"><a href="#cb45-4"></a>  df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb45-5"><a href="#cb45-5"></a>    <span class="at">date =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">300</span>, <span class="cn">TRUE</span>),</span>
+<span id="cb45-6"><a href="#cb45-6"></a>    <span class="at">condition =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>), <span class="dv">300</span>, <span class="cn">TRUE</span>)</span>
+<span id="cb45-7"><a href="#cb45-7"></a>  )</span>
+<span id="cb45-8"><a href="#cb45-8"></a>  conditions <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">condition =</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>))</span>
+<span id="cb45-9"><a href="#cb45-9"></a>  expected <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb45-10"><a href="#cb45-10"></a>    <span class="at">date =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
+<span id="cb45-11"><a href="#cb45-11"></a>    <span class="at">n =</span> <span class="fu">c</span>(<span class="dv">19</span>, <span class="dv">18</span>, <span class="dv">12</span>, <span class="dv">14</span>, <span class="dv">17</span>, <span class="dv">18</span>, <span class="dv">24</span>, <span class="dv">18</span>, <span class="dv">31</span>, <span class="dv">21</span>)</span>
+<span id="cb45-12"><a href="#cb45-12"></a>  )</span>
+<span id="cb45-13"><a href="#cb45-13"></a>  <span class="co"># act</span></span>
+<span id="cb45-14"><a href="#cb45-14"></a>  actual <span class="ot">&lt;-</span> <span class="fu">summarise_data</span>(df, conditions)</span>
+<span id="cb45-15"><a href="#cb45-15"></a>  <span class="co"># assert</span></span>
+<span id="cb45-16"><a href="#cb45-16"></a>  <span class="fu">expect_equal</span>(actual, expected)</span>
+<span id="cb45-17"><a href="#cb45-17"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Test passed 😸</code></pre>
 </div>

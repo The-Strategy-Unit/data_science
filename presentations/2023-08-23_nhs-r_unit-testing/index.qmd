@@ -653,7 +653,7 @@ test_that("it returns 'y' if y is bigger than x", {
 - will alert you to changes in dependencies that may have changed the functionality of your code
 - can act as documentation for other developers
 
-## Testing complex function
+## Testing complex functions
 
 :::{.columns}
 
@@ -768,7 +768,19 @@ my_big_function <- function(type) {
 }
 ```
 
+. . .
+
 This is going to be significantly easier to test, because we now can verify that the individual components work correctly, rather than having to consider all of the possibilities at once.
+
+## Let's test `summarise_data`
+
+``` r
+summarise_data <- function(df, conditions) {
+  df |>
+    semi_join(conditions, by = "condition") |>
+    count(date)
+}
+```
 
 ## Let's test `summarise_data`
 

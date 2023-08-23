@@ -1,0 +1,1047 @@
+---
+title: Unit testing in R
+subtitle: NHS-R Community Webinar
+author: "[Tom Jemmett](tom.jemmett@gmail.com)"
+date: 2023-08-23
+date-format: "MMM D, YYYY"
+format:
+  revealjs:
+    theme: [default, ../su_presentation.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    footer: |
+      view slides at [the-strategy-unit.github.io/data_science/presentations][ds_presentations]
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
+execute:
+  echo: true
+  error: true
+---
+
+[ds_presentations]: https://the-strategy-unit.github.io/data_science/presentations/2023-08-23_nhs-r_unit-testing
+
+
+## What is testing?
+
+> Software testing is the act of examining the artifacts and the behavior of the software under test by validation and verification. Software testing can also provide an objective, independent view of the software to allow the business to appreciate and understand the risks of software implementation
+>
+> [wikipedia](https://en.wikipedia.org/wiki/Software_testing)
+
+## How can we test our code?
+
+:::{.columns}
+
+::::{.column width=45%}
+#### Statically
+
+::: {.incremental}
+* (without executing the code)
+* happens constantly, as we are writing code
+* via code reviews
+* compilers/interpreters/linters statically analyse the code for syntax errors
+:::
+
+::::
+
+::::{.column width=10%}
+
+::::
+
+::::{.column width=45%}
+#### Dynamically
+
+::::
+
+:::
+
+## How can we test our code?
+
+:::{.columns}
+
+::::{.column width=45% .very-light-charcoal}
+#### Statically
+
+* (without executing the code)
+* happens constantly, as we are writing code
+* via code reviews
+* compilers/interpreters/linters statically analyse the code for syntax errors
+
+::::
+
+::::{.column width=10%}
+
+::::
+
+::::{.column width=45%}
+#### Dynamically
+
+::: {.incremental}
+* (by executing the code)
+* split into functional and non-functional testing
+* testing can be manual, or automated
+:::
+
+::::
+
+:::
+
+:::{.notes}
+* non-functional testing covers things like performance, security, and usability testing
+:::
+
+## Different types of functional tests
+
+[**Unit Testing**]{.yellow} checks each component (or unit) for accuracy independently of one another.
+
+. . .
+
+[**Integration Testing**]{.yellow} integrates units to ensure that the code works together.
+
+. . .
+
+[**End-to-End Testing**]{.yellow} (e2e) makes sure that the entire system functions correctly.
+
+. . .
+
+[**User Acceptance Testing**]{.yellow} (UAT) ensures that the product meets the real user's requirements.
+
+## Different types of functional tests
+
+[**Unit Testing**]{.yellow} checks each component (or unit) for accuracy independently of one another.
+
+[**Integration Testing**]{.yellow} integrates units to ensure that the code works together.
+
+[**End-to-End Testing**]{.yellow} (e2e) makes sure that the entire system functions correctly.
+
+:::{.very-light-charcoal}
+**User Acceptance Testing** (UAT) ensures that the product meets the real user's requirements.
+:::
+
+:::{.notes}
+Unit, Integration, and E2E testing are all things we can automate in code, whereas UAT testing is going to be manual
+:::
+
+## Different types of functional tests
+
+[**Unit Testing**]{.yellow} checks each component (or unit) for accuracy independently of one another.
+
+:::{.very-light-charcoal}
+**Integration Testing** integrates units to ensure that the code works together.
+
+**End-to-End Testing** (e2e) makes sure that the entire system functions correctly.
+
+**User Acceptance Testing** (UAT) ensures that the product meets the real user's requirements.
+:::
+
+:::{.notes}
+Only focussing on unit testing in this talk, but the techniques/packages could be extended to integration testing. Often other tools (potentially specific tools) are needed for E2E testing.
+:::
+
+## Example
+
+We have a `{shiny}` app which grabs some data from a database, manipulates the data, and generates a plot.
+
+:::{.incremental}
+- we would write **unit tests** to check the data manipulation and plot functions work correctly (with pre-created sample/simple datasets)
+- we would write **integration tests** to check that the data manipulation function works with the plot function (with similar data to what we used for the **unit tests**)
+- we would write **e2e** tests to ensure that from start to finish the app grabs the data and produces a plot as required
+:::
+
+:::{.notes}
+simple (unit tests) to complex (e2e tests)
+:::
+
+## Testing Pyramid
+
+![](https://global-uploads.webflow.com/619e15d781b21202de206fb5/6316d9f844c1d214873c6c9b_the-software-testing-pyramid.webp)
+
+:::{.footer}
+[Image source:]{.light-charcoal} The Testing Pyramid: Simplified for One and All [headspin.io][testing_pyramid]
+
+[testing_pyramid]: https://www.headspin.io/blog/the-testing-pyramid-simplified-for-one-and-all
+:::
+
+# Unit [Testing]{.yellow} {.inverse .center}
+
+. . .
+
+``` r
+install.packages("testthat")
+
+library(testthat)
+```
+
+```{r}
+#| include: FALSE
+library(testthat)
+library(dplyr)
+```
+
+## Let's create a simple function...
+
+```{r}
+my_function <- function(x, y) {
+  
+  stopifnot(
+    "x must be numeric" = is.numeric(x),
+    "y must be numeric" = is.numeric(y),
+    "x must be same length as y" = length(x) == length(y),
+    "cannot divide by zero!" = y != 0
+  )
+
+  x / y
+}
+```
+
+## Let's create a simple function...
+
+```{r}
+#| eval: FALSE
+#| code-line-numbers: "1,10,11"
+my_function <- function(x, y) {
+  
+  stopifnot(
+    "x must be numeric" = is.numeric(x),
+    "y must be numeric" = is.numeric(y),
+    "x must be same length as y" = length(x) == length(y),
+    "cannot divide by zero!" = y != 0
+  )
+
+  x / y
+}
+```
+
+## Let's create a simple function...
+
+```{r}
+#| eval: FALSE
+#| code-line-numbers: "3-8"
+my_function <- function(x, y) {
+  
+  stopifnot(
+    "x must be numeric" = is.numeric(x),
+    "y must be numeric" = is.numeric(y),
+    "x must be same length as y" = length(x) == length(y),
+    "cannot divide by zero!" = y != 0
+  )
+
+  x / y
+}
+```
+
+:::{.footer}
+[The Ten Rules of Defensive Programming in R][dpinr]
+
+[dpinr]: https://www.r-bloggers.com/2018/07/the-ten-rules-of-defensive-programming-in-r/
+:::
+
+## ... and create our first test
+
+```{r}
+#| eval: FALSE
+test_that("my_function correctly divides values", {
+  expect_equal(
+    my_function(4, 2),
+    2
+  )
+  expect_equal(
+    my_function(1, 4),
+    0.25
+  )
+  expect_equal(
+    my_function(c(4, 1), c(2, 4)),
+    c(2, 0.25)
+  )
+})
+```
+
+## ... and create our first test
+
+```{r}
+#| eval: FALSE
+#| code-line-numbers: "1,14"
+test_that("my_function correctly divides values", {
+  expect_equal(
+    my_function(4, 2),
+    2
+  )
+  expect_equal(
+    my_function(1, 4),
+    0.25
+  )
+  expect_equal(
+    my_function(c(4, 1), c(2, 4)),
+    c(2, 0.25)
+  )
+})
+```
+
+## ... and create our first test
+
+```{r}
+#| eval: FALSE
+#| code-line-numbers: "3,7,11"
+test_that("my_function correctly divides values", {
+  expect_equal(
+    my_function(4, 2),
+    2
+  )
+  expect_equal(
+    my_function(1, 4),
+    0.25
+  )
+  expect_equal(
+    my_function(c(4, 1), c(2, 4)),
+    c(2, 0.25)
+  )
+})
+```
+
+
+## ... and create our first test
+
+```{r}
+#| eval: FALSE
+#| code-line-numbers: "4,8,12"
+test_that("my_function correctly divides values", {
+  expect_equal(
+    my_function(4, 2),
+    2
+  )
+  expect_equal(
+    my_function(1, 4),
+    0.25
+  )
+  expect_equal(
+    my_function(c(4, 1), c(2, 4)),
+    c(2, 0.25)
+  )
+})
+```
+
+## ... and create our first test
+
+```{r}
+#| eval: FALSE
+#| code-line-numbers: "2,5,6,9,10,13"
+test_that("my_function correctly divides values", {
+  expect_equal(
+    my_function(4, 2),
+    2
+  )
+  expect_equal(
+    my_function(1, 4),
+    0.25
+  )
+  expect_equal(
+    my_function(c(4, 1), c(2, 4)),
+    c(2, 0.25)
+  )
+})
+```
+
+
+## ... and create our first test
+
+```{r}
+test_that("my_function correctly divides values", {
+  expect_equal(
+    my_function(4, 2),
+    2
+  )
+  expect_equal(
+    my_function(1, 4),
+    0.25
+  )
+  expect_equal(
+    my_function(c(4, 1), c(2, 4)),
+    c(2, 0.25)
+  )
+})
+```
+
+## other `expect_*()` functions...
+
+```{r}
+test_that("my_function correctly divides values", {
+  expect_lt(
+    my_function(4, 2),
+    10
+  )
+  expect_gt(
+    my_function(1, 4),
+    0.2
+  )
+  expect_length(
+    my_function(c(4, 1), c(2, 4)),
+    2
+  )
+})
+```
+
+:::{.footer}
+[{testthat} documentation][ttd]
+
+[ttd]: https://testthat.r-lib.org/reference/index.html
+:::
+
+## Arrange, Act, Assert
+
+:::{.columns}
+
+::::{.column width=50%}
+::::
+
+::::{.column width=50%}
+
+```{r}
+#| eval: false
+test_that("my_function works", {
+  # arrange
+  #  
+  #
+  #
+
+  # act
+  #
+
+  # assert
+  #
+})
+```
+::::
+
+:::
+
+## Arrange, Act, Assert
+
+:::{.columns}
+
+::::{.column width=50%}
+we [**arrange**]{.yellow} the environment, before running the function
+
+:::{.incremental}
+- to create sample values
+- create fake/temporary files
+- set random seed
+- set R options/environment variables
+:::
+
+::::
+
+::::{.column width=50%}
+
+```{r}
+#| eval: false
+#| code-line-numbers: "2-5"
+test_that("my_function works", {
+  # arrange
+  x <- 5
+  y <- 7
+  expected <- 0.714285
+
+  # act
+  #
+
+  # assert
+  #
+})
+```
+
+::::
+:::
+
+## Arrange, Act, Assert
+
+:::{.columns}
+
+::::{.column width=50%}
+[we **arrange** the environment, before running the function]{.very-light-charcoal}
+
+we [**act**]{.yellow} by calling the function
+
+::::
+
+::::{.column width=50%}
+
+```{r}
+#| eval: false
+#| code-line-numbers: "7-8"
+test_that("my_function works", {
+  # arrange
+  x <- 5
+  y <- 7
+  expected <- 0.714285
+
+  # act
+  actual <- my_function(x, y)
+
+  # assert
+  #
+})
+```
+
+::::
+:::
+
+
+## Arrange, Act, Assert
+
+:::{.columns}
+
+::::{.column width=50%}
+[we **arrange** the environment, before running the function]{.very-light-charcoal}
+
+[we **act** by calling the function]{.very-light-charcoal}
+
+we [**assert**]{.yellow} that the **actual** results match our **expected** results
+::::
+
+::::{.column width=50%}
+
+```{r}
+#| eval: false
+#| code-line-numbers: "10-11"
+test_that("my_function works", {
+  # arrange
+  x <- 5
+  y <- 7
+  expected <- 0.714285
+
+  # act
+  actual <- my_function(x, y)
+
+  # assert
+  expect_equal(actual, expected)
+})
+```
+
+::::
+:::
+
+## Our test failed!?! 😢
+
+```{r}
+test_that("my_function works", {
+  # arrange
+  x <- 5
+  y <- 7
+  expected <- 0.714285
+
+  # act
+  actual <- my_function(x, y)
+
+  # assert
+  expect_equal(actual, expected)
+})
+```
+
+## Tolerance to the rescue 🙂
+
+```{r}
+test_that("my_function works", {
+  # arrange
+  x <- 5
+  y <- 7
+  expected <- 0.714285
+
+  # act
+  actual <- my_function(x, y)
+
+  # assert
+  expect_equal(actual, expected, tolerance = 1e-6)
+})
+```
+
+. . .
+
+[(*this is a slightly artificial example, usually the default tolerance is good enough*)]{.small}
+
+## Testing edge cases
+
+:::{.columns}
+
+::::{.column width=40%}
+Remember the validation steps we built into our function to handle edge cases?
+
+<br />
+
+Let's write tests for these edge cases:
+
+[we expect errors]{.yellow}
+::::
+
+::::{.column width=60%}
+```{r}
+test_that("my_function works", {
+  expect_error(my_function(5, 0))
+  expect_error(my_function("a", 3))
+  expect_error(my_function(3, "a"))
+  expect_error(my_function(1:2, 4))
+})
+```
+::::
+
+:::
+
+## Another (simple) example
+
+:::{.columns}
+
+::::{.column width=60%}
+```{r}
+my_new_function <- function(x, y) {
+  if (x > y) {
+    "x"
+  } else {
+    "y"
+  }
+}
+```
+::::
+
+::::{.column width=40%}
+
+Consider this function - there is [branched logic]{.yellow}, so we need to carefully design tests to validate the logic works as intended.
+
+::::
+:::
+
+## Another (simple) example
+
+```{r}
+my_new_function <- function(x, y) {
+  if (x > y) {
+    "x"
+  } else {
+    "y"
+  }
+}
+```
+
+<br />
+
+```{r}
+test_that("it returns 'x' if x is bigger than y", {
+  expect_equal(my_new_function(4, 3), "x")
+})
+test_that("it returns 'y' if y is bigger than x", {
+  expect_equal(my_new_function(3, 4), "y")
+  expect_equal(my_new_function(3, 3), "y")
+})
+```
+
+## How to design good tests
+
+[*a non-exhaustive list*]{.small}
+
+- consider all the functions arguments,
+- what are the [expected]{.yellow} values for these arguments?
+- what are [unexpected]{.yellow} values, and are they handled?
+- are there [edge cases]{.yellow} that need to be handled?
+- have you covered all of the [different paths]{.yellow} in your code?
+- have you managed to create tests that check the [range of results]{.yellow} you expect?
+
+## But, why create tests?
+
+[*another non-exhaustive list*]{.small}
+
+- good tests will help you uncover existing issues in your code
+- will defend you from future changes that break existing functionality
+- will alert you to changes in dependencies that may have changed the functionality of your code
+- can act as documentation for other developers
+
+## Testing complex function
+
+```{r}
+#| include: FALSE
+# create a mock db/csv for this demo
+withr::local_file("data.db")
+withr::local_file("conditions.csv")
+local({
+  con <- DBI::dbConnect(RSQLite::SQLite(), "data.db")
+
+  tibble::tibble(
+    date = format(Sys.Date() + sample(0:20, 300, TRUE), "%Y-%m-%d"),
+    condition = sample(letters[1:3], 300, TRUE)
+  ) |>
+    dplyr::copy_to(dest = con, df = _, name = "data_table", temporary = FALSE)
+
+  DBI::dbDisconnect(con)
+})
+
+tibble::tibble(
+  condition = letters[1:3],
+  condition_type = c("important", "important", "non-important")
+) |>
+  readr::write_csv("conditions.csv")
+```
+
+:::{.columns}
+
+::::{.column width=70%}
+```{r}
+#| eval: FALSE
+my_big_function <- function(type) {
+  con <- dbConnect(RSQLite::SQLite(), "data.db")
+  df <- tbl(con, "data_table") |>
+    collect() |>
+    mutate(across(date, lubridate::ymd))
+
+  conditions <- read_csv(
+    "conditions.csv", col_types = "cc"
+  ) |>
+    filter(condition_type == type)
+
+  df |>
+    semi_join(conditions, by = "condition") |>
+    count(date) |>
+    ggplot(aes(date, n)) +
+    geom_line() +
+    geom_point()
+}
+``` 
+::::
+
+::::{.column width=30%}
+Where do you even begin to start writing tests for something so complex?
+
+<br />
+
+:::{.small}
+*Note: to get the code on the left to fit on one page, I skipped including a few library calls*
+
+```{r}
+#| eval: FALSE
+library(tidyverse)
+library(DBI)
+``` 
+:::
+
+::::
+
+:::
+
+## Split the logic into smaller functions
+
+Function to get the data from the database
+
+```{r}
+#| eval: FALSE
+get_data_from_sql <- function() {
+  con <- dbConnect(RSQLite::SQLite(), "data.db")
+  tbl(con, "data_table") |>
+    collect() |>
+    mutate(across(date, lubridate::ymd))
+}
+```
+
+## Split the logic into smaller functions
+
+Function to get the relevant conditions
+
+```{r}
+#| eval: FALSE
+get_conditions <- function(type) {
+  read_csv(
+    "conditions.csv", col_types = "cc"
+  ) |>
+    filter(condition_type == type)
+}
+```
+
+## Split the logic into smaller functions
+
+Function to combine the data and create a count by date
+
+```{r}
+summarise_data <- function(df, conditions) {
+  df |>
+    semi_join(conditions, by = "condition") |>
+    count(date)
+}
+```
+
+## Split the logic into smaller functions
+
+Function to generate a plot from the summarised data
+
+```{r}
+create_plot <- function(df) {
+  df |>
+    ggplot(aes(date, n)) +
+    geom_line() +
+    geom_point()
+}
+```
+
+
+## Split the logic into smaller functions
+
+The original function refactored to use the new functions
+
+```{r}
+my_big_function <- function(type) {
+  conditions <- get_conditions(type)
+
+  get_data_from_sql() |>
+    summarise_data(conditions) |>
+    create_plot()
+}
+```
+
+This is going to be significantly easier to test, because we now can verify that the individual components work correctly, rather than having to consider all of the possibilities at once.
+
+## Let's test `summarise_data`
+
+``` r
+test_that("it summarises the data", {
+  # arrange
+  
+
+
+
+
+
+
+  
+
+  
+  # act
+  
+  # assert
+  
+})
+```
+
+## Let's test `summarise_data`
+
+:::{.columns}
+
+::::{.column width=75%}
+``` r
+test_that("it summarises the data", {
+  # arrange
+  
+  df <- tibble(
+    date = sample(1:10, 300, TRUE),
+    condition = sample(c("a", "b", "c"), 300, TRUE)
+  )
+  
+
+
+
+
+  # act
+  
+  # assert
+  
+})
+```
+
+::::
+
+::::{.column width=25% .small}
+Generate some random data to build a reasonably sized data frame.
+
+You could also create a table manually, but part of the trick of writing good tests for this function is to make it so the dates don't all have the same count.
+
+The reason for this is it's harder to know for sure that the count worked if every row returns the same value.
+
+We don't need the values to be exactly like they are in the real data, just close enough. Instead of dates, we can use numbers, and instead of actual conditions, we can use letters.
+::::
+
+:::
+
+## Let's test `summarise_data`
+
+:::{.columns}
+
+::::{.column width=75%}
+
+``` r
+test_that("it summarises the data", {
+  # arrange
+  set.seed(123)
+  df <- tibble(
+    date = sample(1:10, 300, TRUE),
+    condition = sample(c("a", "b", "c"), 300, TRUE)
+  )
+  
+
+
+
+
+  # act
+  
+  # assert
+  
+})
+```
+::::
+
+::::{.column width=25% .small}
+Tests need to be reproducible, and generating our table at random will give us unpredictable results.
+
+So, we need to set the random seed; now every time this test runs we will generate the same data.
+::::
+
+:::
+
+## Let's test `summarise_data`
+
+:::{.columns}
+
+::::{.column width=75%}
+``` r
+test_that("it summarises the data", {
+  # arrange
+  set.seed(123)
+  df <- tibble(
+    date = sample(1:10, 300, TRUE),
+    condition = sample(c("a", "b", "c"), 300, TRUE)
+  )
+  conditions <- tibble(condition = c("a", "b"))    
+  
+
+
+
+  # act
+  
+  # assert
+  
+})
+```
+::::
+
+::::{.column width=25% .small}
+Create the conditions table. We don't need all of the columns that are present in the real csv, just the ones that will make our code work.
+
+We also need to test that the filtering join (`semi_join`) is working, so we want to use a subset of the conditions that were used in `df`.
+::::
+
+:::
+
+## Let's test `summarise_data`
+
+:::{.columns}
+
+::::{.column width=75%}
+``` r
+test_that("it summarises the data", {
+  # arrange
+  set.seed(123)
+  df <- tibble(
+    date = sample(1:10, 300, TRUE),
+    condition = sample(c("a", "b", "c"), 300, TRUE)
+  )
+  conditions <- tibble(condition = c("a", "b"))    
+  
+  
+
+  
+  # act
+  actual <- summarise_data(df, conditions)
+  # assert
+  
+})
+```
+::::
+
+::::{.column width=25% .small}
+Because we are generating `df` randomly, to figure out what our "expected" results are, I simply ran the code inside of the test to generate the "actual" results.
+
+Generally, this isn't a good idea. You are creating the results of your test from the code; ideally, you want to be thinking about what the results of your function should be.
+
+Imagine your function doesn't work as intended, there is some subtle bug that you are not yet aware of. By writing tests "backwards" you may write test cases that confirm the results, but not expose the bug. This is why it's good to think about edge cases.
+::::
+
+:::
+
+## Let's test `summarise_data`
+
+:::{.columns}
+
+::::{.column width=75%}
+``` r
+test_that("it summarises the data", {
+  # arrange
+  set.seed(123)
+  df <- tibble(
+    date = sample(1:10, 300, TRUE),
+    condition = sample(c("a", "b", "c"), 300, TRUE)
+  )
+  conditions <- tibble(condition = c("a", "b"))    
+  expected <- tibble(
+    date = 1:10,
+    n = c(19, 18, 12, 14, 17, 18, 24, 18, 31, 21)
+  )  
+  # act
+  actual <- summarise_data(df, conditions)
+  # assert
+  
+})
+```
+::::
+
+::::{.column width=25% .small}
+That said, in cases where we can be confident (say by static analysis of our code) that it is correct, building tests in this way will give us the confidence going forwards that future changes do not break existing functionality.
+
+In this case, I have created the expected data frame using the results from running the function.
+::::
+
+:::
+
+## Let's test `summarise_data`
+
+:::{.columns}
+
+::::{.column width=75%}
+```{r}
+test_that("it summarises the data", {
+  # arrange
+  set.seed(123)
+  df <- tibble(
+    date = sample(1:10, 300, TRUE),
+    condition = sample(c("a", "b", "c"), 300, TRUE)
+  )
+  conditions <- tibble(condition = c("a", "b"))
+  expected <- tibble(
+    date = 1:10,
+    n = c(19, 18, 12, 14, 17, 18, 24, 18, 31, 21)
+  )
+  # act
+  actual <- summarise_data(df, conditions)
+  # assert
+  expect_equal(actual, expected)
+})
+```
+::::
+
+::::{.column width=25% .small}
+The test works!
+::::
+
+:::
+
+## Next steps
+
+- You can add tests to any R project (to test functions),
+- But `{testthat}` works best with Packages
+- The R Packages book has 3 chapters on [testing](https://r-pkgs.org/testing-basics.html)
+- There are two useful helper functions in `{usethis}`
+  * `use_testthat()` will set up the folders for test scripts
+  * `use_test()` will create a test file for the currently open script
+
+## Next steps
+
+- If your test needs to temporarily create a file, or change some R-options, the [`{withr}` package](https://withr.r-lib.org/) has a lot of useful functions that will automatically clean things up when the test finishes
+- If you are writing tests that involve calling out to a database, or you want to test `my_big_function` (from before) without calling the intermediate functions, then you should look at the [`{mockery}` package](https://github.com/r-lib/mockery)
+
+# Thanks! {.inverse}
+
+Questions?
+
+[thomas.jemmett@nhs.net](mailto:thomas.jemmett@nhs.net) / DM me on slack

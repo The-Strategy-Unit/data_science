@@ -19,7 +19,6 @@ format:
     height: 1080
 execute:
   echo: true
-  error: true
 ---
 
 [ds_presentations]: https://the-strategy-unit.github.io/data_science/presentations/

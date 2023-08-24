@@ -1,0 +1,416 @@
+---
+title: "Coffee and Coding"
+subtitle: "Working with Geospatial Data in R"
+author: "[Tom Jemmett](mailto:thomas.jemmett@nhs.net)"
+date: 2023-08-24
+date-format: "MMM D, YYYY"
+format:
+  revealjs:
+    theme: [default, ../su_presentation.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    footer: |
+      view slides at [the-strategy-unit.github.io/data_science/presentations][ds_presentations]
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
+    width: 1920
+    height: 1080
+execute:
+  echo: true
+  error: true
+---
+
+[ds_presentations]: https://the-strategy-unit.github.io/data_science/presentations/
+
+## Packages we are using today
+
+```{r setup}
+library(tidyverse)
+
+library(sf)
+
+library(tidygeocoder)
+library(PostcodesioR)
+
+library(osrm)
+
+library(leaflet)
+
+library(NHSRtools) # remotes::install_github("NHS-R-Community/NHSRtools")
+```
+
+## Getting boundary data
+
+We can use the [ONS's Geoportal](https://geoportal.statistics.gov.uk/) we can grab boundary data to generate maps
+
+:::{.columns}
+
+::::{.column width=50%}
+```{r, icb-plot}
+#| eval: false
+icb_url <- paste0(
+  "https://services1.arcgis.com",
+  "/ESMARspQHYMw9BZ9/arcgis",
+  "/rest/services",
+  "/Integrated_Care_Boards_April_2023_EN_BGC",
+  "/FeatureServer/0/query",
+  "?outFields=*&where=1%3D1&f=geojson"
+)
+icb_boundaries <- read_sf(icb_url)
+
+icb_boundaries |>
+  ggplot() +
+  geom_sf() +
+  theme_void()
+```
+::::
+
+::::{.column width=50%}
+```{r, icb-plot}
+#| eval: true
+#| echo: false
+#| fig-height: 8
+```
+::::
+
+:::
+
+## What is the `icb_boundaries` data?
+
+![](icb_boundaries_df.png)
+
+## Working with geospatial dataframes
+
+We can simply join `sf` data frames and "regular" data frames together
+
+:::{.columns}
+
+::::{.column width=50%}
+```{r, icb-metrics}
+#| eval: false
+icb_metrics <- icb_boundaries |>
+  st_drop_geometry() |>
+  select(ICB23CD) |>
+  mutate(admissions = rpois(n(), 1000000))
+
+icb_boundaries |>
+  inner_join(icb_metrics, by = "ICB23CD") |>
+  ggplot() +
+  geom_sf(aes(fill = admissions)) +
+  scale_fill_viridis_c() +
+  theme_void()
+```
+
+::::
+
+::::{.column width=50%}
+```{r, icb-metrics}
+#| eval: true
+#| echo: false
+#| fig-height: 8
+```
+::::
+
+:::
+
+## Working with geospatial data frames
+
+We can manipulate `sf` objects like other data frames
+
+:::{.columns}
+
+::::{.column width=50%}
+
+```{r, london-icbs-1}
+#| eval: false
+london_icbs <- icb_boundaries |>
+  filter(ICB23NM |> stringr::str_detect("London"))
+
+ggplot() +
+  geom_sf(data = london_icbs) +
+  geom_sf(data = st_centroid(london_icbs)) +
+  theme_void()
+```
+
+::::
+
+::::{.column width=50%}
+```{r, london-icbs-1}
+#| eval: true
+#| echo: false
+#| fig-height: 8
+```
+::::
+
+:::
+
+
+## Working with geospatial data frames
+
+Summarising the data will combine the geometries.
+
+```{r, london-icbs-2}
+london_icbs |>
+  summarise(area = sum(Shape__Area)) |>
+  # and use geospatial functions to create calculations using the geometry
+  mutate(new_area = st_area(geometry), .before = "geometry")
+```
+
+<br />
+Why the difference in area?
+
+. . .
+
+<br />
+We are using a simplified geometry, so calculating the area will be slightly inaccurate.
+The original area was calculated on the non-simplified geometries.
+
+## Creating our own geospatial data
+
+```{r, get-location}
+location_raw <- postcode_lookup("B2 4BJ")
+glimpse(location_raw)
+```
+
+. . .
+
+<br />
+
+```{r, location-to-sf}
+location <- location_raw |>
+  st_as_sf(coords = c("eastings", "northings"), crs = 27700) |>
+  select(postcode, ccg) |>
+  st_transform(crs = 4326)
+
+location
+```
+
+## Creating a geospatial data frame for all NHS Trusts
+
+:::{.columns}
+
+::::{.column width=50%}
+
+```{r, get-trusts}
+#| eval: false
+trusts <- ods_get_trusts() |>
+  filter(status == "Active") |>
+  select(name, org_id, post_code) |>
+  geocode(postalcode = "post_code") |>
+  st_as_sf(coords = c("long", "lat"), crs = 4326)
+```
+
+```{r, create-trusts-geojson}
+#| echo: false
+if (!file.exists("trusts.geojson")) {
+  <<get-trusts>>
+
+  st_write(trusts, "trusts.geojson")
+} 
+trusts <- read_sf("trusts.geojson") 
+```
+
+```{r, show-trusts}
+#| eval: false
+trusts |>
+  leaflet() |>
+  addProviderTiles("Stamen.TonerLite") |>
+  addMarkers(popup = ~name)
+```
+::::
+
+::::{.column width=50%}
+```{r, show-trusts}
+#| eval: true
+#| echo: false
+#| fig-height: 8
+``` 
+::::
+
+:::
+
+## What are the nearest trusts to our location?
+
+```{r, nearest-trusts}
+nearest_trusts <- trusts |>
+  mutate(
+    distance = st_distance(geometry, location)[, 1]
+  ) |>
+  arrange(distance) |>
+  head(5)
+
+nearest_trusts
+```
+
+## Let's find driving routes to these trusts
+
+```{r, routes}
+routes <- nearest_trusts |>
+  mutate(
+    route = map(geometry, ~ osrmRoute(location, st_coordinates(.x)))
+  ) |>
+  st_drop_geometry() |>
+  rename(straight_line_distance = distance) |>
+  unnest(route) |>
+  st_as_sf()
+
+routes
+```
+
+## Let's show the routes
+
+```{r, route-map}
+#| fig-width: 20
+#| fig-height: 8
+leaflet(routes) |>
+  addTiles() |>
+  addMarkers(data = location) |>
+  addPolylines(color = "black", weight = 3, opacity = 1) |>
+  addCircleMarkers(data = nearest_trusts, radius = 4, opacity = 1, fillOpacity = 1)
+```
+
+## We can use `{osrm}` to calculate isochrones
+
+:::{.columns}
+
+::::{.column width=50%}
+```{r, isochrone}
+#| eval: false
+iso <- osrmIsochrone(location, breaks = seq(0, 60, 15), res = 10)
+
+isochrone_ids <- unique(iso$id)
+
+pal <- colorFactor(
+  viridis::viridis(length(isochrone_ids)),
+  isochrone_ids
+)
+
+leaflet(location) |>
+  addProviderTiles("Stamen.TonerLite") |>
+  addMarkers() |>
+  addPolygons(
+    data = iso,
+    fillColor = ~ pal(id),
+    color = "#000000",
+    weight = 1
+  )
+```
+::::
+
+::::{.column width=50%}
+```{r, isochrone}
+#| echo: false
+#| eval: true
+#| fig-width: 9
+#| fig-height: 8
+``` 
+::::
+
+:::
+
+## What trusts are in the isochrones?
+
+The `summarise()` function will "union" the geometry
+
+```{r, iso-summary}
+summarise(iso)
+```
+
+## What trusts are in the isochrones?
+
+We can use this with a geo-filter to find the trusts in the isochrone
+
+```{r, trusts-in-iso}
+# also works
+trusts_in_iso <- trusts |>
+  st_filter(
+    summarise(iso),
+    .predicate = st_within
+  )
+
+trusts_in_iso
+```
+
+## What trusts are in the isochrones?
+
+:::{.columns}
+
+::::{.column width=50%}
+```{r, trusts-in-iso-plot}
+#| eval: false
+leaflet(trusts_in_iso) |>
+  addProviderTiles("Stamen.TonerLite") |>
+  addMarkers() |>
+  addPolygons(
+    data = iso,
+    fillColor = ~pal(id),
+    color = "#000000",
+    weight = 1
+  )
+```
+::::
+
+::::{.column width=50%}
+```{r, trusts-in-iso-plot}
+#| echo: false
+#| eval: true
+#| fig-width: 9
+#| fig-height: 8
+``` 
+::::
+
+:::
+
+## Doing the same but within a radius
+
+:::{.columns}
+
+::::{.column width=50%}
+```{r, trusts-in-radius}
+#| eval: false
+r <- 25000
+
+trusts_in_radius <- trusts |>
+  st_filter(
+    location,
+    .predicate = st_is_within_distance,
+    dist = r
+  )
+
+# transforming gives us a pretty smooth circle
+radius <- location |>
+  st_transform(crs = 27700) |>
+  st_buffer(dist = r) |>
+  st_transform(crs = 4326)
+
+leaflet(trusts_in_radius) |>
+  addProviderTiles("Stamen.TonerLite") |>
+  addMarkers() |>
+  addPolygons(
+    data = radius,
+    color = "#000000",
+    weight = 1
+  )
+```
+::::
+
+::::{.column width=50%}
+```{r, trusts-in-radius}
+#| echo: false
+#| eval: true
+#| fig-width: 9
+#| fig-height: 8
+``` 
+::::
+
+:::
+
+## Further reading
+
+* [Geocomputation with R](https://r.geocompx.org/)
+* [r-spatial](https://r-spatial.org/)
+* [{sf} documentation](https://r-spatial.github.io/sf/)
+* [Leaflet documentation](https://rstudio.github.io/leaflet/)
+* [Tidy Geospatial Networks in R](https://luukvdmeer.github.io/sfnetworks/)

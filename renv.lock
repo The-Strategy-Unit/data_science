@@ -80,31 +80,6 @@
       ],
       "Hash": "02c9417179975a83e37329f40c451591"
     },
-    "NHSRtools": {
-      "Package": "NHSRtools",
-      "Version": "0.0.0.9001",
-      "Source": "GitHub",
-      "RemoteType": "github",
-      "RemoteHost": "api.github.com",
-      "RemoteRepo": "NHSRtools",
-      "RemoteUsername": "nhs-r-community",
-      "RemoteRef": "HEAD",
-      "RemoteSha": "070b7d031396fba06532edb60d48e97ae2fd60c3",
-      "Requirements": [
-        "R",
-        "assertthat",
-        "dplyr",
-        "httr",
-        "janitor",
-        "lubridate",
-        "purrr",
-        "readr",
-        "rlang",
-        "sf",
-        "stringr"
-      ],
-      "Hash": "5042bef82fb25f96cec26ae0fe87e021"
-    },
     "PostcodesioR": {
       "Package": "PostcodesioR",
       "Version": "0.3.1",
@@ -180,16 +155,6 @@
         "sys"
       ],
       "Hash": "e8a22846fff485f0be3770c2da758713"
-    },
-    "assertthat": {
-      "Package": "assertthat",
-      "Version": "0.2.1",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "tools"
-      ],
-      "Hash": "50c838a310445e954bc13f26f26a6ecf"
     },
     "backports": {
       "Package": "backports",
@@ -1060,28 +1025,6 @@
       ],
       "Hash": "0080607b4a1a7b28979aecef976d8bc2"
     },
-    "janitor": {
-      "Package": "janitor",
-      "Version": "2.2.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R",
-        "dplyr",
-        "hms",
-        "lifecycle",
-        "lubridate",
-        "magrittr",
-        "purrr",
-        "rlang",
-        "snakecase",
-        "stringi",
-        "stringr",
-        "tidyr",
-        "tidyselect"
-      ],
-      "Hash": "5baae149f1082f466df9d1442ba7aa65"
-    },
     "jquerylib": {
       "Package": "jquerylib",
       "Version": "0.1.4",
@@ -1861,18 +1804,6 @@
         "utils"
       ],
       "Hash": "e2111252a76984ca50bf8d6314348681"
-    },
-    "snakecase": {
-      "Package": "snakecase",
-      "Version": "0.11.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R",
-        "stringi",
-        "stringr"
-      ],
-      "Hash": "4079070fc210c7901c0832a3aeab894f"
     },
     "sp": {
       "Package": "sp",

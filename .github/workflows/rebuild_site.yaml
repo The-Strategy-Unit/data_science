@@ -18,6 +18,8 @@ jobs:
         with:
           use-public-rspm: true
 
+      - uses: tomjemmett/renv-install-system-deps
+
       - uses: r-lib/actions/setup-renv@v2
 
       - name: Setup Quarto

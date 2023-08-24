@@ -672,109 +672,123 @@
     "text": "Questions?\n\nContact The Strategy Unit\n\n\n strategy.unit@nhs.net\n The-Strategy-Unit\n\n\nContact Me\n\n\n thomas.jemmett@nhs.net\n tomjemmett\n\n\n\n\nview slides at https://tinyurl.com/haca23nhp"
   },
   {
-    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#patient-experience",
-    "href": "presentations/2023-05-23_data-science-for-good/index.html#patient-experience",
-    "title": "What good data science looks like",
-    "section": "Patient experience",
-    "text": "Patient experience\n\nThe NHS collects a lot of patient experience data\nRate the service 1-5 (Very poor… Excellent) but also give written feedback\n\n“Parking was difficult”\n“Doctor was rude”\n“You saved my life”\n\nMany organisations lack the staffing to read all of the feedback in a systematic way\nProduce an algorithm to rate theme and “criticality”"
+    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#packages-we-are-using-today",
+    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#packages-we-are-using-today",
+    "title": "Coffee and Coding",
+    "section": "Packages we are using today",
+    "text": "Packages we are using today\n\nlibrary(tidyverse)\n\nlibrary(sf)\n\nError in library(sf): there is no package called 'sf'\n\nlibrary(tidygeocoder)\n\nError in library(tidygeocoder): there is no package called 'tidygeocoder'\n\nlibrary(PostcodesioR)\n\nError in library(PostcodesioR): there is no package called 'PostcodesioR'\n\nlibrary(osrm)\n\nError in library(osrm): there is no package called 'osrm'\n\nlibrary(leaflet)\n\nError in library(leaflet): there is no package called 'leaflet'\n\nlibrary(NHSRtools) # remotes::install_github(\"NHS-R-Community/NHSRtools\")\n\nError in library(NHSRtools): there is no package called 'NHSRtools'"
   },
   {
-    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#help-people-to-do-their-jobs",
-    "href": "presentations/2023-05-23_data-science-for-good/index.html#help-people-to-do-their-jobs",
-    "title": "What good data science looks like",
-    "section": "Help people to do their jobs",
-    "text": "Help people to do their jobs\n\nText based data is complex and built on human experience\nThe tool should enhance, not replace, human understanding\nEnhancing search and filtering\n\nIf they read 100 comments today, which should they read?\n\n“A recommendation engine for feedback data”"
+    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#getting-boundary-data",
+    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#getting-boundary-data",
+    "title": "Coffee and Coding",
+    "section": "Getting boundary data",
+    "text": "Getting boundary data\nWe can use the ONS’s Geoportal we can grab boundary data to generate maps\n\n\n\nicb_url &lt;- paste0(\n  \"https://services1.arcgis.com\",\n  \"/ESMARspQHYMw9BZ9/arcgis\",\n  \"/rest/services\",\n  \"/Integrated_Care_Boards_April_2023_EN_BGC\",\n  \"/FeatureServer/0/query\",\n  \"?outFields=*&where=1%3D1&f=geojson\"\n)\nicb_boundaries &lt;- read_sf(icb_url)\n\nicb_boundaries |&gt;\n  ggplot() +\n  geom_sf() +\n  theme_void()\n\n\n\n\nError in read_sf(icb_url): could not find function \"read_sf\"\n\n\nError in eval(expr, envir, enclos): object 'icb_boundaries' not found"
   },
   {
-    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#reflect-what-users-want",
-    "href": "presentations/2023-05-23_data-science-for-good/index.html#reflect-what-users-want",
-    "title": "What good data science looks like",
-    "section": "Reflect what users want",
-    "text": "Reflect what users want\n\nI have worked with this data since before it existed\nI came to realise that people were struggling to read all of their data\nFits alongside other work happening within NHSE\n\nA framework for understanding patient experience"
+    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#what-is-the-icb_boundaries-data",
+    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#what-is-the-icb_boundaries-data",
+    "title": "Coffee and Coding",
+    "section": "What is the icb_boundaries data?",
+    "text": "What is the icb_boundaries data?"
   },
   {
-    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#useful",
-    "href": "presentations/2023-05-23_data-science-for-good/index.html#useful",
-    "title": "What good data science looks like",
-    "section": "Useful",
-    "text": "Useful\n\nA fundamental principle is that everyone can use\nIf you can run the code, run it\nIf you can use the API, use it\nIf you just want the dashboard, use it\nCredit to the growth charts API"
+    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#working-with-geospatial-dataframes",
+    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#working-with-geospatial-dataframes",
+    "title": "Coffee and Coding",
+    "section": "Working with geospatial dataframes",
+    "text": "Working with geospatial dataframes\nWe can simply join sf data frames and “regular” data frames together\n\n\n\nicb_metrics &lt;- icb_boundaries |&gt;\n  st_drop_geometry() |&gt;\n  select(ICB23CD) |&gt;\n  mutate(admissions = rpois(n(), 1000000))\n\nicb_boundaries |&gt;\n  inner_join(icb_metrics, by = \"ICB23CD\") |&gt;\n  ggplot() +\n  geom_sf(aes(fill = admissions)) +\n  scale_fill_viridis_c() +\n  theme_void()\n\n\n\n\nError in st_drop_geometry(icb_boundaries): could not find function \"st_drop_geometry\"\n\n\nError in eval(expr, envir, enclos): object 'icb_boundaries' not found"
   },
   {
-    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#understandable",
-    "href": "presentations/2023-05-23_data-science-for-good/index.html#understandable",
-    "title": "What good data science looks like",
-    "section": "Understandable",
-    "text": "Understandable\n\nTuned to the users needs\nNot simply tuning accuracy scores\nLook at the type of mistake the model is making\nLook at the category it’s predicting\n\nWe can lose a few of common unimportant categories\nWe need to get every rare and important category"
+    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#working-with-geospatial-data-frames",
+    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#working-with-geospatial-data-frames",
+    "title": "Coffee and Coding",
+    "section": "Working with geospatial data frames",
+    "text": "Working with geospatial data frames\nWe can manipulate sf objects like other data frames\n\n\n\nlondon_icbs &lt;- icb_boundaries |&gt;\n  filter(ICB23NM |&gt; stringr::str_detect(\"London\"))\n\nggplot() +\n  geom_sf(data = london_icbs) +\n  geom_sf(data = st_centroid(london_icbs)) +\n  theme_void()\n\n\n\n\nError in eval(expr, envir, enclos): object 'icb_boundaries' not found\n\n\nError in eval(expr, envir, enclos): object 'london_icbs' not found"
   },
   {
-    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#iterative",
-    "href": "presentations/2023-05-23_data-science-for-good/index.html#iterative",
-    "title": "What good data science looks like",
-    "section": "Iterative",
-    "text": "Iterative\n\nYear one\n\n10 categories\nModerate criticality performance\nNo deep learning\nWeak dashboard\nPositive evaluation"
+    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#working-with-geospatial-data-frames-1",
+    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#working-with-geospatial-data-frames-1",
+    "title": "Coffee and Coding",
+    "section": "Working with geospatial data frames",
+    "text": "Working with geospatial data frames\nSummarising the data will combine the geometries.\n\nlondon_icbs |&gt;\n  summarise(area = sum(Shape__Area)) |&gt;\n  # and use geospatial functions to create calculations using the geometry\n  mutate(new_area = st_area(geometry), .before = \"geometry\")\n\nError in eval(expr, envir, enclos): object 'london_icbs' not found\n\n\n Why the difference in area?\n\n We are using a simplified geometry, so calculating the area will be slightly inaccurate. The original area was calculated on the non-simplified geometries."
   },
   {
-    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#iterative-1",
-    "href": "presentations/2023-05-23_data-science-for-good/index.html#iterative-1",
-    "title": "What good data science looks like",
-    "section": "Iterative",
-    "text": "Iterative\n\nYear two\n\n30-50 categories\nStrong criticality performance\nDeep learning\nImproved dashboard\nWIP\n\nOverall five minor versions of algorithm and seven of dashboard"
+    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#creating-our-own-geospatial-data",
+    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#creating-our-own-geospatial-data",
+    "title": "Coffee and Coding",
+    "section": "Creating our own geospatial data",
+    "text": "Creating our own geospatial data\n\nlocation_raw &lt;- postcode_lookup(\"B2 4BJ\")\n\nError in postcode_lookup(\"B2 4BJ\"): could not find function \"postcode_lookup\"\n\nglimpse(location_raw)\n\nError in eval(expr, envir, enclos): object 'location_raw' not found\n\n\n\n\n\nlocation &lt;- location_raw |&gt;\n  st_as_sf(coords = c(\"eastings\", \"northings\"), crs = 27700) |&gt;\n  select(postcode, ccg) |&gt;\n  st_transform(crs = 4326)\n\nError in st_transform(select(st_as_sf(location_raw, coords = c(\"eastings\", : could not find function \"st_transform\"\n\nlocation\n\nfunction (df) \n{\n    lifecycle::deprecate_stop(\"1.0.0\", \"location()\", \"lobstr::ref()\")\n}\n&lt;bytecode: 0x564437cb2698&gt;\n&lt;environment: namespace:dplyr&gt;"
   },
   {
-    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#documented",
-    "href": "presentations/2023-05-23_data-science-for-good/index.html#documented",
-    "title": "What good data science looks like",
-    "section": "Documented",
-    "text": "Documented\n\nWe’ve documented in the way you usually would\nWe were asked in year 1 to provide plain English documentation\nWe made a website with all the product details"
+    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#creating-a-geospatial-data-frame-for-all-nhs-trusts",
+    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#creating-a-geospatial-data-frame-for-all-nhs-trusts",
+    "title": "Coffee and Coding",
+    "section": "Creating a geospatial data frame for all NHS Trusts",
+    "text": "Creating a geospatial data frame for all NHS Trusts\n\n\n\ntrusts &lt;- ods_get_trusts() |&gt;\n  filter(status == \"Active\") |&gt;\n  select(name, org_id, post_code) |&gt;\n  geocode(postalcode = \"post_code\") |&gt;\n  st_as_sf(coords = c(\"long\", \"lat\"), crs = 4326)\n\n\n\nError in read_sf(\"trusts.geojson\"): could not find function \"read_sf\"\n\n\n\ntrusts |&gt;\n  leaflet() |&gt;\n  addProviderTiles(\"Stamen.TonerLite\") |&gt;\n  addMarkers(popup = ~name)\n\n\n\n\nError in addMarkers(addProviderTiles(leaflet(trusts), \"Stamen.TonerLite\"), : could not find function \"addMarkers\""
   },
   {
-    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#develop-skills-of-the-staff-technical-and-otherwise",
-    "href": "presentations/2023-05-23_data-science-for-good/index.html#develop-skills-of-the-staff-technical-and-otherwise",
-    "title": "What good data science looks like",
-    "section": "Develop skills of the staff, technical and otherwise",
-    "text": "Develop skills of the staff, technical and otherwise\n\nYear one created a Python programmer\nYear two created an R/ Shiny programmer\nThe team has learned:\n\nStatic website generation\nText cleaning/ searching/ mining\nCollaborative coding practices\nWorking with and communicating with users\nLinux, databases, APIs…"
+    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#what-are-the-nearest-trusts-to-our-location",
+    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#what-are-the-nearest-trusts-to-our-location",
+    "title": "Coffee and Coding",
+    "section": "What are the nearest trusts to our location?",
+    "text": "What are the nearest trusts to our location?\n\nnearest_trusts &lt;- trusts |&gt;\n  mutate(\n    distance = st_distance(geometry, location)[, 1]\n  ) |&gt;\n  arrange(distance) |&gt;\n  head(5)\n\nError in eval(expr, envir, enclos): object 'trusts' not found\n\nnearest_trusts\n\nError in eval(expr, envir, enclos): object 'nearest_trusts' not found"
   },
   {
-    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#benefits-from-and-benefits-the-community",
-    "href": "presentations/2023-05-23_data-science-for-good/index.html#benefits-from-and-benefits-the-community",
-    "title": "What good data science looks like",
-    "section": "Benefits from, and benefits, the community",
-    "text": "Benefits from, and benefits, the community\n\nNHSBSA R Shiny template"
+    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#lets-find-driving-routes-to-these-trusts",
+    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#lets-find-driving-routes-to-these-trusts",
+    "title": "Coffee and Coding",
+    "section": "Let’s find driving routes to these trusts",
+    "text": "Let’s find driving routes to these trusts\n\nroutes &lt;- nearest_trusts |&gt;\n  mutate(\n    route = map(geometry, ~ osrmRoute(location, st_coordinates(.x)))\n  ) |&gt;\n  st_drop_geometry() |&gt;\n  rename(straight_line_distance = distance) |&gt;\n  unnest(route) |&gt;\n  st_as_sf()\n\nError in st_as_sf(unnest(rename(st_drop_geometry(mutate(nearest_trusts, : could not find function \"st_as_sf\"\n\nroutes\n\nError in eval(expr, envir, enclos): object 'routes' not found"
   },
   {
-    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#benefits-from-and-benefits-the-community-1",
-    "href": "presentations/2023-05-23_data-science-for-good/index.html#benefits-from-and-benefits-the-community-1",
-    "title": "What good data science looks like",
-    "section": "Benefits from, and benefits, the community",
-    "text": "Benefits from, and benefits, the community\n\nWe benefit and benefit from\n\nNHS-R\nNHS-Pycom\nGovernment Digital Service\nColleagues and friends"
+    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#lets-show-the-routes",
+    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#lets-show-the-routes",
+    "title": "Coffee and Coding",
+    "section": "Let’s show the routes",
+    "text": "Let’s show the routes\n\nleaflet(routes) |&gt;\n  addTiles() |&gt;\n  addMarkers(data = location) |&gt;\n  addPolylines(color = \"black\", weight = 3, opacity = 1) |&gt;\n  addCircleMarkers(data = nearest_trusts, radius = 4, opacity = 1, fillOpacity = 1)\n\nError in addCircleMarkers(addPolylines(addMarkers(addTiles(leaflet(routes)), : could not find function \"addCircleMarkers\""
   },
   {
-    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#open-and-reproducible",
-    "href": "presentations/2023-05-23_data-science-for-good/index.html#open-and-reproducible",
-    "title": "What good data science looks like",
-    "section": "Open and reproducible",
-    "text": "Open and reproducible\n\nOff the shelf, proprietary data collection systems dominate\nThey often offer bundled analytic products of low quality\nThe DS time can’t and doesn’t want to offer a complete data system\nHow can we best contribute to improving patient experience for patients in the NHS?\n\nIf the patient experience data won’t come to the mountain…"
+    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#we-can-use-osrm-to-calculate-isochrones",
+    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#we-can-use-osrm-to-calculate-isochrones",
+    "title": "Coffee and Coding",
+    "section": "We can use {osrm} to calculate isochrones",
+    "text": "We can use {osrm} to calculate isochrones\n\n\n\niso &lt;- osrmIsochrone(location, breaks = seq(0, 60, 15), res = 10)\n\nisochrone_ids &lt;- unique(iso$id)\n\npal &lt;- colorFactor(\n  viridis::viridis(length(isochrone_ids)),\n  isochrone_ids\n)\n\nleaflet(location) |&gt;\n  addProviderTiles(\"Stamen.TonerLite\") |&gt;\n  addMarkers() |&gt;\n  addPolygons(\n    data = iso,\n    fillColor = ~ pal(id),\n    color = \"#000000\",\n    weight = 1\n  )\n\n\n\n\nError in osrmIsochrone(location, breaks = seq(0, 60, 15), res = 10): could not find function \"osrmIsochrone\"\n\n\nError in eval(expr, envir, enclos): object 'iso' not found\n\n\nError in colorFactor(viridis::viridis(length(isochrone_ids)), isochrone_ids): could not find function \"colorFactor\"\n\n\nError in addPolygons(addMarkers(addProviderTiles(leaflet(location), \"Stamen.TonerLite\")), : could not find function \"addPolygons\""
   },
   {
-    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#open-source-ftw",
-    "href": "presentations/2023-05-23_data-science-for-good/index.html#open-source-ftw",
-    "title": "What good data science looks like",
-    "section": "Open source FTW!",
-    "text": "Open source FTW!\n\nOften individuals in the NHS don’t want private companies to “benefit” from open code\nBut if they make their products better with open code the patients win\nBest practice as code"
+    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#what-trusts-are-in-the-isochrones",
+    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#what-trusts-are-in-the-isochrones",
+    "title": "Coffee and Coding",
+    "section": "What trusts are in the isochrones?",
+    "text": "What trusts are in the isochrones?\nThe summarise() function will “union” the geometry\n\nsummarise(iso)\n\nError in eval(expr, envir, enclos): object 'iso' not found"
   },
   {
-    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#fun",
-    "href": "presentations/2023-05-23_data-science-for-good/index.html#fun",
-    "title": "What good data science looks like",
-    "section": "Fun!",
-    "text": "Fun!\n\nCombing through spreadsheets looking for one comment is not fun\nDoing things the same way you did them last year is not fun\nTrying to implement a project that is too complicated is not fun\n\n \n\nWorking with a diverse team with different skills is fun\nAccessing high quality documentation to understand a project better is fun*"
+    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#what-trusts-are-in-the-isochrones-1",
+    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#what-trusts-are-in-the-isochrones-1",
+    "title": "Coffee and Coding",
+    "section": "What trusts are in the isochrones?",
+    "text": "What trusts are in the isochrones?\nWe can use this with a geo-filter to find the trusts in the isochrone\n\n# also works\ntrusts_in_iso &lt;- trusts |&gt;\n  st_filter(\n    summarise(iso),\n    .predicate = st_within\n  )\n\nError in st_filter(trusts, summarise(iso), .predicate = st_within): could not find function \"st_filter\"\n\ntrusts_in_iso\n\nError in eval(expr, envir, enclos): object 'trusts_in_iso' not found"
   },
   {
-    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#team-and-code",
-    "href": "presentations/2023-05-23_data-science-for-good/index.html#team-and-code",
-    "title": "What good data science looks like",
-    "section": "Team and code",
-    "text": "Team and code\n\nAndreas Soteriades (Y1)\nYiWen Hon, Oluwasegun Apejoye (Y2)\n\n \n\npxtextmining\nexperiencesdashboard\nDocumentation\n\n\n\nchris.beeley1@nhs.net\nhttps://fosstodon.org/@chrisbeeley\n\n\n\nview slides at the-strategy-unit.github.io/data_science/presentations"
+    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#what-trusts-are-in-the-isochrones-2",
+    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#what-trusts-are-in-the-isochrones-2",
+    "title": "Coffee and Coding",
+    "section": "What trusts are in the isochrones?",
+    "text": "What trusts are in the isochrones?\n\n\n\nleaflet(trusts_in_iso) |&gt;\n  addProviderTiles(\"Stamen.TonerLite\") |&gt;\n  addMarkers() |&gt;\n  addPolygons(\n    data = iso,\n    fillColor = ~pal(id),\n    color = \"#000000\",\n    weight = 1\n  )\n\n\n\n\nError in addPolygons(addMarkers(addProviderTiles(leaflet(trusts_in_iso), : could not find function \"addPolygons\""
+  },
+  {
+    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#doing-the-same-but-within-a-radius",
+    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#doing-the-same-but-within-a-radius",
+    "title": "Coffee and Coding",
+    "section": "Doing the same but within a radius",
+    "text": "Doing the same but within a radius\n\n\n\nr &lt;- 25000\n\ntrusts_in_radius &lt;- trusts |&gt;\n  st_filter(\n    location,\n    .predicate = st_is_within_distance,\n    dist = r\n  )\n\n# transforming gives us a pretty smooth circle\nradius &lt;- location |&gt;\n  st_transform(crs = 27700) |&gt;\n  st_buffer(dist = r) |&gt;\n  st_transform(crs = 4326)\n\nleaflet(trusts_in_radius) |&gt;\n  addProviderTiles(\"Stamen.TonerLite\") |&gt;\n  addMarkers() |&gt;\n  addPolygons(\n    data = radius,\n    color = \"#000000\",\n    weight = 1\n  )\n\n\n\n\nError in st_filter(trusts, location, .predicate = st_is_within_distance, : could not find function \"st_filter\"\n\n\nError in st_transform(st_buffer(st_transform(location, crs = 27700), dist = r), : could not find function \"st_transform\"\n\n\nError in addPolygons(addMarkers(addProviderTiles(leaflet(trusts_in_radius), : could not find function \"addPolygons\""
+  },
+  {
+    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#further-reading",
+    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#further-reading",
+    "title": "Coffee and Coding",
+    "section": "Further reading",
+    "text": "Further reading\n\nGeocomputation with R\nr-spatial\n{sf} documentation\nLeaflet documentation\nTidy Geospatial Networks in R\n\n\n\nview slides at the-strategy-unit.github.io/data_science/presentations"
   },
   {
     "objectID": "presentations/2023-08-23_nhs-r_unit-testing/index.html#what-is-testing",
@@ -893,14 +907,14 @@
     "href": "presentations/2023-08-23_nhs-r_unit-testing/index.html#and-create-our-first-test-5",
     "title": "Unit testing in R",
     "section": "… and create our first test",
-    "text": "… and create our first test\n\ntest_that(\"my_function correctly divides values\", {\n  expect_equal(\n    my_function(4, 2),\n    2\n  )\n  expect_equal(\n    my_function(1, 4),\n    0.25\n  )\n  expect_equal(\n    my_function(c(4, 1), c(2, 4)),\n    c(2, 0.25)\n  )\n})\n\nTest passed 🎉"
+    "text": "… and create our first test\n\ntest_that(\"my_function correctly divides values\", {\n  expect_equal(\n    my_function(4, 2),\n    2\n  )\n  expect_equal(\n    my_function(1, 4),\n    0.25\n  )\n  expect_equal(\n    my_function(c(4, 1), c(2, 4)),\n    c(2, 0.25)\n  )\n})\n\nTest passed 🌈"
   },
   {
     "objectID": "presentations/2023-08-23_nhs-r_unit-testing/index.html#other-expect_-functions",
     "href": "presentations/2023-08-23_nhs-r_unit-testing/index.html#other-expect_-functions",
     "title": "Unit testing in R",
     "section": "other expect_*() functions…",
-    "text": "other expect_*() functions…\n\ntest_that(\"my_function correctly divides values\", {\n  expect_lt(\n    my_function(4, 2),\n    10\n  )\n  expect_gt(\n    my_function(1, 4),\n    0.2\n  )\n  expect_length(\n    my_function(c(4, 1), c(2, 4)),\n    2\n  )\n})\n\nTest passed 🎉\n\n\n\n{testthat} documentation"
+    "text": "other expect_*() functions…\n\ntest_that(\"my_function correctly divides values\", {\n  expect_lt(\n    my_function(4, 2),\n    10\n  )\n  expect_gt(\n    my_function(1, 4),\n    0.2\n  )\n  expect_length(\n    my_function(c(4, 1), c(2, 4)),\n    2\n  )\n})\n\nTest passed 😸\n\n\n\n{testthat} documentation"
   },
   {
     "objectID": "presentations/2023-08-23_nhs-r_unit-testing/index.html#arrange-act-assert",
@@ -942,14 +956,14 @@
     "href": "presentations/2023-08-23_nhs-r_unit-testing/index.html#tolerance-to-the-rescue",
     "title": "Unit testing in R",
     "section": "Tolerance to the rescue 🙂",
-    "text": "Tolerance to the rescue 🙂\n\ntest_that(\"my_function works\", {\n  # arrange\n  x &lt;- 5\n  y &lt;- 7\n  expected &lt;- 0.714285\n\n  # act\n  actual &lt;- my_function(x, y)\n\n  # assert\n  expect_equal(actual, expected, tolerance = 1e-6)\n})\n\nTest passed 🎉\n\n\n\n(this is a slightly artificial example, usually the default tolerance is good enough)"
+    "text": "Tolerance to the rescue 🙂\n\ntest_that(\"my_function works\", {\n  # arrange\n  x &lt;- 5\n  y &lt;- 7\n  expected &lt;- 0.714285\n\n  # act\n  actual &lt;- my_function(x, y)\n\n  # assert\n  expect_equal(actual, expected, tolerance = 1e-6)\n})\n\nTest passed 🥳\n\n\n\n(this is a slightly artificial example, usually the default tolerance is good enough)"
   },
   {
     "objectID": "presentations/2023-08-23_nhs-r_unit-testing/index.html#testing-edge-cases",
     "href": "presentations/2023-08-23_nhs-r_unit-testing/index.html#testing-edge-cases",
     "title": "Unit testing in R",
     "section": "Testing edge cases",
-    "text": "Testing edge cases\n\n\nRemember the validation steps we built into our function to handle edge cases?\n\nLet’s write tests for these edge cases:\nwe expect errors\n\n\ntest_that(\"my_function works\", {\n  expect_error(my_function(5, 0))\n  expect_error(my_function(\"a\", 3))\n  expect_error(my_function(3, \"a\"))\n  expect_error(my_function(1:2, 4))\n})\n\nTest passed 🌈"
+    "text": "Testing edge cases\n\n\nRemember the validation steps we built into our function to handle edge cases?\n\nLet’s write tests for these edge cases:\nwe expect errors\n\n\ntest_that(\"my_function works\", {\n  expect_error(my_function(5, 0))\n  expect_error(my_function(\"a\", 3))\n  expect_error(my_function(3, \"a\"))\n  expect_error(my_function(1:2, 4))\n})\n\nTest passed 🥳"
   },
   {
     "objectID": "presentations/2023-08-23_nhs-r_unit-testing/index.html#another-simple-example",
@@ -963,7 +977,7 @@
     "href": "presentations/2023-08-23_nhs-r_unit-testing/index.html#another-simple-example-1",
     "title": "Unit testing in R",
     "section": "Another (simple) example",
-    "text": "Another (simple) example\n\nmy_new_function &lt;- function(x, y) {\n  if (x &gt; y) {\n    \"x\"\n  } else {\n    \"y\"\n  }\n}\n\n\n\ntest_that(\"it returns 'x' if x is bigger than y\", {\n  expect_equal(my_new_function(4, 3), \"x\")\n})\n\nTest passed 😀\n\ntest_that(\"it returns 'y' if y is bigger than x\", {\n  expect_equal(my_new_function(3, 4), \"y\")\n  expect_equal(my_new_function(3, 3), \"y\")\n})\n\nTest passed 😀"
+    "text": "Another (simple) example\n\nmy_new_function &lt;- function(x, y) {\n  if (x &gt; y) {\n    \"x\"\n  } else {\n    \"y\"\n  }\n}\n\n\n\ntest_that(\"it returns 'x' if x is bigger than y\", {\n  expect_equal(my_new_function(4, 3), \"x\")\n})\n\nTest passed 😸\n\ntest_that(\"it returns 'y' if y is bigger than x\", {\n  expect_equal(my_new_function(3, 4), \"y\")\n  expect_equal(my_new_function(3, 3), \"y\")\n})\n\nTest passed 🌈"
   },
   {
     "objectID": "presentations/2023-08-23_nhs-r_unit-testing/index.html#how-to-design-good-tests",
@@ -1092,6 +1106,111 @@
     "text": "Next steps\n\nIf your test needs to temporarily create a file, or change some R-options, the {withr} package has a lot of useful functions that will automatically clean things up when the test finishes\nIf you are writing tests that involve calling out to a database, or you want to test my_big_function (from before) without calling the intermediate functions, then you should look at the {mockery} package"
   },
   {
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#patient-experience",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#patient-experience",
+    "title": "What good data science looks like",
+    "section": "Patient experience",
+    "text": "Patient experience\n\nThe NHS collects a lot of patient experience data\nRate the service 1-5 (Very poor… Excellent) but also give written feedback\n\n“Parking was difficult”\n“Doctor was rude”\n“You saved my life”\n\nMany organisations lack the staffing to read all of the feedback in a systematic way\nProduce an algorithm to rate theme and “criticality”"
+  },
+  {
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#help-people-to-do-their-jobs",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#help-people-to-do-their-jobs",
+    "title": "What good data science looks like",
+    "section": "Help people to do their jobs",
+    "text": "Help people to do their jobs\n\nText based data is complex and built on human experience\nThe tool should enhance, not replace, human understanding\nEnhancing search and filtering\n\nIf they read 100 comments today, which should they read?\n\n“A recommendation engine for feedback data”"
+  },
+  {
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#reflect-what-users-want",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#reflect-what-users-want",
+    "title": "What good data science looks like",
+    "section": "Reflect what users want",
+    "text": "Reflect what users want\n\nI have worked with this data since before it existed\nI came to realise that people were struggling to read all of their data\nFits alongside other work happening within NHSE\n\nA framework for understanding patient experience"
+  },
+  {
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#useful",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#useful",
+    "title": "What good data science looks like",
+    "section": "Useful",
+    "text": "Useful\n\nA fundamental principle is that everyone can use\nIf you can run the code, run it\nIf you can use the API, use it\nIf you just want the dashboard, use it\nCredit to the growth charts API"
+  },
+  {
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#understandable",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#understandable",
+    "title": "What good data science looks like",
+    "section": "Understandable",
+    "text": "Understandable\n\nTuned to the users needs\nNot simply tuning accuracy scores\nLook at the type of mistake the model is making\nLook at the category it’s predicting\n\nWe can lose a few of common unimportant categories\nWe need to get every rare and important category"
+  },
+  {
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#iterative",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#iterative",
+    "title": "What good data science looks like",
+    "section": "Iterative",
+    "text": "Iterative\n\nYear one\n\n10 categories\nModerate criticality performance\nNo deep learning\nWeak dashboard\nPositive evaluation"
+  },
+  {
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#iterative-1",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#iterative-1",
+    "title": "What good data science looks like",
+    "section": "Iterative",
+    "text": "Iterative\n\nYear two\n\n30-50 categories\nStrong criticality performance\nDeep learning\nImproved dashboard\nWIP\n\nOverall five minor versions of algorithm and seven of dashboard"
+  },
+  {
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#documented",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#documented",
+    "title": "What good data science looks like",
+    "section": "Documented",
+    "text": "Documented\n\nWe’ve documented in the way you usually would\nWe were asked in year 1 to provide plain English documentation\nWe made a website with all the product details"
+  },
+  {
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#develop-skills-of-the-staff-technical-and-otherwise",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#develop-skills-of-the-staff-technical-and-otherwise",
+    "title": "What good data science looks like",
+    "section": "Develop skills of the staff, technical and otherwise",
+    "text": "Develop skills of the staff, technical and otherwise\n\nYear one created a Python programmer\nYear two created an R/ Shiny programmer\nThe team has learned:\n\nStatic website generation\nText cleaning/ searching/ mining\nCollaborative coding practices\nWorking with and communicating with users\nLinux, databases, APIs…"
+  },
+  {
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#benefits-from-and-benefits-the-community",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#benefits-from-and-benefits-the-community",
+    "title": "What good data science looks like",
+    "section": "Benefits from, and benefits, the community",
+    "text": "Benefits from, and benefits, the community\n\nNHSBSA R Shiny template"
+  },
+  {
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#benefits-from-and-benefits-the-community-1",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#benefits-from-and-benefits-the-community-1",
+    "title": "What good data science looks like",
+    "section": "Benefits from, and benefits, the community",
+    "text": "Benefits from, and benefits, the community\n\nWe benefit and benefit from\n\nNHS-R\nNHS-Pycom\nGovernment Digital Service\nColleagues and friends"
+  },
+  {
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#open-and-reproducible",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#open-and-reproducible",
+    "title": "What good data science looks like",
+    "section": "Open and reproducible",
+    "text": "Open and reproducible\n\nOff the shelf, proprietary data collection systems dominate\nThey often offer bundled analytic products of low quality\nThe DS time can’t and doesn’t want to offer a complete data system\nHow can we best contribute to improving patient experience for patients in the NHS?\n\nIf the patient experience data won’t come to the mountain…"
+  },
+  {
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#open-source-ftw",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#open-source-ftw",
+    "title": "What good data science looks like",
+    "section": "Open source FTW!",
+    "text": "Open source FTW!\n\nOften individuals in the NHS don’t want private companies to “benefit” from open code\nBut if they make their products better with open code the patients win\nBest practice as code"
+  },
+  {
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#fun",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#fun",
+    "title": "What good data science looks like",
+    "section": "Fun!",
+    "text": "Fun!\n\nCombing through spreadsheets looking for one comment is not fun\nDoing things the same way you did them last year is not fun\nTrying to implement a project that is too complicated is not fun\n\n \n\nWorking with a diverse team with different skills is fun\nAccessing high quality documentation to understand a project better is fun*"
+  },
+  {
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#team-and-code",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#team-and-code",
+    "title": "What good data science looks like",
+    "section": "Team and code",
+    "text": "Team and code\n\nAndreas Soteriades (Y1)\nYiWen Hon, Oluwasegun Apejoye (Y2)\n\n \n\npxtextmining\nexperiencesdashboard\nDocumentation\n\n\n\nchris.beeley1@nhs.net\nhttps://fosstodon.org/@chrisbeeley\n\n\n\nview slides at the-strategy-unit.github.io/data_science/presentations"
+  },
+  {
     "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#what-is-targets",
     "href": "presentations/2023-03-23_coffee-and-coding/index.html#what-is-targets",
     "title": "Coffee and Coding",
@@ -1152,7 +1271,7 @@
     "href": "presentations/index.html",
     "title": "Presentations",
     "section": "",
-    "text": "title\n      author\n      date\n    \n  \n  \n    Everything you ever wanted to know about data science: but were too afraid to ask\nChris Beeley\n2023-08-02\n    Coffee and coding: Intro session\nChris Beeley\n2023-02-23\n    Coffee and Coding: Good Coding Practices\nTom Jemmett\n2023-03-09\n    RAP: what is it and how can my team start using it effectively?\nChris Beeley\n2023-03-09\n    Coffee and Coding: {targets}\nTom Jemmett\n2023-03-23\n    Collaborative working\nChris Beeley\n2023-03-23\n    Text mining of patient experience data\nChris Beeley\n2023-05-15\n    What good data science looks like\nChris Beeley\n2023-05-23\n    An Introduction to the New Hospital Programme Demand Model: HACA 2023\nTom Jemmett\n2023-07-11\n    Travels with R and Python: the power of data science in healthcare\nChris Beeley\n2023-08-02\n    Unit testing in R: NHS-R Community Webinar\nTom Jemmett\n2023-08-23"
+    "text": "title\n      author\n      date\n    \n  \n  \n    Everything you ever wanted to know about data science: but were too afraid to ask\nChris Beeley\n2023-08-02\n    Coffee and coding: Intro session\nChris Beeley\n2023-02-23\n    Coffee and Coding: Good Coding Practices\nTom Jemmett\n2023-03-09\n    RAP: what is it and how can my team start using it effectively?\nChris Beeley\n2023-03-09\n    Coffee and Coding: {targets}\nTom Jemmett\n2023-03-23\n    Collaborative working\nChris Beeley\n2023-03-23\n    Text mining of patient experience data\nChris Beeley\n2023-05-15\n    What good data science looks like\nChris Beeley\n2023-05-23\n    An Introduction to the New Hospital Programme Demand Model: HACA 2023\nTom Jemmett\n2023-07-11\n    Travels with R and Python: the power of data science in healthcare\nChris Beeley\n2023-08-02\n    Unit testing in R: NHS-R Community Webinar\nTom Jemmett\n2023-08-23\n    Coffee and Coding: Working with Geospatial Data in R\nTom Jemmett\n2023-08-24"
   },
   {
     "objectID": "presentations/2023-02-23_coffee-and-coding/index.html#welcome-to-coffee-and-coding",

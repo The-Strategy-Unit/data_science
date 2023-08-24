@@ -2,90 +2,94 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://the-strategy-unit.github.io/data_science/about.html</loc>
-    <lastmod>2023-08-23T11:58:13.495Z</lastmod>
+    <lastmod>2023-08-24T11:08:57.190Z</lastmod>
   </url>
   <url>
     <loc>https://the-strategy-unit.github.io/data_science/style/style_guide.html</loc>
-    <lastmod>2023-08-23T11:58:12.591Z</lastmod>
+    <lastmod>2023-08-24T11:08:56.450Z</lastmod>
   </url>
   <url>
     <loc>https://the-strategy-unit.github.io/data_science/style/data_storage.html</loc>
-    <lastmod>2023-08-23T11:58:11.471Z</lastmod>
+    <lastmod>2023-08-24T11:08:55.502Z</lastmod>
   </url>
   <url>
     <loc>https://the-strategy-unit.github.io/data_science/blogs/posts/2023-03-24_hotfix-with-git.html</loc>
-    <lastmod>2023-08-23T11:58:10.515Z</lastmod>
+    <lastmod>2023-08-24T11:08:54.714Z</lastmod>
   </url>
   <url>
     <loc>https://the-strategy-unit.github.io/data_science/blogs/posts/2023-04-26_alternative_remotes.html</loc>
-    <lastmod>2023-08-23T11:58:05.603Z</lastmod>
+    <lastmod>2023-08-24T11:08:50.378Z</lastmod>
   </url>
   <url>
     <loc>https://the-strategy-unit.github.io/data_science/presentations/2023-02-01_what-is-data-science/index.html</loc>
-    <lastmod>2023-08-23T11:58:02.450Z</lastmod>
+    <lastmod>2023-08-24T11:08:47.778Z</lastmod>
   </url>
   <url>
     <loc>https://the-strategy-unit.github.io/data_science/presentations/2023-03-23_collaborative-working/index.html</loc>
-    <lastmod>2023-08-23T11:57:59.706Z</lastmod>
+    <lastmod>2023-08-24T11:08:45.310Z</lastmod>
   </url>
   <url>
     <loc>https://the-strategy-unit.github.io/data_science/presentations/2023-08-02_mlcsu-ksn-meeting/index.html</loc>
-    <lastmod>2023-08-23T11:57:58.734Z</lastmod>
+    <lastmod>2023-08-24T11:08:44.478Z</lastmod>
   </url>
   <url>
     <loc>https://the-strategy-unit.github.io/data_science/presentations/2023-03-09_midlands-analyst-rap/index.html</loc>
-    <lastmod>2023-08-23T11:57:57.574Z</lastmod>
+    <lastmod>2023-08-24T11:08:43.470Z</lastmod>
   </url>
   <url>
     <loc>https://the-strategy-unit.github.io/data_science/presentations/2023-07-11_haca-nhp-demand-model/index.html</loc>
-    <lastmod>2023-08-23T11:57:53.274Z</lastmod>
+    <lastmod>2023-08-24T11:08:39.650Z</lastmod>
   </url>
   <url>
-    <loc>https://the-strategy-unit.github.io/data_science/presentations/2023-05-23_data-science-for-good/index.html</loc>
-    <lastmod>2023-08-23T11:57:46.565Z</lastmod>
+    <loc>https://the-strategy-unit.github.io/data_science/presentations/2023-08-24_coffee-and-coding_geospatial/index.html</loc>
+    <lastmod>2023-08-24T11:08:33.658Z</lastmod>
   </url>
   <url>
     <loc>https://the-strategy-unit.github.io/data_science/presentations/2023-08-23_nhs-r_unit-testing/index.html</loc>
-    <lastmod>2023-08-23T11:57:43.857Z</lastmod>
+    <lastmod>2023-08-24T11:08:28.030Z</lastmod>
+  </url>
+  <url>
+    <loc>https://the-strategy-unit.github.io/data_science/presentations/2023-05-23_data-science-for-good/index.html</loc>
+    <lastmod>2023-08-24T11:08:30.618Z</lastmod>
   </url>
   <url>
     <loc>https://the-strategy-unit.github.io/data_science/presentations/2023-03-23_coffee-and-coding/index.html</loc>
-    <lastmod>2023-08-23T11:57:48.438Z</lastmod>
+    <lastmod>2023-08-24T11:08:35.262Z</lastmod>
   </url>
   <url>
     <loc>https://the-strategy-unit.github.io/data_science/presentations/index.html</loc>
-    <lastmod>2023-08-23T11:57:56.950Z</lastmod>
+    <lastmod>2023-08-24T11:08:42.946Z</lastmod>
   </url>
   <url>
     <loc>https://the-strategy-unit.github.io/data_science/presentations/2023-02-23_coffee-and-coding/index.html</loc>
-    <lastmod>2023-08-23T11:57:58.106Z</lastmod>
+    <lastmod>2023-08-24T11:08:43.942Z</lastmod>
   </url>
   <url>
     <loc>https://the-strategy-unit.github.io/data_science/presentations/2023-05-15_text-mining/index.html</loc>
-    <lastmod>2023-08-23T11:57:59.270Z</lastmod>
+    <lastmod>2023-08-24T11:08:44.918Z</lastmod>
   </url>
   <url>
     <loc>https://the-strategy-unit.github.io/data_science/presentations/2023-03-09_coffee-and-coding/index.html</loc>
-    <lastmod>2023-08-23T11:58:01.738Z</lastmod>
+    <lastmod>2023-08-24T11:08:47.142Z</lastmod>
   </url>
   <url>
     <loc>https://the-strategy-unit.github.io/data_science/blogs/index.html</loc>
-    <lastmod>2023-08-23T11:58:04.078Z</lastmod>
+    <lastmod>2023-08-24T11:08:49.098Z</lastmod>
   </url>
   <url>
     <loc>https://the-strategy-unit.github.io/data_science/blogs/posts/2023-04-26-reinstalling-r-packages.html</loc>
-    <lastmod>2023-08-23T11:58:07.351Z</lastmod>
+    <lastmod>2023-08-24T11:08:51.894Z</lastmod>
   </url>
   <url>
     <loc>https://the-strategy-unit.github.io/data_science/index.html</loc>
-    <lastmod>2023-08-23T11:58:10.951Z</lastmod>
+    <lastmod>2023-08-24T11:08:55.058Z</lastmod>
   </url>
   <url>
     <loc>https://the-strategy-unit.github.io/data_science/style/git_and_github.html</loc>
-    <lastmod>2023-08-23T11:58:12.115Z</lastmod>
+    <lastmod>2023-08-24T11:08:56.054Z</lastmod>
   </url>
   <url>
     <loc>https://the-strategy-unit.github.io/data_science/style/project_structure.html</loc>
-    <lastmod>2023-08-23T11:58:13.075Z</lastmod>
+    <lastmod>2023-08-24T11:08:56.846Z</lastmod>
   </url>
 </urlset>

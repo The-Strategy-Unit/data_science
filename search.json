@@ -676,112 +676,112 @@
     "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#packages-we-are-using-today",
     "title": "Coffee and Coding",
     "section": "Packages we are using today",
-    "text": "Packages we are using today\n\nlibrary(tidyverse)\n\nlibrary(sf)\n\nError in library(sf): there is no package called 'sf'\n\nlibrary(tidygeocoder)\n\nError in library(tidygeocoder): there is no package called 'tidygeocoder'\n\nlibrary(PostcodesioR)\n\nError in library(PostcodesioR): there is no package called 'PostcodesioR'\n\nlibrary(osrm)\n\nError in library(osrm): there is no package called 'osrm'\n\nlibrary(leaflet)\n\nError in library(leaflet): there is no package called 'leaflet'\n\nlibrary(NHSRtools) # remotes::install_github(\"NHS-R-Community/NHSRtools\")\n\nError in library(NHSRtools): there is no package called 'NHSRtools'"
+    "text": "Packages we are using today\n\nlibrary(tidyverse)\n\nlibrary(sf)\n\nlibrary(tidygeocoder)\nlibrary(PostcodesioR)\n\nlibrary(osrm)\n\nlibrary(leaflet)"
   },
   {
     "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#getting-boundary-data",
     "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#getting-boundary-data",
     "title": "Coffee and Coding",
     "section": "Getting boundary data",
-    "text": "Getting boundary data\nWe can use the ONS’s Geoportal we can grab boundary data to generate maps\n\n\n\nicb_url &lt;- paste0(\n  \"https://services1.arcgis.com\",\n  \"/ESMARspQHYMw9BZ9/arcgis\",\n  \"/rest/services\",\n  \"/Integrated_Care_Boards_April_2023_EN_BGC\",\n  \"/FeatureServer/0/query\",\n  \"?outFields=*&where=1%3D1&f=geojson\"\n)\nicb_boundaries &lt;- read_sf(icb_url)\n\nicb_boundaries |&gt;\n  ggplot() +\n  geom_sf() +\n  theme_void()\n\n\n\n\nError in read_sf(icb_url): could not find function \"read_sf\"\n\n\nError in eval(expr, envir, enclos): object 'icb_boundaries' not found"
+    "text": "Getting boundary data\nWe can use the ONS’s Geoportal we can grab boundary data to generate maps\n\n\n\nicb_url &lt;- paste0(\n  \"https://services1.arcgis.com\",\n  \"/ESMARspQHYMw9BZ9/arcgis\",\n  \"/rest/services\",\n  \"/Integrated_Care_Boards_April_2023_EN_BGC\",\n  \"/FeatureServer/0/query\",\n  \"?outFields=*&where=1%3D1&f=geojson\"\n)\nicb_boundaries &lt;- read_sf(icb_url)\n\nicb_boundaries |&gt;\n  ggplot() +\n  geom_sf() +\n  theme_void()"
   },
   {
     "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#what-is-the-icb_boundaries-data",
     "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#what-is-the-icb_boundaries-data",
     "title": "Coffee and Coding",
     "section": "What is the icb_boundaries data?",
-    "text": "What is the icb_boundaries data?"
+    "text": "What is the icb_boundaries data?\n\nicb_boundaries |&gt;\n  select(ICB23CD, ICB23NM)\n\nSimple feature collection with 42 features and 2 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: -6.418667 ymin: 49.86479 xmax: 1.763706 ymax: 55.81112\nGeodetic CRS:  WGS 84\n# A tibble: 42 × 3\n   ICB23CD   ICB23NM                                                    geometry\n   &lt;chr&gt;     &lt;chr&gt;                                            &lt;MULTIPOLYGON [°]&gt;\n 1 E54000008 NHS Cheshire and Merseyside Integrated C… (((-3.083264 53.2559, -3…\n 2 E54000010 NHS Staffordshire and Stoke-on-Trent Int… (((-1.950489 53.21188, -…\n 3 E54000011 NHS Shropshire, Telford and Wrekin Integ… (((-2.380794 52.99841, -…\n 4 E54000013 NHS Lincolnshire Integrated Care Board    (((0.2687853 52.81584, 0…\n 5 E54000015 NHS Leicester, Leicestershire and Rutlan… (((-0.7875237 52.97762, …\n 6 E54000018 NHS Coventry and Warwickshire Integrated… (((-1.577608 52.67858, -…\n 7 E54000019 NHS Herefordshire and Worcestershire Int… (((-2.272042 52.43972, -…\n 8 E54000022 NHS Norfolk and Waveney Integrated Care … (((1.666741 52.31366, 1.…\n 9 E54000023 NHS Suffolk and North East Essex Integra… (((0.8997023 51.7732, 0.…\n10 E54000024 NHS Bedfordshire, Luton and Milton Keyne… (((-0.4577115 52.32009, …\n# ℹ 32 more rows"
   },
   {
     "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#working-with-geospatial-dataframes",
     "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#working-with-geospatial-dataframes",
     "title": "Coffee and Coding",
     "section": "Working with geospatial dataframes",
-    "text": "Working with geospatial dataframes\nWe can simply join sf data frames and “regular” data frames together\n\n\n\nicb_metrics &lt;- icb_boundaries |&gt;\n  st_drop_geometry() |&gt;\n  select(ICB23CD) |&gt;\n  mutate(admissions = rpois(n(), 1000000))\n\nicb_boundaries |&gt;\n  inner_join(icb_metrics, by = \"ICB23CD\") |&gt;\n  ggplot() +\n  geom_sf(aes(fill = admissions)) +\n  scale_fill_viridis_c() +\n  theme_void()\n\n\n\n\nError in st_drop_geometry(icb_boundaries): could not find function \"st_drop_geometry\"\n\n\nError in eval(expr, envir, enclos): object 'icb_boundaries' not found"
+    "text": "Working with geospatial dataframes\nWe can simply join sf data frames and “regular” data frames together\n\n\n\nicb_metrics &lt;- icb_boundaries |&gt;\n  st_drop_geometry() |&gt;\n  select(ICB23CD) |&gt;\n  mutate(admissions = rpois(n(), 1000000))\n\nicb_boundaries |&gt;\n  inner_join(icb_metrics, by = \"ICB23CD\") |&gt;\n  ggplot() +\n  geom_sf(aes(fill = admissions)) +\n  scale_fill_viridis_c() +\n  theme_void()"
   },
   {
     "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#working-with-geospatial-data-frames",
     "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#working-with-geospatial-data-frames",
     "title": "Coffee and Coding",
     "section": "Working with geospatial data frames",
-    "text": "Working with geospatial data frames\nWe can manipulate sf objects like other data frames\n\n\n\nlondon_icbs &lt;- icb_boundaries |&gt;\n  filter(ICB23NM |&gt; stringr::str_detect(\"London\"))\n\nggplot() +\n  geom_sf(data = london_icbs) +\n  geom_sf(data = st_centroid(london_icbs)) +\n  theme_void()\n\n\n\n\nError in eval(expr, envir, enclos): object 'icb_boundaries' not found\n\n\nError in eval(expr, envir, enclos): object 'london_icbs' not found"
+    "text": "Working with geospatial data frames\nWe can manipulate sf objects like other data frames\n\n\n\nlondon_icbs &lt;- icb_boundaries |&gt;\n  filter(ICB23NM |&gt; stringr::str_detect(\"London\"))\n\nggplot() +\n  geom_sf(data = london_icbs) +\n  geom_sf(data = st_centroid(london_icbs)) +\n  theme_void()"
   },
   {
     "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#working-with-geospatial-data-frames-1",
     "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#working-with-geospatial-data-frames-1",
     "title": "Coffee and Coding",
     "section": "Working with geospatial data frames",
-    "text": "Working with geospatial data frames\nSummarising the data will combine the geometries.\n\nlondon_icbs |&gt;\n  summarise(area = sum(Shape__Area)) |&gt;\n  # and use geospatial functions to create calculations using the geometry\n  mutate(new_area = st_area(geometry), .before = \"geometry\")\n\nError in eval(expr, envir, enclos): object 'london_icbs' not found\n\n\n Why the difference in area?\n\n We are using a simplified geometry, so calculating the area will be slightly inaccurate. The original area was calculated on the non-simplified geometries."
+    "text": "Working with geospatial data frames\nSummarising the data will combine the geometries.\n\nlondon_icbs |&gt;\n  summarise(area = sum(Shape__Area)) |&gt;\n  # and use geospatial functions to create calculations using the geometry\n  mutate(new_area = st_area(geometry), .before = \"geometry\")\n\nSimple feature collection with 1 feature and 2 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: -0.5102803 ymin: 51.28676 xmax: 0.3340241 ymax: 51.69188\nGeodetic CRS:  WGS 84\n# A tibble: 1 × 3\n         area    new_area                                               geometry\n*       &lt;dbl&gt;       [m^2]                                     &lt;MULTIPOLYGON [°]&gt;\n1 1573336388. 1567995610. (((-0.3314819 51.43935, -0.3306676 51.43889, -0.33118…\n\n\n Why the difference in area?\n\n We are using a simplified geometry, so calculating the area will be slightly inaccurate. The original area was calculated on the non-simplified geometries."
   },
   {
     "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#creating-our-own-geospatial-data",
     "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#creating-our-own-geospatial-data",
     "title": "Coffee and Coding",
     "section": "Creating our own geospatial data",
-    "text": "Creating our own geospatial data\n\nlocation_raw &lt;- postcode_lookup(\"B2 4BJ\")\n\nError in postcode_lookup(\"B2 4BJ\"): could not find function \"postcode_lookup\"\n\nglimpse(location_raw)\n\nError in eval(expr, envir, enclos): object 'location_raw' not found\n\n\n\n\n\nlocation &lt;- location_raw |&gt;\n  st_as_sf(coords = c(\"eastings\", \"northings\"), crs = 27700) |&gt;\n  select(postcode, ccg) |&gt;\n  st_transform(crs = 4326)\n\nError in st_transform(select(st_as_sf(location_raw, coords = c(\"eastings\", : could not find function \"st_transform\"\n\nlocation\n\nfunction (df) \n{\n    lifecycle::deprecate_stop(\"1.0.0\", \"location()\", \"lobstr::ref()\")\n}\n&lt;bytecode: 0x564437cb2698&gt;\n&lt;environment: namespace:dplyr&gt;"
+    "text": "Creating our own geospatial data\n\nlocation_raw &lt;- postcode_lookup(\"B2 4BJ\")\nglimpse(location_raw)\n\nRows: 1\nColumns: 38\n$ postcode                        &lt;chr&gt; \"B2 4BJ\"\n$ quality                         &lt;int&gt; 1\n$ eastings                        &lt;int&gt; 406866\n$ northings                       &lt;int&gt; 286775\n$ country                         &lt;chr&gt; \"England\"\n$ nhs_ha                          &lt;chr&gt; \"West Midlands\"\n$ longitude                       &lt;dbl&gt; -1.90033\n$ latitude                        &lt;dbl&gt; 52.47887\n$ european_electoral_region       &lt;chr&gt; \"West Midlands\"\n$ primary_care_trust              &lt;chr&gt; \"Heart of Birmingham Teaching\"\n$ region                          &lt;chr&gt; \"West Midlands\"\n$ lsoa                            &lt;chr&gt; \"Birmingham 138A\"\n$ msoa                            &lt;chr&gt; \"Birmingham 138\"\n$ incode                          &lt;chr&gt; \"4BJ\"\n$ outcode                         &lt;chr&gt; \"B2\"\n$ parliamentary_constituency      &lt;chr&gt; \"Birmingham, Ladywood\"\n$ admin_district                  &lt;chr&gt; \"Birmingham\"\n$ parish                          &lt;chr&gt; \"Birmingham, unparished area\"\n$ admin_county                    &lt;lgl&gt; NA\n$ date_of_introduction            &lt;chr&gt; \"198001\"\n$ admin_ward                      &lt;chr&gt; \"Ladywood\"\n$ ced                             &lt;lgl&gt; NA\n$ ccg                             &lt;chr&gt; \"NHS Birmingham and Solihull\"\n$ nuts                            &lt;chr&gt; \"Birmingham\"\n$ pfa                             &lt;chr&gt; \"West Midlands\"\n$ admin_district_code             &lt;chr&gt; \"E08000025\"\n$ admin_county_code               &lt;chr&gt; \"E99999999\"\n$ admin_ward_code                 &lt;chr&gt; \"E05011151\"\n$ parish_code                     &lt;chr&gt; \"E43000250\"\n$ parliamentary_constituency_code &lt;chr&gt; \"E14000564\"\n$ ccg_code                        &lt;chr&gt; \"E38000258\"\n$ ccg_id_code                     &lt;chr&gt; \"15E\"\n$ ced_code                        &lt;chr&gt; \"E99999999\"\n$ nuts_code                       &lt;chr&gt; \"TLG31\"\n$ lsoa_code                       &lt;chr&gt; \"E01033620\"\n$ msoa_code                       &lt;chr&gt; \"E02006899\"\n$ lau2_code                       &lt;chr&gt; \"E08000025\"\n$ pfa_code                        &lt;chr&gt; \"E23000014\"\n\n\n\n\n\nlocation &lt;- location_raw |&gt;\n  st_as_sf(coords = c(\"eastings\", \"northings\"), crs = 27700) |&gt;\n  select(postcode, ccg) |&gt;\n  st_transform(crs = 4326)\n\nlocation\n\nSimple feature collection with 1 feature and 2 fields\nGeometry type: POINT\nDimension:     XY\nBounding box:  xmin: -1.900335 ymin: 52.47886 xmax: -1.900335 ymax: 52.47886\nGeodetic CRS:  WGS 84\n  postcode                         ccg                   geometry\n1   B2 4BJ NHS Birmingham and Solihull POINT (-1.900335 52.47886)"
   },
   {
     "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#creating-a-geospatial-data-frame-for-all-nhs-trusts",
     "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#creating-a-geospatial-data-frame-for-all-nhs-trusts",
     "title": "Coffee and Coding",
     "section": "Creating a geospatial data frame for all NHS Trusts",
-    "text": "Creating a geospatial data frame for all NHS Trusts\n\n\n\ntrusts &lt;- ods_get_trusts() |&gt;\n  filter(status == \"Active\") |&gt;\n  select(name, org_id, post_code) |&gt;\n  geocode(postalcode = \"post_code\") |&gt;\n  st_as_sf(coords = c(\"long\", \"lat\"), crs = 4326)\n\n\n\nError in read_sf(\"trusts.geojson\"): could not find function \"read_sf\"\n\n\n\ntrusts |&gt;\n  leaflet() |&gt;\n  addProviderTiles(\"Stamen.TonerLite\") |&gt;\n  addMarkers(popup = ~name)\n\n\n\n\nError in addMarkers(addProviderTiles(leaflet(trusts), \"Stamen.TonerLite\"), : could not find function \"addMarkers\""
+    "text": "Creating a geospatial data frame for all NHS Trusts\n\n\n\n# using the NHSRtools package\n# remotes::install_github(\"NHS-R-Community/NHSRtools\")\ntrusts &lt;- ods_get_trusts() |&gt;\n  filter(status == \"Active\") |&gt;\n  select(name, org_id, post_code) |&gt;\n  geocode(postalcode = \"post_code\") |&gt;\n  st_as_sf(coords = c(\"long\", \"lat\"), crs = 4326)\n\n\ntrusts |&gt;\n  leaflet() |&gt;\n  addProviderTiles(\"Stamen.TonerLite\") |&gt;\n  addMarkers(popup = ~name)"
   },
   {
     "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#what-are-the-nearest-trusts-to-our-location",
     "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#what-are-the-nearest-trusts-to-our-location",
     "title": "Coffee and Coding",
     "section": "What are the nearest trusts to our location?",
-    "text": "What are the nearest trusts to our location?\n\nnearest_trusts &lt;- trusts |&gt;\n  mutate(\n    distance = st_distance(geometry, location)[, 1]\n  ) |&gt;\n  arrange(distance) |&gt;\n  head(5)\n\nError in eval(expr, envir, enclos): object 'trusts' not found\n\nnearest_trusts\n\nError in eval(expr, envir, enclos): object 'nearest_trusts' not found"
+    "text": "What are the nearest trusts to our location?\n\nnearest_trusts &lt;- trusts |&gt;\n  mutate(\n    distance = st_distance(geometry, location)[, 1]\n  ) |&gt;\n  arrange(distance) |&gt;\n  head(5)\n\nnearest_trusts\n\nSimple feature collection with 5 features and 4 fields\nGeometry type: POINT\nDimension:     XY\nBounding box:  xmin: -1.9384 ymin: 52.4533 xmax: -1.886282 ymax: 52.48764\nGeodetic CRS:  WGS 84\n# A tibble: 5 × 5\n  name                       org_id post_code             geometry distance\n  &lt;chr&gt;                      &lt;chr&gt;  &lt;chr&gt;              &lt;POINT [°]&gt;      [m]\n1 BIRMINGHAM WOMEN'S AND CH… RQ3    B4 6NH     (-1.894241 52.4849)     789.\n2 BIRMINGHAM AND SOLIHULL M… RXT    B1 3RB    (-1.917663 52.48416)    1313.\n3 BIRMINGHAM COMMUNITY HEAL… RYW    B7 4BN    (-1.886282 52.48754)    1356.\n4 SANDWELL AND WEST BIRMING… RXK    B18 7QH   (-1.930203 52.48764)    2246.\n5 UNIVERSITY HOSPITALS BIRM… RRK    B15 2GW      (-1.9384 52.4533)    3838."
   },
   {
     "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#lets-find-driving-routes-to-these-trusts",
     "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#lets-find-driving-routes-to-these-trusts",
     "title": "Coffee and Coding",
     "section": "Let’s find driving routes to these trusts",
-    "text": "Let’s find driving routes to these trusts\n\nroutes &lt;- nearest_trusts |&gt;\n  mutate(\n    route = map(geometry, ~ osrmRoute(location, st_coordinates(.x)))\n  ) |&gt;\n  st_drop_geometry() |&gt;\n  rename(straight_line_distance = distance) |&gt;\n  unnest(route) |&gt;\n  st_as_sf()\n\nError in st_as_sf(unnest(rename(st_drop_geometry(mutate(nearest_trusts, : could not find function \"st_as_sf\"\n\nroutes\n\nError in eval(expr, envir, enclos): object 'routes' not found"
+    "text": "Let’s find driving routes to these trusts\n\nroutes &lt;- nearest_trusts |&gt;\n  mutate(\n    route = map(geometry, ~ osrmRoute(location, st_coordinates(.x)))\n  ) |&gt;\n  st_drop_geometry() |&gt;\n  rename(straight_line_distance = distance) |&gt;\n  unnest(route) |&gt;\n  st_as_sf()\n\nroutes\n\nSimple feature collection with 5 features and 8 fields\nGeometry type: LINESTRING\nDimension:     XY\nBounding box:  xmin: -1.93846 ymin: 52.45316 xmax: -1.88527 ymax: 52.49279\nGeodetic CRS:  WGS 84\n# A tibble: 5 × 9\n  name     org_id post_code straight_line_distance src   dst   duration distance\n  &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;                        [m] &lt;chr&gt; &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1 BIRMING… RQ3    B4 6NH                      789. 1     dst       5.77     3.09\n2 BIRMING… RXT    B1 3RB                     1313. 1     dst       5.68     2.83\n3 BIRMING… RYW    B7 4BN                     1356. 1     dst       7.59     4.29\n4 SANDWEL… RXK    B18 7QH                    2246. 1     dst       7.76     3.69\n5 UNIVERS… RRK    B15 2GW                    3838. 1     dst      10.6      4.67\n# ℹ 1 more variable: geometry &lt;LINESTRING [°]&gt;"
   },
   {
     "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#lets-show-the-routes",
     "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#lets-show-the-routes",
     "title": "Coffee and Coding",
     "section": "Let’s show the routes",
-    "text": "Let’s show the routes\n\nleaflet(routes) |&gt;\n  addTiles() |&gt;\n  addMarkers(data = location) |&gt;\n  addPolylines(color = \"black\", weight = 3, opacity = 1) |&gt;\n  addCircleMarkers(data = nearest_trusts, radius = 4, opacity = 1, fillOpacity = 1)\n\nError in addCircleMarkers(addPolylines(addMarkers(addTiles(leaflet(routes)), : could not find function \"addCircleMarkers\""
+    "text": "Let’s show the routes\n\nleaflet(routes) |&gt;\n  addTiles() |&gt;\n  addMarkers(data = location) |&gt;\n  addPolylines(color = \"black\", weight = 3, opacity = 1) |&gt;\n  addCircleMarkers(data = nearest_trusts, radius = 4, opacity = 1, fillOpacity = 1)"
   },
   {
     "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#we-can-use-osrm-to-calculate-isochrones",
     "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#we-can-use-osrm-to-calculate-isochrones",
     "title": "Coffee and Coding",
     "section": "We can use {osrm} to calculate isochrones",
-    "text": "We can use {osrm} to calculate isochrones\n\n\n\niso &lt;- osrmIsochrone(location, breaks = seq(0, 60, 15), res = 10)\n\nisochrone_ids &lt;- unique(iso$id)\n\npal &lt;- colorFactor(\n  viridis::viridis(length(isochrone_ids)),\n  isochrone_ids\n)\n\nleaflet(location) |&gt;\n  addProviderTiles(\"Stamen.TonerLite\") |&gt;\n  addMarkers() |&gt;\n  addPolygons(\n    data = iso,\n    fillColor = ~ pal(id),\n    color = \"#000000\",\n    weight = 1\n  )\n\n\n\n\nError in osrmIsochrone(location, breaks = seq(0, 60, 15), res = 10): could not find function \"osrmIsochrone\"\n\n\nError in eval(expr, envir, enclos): object 'iso' not found\n\n\nError in colorFactor(viridis::viridis(length(isochrone_ids)), isochrone_ids): could not find function \"colorFactor\"\n\n\nError in addPolygons(addMarkers(addProviderTiles(leaflet(location), \"Stamen.TonerLite\")), : could not find function \"addPolygons\""
+    "text": "We can use {osrm} to calculate isochrones\n\n\n\niso &lt;- osrmIsochrone(location, breaks = seq(0, 60, 15), res = 10)\n\nisochrone_ids &lt;- unique(iso$id)\n\npal &lt;- colorFactor(\n  viridis::viridis(length(isochrone_ids)),\n  isochrone_ids\n)\n\nleaflet(location) |&gt;\n  addProviderTiles(\"Stamen.TonerLite\") |&gt;\n  addMarkers() |&gt;\n  addPolygons(\n    data = iso,\n    fillColor = ~ pal(id),\n    color = \"#000000\",\n    weight = 1\n  )"
   },
   {
     "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#what-trusts-are-in-the-isochrones",
     "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#what-trusts-are-in-the-isochrones",
     "title": "Coffee and Coding",
     "section": "What trusts are in the isochrones?",
-    "text": "What trusts are in the isochrones?\nThe summarise() function will “union” the geometry\n\nsummarise(iso)\n\nError in eval(expr, envir, enclos): object 'iso' not found"
+    "text": "What trusts are in the isochrones?\nThe summarise() function will “union” the geometry\n\nsummarise(iso)\n\nSimple feature collection with 1 feature and 0 fields\nGeometry type: POLYGON\nDimension:     XY\nBounding box:  xmin: -2.913575 ymin: 51.98062 xmax: -0.8502164 ymax: 53.10874\nGeodetic CRS:  WGS 84\n                        geometry\n1 POLYGON ((-1.541014 52.9691..."
   },
   {
     "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#what-trusts-are-in-the-isochrones-1",
     "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#what-trusts-are-in-the-isochrones-1",
     "title": "Coffee and Coding",
     "section": "What trusts are in the isochrones?",
-    "text": "What trusts are in the isochrones?\nWe can use this with a geo-filter to find the trusts in the isochrone\n\n# also works\ntrusts_in_iso &lt;- trusts |&gt;\n  st_filter(\n    summarise(iso),\n    .predicate = st_within\n  )\n\nError in st_filter(trusts, summarise(iso), .predicate = st_within): could not find function \"st_filter\"\n\ntrusts_in_iso\n\nError in eval(expr, envir, enclos): object 'trusts_in_iso' not found"
+    "text": "What trusts are in the isochrones?\nWe can use this with a geo-filter to find the trusts in the isochrone\n\n# also works\ntrusts_in_iso &lt;- trusts |&gt;\n  st_filter(\n    summarise(iso),\n    .predicate = st_within\n  )\n\ntrusts_in_iso\n\nSimple feature collection with 31 features and 3 fields\nGeometry type: POINT\nDimension:     XY\nBounding box:  xmin: -2.793386 ymin: 52.19205 xmax: -1.10302 ymax: 53.01015\nGeodetic CRS:  WGS 84\n# A tibble: 31 × 4\n   name                               org_id post_code             geometry\n * &lt;chr&gt;                              &lt;chr&gt;  &lt;chr&gt;              &lt;POINT [°]&gt;\n 1 BIRMINGHAM AND SOLIHULL MENTAL HE… RXT    B1 3RB    (-1.917663 52.48416)\n 2 BIRMINGHAM COMMUNITY HEALTHCARE N… RYW    B7 4BN    (-1.886282 52.48754)\n 3 BIRMINGHAM WOMEN'S AND CHILDREN'S… RQ3    B4 6NH     (-1.894241 52.4849)\n 4 BIRMINGHAM WOMEN'S NHS FOUNDATION… RLU    B15 2TG   (-1.942861 52.45325)\n 5 BURTON HOSPITALS NHS FOUNDATION T… RJF    DE13 0RB  (-1.656667 52.81774)\n 6 COVENTRY AND WARWICKSHIRE PARTNER… RYG    CV6 6NY    (-1.48692 52.45659)\n 7 DERBYSHIRE HEALTHCARE NHS FOUNDAT… RXM    DE22 3LZ  (-1.512896 52.91831)\n 8 DUDLEY INTEGRATED HEALTH AND CARE… RYK    DY5 1RU    (-2.11786 52.48176)\n 9 GEORGE ELIOT HOSPITAL NHS TRUST    RLT    CV10 7DJ   (-1.47844 52.51258)\n10 HEART OF ENGLAND NHS FOUNDATION T… RR1    B9 5ST     (-1.828759 52.4781)\n# ℹ 21 more rows"
   },
   {
     "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#what-trusts-are-in-the-isochrones-2",
     "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#what-trusts-are-in-the-isochrones-2",
     "title": "Coffee and Coding",
     "section": "What trusts are in the isochrones?",
-    "text": "What trusts are in the isochrones?\n\n\n\nleaflet(trusts_in_iso) |&gt;\n  addProviderTiles(\"Stamen.TonerLite\") |&gt;\n  addMarkers() |&gt;\n  addPolygons(\n    data = iso,\n    fillColor = ~pal(id),\n    color = \"#000000\",\n    weight = 1\n  )\n\n\n\n\nError in addPolygons(addMarkers(addProviderTiles(leaflet(trusts_in_iso), : could not find function \"addPolygons\""
+    "text": "What trusts are in the isochrones?\n\n\n\nleaflet(trusts_in_iso) |&gt;\n  addProviderTiles(\"Stamen.TonerLite\") |&gt;\n  addMarkers() |&gt;\n  addPolygons(\n    data = iso,\n    fillColor = ~pal(id),\n    color = \"#000000\",\n    weight = 1\n  )"
   },
   {
     "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#doing-the-same-but-within-a-radius",
     "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#doing-the-same-but-within-a-radius",
     "title": "Coffee and Coding",
     "section": "Doing the same but within a radius",
-    "text": "Doing the same but within a radius\n\n\n\nr &lt;- 25000\n\ntrusts_in_radius &lt;- trusts |&gt;\n  st_filter(\n    location,\n    .predicate = st_is_within_distance,\n    dist = r\n  )\n\n# transforming gives us a pretty smooth circle\nradius &lt;- location |&gt;\n  st_transform(crs = 27700) |&gt;\n  st_buffer(dist = r) |&gt;\n  st_transform(crs = 4326)\n\nleaflet(trusts_in_radius) |&gt;\n  addProviderTiles(\"Stamen.TonerLite\") |&gt;\n  addMarkers() |&gt;\n  addPolygons(\n    data = radius,\n    color = \"#000000\",\n    weight = 1\n  )\n\n\n\n\nError in st_filter(trusts, location, .predicate = st_is_within_distance, : could not find function \"st_filter\"\n\n\nError in st_transform(st_buffer(st_transform(location, crs = 27700), dist = r), : could not find function \"st_transform\"\n\n\nError in addPolygons(addMarkers(addProviderTiles(leaflet(trusts_in_radius), : could not find function \"addPolygons\""
+    "text": "Doing the same but within a radius\n\n\n\nr &lt;- 25000\n\ntrusts_in_radius &lt;- trusts |&gt;\n  st_filter(\n    location,\n    .predicate = st_is_within_distance,\n    dist = r\n  )\n\n# transforming gives us a pretty smooth circle\nradius &lt;- location |&gt;\n  st_transform(crs = 27700) |&gt;\n  st_buffer(dist = r) |&gt;\n  st_transform(crs = 4326)\n\nleaflet(trusts_in_radius) |&gt;\n  addProviderTiles(\"Stamen.TonerLite\") |&gt;\n  addMarkers() |&gt;\n  addPolygons(\n    data = radius,\n    color = \"#000000\",\n    weight = 1\n  )"
   },
   {
     "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#further-reading",
@@ -907,14 +907,14 @@
     "href": "presentations/2023-08-23_nhs-r_unit-testing/index.html#and-create-our-first-test-5",
     "title": "Unit testing in R",
     "section": "… and create our first test",
-    "text": "… and create our first test\n\ntest_that(\"my_function correctly divides values\", {\n  expect_equal(\n    my_function(4, 2),\n    2\n  )\n  expect_equal(\n    my_function(1, 4),\n    0.25\n  )\n  expect_equal(\n    my_function(c(4, 1), c(2, 4)),\n    c(2, 0.25)\n  )\n})\n\nTest passed 🌈"
+    "text": "… and create our first test\n\ntest_that(\"my_function correctly divides values\", {\n  expect_equal(\n    my_function(4, 2),\n    2\n  )\n  expect_equal(\n    my_function(1, 4),\n    0.25\n  )\n  expect_equal(\n    my_function(c(4, 1), c(2, 4)),\n    c(2, 0.25)\n  )\n})\n\nTest passed 🎊"
   },
   {
     "objectID": "presentations/2023-08-23_nhs-r_unit-testing/index.html#other-expect_-functions",
     "href": "presentations/2023-08-23_nhs-r_unit-testing/index.html#other-expect_-functions",
     "title": "Unit testing in R",
     "section": "other expect_*() functions…",
-    "text": "other expect_*() functions…\n\ntest_that(\"my_function correctly divides values\", {\n  expect_lt(\n    my_function(4, 2),\n    10\n  )\n  expect_gt(\n    my_function(1, 4),\n    0.2\n  )\n  expect_length(\n    my_function(c(4, 1), c(2, 4)),\n    2\n  )\n})\n\nTest passed 😸\n\n\n\n{testthat} documentation"
+    "text": "other expect_*() functions…\n\ntest_that(\"my_function correctly divides values\", {\n  expect_lt(\n    my_function(4, 2),\n    10\n  )\n  expect_gt(\n    my_function(1, 4),\n    0.2\n  )\n  expect_length(\n    my_function(c(4, 1), c(2, 4)),\n    2\n  )\n})\n\nTest passed 🎊\n\n\n\n{testthat} documentation"
   },
   {
     "objectID": "presentations/2023-08-23_nhs-r_unit-testing/index.html#arrange-act-assert",
@@ -963,7 +963,7 @@
     "href": "presentations/2023-08-23_nhs-r_unit-testing/index.html#testing-edge-cases",
     "title": "Unit testing in R",
     "section": "Testing edge cases",
-    "text": "Testing edge cases\n\n\nRemember the validation steps we built into our function to handle edge cases?\n\nLet’s write tests for these edge cases:\nwe expect errors\n\n\ntest_that(\"my_function works\", {\n  expect_error(my_function(5, 0))\n  expect_error(my_function(\"a\", 3))\n  expect_error(my_function(3, \"a\"))\n  expect_error(my_function(1:2, 4))\n})\n\nTest passed 🥳"
+    "text": "Testing edge cases\n\n\nRemember the validation steps we built into our function to handle edge cases?\n\nLet’s write tests for these edge cases:\nwe expect errors\n\n\ntest_that(\"my_function works\", {\n  expect_error(my_function(5, 0))\n  expect_error(my_function(\"a\", 3))\n  expect_error(my_function(3, \"a\"))\n  expect_error(my_function(1:2, 4))\n})\n\nTest passed 😀"
   },
   {
     "objectID": "presentations/2023-08-23_nhs-r_unit-testing/index.html#another-simple-example",
@@ -977,7 +977,7 @@
     "href": "presentations/2023-08-23_nhs-r_unit-testing/index.html#another-simple-example-1",
     "title": "Unit testing in R",
     "section": "Another (simple) example",
-    "text": "Another (simple) example\n\nmy_new_function &lt;- function(x, y) {\n  if (x &gt; y) {\n    \"x\"\n  } else {\n    \"y\"\n  }\n}\n\n\n\ntest_that(\"it returns 'x' if x is bigger than y\", {\n  expect_equal(my_new_function(4, 3), \"x\")\n})\n\nTest passed 😸\n\ntest_that(\"it returns 'y' if y is bigger than x\", {\n  expect_equal(my_new_function(3, 4), \"y\")\n  expect_equal(my_new_function(3, 3), \"y\")\n})\n\nTest passed 🌈"
+    "text": "Another (simple) example\n\nmy_new_function &lt;- function(x, y) {\n  if (x &gt; y) {\n    \"x\"\n  } else {\n    \"y\"\n  }\n}\n\n\n\ntest_that(\"it returns 'x' if x is bigger than y\", {\n  expect_equal(my_new_function(4, 3), \"x\")\n})\n\nTest passed 😀\n\ntest_that(\"it returns 'y' if y is bigger than x\", {\n  expect_equal(my_new_function(3, 4), \"y\")\n  expect_equal(my_new_function(3, 3), \"y\")\n})\n\nTest passed 🌈"
   },
   {
     "objectID": "presentations/2023-08-23_nhs-r_unit-testing/index.html#how-to-design-good-tests",

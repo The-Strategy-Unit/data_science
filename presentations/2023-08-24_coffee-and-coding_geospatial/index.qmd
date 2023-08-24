@@ -36,8 +36,6 @@ library(PostcodesioR)
 library(osrm)
 
 library(leaflet)
-
-library(NHSRtools) # remotes::install_github("NHS-R-Community/NHSRtools")
 ```
 
 ## Getting boundary data
@@ -78,7 +76,10 @@ icb_boundaries |>
 
 ## What is the `icb_boundaries` data?
 
-![](icb_boundaries_df.png)
+```{r, show-icb-boundaries}
+icb_boundaries |>-2
+  select(ICB23CD, ICB23NM)
+```
 
 ## Working with geospatial dataframes
 
@@ -201,14 +202,10 @@ trusts <- ods_get_trusts() |>
   st_as_sf(coords = c("long", "lat"), crs = 4326)
 ```
 
-```{r, create-trusts-geojson}
+```{r, get-trusts-geojson}
 #| echo: false
-if (!file.exists("trusts.geojson")) {
-  <<get-trusts>>
-
-  st_write(trusts, "trusts.geojson")
-} 
-trusts <- read_sf("trusts.geojson") 
+# the previous chunk takes some time to run, so this is a pre-cached version
+trusts <- read_sf("trusts.geojson")
 ```
 
 ```{r, show-trusts}

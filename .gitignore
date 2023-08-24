@@ -11,3 +11,5 @@ _site
 site_libs/
 *_files/
 *.rmarkdown
+
+*_cache/

@@ -77,7 +77,7 @@ icb_boundaries |>
 ## What is the `icb_boundaries` data?
 
 ```{r, show-icb-boundaries}
-icb_boundaries |>-2
+icb_boundaries |>
   select(ICB23CD, ICB23NM)
 ```
 
@@ -195,6 +195,8 @@ location
 
 ```{r, get-trusts}
 #| eval: false
+# using the NHSRtools package
+# remotes::install_github("NHS-R-Community/NHSRtools")
 trusts <- ods_get_trusts() |>
   filter(status == "Active") |>
   select(name, org_id, post_code) |>

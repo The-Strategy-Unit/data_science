@@ -158,427 +158,336 @@
     "href": "presentations/index.html",
     "title": "Presentations",
     "section": "",
-    "text": "title\n      author\n      date\n    \n  \n  \n    Everything you ever wanted to know about data science: but were too afraid to ask\nChris Beeley\n2023-08-02\n    Coffee and coding: Intro session\nChris Beeley\n2023-02-23\n    Coffee and Coding: Good Coding Practices\nTom Jemmett\n2023-03-09\n    RAP: what is it and how can my team start using it effectively?\nChris Beeley\n2023-03-09\n    Coffee and Coding: {targets}\nTom Jemmett\n2023-03-23\n    Collaborative working\nChris Beeley\n2023-03-23\n    Text mining of patient experience data\nChris Beeley\n2023-05-15\n    What good data science looks like\nChris Beeley\n2023-05-23\n    An Introduction to the New Hospital Programme Demand Model: HACA 2023\nTom Jemmett\n2023-07-11\n    Travels with R and Python: the power of data science in healthcare\nChris Beeley\n2023-08-02\n    Unit testing in R: NHS-R Community Webinar\nTom Jemmett\n2023-08-23\n    Coffee and Coding: Working with Geospatial Data in R\nTom Jemmett\n2023-08-24"
+    "text": "title\n      author\n      date\n    \n  \n  \n    Everything you ever wanted to know about data science: but were too afraid to ask\nChris Beeley\n2023-08-02\n    Coffee and coding: Intro session\nChris Beeley\n2023-02-23\n    Coffee and Coding: Good Coding Practices\nTom Jemmett\n2023-03-09\n    RAP: what is it and how can my team start using it effectively?\nChris Beeley\n2023-03-09\n    Coffee and Coding: {targets}\nTom Jemmett\n2023-03-23\n    Collaborative working\nChris Beeley\n2023-03-23\n    Text mining of patient experience data\nChris Beeley\n2023-05-15\n    What good data science looks like\nChris Beeley\n2023-05-23\n    An Introduction to the New Hospital Programme Demand Model: HACA 2023\nTom Jemmett\n2023-07-11\n    Travels with R and Python: the power of data science in healthcare\nChris Beeley\n2023-08-02\n    Unit testing in R: NHS-R Community Webinar\nTom Jemmett\n2023-08-23\n    Coffee and Coding: Working with Geospatial Data in R\nTom Jemmett\n2023-08-24\n    System Dynamics in health and social care: fitting square data into round models\nSally Thompson\n2023-10-09"
   },
   {
-    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#packages-we-are-using-today",
-    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#packages-we-are-using-today",
-    "title": "Coffee and Coding",
-    "section": "Packages we are using today",
-    "text": "Packages we are using today\n\nlibrary(tidyverse)\n\nlibrary(sf)\n\nlibrary(tidygeocoder)\nlibrary(PostcodesioR)\n\nlibrary(osrm)\n\nlibrary(leaflet)"
+    "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#health-data-in-the-headlines",
+    "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#health-data-in-the-headlines",
+    "title": "System Dynamics in health and social care",
+    "section": "Health Data in the Headlines",
+    "text": "Health Data in the Headlines\n\n\n\n\nUsed to seeing headlines that give a snapshot figure but doesn’t say much about the system.\nNow starting to see headlines that recognise flow through the system rather than snapshot in time of just one part.\nCan get better understanding of the issues in a system if we can map it as stocks and flows, but our datasets not designed to give up flow information very readily. This talk is how I have met that challenge."
   },
   {
-    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#getting-boundary-data",
-    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#getting-boundary-data",
-    "title": "Coffee and Coding",
-    "section": "Getting boundary data",
-    "text": "Getting boundary data\nWe can use the ONS’s Geoportal we can grab boundary data to generate maps\n\n\n\nicb_url &lt;- paste0(\n  \"https://services1.arcgis.com\",\n  \"/ESMARspQHYMw9BZ9/arcgis\",\n  \"/rest/services\",\n  \"/Integrated_Care_Boards_April_2023_EN_BGC\",\n  \"/FeatureServer/0/query\",\n  \"?outFields=*&where=1%3D1&f=geojson\"\n)\nicb_boundaries &lt;- read_sf(icb_url)\n\nicb_boundaries |&gt;\n  ggplot() +\n  geom_sf() +\n  theme_void()"
+    "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#through-the-system-dynamics-lens",
+    "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#through-the-system-dynamics-lens",
+    "title": "System Dynamics in health and social care",
+    "section": "Through the System Dynamics lens",
+    "text": "Through the System Dynamics lens\n\nStock-flow model\nDynamic behaviour, feedback loops\n\nIn a few seconds, what is SD?\nAn approach to understanding the behaviour of complex systems over time. A method of mapping a system as stocks, whose levels can only change due to flows in and flows out. Stocks could be people on a waiting list, on a ward, money, …\nFlows are the rate at which things change in a given time period e.g. admissions per day, referrals per month.\nBehaviour of the system is determined by how the components interact with each other, not what each component does. Mapping the structure of a system like this leads us to identify feedback loops, and consequences of an action - both intended and unintended.\nIn this capacity-constrained model we only need 3 parameters to run the model (exogenous). All the behaviour within the grey box is determined by the interactions of those components (indogenous).\nHow do we get a value/values for referrals per day?\n(currently use specialist software to build and run our models, aim is to get to a point where we can run in open source.)"
   },
   {
-    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#what-is-the-icb_boundaries-data",
-    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#what-is-the-icb_boundaries-data",
-    "title": "Coffee and Coding",
-    "section": "What is the icb_boundaries data?",
-    "text": "What is the icb_boundaries data?\n\nicb_boundaries |&gt;\n  select(ICB23CD, ICB23NM)\n\nSimple feature collection with 42 features and 2 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: -6.418667 ymin: 49.86479 xmax: 1.763706 ymax: 55.81112\nGeodetic CRS:  WGS 84\n# A tibble: 42 × 3\n   ICB23CD   ICB23NM                                                    geometry\n   &lt;chr&gt;     &lt;chr&gt;                                            &lt;MULTIPOLYGON [°]&gt;\n 1 E54000008 NHS Cheshire and Merseyside Integrated C… (((-3.083264 53.2559, -3…\n 2 E54000010 NHS Staffordshire and Stoke-on-Trent Int… (((-1.950489 53.21188, -…\n 3 E54000011 NHS Shropshire, Telford and Wrekin Integ… (((-2.380794 52.99841, -…\n 4 E54000013 NHS Lincolnshire Integrated Care Board    (((0.2687853 52.81584, 0…\n 5 E54000015 NHS Leicester, Leicestershire and Rutlan… (((-0.7875237 52.97762, …\n 6 E54000018 NHS Coventry and Warwickshire Integrated… (((-1.577608 52.67858, -…\n 7 E54000019 NHS Herefordshire and Worcestershire Int… (((-2.272042 52.43972, -…\n 8 E54000022 NHS Norfolk and Waveney Integrated Care … (((1.666741 52.31366, 1.…\n 9 E54000023 NHS Suffolk and North East Essex Integra… (((0.8997023 51.7732, 0.…\n10 E54000024 NHS Bedfordshire, Luton and Milton Keyne… (((-0.4577115 52.32009, …\n# ℹ 32 more rows"
+    "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#determining-flows",
+    "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#determining-flows",
+    "title": "System Dynamics in health and social care",
+    "section": "Determining flows",
+    "text": "Determining flows\n\n\n\n\n‘admissions per day’ is needed to populate the model.\n‘discharged’ could be used to verify the model against known data\n\nNeed a list of key dates\nFor each key date, compare with admission (or discharge) date - flag for a match\n\n\n\n\n\n\n\n\n     \n\n\nGoing to use very simple model shown to explain how to extract flow data for admissions. Will start with visual explainer before going into the code.\n1. generate list of key dates\n2. take our patient-level ID with admission and discharge dates\n3. going to take each date in our list of keydates, and see if there is an admission on that date\n4. this creates a wide data frame, the same length as patient data.\n5. once run through all the dates in the list, sum each column"
   },
   {
-    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#working-with-geospatial-dataframes",
-    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#working-with-geospatial-dataframes",
-    "title": "Coffee and Coding",
-    "section": "Working with geospatial dataframes",
-    "text": "Working with geospatial dataframes\nWe can simply join sf data frames and “regular” data frames together\n\n\n\nicb_metrics &lt;- icb_boundaries |&gt;\n  st_drop_geometry() |&gt;\n  select(ICB23CD) |&gt;\n  mutate(admissions = rpois(n(), 1000000))\n\nicb_boundaries |&gt;\n  inner_join(icb_metrics, by = \"ICB23CD\") |&gt;\n  ggplot() +\n  geom_sf(aes(fill = admissions)) +\n  scale_fill_viridis_c() +\n  theme_void()"
+    "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#determining-occupancy",
+    "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#determining-occupancy",
+    "title": "System Dynamics in health and social care",
+    "section": "Determining occupancy",
+    "text": "Determining occupancy\n\n\n\n\n‘on ward’ is used to verify the model against known data\n\nLogic statement testing if the key date is wholly between admission and discharge dates\nflag for a match \n\n\n\n\n     \n\nMight also want to generate occupancy, to compare the model output with actual data to verify/validate.\nSimilar to flow data, but this time checking that admission is before the key date, and discharge is after the key date. Patient A admitted on 2nd, so only starts being classed as resident on 3rd."
   },
   {
-    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#working-with-geospatial-data-frames",
-    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#working-with-geospatial-data-frames",
-    "title": "Coffee and Coding",
-    "section": "Working with geospatial data frames",
-    "text": "Working with geospatial data frames\nWe can manipulate sf objects like other data frames\n\n\n\nlondon_icbs &lt;- icb_boundaries |&gt;\n  filter(ICB23NM |&gt; stringr::str_detect(\"London\"))\n\nggplot() +\n  geom_sf(data = london_icbs) +\n  geom_sf(data = st_centroid(london_icbs)) +\n  theme_void()"
+    "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r",
+    "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r",
+    "title": "System Dynamics in health and social care",
+    "section": "in R",
+    "text": "in R\nGenerate list of key dates\n\n\n\ndate_start &lt;- dmy(01012022) \ndate_end &lt;- dmy(31012022)\nrun_len &lt;- length(seq(from = date_start, to = date_end, by = \"day\"))\n\nkeydates &lt;- data.frame(\n  date = c(seq(date_start, by = \"day\", length.out=run_len)))  \n\n\n\n\n        date\n1 2022-01-01\n2 2022-01-02\n3 2022-01-03\n4 2022-01-04\n5 2022-01-05\n6 2022-01-06\n\n\n\n\n\nStart by generating the list of keydates. In this example we’re running the model in days, and checking each day in 2022.\nNeed the run length for the next step. In this case run length 365, but if running the model weekly would be 52."
   },
   {
-    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#working-with-geospatial-data-frames-1",
-    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#working-with-geospatial-data-frames-1",
-    "title": "Coffee and Coding",
-    "section": "Working with geospatial data frames",
-    "text": "Working with geospatial data frames\nSummarising the data will combine the geometries.\n\nlondon_icbs |&gt;\n  summarise(area = sum(Shape__Area)) |&gt;\n  # and use geospatial functions to create calculations using the geometry\n  mutate(new_area = st_area(geometry), .before = \"geometry\")\n\nSimple feature collection with 1 feature and 2 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: -0.5102803 ymin: 51.28676 xmax: 0.3340241 ymax: 51.69188\nGeodetic CRS:  WGS 84\n# A tibble: 1 × 3\n         area    new_area                                               geometry\n*       &lt;dbl&gt;       [m^2]                                     &lt;MULTIPOLYGON [°]&gt;\n1 1573336388. 1567995610. (((-0.3314819 51.43935, -0.3306676 51.43889, -0.33118…\n\n\n Why the difference in area?\n\n We are using a simplified geometry, so calculating the area will be slightly inaccurate. The original area was calculated on the non-simplified geometries."
+    "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r-1",
+    "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r-1",
+    "title": "System Dynamics in health and social care",
+    "section": "in R",
+    "text": "in R\nIterate over each date - admissions\n\n\n\nadmit_flag &lt;- function(df) {\n\n # pre-allocate tibble size to speed up iteration in loop\n  activity_all &lt;- tibble(nrow = nrow(df))  |&gt;  \n    select()\n  activity_period &lt;- tibble(nrow = nrow(df))\n  \n   for (i in 1:run_len) {\n     \n     activity_period &lt;-  case_when(\n     \n        # creates 1 flag if admitted during that day, otherwise 0\n        df$date_admit == keydates$date[i] ~ 1,\n        TRUE ~ 0)\n   \n      # column bind this day's flags to previous\n      activity_all &lt;- bind_cols(activity_all, activity_period)\n \n   }\n  \n    # rename column to match the day being counted\n  activity_all &lt;- activity_all |&gt; \n    setNames(paste0(\"d_\", keydates$date))\n    \n  # bind flags columns to patient data\n  daily_adm &lt;- bind_cols(df, activity_all) |&gt; \n    pivot_longer(\n      cols = starts_with(\"d_\"),\n      names_to = \"date\",\n      values_to = \"count\"\n    ) |&gt; \n    \n    group_by(date) |&gt; \n    summarise(num_admit = sum(count)) |&gt; \n    ungroup() |&gt; \n  mutate(date = str_remove(date, \"d_\"))\n   \n } \n\n\n\n\n# A tibble: 10 × 2\n   date       num_admit\n   &lt;chr&gt;          &lt;dbl&gt;\n 1 2022-01-01        28\n 2 2022-01-02        26\n 3 2022-01-03        23\n 4 2022-01-04        26\n 5 2022-01-05        23\n 6 2022-01-06        26\n 7 2022-01-07        32\n 8 2022-01-08        35\n 9 2022-01-09        27\n10 2022-01-10        34\n\n\n\n\n\nIs there a better way than using a for loop?\n\nPre-allocate tibbles\nFor each date in the list of key dates, compares with admission date. If match, flag = 1.\nCreates a column for each day, then binds this to activity all.\nRename each column with the date it was checking (add a character to start of column name so column doesn’t start with numeric)\nPivot long, then group by date and sum the flags (other variables could be added here, such as TFC or provider code)"
   },
   {
-    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#creating-our-own-geospatial-data",
-    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#creating-our-own-geospatial-data",
-    "title": "Coffee and Coding",
-    "section": "Creating our own geospatial data",
-    "text": "Creating our own geospatial data\n\nlocation_raw &lt;- postcode_lookup(\"B2 4BJ\")\nglimpse(location_raw)\n\nRows: 1\nColumns: 38\n$ postcode                        &lt;chr&gt; \"B2 4BJ\"\n$ quality                         &lt;int&gt; 1\n$ eastings                        &lt;int&gt; 406866\n$ northings                       &lt;int&gt; 286775\n$ country                         &lt;chr&gt; \"England\"\n$ nhs_ha                          &lt;chr&gt; \"West Midlands\"\n$ longitude                       &lt;dbl&gt; -1.90033\n$ latitude                        &lt;dbl&gt; 52.47887\n$ european_electoral_region       &lt;chr&gt; \"West Midlands\"\n$ primary_care_trust              &lt;chr&gt; \"Heart of Birmingham Teaching\"\n$ region                          &lt;chr&gt; \"West Midlands\"\n$ lsoa                            &lt;chr&gt; \"Birmingham 138A\"\n$ msoa                            &lt;chr&gt; \"Birmingham 138\"\n$ incode                          &lt;chr&gt; \"4BJ\"\n$ outcode                         &lt;chr&gt; \"B2\"\n$ parliamentary_constituency      &lt;chr&gt; \"Birmingham, Ladywood\"\n$ admin_district                  &lt;chr&gt; \"Birmingham\"\n$ parish                          &lt;chr&gt; \"Birmingham, unparished area\"\n$ admin_county                    &lt;lgl&gt; NA\n$ date_of_introduction            &lt;chr&gt; \"198001\"\n$ admin_ward                      &lt;chr&gt; \"Ladywood\"\n$ ced                             &lt;lgl&gt; NA\n$ ccg                             &lt;chr&gt; \"NHS Birmingham and Solihull\"\n$ nuts                            &lt;chr&gt; \"Birmingham\"\n$ pfa                             &lt;chr&gt; \"West Midlands\"\n$ admin_district_code             &lt;chr&gt; \"E08000025\"\n$ admin_county_code               &lt;chr&gt; \"E99999999\"\n$ admin_ward_code                 &lt;chr&gt; \"E05011151\"\n$ parish_code                     &lt;chr&gt; \"E43000250\"\n$ parliamentary_constituency_code &lt;chr&gt; \"E14000564\"\n$ ccg_code                        &lt;chr&gt; \"E38000258\"\n$ ccg_id_code                     &lt;chr&gt; \"15E\"\n$ ced_code                        &lt;chr&gt; \"E99999999\"\n$ nuts_code                       &lt;chr&gt; \"TLG31\"\n$ lsoa_code                       &lt;chr&gt; \"E01033620\"\n$ msoa_code                       &lt;chr&gt; \"E02006899\"\n$ lau2_code                       &lt;chr&gt; \"E08000025\"\n$ pfa_code                        &lt;chr&gt; \"E23000014\"\n\n\n\n\n\nlocation &lt;- location_raw |&gt;\n  st_as_sf(coords = c(\"eastings\", \"northings\"), crs = 27700) |&gt;\n  select(postcode, ccg) |&gt;\n  st_transform(crs = 4326)\n\nlocation\n\nSimple feature collection with 1 feature and 2 fields\nGeometry type: POINT\nDimension:     XY\nBounding box:  xmin: -1.900335 ymin: 52.47886 xmax: -1.900335 ymax: 52.47886\nGeodetic CRS:  WGS 84\n  postcode                         ccg                   geometry\n1   B2 4BJ NHS Birmingham and Solihull POINT (-1.900335 52.47886)"
+    "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r-2",
+    "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r-2",
+    "title": "System Dynamics in health and social care",
+    "section": "in R",
+    "text": "in R\nIterate over each date - occupancy\nNeed more logic to determine if someone is resident for the whole day\n\n   activity_period &lt;-  case_when(\n     \n      # creates 1 flag if resident for complete day\n      df$date_admit &lt; keydates$keydate[i] & \n        df$date_discharge &gt; keydates$keydate[i] ~ 1,\n      TRUE ~ 0)\n\n\nResidency needs more logic, as need to be admitted before the key date and discharged after the key date"
   },
   {
-    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#creating-a-geospatial-data-frame-for-all-nhs-trusts",
-    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#creating-a-geospatial-data-frame-for-all-nhs-trusts",
-    "title": "Coffee and Coding",
-    "section": "Creating a geospatial data frame for all NHS Trusts",
-    "text": "Creating a geospatial data frame for all NHS Trusts\n\n\n\n# using the NHSRtools package\n# remotes::install_github(\"NHS-R-Community/NHSRtools\")\ntrusts &lt;- ods_get_trusts() |&gt;\n  filter(status == \"Active\") |&gt;\n  select(name, org_id, post_code) |&gt;\n  geocode(postalcode = \"post_code\") |&gt;\n  st_as_sf(coords = c(\"long\", \"lat\"), crs = 4326)\n\n\ntrusts |&gt;\n  leaflet() |&gt;\n  addProviderTiles(\"Stamen.TonerLite\") |&gt;\n  addMarkers(popup = ~name)"
+    "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods",
+    "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods",
+    "title": "System Dynamics in health and social care",
+    "section": "Longer Time Periods",
+    "text": "Longer Time Periods\nKey dates to include the dates at the start and end of each time period\n\n\n\ndate_start &lt;- dmy(03012022) # first Monday of the year\ndate_end &lt;- dmy(01012023)\nrun_len &lt;- length(seq(from = date_start, to = date_end, by = \"week\"))\n\nkeydates &lt;- data.frame(wk_start = c(seq(date_start, \n                                        by = \"week\", \n                                        length.out=run_len))) |&gt;  \n  mutate(\n    wk_end = wk_start + 6)    # last date in time period\n\n\n\n\n    wk_start     wk_end\n1 2022-01-03 2022-01-09\n2 2022-01-10 2022-01-16\n3 2022-01-17 2022-01-23\n4 2022-01-24 2022-01-30\n5 2022-01-31 2022-02-06\n6 2022-02-07 2022-02-13\n\n\n\n\n\nModel might make more sense to run in weeks or months (e.g. care home), so list of keydates need a start date and end date for each time period."
   },
   {
-    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#what-are-the-nearest-trusts-to-our-location",
-    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#what-are-the-nearest-trusts-to-our-location",
-    "title": "Coffee and Coding",
-    "section": "What are the nearest trusts to our location?",
-    "text": "What are the nearest trusts to our location?\n\nnearest_trusts &lt;- trusts |&gt;\n  mutate(\n    distance = st_distance(geometry, location)[, 1]\n  ) |&gt;\n  arrange(distance) |&gt;\n  head(5)\n\nnearest_trusts\n\nSimple feature collection with 5 features and 4 fields\nGeometry type: POINT\nDimension:     XY\nBounding box:  xmin: -1.9384 ymin: 52.4533 xmax: -1.886282 ymax: 52.48764\nGeodetic CRS:  WGS 84\n# A tibble: 5 × 5\n  name                       org_id post_code             geometry distance\n  &lt;chr&gt;                      &lt;chr&gt;  &lt;chr&gt;              &lt;POINT [°]&gt;      [m]\n1 BIRMINGHAM WOMEN'S AND CH… RQ3    B4 6NH     (-1.894241 52.4849)     789.\n2 BIRMINGHAM AND SOLIHULL M… RXT    B1 3RB    (-1.917663 52.48416)    1313.\n3 BIRMINGHAM COMMUNITY HEAL… RYW    B7 4BN    (-1.886282 52.48754)    1356.\n4 SANDWELL AND WEST BIRMING… RXK    B18 7QH   (-1.930203 52.48764)    2246.\n5 UNIVERSITY HOSPITALS BIRM… RRK    B15 2GW      (-1.9384 52.4533)    3838."
+    "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods-1",
+    "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods-1",
+    "title": "System Dynamics in health and social care",
+    "section": "Longer Time Periods",
+    "text": "Longer Time Periods\nMore logic required if working in weeks or months - can only be in one place at any given time\n\n# flag for admission\nactivity_period &lt;-  case_when(\n  \n        # creates 1 flag if admitted during that week, otherwise 0\n      df$date_admit &gt;= keydates$wk_start[i] & \n        df$date_admit &lt;= keydates$wk_end[i] ~ 1,\n        TRUE ~ 0)\n\n\n# flag for occupancy\nactivity_period &lt;-  case_when(\n  \n        # creates 1 flag if resident for complete week\n      df$date_admit &lt; keydates$wk_start[i] & \n        df$date_discharge &gt; keydates$wk_end[i] ~ 1,\n        TRUE ~ 0)\n\n\nAnd a little bit more logic to test if there was an admission during that week/month.\nOccupancy requires the patient to have been admitted before the start of the week/month, and discharged after the end of the week/month"
   },
   {
-    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#lets-find-driving-routes-to-these-trusts",
-    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#lets-find-driving-routes-to-these-trusts",
-    "title": "Coffee and Coding",
-    "section": "Let’s find driving routes to these trusts",
-    "text": "Let’s find driving routes to these trusts\n\nroutes &lt;- nearest_trusts |&gt;\n  mutate(\n    route = map(geometry, ~ osrmRoute(location, st_coordinates(.x)))\n  ) |&gt;\n  st_drop_geometry() |&gt;\n  rename(straight_line_distance = distance) |&gt;\n  unnest(route) |&gt;\n  st_as_sf()\n\nroutes\n\nSimple feature collection with 5 features and 8 fields\nGeometry type: LINESTRING\nDimension:     XY\nBounding box:  xmin: -1.93846 ymin: 52.45316 xmax: -1.88527 ymax: 52.49279\nGeodetic CRS:  WGS 84\n# A tibble: 5 × 9\n  name     org_id post_code straight_line_distance src   dst   duration distance\n  &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;                        [m] &lt;chr&gt; &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1 BIRMING… RQ3    B4 6NH                      789. 1     dst       5.77     3.09\n2 BIRMING… RXT    B1 3RB                     1313. 1     dst       5.68     2.83\n3 BIRMING… RYW    B7 4BN                     1356. 1     dst       7.59     4.29\n4 SANDWEL… RXK    B18 7QH                    2246. 1     dst       7.76     3.69\n5 UNIVERS… RRK    B15 2GW                    3838. 1     dst      10.6      4.67\n# ℹ 1 more variable: geometry &lt;LINESTRING [°]&gt;"
+    "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#applying-the-data",
+    "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#applying-the-data",
+    "title": "System Dynamics in health and social care",
+    "section": "Applying the data",
+    "text": "Applying the data\n\n\nHow to apply this wrangling of data to the system dynamic model?\nAdmissions data used as an input to the flow - could be reduced to a single figure (average), or there may be variation by season/day of week etc.\nOccupancy (and discharges) used to verify the model output against known data."
   },
   {
-    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#lets-show-the-routes",
-    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#lets-show-the-routes",
-    "title": "Coffee and Coding",
-    "section": "Let’s show the routes",
-    "text": "Let’s show the routes\n\nleaflet(routes) |&gt;\n  addTiles() |&gt;\n  addMarkers(data = location) |&gt;\n  addPolylines(color = \"black\", weight = 3, opacity = 1) |&gt;\n  addCircleMarkers(data = nearest_trusts, radius = 4, opacity = 1, fillOpacity = 1)"
+    "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#next-steps",
+    "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#next-steps",
+    "title": "System Dynamics in health and social care",
+    "section": "Next Steps",
+    "text": "Next Steps\n\nGeneralise function to a state where it can be used by others - onto Github\nTurn this into a package\nOpen-source SD models and interfaces - R Shiny or Python"
   },
   {
-    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#we-can-use-osrm-to-calculate-isochrones",
-    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#we-can-use-osrm-to-calculate-isochrones",
-    "title": "Coffee and Coding",
-    "section": "We can use {osrm} to calculate isochrones",
-    "text": "We can use {osrm} to calculate isochrones\n\n\n\niso &lt;- osrmIsochrone(location, breaks = seq(0, 60, 15), res = 10)\n\nisochrone_ids &lt;- unique(iso$id)\n\npal &lt;- colorFactor(\n  viridis::viridis(length(isochrone_ids)),\n  isochrone_ids\n)\n\nleaflet(location) |&gt;\n  addProviderTiles(\"Stamen.TonerLite\") |&gt;\n  addMarkers() |&gt;\n  addPolygons(\n    data = iso,\n    fillColor = ~ pal(id),\n    color = \"#000000\",\n    weight = 1\n  )"
+    "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#questions-comments-suggestions",
+    "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#questions-comments-suggestions",
+    "title": "System Dynamics in health and social care",
+    "section": "Questions, comments, suggestions?",
+    "text": "Questions, comments, suggestions?\n\n\n\nPlease get in touch!\n\nSally.Thompson37@nhs.net\n\n\nNHS-R conference 2023"
   },
   {
-    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#what-trusts-are-in-the-isochrones",
-    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#what-trusts-are-in-the-isochrones",
-    "title": "Coffee and Coding",
-    "section": "What trusts are in the isochrones?",
-    "text": "What trusts are in the isochrones?\nThe summarise() function will “union” the geometry\n\nsummarise(iso)\n\nSimple feature collection with 1 feature and 0 fields\nGeometry type: POLYGON\nDimension:     XY\nBounding box:  xmin: -2.913575 ymin: 51.98062 xmax: -0.8502164 ymax: 53.1084\nGeodetic CRS:  WGS 84\n                        geometry\n1 POLYGON ((-1.541014 52.9693..."
+    "objectID": "presentations/2023-03-23_collaborative-working/index.html#introduction",
+    "href": "presentations/2023-03-23_collaborative-working/index.html#introduction",
+    "title": "Collaborative working",
+    "section": "Introduction",
+    "text": "Introduction\n\nThis is definitely an art and not a science\nI do not claim to have all, or even most of, the answers\nHow you use these tools is way more important than the tools themselves\nThis is a culture and not a technique"
   },
   {
-    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#what-trusts-are-in-the-isochrones-1",
-    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#what-trusts-are-in-the-isochrones-1",
-    "title": "Coffee and Coding",
-    "section": "What trusts are in the isochrones?",
-    "text": "What trusts are in the isochrones?\nWe can use this with a geo-filter to find the trusts in the isochrone\n\n# also works\ntrusts_in_iso &lt;- trusts |&gt;\n  st_filter(\n    summarise(iso),\n    .predicate = st_within\n  )\n\ntrusts_in_iso\n\nSimple feature collection with 31 features and 3 fields\nGeometry type: POINT\nDimension:     XY\nBounding box:  xmin: -2.793386 ymin: 52.19205 xmax: -1.10302 ymax: 53.01015\nGeodetic CRS:  WGS 84\n# A tibble: 31 × 4\n   name                               org_id post_code             geometry\n * &lt;chr&gt;                              &lt;chr&gt;  &lt;chr&gt;              &lt;POINT [°]&gt;\n 1 BIRMINGHAM AND SOLIHULL MENTAL HE… RXT    B1 3RB    (-1.917663 52.48416)\n 2 BIRMINGHAM COMMUNITY HEALTHCARE N… RYW    B7 4BN    (-1.886282 52.48754)\n 3 BIRMINGHAM WOMEN'S AND CHILDREN'S… RQ3    B4 6NH     (-1.894241 52.4849)\n 4 BIRMINGHAM WOMEN'S NHS FOUNDATION… RLU    B15 2TG   (-1.942861 52.45325)\n 5 BURTON HOSPITALS NHS FOUNDATION T… RJF    DE13 0RB  (-1.656667 52.81774)\n 6 COVENTRY AND WARWICKSHIRE PARTNER… RYG    CV6 6NY    (-1.48692 52.45659)\n 7 DERBYSHIRE HEALTHCARE NHS FOUNDAT… RXM    DE22 3LZ  (-1.512896 52.91831)\n 8 DUDLEY INTEGRATED HEALTH AND CARE… RYK    DY5 1RU    (-2.11786 52.48176)\n 9 GEORGE ELIOT HOSPITAL NHS TRUST    RLT    CV10 7DJ   (-1.47844 52.51258)\n10 HEART OF ENGLAND NHS FOUNDATION T… RR1    B9 5ST     (-1.828759 52.4781)\n# ℹ 21 more rows"
+    "objectID": "presentations/2023-03-23_collaborative-working/index.html#costs",
+    "href": "presentations/2023-03-23_collaborative-working/index.html#costs",
+    "title": "Collaborative working",
+    "section": "Costs",
+    "text": "Costs\n\nDelay and time\nStress and disagreement\nCommittee thinking\nLearning and effort"
   },
   {
-    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#what-trusts-are-in-the-isochrones-2",
-    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#what-trusts-are-in-the-isochrones-2",
-    "title": "Coffee and Coding",
-    "section": "What trusts are in the isochrones?",
-    "text": "What trusts are in the isochrones?\n\n\n\nleaflet(trusts_in_iso) |&gt;\n  addProviderTiles(\"Stamen.TonerLite\") |&gt;\n  addMarkers() |&gt;\n  addPolygons(\n    data = iso,\n    fillColor = ~pal(id),\n    color = \"#000000\",\n    weight = 1\n  )"
+    "objectID": "presentations/2023-03-23_collaborative-working/index.html#benefits",
+    "href": "presentations/2023-03-23_collaborative-working/index.html#benefits",
+    "title": "Collaborative working",
+    "section": "Benefits",
+    "text": "Benefits\n\n“From each according to their ability”\nLearning\nReproducibility and reduced truck factor\nFun!"
   },
   {
-    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#doing-the-same-but-within-a-radius",
-    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#doing-the-same-but-within-a-radius",
-    "title": "Coffee and Coding",
-    "section": "Doing the same but within a radius",
-    "text": "Doing the same but within a radius\n\n\n\nr &lt;- 25000\n\ntrusts_in_radius &lt;- trusts |&gt;\n  st_filter(\n    location,\n    .predicate = st_is_within_distance,\n    dist = r\n  )\n\n# transforming gives us a pretty smooth circle\nradius &lt;- location |&gt;\n  st_transform(crs = 27700) |&gt;\n  st_buffer(dist = r) |&gt;\n  st_transform(crs = 4326)\n\nleaflet(trusts_in_radius) |&gt;\n  addProviderTiles(\"Stamen.TonerLite\") |&gt;\n  addMarkers() |&gt;\n  addPolygons(\n    data = radius,\n    color = \"#000000\",\n    weight = 1\n  )"
+    "objectID": "presentations/2023-03-23_collaborative-working/index.html#github-as-an-organising-principle-behind-work",
+    "href": "presentations/2023-03-23_collaborative-working/index.html#github-as-an-organising-principle-behind-work",
+    "title": "Collaborative working",
+    "section": "GitHub as an organising principle behind work",
+    "text": "GitHub as an organising principle behind work\n\nA project is just a set of milestones\nA milestone is just a set of issues\nAn issue is just a set of commits\nA commit is just text added and removed"
   },
   {
-    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#further-reading",
-    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#further-reading",
-    "title": "Coffee and Coding",
-    "section": "Further reading",
-    "text": "Further reading\n\nGeocomputation with R\nr-spatial\n{sf} documentation\nLeaflet documentation\nTidy Geospatial Networks in R\n\n\n\nview slides at the-strategy-unit.github.io/data_science/presentations"
+    "objectID": "presentations/2023-03-23_collaborative-working/index.html#the-repo-owner",
+    "href": "presentations/2023-03-23_collaborative-working/index.html#the-repo-owner",
+    "title": "Collaborative working",
+    "section": "The repo owner",
+    "text": "The repo owner\n\nReview milestones\nReview issues\n\nDiscuss the issue on the issue- NOT on email!\n\nReview pull requests and get your pull requests reviewed!"
   },
   {
-    "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#what-is-targets",
-    "href": "presentations/2023-03-23_coffee-and-coding/index.html#what-is-targets",
-    "title": "Coffee and Coding",
-    "section": "What is {targets}?",
-    "text": "What is {targets}?\n\nThe targets package is a Make-like pipeline tool for Statistics and data science in R. With targets, you can maintain a reproducible workflow without repeating yourself. targets learns how your pipeline fits together, skips costly runtime for tasks that are already up to date, runs only the necessary computation, supports implicit parallel computing, abstracts files as R objects, and shows tangible evidence that the results match the underlying code and data.\n\n\n\nData analysis can be slow. A round of scientific computation can take several minutes, hours, or even days to complete. After it finishes, if you update your code or data, your hard-earned results may no longer be valid. Unchecked, this invalidation creates chronic Sisyphean loop:\n\n\nLaunch the code.\nWait while it runs.\nDiscover an issue.\nRestart from scratch.\n\n\nsource: The {targets} R package user manual"
+    "objectID": "presentations/2023-03-23_collaborative-working/index.html#asynchronous-communication",
+    "href": "presentations/2023-03-23_collaborative-working/index.html#asynchronous-communication",
+    "title": "Collaborative working",
+    "section": "Asynchronous communication",
+    "text": "Asynchronous communication\n\nInvolve others before you pull request\nInvolve others when you pull request\nRead issues!\nComment on issues!\nFile issues- suggestions/ bug reports/ questions\n\nNOT in emails"
   },
   {
-    "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#what-is-it-actually-trying-to-do",
-    "href": "presentations/2023-03-23_coffee-and-coding/index.html#what-is-it-actually-trying-to-do",
-    "title": "Coffee and Coding",
-    "section": "What is it actually trying to do?",
-    "text": "What is it actually trying to do?\n\n\nYour analysis is built up of a number of steps that build one on top of another\nbut these steps need to run in a particular order\nsome of these steps may take a long time to run\nso you only want to run the steps that have changed"
+    "objectID": "presentations/2023-03-23_collaborative-working/index.html#asynchronous-work",
+    "href": "presentations/2023-03-23_collaborative-working/index.html#asynchronous-work",
+    "title": "Collaborative working",
+    "section": "Asynchronous work",
+    "text": "Asynchronous work\n\nEvery piece of work has an issues associated with it\nEvery piece of work associated with an issue lives on its own branch\nEvery branch is incorporated to the main repo by a pull request\nEvery pull request is reviewed"
   },
   {
-    "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#typical-solution",
-    "href": "presentations/2023-03-23_coffee-and-coding/index.html#typical-solution",
-    "title": "Coffee and Coding",
-    "section": "Typical solution",
-    "text": "Typical solution\n\n\nSteps\nYou have a folder with numbered scripts, such as:\n\n1. get data.R\n2. process data.R\n3. produce charts.R\n4. build model.R\n5. report.qmd\n\n\nDownsides\n\n\nit’s easy to accidentally skip a step: what happens if you went from 1 to 3?\nperforming one of the steps may take a long time, so you may want to skip it if it’s already been run… but how do you know that it’s already been run?\nperhaps step 4 doesn’t depend on step 3, but is this obvious that you could skip step 4 if step 3 is updated?\nwhat if someone labels the files terribly, or doesn’t number them at all?\nwhat if the numbers become out of date and are in the wrong order?\ndo you need to create a procedure document that describes what to do, step-by-step?"
+    "objectID": "presentations/2023-03-23_collaborative-working/index.html#iteration-and-documentation",
+    "href": "presentations/2023-03-23_collaborative-working/index.html#iteration-and-documentation",
+    "title": "Collaborative working",
+    "section": "Iteration and documentation",
+    "text": "Iteration and documentation\n\nAnalyse early, analyse often (using RAPs!)\nWrite down what you did\nWrite down what you did but then changed your mind about\nFavour Quarto/ RMarkdown\n\nClean sessions\nDocumentation and graphics"
   },
   {
-    "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#targets-to-the-rescue",
-    "href": "presentations/2023-03-23_coffee-and-coding/index.html#targets-to-the-rescue",
-    "title": "Coffee and Coding",
-    "section": "{targets} to the rescue?",
-    "text": "{targets} to the rescue?\n\n\nUsing the previous example, if we were to create functions for each of the steps (all saved in the folder R/), we can start using targets using the function use_targets() which will create a file called _targets.R.\nWe can then modify the file to match our pipeline, for example:\nNote that:\n\nprocessed_data depends upon raw_data,\nchart and model depend upon processed_data,\nreport depends upon chart and model.\n\nWe can visualise our pipeline using tar_visnetwork().\n\n\nlibrary(targets)\n\ntar_option_set(\n  packages = c(\"tibble\", \"dplyr\", \"ggplot2\"),\n)\n\ntar_source()\n\nlist(\n  tar_target(raw_data, get_data()),\n  tar_target(processed_data, process_data(raw_data)),\n  tar_target(chart, produce_chart(processed_data)),\n  tar_target(model, build_model(processed_data)),\n  tar_target(report, generate_report(chart, model))\n)"
+    "objectID": "presentations/2023-03-23_collaborative-working/index.html#data-and-.gitignore",
+    "href": "presentations/2023-03-23_collaborative-working/index.html#data-and-.gitignore",
+    "title": "Collaborative working",
+    "section": "Data and .gitignore",
+    "text": "Data and .gitignore\n\nYour repo needs to be reproducible but also needs to be safe\nThe main branch should be reproducible by anyone at any time\n\nDocument package dependencies (using renv)\nDocument data loads if the data isn’t in the repo\n\n\n\n\nview slides at the-strategy-unit.github.io/data_science/presentations"
   },
   {
-    "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#running-the-pipeline",
-    "href": "presentations/2023-03-23_coffee-and-coding/index.html#running-the-pipeline",
-    "title": "Coffee and Coding",
-    "section": "Running the pipeline",
-    "text": "Running the pipeline\nRunning this pipeline is as simple as: tar_make().\nThis will output the following:\n• start target raw_data\n• built target raw_data [1.05 seconds]\n• start target processed_data\n• built target processed_data [0.03 seconds]\n• start target chart\n• built target chart [0.02 seconds]\n• start target model\n• built target model [0.01 seconds]\n• start target report\n• built target report [0 seconds]\n• end pipeline [1.75 seconds]\n\nRunning tar_make() again will show these step’s being skipped:\n✔ skip target raw_data\n✔ skip target processed_data\n✔ skip target chart\n✔ skip target model\n✔ skip target report\n✔ skip pipeline [0.12 seconds]"
+    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#what-is-data-science",
+    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#what-is-data-science",
+    "title": "Travels with R and Python",
+    "section": "What is data science?",
+    "text": "What is data science?\n\n“A data scientist knows more about computer science than the average statistician, and more about statistics than the average computer scientist”\n\n(Josh Wills, a former head of data engineering at Slack)"
   },
   {
-    "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#changing-one-of-the-files",
-    "href": "presentations/2023-03-23_coffee-and-coding/index.html#changing-one-of-the-files",
-    "title": "Coffee and Coding",
-    "section": "Changing one of the files",
-    "text": "Changing one of the files\nIf we change produce_chart.R slightly, this will cause chart and report to be invalidated, but it will skip over the other steps.\n\n\n&gt; targets::tar_make()\n\n✔ skip target raw_data\n✔ skip target processed_data\n• start target chart\n• built target chart [0.03 seconds]\n✔ skip target model\n• start target report\n• built target report [0 seconds]\n• end pipeline [1.71 seconds]"
+    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#drew-conways-famous-venn-diagram",
+    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#drew-conways-famous-venn-diagram",
+    "title": "Travels with R and Python",
+    "section": "Drew Conway’s famous Venn diagram",
+    "text": "Drew Conway’s famous Venn diagram\n\nSource"
   },
   {
-    "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#using-the-results-of-our-pipeline",
-    "href": "presentations/2023-03-23_coffee-and-coding/index.html#using-the-results-of-our-pipeline",
-    "title": "Coffee and Coding",
-    "section": "Using the results of our pipeline",
-    "text": "Using the results of our pipeline\nWe can view the results of any step using tar_read() and tar_load(). These will either directly give you the results of a step, or load that step into your environment (as a variable with the same name as the step).\nThis allows us to view intermediate steps as well as the final outputs of our pipelines.\nOne thing you may want to consider doing is as a final step in a pipeline is to generate a quarto document, or save call a function like saveRDS to generate more useful outputs."
+    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#what-are-the-skills-of-data-science",
+    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#what-are-the-skills-of-data-science",
+    "title": "Travels with R and Python",
+    "section": "What are the skills of data science?",
+    "text": "What are the skills of data science?\n\nAnalysis\n\nML\nStats\nData viz\n\nSoftware engineering\n\nProgramming\nSQL/ data\nDevOps\nRAP"
   },
   {
-    "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#current-examples-of-targets-in-action",
-    "href": "presentations/2023-03-23_coffee-and-coding/index.html#current-examples-of-targets-in-action",
-    "title": "Coffee and Coding",
-    "section": "Current examples of {targets} in action",
-    "text": "Current examples of {targets} in action\n\ncode used in this presentation\nNHP Inputs (all of the data processing steps are a targets pipeline)\nNHP Strategies (runs Sql scripts to update tables in the data warehouse)\nNHP Model (all of the data extraction, processing, and uploading for the model is a targets pipeline)\nMacmillan on NCDR - Jacqueline has been using {targets} for her current project\n\nThe {targets} documentation is exceptionally detailed and easy to follow, and goes into more complex examples (such as dynamic branching of steps in a pipeline and high performance computing setups)\n\n\nview slides at the-strategy-unit.github.io/data_science/presentations"
+    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#what-are-the-skills-of-data-science-1",
+    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#what-are-the-skills-of-data-science-1",
+    "title": "Travels with R and Python",
+    "section": "What are the skills of data science?",
+    "text": "What are the skills of data science?\n\nDomain knowledge\n\nCommunication\nProblem formulation\nDashboards and reports"
   },
   {
-    "objectID": "presentations/2023-05-15_text-mining/index.html#patient-experience",
-    "href": "presentations/2023-05-15_text-mining/index.html#patient-experience",
-    "title": "Text mining of patient experience data",
-    "section": "Patient experience",
-    "text": "Patient experience\n\nThe NHS collects a lot of patient experience data\nRate the service 1-5 (Very poor… Excellent) but also give written feedback\n\n“Parking was difficult”\n“Doctor was rude”\n“You saved my life”\n\nMany organisations lack the staffing to read all of the feedback in a systematic way"
+    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#stats-and-data-viz",
+    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#stats-and-data-viz",
+    "title": "Travels with R and Python",
+    "section": "Stats and data viz",
+    "text": "Stats and data viz\n\nML leans a bit more towards atheoretical prediction\nStats leans a bit more towards inference (but they both do both)\nData scientists may use different visualisations\n\nInteractive web based tools\nDashboard based visualisers e.g. {stminsights}"
   },
   {
-    "objectID": "presentations/2023-05-15_text-mining/index.html#text-mining",
-    "href": "presentations/2023-05-15_text-mining/index.html#text-mining",
-    "title": "Text mining of patient experience data",
-    "section": "Text mining",
-    "text": "Text mining\n\nWe have built an algorithm to read it\n\nTheme\n“Criticality”\n\nFits alongside other work happening within NHSE\n\nA framework for understanding patient experience"
+    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#software-engineering",
+    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#software-engineering",
+    "title": "Travels with R and Python",
+    "section": "Software engineering",
+    "text": "Software engineering\n\nProgramming\n\nNo/ low code data science?\n\nSQL/ data\n\nTend to use reproducible automated processes\n\nDevOps\n\nPlan, code, build, test, release, deploy, operate, monitor\n\nRAP\n\nI will come back to this"
   },
   {
-    "objectID": "presentations/2023-05-15_text-mining/index.html#patient-experience-101",
-    "href": "presentations/2023-05-15_text-mining/index.html#patient-experience-101",
-    "title": "Text mining of patient experience data",
-    "section": "Patient experience 101",
-    "text": "Patient experience 101\n\nTick box scoring is not useful (or accurate)\nText based data is complex and built on human experience\nWe’re not making word clouds!\nWe’re not classifying movie reviews or Reddit posts\nThe tool should enhance, not replace, human understanding\n“A recommendation engine for feedback data”"
+    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#domain-knowledge",
+    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#domain-knowledge",
+    "title": "Travels with R and Python",
+    "section": "Domain knowledge",
+    "text": "Domain knowledge\n\nDo stuff that matters\n\nThe best minds of my generation are thinking about how to make people click ads. That sucks. Jeffrey Hammerbacher\n\nConvince other people that it matters\nThis is the hardest part of data science"
   },
   {
-    "objectID": "presentations/2023-05-15_text-mining/index.html#everything-open-all-the-time",
-    "href": "presentations/2023-05-15_text-mining/index.html#everything-open-all-the-time",
-    "title": "Text mining of patient experience data",
-    "section": "Everything open, all the time",
-    "text": "Everything open, all the time\n\nThis project was coded in the open and is MIT licensed\nEngage with the organisations as we find them\n\nDo they want code or a docker image?\nDo they want to fetch their own themes from an API?\nDo they want to use our dashboard?"
+    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#rap",
+    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#rap",
+    "title": "Travels with R and Python",
+    "section": "RAP",
+    "text": "RAP\n\nData science isn’t RAP\nRAP isn’t data science\nThey are firm friends"
   },
   {
-    "objectID": "presentations/2023-05-15_text-mining/index.html#phase-1",
-    "href": "presentations/2023-05-15_text-mining/index.html#phase-1",
-    "title": "Text mining of patient experience data",
-    "section": "Phase 1",
-    "text": "Phase 1\n\n10 categories and moderate performance on criticality analysis\nscikit-learn\nShiny\nReticulate\nR package of Python code"
+    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#reproducibility",
+    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#reproducibility",
+    "title": "Travels with R and Python",
+    "section": "Reproducibility",
+    "text": "Reproducibility\n\nReproducibility in science\nThe $6B spreadsheet error\nGeorge Osbourne’s austerity was based on a spreadsheet error\nFor us, reproducibility also means we can do the same analysis 50 times in one minute\n\nWhich is why I started down the road of data science"
   },
   {
-    "objectID": "presentations/2023-05-15_text-mining/index.html#golem-all-the-things",
-    "href": "presentations/2023-05-15_text-mining/index.html#golem-all-the-things",
-    "title": "Text mining of patient experience data",
-    "section": "Golem all the things!",
-    "text": "Golem all the things!\n\nOpinionated way of building Shiny\nAllows flexibility in deployed versions using YAML\nAgnostic to deployment\nEmphasises dependency management and testing\nSeparate “reactive” and “business” logic (see the accompanying book)"
+    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#what-is-rap",
+    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#what-is-rap",
+    "title": "Travels with R and Python",
+    "section": "What is RAP",
+    "text": "What is RAP\n\na process in which code is used to minimise manual, undocumented steps, and a clear, properly documented process is produced in code which can reliably give the same result from the same dataset\nRAP should be:\n\n\nthe core working practice that must be supported by all platforms and teams; make this a core focus of NHS analyst training\n\n\nGoldacre review"
   },
   {
-    "objectID": "presentations/2023-05-15_text-mining/index.html#phase-2",
-    "href": "presentations/2023-05-15_text-mining/index.html#phase-2",
-    "title": "Text mining of patient experience data",
-    "section": "Phase 2",
-    "text": "Phase 2\n\n30-50 categories and excellent criticality performance\nscikit-learn/ BERT\nMore Shiny\nSeparate the code bases\nFastAPI\nInspired by the Royal College of Paediatrics and Child Health API\nDocumentation, documentation, documentation"
+    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#levels-of-rap--baseline",
+    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#levels-of-rap--baseline",
+    "title": "Travels with R and Python",
+    "section": "Levels of RAP- Baseline",
+    "text": "Levels of RAP- Baseline\n\nData produced by code in an open-source language (e.g., Python, R, SQL)\nCode is version controlled\nRepository includes a README.md file that clearly details steps a user must follow to reproduce the code\nCode has been peer reviewed\nCode is published in the open and linked to & from accompanying publication (if relevant)\n\n\nSource: NHS Digital RAP community of practice"
   },
   {
-    "objectID": "presentations/2023-05-15_text-mining/index.html#making-it-useful",
-    "href": "presentations/2023-05-15_text-mining/index.html#making-it-useful",
-    "title": "Text mining of patient experience data",
-    "section": "Making it useful",
-    "text": "Making it useful\n\nAccurately rating low frequency categories\nPer category precision and recall\nSpeed versus accuracy\nRepresenting the thematic structure"
+    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#levels-of-rap--silver",
+    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#levels-of-rap--silver",
+    "title": "Travels with R and Python",
+    "section": "Levels of RAP- Silver",
+    "text": "Levels of RAP- Silver\n\nCode is well-documented…\nCode is well-organised following standard directory format\nReusable functions and/or classes are used where appropriate\nPipeline includes a testing framework\nRepository includes dependency information (e.g. requirements.txt, PipFile, environment.yml)\nData is handled and output in a Tidy data format\n\n\nSource: NHS Digital RAP community of practice"
   },
   {
-    "objectID": "presentations/2023-05-15_text-mining/index.html#the-future",
-    "href": "presentations/2023-05-15_text-mining/index.html#the-future",
-    "title": "Text mining of patient experience data",
-    "section": "The future",
-    "text": "The future\n\nOff the shelf, proprietary data collection systems dominate\nThey often offer bundled analytic products of low quality\nThe DS time can’t and doesn’t want to offer a complete data system\nHow can we best contribute to improving patient experience for patients in the NHS?\n\nIf the patient experience data won’t come to the mountain…"
+    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#levels-of-rap--gold",
+    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#levels-of-rap--gold",
+    "title": "Travels with R and Python",
+    "section": "Levels of RAP- Gold",
+    "text": "Levels of RAP- Gold\n\nCode is fully packaged\nRepository automatically runs tests etc. via CI/CD or a different integration/deployment tool e.g. GitHub Actions\nProcess runs based on event-based triggers (e.g., new data in database) or on a schedule\nChanges to the RAP are clearly signposted. E.g. a changelog in the package, releases etc. (See gov.uk info on Semantic Versioning)\n\n\nSource: NHS Digital RAP community of practice"
   },
   {
-    "objectID": "presentations/2023-05-15_text-mining/index.html#open-source-ftw",
-    "href": "presentations/2023-05-15_text-mining/index.html#open-source-ftw",
-    "title": "Text mining of patient experience data",
-    "section": "Open source FTW!",
-    "text": "Open source FTW!\n\nOften individuals in the NHS don’t want private companies to “benefit” from open code\nBut if they make their products better with open code the patients win\nBest practice as code"
+    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#data-science-in-healthcare",
+    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#data-science-in-healthcare",
+    "title": "Travels with R and Python",
+    "section": "Data science in healthcare",
+    "text": "Data science in healthcare\n\nForecasting\n\nStats versus ML\n\nText mining\n\nR versus Python\n\nDemand modelling\n\nDevOps as a way of life"
   },
   {
-    "objectID": "presentations/2023-05-15_text-mining/index.html#the-projects",
-    "href": "presentations/2023-05-15_text-mining/index.html#the-projects",
-    "title": "Text mining of patient experience data",
-    "section": "The projects",
-    "text": "The projects\n\nhttps://github.com/CDU-data-science-team/pxtextmining\nhttps://github.com/CDU-data-science-team/experiencesdashboard\nhttps://github.com/CDU-data-science-team/PatientExperience-QDC"
+    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#get-involved",
+    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#get-involved",
+    "title": "Travels with R and Python",
+    "section": "Get involved!",
+    "text": "Get involved!\n\nNHS-R community\n\nWebinars, training, conference, Slack\n\nNHS Pycom\n\nditto…\n\nMLCSU GitHub?\nBuild links with the other CSUs"
   },
   {
-    "objectID": "presentations/2023-05-15_text-mining/index.html#the-team",
-    "href": "presentations/2023-05-15_text-mining/index.html#the-team",
-    "title": "Text mining of patient experience data",
-    "section": "The team",
-    "text": "The team\n\nYiWen Hon (Python & Machine learning)\nOluwasegun Apejoye (Shiny)\n\nContact:\n\nchris.beeley1@nhs.net\nhttps://fosstodon.org/@chrisbeeley\n\n\n\nview slides at the-strategy-unit.github.io/data_science/presentations"
+    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#contact",
+    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#contact",
+    "title": "Travels with R and Python",
+    "section": "Contact",
+    "text": "Contact\n\n\n\n\n strategy.unit@nhs.net\n The-Strategy-Unit\n\n\n\n\n\n chris.beeley1@nhs.net\n chrisbeeley\n\n\n\n\n\n\nview slides at the-strategy-unit.github.io/data_science/presentations"
   },
   {
-    "objectID": "presentations/2023-03-09_coffee-and-coding/index.html#which-is-easier-to-read",
-    "href": "presentations/2023-03-09_coffee-and-coding/index.html#which-is-easier-to-read",
-    "title": "Coffee and Coding",
-    "section": "Which is easier to read?",
-    "text": "Which is easier to read?\n\nae_attendances |&gt;\n  filter(org_code %in% c(\"RNA\", \"RL4\")) |&gt;\n  mutate(performance = 1 + breaches / attendances) |&gt;\n  filter(type == 1) |&gt;\n  mutate(met_target = performance &gt;= 0.95)\n\nor\n\nae_attendances |&gt;\n  filter(\n    org_code %in% c(\"RNA\", \"RL4\"),\n    type == 1\n  ) |&gt;\n  mutate(\n    performance = 1 + breaches / attendances,\n    met_target = performance &gt;= 0.95\n  )\n\n\n  spending a few seconds to neatly format your code can greatly improve the legibility to future readers, making the intent of the code far clearer, and will make finding bugs easier to spot.\n\n\n  (have you spotted the mistake in the snippets above?)"
+    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#what-is-rap",
+    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#what-is-rap",
+    "title": "RAP",
+    "section": "What is RAP",
+    "text": "What is RAP\n\na process in which code is used to minimise manual, undocumented steps, and a clear, properly documented process is produced in code which can reliably give the same result from the same dataset\nRAP should be:\n\n\nthe core working practice that must be supported by all platforms and teams; make this a core focus of NHS analyst training\n\nGoldacre review"
   },
   {
-    "objectID": "presentations/2023-03-09_coffee-and-coding/index.html#tidyverse-style-guide",
-    "href": "presentations/2023-03-09_coffee-and-coding/index.html#tidyverse-style-guide",
-    "title": "Coffee and Coding",
-    "section": "Tidyverse Style Guide",
-    "text": "Tidyverse Style Guide\n\nGood coding style is like correct punctuation: you can manage without it, butitsuremakesthingseasiertoread\n\n\nAll style guides are fundamentally opinionated. Some decisions genuinely do make code easier to use (especially matching indenting to programming structure), but many decisions are arbitrary. The most important thing about a style guide is that it provides consistency, making code easier to write because you need to make fewer decisions.\n\ntidyverse style guide"
+    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#what-are-we-trying-to-achieve",
+    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#what-are-we-trying-to-achieve",
+    "title": "RAP",
+    "section": "What are we trying to achieve?",
+    "text": "What are we trying to achieve?\n\nLegibility\nReproducibility\nAccuracy\nLaziness"
   },
   {
-    "objectID": "presentations/2023-03-09_coffee-and-coding/index.html#lintr-styler-are-your-new-best-friends",
-    "href": "presentations/2023-03-09_coffee-and-coding/index.html#lintr-styler-are-your-new-best-friends",
-    "title": "Coffee and Coding",
-    "section": "{lintr} + {styler} are your new best friends",
-    "text": "{lintr} + {styler} are your new best friends\n\n\n{lintr}\n\n{lintr} is a static code analysis tool that inspects your code (without running it)\nit checks for certain classes of errors (e.g. mismatched { and (’s)\nit warns about potential issues (e.g. using variables that aren’t defined)\nit warns about places where you are not adhering to the code style\n\n\n{styler}\n\n{styler} is an RStudio add in that automatically reformats your code, tidying it up to match the style guide\n99.9% of the time it will give you equivalent code, but there is the potential that it may change the behaviour of your code\nit will overwrite the files that you ask it to run on however, so it is vital to be using version control\na good workflow here is to save your file, “stage” the changes to your file, then run {styler}. You can then revert back to the staged changed if needed."
+    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#what-are-some-of-the-fundamental-principles",
+    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#what-are-some-of-the-fundamental-principles",
+    "title": "RAP",
+    "section": "What are some of the fundamental principles?",
+    "text": "What are some of the fundamental principles?\n\nPredictability, reducing mental load, and reducing truck factor\nMaking it easy to collaborate with yourself and others on different computers, in the cloud, in six months’ time…\nDRY"
   },
   {
-    "objectID": "presentations/2023-03-09_coffee-and-coding/index.html#what-does-lintr-look-like",
-    "href": "presentations/2023-03-09_coffee-and-coding/index.html#what-does-lintr-look-like",
-    "title": "Coffee and Coding",
-    "section": "What does {lintr} look like?",
-    "text": "What does {lintr} look like?\n\n\n\nsource: Good practice for writing R code and R packages\n\nrunning lintr can be done in the console, e.g.\n\nlintr::lintr_dir(\".\")\n\nor via the Addins menu"
+    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#the-road-to-rap",
+    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#the-road-to-rap",
+    "title": "RAP",
+    "section": "The road to RAP",
+    "text": "The road to RAP\n\nWe’re roughly using NHS Digital’s RAP stages\nThere is an incredibly large amount to learn!\nConfession time! (everything I do not know…)\nYou don’t need to do it all at once\nYou don’t need to do it all at all ever\nEach thing you learn will incrementally help you\nRemember- that’s why we learnt this stuff. Because it helped us. And it can help you too"
   },
   {
-    "objectID": "presentations/2023-03-09_coffee-and-coding/index.html#using-styler",
-    "href": "presentations/2023-03-09_coffee-and-coding/index.html#using-styler",
-    "title": "Coffee and Coding",
-    "section": "Using {styler}",
-    "text": "Using {styler}\n\nsource: Good practice for writing R code and R packages"
+    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#levels-of-rap--baseline",
+    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#levels-of-rap--baseline",
+    "title": "RAP",
+    "section": "Levels of RAP- Baseline",
+    "text": "Levels of RAP- Baseline\n\nData produced by code in an open-source language (e.g., Python, R, SQL).\nCode is version controlled (see Git basics and using Git collaboratively guides).\nRepository includes a README.md file (or equivalent) that clearly details steps a user must follow to reproduce the code\nCode has been peer reviewed.\nCode is published in the open and linked to & from accompanying publication (if relevant).\n\nSource: NHS Digital RAP community of practice"
   },
   {
-    "objectID": "presentations/2023-03-09_coffee-and-coding/index.html#further-thoughts-on-improving-code-legibility",
-    "href": "presentations/2023-03-09_coffee-and-coding/index.html#further-thoughts-on-improving-code-legibility",
-    "title": "Coffee and Coding",
-    "section": "Further thoughts on improving code legibility",
-    "text": "Further thoughts on improving code legibility\n\ndo not let files grow too big\nbreak up logic into separate files, then you can use source(\"filename.R) to run the code in that file\nidealy, break up your logic into separate functions, each function having it’s own file, and then call those functions within your analysis\ndo not repeat yourself - if you are copying and pasting your code then you should be thinking about how to write a single function to handle this repeated logic\n\n\n\nview slides at the-strategy-unit.github.io/data_science/presentations"
+    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#levels-of-rap--silver",
+    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#levels-of-rap--silver",
+    "title": "RAP",
+    "section": "Levels of RAP- Silver",
+    "text": "Levels of RAP- Silver\n\nCode is well-documented…\nCode is well-organised following standard directory format\nReusable functions and/or classes are used where appropriate\nPipeline includes a testing framework\nRepository includes dependency information (e.g. requirements.txt, PipFile, environment.yml\nData is handled and output in a Tidy data format\n\nSource: NHS Digital RAP community of practice"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Data Science @ The Strategy Unit",
-    "section": "",
-    "text": "This is the home of the Data Science team at The Strategy Unit."
+    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#levels-of-rap--gold",
+    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#levels-of-rap--gold",
+    "title": "RAP",
+    "section": "Levels of RAP- Gold",
+    "text": "Levels of RAP- Gold\n\nCode is fully packaged\nRepository automatically runs tests etc. via CI/CD or a different integration/deployment tool e.g. GitHub Actions\nProcess runs based on event-based triggers (e.g., new data in database) or on a schedule\nChanges to the RAP are clearly signposted. E.g. a changelog in the package, releases etc. (See gov.uk info on Semantic Versioning)\n\nSource: NHS Digital RAP community of practice"
   },
   {
-    "objectID": "blogs/posts/2023-03-24_hotfix-with-git.html",
-    "href": "blogs/posts/2023-03-24_hotfix-with-git.html",
-    "title": "Creating a hotfix with git",
-    "section": "",
-    "text": "I recently discovered a bug in a code-base which needed to be fixed and deployed back to production A.S.A.P., but since the last release the code has moved on significantly. The history looks something a bit like:\nThat is, we have a tag which is the code that is currently in production (which we need to patch), a number of commits after that tag to main (which were separate branches merged via pull requests), and a current development branch.\nI need to somehow: 1. go back to the tagged release, 2. check that code out, 3. patch that code, 4. commit this change, but insert the commit before all of the new commits after the tag\nThere are at least two ways that I know to do this, one would be with an interactive rebase, but I used a slightly longer method, but one I feel is a little less likely to get wrong.\nBelow are the step’s that I took. One thing I should note is this worked well for my particular issue because the change didn’t cause any merge conflicts later on."
+    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#a-learning-journey-to-get-you-there",
+    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#a-learning-journey-to-get-you-there",
+    "title": "RAP",
+    "section": "A learning journey to get you there",
+    "text": "A learning journey to get you there\n\nCode style, organising your files\nFunctions and iteration\nGit and GitHub\nPackaging your code\nTesting\nPackage management and versioning"
   },
   {
-    "objectID": "blogs/posts/2023-03-24_hotfix-with-git.html#fixing-my-codebase",
-    "href": "blogs/posts/2023-03-24_hotfix-with-git.html#fixing-my-codebase",
-    "title": "Creating a hotfix with git",
-    "section": "Fixing my codebase",
-    "text": "Fixing my codebase\nFirst, we need to checkout the tag\ngit checkout -b hotfix v0.2.0\nThis creates a new branch called hotfix off of the tag v0.2.0.\nNow that I have the code base checked out at the point I need to fix, I can make the change that is needed, and commit the change\ngit add [FILENAME]\ngit commit -m \"fixes the code\"\n(Obviously, I used the actual file name and gave a better commit message. I Promise 😝)\nNow my code is fixed, I create a new tag for this “release”, as well as push the code to production (this step is omitted here)\ngit tag v0.2.1 -m \"version 0.2.0\"\nAt this point, our history looks something like\n\n\n\n\n\nWhat we want to do is break the link between main and v0.2.0, instead attaching tov0.2.1. First though, I want to make sure that if I make a mistake, I’m not making it on the main branch.\ngit checkout main\ngit checkout -b apply-hotfix\nThen we can fix our history using the rebase command\ngit rebase hotfix\nWhat this does is it rolls back to the point where the branch that we are rebasing (apply-hotfix) and the hotfix branch both share a common commit (v0.2.0 tag). It then applies the commits in the hotfix branch, before reapplying the commits from apply-hotfix (a.k.a. the main branch).\nOne thing to note, if you have any merge conflicts created by your fix, then the rebase will stop and ask you to fix the merge conflicts. There is some information in the GitHub doc’s for [resolving merge conflicts after a Git rebase][2].\n[2]: https://docs.github.com/en/get-started/using-git/resolving-merge-conflicts-after-a-git-rebase\nAt this point, we can check that the commit history looks correct\ngit log v0.2.0..HEAD\nIf we are happy, then we can apply this to the main branch. I do this by renaming the apply-hotfix branch as main. First, you have to delete the main branch to allow us to rename the branch.\ngit branch -D main\ngit branch -m main\nWe also need to update the other branches to use the new main branch\ngit checkout branch\ngit rebase main\nNow, we should have a history like"
+    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#how-we-can-help-each-other-get-there",
+    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#how-we-can-help-each-other-get-there",
+    "title": "RAP",
+    "section": "How we can help each other get there",
+    "text": "How we can help each other get there\n\nWork as a team!\nCoffee and coding!\nAsk for help!\nDo pair coding!\nGet your code reviewed!\nJoin the NHS-R/ NHSPycom communities"
   },
   {
-    "objectID": "blogs/index.html",
-    "href": "blogs/index.html",
-    "title": "Data Science Blog",
-    "section": "",
-    "text": "Alternative remote repositories\n\n\n\n\n\n\n\ngit\n\n\ntutorial\n\n\n\n\n\n\n\n\n\n\n\nApr 26, 2023\n\n\nTom Jemmett\n\n\n\n\n\n\n  \n\n\n\n\nReinstalling R Packages\n\n\n\n\n\n\n\ngit\n\n\ntutorial\n\n\n\n\n\n\n\n\n\n\n\nApr 26, 2023\n\n\nTom Jemmett\n\n\n\n\n\n\n  \n\n\n\n\nCreating a hotfix with git\n\n\n\n\n\n\n\ngit\n\n\ntutorial\n\n\n\n\n\n\n\n\n\n\n\nMar 24, 2023\n\n\nTom Jemmett\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "style/git_and_github.html",
-    "href": "style/git_and_github.html",
-    "title": "Using Git and GitHub",
-    "section": "",
-    "text": "All commits should be atomic, in short,\n\nEach commit does one, and only one simple thing, that can be summed up in a simple sentence.\n\nAll of your commits should be in branches, the only changes that are made to the main branch would be via pull requests (PR) that have been reviewed by at minimum one colleague.\n\n\n\n\n\n\nImportant\n\n\n\nNever push to main!\n\n\n\n\n\n\nIf you haven’t already, file an issue that describes what you are doing - whether it be fixing a bug, adding a feature, or something else. Issues help to keep track of both the work to be done, and the work that has been done.\nYou should ensure that the issue is as detailed as possible as it may need to be picked up by someone else. Even if only you intend to work on the issue, over time it can be easy to forget things if there isn’t enough information. They can also help you to remember what changes you have made to your code, and why you had to make these changes, which can be useful if you need to provide change logs when you release your code.\n\n\nIssues are a good record to explain what a PR is for. It’s also a useful area for input from other members of the team.\n\n\n\nOnce the issue is created and you have decided that you are going to work on it, first assign yourself to the issue in GitHub. This is an indication to others and helps to prevent multiple people from independently working on the same issue.\nOnce you have assigned yourself, you must make a new branch to work on that feature. GitHub offers a button to do this automatically on the issue page, on the right-hand side.\n\n\n\nScreenshot links to specific GitHub help page\n\n\n\n\nIf you used the create branch button on GitHub it will automatically close the issue when merged.\nLocally you can then work on the branch, pushing your code regularly to GitHub so it can be run and inspected when you are not around.\nWhen you think that your changes are ready to be merged, it’s time to create a PR and request a code review.\n\n\n\nWhen you create a PR, you must do two things:\n\nimmediately make someone an assignee - this is the person who will merge the PR. Typically, this should be the person creating the PR (you)\nselect a person (or people) to review the PR\n\nIf your code is not yet ready to be merged then you should use a draft PR.\n\n\nNote that draft PRs are only available on public GitHub repos.\nWait until the reviewer(s) has completed the review and marked it as ready to merge. At this point, the person who is assigned to the PR can complete the merge.\n\n\nMost merges will be the default Create a merge commit but sometimes you may wish to Squash and merge. As the person requesting the PR, you can select whichever option is wanted from the drop-down in GitHub as part of the PR.\n\n\n\nBy using this approach of the assignee completing the merge, it ensures that code quality is maintained and prevents code from being merged when it is not yet ready. For example, you may have started a PR thinking your work is complete, and a reviewer checks the code and agrees to merge, however, you may realise that there are still things to work on, or there are issues that need to be addressed.\nThe person who is assigned to the PR should be the only person making commits to the branch and this will prevent merge conflicts. If you wish for someone else to collaborate on the branch, then you should assign the PR to that person. At that point, they can pull your branch down and work on it, but you must stop using that branch locally.\n\n\n\n\n\n\nImportant\n\n\n\nOnly one person should ever work on changes to a branch at any time, and it is important to communicate with colleagues so they know to pull the latest changes in.\n\n\n\n\nIf the PR is later assigned back to you then you must immediately pull changes.\nThere may be times when you cannot be the assignee on a PR and in those situations you should nominate someone else to be the assignee and in charge of the PR, the same rules as in the paragraph above would then apply.\nIf, as a reviewer, you find that no one is assigned to the branch, you should get in contact with the person who created the branch and decide who is going to be the assigned owner of the PR.\n\n\nIn circumstances where the person who created the PR is an outside collaborator and doesn’t have permission to merge, then the reviewer should also be the assignee. In these circumstances, the collaborator will be working from their local fork and will be the only person who can push to the branch. The reviewer, once happy to approve the changes, can merge the PR.\n\n\n\n\nTODO"
-  },
-  {
-    "objectID": "style/git_and_github.html#workflow-for-writing-code-with-git-and-github",
-    "href": "style/git_and_github.html#workflow-for-writing-code-with-git-and-github",
-    "title": "Using Git and GitHub",
-    "section": "",
-    "text": "If you haven’t already, file an issue that describes what you are doing - whether it be fixing a bug, adding a feature, or something else. Issues help to keep track of both the work to be done, and the work that has been done.\nYou should ensure that the issue is as detailed as possible as it may need to be picked up by someone else. Even if only you intend to work on the issue, over time it can be easy to forget things if there isn’t enough information. They can also help you to remember what changes you have made to your code, and why you had to make these changes, which can be useful if you need to provide change logs when you release your code.\n\n\nIssues are a good record to explain what a PR is for. It’s also a useful area for input from other members of the team.\n\n\n\nOnce the issue is created and you have decided that you are going to work on it, first assign yourself to the issue in GitHub. This is an indication to others and helps to prevent multiple people from independently working on the same issue.\nOnce you have assigned yourself, you must make a new branch to work on that feature. GitHub offers a button to do this automatically on the issue page, on the right-hand side.\n\n\n\nScreenshot links to specific GitHub help page\n\n\n\n\nIf you used the create branch button on GitHub it will automatically close the issue when merged.\nLocally you can then work on the branch, pushing your code regularly to GitHub so it can be run and inspected when you are not around.\nWhen you think that your changes are ready to be merged, it’s time to create a PR and request a code review.\n\n\n\nWhen you create a PR, you must do two things:\n\nimmediately make someone an assignee - this is the person who will merge the PR. Typically, this should be the person creating the PR (you)\nselect a person (or people) to review the PR\n\nIf your code is not yet ready to be merged then you should use a draft PR.\n\n\nNote that draft PRs are only available on public GitHub repos.\nWait until the reviewer(s) has completed the review and marked it as ready to merge. At this point, the person who is assigned to the PR can complete the merge.\n\n\nMost merges will be the default Create a merge commit but sometimes you may wish to Squash and merge. As the person requesting the PR, you can select whichever option is wanted from the drop-down in GitHub as part of the PR.\n\n\n\nBy using this approach of the assignee completing the merge, it ensures that code quality is maintained and prevents code from being merged when it is not yet ready. For example, you may have started a PR thinking your work is complete, and a reviewer checks the code and agrees to merge, however, you may realise that there are still things to work on, or there are issues that need to be addressed.\nThe person who is assigned to the PR should be the only person making commits to the branch and this will prevent merge conflicts. If you wish for someone else to collaborate on the branch, then you should assign the PR to that person. At that point, they can pull your branch down and work on it, but you must stop using that branch locally.\n\n\n\n\n\n\nImportant\n\n\n\nOnly one person should ever work on changes to a branch at any time, and it is important to communicate with colleagues so they know to pull the latest changes in.\n\n\n\n\nIf the PR is later assigned back to you then you must immediately pull changes.\nThere may be times when you cannot be the assignee on a PR and in those situations you should nominate someone else to be the assignee and in charge of the PR, the same rules as in the paragraph above would then apply.\nIf, as a reviewer, you find that no one is assigned to the branch, you should get in contact with the person who created the branch and decide who is going to be the assigned owner of the PR.\n\n\nIn circumstances where the person who created the PR is an outside collaborator and doesn’t have permission to merge, then the reviewer should also be the assignee. In these circumstances, the collaborator will be working from their local fork and will be the only person who can push to the branch. The reviewer, once happy to approve the changes, can merge the PR.\n\n\n\n\nTODO"
-  },
-  {
-    "objectID": "style/data_storage.html",
-    "href": "style/data_storage.html",
-    "title": "Data Storage",
-    "section": "",
-    "text": "All projects should be commited to version control, with a repository created in the Strategy Unit’s GitHub organisation.\nIdeally, any data that is used within the project should be part of a targets pipeline.\nThere are a number of considerations about whether to add the data to version control or not. At a high level:\n\nis the data OK to release publicly?\nis the data in a text-based (non-binary) format, such as .csv, .json (rather than say .xlsx)?\nis the data relatively small in size?\n\n\n\nIf data is grabbed from a website, or via an API, create code to download the file/data. Consider whether this is likely to be a stable way of getting the data (does the data change over time? do you suspect that the location of the resource may disappear? is it quick to retrieve the data?). If so, then it doesn’t make much sense to commit the data to version control as it can always be quickly regenerated.\n\n\n\nLarge files tend not to work particularly well with version control. Specifically, files larger than 100MB will be blocked by GitHub, and files larger than 50MB will generate a warning. But you may even want to class any file over a few MB as large.\nAlternatives for storing large files:\n\nif the file is something that is generated (and reproducible) from other sources, then do not bother tracking the file\nif the file is something that you want tracking with version control, look at git LFS\nif the file needs to be shared publicly, but LFS is not suitable, the file could be stored in Azure blob storage\nif the file needs to be shared privately, also consider Azure blob storage (using something like SAS tokens)\nif the file needs to only be shared within the Strategy Unit then store in SharePoint (i.e. within a teams channel)\n\nUse of network drives should be deprecated and avoided at all costs due to issues of lack of versioning of files and the performance bottleneck that is created by using a network share. If a network share is truly the only way of storing the data for sharing with colleagues, then look at using ways of syncing the file to local storage to avoid performance bottlenecks, such as robocopy."
-  },
-  {
-    "objectID": "style/data_storage.html#data-from-websites",
-    "href": "style/data_storage.html#data-from-websites",
-    "title": "Data Storage",
-    "section": "",
-    "text": "If data is grabbed from a website, or via an API, create code to download the file/data. Consider whether this is likely to be a stable way of getting the data (does the data change over time? do you suspect that the location of the resource may disappear? is it quick to retrieve the data?). If so, then it doesn’t make much sense to commit the data to version control as it can always be quickly regenerated."
-  },
-  {
-    "objectID": "style/data_storage.html#filesize",
-    "href": "style/data_storage.html#filesize",
-    "title": "Data Storage",
-    "section": "",
-    "text": "Large files tend not to work particularly well with version control. Specifically, files larger than 100MB will be blocked by GitHub, and files larger than 50MB will generate a warning. But you may even want to class any file over a few MB as large.\nAlternatives for storing large files:\n\nif the file is something that is generated (and reproducible) from other sources, then do not bother tracking the file\nif the file is something that you want tracking with version control, look at git LFS\nif the file needs to be shared publicly, but LFS is not suitable, the file could be stored in Azure blob storage\nif the file needs to be shared privately, also consider Azure blob storage (using something like SAS tokens)\nif the file needs to only be shared within the Strategy Unit then store in SharePoint (i.e. within a teams channel)\n\nUse of network drives should be deprecated and avoided at all costs due to issues of lack of versioning of files and the performance bottleneck that is created by using a network share. If a network share is truly the only way of storing the data for sharing with colleagues, then look at using ways of syncing the file to local storage to avoid performance bottlenecks, such as robocopy."
-  },
-  {
-    "objectID": "style/style_guide.html",
-    "href": "style/style_guide.html",
-    "title": "Style Guide",
-    "section": "",
-    "text": "On the whole we follow the conventions of the tidyverse style guide\nWe prefer packages to be explicitly namespaced like this dplyr::mutate(...). This is not essential in exploratory data analysis but is mandatory in all production code\nFor readability please insert line breaks in your code at or before column 80.\nWe prefer to avoid loading {tidyverse} because it brings in a lot of packages that are not being used. Again, not essential to follow this in exploratory data analysis but no code that is or will be deployed should ever load {tidyverse}\n\n\n\n\n\nfavour |&gt; over %&gt;%\nfavour .qmd over .rmd\nuse git for all projects, github being the home of all of the project code\nRAP everything\n{styler}\nhttps://style.tidyverse.org/\n{lintr}"
-  },
-  {
-    "objectID": "style/style_guide.html#code-style",
-    "href": "style/style_guide.html#code-style",
-    "title": "Style Guide",
-    "section": "",
-    "text": "On the whole we follow the conventions of the tidyverse style guide\nWe prefer packages to be explicitly namespaced like this dplyr::mutate(...). This is not essential in exploratory data analysis but is mandatory in all production code\nFor readability please insert line breaks in your code at or before column 80.\nWe prefer to avoid loading {tidyverse} because it brings in a lot of packages that are not being used. Again, not essential to follow this in exploratory data analysis but no code that is or will be deployed should ever load {tidyverse}"
-  },
-  {
-    "objectID": "style/style_guide.html#unorganised-notes",
-    "href": "style/style_guide.html#unorganised-notes",
-    "title": "Style Guide",
-    "section": "",
-    "text": "favour |&gt; over %&gt;%\nfavour .qmd over .rmd\nuse git for all projects, github being the home of all of the project code\nRAP everything\n{styler}\nhttps://style.tidyverse.org/\n{lintr}"
-  },
-  {
-    "objectID": "style/project_structure.html",
-    "href": "style/project_structure.html",
-    "title": "Project Structure",
-    "section": "",
-    "text": "as a package\nR/ for scripts\nsplit files into separate scripts\nuse {renv}\nuse {targets}\n\n\n\nRStudio projects are a great way to organise your analytical projects into discrete units that are easier to work on and share.\n\n\n\n\n\n\n\n\n\n\n\n\nOne of the most common issues you will face when using a project someone else has created, or you created previously, is maintaining the required packages to run the project. Knowing what packages are needed to run a particular project isn’t always obvious, and over time packages can change rendering code that once worked unusable.\n{renv} solves this problem by:\n\nkeeping track of the packages that are required for a particular project\nlogging the installed version of all of the packages\nmaintaining a per-project library of packages, so projects don’t interfere with one another\n\nIt’s a good idea to use {renv} for all projects."
-  },
-  {
-    "objectID": "style/project_structure.html#use-rstudio-projects",
-    "href": "style/project_structure.html#use-rstudio-projects",
-    "title": "Project Structure",
-    "section": "",
-    "text": "RStudio projects are a great way to organise your analytical projects into discrete units that are easier to work on and share."
-  },
-  {
-    "objectID": "style/project_structure.html#renv",
-    "href": "style/project_structure.html#renv",
-    "title": "Project Structure",
-    "section": "",
-    "text": "One of the most common issues you will face when using a project someone else has created, or you created previously, is maintaining the required packages to run the project. Knowing what packages are needed to run a particular project isn’t always obvious, and over time packages can change rendering code that once worked unusable.\n{renv} solves this problem by:\n\nkeeping track of the packages that are required for a particular project\nlogging the installed version of all of the packages\nmaintaining a per-project library of packages, so projects don’t interfere with one another\n\nIt’s a good idea to use {renv} for all projects."
-  },
-  {
-    "objectID": "blogs/posts/2023-04-26_alternative_remotes.html",
-    "href": "blogs/posts/2023-04-26_alternative_remotes.html",
-    "title": "Alternative remote repositories",
-    "section": "",
-    "text": "It’s great when someone send’s you a pull request on GitHub to fix bugs or add new features to your project, but you probably always want to check the other persons work in someway before merging that pull request.\nAll of the steps below are intended to be entered via a terminal.\nLet’s imagine that we have a GitHub account called example and a repository called test, and we use https rather than ssh.\n$ git remote get-url origin\n# https://github.com/example/test.git\nNow, let’s say we have someone who has submitted a Pull Request (PR), and their username is friend. We can add a new remote for their fork with\n$ git remote add friend https://github.com/friend/test.git\nHere, I name the remote exactly as per the persons GitHub username for no other reason than making it easier to track things later on. You could name this remote whatever you like, but you will need to make sure that the remote url matches their repository correctly.\nWe are now able to checkout their remote branch. First, we will want to fetch their work:\n# make sure to replace the remote name to what you set it to before\n$ git fetch friend\nNow, hopefully they have commited to a branch with a name that you haven’t used. Let’s say they created a branch called my_work. You can then simply run\n$ git switch friend/my_work\nThis should checkout the my_work branch locally for you.\nNow, if they have happened to use a branch name that you are already using, or more likely, directly commited to their own main branch, you will need to do checkout to a new branch:\n# replace friend as above to be the name of the remote, and main to be the branch\n# that they have used\n# replace their_work with whatever you want to call this branch locally\n$ git checkout friend/main -b their_work\nYou are now ready to run their code and check everything is good to merge!\nFinally, If you want to clean up your local repository you can remove the new branch that you checked out and the new remote with the following steps:\n# switch back to one of your branches, e.g. main\n$ git checkout main\n\n# then remove the branch that you created above\n$ git branch -D their_work\n\n# you can remove the remote\n$ git remote remove friend"
-  },
-  {
-    "objectID": "blogs/posts/2023-04-26-reinstalling-r-packages.html",
-    "href": "blogs/posts/2023-04-26-reinstalling-r-packages.html",
-    "title": "Reinstalling R Packages",
-    "section": "",
-    "text": "R 4.3.0 was released last week. Anytime you update R you will probably find yourself in the position where no packages are installed. This is by design - the packages that you have installed may need to be updated and recompiled to work under new versions of R.\nYou may find yourself wanting to have all of the packages that you previously used, so one approach that some people take is to copy the previous library folder to the new versions folder. This isn’t a good idea and could potentially break your R install.\nAnother approach would be to export the list of packages in R before updating and then using that list after you have updated R. This can cause issues though if you install from places other than CRAN, e.g. bioconductor, or from GitHub.\nSome of these approaches are discussed on the RStudio Community Forum. But I prefer an approach of having a “spring clean”, instead only installing the packages that I know that I need.\nI maintain a list of the packages that I used as a gist. Using this, I can then simply run this script on any new R install. In fact, if you click the “raw” button on the gist, and copy that url, you can simply run\nsource(\"https://gist.githubusercontent.com/tomjemmett/c105d3e0fbea7558088f68c65e68e1ed/raw/a1db4b5fa0d24562d16d3f57fe8c25fb0d8aa53e/setup.R\")\nGenerally, sourcing a url is a bad idea - the reason for this is if it’s not a link that you control, then someone could update the contents and run arbritary code on your machine. In this case, I’m happy to run this as it’s my own gist, but you should be mindful if running it yourself!\nIf you look at the script I first install a number of packages from CRAN, then I install packages that only exist on GitHub."
+    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#haca",
+    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#haca",
+    "title": "RAP",
+    "section": "HACA",
+    "text": "HACA\n\nThe first national analytics conference for health and care\nInsight to action!\nJuly 11th and 12th, University of Birmingham\nAccepting abstracts for short and long talks and posters\nAbstract deadline 27th March\nHelp is available (with abstract, poster, preparing presentation…)!\n\n\n\nview slides at the-strategy-unit.github.io/data_science/presentations"
   },
   {
     "objectID": "presentations/2023-08-23_nhs-r_unit-testing/index.html#what-is-testing",
@@ -697,14 +606,14 @@
     "href": "presentations/2023-08-23_nhs-r_unit-testing/index.html#and-create-our-first-test-5",
     "title": "Unit testing in R",
     "section": "… and create our first test",
-    "text": "… and create our first test\n\ntest_that(\"my_function correctly divides values\", {\n  expect_equal(\n    my_function(4, 2),\n    2\n  )\n  expect_equal(\n    my_function(1, 4),\n    0.25\n  )\n  expect_equal(\n    my_function(c(4, 1), c(2, 4)),\n    c(2, 0.25)\n  )\n})\n\nTest passed 🌈"
+    "text": "… and create our first test\n\ntest_that(\"my_function correctly divides values\", {\n  expect_equal(\n    my_function(4, 2),\n    2\n  )\n  expect_equal(\n    my_function(1, 4),\n    0.25\n  )\n  expect_equal(\n    my_function(c(4, 1), c(2, 4)),\n    c(2, 0.25)\n  )\n})\n\nTest passed 🎉"
   },
   {
     "objectID": "presentations/2023-08-23_nhs-r_unit-testing/index.html#other-expect_-functions",
     "href": "presentations/2023-08-23_nhs-r_unit-testing/index.html#other-expect_-functions",
     "title": "Unit testing in R",
     "section": "other expect_*() functions…",
-    "text": "other expect_*() functions…\n\ntest_that(\"my_function correctly divides values\", {\n  expect_lt(\n    my_function(4, 2),\n    10\n  )\n  expect_gt(\n    my_function(1, 4),\n    0.2\n  )\n  expect_length(\n    my_function(c(4, 1), c(2, 4)),\n    2\n  )\n})\n\nTest passed 🎊\n\n\n\n{testthat} documentation"
+    "text": "other expect_*() functions…\n\ntest_that(\"my_function correctly divides values\", {\n  expect_lt(\n    my_function(4, 2),\n    10\n  )\n  expect_gt(\n    my_function(1, 4),\n    0.2\n  )\n  expect_length(\n    my_function(c(4, 1), c(2, 4)),\n    2\n  )\n})\n\nTest passed 😸\n\n\n\n{testthat} documentation"
   },
   {
     "objectID": "presentations/2023-08-23_nhs-r_unit-testing/index.html#arrange-act-assert",
@@ -746,14 +655,14 @@
     "href": "presentations/2023-08-23_nhs-r_unit-testing/index.html#tolerance-to-the-rescue",
     "title": "Unit testing in R",
     "section": "Tolerance to the rescue 🙂",
-    "text": "Tolerance to the rescue 🙂\n\ntest_that(\"my_function works\", {\n  # arrange\n  x &lt;- 5\n  y &lt;- 7\n  expected &lt;- 0.714285\n\n  # act\n  actual &lt;- my_function(x, y)\n\n  # assert\n  expect_equal(actual, expected, tolerance = 1e-6)\n})\n\nTest passed 😸\n\n\n\n(this is a slightly artificial example, usually the default tolerance is good enough)"
+    "text": "Tolerance to the rescue 🙂\n\ntest_that(\"my_function works\", {\n  # arrange\n  x &lt;- 5\n  y &lt;- 7\n  expected &lt;- 0.714285\n\n  # act\n  actual &lt;- my_function(x, y)\n\n  # assert\n  expect_equal(actual, expected, tolerance = 1e-6)\n})\n\nTest passed 🌈\n\n\n\n(this is a slightly artificial example, usually the default tolerance is good enough)"
   },
   {
     "objectID": "presentations/2023-08-23_nhs-r_unit-testing/index.html#testing-edge-cases",
     "href": "presentations/2023-08-23_nhs-r_unit-testing/index.html#testing-edge-cases",
     "title": "Unit testing in R",
     "section": "Testing edge cases",
-    "text": "Testing edge cases\n\n\nRemember the validation steps we built into our function to handle edge cases?\n\nLet’s write tests for these edge cases:\nwe expect errors\n\n\ntest_that(\"my_function works\", {\n  expect_error(my_function(5, 0))\n  expect_error(my_function(\"a\", 3))\n  expect_error(my_function(3, \"a\"))\n  expect_error(my_function(1:2, 4))\n})\n\nTest passed 😀"
+    "text": "Testing edge cases\n\n\nRemember the validation steps we built into our function to handle edge cases?\n\nLet’s write tests for these edge cases:\nwe expect errors\n\n\ntest_that(\"my_function works\", {\n  expect_error(my_function(5, 0))\n  expect_error(my_function(\"a\", 3))\n  expect_error(my_function(3, \"a\"))\n  expect_error(my_function(1:2, 4))\n})\n\nTest passed 🎊"
   },
   {
     "objectID": "presentations/2023-08-23_nhs-r_unit-testing/index.html#another-simple-example",
@@ -767,7 +676,7 @@
     "href": "presentations/2023-08-23_nhs-r_unit-testing/index.html#another-simple-example-1",
     "title": "Unit testing in R",
     "section": "Another (simple) example",
-    "text": "Another (simple) example\n\nmy_new_function &lt;- function(x, y) {\n  if (x &gt; y) {\n    \"x\"\n  } else {\n    \"y\"\n  }\n}\n\n\n\ntest_that(\"it returns 'x' if x is bigger than y\", {\n  expect_equal(my_new_function(4, 3), \"x\")\n})\n\nTest passed 🎊\n\ntest_that(\"it returns 'y' if y is bigger than x\", {\n  expect_equal(my_new_function(3, 4), \"y\")\n  expect_equal(my_new_function(3, 3), \"y\")\n})\n\nTest passed 🎉"
+    "text": "Another (simple) example\n\nmy_new_function &lt;- function(x, y) {\n  if (x &gt; y) {\n    \"x\"\n  } else {\n    \"y\"\n  }\n}\n\n\n\ntest_that(\"it returns 'x' if x is bigger than y\", {\n  expect_equal(my_new_function(4, 3), \"x\")\n})\n\nTest passed 🥳\n\ntest_that(\"it returns 'y' if y is bigger than x\", {\n  expect_equal(my_new_function(3, 4), \"y\")\n  expect_equal(my_new_function(3, 3), \"y\")\n})\n\nTest passed 🎊"
   },
   {
     "objectID": "presentations/2023-08-23_nhs-r_unit-testing/index.html#how-to-design-good-tests",
@@ -896,249 +805,424 @@
     "text": "Next steps\n\nIf your test needs to temporarily create a file, or change some R-options, the {withr} package has a lot of useful functions that will automatically clean things up when the test finishes\nIf you are writing tests that involve calling out to a database, or you want to test my_big_function (from before) without calling the intermediate functions, then you should look at the {mockery} package"
   },
   {
-    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#what-is-rap",
-    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#what-is-rap",
-    "title": "RAP",
-    "section": "What is RAP",
-    "text": "What is RAP\n\na process in which code is used to minimise manual, undocumented steps, and a clear, properly documented process is produced in code which can reliably give the same result from the same dataset\nRAP should be:\n\n\nthe core working practice that must be supported by all platforms and teams; make this a core focus of NHS analyst training\n\nGoldacre review"
+    "objectID": "blogs/posts/2023-04-26-reinstalling-r-packages.html",
+    "href": "blogs/posts/2023-04-26-reinstalling-r-packages.html",
+    "title": "Reinstalling R Packages",
+    "section": "",
+    "text": "R 4.3.0 was released last week. Anytime you update R you will probably find yourself in the position where no packages are installed. This is by design - the packages that you have installed may need to be updated and recompiled to work under new versions of R.\nYou may find yourself wanting to have all of the packages that you previously used, so one approach that some people take is to copy the previous library folder to the new versions folder. This isn’t a good idea and could potentially break your R install.\nAnother approach would be to export the list of packages in R before updating and then using that list after you have updated R. This can cause issues though if you install from places other than CRAN, e.g. bioconductor, or from GitHub.\nSome of these approaches are discussed on the RStudio Community Forum. But I prefer an approach of having a “spring clean”, instead only installing the packages that I know that I need.\nI maintain a list of the packages that I used as a gist. Using this, I can then simply run this script on any new R install. In fact, if you click the “raw” button on the gist, and copy that url, you can simply run\nsource(\"https://gist.githubusercontent.com/tomjemmett/c105d3e0fbea7558088f68c65e68e1ed/raw/a1db4b5fa0d24562d16d3f57fe8c25fb0d8aa53e/setup.R\")\nGenerally, sourcing a url is a bad idea - the reason for this is if it’s not a link that you control, then someone could update the contents and run arbritary code on your machine. In this case, I’m happy to run this as it’s my own gist, but you should be mindful if running it yourself!\nIf you look at the script I first install a number of packages from CRAN, then I install packages that only exist on GitHub."
   },
   {
-    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#what-are-we-trying-to-achieve",
-    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#what-are-we-trying-to-achieve",
-    "title": "RAP",
-    "section": "What are we trying to achieve?",
-    "text": "What are we trying to achieve?\n\nLegibility\nReproducibility\nAccuracy\nLaziness"
+    "objectID": "blogs/posts/2023-04-26_alternative_remotes.html",
+    "href": "blogs/posts/2023-04-26_alternative_remotes.html",
+    "title": "Alternative remote repositories",
+    "section": "",
+    "text": "It’s great when someone send’s you a pull request on GitHub to fix bugs or add new features to your project, but you probably always want to check the other persons work in someway before merging that pull request.\nAll of the steps below are intended to be entered via a terminal.\nLet’s imagine that we have a GitHub account called example and a repository called test, and we use https rather than ssh.\n$ git remote get-url origin\n# https://github.com/example/test.git\nNow, let’s say we have someone who has submitted a Pull Request (PR), and their username is friend. We can add a new remote for their fork with\n$ git remote add friend https://github.com/friend/test.git\nHere, I name the remote exactly as per the persons GitHub username for no other reason than making it easier to track things later on. You could name this remote whatever you like, but you will need to make sure that the remote url matches their repository correctly.\nWe are now able to checkout their remote branch. First, we will want to fetch their work:\n# make sure to replace the remote name to what you set it to before\n$ git fetch friend\nNow, hopefully they have commited to a branch with a name that you haven’t used. Let’s say they created a branch called my_work. You can then simply run\n$ git switch friend/my_work\nThis should checkout the my_work branch locally for you.\nNow, if they have happened to use a branch name that you are already using, or more likely, directly commited to their own main branch, you will need to do checkout to a new branch:\n# replace friend as above to be the name of the remote, and main to be the branch\n# that they have used\n# replace their_work with whatever you want to call this branch locally\n$ git checkout friend/main -b their_work\nYou are now ready to run their code and check everything is good to merge!\nFinally, If you want to clean up your local repository you can remove the new branch that you checked out and the new remote with the following steps:\n# switch back to one of your branches, e.g. main\n$ git checkout main\n\n# then remove the branch that you created above\n$ git branch -D their_work\n\n# you can remove the remote\n$ git remote remove friend"
   },
   {
-    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#what-are-some-of-the-fundamental-principles",
-    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#what-are-some-of-the-fundamental-principles",
-    "title": "RAP",
-    "section": "What are some of the fundamental principles?",
-    "text": "What are some of the fundamental principles?\n\nPredictability, reducing mental load, and reducing truck factor\nMaking it easy to collaborate with yourself and others on different computers, in the cloud, in six months’ time…\nDRY"
+    "objectID": "style/project_structure.html",
+    "href": "style/project_structure.html",
+    "title": "Project Structure",
+    "section": "",
+    "text": "as a package\nR/ for scripts\nsplit files into separate scripts\nuse {renv}\nuse {targets}\n\n\n\nRStudio projects are a great way to organise your analytical projects into discrete units that are easier to work on and share.\n\n\n\n\n\n\n\n\n\n\n\n\nOne of the most common issues you will face when using a project someone else has created, or you created previously, is maintaining the required packages to run the project. Knowing what packages are needed to run a particular project isn’t always obvious, and over time packages can change rendering code that once worked unusable.\n{renv} solves this problem by:\n\nkeeping track of the packages that are required for a particular project\nlogging the installed version of all of the packages\nmaintaining a per-project library of packages, so projects don’t interfere with one another\n\nIt’s a good idea to use {renv} for all projects."
   },
   {
-    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#the-road-to-rap",
-    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#the-road-to-rap",
-    "title": "RAP",
-    "section": "The road to RAP",
-    "text": "The road to RAP\n\nWe’re roughly using NHS Digital’s RAP stages\nThere is an incredibly large amount to learn!\nConfession time! (everything I do not know…)\nYou don’t need to do it all at once\nYou don’t need to do it all at all ever\nEach thing you learn will incrementally help you\nRemember- that’s why we learnt this stuff. Because it helped us. And it can help you too"
+    "objectID": "style/project_structure.html#use-rstudio-projects",
+    "href": "style/project_structure.html#use-rstudio-projects",
+    "title": "Project Structure",
+    "section": "",
+    "text": "RStudio projects are a great way to organise your analytical projects into discrete units that are easier to work on and share."
   },
   {
-    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#levels-of-rap--baseline",
-    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#levels-of-rap--baseline",
-    "title": "RAP",
-    "section": "Levels of RAP- Baseline",
-    "text": "Levels of RAP- Baseline\n\nData produced by code in an open-source language (e.g., Python, R, SQL).\nCode is version controlled (see Git basics and using Git collaboratively guides).\nRepository includes a README.md file (or equivalent) that clearly details steps a user must follow to reproduce the code\nCode has been peer reviewed.\nCode is published in the open and linked to & from accompanying publication (if relevant).\n\nSource: NHS Digital RAP community of practice"
+    "objectID": "style/project_structure.html#renv",
+    "href": "style/project_structure.html#renv",
+    "title": "Project Structure",
+    "section": "",
+    "text": "One of the most common issues you will face when using a project someone else has created, or you created previously, is maintaining the required packages to run the project. Knowing what packages are needed to run a particular project isn’t always obvious, and over time packages can change rendering code that once worked unusable.\n{renv} solves this problem by:\n\nkeeping track of the packages that are required for a particular project\nlogging the installed version of all of the packages\nmaintaining a per-project library of packages, so projects don’t interfere with one another\n\nIt’s a good idea to use {renv} for all projects."
   },
   {
-    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#levels-of-rap--silver",
-    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#levels-of-rap--silver",
-    "title": "RAP",
-    "section": "Levels of RAP- Silver",
-    "text": "Levels of RAP- Silver\n\nCode is well-documented…\nCode is well-organised following standard directory format\nReusable functions and/or classes are used where appropriate\nPipeline includes a testing framework\nRepository includes dependency information (e.g. requirements.txt, PipFile, environment.yml\nData is handled and output in a Tidy data format\n\nSource: NHS Digital RAP community of practice"
+    "objectID": "style/style_guide.html",
+    "href": "style/style_guide.html",
+    "title": "Style Guide",
+    "section": "",
+    "text": "On the whole we follow the conventions of the tidyverse style guide\nWe prefer packages to be explicitly namespaced like this dplyr::mutate(...). This is not essential in exploratory data analysis but is mandatory in all production code\nFor readability please insert line breaks in your code at or before column 80.\nWe prefer to avoid loading {tidyverse} because it brings in a lot of packages that are not being used. Again, not essential to follow this in exploratory data analysis but no code that is or will be deployed should ever load {tidyverse}\n\n\n\n\n\nfavour |&gt; over %&gt;%\nfavour .qmd over .rmd\nuse git for all projects, github being the home of all of the project code\nRAP everything\n{styler}\nhttps://style.tidyverse.org/\n{lintr}"
   },
   {
-    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#levels-of-rap--gold",
-    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#levels-of-rap--gold",
-    "title": "RAP",
-    "section": "Levels of RAP- Gold",
-    "text": "Levels of RAP- Gold\n\nCode is fully packaged\nRepository automatically runs tests etc. via CI/CD or a different integration/deployment tool e.g. GitHub Actions\nProcess runs based on event-based triggers (e.g., new data in database) or on a schedule\nChanges to the RAP are clearly signposted. E.g. a changelog in the package, releases etc. (See gov.uk info on Semantic Versioning)\n\nSource: NHS Digital RAP community of practice"
+    "objectID": "style/style_guide.html#code-style",
+    "href": "style/style_guide.html#code-style",
+    "title": "Style Guide",
+    "section": "",
+    "text": "On the whole we follow the conventions of the tidyverse style guide\nWe prefer packages to be explicitly namespaced like this dplyr::mutate(...). This is not essential in exploratory data analysis but is mandatory in all production code\nFor readability please insert line breaks in your code at or before column 80.\nWe prefer to avoid loading {tidyverse} because it brings in a lot of packages that are not being used. Again, not essential to follow this in exploratory data analysis but no code that is or will be deployed should ever load {tidyverse}"
   },
   {
-    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#a-learning-journey-to-get-you-there",
-    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#a-learning-journey-to-get-you-there",
-    "title": "RAP",
-    "section": "A learning journey to get you there",
-    "text": "A learning journey to get you there\n\nCode style, organising your files\nFunctions and iteration\nGit and GitHub\nPackaging your code\nTesting\nPackage management and versioning"
+    "objectID": "style/style_guide.html#unorganised-notes",
+    "href": "style/style_guide.html#unorganised-notes",
+    "title": "Style Guide",
+    "section": "",
+    "text": "favour |&gt; over %&gt;%\nfavour .qmd over .rmd\nuse git for all projects, github being the home of all of the project code\nRAP everything\n{styler}\nhttps://style.tidyverse.org/\n{lintr}"
   },
   {
-    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#how-we-can-help-each-other-get-there",
-    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#how-we-can-help-each-other-get-there",
-    "title": "RAP",
-    "section": "How we can help each other get there",
-    "text": "How we can help each other get there\n\nWork as a team!\nCoffee and coding!\nAsk for help!\nDo pair coding!\nGet your code reviewed!\nJoin the NHS-R/ NHSPycom communities"
+    "objectID": "style/data_storage.html",
+    "href": "style/data_storage.html",
+    "title": "Data Storage",
+    "section": "",
+    "text": "All projects should be commited to version control, with a repository created in the Strategy Unit’s GitHub organisation.\nIdeally, any data that is used within the project should be part of a targets pipeline.\nThere are a number of considerations about whether to add the data to version control or not. At a high level:\n\nis the data OK to release publicly?\nis the data in a text-based (non-binary) format, such as .csv, .json (rather than say .xlsx)?\nis the data relatively small in size?\n\n\n\nIf data is grabbed from a website, or via an API, create code to download the file/data. Consider whether this is likely to be a stable way of getting the data (does the data change over time? do you suspect that the location of the resource may disappear? is it quick to retrieve the data?). If so, then it doesn’t make much sense to commit the data to version control as it can always be quickly regenerated.\n\n\n\nLarge files tend not to work particularly well with version control. Specifically, files larger than 100MB will be blocked by GitHub, and files larger than 50MB will generate a warning. But you may even want to class any file over a few MB as large.\nAlternatives for storing large files:\n\nif the file is something that is generated (and reproducible) from other sources, then do not bother tracking the file\nif the file is something that you want tracking with version control, look at git LFS\nif the file needs to be shared publicly, but LFS is not suitable, the file could be stored in Azure blob storage\nif the file needs to be shared privately, also consider Azure blob storage (using something like SAS tokens)\nif the file needs to only be shared within the Strategy Unit then store in SharePoint (i.e. within a teams channel)\n\nUse of network drives should be deprecated and avoided at all costs due to issues of lack of versioning of files and the performance bottleneck that is created by using a network share. If a network share is truly the only way of storing the data for sharing with colleagues, then look at using ways of syncing the file to local storage to avoid performance bottlenecks, such as robocopy."
   },
   {
-    "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#haca",
-    "href": "presentations/2023-03-09_midlands-analyst-rap/index.html#haca",
-    "title": "RAP",
-    "section": "HACA",
-    "text": "HACA\n\nThe first national analytics conference for health and care\nInsight to action!\nJuly 11th and 12th, University of Birmingham\nAccepting abstracts for short and long talks and posters\nAbstract deadline 27th March\nHelp is available (with abstract, poster, preparing presentation…)!\n\n\n\nview slides at the-strategy-unit.github.io/data_science/presentations"
+    "objectID": "style/data_storage.html#data-from-websites",
+    "href": "style/data_storage.html#data-from-websites",
+    "title": "Data Storage",
+    "section": "",
+    "text": "If data is grabbed from a website, or via an API, create code to download the file/data. Consider whether this is likely to be a stable way of getting the data (does the data change over time? do you suspect that the location of the resource may disappear? is it quick to retrieve the data?). If so, then it doesn’t make much sense to commit the data to version control as it can always be quickly regenerated."
   },
   {
-    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#what-is-data-science",
-    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#what-is-data-science",
-    "title": "Travels with R and Python",
-    "section": "What is data science?",
-    "text": "What is data science?\n\n“A data scientist knows more about computer science than the average statistician, and more about statistics than the average computer scientist”\n\n(Josh Wills, a former head of data engineering at Slack)"
+    "objectID": "style/data_storage.html#filesize",
+    "href": "style/data_storage.html#filesize",
+    "title": "Data Storage",
+    "section": "",
+    "text": "Large files tend not to work particularly well with version control. Specifically, files larger than 100MB will be blocked by GitHub, and files larger than 50MB will generate a warning. But you may even want to class any file over a few MB as large.\nAlternatives for storing large files:\n\nif the file is something that is generated (and reproducible) from other sources, then do not bother tracking the file\nif the file is something that you want tracking with version control, look at git LFS\nif the file needs to be shared publicly, but LFS is not suitable, the file could be stored in Azure blob storage\nif the file needs to be shared privately, also consider Azure blob storage (using something like SAS tokens)\nif the file needs to only be shared within the Strategy Unit then store in SharePoint (i.e. within a teams channel)\n\nUse of network drives should be deprecated and avoided at all costs due to issues of lack of versioning of files and the performance bottleneck that is created by using a network share. If a network share is truly the only way of storing the data for sharing with colleagues, then look at using ways of syncing the file to local storage to avoid performance bottlenecks, such as robocopy."
   },
   {
-    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#drew-conways-famous-venn-diagram",
-    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#drew-conways-famous-venn-diagram",
-    "title": "Travels with R and Python",
-    "section": "Drew Conway’s famous Venn diagram",
-    "text": "Drew Conway’s famous Venn diagram\n\nSource"
+    "objectID": "style/git_and_github.html",
+    "href": "style/git_and_github.html",
+    "title": "Using Git and GitHub",
+    "section": "",
+    "text": "All commits should be atomic, in short,\n\nEach commit does one, and only one simple thing, that can be summed up in a simple sentence.\n\nAll of your commits should be in branches, the only changes that are made to the main branch would be via pull requests (PR) that have been reviewed by at minimum one colleague.\n\n\n\n\n\n\nImportant\n\n\n\nNever push to main!\n\n\n\n\n\n\nIf you haven’t already, file an issue that describes what you are doing - whether it be fixing a bug, adding a feature, or something else. Issues help to keep track of both the work to be done, and the work that has been done.\nYou should ensure that the issue is as detailed as possible as it may need to be picked up by someone else. Even if only you intend to work on the issue, over time it can be easy to forget things if there isn’t enough information. They can also help you to remember what changes you have made to your code, and why you had to make these changes, which can be useful if you need to provide change logs when you release your code.\n\n\nIssues are a good record to explain what a PR is for. It’s also a useful area for input from other members of the team.\n\n\n\nOnce the issue is created and you have decided that you are going to work on it, first assign yourself to the issue in GitHub. This is an indication to others and helps to prevent multiple people from independently working on the same issue.\nOnce you have assigned yourself, you must make a new branch to work on that feature. GitHub offers a button to do this automatically on the issue page, on the right-hand side.\n\n\n\nScreenshot links to specific GitHub help page\n\n\n\n\nIf you used the create branch button on GitHub it will automatically close the issue when merged.\nLocally you can then work on the branch, pushing your code regularly to GitHub so it can be run and inspected when you are not around.\nWhen you think that your changes are ready to be merged, it’s time to create a PR and request a code review.\n\n\n\nWhen you create a PR, you must do two things:\n\nimmediately make someone an assignee - this is the person who will merge the PR. Typically, this should be the person creating the PR (you)\nselect a person (or people) to review the PR\n\nIf your code is not yet ready to be merged then you should use a draft PR.\n\n\nNote that draft PRs are only available on public GitHub repos.\nWait until the reviewer(s) has completed the review and marked it as ready to merge. At this point, the person who is assigned to the PR can complete the merge.\n\n\nMost merges will be the default Create a merge commit but sometimes you may wish to Squash and merge. As the person requesting the PR, you can select whichever option is wanted from the drop-down in GitHub as part of the PR.\n\n\n\nBy using this approach of the assignee completing the merge, it ensures that code quality is maintained and prevents code from being merged when it is not yet ready. For example, you may have started a PR thinking your work is complete, and a reviewer checks the code and agrees to merge, however, you may realise that there are still things to work on, or there are issues that need to be addressed.\nThe person who is assigned to the PR should be the only person making commits to the branch and this will prevent merge conflicts. If you wish for someone else to collaborate on the branch, then you should assign the PR to that person. At that point, they can pull your branch down and work on it, but you must stop using that branch locally.\n\n\n\n\n\n\nImportant\n\n\n\nOnly one person should ever work on changes to a branch at any time, and it is important to communicate with colleagues so they know to pull the latest changes in.\n\n\n\n\nIf the PR is later assigned back to you then you must immediately pull changes.\nThere may be times when you cannot be the assignee on a PR and in those situations you should nominate someone else to be the assignee and in charge of the PR, the same rules as in the paragraph above would then apply.\nIf, as a reviewer, you find that no one is assigned to the branch, you should get in contact with the person who created the branch and decide who is going to be the assigned owner of the PR.\n\n\nIn circumstances where the person who created the PR is an outside collaborator and doesn’t have permission to merge, then the reviewer should also be the assignee. In these circumstances, the collaborator will be working from their local fork and will be the only person who can push to the branch. The reviewer, once happy to approve the changes, can merge the PR.\n\n\n\n\nTODO"
   },
   {
-    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#what-are-the-skills-of-data-science",
-    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#what-are-the-skills-of-data-science",
-    "title": "Travels with R and Python",
-    "section": "What are the skills of data science?",
-    "text": "What are the skills of data science?\n\nAnalysis\n\nML\nStats\nData viz\n\nSoftware engineering\n\nProgramming\nSQL/ data\nDevOps\nRAP"
+    "objectID": "style/git_and_github.html#workflow-for-writing-code-with-git-and-github",
+    "href": "style/git_and_github.html#workflow-for-writing-code-with-git-and-github",
+    "title": "Using Git and GitHub",
+    "section": "",
+    "text": "If you haven’t already, file an issue that describes what you are doing - whether it be fixing a bug, adding a feature, or something else. Issues help to keep track of both the work to be done, and the work that has been done.\nYou should ensure that the issue is as detailed as possible as it may need to be picked up by someone else. Even if only you intend to work on the issue, over time it can be easy to forget things if there isn’t enough information. They can also help you to remember what changes you have made to your code, and why you had to make these changes, which can be useful if you need to provide change logs when you release your code.\n\n\nIssues are a good record to explain what a PR is for. It’s also a useful area for input from other members of the team.\n\n\n\nOnce the issue is created and you have decided that you are going to work on it, first assign yourself to the issue in GitHub. This is an indication to others and helps to prevent multiple people from independently working on the same issue.\nOnce you have assigned yourself, you must make a new branch to work on that feature. GitHub offers a button to do this automatically on the issue page, on the right-hand side.\n\n\n\nScreenshot links to specific GitHub help page\n\n\n\n\nIf you used the create branch button on GitHub it will automatically close the issue when merged.\nLocally you can then work on the branch, pushing your code regularly to GitHub so it can be run and inspected when you are not around.\nWhen you think that your changes are ready to be merged, it’s time to create a PR and request a code review.\n\n\n\nWhen you create a PR, you must do two things:\n\nimmediately make someone an assignee - this is the person who will merge the PR. Typically, this should be the person creating the PR (you)\nselect a person (or people) to review the PR\n\nIf your code is not yet ready to be merged then you should use a draft PR.\n\n\nNote that draft PRs are only available on public GitHub repos.\nWait until the reviewer(s) has completed the review and marked it as ready to merge. At this point, the person who is assigned to the PR can complete the merge.\n\n\nMost merges will be the default Create a merge commit but sometimes you may wish to Squash and merge. As the person requesting the PR, you can select whichever option is wanted from the drop-down in GitHub as part of the PR.\n\n\n\nBy using this approach of the assignee completing the merge, it ensures that code quality is maintained and prevents code from being merged when it is not yet ready. For example, you may have started a PR thinking your work is complete, and a reviewer checks the code and agrees to merge, however, you may realise that there are still things to work on, or there are issues that need to be addressed.\nThe person who is assigned to the PR should be the only person making commits to the branch and this will prevent merge conflicts. If you wish for someone else to collaborate on the branch, then you should assign the PR to that person. At that point, they can pull your branch down and work on it, but you must stop using that branch locally.\n\n\n\n\n\n\nImportant\n\n\n\nOnly one person should ever work on changes to a branch at any time, and it is important to communicate with colleagues so they know to pull the latest changes in.\n\n\n\n\nIf the PR is later assigned back to you then you must immediately pull changes.\nThere may be times when you cannot be the assignee on a PR and in those situations you should nominate someone else to be the assignee and in charge of the PR, the same rules as in the paragraph above would then apply.\nIf, as a reviewer, you find that no one is assigned to the branch, you should get in contact with the person who created the branch and decide who is going to be the assigned owner of the PR.\n\n\nIn circumstances where the person who created the PR is an outside collaborator and doesn’t have permission to merge, then the reviewer should also be the assignee. In these circumstances, the collaborator will be working from their local fork and will be the only person who can push to the branch. The reviewer, once happy to approve the changes, can merge the PR.\n\n\n\n\nTODO"
   },
   {
-    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#what-are-the-skills-of-data-science-1",
-    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#what-are-the-skills-of-data-science-1",
-    "title": "Travels with R and Python",
-    "section": "What are the skills of data science?",
-    "text": "What are the skills of data science?\n\nDomain knowledge\n\nCommunication\nProblem formulation\nDashboards and reports"
+    "objectID": "blogs/index.html",
+    "href": "blogs/index.html",
+    "title": "Data Science Blog",
+    "section": "",
+    "text": "Alternative remote repositories\n\n\n\n\n\n\n\ngit\n\n\ntutorial\n\n\n\n\n\n\n\n\n\n\n\nApr 26, 2023\n\n\nTom Jemmett\n\n\n\n\n\n\n  \n\n\n\n\nReinstalling R Packages\n\n\n\n\n\n\n\ngit\n\n\ntutorial\n\n\n\n\n\n\n\n\n\n\n\nApr 26, 2023\n\n\nTom Jemmett\n\n\n\n\n\n\n  \n\n\n\n\nCreating a hotfix with git\n\n\n\n\n\n\n\ngit\n\n\ntutorial\n\n\n\n\n\n\n\n\n\n\n\nMar 24, 2023\n\n\nTom Jemmett\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#stats-and-data-viz",
-    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#stats-and-data-viz",
-    "title": "Travels with R and Python",
-    "section": "Stats and data viz",
-    "text": "Stats and data viz\n\nML leans a bit more towards atheoretical prediction\nStats leans a bit more towards inference (but they both do both)\nData scientists may use different visualisations\n\nInteractive web based tools\nDashboard based visualisers e.g. {stminsights}"
+    "objectID": "blogs/posts/2023-03-24_hotfix-with-git.html",
+    "href": "blogs/posts/2023-03-24_hotfix-with-git.html",
+    "title": "Creating a hotfix with git",
+    "section": "",
+    "text": "I recently discovered a bug in a code-base which needed to be fixed and deployed back to production A.S.A.P., but since the last release the code has moved on significantly. The history looks something a bit like:\nThat is, we have a tag which is the code that is currently in production (which we need to patch), a number of commits after that tag to main (which were separate branches merged via pull requests), and a current development branch.\nI need to somehow: 1. go back to the tagged release, 2. check that code out, 3. patch that code, 4. commit this change, but insert the commit before all of the new commits after the tag\nThere are at least two ways that I know to do this, one would be with an interactive rebase, but I used a slightly longer method, but one I feel is a little less likely to get wrong.\nBelow are the step’s that I took. One thing I should note is this worked well for my particular issue because the change didn’t cause any merge conflicts later on."
   },
   {
-    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#software-engineering",
-    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#software-engineering",
-    "title": "Travels with R and Python",
-    "section": "Software engineering",
-    "text": "Software engineering\n\nProgramming\n\nNo/ low code data science?\n\nSQL/ data\n\nTend to use reproducible automated processes\n\nDevOps\n\nPlan, code, build, test, release, deploy, operate, monitor\n\nRAP\n\nI will come back to this"
+    "objectID": "blogs/posts/2023-03-24_hotfix-with-git.html#fixing-my-codebase",
+    "href": "blogs/posts/2023-03-24_hotfix-with-git.html#fixing-my-codebase",
+    "title": "Creating a hotfix with git",
+    "section": "Fixing my codebase",
+    "text": "Fixing my codebase\nFirst, we need to checkout the tag\ngit checkout -b hotfix v0.2.0\nThis creates a new branch called hotfix off of the tag v0.2.0.\nNow that I have the code base checked out at the point I need to fix, I can make the change that is needed, and commit the change\ngit add [FILENAME]\ngit commit -m \"fixes the code\"\n(Obviously, I used the actual file name and gave a better commit message. I Promise 😝)\nNow my code is fixed, I create a new tag for this “release”, as well as push the code to production (this step is omitted here)\ngit tag v0.2.1 -m \"version 0.2.0\"\nAt this point, our history looks something like\n\n\n\n\n\nWhat we want to do is break the link between main and v0.2.0, instead attaching tov0.2.1. First though, I want to make sure that if I make a mistake, I’m not making it on the main branch.\ngit checkout main\ngit checkout -b apply-hotfix\nThen we can fix our history using the rebase command\ngit rebase hotfix\nWhat this does is it rolls back to the point where the branch that we are rebasing (apply-hotfix) and the hotfix branch both share a common commit (v0.2.0 tag). It then applies the commits in the hotfix branch, before reapplying the commits from apply-hotfix (a.k.a. the main branch).\nOne thing to note, if you have any merge conflicts created by your fix, then the rebase will stop and ask you to fix the merge conflicts. There is some information in the GitHub doc’s for [resolving merge conflicts after a Git rebase][2].\n[2]: https://docs.github.com/en/get-started/using-git/resolving-merge-conflicts-after-a-git-rebase\nAt this point, we can check that the commit history looks correct\ngit log v0.2.0..HEAD\nIf we are happy, then we can apply this to the main branch. I do this by renaming the apply-hotfix branch as main. First, you have to delete the main branch to allow us to rename the branch.\ngit branch -D main\ngit branch -m main\nWe also need to update the other branches to use the new main branch\ngit checkout branch\ngit rebase main\nNow, we should have a history like"
   },
   {
-    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#domain-knowledge",
-    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#domain-knowledge",
-    "title": "Travels with R and Python",
-    "section": "Domain knowledge",
-    "text": "Domain knowledge\n\nDo stuff that matters\n\nThe best minds of my generation are thinking about how to make people click ads. That sucks. Jeffrey Hammerbacher\n\nConvince other people that it matters\nThis is the hardest part of data science"
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Data Science @ The Strategy Unit",
+    "section": "",
+    "text": "This is the home of the Data Science team at The Strategy Unit."
   },
   {
-    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#rap",
-    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#rap",
-    "title": "Travels with R and Python",
-    "section": "RAP",
-    "text": "RAP\n\nData science isn’t RAP\nRAP isn’t data science\nThey are firm friends"
+    "objectID": "presentations/2023-03-09_coffee-and-coding/index.html#which-is-easier-to-read",
+    "href": "presentations/2023-03-09_coffee-and-coding/index.html#which-is-easier-to-read",
+    "title": "Coffee and Coding",
+    "section": "Which is easier to read?",
+    "text": "Which is easier to read?\n\nae_attendances |&gt;\n  filter(org_code %in% c(\"RNA\", \"RL4\")) |&gt;\n  mutate(performance = 1 + breaches / attendances) |&gt;\n  filter(type == 1) |&gt;\n  mutate(met_target = performance &gt;= 0.95)\n\nor\n\nae_attendances |&gt;\n  filter(\n    org_code %in% c(\"RNA\", \"RL4\"),\n    type == 1\n  ) |&gt;\n  mutate(\n    performance = 1 + breaches / attendances,\n    met_target = performance &gt;= 0.95\n  )\n\n\n  spending a few seconds to neatly format your code can greatly improve the legibility to future readers, making the intent of the code far clearer, and will make finding bugs easier to spot.\n\n\n  (have you spotted the mistake in the snippets above?)"
   },
   {
-    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#reproducibility",
-    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#reproducibility",
-    "title": "Travels with R and Python",
-    "section": "Reproducibility",
-    "text": "Reproducibility\n\nReproducibility in science\nThe $6B spreadsheet error\nGeorge Osbourne’s austerity was based on a spreadsheet error\nFor us, reproducibility also means we can do the same analysis 50 times in one minute\n\nWhich is why I started down the road of data science"
+    "objectID": "presentations/2023-03-09_coffee-and-coding/index.html#tidyverse-style-guide",
+    "href": "presentations/2023-03-09_coffee-and-coding/index.html#tidyverse-style-guide",
+    "title": "Coffee and Coding",
+    "section": "Tidyverse Style Guide",
+    "text": "Tidyverse Style Guide\n\nGood coding style is like correct punctuation: you can manage without it, butitsuremakesthingseasiertoread\n\n\nAll style guides are fundamentally opinionated. Some decisions genuinely do make code easier to use (especially matching indenting to programming structure), but many decisions are arbitrary. The most important thing about a style guide is that it provides consistency, making code easier to write because you need to make fewer decisions.\n\ntidyverse style guide"
   },
   {
-    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#what-is-rap",
-    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#what-is-rap",
-    "title": "Travels with R and Python",
-    "section": "What is RAP",
-    "text": "What is RAP\n\na process in which code is used to minimise manual, undocumented steps, and a clear, properly documented process is produced in code which can reliably give the same result from the same dataset\nRAP should be:\n\n\nthe core working practice that must be supported by all platforms and teams; make this a core focus of NHS analyst training\n\n\nGoldacre review"
+    "objectID": "presentations/2023-03-09_coffee-and-coding/index.html#lintr-styler-are-your-new-best-friends",
+    "href": "presentations/2023-03-09_coffee-and-coding/index.html#lintr-styler-are-your-new-best-friends",
+    "title": "Coffee and Coding",
+    "section": "{lintr} + {styler} are your new best friends",
+    "text": "{lintr} + {styler} are your new best friends\n\n\n{lintr}\n\n{lintr} is a static code analysis tool that inspects your code (without running it)\nit checks for certain classes of errors (e.g. mismatched { and (’s)\nit warns about potential issues (e.g. using variables that aren’t defined)\nit warns about places where you are not adhering to the code style\n\n\n{styler}\n\n{styler} is an RStudio add in that automatically reformats your code, tidying it up to match the style guide\n99.9% of the time it will give you equivalent code, but there is the potential that it may change the behaviour of your code\nit will overwrite the files that you ask it to run on however, so it is vital to be using version control\na good workflow here is to save your file, “stage” the changes to your file, then run {styler}. You can then revert back to the staged changed if needed."
   },
   {
-    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#levels-of-rap--baseline",
-    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#levels-of-rap--baseline",
-    "title": "Travels with R and Python",
-    "section": "Levels of RAP- Baseline",
-    "text": "Levels of RAP- Baseline\n\nData produced by code in an open-source language (e.g., Python, R, SQL)\nCode is version controlled\nRepository includes a README.md file that clearly details steps a user must follow to reproduce the code\nCode has been peer reviewed\nCode is published in the open and linked to & from accompanying publication (if relevant)\n\n\nSource: NHS Digital RAP community of practice"
+    "objectID": "presentations/2023-03-09_coffee-and-coding/index.html#what-does-lintr-look-like",
+    "href": "presentations/2023-03-09_coffee-and-coding/index.html#what-does-lintr-look-like",
+    "title": "Coffee and Coding",
+    "section": "What does {lintr} look like?",
+    "text": "What does {lintr} look like?\n\n\n\nsource: Good practice for writing R code and R packages\n\nrunning lintr can be done in the console, e.g.\n\nlintr::lintr_dir(\".\")\n\nor via the Addins menu"
   },
   {
-    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#levels-of-rap--silver",
-    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#levels-of-rap--silver",
-    "title": "Travels with R and Python",
-    "section": "Levels of RAP- Silver",
-    "text": "Levels of RAP- Silver\n\nCode is well-documented…\nCode is well-organised following standard directory format\nReusable functions and/or classes are used where appropriate\nPipeline includes a testing framework\nRepository includes dependency information (e.g. requirements.txt, PipFile, environment.yml)\nData is handled and output in a Tidy data format\n\n\nSource: NHS Digital RAP community of practice"
+    "objectID": "presentations/2023-03-09_coffee-and-coding/index.html#using-styler",
+    "href": "presentations/2023-03-09_coffee-and-coding/index.html#using-styler",
+    "title": "Coffee and Coding",
+    "section": "Using {styler}",
+    "text": "Using {styler}\n\nsource: Good practice for writing R code and R packages"
   },
   {
-    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#levels-of-rap--gold",
-    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#levels-of-rap--gold",
-    "title": "Travels with R and Python",
-    "section": "Levels of RAP- Gold",
-    "text": "Levels of RAP- Gold\n\nCode is fully packaged\nRepository automatically runs tests etc. via CI/CD or a different integration/deployment tool e.g. GitHub Actions\nProcess runs based on event-based triggers (e.g., new data in database) or on a schedule\nChanges to the RAP are clearly signposted. E.g. a changelog in the package, releases etc. (See gov.uk info on Semantic Versioning)\n\n\nSource: NHS Digital RAP community of practice"
+    "objectID": "presentations/2023-03-09_coffee-and-coding/index.html#further-thoughts-on-improving-code-legibility",
+    "href": "presentations/2023-03-09_coffee-and-coding/index.html#further-thoughts-on-improving-code-legibility",
+    "title": "Coffee and Coding",
+    "section": "Further thoughts on improving code legibility",
+    "text": "Further thoughts on improving code legibility\n\ndo not let files grow too big\nbreak up logic into separate files, then you can use source(\"filename.R) to run the code in that file\nidealy, break up your logic into separate functions, each function having it’s own file, and then call those functions within your analysis\ndo not repeat yourself - if you are copying and pasting your code then you should be thinking about how to write a single function to handle this repeated logic\n\n\n\nview slides at the-strategy-unit.github.io/data_science/presentations"
   },
   {
-    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#data-science-in-healthcare",
-    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#data-science-in-healthcare",
-    "title": "Travels with R and Python",
-    "section": "Data science in healthcare",
-    "text": "Data science in healthcare\n\nForecasting\n\nStats versus ML\n\nText mining\n\nR versus Python\n\nDemand modelling\n\nDevOps as a way of life"
+    "objectID": "presentations/2023-05-15_text-mining/index.html#patient-experience",
+    "href": "presentations/2023-05-15_text-mining/index.html#patient-experience",
+    "title": "Text mining of patient experience data",
+    "section": "Patient experience",
+    "text": "Patient experience\n\nThe NHS collects a lot of patient experience data\nRate the service 1-5 (Very poor… Excellent) but also give written feedback\n\n“Parking was difficult”\n“Doctor was rude”\n“You saved my life”\n\nMany organisations lack the staffing to read all of the feedback in a systematic way"
   },
   {
-    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#get-involved",
-    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#get-involved",
-    "title": "Travels with R and Python",
-    "section": "Get involved!",
-    "text": "Get involved!\n\nNHS-R community\n\nWebinars, training, conference, Slack\n\nNHS Pycom\n\nditto…\n\nMLCSU GitHub?\nBuild links with the other CSUs"
+    "objectID": "presentations/2023-05-15_text-mining/index.html#text-mining",
+    "href": "presentations/2023-05-15_text-mining/index.html#text-mining",
+    "title": "Text mining of patient experience data",
+    "section": "Text mining",
+    "text": "Text mining\n\nWe have built an algorithm to read it\n\nTheme\n“Criticality”\n\nFits alongside other work happening within NHSE\n\nA framework for understanding patient experience"
   },
   {
-    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#contact",
-    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#contact",
-    "title": "Travels with R and Python",
-    "section": "Contact",
-    "text": "Contact\n\n\n\n\n strategy.unit@nhs.net\n The-Strategy-Unit\n\n\n\n\n\n chris.beeley1@nhs.net\n chrisbeeley\n\n\n\n\n\n\nview slides at the-strategy-unit.github.io/data_science/presentations"
+    "objectID": "presentations/2023-05-15_text-mining/index.html#patient-experience-101",
+    "href": "presentations/2023-05-15_text-mining/index.html#patient-experience-101",
+    "title": "Text mining of patient experience data",
+    "section": "Patient experience 101",
+    "text": "Patient experience 101\n\nTick box scoring is not useful (or accurate)\nText based data is complex and built on human experience\nWe’re not making word clouds!\nWe’re not classifying movie reviews or Reddit posts\nThe tool should enhance, not replace, human understanding\n“A recommendation engine for feedback data”"
   },
   {
-    "objectID": "presentations/2023-03-23_collaborative-working/index.html#introduction",
-    "href": "presentations/2023-03-23_collaborative-working/index.html#introduction",
-    "title": "Collaborative working",
-    "section": "Introduction",
-    "text": "Introduction\n\nThis is definitely an art and not a science\nI do not claim to have all, or even most of, the answers\nHow you use these tools is way more important than the tools themselves\nThis is a culture and not a technique"
+    "objectID": "presentations/2023-05-15_text-mining/index.html#everything-open-all-the-time",
+    "href": "presentations/2023-05-15_text-mining/index.html#everything-open-all-the-time",
+    "title": "Text mining of patient experience data",
+    "section": "Everything open, all the time",
+    "text": "Everything open, all the time\n\nThis project was coded in the open and is MIT licensed\nEngage with the organisations as we find them\n\nDo they want code or a docker image?\nDo they want to fetch their own themes from an API?\nDo they want to use our dashboard?"
   },
   {
-    "objectID": "presentations/2023-03-23_collaborative-working/index.html#costs",
-    "href": "presentations/2023-03-23_collaborative-working/index.html#costs",
-    "title": "Collaborative working",
-    "section": "Costs",
-    "text": "Costs\n\nDelay and time\nStress and disagreement\nCommittee thinking\nLearning and effort"
+    "objectID": "presentations/2023-05-15_text-mining/index.html#phase-1",
+    "href": "presentations/2023-05-15_text-mining/index.html#phase-1",
+    "title": "Text mining of patient experience data",
+    "section": "Phase 1",
+    "text": "Phase 1\n\n10 categories and moderate performance on criticality analysis\nscikit-learn\nShiny\nReticulate\nR package of Python code"
   },
   {
-    "objectID": "presentations/2023-03-23_collaborative-working/index.html#benefits",
-    "href": "presentations/2023-03-23_collaborative-working/index.html#benefits",
-    "title": "Collaborative working",
-    "section": "Benefits",
-    "text": "Benefits\n\n“From each according to their ability”\nLearning\nReproducibility and reduced truck factor\nFun!"
+    "objectID": "presentations/2023-05-15_text-mining/index.html#golem-all-the-things",
+    "href": "presentations/2023-05-15_text-mining/index.html#golem-all-the-things",
+    "title": "Text mining of patient experience data",
+    "section": "Golem all the things!",
+    "text": "Golem all the things!\n\nOpinionated way of building Shiny\nAllows flexibility in deployed versions using YAML\nAgnostic to deployment\nEmphasises dependency management and testing\nSeparate “reactive” and “business” logic (see the accompanying book)"
   },
   {
-    "objectID": "presentations/2023-03-23_collaborative-working/index.html#github-as-an-organising-principle-behind-work",
-    "href": "presentations/2023-03-23_collaborative-working/index.html#github-as-an-organising-principle-behind-work",
-    "title": "Collaborative working",
-    "section": "GitHub as an organising principle behind work",
-    "text": "GitHub as an organising principle behind work\n\nA project is just a set of milestones\nA milestone is just a set of issues\nAn issue is just a set of commits\nA commit is just text added and removed"
+    "objectID": "presentations/2023-05-15_text-mining/index.html#phase-2",
+    "href": "presentations/2023-05-15_text-mining/index.html#phase-2",
+    "title": "Text mining of patient experience data",
+    "section": "Phase 2",
+    "text": "Phase 2\n\n30-50 categories and excellent criticality performance\nscikit-learn/ BERT\nMore Shiny\nSeparate the code bases\nFastAPI\nInspired by the Royal College of Paediatrics and Child Health API\nDocumentation, documentation, documentation"
   },
   {
-    "objectID": "presentations/2023-03-23_collaborative-working/index.html#the-repo-owner",
-    "href": "presentations/2023-03-23_collaborative-working/index.html#the-repo-owner",
-    "title": "Collaborative working",
-    "section": "The repo owner",
-    "text": "The repo owner\n\nReview milestones\nReview issues\n\nDiscuss the issue on the issue- NOT on email!\n\nReview pull requests and get your pull requests reviewed!"
+    "objectID": "presentations/2023-05-15_text-mining/index.html#making-it-useful",
+    "href": "presentations/2023-05-15_text-mining/index.html#making-it-useful",
+    "title": "Text mining of patient experience data",
+    "section": "Making it useful",
+    "text": "Making it useful\n\nAccurately rating low frequency categories\nPer category precision and recall\nSpeed versus accuracy\nRepresenting the thematic structure"
   },
   {
-    "objectID": "presentations/2023-03-23_collaborative-working/index.html#asynchronous-communication",
-    "href": "presentations/2023-03-23_collaborative-working/index.html#asynchronous-communication",
-    "title": "Collaborative working",
-    "section": "Asynchronous communication",
-    "text": "Asynchronous communication\n\nInvolve others before you pull request\nInvolve others when you pull request\nRead issues!\nComment on issues!\nFile issues- suggestions/ bug reports/ questions\n\nNOT in emails"
+    "objectID": "presentations/2023-05-15_text-mining/index.html#the-future",
+    "href": "presentations/2023-05-15_text-mining/index.html#the-future",
+    "title": "Text mining of patient experience data",
+    "section": "The future",
+    "text": "The future\n\nOff the shelf, proprietary data collection systems dominate\nThey often offer bundled analytic products of low quality\nThe DS time can’t and doesn’t want to offer a complete data system\nHow can we best contribute to improving patient experience for patients in the NHS?\n\nIf the patient experience data won’t come to the mountain…"
   },
   {
-    "objectID": "presentations/2023-03-23_collaborative-working/index.html#asynchronous-work",
-    "href": "presentations/2023-03-23_collaborative-working/index.html#asynchronous-work",
-    "title": "Collaborative working",
-    "section": "Asynchronous work",
-    "text": "Asynchronous work\n\nEvery piece of work has an issues associated with it\nEvery piece of work associated with an issue lives on its own branch\nEvery branch is incorporated to the main repo by a pull request\nEvery pull request is reviewed"
+    "objectID": "presentations/2023-05-15_text-mining/index.html#open-source-ftw",
+    "href": "presentations/2023-05-15_text-mining/index.html#open-source-ftw",
+    "title": "Text mining of patient experience data",
+    "section": "Open source FTW!",
+    "text": "Open source FTW!\n\nOften individuals in the NHS don’t want private companies to “benefit” from open code\nBut if they make their products better with open code the patients win\nBest practice as code"
   },
   {
-    "objectID": "presentations/2023-03-23_collaborative-working/index.html#iteration-and-documentation",
-    "href": "presentations/2023-03-23_collaborative-working/index.html#iteration-and-documentation",
-    "title": "Collaborative working",
-    "section": "Iteration and documentation",
-    "text": "Iteration and documentation\n\nAnalyse early, analyse often (using RAPs!)\nWrite down what you did\nWrite down what you did but then changed your mind about\nFavour Quarto/ RMarkdown\n\nClean sessions\nDocumentation and graphics"
+    "objectID": "presentations/2023-05-15_text-mining/index.html#the-projects",
+    "href": "presentations/2023-05-15_text-mining/index.html#the-projects",
+    "title": "Text mining of patient experience data",
+    "section": "The projects",
+    "text": "The projects\n\nhttps://github.com/CDU-data-science-team/pxtextmining\nhttps://github.com/CDU-data-science-team/experiencesdashboard\nhttps://github.com/CDU-data-science-team/PatientExperience-QDC"
   },
   {
-    "objectID": "presentations/2023-03-23_collaborative-working/index.html#data-and-.gitignore",
-    "href": "presentations/2023-03-23_collaborative-working/index.html#data-and-.gitignore",
-    "title": "Collaborative working",
-    "section": "Data and .gitignore",
-    "text": "Data and .gitignore\n\nYour repo needs to be reproducible but also needs to be safe\nThe main branch should be reproducible by anyone at any time\n\nDocument package dependencies (using renv)\nDocument data loads if the data isn’t in the repo\n\n\n\n\nview slides at the-strategy-unit.github.io/data_science/presentations"
+    "objectID": "presentations/2023-05-15_text-mining/index.html#the-team",
+    "href": "presentations/2023-05-15_text-mining/index.html#the-team",
+    "title": "Text mining of patient experience data",
+    "section": "The team",
+    "text": "The team\n\nYiWen Hon (Python & Machine learning)\nOluwasegun Apejoye (Shiny)\n\nContact:\n\nchris.beeley1@nhs.net\nhttps://fosstodon.org/@chrisbeeley\n\n\n\nview slides at the-strategy-unit.github.io/data_science/presentations"
+  },
+  {
+    "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#what-is-targets",
+    "href": "presentations/2023-03-23_coffee-and-coding/index.html#what-is-targets",
+    "title": "Coffee and Coding",
+    "section": "What is {targets}?",
+    "text": "What is {targets}?\n\nThe targets package is a Make-like pipeline tool for Statistics and data science in R. With targets, you can maintain a reproducible workflow without repeating yourself. targets learns how your pipeline fits together, skips costly runtime for tasks that are already up to date, runs only the necessary computation, supports implicit parallel computing, abstracts files as R objects, and shows tangible evidence that the results match the underlying code and data.\n\n\n\nData analysis can be slow. A round of scientific computation can take several minutes, hours, or even days to complete. After it finishes, if you update your code or data, your hard-earned results may no longer be valid. Unchecked, this invalidation creates chronic Sisyphean loop:\n\n\nLaunch the code.\nWait while it runs.\nDiscover an issue.\nRestart from scratch.\n\n\nsource: The {targets} R package user manual"
+  },
+  {
+    "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#what-is-it-actually-trying-to-do",
+    "href": "presentations/2023-03-23_coffee-and-coding/index.html#what-is-it-actually-trying-to-do",
+    "title": "Coffee and Coding",
+    "section": "What is it actually trying to do?",
+    "text": "What is it actually trying to do?\n\n\nYour analysis is built up of a number of steps that build one on top of another\nbut these steps need to run in a particular order\nsome of these steps may take a long time to run\nso you only want to run the steps that have changed"
+  },
+  {
+    "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#typical-solution",
+    "href": "presentations/2023-03-23_coffee-and-coding/index.html#typical-solution",
+    "title": "Coffee and Coding",
+    "section": "Typical solution",
+    "text": "Typical solution\n\n\nSteps\nYou have a folder with numbered scripts, such as:\n\n1. get data.R\n2. process data.R\n3. produce charts.R\n4. build model.R\n5. report.qmd\n\n\nDownsides\n\n\nit’s easy to accidentally skip a step: what happens if you went from 1 to 3?\nperforming one of the steps may take a long time, so you may want to skip it if it’s already been run… but how do you know that it’s already been run?\nperhaps step 4 doesn’t depend on step 3, but is this obvious that you could skip step 4 if step 3 is updated?\nwhat if someone labels the files terribly, or doesn’t number them at all?\nwhat if the numbers become out of date and are in the wrong order?\ndo you need to create a procedure document that describes what to do, step-by-step?"
+  },
+  {
+    "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#targets-to-the-rescue",
+    "href": "presentations/2023-03-23_coffee-and-coding/index.html#targets-to-the-rescue",
+    "title": "Coffee and Coding",
+    "section": "{targets} to the rescue?",
+    "text": "{targets} to the rescue?\n\n\nUsing the previous example, if we were to create functions for each of the steps (all saved in the folder R/), we can start using targets using the function use_targets() which will create a file called _targets.R.\nWe can then modify the file to match our pipeline, for example:\nNote that:\n\nprocessed_data depends upon raw_data,\nchart and model depend upon processed_data,\nreport depends upon chart and model.\n\nWe can visualise our pipeline using tar_visnetwork().\n\n\nlibrary(targets)\n\ntar_option_set(\n  packages = c(\"tibble\", \"dplyr\", \"ggplot2\"),\n)\n\ntar_source()\n\nlist(\n  tar_target(raw_data, get_data()),\n  tar_target(processed_data, process_data(raw_data)),\n  tar_target(chart, produce_chart(processed_data)),\n  tar_target(model, build_model(processed_data)),\n  tar_target(report, generate_report(chart, model))\n)"
+  },
+  {
+    "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#running-the-pipeline",
+    "href": "presentations/2023-03-23_coffee-and-coding/index.html#running-the-pipeline",
+    "title": "Coffee and Coding",
+    "section": "Running the pipeline",
+    "text": "Running the pipeline\nRunning this pipeline is as simple as: tar_make().\nThis will output the following:\n• start target raw_data\n• built target raw_data [1.05 seconds]\n• start target processed_data\n• built target processed_data [0.03 seconds]\n• start target chart\n• built target chart [0.02 seconds]\n• start target model\n• built target model [0.01 seconds]\n• start target report\n• built target report [0 seconds]\n• end pipeline [1.75 seconds]\n\nRunning tar_make() again will show these step’s being skipped:\n✔ skip target raw_data\n✔ skip target processed_data\n✔ skip target chart\n✔ skip target model\n✔ skip target report\n✔ skip pipeline [0.12 seconds]"
+  },
+  {
+    "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#changing-one-of-the-files",
+    "href": "presentations/2023-03-23_coffee-and-coding/index.html#changing-one-of-the-files",
+    "title": "Coffee and Coding",
+    "section": "Changing one of the files",
+    "text": "Changing one of the files\nIf we change produce_chart.R slightly, this will cause chart and report to be invalidated, but it will skip over the other steps.\n\n\n&gt; targets::tar_make()\n\n✔ skip target raw_data\n✔ skip target processed_data\n• start target chart\n• built target chart [0.03 seconds]\n✔ skip target model\n• start target report\n• built target report [0 seconds]\n• end pipeline [1.71 seconds]"
+  },
+  {
+    "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#using-the-results-of-our-pipeline",
+    "href": "presentations/2023-03-23_coffee-and-coding/index.html#using-the-results-of-our-pipeline",
+    "title": "Coffee and Coding",
+    "section": "Using the results of our pipeline",
+    "text": "Using the results of our pipeline\nWe can view the results of any step using tar_read() and tar_load(). These will either directly give you the results of a step, or load that step into your environment (as a variable with the same name as the step).\nThis allows us to view intermediate steps as well as the final outputs of our pipelines.\nOne thing you may want to consider doing is as a final step in a pipeline is to generate a quarto document, or save call a function like saveRDS to generate more useful outputs."
+  },
+  {
+    "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#current-examples-of-targets-in-action",
+    "href": "presentations/2023-03-23_coffee-and-coding/index.html#current-examples-of-targets-in-action",
+    "title": "Coffee and Coding",
+    "section": "Current examples of {targets} in action",
+    "text": "Current examples of {targets} in action\n\ncode used in this presentation\nNHP Inputs (all of the data processing steps are a targets pipeline)\nNHP Strategies (runs Sql scripts to update tables in the data warehouse)\nNHP Model (all of the data extraction, processing, and uploading for the model is a targets pipeline)\nMacmillan on NCDR - Jacqueline has been using {targets} for her current project\n\nThe {targets} documentation is exceptionally detailed and easy to follow, and goes into more complex examples (such as dynamic branching of steps in a pipeline and high performance computing setups)\n\n\nview slides at the-strategy-unit.github.io/data_science/presentations"
+  },
+  {
+    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#packages-we-are-using-today",
+    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#packages-we-are-using-today",
+    "title": "Coffee and Coding",
+    "section": "Packages we are using today",
+    "text": "Packages we are using today\n\nlibrary(tidyverse)\n\nlibrary(sf)\n\nlibrary(tidygeocoder)\nlibrary(PostcodesioR)\n\nlibrary(osrm)\n\nlibrary(leaflet)"
+  },
+  {
+    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#getting-boundary-data",
+    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#getting-boundary-data",
+    "title": "Coffee and Coding",
+    "section": "Getting boundary data",
+    "text": "Getting boundary data\nWe can use the ONS’s Geoportal we can grab boundary data to generate maps\n\n\n\nicb_url &lt;- paste0(\n  \"https://services1.arcgis.com\",\n  \"/ESMARspQHYMw9BZ9/arcgis\",\n  \"/rest/services\",\n  \"/Integrated_Care_Boards_April_2023_EN_BGC\",\n  \"/FeatureServer/0/query\",\n  \"?outFields=*&where=1%3D1&f=geojson\"\n)\nicb_boundaries &lt;- read_sf(icb_url)\n\nicb_boundaries |&gt;\n  ggplot() +\n  geom_sf() +\n  theme_void()"
+  },
+  {
+    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#what-is-the-icb_boundaries-data",
+    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#what-is-the-icb_boundaries-data",
+    "title": "Coffee and Coding",
+    "section": "What is the icb_boundaries data?",
+    "text": "What is the icb_boundaries data?\n\nicb_boundaries |&gt;\n  select(ICB23CD, ICB23NM)\n\nSimple feature collection with 42 features and 2 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: -6.418667 ymin: 49.86479 xmax: 1.763706 ymax: 55.81112\nGeodetic CRS:  WGS 84\n# A tibble: 42 × 3\n   ICB23CD   ICB23NM                                                    geometry\n   &lt;chr&gt;     &lt;chr&gt;                                            &lt;MULTIPOLYGON [°]&gt;\n 1 E54000008 NHS Cheshire and Merseyside Integrated C… (((-3.083264 53.2559, -3…\n 2 E54000010 NHS Staffordshire and Stoke-on-Trent Int… (((-1.950489 53.21188, -…\n 3 E54000011 NHS Shropshire, Telford and Wrekin Integ… (((-2.380794 52.99841, -…\n 4 E54000013 NHS Lincolnshire Integrated Care Board    (((0.2687853 52.81584, 0…\n 5 E54000015 NHS Leicester, Leicestershire and Rutlan… (((-0.7875237 52.97762, …\n 6 E54000018 NHS Coventry and Warwickshire Integrated… (((-1.577608 52.67858, -…\n 7 E54000019 NHS Herefordshire and Worcestershire Int… (((-2.272042 52.43972, -…\n 8 E54000022 NHS Norfolk and Waveney Integrated Care … (((1.666741 52.31366, 1.…\n 9 E54000023 NHS Suffolk and North East Essex Integra… (((0.8997023 51.7732, 0.…\n10 E54000024 NHS Bedfordshire, Luton and Milton Keyne… (((-0.4577115 52.32009, …\n# ℹ 32 more rows"
+  },
+  {
+    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#working-with-geospatial-dataframes",
+    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#working-with-geospatial-dataframes",
+    "title": "Coffee and Coding",
+    "section": "Working with geospatial dataframes",
+    "text": "Working with geospatial dataframes\nWe can simply join sf data frames and “regular” data frames together\n\n\n\nicb_metrics &lt;- icb_boundaries |&gt;\n  st_drop_geometry() |&gt;\n  select(ICB23CD) |&gt;\n  mutate(admissions = rpois(n(), 1000000))\n\nicb_boundaries |&gt;\n  inner_join(icb_metrics, by = \"ICB23CD\") |&gt;\n  ggplot() +\n  geom_sf(aes(fill = admissions)) +\n  scale_fill_viridis_c() +\n  theme_void()"
+  },
+  {
+    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#working-with-geospatial-data-frames",
+    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#working-with-geospatial-data-frames",
+    "title": "Coffee and Coding",
+    "section": "Working with geospatial data frames",
+    "text": "Working with geospatial data frames\nWe can manipulate sf objects like other data frames\n\n\n\nlondon_icbs &lt;- icb_boundaries |&gt;\n  filter(ICB23NM |&gt; stringr::str_detect(\"London\"))\n\nggplot() +\n  geom_sf(data = london_icbs) +\n  geom_sf(data = st_centroid(london_icbs)) +\n  theme_void()"
+  },
+  {
+    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#working-with-geospatial-data-frames-1",
+    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#working-with-geospatial-data-frames-1",
+    "title": "Coffee and Coding",
+    "section": "Working with geospatial data frames",
+    "text": "Working with geospatial data frames\nSummarising the data will combine the geometries.\n\nlondon_icbs |&gt;\n  summarise(area = sum(Shape__Area)) |&gt;\n  # and use geospatial functions to create calculations using the geometry\n  mutate(new_area = st_area(geometry), .before = \"geometry\")\n\nSimple feature collection with 1 feature and 2 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: -0.5102803 ymin: 51.28676 xmax: 0.3340241 ymax: 51.69188\nGeodetic CRS:  WGS 84\n# A tibble: 1 × 3\n         area    new_area                                               geometry\n*       &lt;dbl&gt;       [m^2]                                     &lt;MULTIPOLYGON [°]&gt;\n1 1573336388. 1567995610. (((-0.3314819 51.43935, -0.3306676 51.43889, -0.33118…\n\n\n Why the difference in area?\n\n We are using a simplified geometry, so calculating the area will be slightly inaccurate. The original area was calculated on the non-simplified geometries."
+  },
+  {
+    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#creating-our-own-geospatial-data",
+    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#creating-our-own-geospatial-data",
+    "title": "Coffee and Coding",
+    "section": "Creating our own geospatial data",
+    "text": "Creating our own geospatial data\n\nlocation_raw &lt;- postcode_lookup(\"B2 4BJ\")\nglimpse(location_raw)\n\nRows: 1\nColumns: 38\n$ postcode                        &lt;chr&gt; \"B2 4BJ\"\n$ quality                         &lt;int&gt; 1\n$ eastings                        &lt;int&gt; 406866\n$ northings                       &lt;int&gt; 286775\n$ country                         &lt;chr&gt; \"England\"\n$ nhs_ha                          &lt;chr&gt; \"West Midlands\"\n$ longitude                       &lt;dbl&gt; -1.90033\n$ latitude                        &lt;dbl&gt; 52.47887\n$ european_electoral_region       &lt;chr&gt; \"West Midlands\"\n$ primary_care_trust              &lt;chr&gt; \"Heart of Birmingham Teaching\"\n$ region                          &lt;chr&gt; \"West Midlands\"\n$ lsoa                            &lt;chr&gt; \"Birmingham 138A\"\n$ msoa                            &lt;chr&gt; \"Birmingham 138\"\n$ incode                          &lt;chr&gt; \"4BJ\"\n$ outcode                         &lt;chr&gt; \"B2\"\n$ parliamentary_constituency      &lt;chr&gt; \"Birmingham, Ladywood\"\n$ admin_district                  &lt;chr&gt; \"Birmingham\"\n$ parish                          &lt;chr&gt; \"Birmingham, unparished area\"\n$ admin_county                    &lt;lgl&gt; NA\n$ date_of_introduction            &lt;chr&gt; \"198001\"\n$ admin_ward                      &lt;chr&gt; \"Ladywood\"\n$ ced                             &lt;lgl&gt; NA\n$ ccg                             &lt;chr&gt; \"NHS Birmingham and Solihull\"\n$ nuts                            &lt;chr&gt; \"Birmingham\"\n$ pfa                             &lt;chr&gt; \"West Midlands\"\n$ admin_district_code             &lt;chr&gt; \"E08000025\"\n$ admin_county_code               &lt;chr&gt; \"E99999999\"\n$ admin_ward_code                 &lt;chr&gt; \"E05011151\"\n$ parish_code                     &lt;chr&gt; \"E43000250\"\n$ parliamentary_constituency_code &lt;chr&gt; \"E14000564\"\n$ ccg_code                        &lt;chr&gt; \"E38000258\"\n$ ccg_id_code                     &lt;chr&gt; \"15E\"\n$ ced_code                        &lt;chr&gt; \"E99999999\"\n$ nuts_code                       &lt;chr&gt; \"TLG31\"\n$ lsoa_code                       &lt;chr&gt; \"E01033620\"\n$ msoa_code                       &lt;chr&gt; \"E02006899\"\n$ lau2_code                       &lt;chr&gt; \"E08000025\"\n$ pfa_code                        &lt;chr&gt; \"E23000014\"\n\n\n\n\n\nlocation &lt;- location_raw |&gt;\n  st_as_sf(coords = c(\"eastings\", \"northings\"), crs = 27700) |&gt;\n  select(postcode, ccg) |&gt;\n  st_transform(crs = 4326)\n\nlocation\n\nSimple feature collection with 1 feature and 2 fields\nGeometry type: POINT\nDimension:     XY\nBounding box:  xmin: -1.900335 ymin: 52.47886 xmax: -1.900335 ymax: 52.47886\nGeodetic CRS:  WGS 84\n  postcode                         ccg                   geometry\n1   B2 4BJ NHS Birmingham and Solihull POINT (-1.900335 52.47886)"
+  },
+  {
+    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#creating-a-geospatial-data-frame-for-all-nhs-trusts",
+    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#creating-a-geospatial-data-frame-for-all-nhs-trusts",
+    "title": "Coffee and Coding",
+    "section": "Creating a geospatial data frame for all NHS Trusts",
+    "text": "Creating a geospatial data frame for all NHS Trusts\n\n\n\n# using the NHSRtools package\n# remotes::install_github(\"NHS-R-Community/NHSRtools\")\ntrusts &lt;- ods_get_trusts() |&gt;\n  filter(status == \"Active\") |&gt;\n  select(name, org_id, post_code) |&gt;\n  geocode(postalcode = \"post_code\") |&gt;\n  st_as_sf(coords = c(\"long\", \"lat\"), crs = 4326)\n\n\ntrusts |&gt;\n  leaflet() |&gt;\n  addProviderTiles(\"Stamen.TonerLite\") |&gt;\n  addMarkers(popup = ~name)"
+  },
+  {
+    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#what-are-the-nearest-trusts-to-our-location",
+    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#what-are-the-nearest-trusts-to-our-location",
+    "title": "Coffee and Coding",
+    "section": "What are the nearest trusts to our location?",
+    "text": "What are the nearest trusts to our location?\n\nnearest_trusts &lt;- trusts |&gt;\n  mutate(\n    distance = st_distance(geometry, location)[, 1]\n  ) |&gt;\n  arrange(distance) |&gt;\n  head(5)\n\nnearest_trusts\n\nSimple feature collection with 5 features and 4 fields\nGeometry type: POINT\nDimension:     XY\nBounding box:  xmin: -1.9384 ymin: 52.4533 xmax: -1.886282 ymax: 52.48764\nGeodetic CRS:  WGS 84\n# A tibble: 5 × 5\n  name                       org_id post_code             geometry distance\n  &lt;chr&gt;                      &lt;chr&gt;  &lt;chr&gt;              &lt;POINT [°]&gt;      [m]\n1 BIRMINGHAM WOMEN'S AND CH… RQ3    B4 6NH     (-1.894241 52.4849)     789.\n2 BIRMINGHAM AND SOLIHULL M… RXT    B1 3RB    (-1.917663 52.48416)    1313.\n3 BIRMINGHAM COMMUNITY HEAL… RYW    B7 4BN    (-1.886282 52.48754)    1356.\n4 SANDWELL AND WEST BIRMING… RXK    B18 7QH   (-1.930203 52.48764)    2246.\n5 UNIVERSITY HOSPITALS BIRM… RRK    B15 2GW      (-1.9384 52.4533)    3838."
+  },
+  {
+    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#lets-find-driving-routes-to-these-trusts",
+    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#lets-find-driving-routes-to-these-trusts",
+    "title": "Coffee and Coding",
+    "section": "Let’s find driving routes to these trusts",
+    "text": "Let’s find driving routes to these trusts\n\nroutes &lt;- nearest_trusts |&gt;\n  mutate(\n    route = map(geometry, ~ osrmRoute(location, st_coordinates(.x)))\n  ) |&gt;\n  st_drop_geometry() |&gt;\n  rename(straight_line_distance = distance) |&gt;\n  unnest(route) |&gt;\n  st_as_sf()\n\nroutes\n\nSimple feature collection with 5 features and 8 fields\nGeometry type: LINESTRING\nDimension:     XY\nBounding box:  xmin: -1.93846 ymin: 52.45316 xmax: -1.88527 ymax: 52.49279\nGeodetic CRS:  WGS 84\n# A tibble: 5 × 9\n  name     org_id post_code straight_line_distance src   dst   duration distance\n  &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;                        [m] &lt;chr&gt; &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1 BIRMING… RQ3    B4 6NH                      789. 1     dst       5.77     3.09\n2 BIRMING… RXT    B1 3RB                     1313. 1     dst       5.68     2.83\n3 BIRMING… RYW    B7 4BN                     1356. 1     dst       7.59     4.29\n4 SANDWEL… RXK    B18 7QH                    2246. 1     dst       7.76     3.69\n5 UNIVERS… RRK    B15 2GW                    3838. 1     dst      10.6      4.67\n# ℹ 1 more variable: geometry &lt;LINESTRING [°]&gt;"
+  },
+  {
+    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#lets-show-the-routes",
+    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#lets-show-the-routes",
+    "title": "Coffee and Coding",
+    "section": "Let’s show the routes",
+    "text": "Let’s show the routes\n\nleaflet(routes) |&gt;\n  addTiles() |&gt;\n  addMarkers(data = location) |&gt;\n  addPolylines(color = \"black\", weight = 3, opacity = 1) |&gt;\n  addCircleMarkers(data = nearest_trusts, radius = 4, opacity = 1, fillOpacity = 1)"
+  },
+  {
+    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#we-can-use-osrm-to-calculate-isochrones",
+    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#we-can-use-osrm-to-calculate-isochrones",
+    "title": "Coffee and Coding",
+    "section": "We can use {osrm} to calculate isochrones",
+    "text": "We can use {osrm} to calculate isochrones\n\n\n\niso &lt;- osrmIsochrone(location, breaks = seq(0, 60, 15), res = 10)\n\nisochrone_ids &lt;- unique(iso$id)\n\npal &lt;- colorFactor(\n  viridis::viridis(length(isochrone_ids)),\n  isochrone_ids\n)\n\nleaflet(location) |&gt;\n  addProviderTiles(\"Stamen.TonerLite\") |&gt;\n  addMarkers() |&gt;\n  addPolygons(\n    data = iso,\n    fillColor = ~ pal(id),\n    color = \"#000000\",\n    weight = 1\n  )"
+  },
+  {
+    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#what-trusts-are-in-the-isochrones",
+    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#what-trusts-are-in-the-isochrones",
+    "title": "Coffee and Coding",
+    "section": "What trusts are in the isochrones?",
+    "text": "What trusts are in the isochrones?\nThe summarise() function will “union” the geometry\n\nsummarise(iso)\n\nSimple feature collection with 1 feature and 0 fields\nGeometry type: POLYGON\nDimension:     XY\nBounding box:  xmin: -2.913575 ymin: 51.98062 xmax: -0.8502164 ymax: 53.1084\nGeodetic CRS:  WGS 84\n                        geometry\n1 POLYGON ((-1.541014 52.9693..."
+  },
+  {
+    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#what-trusts-are-in-the-isochrones-1",
+    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#what-trusts-are-in-the-isochrones-1",
+    "title": "Coffee and Coding",
+    "section": "What trusts are in the isochrones?",
+    "text": "What trusts are in the isochrones?\nWe can use this with a geo-filter to find the trusts in the isochrone\n\n# also works\ntrusts_in_iso &lt;- trusts |&gt;\n  st_filter(\n    summarise(iso),\n    .predicate = st_within\n  )\n\ntrusts_in_iso\n\nSimple feature collection with 31 features and 3 fields\nGeometry type: POINT\nDimension:     XY\nBounding box:  xmin: -2.793386 ymin: 52.19205 xmax: -1.10302 ymax: 53.01015\nGeodetic CRS:  WGS 84\n# A tibble: 31 × 4\n   name                               org_id post_code             geometry\n * &lt;chr&gt;                              &lt;chr&gt;  &lt;chr&gt;              &lt;POINT [°]&gt;\n 1 BIRMINGHAM AND SOLIHULL MENTAL HE… RXT    B1 3RB    (-1.917663 52.48416)\n 2 BIRMINGHAM COMMUNITY HEALTHCARE N… RYW    B7 4BN    (-1.886282 52.48754)\n 3 BIRMINGHAM WOMEN'S AND CHILDREN'S… RQ3    B4 6NH     (-1.894241 52.4849)\n 4 BIRMINGHAM WOMEN'S NHS FOUNDATION… RLU    B15 2TG   (-1.942861 52.45325)\n 5 BURTON HOSPITALS NHS FOUNDATION T… RJF    DE13 0RB  (-1.656667 52.81774)\n 6 COVENTRY AND WARWICKSHIRE PARTNER… RYG    CV6 6NY    (-1.48692 52.45659)\n 7 DERBYSHIRE HEALTHCARE NHS FOUNDAT… RXM    DE22 3LZ  (-1.512896 52.91831)\n 8 DUDLEY INTEGRATED HEALTH AND CARE… RYK    DY5 1RU    (-2.11786 52.48176)\n 9 GEORGE ELIOT HOSPITAL NHS TRUST    RLT    CV10 7DJ   (-1.47844 52.51258)\n10 HEART OF ENGLAND NHS FOUNDATION T… RR1    B9 5ST     (-1.828759 52.4781)\n# ℹ 21 more rows"
+  },
+  {
+    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#what-trusts-are-in-the-isochrones-2",
+    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#what-trusts-are-in-the-isochrones-2",
+    "title": "Coffee and Coding",
+    "section": "What trusts are in the isochrones?",
+    "text": "What trusts are in the isochrones?\n\n\n\nleaflet(trusts_in_iso) |&gt;\n  addProviderTiles(\"Stamen.TonerLite\") |&gt;\n  addMarkers() |&gt;\n  addPolygons(\n    data = iso,\n    fillColor = ~pal(id),\n    color = \"#000000\",\n    weight = 1\n  )"
+  },
+  {
+    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#doing-the-same-but-within-a-radius",
+    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#doing-the-same-but-within-a-radius",
+    "title": "Coffee and Coding",
+    "section": "Doing the same but within a radius",
+    "text": "Doing the same but within a radius\n\n\n\nr &lt;- 25000\n\ntrusts_in_radius &lt;- trusts |&gt;\n  st_filter(\n    location,\n    .predicate = st_is_within_distance,\n    dist = r\n  )\n\n# transforming gives us a pretty smooth circle\nradius &lt;- location |&gt;\n  st_transform(crs = 27700) |&gt;\n  st_buffer(dist = r) |&gt;\n  st_transform(crs = 4326)\n\nleaflet(trusts_in_radius) |&gt;\n  addProviderTiles(\"Stamen.TonerLite\") |&gt;\n  addMarkers() |&gt;\n  addPolygons(\n    data = radius,\n    color = \"#000000\",\n    weight = 1\n  )"
+  },
+  {
+    "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#further-reading",
+    "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#further-reading",
+    "title": "Coffee and Coding",
+    "section": "Further reading",
+    "text": "Further reading\n\nGeocomputation with R\nr-spatial\n{sf} documentation\nLeaflet documentation\nTidy Geospatial Networks in R\n\n\n\nview slides at the-strategy-unit.github.io/data_science/presentations"
   },
   {
     "objectID": "presentations/2023-05-23_data-science-for-good/index.html#patient-experience",

@@ -1,0 +1,410 @@
+---
+title: "System Dynamics in health and social care"
+subtitle: "fitting square data into round models"
+author: "[Sally Thompson](mailto:sally.thompson37@nhs.net)"
+date: 2023-10-09
+date-format: "DD MMMM YYYY"
+format:
+  
+  revealjs:
+    theme: [default, ../su_presentation.scss]
+    transition: none
+    self-contained: true
+    
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
+    width: 1600
+    height: 900
+    
+    footer: |
+      NHS-R conference 2023
+      
+execute:
+  eval: true
+  echo: true
+  message: false
+  warning: false
+---
+
+```{r setup}
+#| include: false
+#| label: setup
+
+library(tidyr)
+library(dplyr)
+library(readr)
+library(lubridate)
+library(tibble)
+library(stringr)
+
+file_name <- "https://raw.githubusercontent.com/microsoft/r-server-hospital-length-of-stay/master/Data/LengthOfStay.csv"
+
+data <- read_csv(file = file_name)
+
+spell_dates <- data |>
+  mutate(date_admit = mdy(vdate) + years(10),
+         date_discharge = mdy(discharged) + years(10)) |>
+  select(facid, date_admit, date_discharge) |>
+  sample_n(10000)
+
+write_csv(spell_dates, "sample spell dates.csv")
+
+spell_dates <- read_csv("sample spell dates.csv")
+```
+
+## Health Data in the Headlines
+
+
+![](images/headline%20waitlist%20record.png){.absolute top=75 left=0 fig-alt="newspaper headline waiting list hits record 7.5 million"}
+
+
+
+![](images/headline%20ambulance%20ae.png){.absolute top=180 right=0 fig-alt="news headline linking ambulance response times to to A&E waits"}
+
+
+
+![](images/headline%20bed%20block.png){.absolute bottom=40 left=275 fig-alt="news headline links delays in discharging people from hospital to full A&E departments"}
+
+::: {.notes}
+Used to seeing headlines that give a snapshot figure but doesn't say much about the system.  
+Now starting to see headlines that recognise flow through the system rather than snapshot in time of just one part.    
+Can get better understanding of the issues in a system if we can map it as stocks 
+and flows, but our datasets not designed to give up flow information very readily.
+This talk is how I have met that challenge.
+ 
+:::
+
+
+## Through the System Dynamics lens
+
+![](images/cap%20constrained%20model%20transp.png){fig-alt="stock-flow structure of a simple capacity-constrained model"}
+
+Stock-flow model
+
+Dynamic behaviour, feedback loops
+
+::: {.notes}
+In a few seconds, what is SD?   
+An approach to understanding the behaviour of complex systems over time.
+A method of mapping a system as stocks, whose levels can only change due to flows in and flows out. Stocks could be people on a waiting list, on a ward, money, ...  
+Flows are the rate at which things change in a given time period e.g. admissions per day, referrals
+per month.  
+Behaviour of the system is determined by how the components interact with each other, not what
+each component does.
+Mapping the structure of a system like this leads us to identify feedback loops, 
+and consequences of an action - both intended and unintended.
+  
+In this capacity-constrained model we only need 3 parameters to run the model (exogenous). All the behaviour 
+within the grey box is determined by the interactions of those components (indogenous).  
+
+How do we get a value/values for referrals per day?  
+
+(currently use specialist software to build and run our models, aim is to get to a point where we can run
+in open source.)
+:::
+
+
+## Determining flows
+
+![](images/adm%20dis%20model%20transp.png){.absolute top="55" right="10" fig-alt="One stock model, with one flow in and one flow out - the flow in, labelled as 'admissions per day', is highlighted." width="800"}
+
+::: columns
+::: {.column width="40%"}
+::: {style="font-size:0.65em"}
+'admissions per day' is needed to populate the model.
+
+'discharged' could be used to verify the model against known data
+
+-   Need a list of key dates
+-   For each key date, compare with admission (or discharge) date - flag for a match
+:::
+:::
+:::
+
+::: incremental
+![](images/key%20dates.png){.fragment .absolute bottom="110" left="0" fig-alt="list of first 10 key dates, starting on January 1st 2022." width="153"}
+:::
+
+::: r-stack
+![](images/pat%20dates.png){.fragment .absolute bottom="160" left="340" width="458"} ![](images/flow%20date%201.png){.fragment .absolute bottom="160" left="340" width="593"} ![](images/flow%20date%202.png){.fragment .absolute bottom="160" left="340" width="718"} ![](images/flow%20date%203.png){.fragment .absolute bottom="160" left="340" width="856"} ![](images/flow%20date%204.png){.fragment .absolute bottom="160" left="340" width="977"} ![](images/admissions.png){.fragment .absolute bottom="110" left="0" width="205"}
+:::
+
+::: {.notes}
+Going to use very simple model shown to explain how to extract flow data for admissions.
+Will start with visual explainer before going into the code.  
+1. generate list of key dates  
+2. take our patient-level ID with admission and discharge dates  
+3. going to take each date in our list of keydates, and see if there is an admission on that date  
+4. this creates a wide data frame, the same length as patient data.  
+5. once run through all the dates in the list, sum each column  
+:::
+
+## Determining occupancy {.smaller}
+
+![](images/adm%20dis%20model%20stock%20trans.png){.absolute top="55" right="10" fig-alt="One stock model, with one flow in and one flow out - the stock, labelled as 'on ward', is highlighted." width="800"}
+
+::: columns
+::: {.column width="40%"}
+<!-- ::: {style="font-size:0.65em"} -->
+
+'on ward' is used to verify the model against known data
+
+-   Logic statement testing if the key date is wholly between admission and discharge dates
+-   flag for a match <!-- ::: -->
+:::
+:::
+
+
+![](images/key%20dates.png){.absolute bottom="110" left="50" fig-alt="List of key dates, repeated from previous slide" width="153"}
+
+![](images/pat%20dates.png){.absolute bottom="148" left="338" width="458"} 
+![](images/occ%201.png){.absolute bottom="160" left="340" width="621"}
+![](images/occ%202.png){.absolute bottom="160" left="340" width="756"} 
+![](images/occ%203.png){.absolute bottom="160" left="340" width="900"}
+![](images/occ%204.png){.absolute bottom="160" left="340" width="1034"} 
+![](images/occupancy.png){.absolute bottom="110" left="0" width="209"}
+
+
+::: {.notes}
+Might also want to generate occupancy, to compare the model output with actual data 
+to verify/validate.  
+Similar to flow data, but this time checking that admission is before the key date, and discharge is after
+the key date. 
+Patient A admitted on 2nd, so only starts being classed as resident on 3rd.
+:::
+
+## in R
+
+Generate list of key dates
+
+::: columns
+<!-- :::: {style="font-size:0.65em"} -->
+
+::: {.column width="65%"}
+```{r}
+
+date_start <- dmy(01012022) 
+date_end <- dmy(31012022)
+run_len <- length(seq(from = date_start, to = date_end, by = "day"))
+
+keydates <- data.frame(
+  date = c(seq(date_start, by = "day", length.out=run_len)))  
+  
+
+```
+:::
+
+::: {.column width="35%"}
+```{r}
+#| echo: false
+head(keydates)
+```
+:::
+:::
+
+::: {.notes}
+Start by generating the list of keydates. In this example we're running the model
+in days, and checking each day in 2022.  
+Need the run length for the next step. In this case run length 365, but if running the model weekly would be 52.  
+
+:::
+
+## in R
+
+Iterate over each date - admissions
+
+::: columns
+::: {.column width="60%"}
+
+```{r}
+
+admit_flag <- function(df) {
+
+ # pre-allocate tibble size to speed up iteration in loop
+  activity_all <- tibble(nrow = nrow(df))  |>  
+    select()
+  activity_period <- tibble(nrow = nrow(df))
+  
+   for (i in 1:run_len) {
+     
+     activity_period <-  case_when(
+     
+        # creates 1 flag if admitted during that day, otherwise 0
+        df$date_admit == keydates$date[i] ~ 1,
+        TRUE ~ 0)
+   
+      # column bind this day's flags to previous
+      activity_all <- bind_cols(activity_all, activity_period)
+ 
+   }
+  
+    # rename column to match the day being counted
+  activity_all <- activity_all |> 
+    setNames(paste0("d_", keydates$date))
+    
+  # bind flags columns to patient data
+  daily_adm <- bind_cols(df, activity_all) |> 
+    pivot_longer(
+      cols = starts_with("d_"),
+      names_to = "date",
+      values_to = "count"
+    ) |> 
+    
+    group_by(date) |> 
+    summarise(num_admit = sum(count)) |> 
+    ungroup() |> 
+  mutate(date = str_remove(date, "d_"))
+   
+ } 
+
+```
+:::
+
+::: {.column width="40%"}
+```{r}
+#| echo: false
+admissions <- admit_flag(spell_dates)
+
+head(admissions, 10)
+```
+:::
+:::
+. . .
+
+Is there a better way than using a `for` loop?
+
+::: {.notes}
+Pre-allocate tibbles  
+For each date in the list of key dates, compares with admission date. If match, flag = 1.  
+Creates a column for each day, then binds this to activity all.  
+Rename each column with the date it was checking (add a character to start of column name so column doesn't start with numeric)  
+Pivot long, then group by date and sum the flags (other variables could be added here, such as TFC or provider code)
+
+:::
+
+## in R
+
+Iterate over each date - occupancy
+
+Need more logic to determine if someone is resident for the whole day
+
+```{r}
+#| eval: false
+
+   activity_period <-  case_when(
+     
+      # creates 1 flag if resident for complete day
+      df$date_admit < keydates$keydate[i] & 
+        df$date_discharge > keydates$keydate[i] ~ 1,
+      TRUE ~ 0)
+
+
+```
+
+::: {.notes}
+Residency needs more logic, as need to be admitted before the key date and discharged after the key date  
+
+:::
+
+
+## Longer Time Periods
+
+Key dates to include the dates at the start and end of each time period
+
+::: columns
+::: {.column width="65%"}
+```{r}
+
+date_start <- dmy(03012022) # first Monday of the year
+date_end <- dmy(01012023)
+run_len <- length(seq(from = date_start, to = date_end, by = "week"))
+
+keydates <- data.frame(wk_start = c(seq(date_start, 
+                                        by = "week", 
+                                        length.out=run_len))) |>  
+  mutate(
+    wk_end = wk_start + 6)    # last date in time period
+
+```
+:::
+
+::: {.column width="35%"}
+```{r}
+#| echo: false
+
+head(keydates)
+```
+:::
+:::
+
+
+::: {.notes}
+Model might make more sense to run in weeks or months (e.g. care home), so list of keydates need a start date and end date for each time period.
+:::
+
+## Longer Time Periods
+
+More logic required if working in weeks or months - can only be in one place at any given time
+
+```{r}
+#| eval: false
+
+# flag for admission
+activity_period <-  case_when(
+  
+        # creates 1 flag if admitted during that week, otherwise 0
+      df$date_admit >= keydates$wk_start[i] & 
+        df$date_admit <= keydates$wk_end[i] ~ 1,
+        TRUE ~ 0)
+
+
+# flag for occupancy
+activity_period <-  case_when(
+  
+        # creates 1 flag if resident for complete week
+      df$date_admit < keydates$wk_start[i] & 
+        df$date_discharge > keydates$wk_end[i] ~ 1,
+        TRUE ~ 0)
+```
+
+::: {.notes}
+And a little bit more logic to test if there was an admission during that week/month.  
+Occupancy requires the patient to have been admitted before the start of the week/month, and discharged after the end of the week/month
+:::
+
+
+## Applying the data
+
+![](images/interface%20model%20transp.png){fig-alt="One stock model, with one flow in and one flow out - the stock has a time chart overlaid showing model output compared to 'real' data"}
+
+::: {.notes}
+How to apply this wrangling of data to the system dynamic model?  
+Admissions data used as an input to the flow - could be reduced to a single figure (average), or there may be variation by season/day of week etc.  
+Occupancy (and discharges) used to verify the model output against known data.
+:::
+
+<!-- ## Interested in learning more? -->
+
+<!-- [A good introduction to systems thinking] (https://chelseagreen.co.uk/book/thinking-in-systems/) -->
+
+
+
+
+## Next Steps
+
+- Generalise function to a state where it can be used by others - onto Github
+
+- Turn this into a package
+
+- Open-source SD models and interfaces - R Shiny or Python
+
+## Questions, comments, suggestions?
+
+| 
+| 
+| 
+| Please get in touch!
+| 
+| [Sally.Thompson37\@nhs.net](mailto:sally.thompson37@nhs.net)
+

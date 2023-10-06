@@ -38,17 +38,17 @@ library(lubridate)
 library(tibble)
 library(stringr)
 
-file_name <- "https://raw.githubusercontent.com/microsoft/r-server-hospital-length-of-stay/master/Data/LengthOfStay.csv"
-
-data <- read_csv(file = file_name)
-
-spell_dates <- data |>
-  mutate(date_admit = mdy(vdate) + years(10),
-         date_discharge = mdy(discharged) + years(10)) |>
-  select(facid, date_admit, date_discharge) |>
-  sample_n(10000)
-
-write_csv(spell_dates, "sample spell dates.csv")
+# file_name <- "https://raw.githubusercontent.com/microsoft/r-server-hospital-length-of-stay/master/Data/LengthOfStay.csv"
+# 
+# data <- read_csv(file = file_name)
+# 
+# spell_dates <- data |>
+#   mutate(date_admit = mdy(vdate) + years(10),
+#          date_discharge = mdy(discharged) + years(10)) |>
+#   select(facid, date_admit, date_discharge) |>
+#   sample_n(10000)
+# 
+# write_csv(spell_dates, "sample spell dates.csv")
 
 spell_dates <- read_csv("sample spell dates.csv")
 ```
@@ -60,7 +60,7 @@ spell_dates <- read_csv("sample spell dates.csv")
 
 
 
-![](images/headline%20ambulance%20ae.png){.absolute top=180 right=0 fig-alt="news headline linking ambulance response times to to A&E waits"}
+![](images/headline%20ambulance%20ae.png){.absolute top=200 right=0 fig-alt="news headline linking ambulance response times to to A&E waits"}
 
 
 
@@ -127,7 +127,7 @@ in open source.)
 :::
 
 ::: r-stack
-![](images/pat%20dates.png){.fragment .absolute bottom="160" left="340" width="458"} ![](images/flow%20date%201.png){.fragment .absolute bottom="160" left="340" width="593"} ![](images/flow%20date%202.png){.fragment .absolute bottom="160" left="340" width="718"} ![](images/flow%20date%203.png){.fragment .absolute bottom="160" left="340" width="856"} ![](images/flow%20date%204.png){.fragment .absolute bottom="160" left="340" width="977"} ![](images/admissions.png){.fragment .absolute bottom="110" left="0" width="205"}
+<!-- ![](images/pat%20dates.png){.fragment .absolute bottom="160" left="340" width="458"} ![](images/flow%20date%201.png){.fragment .absolute bottom="160" left="340" width="593"} ![](images/flow%20date%202.png){.fragment .absolute bottom="160" left="340" width="718"} ![](images/flow%20date%203.png){.fragment .absolute bottom="160" left="340" width="856"} --> ![](images/flow%20date%204.png){.fragment .absolute bottom="160" left="340" width="977"} ![](images/admissions.png){.fragment .absolute bottom="110" left="0" width="205"} 
 :::
 
 ::: {.notes}
@@ -174,7 +174,37 @@ the key date.
 Patient A admitted on 2nd, so only starts being classed as resident on 3rd.
 :::
 
-## in R
+
+
+## in R - flows
+
+Easy to do with `lubridate`, `group_by` and `count`  
+
+::: columns
+
+::: {.column width="60%"}
+
+```{r}
+#| output-location: column-fragment
+
+  admit_d <- spell_dates |> 
+  group_by(date_admit) |>
+  count(date_admit)
+  
+```
+:::
+
+::: {.column width="40%"}
+    
+```{r}
+head(admit_d)
+
+```
+:::
+:::
+
+
+## in R - occupancy
 
 Generate list of key dates
 
@@ -210,16 +240,15 @@ Need the run length for the next step. In this case run length 365, but if runni
 
 :::
 
-## in R
+## in R - occupancy
 
-Iterate over each date - admissions
+Iterate over each date - need to have been admitted before, and discharged after
 
-::: columns
-::: {.column width="60%"}
 
 ```{r}
+#| eval: false
 
-admit_flag <- function(df) {
+occupancy_flag <- function(df) {
 
  # pre-allocate tibble size to speed up iteration in loop
   activity_all <- tibble(nrow = nrow(df))  |>  
@@ -228,11 +257,12 @@ admit_flag <- function(df) {
   
    for (i in 1:run_len) {
      
-     activity_period <-  case_when(
+      activity_period <-  case_when(
      
-        # creates 1 flag if admitted during that day, otherwise 0
-        df$date_admit == keydates$date[i] ~ 1,
-        TRUE ~ 0)
+      # creates 1 flag if resident for complete day
+      df$date_admit < keydates$keydate[i] & 
+        df$date_discharge > keydates$keydate[i] ~ 1,
+      TRUE ~ 0)
    
       # column bind this day's flags to previous
       activity_all <- bind_cols(activity_all, activity_period)
@@ -252,63 +282,50 @@ admit_flag <- function(df) {
     ) |> 
     
     group_by(date) |> 
-    summarise(num_admit = sum(count)) |> 
+    summarise(resident = sum(count)) |> 
     ungroup() |> 
   mutate(date = str_remove(date, "d_"))
    
  } 
 
-```
-:::
 
-::: {.column width="40%"}
-```{r}
-#| echo: false
-admissions <- admit_flag(spell_dates)
-
-head(admissions, 10)
 ```
-:::
-:::
+
+
 . . .
 
 Is there a better way than using a `for` loop?
 
 ::: {.notes}
 Pre-allocate tibbles  
-For each date in the list of key dates, compares with admission date. If match, flag = 1.  
+For each date in the list of key dates, compares with admission date & discharge date; need to be admitted before the key date and discharged after the key date. If match, flag = 1.  
 Creates a column for each day, then binds this to activity all.  
 Rename each column with the date it was checking (add a character to start of column name so column doesn't start with numeric)  
 Pivot long, then group by date and sum the flags (other variables could be added here, such as TFC or provider code)
-
 :::
 
-## in R
+## Longer Time Periods - flows
 
-Iterate over each date - occupancy
-
-Need more logic to determine if someone is resident for the whole day
 
 ```{r}
-#| eval: false
+#| output-location: fragment
 
-   activity_period <-  case_when(
-     
-      # creates 1 flag if resident for complete day
-      df$date_admit < keydates$keydate[i] & 
-        df$date_discharge > keydates$keydate[i] ~ 1,
-      TRUE ~ 0)
+admit_wk <- spell_dates |> 
+  mutate(week_start = floor_date(
+    date_admit, unit = "week", week_start = 1   # start week on Monday
+  )) |> 
+  count(week_start)     # could add other parameters such as provider code, TFC etc
 
 
 ```
+|
+|
 
-::: {.notes}
-Residency needs more logic, as need to be admitted before the key date and discharged after the key date  
+```{r}
+head(admit_wk)
+```
 
-:::
-
-
-## Longer Time Periods
+## Longer Time Periods - occupancy
 
 Key dates to include the dates at the start and end of each time period
 
@@ -350,14 +367,6 @@ More logic required if working in weeks or months - can only be in one place at 
 ```{r}
 #| eval: false
 
-# flag for admission
-activity_period <-  case_when(
-  
-        # creates 1 flag if admitted during that week, otherwise 0
-      df$date_admit >= keydates$wk_start[i] & 
-        df$date_admit <= keydates$wk_end[i] ~ 1,
-        TRUE ~ 0)
-
 
 # flag for occupancy
 activity_period <-  case_when(
@@ -369,7 +378,7 @@ activity_period <-  case_when(
 ```
 
 ::: {.notes}
-And a little bit more logic to test if there was an admission during that week/month.  
+And a little bit more logic  
 Occupancy requires the patient to have been admitted before the start of the week/month, and discharged after the end of the week/month
 :::
 

@@ -1,5 +1,5 @@
 ---
-title: "System Dynamics in health and social care"
+title: "System Dynamics in health and care"
 subtitle: "fitting square data into round models"
 author: "[Sally Thompson](mailto:sally.thompson37@nhs.net)"
 date: 2023-10-09
@@ -70,8 +70,8 @@ spell_dates <- read_csv("sample spell dates.csv")
 Used to seeing headlines that give a snapshot figure but doesn't say much about the system.  
 Now starting to see headlines that recognise flow through the system rather than snapshot in time of just one part.    
 Can get better understanding of the issues in a system if we can map it as stocks 
-and flows, but our datasets not designed to give up flow information very readily.
-This talk is how I have met that challenge.
+and flows, but our datasets not designed to give up this information very readily.
+This talk is how I have tried to meet that challenge.
  
 :::
 
@@ -116,8 +116,7 @@ in open source.)
 
 'discharged' could be used to verify the model against known data
 
--   Need a list of key dates
--   For each key date, compare with admission (or discharge) date - flag for a match
+-   How many admissions per day (or week, month...)
 :::
 :::
 :::
@@ -127,17 +126,16 @@ in open source.)
 :::
 
 ::: r-stack
-<!-- ![](images/pat%20dates.png){.fragment .absolute bottom="160" left="340" width="458"} ![](images/flow%20date%201.png){.fragment .absolute bottom="160" left="340" width="593"} ![](images/flow%20date%202.png){.fragment .absolute bottom="160" left="340" width="718"} ![](images/flow%20date%203.png){.fragment .absolute bottom="160" left="340" width="856"} --> ![](images/flow%20date%204.png){.fragment .absolute bottom="160" left="340" width="977"} ![](images/admissions.png){.fragment .absolute bottom="110" left="0" width="205"} 
+ ![](images/pat%20dates.png){.fragment .absolute bottom="160" left="340" width="458"} <!--![](images/flow%20date%201.png){.fragment .absolute bottom="160" left="340" width="593"} ![](images/flow%20date%202.png){.fragment .absolute bottom="160" left="340" width="718"} ![](images/flow%20date%203.png){.fragment .absolute bottom="160" left="340" width="856"}  ![](images/flow%20date%204.png){.fragment .absolute bottom="160" left="340" width="977"}--> ![](images/admissions.png){.fragment .absolute bottom="110" left="850" width="205"} 
+ ![](images/wk admissions.png){.fragment .absolute bottom="275" left="1100" width="205"}
 :::
 
 ::: {.notes}
 Going to use very simple model shown to explain how to extract flow data for admissions.
 Will start with visual explainer before going into the code.  
-1. generate list of key dates  
+1. generate list of key dates (in this case daily, could be weekly, monthly)  
 2. take our patient-level ID with admission and discharge dates  
-3. going to take each date in our list of keydates, and see if there is an admission on that date  
-4. this creates a wide data frame, the same length as patient data.  
-5. once run through all the dates in the list, sum each column  
+3. count of admissions on that day/week
 :::
 
 ## Determining occupancy {.smaller}
@@ -155,22 +153,29 @@ Will start with visual explainer before going into the code.
 :::
 :::
 
+::: incremental
+![](images/key%20dates.png){.absolute bottom="110" left="50" fig-alt="List of key dates, " width="153"}
+:::
 
-![](images/key%20dates.png){.absolute bottom="110" left="50" fig-alt="List of key dates, repeated from previous slide" width="153"}
-
-![](images/pat%20dates.png){.absolute bottom="148" left="338" width="458"} 
-![](images/occ%201.png){.absolute bottom="160" left="340" width="621"}
-![](images/occ%202.png){.absolute bottom="160" left="340" width="756"} 
-![](images/occ%203.png){.absolute bottom="160" left="340" width="900"}
-![](images/occ%204.png){.absolute bottom="160" left="340" width="1034"} 
-![](images/occupancy.png){.absolute bottom="110" left="0" width="209"}
-
+::: r-stack
+![](images/pat%20dates.png){.fragment .absolute bottom="148" left="328" width="458"} 
+![](images/occ%201.png){.fragment .absolute bottom="160" left="330" width="621"}
+![](images/occ%202.png){.fragment .absolute bottom="160" left="330" width="756"} 
+![](images/occ%203.png){.fragment .absolute bottom="160" left="330" width="900"}
+![](images/occ%204.png){.fragment .absolute bottom="160" left="330" width="1034"} 
+![](images/occupancy.png){.fragment .absolute bottom="110" right="0" width="209"}
+:::
 
 ::: {.notes}
 Might also want to generate occupancy, to compare the model output with actual data 
 to verify/validate.  
-Similar to flow data, but this time checking that admission is before the key date, and discharge is after
-the key date. 
+1. generate list of key dates  
+2. take our patient-level ID with admission and discharge dates  
+3. going to take each date in our list of keydates, and see if there is an admission before that date
+and discharge after
+4. this creates a wide data frame, the same length as patient data.  
+5. once run through all the dates in the list, sum each column   
+
 Patient A admitted on 2nd, so only starts being classed as resident on 3rd.
 :::
 
@@ -178,11 +183,9 @@ Patient A admitted on 2nd, so only starts being classed as resident on 3rd.
 
 ## in R - flows
 
-Easy to do with `lubridate`, `group_by` and `count`  
+Easy to do with `count`, or `group_by` and `summarise`  
 
-::: columns
 
-::: {.column width="60%"}
 
 ```{r}
 #| output-location: column-fragment
@@ -190,18 +193,11 @@ Easy to do with `lubridate`, `group_by` and `count`
   admit_d <- spell_dates |> 
   group_by(date_admit) |>
   count(date_admit)
+
+head(admit_d)
   
 ```
-:::
 
-::: {.column width="40%"}
-    
-```{r}
-head(admit_d)
-
-```
-:::
-:::
 
 
 ## in R - occupancy
@@ -236,7 +232,7 @@ head(keydates)
 ::: {.notes}
 Start by generating the list of keydates. In this example we're running the model
 in days, and checking each day in 2022.  
-Need the run length for the next step. In this case run length 365, but if running the model weekly would be 52.  
+Need the run length for the next step, to know how many times to iterate over
 
 :::
 
@@ -253,8 +249,7 @@ occupancy_flag <- function(df) {
  # pre-allocate tibble size to speed up iteration in loop
   activity_all <- tibble(nrow = nrow(df))  |>  
     select()
-  activity_period <- tibble(nrow = nrow(df))
-  
+ 
    for (i in 1:run_len) {
      
       activity_period <-  case_when(
@@ -298,6 +293,9 @@ Is there a better way than using a `for` loop?
 
 ::: {.notes}
 Pre-allocate tibbles  
+
+activity_all will end up as very wide tibble, with a column for each date in list of keydates.
+
 For each date in the list of key dates, compares with admission date & discharge date; need to be admitted before the key date and discharged after the key date. If match, flag = 1.  
 Creates a column for each day, then binds this to activity all.  
 Rename each column with the date it was checking (add a character to start of column name so column doesn't start with numeric)  
@@ -306,7 +304,7 @@ Pivot long, then group by date and sum the flags (other variables could be added
 
 ## Longer Time Periods - flows
 
-
+Use `lubridate::floor_date` to generate the date at start of week/month
 ```{r}
 #| output-location: fragment
 
@@ -316,14 +314,17 @@ admit_wk <- spell_dates |>
   )) |> 
   count(week_start)     # could add other parameters such as provider code, TFC etc
 
-
-```
-|
-|
-
-```{r}
 head(admit_wk)
+
 ```
+
+
+::: {.notes}
+Might run SD model in weeks or months - e.g. months for care homes
+Use lubridate to create new variable with start date of week/month/year etc
+
+:::
+
 
 ## Longer Time Periods - occupancy
 
@@ -372,8 +373,7 @@ More logic required if working in weeks or months - can only be in one place at 
 activity_period <-  case_when(
   
         # creates 1 flag if resident for complete week
-      df$date_admit < keydates$wk_start[i] & 
-        df$date_discharge > keydates$wk_end[i] ~ 1,
+      df$date_admit < keydates$wk_start[i] & df$date_discharge > keydates$wk_end[i] ~ 1,
         TRUE ~ 0)
 ```
 

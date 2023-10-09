@@ -158,89 +158,96 @@
     "href": "presentations/index.html",
     "title": "Presentations",
     "section": "",
-    "text": "title\n      author\n      date\n    \n  \n  \n    Everything you ever wanted to know about data science: but were too afraid to ask\nChris Beeley\n2023-08-02\n    Coffee and coding: Intro session\nChris Beeley\n2023-02-23\n    Coffee and Coding: Good Coding Practices\nTom Jemmett\n2023-03-09\n    RAP: what is it and how can my team start using it effectively?\nChris Beeley\n2023-03-09\n    Coffee and Coding: {targets}\nTom Jemmett\n2023-03-23\n    Collaborative working\nChris Beeley\n2023-03-23\n    Text mining of patient experience data\nChris Beeley\n2023-05-15\n    What good data science looks like\nChris Beeley\n2023-05-23\n    An Introduction to the New Hospital Programme Demand Model: HACA 2023\nTom Jemmett\n2023-07-11\n    Travels with R and Python: the power of data science in healthcare\nChris Beeley\n2023-08-02\n    Unit testing in R: NHS-R Community Webinar\nTom Jemmett\n2023-08-23\n    Coffee and Coding: Working with Geospatial Data in R\nTom Jemmett\n2023-08-24\n    System Dynamics in health and social care: fitting square data into round models\nSally Thompson\n2023-10-09"
+    "text": "title\n      author\n      date\n    \n  \n  \n    Everything you ever wanted to know about data science: but were too afraid to ask\nChris Beeley\n2023-08-02\n    Coffee and coding: Intro session\nChris Beeley\n2023-02-23\n    Coffee and Coding: Good Coding Practices\nTom Jemmett\n2023-03-09\n    RAP: what is it and how can my team start using it effectively?\nChris Beeley\n2023-03-09\n    Coffee and Coding: {targets}\nTom Jemmett\n2023-03-23\n    Collaborative working\nChris Beeley\n2023-03-23\n    Text mining of patient experience data\nChris Beeley\n2023-05-15\n    What good data science looks like\nChris Beeley\n2023-05-23\n    An Introduction to the New Hospital Programme Demand Model: HACA 2023\nTom Jemmett\n2023-07-11\n    Travels with R and Python: the power of data science in healthcare\nChris Beeley\n2023-08-02\n    Unit testing in R: NHS-R Community Webinar\nTom Jemmett\n2023-08-23\n    Coffee and Coding: Working with Geospatial Data in R\nTom Jemmett\n2023-08-24\n    System Dynamics in health and care: fitting square data into round models\nSally Thompson\n2023-10-09"
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#health-data-in-the-headlines",
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#health-data-in-the-headlines",
-    "title": "System Dynamics in health and social care",
+    "title": "System Dynamics in health and care",
     "section": "Health Data in the Headlines",
-    "text": "Health Data in the Headlines\n\n\n\n\nUsed to seeing headlines that give a snapshot figure but doesn’t say much about the system.\nNow starting to see headlines that recognise flow through the system rather than snapshot in time of just one part.\nCan get better understanding of the issues in a system if we can map it as stocks and flows, but our datasets not designed to give up flow information very readily. This talk is how I have met that challenge."
+    "text": "Health Data in the Headlines\n\n\n\n\nUsed to seeing headlines that give a snapshot figure but doesn’t say much about the system.\nNow starting to see headlines that recognise flow through the system rather than snapshot in time of just one part.\nCan get better understanding of the issues in a system if we can map it as stocks and flows, but our datasets not designed to give up this information very readily. This talk is how I have tried to meet that challenge."
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#through-the-system-dynamics-lens",
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#through-the-system-dynamics-lens",
-    "title": "System Dynamics in health and social care",
+    "title": "System Dynamics in health and care",
     "section": "Through the System Dynamics lens",
     "text": "Through the System Dynamics lens\n\nStock-flow model\nDynamic behaviour, feedback loops\n\nIn a few seconds, what is SD?\nAn approach to understanding the behaviour of complex systems over time. A method of mapping a system as stocks, whose levels can only change due to flows in and flows out. Stocks could be people on a waiting list, on a ward, money, …\nFlows are the rate at which things change in a given time period e.g. admissions per day, referrals per month.\nBehaviour of the system is determined by how the components interact with each other, not what each component does. Mapping the structure of a system like this leads us to identify feedback loops, and consequences of an action - both intended and unintended.\nIn this capacity-constrained model we only need 3 parameters to run the model (exogenous). All the behaviour within the grey box is determined by the interactions of those components (indogenous).\nHow do we get a value/values for referrals per day?\n(currently use specialist software to build and run our models, aim is to get to a point where we can run in open source.)"
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#determining-flows",
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#determining-flows",
-    "title": "System Dynamics in health and social care",
+    "title": "System Dynamics in health and care",
     "section": "Determining flows",
-    "text": "Determining flows\n\n\n\n\n‘admissions per day’ is needed to populate the model.\n‘discharged’ could be used to verify the model against known data\n\nNeed a list of key dates\nFor each key date, compare with admission (or discharge) date - flag for a match\n\n\n\n\n\n\n\n\n     \n\n\nGoing to use very simple model shown to explain how to extract flow data for admissions. Will start with visual explainer before going into the code.\n1. generate list of key dates\n2. take our patient-level ID with admission and discharge dates\n3. going to take each date in our list of keydates, and see if there is an admission on that date\n4. this creates a wide data frame, the same length as patient data.\n5. once run through all the dates in the list, sum each column"
+    "text": "Determining flows\n\n\n\n\n‘admissions per day’ is needed to populate the model.\n‘discharged’ could be used to verify the model against known data\n\nHow many admissions per day (or week, month…)\n\n\n\n\n\n\n\n\n   \n\n\nGoing to use very simple model shown to explain how to extract flow data for admissions. Will start with visual explainer before going into the code.\n1. generate list of key dates (in this case daily, could be weekly, monthly)\n2. take our patient-level ID with admission and discharge dates\n3. count of admissions on that day/week"
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#determining-occupancy",
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#determining-occupancy",
-    "title": "System Dynamics in health and social care",
+    "title": "System Dynamics in health and care",
     "section": "Determining occupancy",
-    "text": "Determining occupancy\n\n\n\n\n‘on ward’ is used to verify the model against known data\n\nLogic statement testing if the key date is wholly between admission and discharge dates\nflag for a match \n\n\n\n\n     \n\nMight also want to generate occupancy, to compare the model output with actual data to verify/validate.\nSimilar to flow data, but this time checking that admission is before the key date, and discharge is after the key date. Patient A admitted on 2nd, so only starts being classed as resident on 3rd."
+    "text": "Determining occupancy\n\n\n\n\n‘on ward’ is used to verify the model against known data\n\nLogic statement testing if the key date is wholly between admission and discharge dates\nflag for a match \n\n\n\n\n\n\n\n     \n\n\nMight also want to generate occupancy, to compare the model output with actual data to verify/validate.\n1. generate list of key dates\n2. take our patient-level ID with admission and discharge dates\n3. going to take each date in our list of keydates, and see if there is an admission before that date and discharge after 4. this creates a wide data frame, the same length as patient data.\n5. once run through all the dates in the list, sum each column\nPatient A admitted on 2nd, so only starts being classed as resident on 3rd."
   },
   {
-    "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r",
-    "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r",
-    "title": "System Dynamics in health and social care",
-    "section": "in R",
-    "text": "in R\nGenerate list of key dates\n\n\n\ndate_start &lt;- dmy(01012022) \ndate_end &lt;- dmy(31012022)\nrun_len &lt;- length(seq(from = date_start, to = date_end, by = \"day\"))\n\nkeydates &lt;- data.frame(\n  date = c(seq(date_start, by = \"day\", length.out=run_len)))  \n\n\n\n\n        date\n1 2022-01-01\n2 2022-01-02\n3 2022-01-03\n4 2022-01-04\n5 2022-01-05\n6 2022-01-06\n\n\n\n\n\nStart by generating the list of keydates. In this example we’re running the model in days, and checking each day in 2022.\nNeed the run length for the next step. In this case run length 365, but if running the model weekly would be 52."
+    "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r---flows",
+    "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r---flows",
+    "title": "System Dynamics in health and care",
+    "section": "in R - flows",
+    "text": "in R - flows\nEasy to do with count, or group_by and summarise\n\n\n  admit_d &lt;- spell_dates |&gt; \n  group_by(date_admit) |&gt;\n  count(date_admit)\n\nhead(admit_d)\n\n\n# A tibble: 6 × 2\n# Groups:   date_admit [6]\n  date_admit     n\n  &lt;date&gt;     &lt;int&gt;\n1 2022-01-01    35\n2 2022-01-02    22\n3 2022-01-03    30\n4 2022-01-04    25\n5 2022-01-05    25\n6 2022-01-06    15"
   },
   {
-    "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r-1",
-    "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r-1",
-    "title": "System Dynamics in health and social care",
-    "section": "in R",
-    "text": "in R\nIterate over each date - admissions\n\n\n\nadmit_flag &lt;- function(df) {\n\n # pre-allocate tibble size to speed up iteration in loop\n  activity_all &lt;- tibble(nrow = nrow(df))  |&gt;  \n    select()\n  activity_period &lt;- tibble(nrow = nrow(df))\n  \n   for (i in 1:run_len) {\n     \n     activity_period &lt;-  case_when(\n     \n        # creates 1 flag if admitted during that day, otherwise 0\n        df$date_admit == keydates$date[i] ~ 1,\n        TRUE ~ 0)\n   \n      # column bind this day's flags to previous\n      activity_all &lt;- bind_cols(activity_all, activity_period)\n \n   }\n  \n    # rename column to match the day being counted\n  activity_all &lt;- activity_all |&gt; \n    setNames(paste0(\"d_\", keydates$date))\n    \n  # bind flags columns to patient data\n  daily_adm &lt;- bind_cols(df, activity_all) |&gt; \n    pivot_longer(\n      cols = starts_with(\"d_\"),\n      names_to = \"date\",\n      values_to = \"count\"\n    ) |&gt; \n    \n    group_by(date) |&gt; \n    summarise(num_admit = sum(count)) |&gt; \n    ungroup() |&gt; \n  mutate(date = str_remove(date, \"d_\"))\n   \n } \n\n\n\n\n# A tibble: 10 × 2\n   date       num_admit\n   &lt;chr&gt;          &lt;dbl&gt;\n 1 2022-01-01        28\n 2 2022-01-02        26\n 3 2022-01-03        23\n 4 2022-01-04        26\n 5 2022-01-05        23\n 6 2022-01-06        26\n 7 2022-01-07        32\n 8 2022-01-08        35\n 9 2022-01-09        27\n10 2022-01-10        34\n\n\n\n\n\nIs there a better way than using a for loop?\n\nPre-allocate tibbles\nFor each date in the list of key dates, compares with admission date. If match, flag = 1.\nCreates a column for each day, then binds this to activity all.\nRename each column with the date it was checking (add a character to start of column name so column doesn’t start with numeric)\nPivot long, then group by date and sum the flags (other variables could be added here, such as TFC or provider code)"
+    "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r---occupancy",
+    "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r---occupancy",
+    "title": "System Dynamics in health and care",
+    "section": "in R - occupancy",
+    "text": "in R - occupancy\nGenerate list of key dates\n\n\n\ndate_start &lt;- dmy(01012022) \ndate_end &lt;- dmy(31012022)\nrun_len &lt;- length(seq(from = date_start, to = date_end, by = \"day\"))\n\nkeydates &lt;- data.frame(\n  date = c(seq(date_start, by = \"day\", length.out=run_len)))  \n\n\n\n\n        date\n1 2022-01-01\n2 2022-01-02\n3 2022-01-03\n4 2022-01-04\n5 2022-01-05\n6 2022-01-06\n\n\n\n\n\nStart by generating the list of keydates. In this example we’re running the model in days, and checking each day in 2022.\nNeed the run length for the next step, to know how many times to iterate over"
   },
   {
-    "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r-2",
-    "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r-2",
-    "title": "System Dynamics in health and social care",
-    "section": "in R",
-    "text": "in R\nIterate over each date - occupancy\nNeed more logic to determine if someone is resident for the whole day\n\n   activity_period &lt;-  case_when(\n     \n      # creates 1 flag if resident for complete day\n      df$date_admit &lt; keydates$keydate[i] & \n        df$date_discharge &gt; keydates$keydate[i] ~ 1,\n      TRUE ~ 0)\n\n\nResidency needs more logic, as need to be admitted before the key date and discharged after the key date"
+    "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r---occupancy-1",
+    "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r---occupancy-1",
+    "title": "System Dynamics in health and care",
+    "section": "in R - occupancy",
+    "text": "in R - occupancy\nIterate over each date - need to have been admitted before, and discharged after\n\noccupancy_flag &lt;- function(df) {\n\n # pre-allocate tibble size to speed up iteration in loop\n  activity_all &lt;- tibble(nrow = nrow(df))  |&gt;  \n    select()\n \n   for (i in 1:run_len) {\n     \n      activity_period &lt;-  case_when(\n     \n      # creates 1 flag if resident for complete day\n      df$date_admit &lt; keydates$keydate[i] & \n        df$date_discharge &gt; keydates$keydate[i] ~ 1,\n      TRUE ~ 0)\n   \n      # column bind this day's flags to previous\n      activity_all &lt;- bind_cols(activity_all, activity_period)\n \n   }\n  \n    # rename column to match the day being counted\n  activity_all &lt;- activity_all |&gt; \n    setNames(paste0(\"d_\", keydates$date))\n    \n  # bind flags columns to patient data\n  daily_adm &lt;- bind_cols(df, activity_all) |&gt; \n    pivot_longer(\n      cols = starts_with(\"d_\"),\n      names_to = \"date\",\n      values_to = \"count\"\n    ) |&gt; \n    \n    group_by(date) |&gt; \n    summarise(resident = sum(count)) |&gt; \n    ungroup() |&gt; \n  mutate(date = str_remove(date, \"d_\"))\n   \n } \n\n\nIs there a better way than using a for loop?\n\nPre-allocate tibbles\nactivity_all will end up as very wide tibble, with a column for each date in list of keydates.\nFor each date in the list of key dates, compares with admission date & discharge date; need to be admitted before the key date and discharged after the key date. If match, flag = 1.\nCreates a column for each day, then binds this to activity all.\nRename each column with the date it was checking (add a character to start of column name so column doesn’t start with numeric)\nPivot long, then group by date and sum the flags (other variables could be added here, such as TFC or provider code)"
+  },
+  {
+    "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods---flows",
+    "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods---flows",
+    "title": "System Dynamics in health and care",
+    "section": "Longer Time Periods - flows",
+    "text": "Longer Time Periods - flows\nUse lubridate::floor_date to generate the date at start of week/month\n\nadmit_wk &lt;- spell_dates |&gt; \n  mutate(week_start = floor_date(\n    date_admit, unit = \"week\", week_start = 1   # start week on Monday\n  )) |&gt; \n  count(week_start)     # could add other parameters such as provider code, TFC etc\n\nhead(admit_wk)\n\n\n\n# A tibble: 6 × 2\n  week_start     n\n  &lt;date&gt;     &lt;int&gt;\n1 2021-12-27    57\n2 2022-01-03   192\n3 2022-01-10   181\n4 2022-01-17   191\n5 2022-01-24   205\n6 2022-01-31   203\n\n\n\nMight run SD model in weeks or months - e.g. months for care homes Use lubridate to create new variable with start date of week/month/year etc"
+  },
+  {
+    "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods---occupancy",
+    "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods---occupancy",
+    "title": "System Dynamics in health and care",
+    "section": "Longer Time Periods - occupancy",
+    "text": "Longer Time Periods - occupancy\nKey dates to include the dates at the start and end of each time period\n\n\n\ndate_start &lt;- dmy(03012022) # first Monday of the year\ndate_end &lt;- dmy(01012023)\nrun_len &lt;- length(seq(from = date_start, to = date_end, by = \"week\"))\n\nkeydates &lt;- data.frame(wk_start = c(seq(date_start, \n                                        by = \"week\", \n                                        length.out=run_len))) |&gt;  \n  mutate(\n    wk_end = wk_start + 6)    # last date in time period\n\n\n\n\n    wk_start     wk_end\n1 2022-01-03 2022-01-09\n2 2022-01-10 2022-01-16\n3 2022-01-17 2022-01-23\n4 2022-01-24 2022-01-30\n5 2022-01-31 2022-02-06\n6 2022-02-07 2022-02-13\n\n\n\n\n\nModel might make more sense to run in weeks or months (e.g. care home), so list of keydates need a start date and end date for each time period."
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods",
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods",
-    "title": "System Dynamics in health and social care",
+    "title": "System Dynamics in health and care",
     "section": "Longer Time Periods",
-    "text": "Longer Time Periods\nKey dates to include the dates at the start and end of each time period\n\n\n\ndate_start &lt;- dmy(03012022) # first Monday of the year\ndate_end &lt;- dmy(01012023)\nrun_len &lt;- length(seq(from = date_start, to = date_end, by = \"week\"))\n\nkeydates &lt;- data.frame(wk_start = c(seq(date_start, \n                                        by = \"week\", \n                                        length.out=run_len))) |&gt;  \n  mutate(\n    wk_end = wk_start + 6)    # last date in time period\n\n\n\n\n    wk_start     wk_end\n1 2022-01-03 2022-01-09\n2 2022-01-10 2022-01-16\n3 2022-01-17 2022-01-23\n4 2022-01-24 2022-01-30\n5 2022-01-31 2022-02-06\n6 2022-02-07 2022-02-13\n\n\n\n\n\nModel might make more sense to run in weeks or months (e.g. care home), so list of keydates need a start date and end date for each time period."
-  },
-  {
-    "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods-1",
-    "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods-1",
-    "title": "System Dynamics in health and social care",
-    "section": "Longer Time Periods",
-    "text": "Longer Time Periods\nMore logic required if working in weeks or months - can only be in one place at any given time\n\n# flag for admission\nactivity_period &lt;-  case_when(\n  \n        # creates 1 flag if admitted during that week, otherwise 0\n      df$date_admit &gt;= keydates$wk_start[i] & \n        df$date_admit &lt;= keydates$wk_end[i] ~ 1,\n        TRUE ~ 0)\n\n\n# flag for occupancy\nactivity_period &lt;-  case_when(\n  \n        # creates 1 flag if resident for complete week\n      df$date_admit &lt; keydates$wk_start[i] & \n        df$date_discharge &gt; keydates$wk_end[i] ~ 1,\n        TRUE ~ 0)\n\n\nAnd a little bit more logic to test if there was an admission during that week/month.\nOccupancy requires the patient to have been admitted before the start of the week/month, and discharged after the end of the week/month"
+    "text": "Longer Time Periods\nMore logic required if working in weeks or months - can only be in one place at any given time\n\n# flag for occupancy\nactivity_period &lt;-  case_when(\n  \n        # creates 1 flag if resident for complete week\n      df$date_admit &lt; keydates$wk_start[i] & df$date_discharge &gt; keydates$wk_end[i] ~ 1,\n        TRUE ~ 0)\n\n\nAnd a little bit more logic\nOccupancy requires the patient to have been admitted before the start of the week/month, and discharged after the end of the week/month"
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#applying-the-data",
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#applying-the-data",
-    "title": "System Dynamics in health and social care",
+    "title": "System Dynamics in health and care",
     "section": "Applying the data",
     "text": "Applying the data\n\n\nHow to apply this wrangling of data to the system dynamic model?\nAdmissions data used as an input to the flow - could be reduced to a single figure (average), or there may be variation by season/day of week etc.\nOccupancy (and discharges) used to verify the model output against known data."
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#next-steps",
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#next-steps",
-    "title": "System Dynamics in health and social care",
+    "title": "System Dynamics in health and care",
     "section": "Next Steps",
     "text": "Next Steps\n\nGeneralise function to a state where it can be used by others - onto Github\nTurn this into a package\nOpen-source SD models and interfaces - R Shiny or Python"
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#questions-comments-suggestions",
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#questions-comments-suggestions",
-    "title": "System Dynamics in health and social care",
+    "title": "System Dynamics in health and care",
     "section": "Questions, comments, suggestions?",
     "text": "Questions, comments, suggestions?\n\n\n\nPlease get in touch!\n\nSally.Thompson37@nhs.net\n\n\nNHS-R conference 2023"
   },
@@ -613,7 +620,7 @@
     "href": "presentations/2023-08-23_nhs-r_unit-testing/index.html#other-expect_-functions",
     "title": "Unit testing in R",
     "section": "other expect_*() functions…",
-    "text": "other expect_*() functions…\n\ntest_that(\"my_function correctly divides values\", {\n  expect_lt(\n    my_function(4, 2),\n    10\n  )\n  expect_gt(\n    my_function(1, 4),\n    0.2\n  )\n  expect_length(\n    my_function(c(4, 1), c(2, 4)),\n    2\n  )\n})\n\nTest passed 😸\n\n\n\n{testthat} documentation"
+    "text": "other expect_*() functions…\n\ntest_that(\"my_function correctly divides values\", {\n  expect_lt(\n    my_function(4, 2),\n    10\n  )\n  expect_gt(\n    my_function(1, 4),\n    0.2\n  )\n  expect_length(\n    my_function(c(4, 1), c(2, 4)),\n    2\n  )\n})\n\nTest passed 🎊\n\n\n\n{testthat} documentation"
   },
   {
     "objectID": "presentations/2023-08-23_nhs-r_unit-testing/index.html#arrange-act-assert",
@@ -655,14 +662,14 @@
     "href": "presentations/2023-08-23_nhs-r_unit-testing/index.html#tolerance-to-the-rescue",
     "title": "Unit testing in R",
     "section": "Tolerance to the rescue 🙂",
-    "text": "Tolerance to the rescue 🙂\n\ntest_that(\"my_function works\", {\n  # arrange\n  x &lt;- 5\n  y &lt;- 7\n  expected &lt;- 0.714285\n\n  # act\n  actual &lt;- my_function(x, y)\n\n  # assert\n  expect_equal(actual, expected, tolerance = 1e-6)\n})\n\nTest passed 🌈\n\n\n\n(this is a slightly artificial example, usually the default tolerance is good enough)"
+    "text": "Tolerance to the rescue 🙂\n\ntest_that(\"my_function works\", {\n  # arrange\n  x &lt;- 5\n  y &lt;- 7\n  expected &lt;- 0.714285\n\n  # act\n  actual &lt;- my_function(x, y)\n\n  # assert\n  expect_equal(actual, expected, tolerance = 1e-6)\n})\n\nTest passed 🥇\n\n\n\n(this is a slightly artificial example, usually the default tolerance is good enough)"
   },
   {
     "objectID": "presentations/2023-08-23_nhs-r_unit-testing/index.html#testing-edge-cases",
     "href": "presentations/2023-08-23_nhs-r_unit-testing/index.html#testing-edge-cases",
     "title": "Unit testing in R",
     "section": "Testing edge cases",
-    "text": "Testing edge cases\n\n\nRemember the validation steps we built into our function to handle edge cases?\n\nLet’s write tests for these edge cases:\nwe expect errors\n\n\ntest_that(\"my_function works\", {\n  expect_error(my_function(5, 0))\n  expect_error(my_function(\"a\", 3))\n  expect_error(my_function(3, \"a\"))\n  expect_error(my_function(1:2, 4))\n})\n\nTest passed 🎊"
+    "text": "Testing edge cases\n\n\nRemember the validation steps we built into our function to handle edge cases?\n\nLet’s write tests for these edge cases:\nwe expect errors\n\n\ntest_that(\"my_function works\", {\n  expect_error(my_function(5, 0))\n  expect_error(my_function(\"a\", 3))\n  expect_error(my_function(3, \"a\"))\n  expect_error(my_function(1:2, 4))\n})\n\nTest passed 🥇"
   },
   {
     "objectID": "presentations/2023-08-23_nhs-r_unit-testing/index.html#another-simple-example",
@@ -676,7 +683,7 @@
     "href": "presentations/2023-08-23_nhs-r_unit-testing/index.html#another-simple-example-1",
     "title": "Unit testing in R",
     "section": "Another (simple) example",
-    "text": "Another (simple) example\n\nmy_new_function &lt;- function(x, y) {\n  if (x &gt; y) {\n    \"x\"\n  } else {\n    \"y\"\n  }\n}\n\n\n\ntest_that(\"it returns 'x' if x is bigger than y\", {\n  expect_equal(my_new_function(4, 3), \"x\")\n})\n\nTest passed 🥳\n\ntest_that(\"it returns 'y' if y is bigger than x\", {\n  expect_equal(my_new_function(3, 4), \"y\")\n  expect_equal(my_new_function(3, 3), \"y\")\n})\n\nTest passed 🎊"
+    "text": "Another (simple) example\n\nmy_new_function &lt;- function(x, y) {\n  if (x &gt; y) {\n    \"x\"\n  } else {\n    \"y\"\n  }\n}\n\n\n\ntest_that(\"it returns 'x' if x is bigger than y\", {\n  expect_equal(my_new_function(4, 3), \"x\")\n})\n\nTest passed 🥇\n\ntest_that(\"it returns 'y' if y is bigger than x\", {\n  expect_equal(my_new_function(3, 4), \"y\")\n  expect_equal(my_new_function(3, 3), \"y\")\n})\n\nTest passed 😀"
   },
   {
     "objectID": "presentations/2023-08-23_nhs-r_unit-testing/index.html#how-to-design-good-tests",
@@ -1194,7 +1201,7 @@
     "href": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#what-trusts-are-in-the-isochrones",
     "title": "Coffee and Coding",
     "section": "What trusts are in the isochrones?",
-    "text": "What trusts are in the isochrones?\nThe summarise() function will “union” the geometry\n\nsummarise(iso)\n\nSimple feature collection with 1 feature and 0 fields\nGeometry type: POLYGON\nDimension:     XY\nBounding box:  xmin: -2.913575 ymin: 51.98062 xmax: -0.8502164 ymax: 53.1084\nGeodetic CRS:  WGS 84\n                        geometry\n1 POLYGON ((-1.541014 52.9693..."
+    "text": "What trusts are in the isochrones?\nThe summarise() function will “union” the geometry\n\nsummarise(iso)\n\nSimple feature collection with 1 feature and 0 fields\nGeometry type: POLYGON\nDimension:     XY\nBounding box:  xmin: -2.913575 ymin: 51.98062 xmax: -0.8502164 ymax: 53.1084\nGeodetic CRS:  WGS 84\n                        geometry\n1 POLYGON ((-2.020115 53.0277..."
   },
   {
     "objectID": "presentations/2023-08-24_coffee-and-coding_geospatial/index.html#what-trusts-are-in-the-isochrones-1",

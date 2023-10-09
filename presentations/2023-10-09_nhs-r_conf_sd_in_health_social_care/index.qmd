@@ -38,19 +38,16 @@ library(lubridate)
 library(tibble)
 library(stringr)
 
-# file_name <- "https://raw.githubusercontent.com/microsoft/r-server-hospital-length-of-stay/master/Data/LengthOfStay.csv"
-# 
-# data <- read_csv(file = file_name)
-# 
-# spell_dates <- data |>
-#   mutate(date_admit = mdy(vdate) + years(10),
-#          date_discharge = mdy(discharged) + years(10)) |>
-#   select(facid, date_admit, date_discharge) |>
-#   sample_n(10000)
-# 
-# write_csv(spell_dates, "sample spell dates.csv")
+file_name <- "https://raw.githubusercontent.com/microsoft/r-server-hospital-length-of-stay/master/Data/LengthOfStay.csv"
 
-spell_dates <- read_csv("sample spell dates.csv")
+data <- read_csv(file = file_name)
+
+spell_dates <- data |>
+  mutate(date_admit = mdy(vdate) + years(10),
+         date_discharge = mdy(discharged) + years(10)) |>
+  select(facid, date_admit, date_discharge) |>
+  sample_n(10000)
+
 ```
 
 ## Health Data in the Headlines

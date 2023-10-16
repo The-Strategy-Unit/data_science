@@ -1,0 +1,143 @@
+---
+title: "Conference Check-in App"
+subtitle: "NHS-R/NHS.pycom 2023"
+author: "[Tom Jemmett](mailto:thomas.jemmett@nhs.net)"
+date: 2023-10-17
+date-format: "MMM D, YYYY"
+format:
+  revealjs:
+    theme: [default, ../su_presentation.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
+    footer: |
+      view slides at [https://tinyurl.com/nhsr23tj][ds_presentations]
+---
+
+[ds_presentations]: https://the-strategy-unit.github.io/data_science/presentations/2023-10-17-conference-check-in-app
+
+# or, on why you should [ignore]{.yellow} your boss, [play]{.yellow} about, and [have fun]{.yellow} {.inverse}
+
+## {background-image="1.jpg"}
+
+:::{.footer}
+[digital.library.unt.edu/ark:/67531/metadc1039451/m1/1/](https://digital.library.unt.edu/ark:/67531/metadc1039451/m1/1/)
+:::
+
+:::{.notes}
+ Clark, Junebug. [Registration Desk for the LPC Conference], photograph, 2016-03-17/2016-03-19; (https://digital.library.unt.edu/ark:/67531/metadc1039451/m1/1/: accessed October 16, 2023), University of North Texas Libraries, UNT Digital Library, https://digital.library.unt.edu; crediting UNT Libraries Special Collections. 
+:::
+
+# {background-image="2.jpg"}
+
+:::{.footer}
+[unsplash.com/photos/MldQeWmF2_g](https://unsplash.com/photos/MldQeWmF2_g)
+:::
+
+# Can we not do better?
+
+## QR codes are great
+
+![](3.png){fig-align="center"}
+
+## and can be easily generated in R
+
+```r
+install.packages("qrcode")
+library(qrcode)
+
+qr_code("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
+```
+
+# But can we build a shiny app to read QR codes? {.inverse}
+
+# No (probably)
+
+## Why not?
+
+- `{shiny}` would be doing all the processing on the server side
+- we would need to read from a camera client side
+- then stream video to the server for `{shiny}` to detect and decode the QR codes
+
+# Well, can we do it client side? {.inverse}
+
+# Yes
+
+. . .
+
+[github.com/nhs-r-community/conf-23-checkin](https://github.com/nhs-r-community/conf-23-checkin)
+
+## How does this work?
+
+:::{.columns}
+
+::::{.column width=70%}
+### Front-end
+:::{.incremental}
+- uses the [React](https://react.dev) JavaScript framework
+- [@yidel/react-qr-scanner](https://github.com/yudielcurbelo/react-qr-scanner)
+- App scan's a QR code, then sends this to our backend
+- A window pops up to say who has checked in, or shows an error message
+:::
+::::
+
+::::{.column width=30%}
+![](4.png)
+::::
+
+:::
+
+## How does this work?
+
+### Back-end
+
+Uses the `{plumber}` R package to build the API, with endpoints for
+
+- getting the list of all of the attendees for that day
+- uploading a list of attendees in bulk
+- adding an attendee individually
+- getting an attendee
+- checking the attendee in
+
+
+## How does this work?
+
+### More Back-end Stuff
+
+- uses a simple SQLite DB that will be thrown away at the end of the conference
+- we send personalised emails using `{blastula}` to the attendees with their QR codes
+- the QR codes are just random ids (UUIDs) that identify each attendee
+- uses websockets to update all of the clients when a user checks in (to update the list of attendees)
+
+# I've wanted to play about with React for a while... {.inverse}
+
+. . .
+
+This was a silly, inconsequential project to get to grips with something new
+
+# Was it worth it? {.inverse}
+
+. . .
+
+Yes!
+
+# {background-image=5.jpg}
+
+:::{.footer}
+[unsplash.com/photos/WfUxLpncYwI](https://unsplash.com/photos/WfUxLpncYwI)
+:::
+
+## Learning different tools can show you the light {background-image=6.jpg}
+
+:::{.footer}
+[unsplash.com/photos/tMGMINwFOtI](https://unsplash.com/photos/tMGMINwFOtI)
+:::
+
+# Go away, learn something new {.inverse}
+
+Thanks!
+
+[thomas.jemmett@nhs.net](mailto:thomas.jemmett@nhs.net)

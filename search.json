@@ -193,7 +193,7 @@
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r---flows",
     "title": "System Dynamics in health and care",
     "section": "in R - flows",
-    "text": "in R - flows\nEasy to do with count, or group_by and summarise\n\n\n  admit_d &lt;- spell_dates |&gt; \n  group_by(date_admit) |&gt;\n  count(date_admit)\n\nhead(admit_d)\n\n\n# A tibble: 6 × 2\n# Groups:   date_admit [6]\n  date_admit     n\n  &lt;date&gt;     &lt;int&gt;\n1 2022-01-01    24\n2 2022-01-02    33\n3 2022-01-03    27\n4 2022-01-04    28\n5 2022-01-05    21\n6 2022-01-06    20"
+    "text": "in R - flows\nEasy to do with count, or group_by and summarise\n\n\n  admit_d &lt;- spell_dates |&gt; \n  group_by(date_admit) |&gt;\n  count(date_admit)\n\nhead(admit_d)\n\n\n# A tibble: 6 × 2\n# Groups:   date_admit [6]\n  date_admit     n\n  &lt;date&gt;     &lt;int&gt;\n1 2022-01-01    22\n2 2022-01-02    36\n3 2022-01-03    26\n4 2022-01-04    18\n5 2022-01-05    20\n6 2022-01-06    25"
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r---occupancy",
@@ -214,7 +214,7 @@
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods---flows",
     "title": "System Dynamics in health and care",
     "section": "Longer Time Periods - flows",
-    "text": "Longer Time Periods - flows\nUse lubridate::floor_date to generate the date at start of week/month\n\nadmit_wk &lt;- spell_dates |&gt; \n  mutate(week_start = floor_date(\n    date_admit, unit = \"week\", week_start = 1   # start week on Monday\n  )) |&gt; \n  count(week_start)     # could add other parameters such as provider code, TFC etc\n\nhead(admit_wk)\n\n\n\n# A tibble: 6 × 2\n  week_start     n\n  &lt;date&gt;     &lt;int&gt;\n1 2021-12-27    57\n2 2022-01-03   186\n3 2022-01-10   181\n4 2022-01-17   209\n5 2022-01-24   182\n6 2022-01-31   178\n\n\n\nMight run SD model in weeks or months - e.g. months for care homes Use lubridate to create new variable with start date of week/month/year etc"
+    "text": "Longer Time Periods - flows\nUse lubridate::floor_date to generate the date at start of week/month\n\nadmit_wk &lt;- spell_dates |&gt; \n  mutate(week_start = floor_date(\n    date_admit, unit = \"week\", week_start = 1   # start week on Monday\n  )) |&gt; \n  count(week_start)     # could add other parameters such as provider code, TFC etc\n\nhead(admit_wk)\n\n\n\n# A tibble: 6 × 2\n  week_start     n\n  &lt;date&gt;     &lt;int&gt;\n1 2021-12-27    58\n2 2022-01-03   177\n3 2022-01-10   207\n4 2022-01-17   196\n5 2022-01-24   200\n6 2022-01-31   175\n\n\n\nMight run SD model in weeks or months - e.g. months for care homes Use lubridate to create new variable with start date of week/month/year etc"
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods---occupancy",
@@ -788,7 +788,7 @@
     "href": "presentations/2023-08-23_nhs-r_unit-testing/index.html#and-create-our-first-test-5",
     "title": "Unit testing in R",
     "section": "… and create our first test",
-    "text": "… and create our first test\n\ntest_that(\"my_function correctly divides values\", {\n  expect_equal(\n    my_function(4, 2),\n    2\n  )\n  expect_equal(\n    my_function(1, 4),\n    0.25\n  )\n  expect_equal(\n    my_function(c(4, 1), c(2, 4)),\n    c(2, 0.25)\n  )\n})\n\nTest passed 🎊"
+    "text": "… and create our first test\n\ntest_that(\"my_function correctly divides values\", {\n  expect_equal(\n    my_function(4, 2),\n    2\n  )\n  expect_equal(\n    my_function(1, 4),\n    0.25\n  )\n  expect_equal(\n    my_function(c(4, 1), c(2, 4)),\n    c(2, 0.25)\n  )\n})\n\nTest passed 😀"
   },
   {
     "objectID": "presentations/2023-08-23_nhs-r_unit-testing/index.html#other-expect_-functions",
@@ -837,14 +837,14 @@
     "href": "presentations/2023-08-23_nhs-r_unit-testing/index.html#tolerance-to-the-rescue",
     "title": "Unit testing in R",
     "section": "Tolerance to the rescue 🙂",
-    "text": "Tolerance to the rescue 🙂\n\ntest_that(\"my_function works\", {\n  # arrange\n  x &lt;- 5\n  y &lt;- 7\n  expected &lt;- 0.714285\n\n  # act\n  actual &lt;- my_function(x, y)\n\n  # assert\n  expect_equal(actual, expected, tolerance = 1e-6)\n})\n\nTest passed 🥳\n\n\n\n(this is a slightly artificial example, usually the default tolerance is good enough)"
+    "text": "Tolerance to the rescue 🙂\n\ntest_that(\"my_function works\", {\n  # arrange\n  x &lt;- 5\n  y &lt;- 7\n  expected &lt;- 0.714285\n\n  # act\n  actual &lt;- my_function(x, y)\n\n  # assert\n  expect_equal(actual, expected, tolerance = 1e-6)\n})\n\nTest passed 🎊\n\n\n\n(this is a slightly artificial example, usually the default tolerance is good enough)"
   },
   {
     "objectID": "presentations/2023-08-23_nhs-r_unit-testing/index.html#testing-edge-cases",
     "href": "presentations/2023-08-23_nhs-r_unit-testing/index.html#testing-edge-cases",
     "title": "Unit testing in R",
     "section": "Testing edge cases",
-    "text": "Testing edge cases\n\n\nRemember the validation steps we built into our function to handle edge cases?\n\nLet’s write tests for these edge cases:\nwe expect errors\n\n\ntest_that(\"my_function works\", {\n  expect_error(my_function(5, 0))\n  expect_error(my_function(\"a\", 3))\n  expect_error(my_function(3, \"a\"))\n  expect_error(my_function(1:2, 4))\n})\n\nTest passed 🥳"
+    "text": "Testing edge cases\n\n\nRemember the validation steps we built into our function to handle edge cases?\n\nLet’s write tests for these edge cases:\nwe expect errors\n\n\ntest_that(\"my_function works\", {\n  expect_error(my_function(5, 0))\n  expect_error(my_function(\"a\", 3))\n  expect_error(my_function(3, \"a\"))\n  expect_error(my_function(1:2, 4))\n})\n\nTest passed 🌈"
   },
   {
     "objectID": "presentations/2023-08-23_nhs-r_unit-testing/index.html#another-simple-example",
@@ -858,7 +858,7 @@
     "href": "presentations/2023-08-23_nhs-r_unit-testing/index.html#another-simple-example-1",
     "title": "Unit testing in R",
     "section": "Another (simple) example",
-    "text": "Another (simple) example\n\nmy_new_function &lt;- function(x, y) {\n  if (x &gt; y) {\n    \"x\"\n  } else {\n    \"y\"\n  }\n}\n\n\n\ntest_that(\"it returns 'x' if x is bigger than y\", {\n  expect_equal(my_new_function(4, 3), \"x\")\n})\n\nTest passed 😀\n\ntest_that(\"it returns 'y' if y is bigger than x\", {\n  expect_equal(my_new_function(3, 4), \"y\")\n  expect_equal(my_new_function(3, 3), \"y\")\n})\n\nTest passed 🌈"
+    "text": "Another (simple) example\n\nmy_new_function &lt;- function(x, y) {\n  if (x &gt; y) {\n    \"x\"\n  } else {\n    \"y\"\n  }\n}\n\n\n\ntest_that(\"it returns 'x' if x is bigger than y\", {\n  expect_equal(my_new_function(4, 3), \"x\")\n})\n\nTest passed 🥳\n\ntest_that(\"it returns 'y' if y is bigger than x\", {\n  expect_equal(my_new_function(3, 4), \"y\")\n  expect_equal(my_new_function(3, 3), \"y\")\n})\n\nTest passed 🥇"
   },
   {
     "objectID": "presentations/2023-08-23_nhs-r_unit-testing/index.html#how-to-design-good-tests",

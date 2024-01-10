@@ -4,15 +4,37 @@
 
 * On the whole we follow the conventions of the [tidyverse style guide](https://style.tidyverse.org/)
 * We prefer packages to be explicitly namespaced like this `dplyr::mutate(...)`. This is not essential in exploratory data analysis but is mandatory in all production code
-* For readability please insert line breaks in your code at or before column 80.
-* We prefer to avoid loading {tidyverse} because it brings in a lot of packages that are not being used. Again, not essential to follow this in exploratory data analysis but no code that is or will be deployed should ever load {tidyverse}
+* We prefer to avoid loading `{tidyverse}` because it brings in a lot of packages that are not being used. Again, not essential to follow this in exploratory data analysis but no code that is or will be deployed should ever load `{tidyverse}`
+* Line breaks: insert them in your code at or before column 80.
 
-## unorganised notes
+## Additional assorted notes on style 😎
 
-* favour `|>` over `%>%`
-* favour `.qmd` over `.rmd`
-* use git for *all* projects, github being the home of all of the project code
+* Favour `|>` over `%>%`
+* Favour `.qmd` over `.rmd`
+* Use git for *all* projects, github being the home of all of the project code
 * RAP everything
-* `{styler}`
+* Use `{styler}` and `{lintr}` (or Python equivalents such as `black`) to tidy your code
 * https://style.tidyverse.org/
-* `{lintr}`
+* Other resources: If you're not sure about something try the [NHS-R Way](https://nhsrway.nhsrcommunity.com/style-guides.html), the [UK Government accessibility guidelines](https://www.gov.uk/guidance/accessibility-requirements-for-public-sector-websites-and-apps), or the [Turing Way](https://the-turing-way.netlify.app/index.html). If you're still not sure, just ask the team.
+* Line breaks in `md` files: either at 120 characters or [at sentence breaks](https://nhsrway.nhsrcommunity.com/style-guides.html#write-each-sentence-in-a-new-line-line-breaks).
+* When writing about code, be explicit for {packages} by using the curly brackets and also using back ticks around \`functions()\` as these render nicely and highlight the words clearly.
+* When using `dplyr`, favour one mutate over many. For example, between the two examples below, example B is preferred:
+
+EXAMPLE A:
+```
+library(dplyr)
+
+starwars |>
+  mutate(height_cm = height) |>
+  mutate(name_copy = name)
+```
+
+EXAMPLE B:
+```
+starwars |>
+  mutate(
+    height_cm = height,
+    name_copy = name
+  )
+```
+

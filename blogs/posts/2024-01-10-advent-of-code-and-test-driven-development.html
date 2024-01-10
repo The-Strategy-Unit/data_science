@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="YiWen Hon">
+<meta name="dcterms.date" content="2024-01-10">
 
-<title>Data Science @ The Strategy Unit - Data Science Blog</title>
+<title>Data Science @ The Strategy Unit - Advent of Code and Test Driven Development</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,26 +25,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -63,40 +63,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<link rel="alternate" type="application/rss+xml" title="Data Science @ The Strategy Unit" href="index.xml"></head>
+</head>
 
 <body class="nav-fixed">
 
@@ -105,7 +74,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Data Science @ The Strategy Unit</span>
     </a>
   </div>
@@ -116,19 +85,19 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html" rel="" target="">
+    <a class="nav-link" href="../../index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../about.html" rel="" target="">
+    <a class="nav-link" href="../../about.html" rel="" target="">
  <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../blogs/index.html" rel="" target="" aria-current="page">
+    <a class="nav-link" href="../../blogs/index.html" rel="" target="">
  <span class="menu-text">Blogs</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../presentations/index.html" rel="" target="">
+    <a class="nav-link" href="../../presentations/index.html" rel="" target="">
  <span class="menu-text">Presentations</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -137,19 +106,19 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-style-guide">    
         <li>
-    <a class="dropdown-item" href="../style/style_guide.html" rel="" target="">
+    <a class="dropdown-item" href="../../style/style_guide.html" rel="" target="">
  <span class="dropdown-text">Style Guide</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../style/git_and_github.html" rel="" target="">
+    <a class="dropdown-item" href="../../style/git_and_github.html" rel="" target="">
  <span class="dropdown-text">Using Git and GitHub</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../style/project_structure.html" rel="" target="">
+    <a class="dropdown-item" href="../../style/project_structure.html" rel="" target="">
  <span class="dropdown-text">Project Structure</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../style/data_storage.html" rel="" target="">
+    <a class="dropdown-item" href="../../style/data_storage.html" rel="" target="">
  <span class="dropdown-text">Data Storage</span></a>
   </li>  
     </ul>
@@ -157,7 +126,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="../blogs/index.xml" rel="" target=""><i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../blogs/index.xml" rel="" target=""><i class="bi bi-rss" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
@@ -170,25 +139,40 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(4)</span></div><div class="category" data-category="git">git <span class="quarto-category-count">(3)</span></div><div class="category" data-category="learning">learning <span class="quarto-category-count">(1)</span></div><div class="category" data-category="tutorial">tutorial <span class="quarto-category-count">(3)</span></div></div></div>
+    </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Data Science Blog</h1>
-</div>
+<h1 class="title">Advent of Code and Test Driven Development</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">learning</div>
+  </div>
+  </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>YiWen Hon </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 10, 2024</p>
+    </div>
+  </div>
   
     
   </div>
@@ -196,166 +180,15 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<p><a href="https://adventofcode.com/">Advent of Code</a> is an annual event, where daily coding puzzles are released from 1st – 24th December. We ran one of our fortnightly Coffee &amp; Coding sessions introducing Advent of Code to people who code in the Strategy Unit, as well as the concept of test-driven development as a potential way of approaching the puzzles.</p>
+<p><a href="https://developer.ibm.com/articles/5-steps-of-test-driven-development/">Test-driven development</a> (TDD) is an approach to coding which involves writing the test for a function BEFORE we write the function. This might seem quite counterintuitive, but it makes it easier to identify bugs 🐛 when they are introduced to our code, and ensures that our functions meet all necessary criteria. From my experience, this takes quite a long time to implement and can be quite tedious, but it is definitely worth it overall, especially as your project develops. Testing is also recommended in the <a href="https://nhsdigital.github.io/rap-community-of-practice/introduction_to_RAP/levels_of_RAP/">NHS Reproducible Analytical Pipeline (RAP)</a> guidelines.</p>
+<p>An interesting thing to note about TDD is that we’re always expecting our first test to fail, and indeed failing tests are useful and important! If we wrote tests that just passed all the time, this would not be useful at all for our code.</p>
+<p>The way that Advent of Code is structured, with test data for each puzzle and an expected test result, makes it very amenable to a test-driven approach. In order to support this, Matt and I created template repositories for a test-driven approach to Advent of Code, in <a href="https://github.com/yiwen-h/aoc_python_template">Python</a> and in <a href="https://github.com/matt-dray/aoc.rstats.template">R</a>.</p>
+<p>Our goal when setting this up was to introduce others in the Strategy Unit to both TDD and Advent of Code. Advent of code can be challenging and I personally struggle to get past the first week, but it encourages creative (and maybe even fun?!) approaches to coding problems. I’m glad that we had the chance to explore some of the puzzles together in Coffee &amp; Coding – it was interesting to see so many different approaches to the same problem, and hopefully it also gave us all the chance to practice writing tests.</p>
 
 
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="learning" data-listing-date-sort="1704844800000" data-listing-file-modified-sort="1704894829087" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
-<div class="thumbnail">
-<p><a href="../blogs/posts/2024-01-10-advent-of-code-and-test-driven-development.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
-</div>
-<div class="body">
-<a href="../blogs/posts/2024-01-10-advent-of-code-and-test-driven-development.html">
-<h3 class="no-anchor listing-title">
-Advent of Code and Test Driven Development
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('learning'); return false;">
-learning
-</div>
-</div>
-<a href="../blogs/posts/2024-01-10-advent-of-code-and-test-driven-development.html">
-<div class="listing-description">
-Advent of Code is an annual event, where daily coding puzzles are released from 1st – 24th December. We ran one of our fortnightly Coffee &amp; Coding sessions…
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="../blogs/posts/2024-01-10-advent-of-code-and-test-driven-development.html">
-<div class="listing-date">
-Jan 10, 2024
-</div>
-<div class="listing-author">
-YiWen Hon
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="git,tutorial" data-listing-date-sort="1682467200000" data-listing-file-modified-sort="1704894829087" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
-<div class="thumbnail">
-<p><a href="../blogs/posts/2023-04-26-reinstalling-r-packages.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
-</div>
-<div class="body">
-<a href="../blogs/posts/2023-04-26-reinstalling-r-packages.html">
-<h3 class="no-anchor listing-title">
-Reinstalling R Packages
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('git'); return false;">
-git
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('tutorial'); return false;">
-tutorial
-</div>
-</div>
-<a href="../blogs/posts/2023-04-26-reinstalling-r-packages.html">
-<div class="listing-description">
-R 4.3.0 was released last week. Anytime you update R you will probably find yourself in the position…
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="../blogs/posts/2023-04-26-reinstalling-r-packages.html">
-<div class="listing-date">
-Apr 26, 2023
-</div>
-<div class="listing-author">
-Tom Jemmett
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="git,tutorial" data-listing-date-sort="1682467200000" data-listing-file-modified-sort="1704894829087" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
-<div class="thumbnail">
-<p><a href="../blogs/posts/2023-04-26_alternative_remotes.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
-</div>
-<div class="body">
-<a href="../blogs/posts/2023-04-26_alternative_remotes.html">
-<h3 class="no-anchor listing-title">
-Alternative remote repositories
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('git'); return false;">
-git
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('tutorial'); return false;">
-tutorial
-</div>
-</div>
-<a href="../blogs/posts/2023-04-26_alternative_remotes.html">
-<div class="listing-description">
-It’s great when someone send’s you a…
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="../blogs/posts/2023-04-26_alternative_remotes.html">
-<div class="listing-date">
-Apr 26, 2023
-</div>
-<div class="listing-author">
-Tom Jemmett
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="git,tutorial" data-listing-date-sort="1679616000000" data-listing-file-modified-sort="1704894829087" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5">
-<div class="thumbnail">
-<p><a href="../blogs/posts/2023-03-24_hotfix-with-git.html"> <p class="card-img-top"><img src="posts/2023-03-24_hotfix-with-git_files/figure-html/unnamed-chunk-1-1.png"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
-<div class="body">
-<a href="../blogs/posts/2023-03-24_hotfix-with-git.html">
-<h3 class="no-anchor listing-title">
-Creating a hotfix with git
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('git'); return false;">
-git
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('tutorial'); return false;">
-tutorial
-</div>
-</div>
-<a href="../blogs/posts/2023-03-24_hotfix-with-git.html">
-<div class="listing-description">
-I recently discovered a bug in a…
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="../blogs/posts/2023-03-24_hotfix-with-git.html">
-<div class="listing-date">
-Mar 24, 2023
-</div>
-<div class="listing-author">
-Tom Jemmett
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -708,4 +541,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/the-strategy-unit/data_science/edit/main/blogs/index.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/the-strategy-unit/data_science/issues/new" class="toc-action">Report an issue</a></p></div></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/the-strategy-unit/data_science/edit/main/blogs/posts/2024-01-10-advent-of-code-and-test-driven-development.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/the-strategy-unit/data_science/issues/new" class="toc-action">Report an issue</a></p></div></div></div></div></footer></body></html>

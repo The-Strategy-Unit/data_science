@@ -2,7 +2,7 @@
 title: "About"
 ---
 
-The Data Science team at the Strategy Unit is comprised of the following team members:
+The Data Science team at the Strategy Unit comprises the following team members:
 
 - [Chris Beeley](https://github.com/ChrisBeeley)
 - [Matt Dray](https://github.com/matt-dray)

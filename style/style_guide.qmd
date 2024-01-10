@@ -2,17 +2,37 @@
 
 ## Code style
 
-* On the whole we follow the conventions of the [tidyverse style guide](https://style.tidyverse.org/)
-* We prefer packages to be explicitly namespaced like this `dplyr::mutate(...)`. This is not essential in exploratory data analysis but is mandatory in all production code
-* For readability please insert line breaks in your code at or before column 80.
-* We prefer to avoid loading {tidyverse} because it brings in a lot of packages that are not being used. Again, not essential to follow this in exploratory data analysis but no code that is or will be deployed should ever load {tidyverse}
+* In general, follow the conventions of the [tidyverse style guide](https://style.tidyverse.org/).
+* Prefer packages to be explicitly namespaced with a double colon in production code, like `dplyr::mutate()`, though this is not essential in exploratory data analysis.
+* Favour the base R pipe (`|>`) over the {magrittr} pipe (`%>%`).
+* Avoid `library(tidyverse)` in production code because it attaches a lot of packages that might not be used, though you may use it in exploratory data analysis.
+* Use {styler} and {lintr} (or Python equivalents such as `black`) to tidy your code.
+* Insert linebreaks in your code at or before column 80.
+* When using {dplyr}, favour one mutate over many. For example, between the two examples below, example B is preferred:
 
-## unorganised notes
+EXAMPLE A:
+```
+library(dplyr)
 
-* favour `|>` over `%>%`
-* favour `.qmd` over `.rmd`
-* use git for *all* projects, github being the home of all of the project code
-* RAP everything
-* `{styler}`
-* https://style.tidyverse.org/
-* `{lintr}`
+starwars |>
+  mutate(height_cm = height) |>
+  mutate(name_copy = name)
+```
+
+EXAMPLE B:
+```
+starwars |>
+  mutate(
+    height_cm = height,
+    name_copy = name
+  )
+```
+
+## Additional assorted notes on style 😎
+
+* Favour Quarto (`.qmd` files) over R Markdown (`.Rmd`) for document production.
+* Use Git for *all* projects and GitHub as the remote home for of all of the project code.
+* Use the Reproducible Analytical Pipelines (RAP) approach wherever possible.
+* Line breaks in Markdown (`.md`) files should be at 120 characters or [at sentence breaks](https://nhsrway.nhsrcommunity.com/style-guides.html#write-each-sentence-in-a-new-line-line-breaks).
+* When writing about code, use curly braces to identify a {package} name and use backticks around \`functions()\` as these render nicely and highlight the words clearly.
+* If you're not sure about something try the [NHS-R Way](https://nhsrway.nhsrcommunity.com/style-guides.html), the [UK Government accessibility guidelines](https://www.gov.uk/guidance/accessibility-requirements-for-public-sector-websites-and-apps), or the [Turing Way](https://the-turing-way.netlify.app/index.html). If you're still not sure, just ask the team.

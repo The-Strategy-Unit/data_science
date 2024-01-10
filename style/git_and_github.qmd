@@ -95,4 +95,4 @@ The reviewer, once happy to approve the changes, can merge the PR.
 
 ### Preparing a package release of your code
 
-TODO
+We use [semantic versioning](https://semver.org/).

@@ -2,6 +2,16 @@
 title: "About"
 ---
 
-TODO
+The Data Science team at the Strategy Unit comprises the following team members:
 
+- [Chris Beeley](https://github.com/ChrisBeeley)
+- [Matt Dray](https://github.com/matt-dray)
+- [Ozayr Mohammed](https://github.com/O-Mohammed)
+- [Tom Jemmett](https://github.com/tomjemmett)
+- [YiWen Hon](https://github.com/yiwen-h)
 
+Current and previous projects of note include:
+
+- Work supporting the New Hospitals Programme, including building [a model for predicting the demand and capacity requirements of hospitals in the future](https://connect.strategyunitwm.nhs.uk/nhp/project_information/), and a tool for mapping the evidence on this topic.
+- The [Patient Experience Qualitative Data Categorisation project](https://cdu-data-science-team.github.io/PatientExperience-QDC/) 
+- Work supporting the wider analytical community, through events/communities such as [NHS-R](https://nhsrcommunity.com/) and [HACA](https://haca-conference.nhs.uk/).

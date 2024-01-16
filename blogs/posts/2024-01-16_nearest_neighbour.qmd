@@ -1,0 +1,132 @@
+---
+title: "Nearest neighbour imputation"
+author: "Jacqueline Grout"
+date: "2024-01-16"
+categories: [learning]
+---
+
+Recently I have been gathering data by GP practice, from a variety of different sources. The ultimate purpose of my project is to be able to report at an ICB/sub-ICB level. The various datasets cover different timescales and consequently changes in GP practices over time have left me with mismatching datasets. My approach has been to take as the basis of my project a recent GP List. Later in my project I will perform calculations at a GP practice level based on underlying need and the data for this need is a prevalence value from a dataset which is around 8 years old, and for which there is no update or alternative. From my recent list of 6454 practices, when I match to the need data, I am left with 151 practices without a need. If I remove these practices from the analysis then this could impact the analysis by sub-icb since often a group of practices in the same area could be subject to changes, mergers and reorganisation. To provide a suitable estimate of need for the newer practices I first geocoded all the practices in the dataset. Here is an example for one practice:
+
+```{r}
+#| echo: false
+#create a sample dataset to demonstrate
+library(tidyverse)
+library(sf)
+library(tidygeocoder)
+library(leaflet)
+library(viridisLite)
+library(gt)
+# Create some data with one practice with no need data and a selection of practices locally with need data
+practices <- tribble(
+  ~practice_code, ~postcode, ~has_orig_need, ~value,
+  "P1","CV1 4FS", 0, NA,
+  "P2","CV1 3GB", 1, 7.3,
+  "P3","CV11 5TW", 1, 6.9,
+  "P4","CV6 3HZ", 1, 7.1,
+  "P5","CV6 1HS", 1, 7.7,
+  "P6","CV6 5DF", 1, 8.2,
+  "P7","CV6 3FA", 1, 7.9,
+  "P8","CV1 2DL", 1, 7.5,
+  "P9","CV1 4JH", 1, 7.7,
+  "P10","CV10 0GQ", 1, 7.5,
+  "P11","CV10 0JH", 1, 7.8,
+  "P12","CV11 5QT", 1, 7.9,
+  "P13","CV11 6AB", 1, 7.6,
+  "P14","CV6 4DD", 1,7.9
+) |>
+  mutate(id = row_number()) |>
+  geocode(postalcode = postcode) |>
+  st_as_sf(coords = c("long", "lat"), crs = 4326)
+
+# get domain of numeric data
+(domain <- range(postcodes$has_orig_need))
+
+# make a colour palette
+pal <- colorNumeric(palette = viridis(2), domain = domain)
+
+```
+
+```{r}
+
+practices |>
+  gt()
+  
+```
+
+Map to show practices, purple is the practice with no need data and the yellow are practices with need data available.
+
+```{r}
+# make map to display practices
+leaflet(practices) |> 
+  addTiles() |>
+  addCircleMarkers(color = ~pal(has_orig_need)) 
+
+```
+
+Split the data into those with and without a value for need. Using st_join from the sf package join those without and those with a value for need using the geometry to find all those within 1500m (1.5km).
+
+```{r}
+# split the data into those with and without a value for need
+
+no_need <- practices |>
+  filter(has_orig_need == 0)
+
+with_need <- practices |>
+  filter(has_orig_need == 1)
+
+
+neighbours <- no_need |>
+  select(no_need_postcode = postcode) |>
+  st_join(with_need, st_is_within_distance, 1500) |>
+  st_drop_geometry() |>
+  select(id, no_need_postcode) |>
+  inner_join(x = with_need, by = join_by("id")) 
+
+
+leaflet(neighbours) |> 
+  addTiles() |>
+  addCircleMarkers(color = "purple") |>
+  addMarkers(  -1.50686326666667, 52.4141089666667, popup = "Practice with no data"
+) |>
+  addCircles(-1.50686326666667, 52.4141089666667,radius=1500)
+
+```
+
+Join the original data back to the "neighbours".
+
+```{r}
+
+no_need_neighbours_estimate <- no_need |>
+  select(no_need_postcode = postcode,practice_code) |>
+  st_join(with_need, st_is_within_distance, 1500) |>
+group_by(practice_code.x) |>
+    summarise(need_est=mean(value)) |>
+    st_drop_geometry(select(practice_code,need_est)) |>
+  rename(practice_code=practice_code.x)
+
+  no_need_with_neighbours_estimate <- practices |>
+    left_join(no_need_neighbours_estimate, join_by(practice_code))  |>
+    st_drop_geometry(select(practice_code,need_est))
+  
+  no_need_with_neighbours_estimate |>
+    gt()
+
+
+
+```
+
+Generate an updated dataframe of the need data using the actual need for the practice where available, otherwise using estimated need.
+
+```{r}
+no_need_with_neighbours_estimate |>
+    mutate(need_to_use = case_when(value>=0 ~ value,
+                                       .default = need_est)
+    ) |>
+    select(practice_code,need_to_use) |>
+    gt()
+  
+```
+
+For my project, this method has successfully generated a prevalence for 125 of the 151 practices without a need value, leaving just 26 practices without a need. This is using a 1.5 km radius. In each use case tthere will be a decision to make regarding a more accurate estimate (smaller radius) and therefore fewer matches versus a less accurate estimate (using a larger radius) and therefore more matches.
+
+This approach could be replicated for other similar uses/purposes.

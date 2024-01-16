@@ -1,39 +1,76 @@
 # Project Structure
 
-* as a package
-* R/ for scripts
-* split files into separate scripts
-* use `{renv}`
-* use `{targets}`
+## RStudio Projects
 
-## Use RStudio Projects
+Analytical projects should be self-contained and portable. 
+This means that all the materials required for an analysis should be organised into a single folder that can be shared in its entirety and be re-run by other people, ideally via [GitHub](git_and_github.qmd).
 
-[RStudio projects][rs_proj] are a great way to organise your analytical projects into discrete units that are easier to
-work on and share.
+We recommend [RStudio Projects](https://support.posit.co/hc/en-us/articles/200526207-Using-RStudio-Projects) as a system for creating standardised project structures that meet these goals. 
+[The {usethis} package](https://usethis.r-lib.org/) contains a number of helper functions to help get you started, including `usethis::create_project()`.
 
-[rs_proj]: https://support.posit.co/hc/en-us/articles/200526207-Using-RStudio-Projects
+### Dependency management
 
-## Separate scripts
+One of the most common issues you'll face when using a project someone else has created, or you created previously, is maintaining the required packages to run the project. 
+Knowing what packages are needed to run a particular project isn't always obvious, and over time packages can change, rendering code that once worked unusable.
 
-## Functions
+[The `{renv}` R package](https://rstudio.github.io/renv/articles/renv.html) helps solve this problem by:
 
-## Standardise Folder Structures
+1. Keeping track of the packages that are required for a particular project.
+2. Logging the installed version of all of the packages.
+3. Maintaining a per-project library of packages, so projects don't interfere with one another.
 
-## `{renv}`
+### Workflow management
 
-One of the most common issues you will face when using a project someone else has created, or you created previously, is
-maintaining the required packages to run the project. Knowing what packages are needed to run a particular project isn't
-always obvious, and over time packages can change rendering code that once worked unusable.
+It's helpful to split discrete analytical tasks into separate script files, which can make it easier to handle the codebase in context and provide an obvious order of operations. 
+For example, `01_read.R`, `02_wrangle.R`, `03_model.R`, etc.
 
-[`{renv}`][renv] solves this problem by:
+You could still forget to re-run one of the numbered files, however, or it may take a long time to re-run all the steps again if you only make one small change to the code. 
+This is where a workflow manager is useful. 
 
-1. keeping track of the packages that are required for a particular project
-2. logging the installed version of all of the packages
-3. maintaining a per-project library of packages, so projects don't interfere with one another
+We recommend [the {targets} R package](https://books.ropensci.org/targets/) as a workflow manager. 
+You write a series of steps and {targets} automatically recognises all the relationships between functions and objects as a graph.
+This means {targets} knows the order that things should be run and knows which bits of code need to be re-run if there are upstream changes.
+It's a well-documented and supported package.
 
-[renv]: https://rstudio.github.io/renv/articles/renv.html
+### Functions
 
-It's a good idea to use `{renv}` for all projects.
+It's beneficial to convert code into discrete functions where possible.
+This makes it easier to:
 
-## `{targets}`
+* reduce the chance of errors, because you'll avoid repetitive and mistake-prone copy-pasting of code
+* understand your scripts, because code can be condensed into a simpler calls that are easier to read
+* reuse your code, because functions allow you to consistently call the same code more than once and can be copied into other projects
+* debug, because the source of an error can be more easily traced and your code can be tested more easily
 
+Consider the DRY (Don't Repeat Yourself) principle when deciding whether or not to convert some code into a function.
+It may be better to write a function if you've used the same piece of code more than once in an analysis, especially if it contains many lines.
+
+Function names should be short but descriptive and should contain a verb that describes what the function does.
+For example, `get_geospatial_data()` may be better than the generic `get_data()`, which is certainly better than the uninformative `data()`.
+
+In a project, it's conventional to put your functions in a folder called `R` in the project's root directory.
+You can group functions into separate R scripts with meaningful names to make it easier to organise them (`read-data.R`, `model.R`, etc).
+You can then `source()` these function scripts into your analytical scripts as required.
+
+## Packages
+
+It may be beneficial to gather your functions into a discrete package so that you and others can install and reuse them for other projects.
+
+The {usethis} package has a number of shortcuts to help you set up a package.
+You can begin with `usethis::create_package()` to generate the basic structure and then `usethis::use_r` and `usethis::use_test()` to add scripts and [{testthat}](https://testthat.r-lib.org/) tests into the correct folder structure.
+
+We recommend you include a number of extra files in your package to make its purpose clear and to encourage collaboration.
+This includes:
+
+* a README file to describe the purpose of your package and provide some simple examples, which you can set up with `usethis::use_readme_md()` or `usethis::use_readme_rmd()` if it contains R code that you want to execute 
+* a NEWS file with `usethis::use_news_md()`, which is used to communicate the latest changes to your package
+* a CODE_OF_CONDUCT file with `usethis::use_code_of_conduct` to explain to collaborators how they should engage with your project
+* vignettes with `usethis::use_vignette()`, which are short documents that let you mix code with prose to describe how to use the functions in your package
+
+We recommend [semantic versioning](https://semver.org/) as you develop your package.
+In this system, the version number is composed of three digits (like '1.2.3') that are each incremented as you make major breaking changes, minor changes and patches or bug fixes. 
+The `usethis::use_version()` function can help you to do this and to automatically update the DESCRIPTION and NEWS file.
+
+Use [{pkgdown}](https://pkgdown.r-lib.org/) to autogenerate a website from your package's documentation.
+This lets people see your documentation rendered nicely on the internet, without the need to install the package. 
+You can serve this site on the web and update it automatically using [GitHub Pages and GitHub Actions](https://pkgdown.r-lib.org/articles/pkgdown.html#publishing).

@@ -1,6 +1,6 @@
 ---
 title: "Nearest neighbour imputation"
-author: "Jacqueline Grout"
+author: "Jacqueline Grout with Tom Jemmett"
 date: "2024-01-16"
 categories: [learning]
 ---

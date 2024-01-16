@@ -1,29 +1,38 @@
 ---
 title: "Nearest neighbour imputation"
-author: "Jacqueline Grout with Tom Jemmett"
+author:
+  - Jacqueline Grout
 date: "2024-01-16"
 categories: [learning]
 ---
 
-Recently I have been gathering data by GP practice, from a variety of different sources. The ultimate purpose of my project is to be able to report at an ICB/sub-ICB level. The various datasets cover different timescales and consequently changes in GP practices over time have left me with mismatching datasets.
+Recently I have been gathering data by GP practice, from a variety of different sources. The ultimate purpose of my project is to be able to report at an ICB/sub-ICB level (Integrated Care Board)\*. The various datasets cover different timescales and consequently changes in GP practices over time have left me with mismatching datasets.
 
 My approach has been to take as the basis of my project a recent GP List. Later in my project I will perform calculations at a GP practice level based on underlying need and the data for this need is a prevalence value from a dataset which is around 8 years old, and for which there is no update or alternative. From my recent list of 6454 practices, when I match to the need data, I am left with 151 practices without a need. If I remove these practices from the analysis then this could impact the analysis by sub-icb since often a group of practices in the same area could be subject to changes, mergers and reorganisation.
 
+\*An Integrated Care Board is a statutory NHS organisation responsible for planning health services for their local populations
+
 Here is an example for two practices:
 
+Here's the packages and some demo objects to work with:
+
 ```{r}
-#| echo: false
+#| code-fold: true
 #| warning: false
 #| message: false
-#| include: false
-#create a sample dataset to demonstrate
+#| output: false
+
+
+# Packages
 library(tidyverse)
 library(sf)
 library(tidygeocoder)
 library(leaflet)
 library(viridisLite)
 library(gt)
-# Create some data with one practice with no need data and a selection of practices locally with need data
+
+# Create some data with two practices with no need data 
+# and a selection of practices locally with need data
 practices <- tribble(
   ~practice_code, ~postcode, ~has_orig_need, ~value,
   "P1","CV1 4FS", 0, NA,
@@ -50,7 +59,9 @@ pal <- colorNumeric(palette = viridis(2), domain = domain)
 
 ```
 
-To provide a suitable estimate of need for the newer practices without values, I first geocoded all the practices in the dataset.
+To provide a suitable estimate of need for the newer practices without values, all the practices in the dataset were geocoded\* using the `geocode` function from the {tidygeocoder} package.
+
+\*geocoding is the process of converting addresses (often the postcode) into geographic coordinates (such as latitude and longitude) that can be plotted on a map.
 
 ```{r}
 #| output: false
@@ -63,7 +74,7 @@ practices <- practices |>
 ```
 
 ```{r}
-#| echo: false
+#| code-fold: true
 #| warning: false
 #| message: false
 practices |>
@@ -73,7 +84,7 @@ practices |>
 This map shows the practices, purple are the practices with no need data and the yellow are practices with need data available.
 
 ```{r}
-#| echo: false
+#| code-fold: true
 #| warning: false
 #| message: false
 # make map to display practices
@@ -83,7 +94,7 @@ leaflet(practices) |>
 
 ```
 
-The data was split into those with, and without, a value for need. Using st_join from the sf package to join those without, and those with, a value for need, using the geometry to find all those within 1500m (1.5km).
+The data was split into those with, and without, a value for need. Using `st_join` from the {sf} package to join those without, and those with, a value for need, using the geometry to find all those within 1500m (1.5km).
 
 ```{r}
 
@@ -105,7 +116,7 @@ neighbours <- no_need |>
 ```
 
 ```{r}
-#| echo: false
+#| code-fold: true
 #| warning: false
 #| message: false
 
@@ -144,7 +155,7 @@ The original data was joined back to the "neighbours".
 ```
 
 ```{r}
-#| echo: false
+#| code-fold: true
 #| warning: false
 #| message: false
   no_need_with_neighbours_estimate |>
@@ -153,11 +164,11 @@ The original data was joined back to the "neighbours".
 
 ```
 
-An updated dataframe was created of the need data using the actual need for the practice where available, otherwise using estimated need.
+Finally, an updated dataframe was created of the need data using the actual need for the practice where available, otherwise using estimated need.
 
 ```{r}
-#| include: false
-no_need_with_neighbours_estimate |>
+
+no_need_with_neighbours_estimate <- no_need_with_neighbours_estimate |>
     mutate(need_to_use = case_when(value>=0 ~ value,
                                        .default = need_est)) |>
     select(practice_code,need_to_use) 
@@ -169,13 +180,13 @@ no_need_with_neighbours_estimate |>
 #| warning: false
 #| message: false
 no_need_with_neighbours_estimate |>
-    mutate(need_to_use = case_when(value>=0 ~ value,
-                                       .default = need_est)
-    ) |>
-    select(practice_code,need_to_use) |>
     gt()
 ```
 
 For my project, this method has successfully generated a prevalence for 125 of the 151 practices without a need value, leaving just 26 practices without a need. This is using a 1.5 km radius. In each use case there will be a decision to make regarding a more accurate estimate (smaller radius) and therefore fewer matches versus a less accurate estimate (using a larger radius) and therefore more matches.
 
 This approach could be replicated for other similar uses/purposes.
+
+With thanks for some initial code and discussion to get started to:
+
+-   Tom Jemmett

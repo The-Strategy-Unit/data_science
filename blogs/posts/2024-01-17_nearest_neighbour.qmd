@@ -185,7 +185,7 @@ practices_with_neighbours_estimate |>
 
 For my project, this method has successfully generated a prevalence for 125 of the 151 practices without a need value, leaving just 26 practices without a need. This is using a 1.5 km radius. In each use case there will be a decision to make regarding a more accurate estimate (smaller radius) and therefore fewer matches versus a less accurate estimate (using a larger radius) and therefore more matches.
 
-This approach could be replicated for other similar uses/purposes. A topical example from an SU project is the need to assign population prevalence for hypertension and compare to current QOF[^3] data. Again, the prevalence data is a few years old so we have to move the historic data into fitting with current practices and this leaves missing data which can be estimated using this method.
+This approach could be replicated for other similar uses/purposes. A topical example from an SU project is the need to assign population prevalence for hypertension and compare it to current QOF[^3] data. Again, the prevalence data is a few years old so we have to move the historical data to fit with current practices and this leaves missing data that can be estimated using this method.
 
 With thanks for some initial code and discussion to get started to:
 

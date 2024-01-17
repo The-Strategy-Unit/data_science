@@ -4,6 +4,8 @@ author:
   - Jacqueline Grout
 date: "2024-01-17"
 categories: [learning]
+reference-location: margin
+citation-location: margin
 ---
 
 Recently I have been gathering data by GP practice, from a variety of different sources. The ultimate purpose of my project is to be able to report at an ICB/sub-ICB level[^1]. The various datasets cover different timescales and consequently changes in GP practices over time have left me with mismatching datasets.
@@ -187,8 +189,5 @@ For my project, this method has successfully generated a prevalence for 125 of t
 
 This approach could be replicated for other similar uses/purposes. A topical example from an SU project is the need to assign population prevalence for hypertension and compare to current QOF[^3] data. Again, the prevalence data is a few years old so we have to move the historic data into fitting with current practices and this leaves missing data which can be estimated using this method.
 
-With thanks for some initial code and discussion to get started to:
-
--   Tom Jemmett
 
 [^3]: QOF (Quality and Outcomes Framework) is a voluntary annual reward and incentive programme for all GP practices in England, detailing practice achievement results. 

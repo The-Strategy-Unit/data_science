@@ -14,9 +14,7 @@ Recently I have been gathering data by GP practice, from a variety of different 
 
 My approach has been to take as the basis of my project a recent GP List. Later in my project I want to perform calculations at a GP practice level based on an underlying health need and the data for this need is a CHD prevalence value from a dataset that is around 8 years old, and for which there is no update or alternative. From my recent list of 6454 practices, when I match to the need dataset, I am left with 151 practices without a value for need. If I remove these practices from the analysis then this could impact the analysis by sub-ICB since often a group of practices in the same area could be subject to changes, mergers and reorganisation.
 
-Here is an example for two practices:
-
-Here's the packages and some demo objects to work with:
+Here's the packages and some demo objects to work with to create an example for two practices:
 
 ```{r}
 #| code-fold: true

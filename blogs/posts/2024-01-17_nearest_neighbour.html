@@ -1,277 +1,281 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
-      xmlns:media="http://search.yahoo.com/mrss/" 
-      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
-      xmlns:dc="http://purl.org/dc/elements/1.1/" 
-      version="2.0">
-<channel>
-<title>Data Science @ The Strategy Unit</title>
-<link>https://the-strategy-unit.github.io/data_science/blogs/index.html</link>
-<atom:link href="https://the-strategy-unit.github.io/data_science/blogs/index.xml" rel="self" type="application/rss+xml"/>
-<description>Blogs from the Data Science Team at The Strategy Unit</description>
-<generator>quarto-1.3.450</generator>
-<lastBuildDate>Wed, 17 Jan 2024 00:00:00 GMT</lastBuildDate>
-<item>
-  <title>Nearest neighbour imputation</title>
-  <dc:creator>Jacqueline Grout</dc:creator>
-  <link>https://the-strategy-unit.github.io/data_science/blogs/posts/2024-01-17_nearest_neighbour.html</link>
-  <description><![CDATA[ 
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jacqueline Grout">
+<meta name="dcterms.date" content="2024-01-17">
+
+<title>Data Science @ The Strategy Unit - Nearest neighbour imputation</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="../../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="../../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="../../site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="../../site_libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="../../site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+<script src="../../site_libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="../../site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="../../site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="../../site_libs/leaflet-binding-2.2.1/leaflet.js"></script>
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Data Science @ The Strategy Unit</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blogs/index.html" rel="" target="">
+ <span class="menu-text">Blogs</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../presentations/index.html" rel="" target="">
+ <span class="menu-text">Presentations</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-style-guide" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Style Guide</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-style-guide">    
+        <li>
+    <a class="dropdown-item" href="../../style/style_guide.html" rel="" target="">
+ <span class="dropdown-text">Style Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../style/git_and_github.html" rel="" target="">
+ <span class="dropdown-text">Using Git and GitHub</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../style/project_structure.html" rel="" target="">
+ <span class="dropdown-text">Project Structure</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../style/data_storage.html" rel="" target="">
+ <span class="dropdown-text">Data Storage</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../blogs/index.xml" rel="" target=""><i class="bi bi-rss" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Nearest neighbour imputation</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">learning</div>
+  </div>
+  </div>
 
 
 
-<div class="page-columns page-full"><p>Recently I have been gathering data by GP practice, from a variety of different sources. The ultimate purpose of my project is to be able to report at an ICB/sub-ICB level<sup>1</sup>. The various datasets cover different timescales and consequently changes in GP practices over time have left me with mismatching datasets.</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;An ICB (Integrated Care Board) is a statutory NHS organisation responsible for planning health services for their local populations</p></li></div></div>
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jacqueline Grout </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 17, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="page-columns page-full"><p>Recently I have been gathering data by GP practice, from a variety of different sources. The ultimate purpose of my project is to be able to report at an ICB/sub-ICB level<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. The various datasets cover different timescales and consequently changes in GP practices over time have left me with mismatching datasets.</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;An ICB (Integrated Care Board) is a statutory NHS organisation responsible for planning health services for their local populations</p></li></div></div>
 <p>My approach has been to take as the basis of my project a recent GP List. Later in my project I want to perform calculations at a GP practice level based on an underlying health need and the data for this need is a CHD prevalence value from a dataset that is around 8 years old, and for which there is no update or alternative. From my recent list of 6454 practices, when I match to the need dataset, I am left with 151 practices without a value for need. If I remove these practices from the analysis then this could impact the analysis by sub-ICB since often a group of practices in the same area could be subject to changes, mergers and reorganisation.</p>
 <p>Here’s the packages and some demo objects to work with to create an example for two practices:</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Packages</span></span>
-<span id="cb1-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(tidyverse)</span>
-<span id="cb1-3"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(sf)</span>
-<span id="cb1-4"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(tidygeocoder)</span>
-<span id="cb1-5"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(leaflet)</span>
-<span id="cb1-6"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(viridisLite)</span>
-<span id="cb1-7"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(gt)</span>
-<span id="cb1-8"></span>
-<span id="cb1-9"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Create some data with two practices with no need data </span></span>
-<span id="cb1-10"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># and a selection of practices locally with need data</span></span>
-<span id="cb1-11">practices <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">tribble</span>(</span>
-<span id="cb1-12">  <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">~</span>practice_code, <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">~</span>postcode, <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">~</span>has_orig_need, <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">~</span>value,</span>
-<span id="cb1-13">  <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"P1"</span>,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"CV1 4FS"</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>, <span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">NA</span>,</span>
-<span id="cb1-14">  <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"P2"</span>,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"CV1 3GB"</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">7.3</span>,</span>
-<span id="cb1-15">  <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"P3"</span>,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"CV11 5TW"</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">6.9</span>,</span>
-<span id="cb1-16">  <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"P4"</span>,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"CV6 3HZ"</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">7.1</span>,</span>
-<span id="cb1-17">  <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"P5"</span>,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"CV6 1HS"</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">7.7</span>,</span>
-<span id="cb1-18">  <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"P6"</span>,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"CV6 5DF"</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">8.2</span>,</span>
-<span id="cb1-19">  <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"P7"</span>,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"CV6 3FA"</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">7.9</span>,</span>
-<span id="cb1-20">  <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"P8"</span>,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"CV1 2DL"</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">7.5</span>,</span>
-<span id="cb1-21">  <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"P9"</span>,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"CV1 4JH"</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">7.7</span>,</span>
-<span id="cb1-22">  <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"P10"</span>,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"CV10 0GQ"</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">7.5</span>,</span>
-<span id="cb1-23">  <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"P11"</span>,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"CV10 0JH"</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">7.8</span>,</span>
-<span id="cb1-24">  <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"P12"</span>,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"CV11 5QT"</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>, <span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">NA</span>,</span>
-<span id="cb1-25">  <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"P13"</span>,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"CV11 6AB"</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">7.6</span>,</span>
-<span id="cb1-26">  <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"P14"</span>,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"CV6 4DD"</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>,<span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">7.9</span></span>
-<span id="cb1-27">) </span>
-<span id="cb1-28"></span>
-<span id="cb1-29"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># get domain of numeric data</span></span>
-<span id="cb1-30">(domain <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">range</span>(practices<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>has_orig_need))</span>
-<span id="cb1-31"></span>
-<span id="cb1-32"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># make a colour palette</span></span>
-<span id="cb1-33">pal <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">colorNumeric</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">palette =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">viridis</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span>), <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">domain =</span> domain)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Packages</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidygeocoder)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leaflet)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(viridisLite)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Create some data with two practices with no need data </span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># and a selection of practices locally with need data</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>practices <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>practice_code, <span class="sc">~</span>postcode, <span class="sc">~</span>has_orig_need, <span class="sc">~</span>value,</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">"P1"</span>,<span class="st">"CV1 4FS"</span>, <span class="dv">0</span>, <span class="cn">NA</span>,</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">"P2"</span>,<span class="st">"CV1 3GB"</span>, <span class="dv">1</span>, <span class="fl">7.3</span>,</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="st">"P3"</span>,<span class="st">"CV11 5TW"</span>, <span class="dv">1</span>, <span class="fl">6.9</span>,</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="st">"P4"</span>,<span class="st">"CV6 3HZ"</span>, <span class="dv">1</span>, <span class="fl">7.1</span>,</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="st">"P5"</span>,<span class="st">"CV6 1HS"</span>, <span class="dv">1</span>, <span class="fl">7.7</span>,</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="st">"P6"</span>,<span class="st">"CV6 5DF"</span>, <span class="dv">1</span>, <span class="fl">8.2</span>,</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="st">"P7"</span>,<span class="st">"CV6 3FA"</span>, <span class="dv">1</span>, <span class="fl">7.9</span>,</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="st">"P8"</span>,<span class="st">"CV1 2DL"</span>, <span class="dv">1</span>, <span class="fl">7.5</span>,</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  <span class="st">"P9"</span>,<span class="st">"CV1 4JH"</span>, <span class="dv">1</span>, <span class="fl">7.7</span>,</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="st">"P10"</span>,<span class="st">"CV10 0GQ"</span>, <span class="dv">1</span>, <span class="fl">7.5</span>,</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  <span class="st">"P11"</span>,<span class="st">"CV10 0JH"</span>, <span class="dv">1</span>, <span class="fl">7.8</span>,</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  <span class="st">"P12"</span>,<span class="st">"CV11 5QT"</span>, <span class="dv">0</span>, <span class="cn">NA</span>,</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  <span class="st">"P13"</span>,<span class="st">"CV11 6AB"</span>, <span class="dv">1</span>, <span class="fl">7.6</span>,</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  <span class="st">"P14"</span>,<span class="st">"CV6 4DD"</span>, <span class="dv">1</span>,<span class="fl">7.9</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>) </span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="co"># get domain of numeric data</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>(domain <span class="ot">&lt;-</span> <span class="fu">range</span>(practices<span class="sc">$</span>has_orig_need))</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="co"># make a colour palette</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>pal <span class="ot">&lt;-</span> <span class="fu">colorNumeric</span>(<span class="at">palette =</span> <span class="fu">viridis</span>(<span class="dv">2</span>), <span class="at">domain =</span> domain)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="page-columns page-full"><p>To provide a suitable estimate of need for the newer practices without values, all the practices in the dataset were geocoded<sup>2</sup> using the <code>geocode</code> function from the {tidygeocoder} package.</p><div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;Geocoding is the process of converting addresses (often the postcode) into geographic coordinates (such as latitude and longitude) that can be plotted on a map.</p></li></div></div>
+<div class="page-columns page-full"><p>To provide a suitable estimate of need for the newer practices without values, all the practices in the dataset were geocoded<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> using the <code>geocode</code> function from the {tidygeocoder} package.</p><div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;Geocoding is the process of converting addresses (often the postcode) into geographic coordinates (such as latitude and longitude) that can be plotted on a map.</p></li></div></div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">practices <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> practices <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb2-2">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">id =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">row_number</span>()) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb2-3">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geocode</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">postalcode =</span> postcode) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb2-4">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">st_as_sf</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">coords =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"long"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"lat"</span>), <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">crs =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">4326</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>practices <span class="ot">&lt;-</span> practices <span class="sc">|&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">id =</span> <span class="fu">row_number</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geocode</span>(<span class="at">postalcode =</span> postcode) <span class="sc">|&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_as_sf</span>(<span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"long"</span>, <span class="st">"lat"</span>), <span class="at">crs =</span> <span class="dv">4326</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">practices <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb3-2">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">gt</span>()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>practices <span class="sc">|&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 
@@ -823,28 +827,10 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># make map to display practices</span></span>
-<span id="cb4-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">leaflet</span>(practices) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span> </span>
-<span id="cb4-3">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">addTiles</span>() <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb4-4">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">addCircleMarkers</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">color =</span> <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">~</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">pal</span>(has_orig_need)) </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make map to display practices</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">leaflet</span>(practices) <span class="sc">|&gt;</span> </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addTiles</span>() <span class="sc">|&gt;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addCircleMarkers</span>(<span class="at">color =</span> <span class="sc">~</span><span class="fu">pal</span>(has_orig_need)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="leaflet html-widget html-fill-item" id="htmlwidget-0a7488939c0cdace5aa8" style="width:100%;height:464px;"></div>
@@ -853,158 +839,32 @@ font-style: inherit;">pal</span>(has_orig_need)) </span></code></pre></div>
 </div>
 <p>The data was split into those with, and without, a value for need. Using <code>st_join</code> from the {sf} package to join those without, and those with, a value for need, using the geometry to find all those within 1500m (1.5km).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">no_need <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> practices <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb5-2">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">filter</span>(has_orig_need <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>)</span>
-<span id="cb5-3"></span>
-<span id="cb5-4">with_need <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> practices <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb5-5">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">filter</span>(has_orig_need <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>)</span>
-<span id="cb5-6"></span>
-<span id="cb5-7"></span>
-<span id="cb5-8">neighbours <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> no_need <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb5-9">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">select</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">no_need_postcode =</span> postcode,<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">no_need_prac_code=</span>practice_code) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb5-10">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">st_join</span>(with_need, st_is_within_distance, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1500</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb5-11">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">st_drop_geometry</span>() <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb5-12">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">select</span>(id, no_need_postcode,no_need_prac_code) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb5-13">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">inner_join</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">x =</span> with_need, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">by =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">join_by</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"id"</span>)) </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>no_need <span class="ot">&lt;-</span> practices <span class="sc">|&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(has_orig_need <span class="sc">==</span> <span class="dv">0</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>with_need <span class="ot">&lt;-</span> practices <span class="sc">|&gt;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(has_orig_need <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>neighbours <span class="ot">&lt;-</span> no_need <span class="sc">|&gt;</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">no_need_postcode =</span> postcode,<span class="at">no_need_prac_code=</span>practice_code) <span class="sc">|&gt;</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_join</span>(with_need, st_is_within_distance, <span class="dv">1500</span>) <span class="sc">|&gt;</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_drop_geometry</span>() <span class="sc">|&gt;</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id, no_need_postcode,no_need_prac_code) <span class="sc">|&gt;</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(<span class="at">x =</span> with_need, <span class="at">by =</span> <span class="fu">join_by</span>(<span class="st">"id"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">leaflet</span>(neighbours) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span> </span>
-<span id="cb6-2">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">addTiles</span>() <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb6-3">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">addCircleMarkers</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"purple"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb6-4">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">addMarkers</span>(  <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1.50686326666667</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">52.4141089666667</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">popup =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Practice with no data"</span></span>
-<span id="cb6-5">) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb6-6">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">addCircles</span>(<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1.50686326666667</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">52.4141089666667</span>,<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">radius=</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1500</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb6-7">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">addMarkers</span>(<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1.46927</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">52.51899</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">popup =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Practice with no data"</span></span>
-<span id="cb6-8">) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb6-9"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">addCircles</span>(<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1.46927</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">52.51899</span>,<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">radius=</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1500</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">leaflet</span>(neighbours) <span class="sc">|&gt;</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addTiles</span>() <span class="sc">|&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addCircleMarkers</span>(<span class="at">color =</span> <span class="st">"purple"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addMarkers</span>(  <span class="sc">-</span><span class="fl">1.50686326666667</span>, <span class="fl">52.4141089666667</span>, <span class="at">popup =</span> <span class="st">"Practice with no data"</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addCircles</span>(<span class="sc">-</span><span class="fl">1.50686326666667</span>, <span class="fl">52.4141089666667</span>,<span class="at">radius=</span><span class="dv">1500</span>) <span class="sc">|&gt;</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addMarkers</span>(<span class="sc">-</span><span class="fl">1.46927</span>, <span class="fl">52.51899</span>, <span class="at">popup =</span> <span class="st">"Practice with no data"</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">addCircles</span>(<span class="sc">-</span><span class="fl">1.46927</span>, <span class="fl">52.51899</span>,<span class="at">radius=</span><span class="dv">1500</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="leaflet html-widget html-fill-item" id="htmlwidget-c3a67ee0d3f972fce5bb" style="width:100%;height:464px;"></div>
@@ -1013,71 +873,23 @@ font-style: inherit;">1500</span>)</span></code></pre></div>
 </div>
 <p>The data for the “neighbours” was grouped by the practice code of those without need data and a mean value was calculated for each practice to generate an estimated value.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">neighbours_estimate <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> neighbours <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb7-2">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">group_by</span>(no_need_prac_code) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb7-3">    <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">summarise</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">need_est=</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">mean</span>(value)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb7-4">    <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">st_drop_geometry</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">select</span>(no_need_prac_code,need_est)) </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>neighbours_estimate <span class="ot">&lt;-</span> neighbours <span class="sc">|&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(no_need_prac_code) <span class="sc">|&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">need_est=</span><span class="fu">mean</span>(value)) <span class="sc">|&gt;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">st_drop_geometry</span>(<span class="fu">select</span>(no_need_prac_code,need_est)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The original data was joined back to the “neighbours”.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1">  practices_with_neighbours_estimate <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> practices <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb8-2">    <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">left_join</span>(neighbours_estimate, <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">join_by</span>(practice_code<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">==</span>no_need_prac_code))  <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb8-3">    <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">st_drop_geometry</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">select</span>(practice_code,need_est))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>  practices_with_neighbours_estimate <span class="ot">&lt;-</span> practices <span class="sc">|&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(neighbours_estimate, <span class="fu">join_by</span>(practice_code<span class="sc">==</span>no_need_prac_code))  <span class="sc">|&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">st_drop_geometry</span>(<span class="fu">select</span>(practice_code,need_est))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">  practices_with_neighbours_estimate <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb9-2">    <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">select</span>(<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span>has_orig_need,<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span>id) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb9-3">    <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">gt</span>()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>  practices_with_neighbours_estimate <span class="sc">|&gt;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>has_orig_need,<span class="sc">-</span>id) <span class="sc">|&gt;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 
@@ -1597,32 +1409,10 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
 </div>
 <p>Finally, an updated data frame was created of the need data using the actual need for the practice where available, otherwise using estimated need.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">practices_with_neighbours_estimate <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> practices_with_neighbours_estimate <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb10-2">    <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">need_to_use =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">case_when</span>(value<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&gt;=</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span> <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">~</span> value,</span>
-<span id="cb10-3">                                       <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">.default =</span> need_est)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb10-4">    <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">select</span>(practice_code,need_to_use) </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>practices_with_neighbours_estimate <span class="ot">&lt;-</span> practices_with_neighbours_estimate <span class="sc">|&gt;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">need_to_use =</span> <span class="fu">case_when</span>(value<span class="sc">&gt;=</span><span class="dv">0</span> <span class="sc">~</span> value,</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">.default =</span> need_est)) <span class="sc">|&gt;</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(practice_code,need_to_use) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -2112,178 +1902,362 @@ font-style: inherit;">select</span>(practice_code,need_to_use) </span></code></p
 </div>
 </div>
 <p>For my project, this method has successfully generated a prevalence for 125 of the 151 practices without a need value, leaving just 26 practices without a need. This is using a 1.5 km radius. In each use case there will be a decision to make regarding a more accurate estimate (smaller radius) and therefore fewer matches versus a less accurate estimate (using a larger radius) and therefore more matches.</p>
-<div class="page-columns page-full"><p>This approach could be replicated for other similar uses/purposes. A topical example from an SU project is the need to assign population prevalence for hypertension and compare it to current QOF<sup>3</sup> data. Again, the prevalence data is a few years old so we have to move the historical data to fit with current practices and this leaves missing data that can be estimated using this method.</p><div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;QOF (Quality and Outcomes Framework) is a voluntary annual reward and incentive programme for all GP practices in England, detailing practice achievement results.</p></li></div></div>
+<div class="page-columns page-full"><p>This approach could be replicated for other similar uses/purposes. A topical example from an SU project is the need to assign population prevalence for hypertension and compare it to current QOF<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> data. Again, the prevalence data is a few years old so we have to move the historical data to fit with current practices and this leaves missing data that can be estimated using this method.</p><div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;QOF (Quality and Outcomes Framework) is a voluntary annual reward and incentive programme for all GP practices in England, detailing practice achievement results.</p></li></div></div>
 
 
 
 
- ]]></description>
-  <category>learning</category>
-  <guid>https://the-strategy-unit.github.io/data_science/blogs/posts/2024-01-17_nearest_neighbour.html</guid>
-  <pubDate>Wed, 17 Jan 2024 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Advent of Code and Test Driven Development</title>
-  <dc:creator>YiWen Hon</dc:creator>
-  <link>https://the-strategy-unit.github.io/data_science/blogs/posts/2024-01-10-advent-of-code-and-test-driven-development.html</link>
-  <description><![CDATA[ 
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
 
 
 
-<p><a href="https://adventofcode.com/">Advent of Code</a> is an annual event, where daily coding puzzles are released from 1st – 24th December. We ran one of our fortnightly Coffee &amp; Coding sessions introducing Advent of Code to people who code in the Strategy Unit, as well as the concept of test-driven development as a potential way of approaching the puzzles.</p>
-<p><a href="https://developer.ibm.com/articles/5-steps-of-test-driven-development/">Test-driven development</a> (TDD) is an approach to coding which involves writing the test for a function BEFORE we write the function. This might seem quite counterintuitive, but it makes it easier to identify bugs 🐛 when they are introduced to our code, and ensures that our functions meet all necessary criteria. From my experience, this takes quite a long time to implement and can be quite tedious, but it is definitely worth it overall, especially as your project develops. Testing is also recommended in the <a href="https://nhsdigital.github.io/rap-community-of-practice/introduction_to_RAP/levels_of_RAP/">NHS Reproducible Analytical Pipeline (RAP)</a> guidelines.</p>
-<p>An interesting thing to note about TDD is that we’re always expecting our first test to fail, and indeed failing tests are useful and important! If we wrote tests that just passed all the time, this would not be useful at all for our code.</p>
-<p>The way that Advent of Code is structured, with test data for each puzzle and an expected test result, makes it very amenable to a test-driven approach. In order to support this, Matt and I created template repositories for a test-driven approach to Advent of Code, in <a href="https://github.com/yiwen-h/aoc_python_template">Python</a> and in <a href="https://github.com/matt-dray/aoc.rstats.template">R</a>.</p>
-<p>Our goal when setting this up was to introduce others in the Strategy Unit to both TDD and Advent of Code. Advent of code can be challenging and I personally struggle to get past the first week, but it encourages creative (and maybe even fun?!) approaches to coding problems. I’m glad that we had the chance to explore some of the puzzles together in Coffee &amp; Coding – it was interesting to see so many different approaches to the same problem, and hopefully it also gave us all the chance to practice writing tests.</p>
-
-
-
- ]]></description>
-  <category>learning</category>
-  <guid>https://the-strategy-unit.github.io/data_science/blogs/posts/2024-01-10-advent-of-code-and-test-driven-development.html</guid>
-  <pubDate>Wed, 10 Jan 2024 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Reinstalling R Packages</title>
-  <dc:creator>Tom Jemmett</dc:creator>
-  <link>https://the-strategy-unit.github.io/data_science/blogs/posts/2023-04-26-reinstalling-r-packages.html</link>
-  <description><![CDATA[ 
-
-
-
-<p><a href="https://stat.ethz.ch/pipermail/r-announce/2023/000691.html">R 4.3.0 was released</a> last week. Anytime you update R you will probably find yourself in the position where no packages are installed. This is by design - the packages that you have installed may need to be updated and recompiled to work under new versions of R.</p>
-<p>You may find yourself wanting to have all of the packages that you previously used, so one approach that some people take is to copy the previous library folder to the new versions folder. This isn’t a good idea and could potentially break your R install.</p>
-<p>Another approach would be to export the list of packages in R before updating and then using that list after you have updated R. This can cause issues though if you install from places other than CRAN, e.g.&nbsp;bioconductor, or from GitHub.</p>
-<p>Some of these approaches are discussed on the <a href="https://community.rstudio.com/t/reinstalling-packages-on-new-version-of-r/7670/4">RStudio Community Forum</a>. But I prefer an approach of having a “spring clean”, instead only installing the packages that I know that I need.</p>
-<p>I maintain a <a href="https://gist.github.com/tomjemmett/c105d3e0fbea7558088f68c65e68e1ed/">list of the packages that I used</a> as a gist. Using this, I can then simply run this script on any new R install. In fact, if you click the “raw” button on the gist, and copy that url, you can simply run</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">source</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"https://gist.githubusercontent.com/tomjemmett/c105d3e0fbea7558088f68c65e68e1ed/raw/a1db4b5fa0d24562d16d3f57fe8c25fb0d8aa53e/setup.R"</span>)</span></code></pre></div>
-<p>Generally, sourcing a url is a bad idea - the reason for this is if it’s not a link that you control, then someone could update the contents and run arbritary code on your machine. In this case, I’m happy to run this as it’s my own gist, but you should be mindful if running it yourself!</p>
-<p>If you look at the script I first install a number of packages from CRAN, then I install packages that only exist on GitHub.</p>
-
-
-
- ]]></description>
-  <category>git</category>
-  <category>tutorial</category>
-  <guid>https://the-strategy-unit.github.io/data_science/blogs/posts/2023-04-26-reinstalling-r-packages.html</guid>
-  <pubDate>Wed, 26 Apr 2023 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Alternative remote repositories</title>
-  <dc:creator>Tom Jemmett</dc:creator>
-  <link>https://the-strategy-unit.github.io/data_science/blogs/posts/2023-04-26_alternative_remotes.html</link>
-  <description><![CDATA[ 
-
-
-
-<p>It’s great when someone send’s you a pull request on GitHub to fix bugs or add new features to your project, but you probably always want to check the other persons work in someway before merging that pull request.</p>
-<p>All of the steps below are intended to be entered via a terminal.</p>
-<p>Let’s imagine that we have a GitHub account called example and a repository called test, and we use https rather than ssh.</p>
-<pre><code>$ git remote get-url origin
-# https://github.com/example/test.git</code></pre>
-<p>Now, let’s say we have someone who has submitted a Pull Request (PR), and their username is friend. We can add a new remote for their fork with</p>
-<pre><code>$ git remote add friend https://github.com/friend/test.git</code></pre>
-<p>Here, I name the remote exactly as per the persons GitHub username for no other reason than making it easier to track things later on. You could name this remote whatever you like, but you will need to make sure that the remote url matches their repository correctly.</p>
-<p>We are now able to checkout their remote branch. First, we will want to fetch their work:</p>
-<pre><code># make sure to replace the remote name to what you set it to before
-$ git fetch friend</code></pre>
-<p>Now, hopefully they have commited to a branch with a name that you haven’t used. Let’s say they created a branch called <code>my_work</code>. You can then simply run</p>
-<pre><code>$ git switch friend/my_work</code></pre>
-<p>This should checkout the <code>my_work</code> branch locally for you.</p>
-<p>Now, if they have happened to use a branch name that you are already using, or more likely, directly commited to their own <code>main</code> branch, you will need to do checkout to a new branch:</p>
-<pre><code># replace friend as above to be the name of the remote, and main to be the branch
-# that they have used
-# replace their_work with whatever you want to call this branch locally
-$ git checkout friend/main -b their_work</code></pre>
-<p>You are now ready to run their code and check everything is good to merge!</p>
-<p>Finally, If you want to clean up your local repository you can remove the new branch that you checked out and the new remote with the following steps:</p>
-<pre><code># switch back to one of your branches, e.g. main
-$ git checkout main
-
-# then remove the branch that you created above
-$ git branch -D their_work
-
-# you can remove the remote
-$ git remote remove friend</code></pre>
-
-
-
- ]]></description>
-  <category>git</category>
-  <category>tutorial</category>
-  <guid>https://the-strategy-unit.github.io/data_science/blogs/posts/2023-04-26_alternative_remotes.html</guid>
-  <pubDate>Wed, 26 Apr 2023 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Creating a hotfix with git</title>
-  <dc:creator>Tom Jemmett</dc:creator>
-  <link>https://the-strategy-unit.github.io/data_science/blogs/posts/2023-03-24_hotfix-with-git.html</link>
-  <description><![CDATA[ 
-
-
-
-<p>I recently discovered a bug in a code-base which needed to be fixed and deployed back to production A.S.A.P., but since the last release the code has moved on significantly. The history looks something a bit like:</p>
-<div class="cell">
-<div class="cell-output-display">
-<p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2023-03-24_hotfix-with-git_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>That is, we have a tag which is the code that is currently in production (which we need to patch), a number of commits after that tag to main (which were separate branches merged via pull requests), and a current development branch.</p>
-<p>I need to somehow: 1. go back to the tagged release, 2. check that code out, 3. patch that code, 4. commit this change, but insert the commit before all of the new commits after the tag</p>
-<p>There are at least two ways that I know to do this, one would be with an <a href="https://about.gitlab.com/blog/2020/11/23/keep-git-history-clean-with-interactive-rebase/">interactive rebase</a>, but I used a slightly longer method, but one I feel is a little less likely to get wrong.</p>
-<p>Below are the step’s that I took. One thing I should note is this worked well for my particular issue because the change didn’t cause any merge conflicts later on.</p>
-<section id="fixing-my-codebase" class="level2">
-<h2 class="anchored" data-anchor-id="fixing-my-codebase">Fixing my codebase</h2>
-<p>First, we need to checkout the tag</p>
-<pre><code>git checkout -b hotfix v0.2.0</code></pre>
-<p>This creates a new branch called <code>hotfix</code> off of the tag <code>v0.2.0</code>.</p>
-<p>Now that I have the code base checked out at the point I need to fix, I can make the change that is needed, and commit the change</p>
-<pre><code>git add [FILENAME]
-git commit -m "fixes the code"</code></pre>
-<p><em>(Obviously, I used the actual file name and gave a better commit message. I Promise 😝)</em></p>
-<p>Now my code is fixed, I create a new tag for this “release”, as well as push the code to production (this step is omitted here)</p>
-<pre><code>git tag v0.2.1 -m "version 0.2.0"</code></pre>
-<p>At this point, our history looks something like</p>
-<div class="cell">
-<div class="cell-output-display">
-<p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2023-03-24_hotfix-with-git_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>What we want to do is break the link between main and <code>v0.2.0</code>, instead attaching to<code>v0.2.1</code>. First though, I want to make sure that if I make a mistake, I’m not making it on the main branch.</p>
-<pre><code>git checkout main
-git checkout -b apply-hotfix</code></pre>
-<p>Then we can fix our history using the rebase command</p>
-<pre><code>git rebase hotfix</code></pre>
-<p>What this does is it rolls back to the point where the branch that we are rebasing (<code>apply-hotfix</code>) and the <code>hotfix</code> branch both share a common commit (<code>v0.2.0</code> tag). It then applies the commits in the <code>hotfix</code> branch, before reapplying the commits from <code>apply-hotfix</code> (a.k.a. the <code>main</code> branch).</p>
-<p>One thing to note, if you have any merge conflicts created by your fix, then the rebase will stop and ask you to fix the merge conflicts. There is some information in the GitHub doc’s for [resolving merge conflicts after a Git rebase][2].</p>
-<p>[2]: https://docs.github.com/en/get-started/using-git/resolving-merge-conflicts-after-a-git-rebase</p>
-<p>At this point, we can check that the commit history looks correct</p>
-<pre><code>git log v0.2.0..HEAD</code></pre>
-<p>If we are happy, then we can apply this to the <code>main</code> branch. I do this by renaming the <code>apply-hotfix</code> branch as <code>main</code>. First, you have to delete the <code>main</code> branch to allow us to rename the branch.</p>
-<pre><code>git branch -D main
-git branch -m main</code></pre>
-<p>We also need to update the other branches to use the new main branch</p>
-<pre><code>git checkout branch
-git rebase main</code></pre>
-<p>Now, we should have a history like</p>
-<div class="cell">
-<div class="cell-output-display">
-<p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2023-03-24_hotfix-with-git_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-
-
-</section>
-
- ]]></description>
-  <category>git</category>
-  <category>tutorial</category>
-  <guid>https://the-strategy-unit.github.io/data_science/blogs/posts/2023-03-24_hotfix-with-git.html</guid>
-  <pubDate>Fri, 24 Mar 2023 00:00:00 GMT</pubDate>
-</item>
-</channel>
-</rss>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/the-strategy-unit/data_science/edit/main/blogs/posts/2024-01-17_nearest_neighbour.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/the-strategy-unit/data_science/issues/new" class="toc-action">Report an issue</a></p></div></div></div></div></footer></body></html>

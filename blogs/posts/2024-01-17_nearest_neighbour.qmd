@@ -2,15 +2,15 @@
 title: "Nearest neighbour imputation"
 author:
   - Jacqueline Grout
-date: "2024-01-16"
+date: "2024-01-17"
 categories: [learning]
 ---
 
-Recently I have been gathering data by GP practice, from a variety of different sources. The ultimate purpose of my project is to be able to report at an ICB/sub-ICB level (Integrated Care Board)\*ndefined. The various datasets cover different timescales and consequently changes in GP practices over time have left me with mismatching datasets.
+Recently I have been gathering data by GP practice, from a variety of different sources. The ultimate purpose of my project is to be able to report at an ICB/sub-ICB level[^1]. The various datasets cover different timescales and consequently changes in GP practices over time have left me with mismatching datasets.
+
+[^1]: An ICB (Integrated Care Board) is a statutory NHS organisation responsible for planning health services for their local populations
 
 My approach has been to take as the basis of my project a recent GP List. Later in my project I want to perform calculations at a GP practice level based on an underlying health need and the data for this need is a CHD prevalence value from a dataset which is around 8 years old, and for which there is no update or alternative. From my recent list of 6454 practices, when I match to the need dataset, I am left with 151 practices without a value for need. If I remove these practices from the analysis then this could impact the analysis by sub-icb since often a group of practices in the same area could be subject to changes, mergers and reorganisation.
-
-\*An Integrated Care Board is a statutory NHS organisation responsible for planning health services for their local populations
 
 Here is an example for two practices:
 
@@ -59,9 +59,9 @@ pal <- colorNumeric(palette = viridis(2), domain = domain)
 
 ```
 
-To provide a suitable estimate of need for the newer practices without values, all the practices in the dataset were geocoded\* using the `geocode` function from the {tidygeocoder} package.
+To provide a suitable estimate of need for the newer practices without values, all the practices in the dataset were geocoded[^2] using the `geocode` function from the {tidygeocoder} package.
 
-\*geocoding is the process of converting addresses (often the postcode) into geographic coordinates (such as latitude and longitude) that can be plotted on a map.
+[^2]: Geocoding is the process of converting addresses (often the postcode) into geographic coordinates (such as latitude and longitude) that can be plotted on a map.
 
 ```{r}
 #| output: false
@@ -185,8 +185,10 @@ practices_with_neighbours_estimate |>
 
 For my project, this method has successfully generated a prevalence for 125 of the 151 practices without a need value, leaving just 26 practices without a need. This is using a 1.5 km radius. In each use case there will be a decision to make regarding a more accurate estimate (smaller radius) and therefore fewer matches versus a less accurate estimate (using a larger radius) and therefore more matches.
 
-This approach could be replicated for other similar uses/purposes. A topical example from an SU project is the need to assign population prevalence for hypertension and compare to current QOF data. Again, the prevalence data is a few years old so we have to move the historic data into fitting with current practices and this leaves missing data which can be estimated using this method.
+This approach could be replicated for other similar uses/purposes. A topical example from an SU project is the need to assign population prevalence for hypertension and compare to current QOF[^3] data. Again, the prevalence data is a few years old so we have to move the historic data into fitting with current practices and this leaves missing data which can be estimated using this method.
 
 With thanks for some initial code and discussion to get started to:
 
 -   Tom Jemmett
+
+[^3]: QOF (Quality and Outcomes Framework) is a voluntary annual reward and incentive programme for all GP practices in England, detailing practice achievement results. 

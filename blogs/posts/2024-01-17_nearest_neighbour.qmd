@@ -132,7 +132,7 @@ leaflet(neighbours) |>
 addCircles(-1.46927, 52.51899,radius=1500)
 ```
 
-The data for the "neighbours" was grouped by the practice code of those without need data and a mean value calculated for each practice to generate an estimated value.
+The data for the "neighbours" was grouped by the practice code of those without need data and a mean value was calculated for each practice to generate an estimated value.
 
 ```{r}
 

@@ -164,7 +164,7 @@ The original data was joined back to the "neighbours".
 
 ```
 
-Finally, an updated dataframe was created of the need data using the actual need for the practice where available, otherwise using estimated need.
+Finally, an updated data frame was created of the need data using the actual need for the practice where available, otherwise using estimated need.
 
 ```{r}
 

@@ -81,7 +81,7 @@ practices |>
   gt()
 ```
 
-This map shows the practices, purple are the practices with no need data and the yellow are practices with need data available.
+This map shows the practices, purple are the practices with no need data and yellow are practices with need data available.
 
 ```{r}
 #| code-fold: true

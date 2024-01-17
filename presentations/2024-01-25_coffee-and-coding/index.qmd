@@ -1,0 +1,101 @@
+---
+title: "Coffee and Coding"
+subtitle: "{targets}"
+author: "[Jacqueline Grout](mailto:jacqueline.grout1@nhs.net) and [Matt Dray](mailto:matt.dray@nhs.net)"
+date: 2024-01-25
+date-format: "MMM D, YYYY"
+knitr:
+  opts_chunk: 
+    eval: false
+    echo: true
+format:
+  revealjs:
+    theme: [default, ../su_presentation.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
+    footer: |
+      view slides at [the-strategy-unit.github.io/data_science/presentations][ds_presentations]
+    width: 1920
+    height: 1080
+editor: 
+  markdown: 
+    wrap: 120
+---
+
+## `{targets}` for analysts
+
+::: columns
+::: {.column width="50%"}
+> Tom previously presented at a coffee and coding last March and you can revisit his presentation and learn about the
+> reasons why you should use the package to manage your pipeline and see a simple demonstration of how to use the
+> package.
+
+> Matt has presented previously about {targets} and making your workflows (pipelines) reproducible.
+
+> So..... if you aren't really even sure why your pipeline needs managing as an analyst or whether you actually have one
+> (you do) then links to their presentations are at the end
+:::
+
+::: {.column width="50%"}
+![](logo.png)
+:::
+:::
+
+> In this presentation we aim to demonstrate the real-world use of {targets} in an analysis project, but first a brief
+> explanation:
+> 1. Write a script
+> 2. Execute script
+> 3. Make changes
+> 4. Go to step 2
+
+> {targets} will
+> - learn how the various stages of your analysis fit together
+> - save time by only running necessary stages as you cycle through the process
+> - help future you and colleagues re-visiting the analysis
+> - 
+
+::: footer
+source: [The `{targets}` R package user manual](https://books.ropensci.org/targets/)
+:::
+
+## Explain the BHF project
+
+::: incremental
+-   original BHF project had 30+ metrics
+-   multiple inter-related processing steps
+-   each time a metric changed or a process was altered
+-   impacts across the project
+-   potential for mistakes, duplication, wasted time
+-   using targets provides a structure that handles these inter-relationships
+:::
+
+## Visualising
+
+Current BHF project in {targets} and visualised with tar_visnetwork()
+
+::: columns
+::: {.column width="50%"}
+![](vis1.png)
+:::
+
+::: {.column width="50%"}
+![](vis2.png)
+:::
+:::
+
+## Useful {targets} links
+
+Tom's previous coffee and coding presentation:
+(https://the-strategy-unit.github.io/data_science/presentations/2023-03-23_coffee-and-coding/#/title-slide)
+
+Matt's previous presentations: Add link here
+
+The [{targets} documentation](https://books.ropensci.org/targets/walkthrough.html) is detailed and easy to follow.
+
+Other useful links to be added here..
+
+Software Carpentry... (https://multimeric.github.io/targets-workshop/instructor/index.html)

@@ -8,7 +8,7 @@ categories: [learning]
 
 Recently I have been gathering data by GP practice, from a variety of different sources. The ultimate purpose of my project is to be able to report at an ICB/sub-ICB level (Integrated Care Board)\*. The various datasets cover different timescales and consequently changes in GP practices over time have left me with mismatching datasets.
 
-My approach has been to take as the basis of my project a recent GP List. Later in my project I will perform calculations at a GP practice level based on underlying need and the data for this need is a prevalence value from a dataset which is around 8 years old, and for which there is no update or alternative. From my recent list of 6454 practices, when I match to the need data, I am left with 151 practices without a need. If I remove these practices from the analysis then this could impact the analysis by sub-icb since often a group of practices in the same area could be subject to changes, mergers and reorganisation.
+My approach has been to take as the basis of my project a recent GP List. Later in my project I will perform calculations at a GP practice level based on underlying need and the data for this need is a CHD prevalence value from a dataset which is around 8 years old, and for which there is no update or alternative. From my recent list of 6454 practices, when I match to the need dataset, I am left with 151 practices without a value for need. If I remove these practices from the analysis then this could impact the analysis by sub-icb since often a group of practices in the same area could be subject to changes, mergers and reorganisation.
 
 \*An Integrated Care Board is a statutory NHS organisation responsible for planning health services for their local populations
 
@@ -136,7 +136,7 @@ The data for the "neighbours" was grouped by the practice code of those without 
 
 ```{r}
 
-no_need_neighbours_estimate <- neighbours |>
+neighbours_estimate <- neighbours |>
   group_by(no_need_prac_code) |>
     summarise(need_est=mean(value)) |>
     st_drop_geometry(select(no_need_prac_code,need_est)) 
@@ -149,8 +149,8 @@ The original data was joined back to the "neighbours".
 
 ```{r}
 
-  no_need_with_neighbours_estimate <- practices |>
-    left_join(no_need_neighbours_estimate, join_by(practice_code==no_need_prac_code))  |>
+  practices_with_neighbours_estimate <- practices |>
+    left_join(neighbours_estimate, join_by(practice_code==no_need_prac_code))  |>
     st_drop_geometry(select(practice_code,need_est))
 ```
 
@@ -158,7 +158,7 @@ The original data was joined back to the "neighbours".
 #| code-fold: true
 #| warning: false
 #| message: false
-  no_need_with_neighbours_estimate |>
+  practices_with_neighbours_estimate |>
     select(-has_orig_need,-id) |>
     gt()
 
@@ -168,7 +168,7 @@ Finally, an updated dataframe was created of the need data using the actual need
 
 ```{r}
 
-no_need_with_neighbours_estimate <- no_need_with_neighbours_estimate |>
+practices_with_neighbours_estimate <- practices_with_neighbours_estimate |>
     mutate(need_to_use = case_when(value>=0 ~ value,
                                        .default = need_est)) |>
     select(practice_code,need_to_use) 
@@ -179,7 +179,7 @@ no_need_with_neighbours_estimate <- no_need_with_neighbours_estimate |>
 #| echo: false
 #| warning: false
 #| message: false
-no_need_with_neighbours_estimate |>
+practices_with_neighbours_estimate |>
     gt()
 ```
 

@@ -12,13 +12,13 @@ This repo features:
 
 ## Contributing to this repo
 
-* Request access from a member of [the Data Science team](https://the-strategy-unit.github.io/data_science/about.html), they need to add you as a contributor
+* Request access from a member of [the Data Science team](https://the-strategy-unit.github.io/data_science/about.html), they need to add you as a contributor. Alternatively, you can [fork the repository](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) to your own GitHub account.
 * Create an issue for the thing you want to add on GitHub
 * Clone the repository (in RStudio, File > New Project > Checkout a project from a version controlled repository). Paste in the URL of this repository
 * Check out the main branch and check it's up to date in the RStudio Terminal  (type `git checkout main && git pull` in terminal)
 * Check out a new branch  (`git checkout -b issue-number` in terminal)
 
-Please note this project uses renv. On Windows, I needed to install the R toolchain [RTools](https://cran.r-project.org/bin/windows/Rtools/) to compile some of the packages
+Please note this project uses `{renv}`. On Windows, I needed to install the R toolchain [RTools](https://cran.r-project.org/bin/windows/Rtools/) to compile some of the packages. If you have `{renv}` installed, run `renv::install()` in your Console to install all the packages required by this project to render the Quarto webpage.
 
 ### How to create a new presentation
 
@@ -34,7 +34,14 @@ Please note this project uses renv. On Windows, I needed to install the R toolch
 * If you want to see how it looks before pushing to GitHub, click Render in RStudio. The HTML version of your new post should open in your browser.
 
 
-### Pushing your blog post/presentation to GitHub
+### How to create/edit pages on the website
+
+* Find the `.qmd` file that you wish to edit. For example, if you want to add to the Style Guide page, edit the `style/style_guide.qmd` file.
+* If creating a new page, copy an existing `.qmd` file and use that as a template.
+* If you want to see how it looks before pushing to GitHub, click Render in RStudio. The HTML version of your new post should open in your browser.
+
+
+### Pushing your blog post/presentation/page to GitHub
 
 * Save your file, then add and commit it (`git add file.qmd` and `git commit -m "Add blog post/presentation about x"`)
 * Push your content to your branch in GitHub (`git push origin branchname`). 

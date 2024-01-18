@@ -188,12 +188,13 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#project-structure" id="toc-project-structure" class="nav-link active" data-scroll-target="#project-structure">Project Structure</a>
   <ul class="collapse">
-  <li><a href="#use-rstudio-projects" id="toc-use-rstudio-projects" class="nav-link" data-scroll-target="#use-rstudio-projects">Use RStudio Projects</a></li>
-  <li><a href="#separate-scripts" id="toc-separate-scripts" class="nav-link" data-scroll-target="#separate-scripts">Separate scripts</a></li>
+  <li><a href="#rstudio-projects" id="toc-rstudio-projects" class="nav-link" data-scroll-target="#rstudio-projects">RStudio Projects</a>
+  <ul class="collapse">
+  <li><a href="#dependency-management" id="toc-dependency-management" class="nav-link" data-scroll-target="#dependency-management">Dependency management</a></li>
+  <li><a href="#workflow-management" id="toc-workflow-management" class="nav-link" data-scroll-target="#workflow-management">Workflow management</a></li>
   <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a></li>
-  <li><a href="#standardise-folder-structures" id="toc-standardise-folder-structures" class="nav-link" data-scroll-target="#standardise-folder-structures">Standardise Folder Structures</a></li>
-  <li><a href="#renv" id="toc-renv" class="nav-link" data-scroll-target="#renv"><code>{renv}</code></a></li>
-  <li><a href="#targets" id="toc-targets" class="nav-link" data-scroll-target="#targets"><code>{targets}</code></a></li>
+  </ul></li>
+  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages">Packages</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/the-strategy-unit/data_science/edit/main/style/project_structure.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/the-strategy-unit/data_science/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -205,39 +206,53 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="project-structure" class="level1">
 <h1>Project Structure</h1>
-<ul>
-<li>as a package</li>
-<li>R/ for scripts</li>
-<li>split files into separate scripts</li>
-<li>use <code>{renv}</code></li>
-<li>use <code>{targets}</code></li>
-</ul>
-<section id="use-rstudio-projects" class="level2">
-<h2 class="anchored" data-anchor-id="use-rstudio-projects">Use RStudio Projects</h2>
-<p><a href="https://support.posit.co/hc/en-us/articles/200526207-Using-RStudio-Projects">RStudio projects</a> are a great way to organise your analytical projects into discrete units that are easier to work on and share.</p>
-</section>
-<section id="separate-scripts" class="level2">
-<h2 class="anchored" data-anchor-id="separate-scripts">Separate scripts</h2>
-</section>
-<section id="functions" class="level2">
-<h2 class="anchored" data-anchor-id="functions">Functions</h2>
-</section>
-<section id="standardise-folder-structures" class="level2">
-<h2 class="anchored" data-anchor-id="standardise-folder-structures">Standardise Folder Structures</h2>
-</section>
-<section id="renv" class="level2">
-<h2 class="anchored" data-anchor-id="renv"><code>{renv}</code></h2>
-<p>One of the most common issues you will face when using a project someone else has created, or you created previously, is maintaining the required packages to run the project. Knowing what packages are needed to run a particular project isn’t always obvious, and over time packages can change rendering code that once worked unusable.</p>
-<p><a href="https://rstudio.github.io/renv/articles/renv.html"><code>{renv}</code></a> solves this problem by:</p>
+<section id="rstudio-projects" class="level2">
+<h2 class="anchored" data-anchor-id="rstudio-projects">RStudio Projects</h2>
+<p>Analytical projects should be self-contained and portable. This means that all the materials required for an analysis should be organised into a single folder that can be shared in its entirety and be re-run by other people, ideally via <a href="../style/git_and_github.html" target="_blank">GitHub</a>.</p>
+<p>We recommend <a href="https://support.posit.co/hc/en-us/articles/200526207-Using-RStudio-Projects">RStudio Projects</a> as a system for creating standardised project structures that meet these goals. <a href="https://usethis.r-lib.org/">The {usethis} package</a> contains a number of helper functions to help get you started, including <code>usethis::create_project()</code>.</p>
+<section id="dependency-management" class="level3">
+<h3 class="anchored" data-anchor-id="dependency-management">Dependency management</h3>
+<p>One of the most common issues you’ll face when using a project someone else has created, or you created previously, is maintaining the required packages to run the project. Knowing what packages are needed to run a particular project isn’t always obvious, and over time packages can change, rendering code that once worked unusable.</p>
+<p><a href="https://rstudio.github.io/renv/articles/renv.html">The <code>{renv}</code> R package</a> helps solve this problem by:</p>
 <ol type="1">
-<li>keeping track of the packages that are required for a particular project</li>
-<li>logging the installed version of all of the packages</li>
-<li>maintaining a per-project library of packages, so projects don’t interfere with one another</li>
+<li>Keeping track of the packages that are required for a particular project.</li>
+<li>Logging the installed version of all of the packages.</li>
+<li>Maintaining a per-project library of packages, so projects don’t interfere with one another.</li>
 </ol>
-<p>It’s a good idea to use <code>{renv}</code> for all projects.</p>
 </section>
-<section id="targets" class="level2">
-<h2 class="anchored" data-anchor-id="targets"><code>{targets}</code></h2>
+<section id="workflow-management" class="level3">
+<h3 class="anchored" data-anchor-id="workflow-management">Workflow management</h3>
+<p>It’s helpful to split discrete analytical tasks into separate script files, which can make it easier to handle the codebase in context and provide an obvious order of operations. For example, <code>01_read.R</code>, <code>02_wrangle.R</code>, <code>03_model.R</code>, etc.</p>
+<p>You could still forget to re-run one of the numbered files, however, or it may take a long time to re-run all the steps again if you only make one small change to the code. This is where a workflow manager is useful.</p>
+<p>We recommend <a href="https://books.ropensci.org/targets/">the {targets} R package</a> as a workflow manager. You write a series of steps and {targets} automatically recognises all the relationships between functions and objects as a graph. This means {targets} knows the order that things should be run and knows which bits of code need to be re-run if there are upstream changes. It’s a well-documented and supported package.</p>
+</section>
+<section id="functions" class="level3">
+<h3 class="anchored" data-anchor-id="functions">Functions</h3>
+<p>It’s beneficial to convert code into discrete functions where possible. This makes it easier to:</p>
+<ul>
+<li>reduce the chance of errors, because you’ll avoid repetitive and mistake-prone copy-pasting of code</li>
+<li>understand your scripts, because code can be condensed into a simpler calls that are easier to read</li>
+<li>reuse your code, because functions allow you to consistently call the same code more than once and can be copied into other projects</li>
+<li>debug, because the source of an error can be more easily traced and your code can be tested more easily</li>
+</ul>
+<p>Consider the DRY (Don’t Repeat Yourself) principle when deciding whether or not to convert some code into a function. It may be better to write a function if you’ve used the same piece of code more than once in an analysis, especially if it contains many lines.</p>
+<p>Function names should be short but descriptive and should contain a verb that describes what the function does. For example, <code>get_geospatial_data()</code> may be better than the generic <code>get_data()</code>, which is certainly better than the uninformative <code>data()</code>.</p>
+<p>In a project, it’s conventional to put your functions in a folder called <code>R</code> in the project’s root directory. You can group functions into separate R scripts with meaningful names to make it easier to organise them (<code>read-data.R</code>, <code>model.R</code>, etc). You can then <code>source()</code> these function scripts into your analytical scripts as required.</p>
+</section>
+</section>
+<section id="packages" class="level2">
+<h2 class="anchored" data-anchor-id="packages">Packages</h2>
+<p>It may be beneficial to gather your functions into a discrete package so that you and others can install and reuse them for other projects.</p>
+<p>The {usethis} package has a number of shortcuts to help you set up a package. You can begin with <code>usethis::create_package()</code> to generate the basic structure and then <code>usethis::use_r</code> and <code>usethis::use_test()</code> to add scripts and <a href="https://testthat.r-lib.org/">{testthat}</a> tests into the correct folder structure.</p>
+<p>We recommend you include a number of extra files in your package to make its purpose clear and to encourage collaboration. This includes:</p>
+<ul>
+<li>a README file to describe the purpose of your package and provide some simple examples, which you can set up with <code>usethis::use_readme_md()</code> or <code>usethis::use_readme_rmd()</code> if it contains R code that you want to execute</li>
+<li>a NEWS file with <code>usethis::use_news_md()</code>, which is used to communicate the latest changes to your package</li>
+<li>a CODE_OF_CONDUCT file with <code>usethis::use_code_of_conduct</code> to explain to collaborators how they should engage with your project</li>
+<li>vignettes with <code>usethis::use_vignette()</code>, which are short documents that let you mix code with prose to describe how to use the functions in your package</li>
+</ul>
+<p>We recommend <a href="https://semver.org/">semantic versioning</a> as you develop your package. In this system, the version number is composed of three digits (like ‘1.2.3’) that are each incremented as you make major breaking changes, minor changes and patches or bug fixes. The <code>usethis::use_version()</code> function can help you to do this and to automatically update the DESCRIPTION and NEWS file.</p>
+<p>Use <a href="https://pkgdown.r-lib.org/">{pkgdown}</a> to autogenerate a website from your package’s documentation. This lets people see your documentation rendered nicely on the internet, without the need to install the package. You can serve this site on the web and update it automatically using <a href="https://pkgdown.r-lib.org/articles/pkgdown.html#publishing">GitHub Pages and GitHub Actions</a>.</p>
 
 
 </section>

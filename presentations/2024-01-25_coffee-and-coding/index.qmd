@@ -1,7 +1,7 @@
 ---
 title: "Coffee and Coding"
 subtitle: "{targets}"
-author: "[Jacqueline Grout](mailto:jacqueline.grout1@nhs.net) and [Matt Dray](mailto:matt.dray@nhs.net)"
+author: "[Jacqueline Grout](mailto:jacqueline.grout1@nhs.net)"
 date: 2024-01-25
 date-format: "MMM D, YYYY"
 knitr:

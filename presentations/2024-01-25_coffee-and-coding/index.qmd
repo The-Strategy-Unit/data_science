@@ -1,7 +1,12 @@
 ---
 title: "Coffee and Coding"
+<<<<<<< HEAD
 subtitle: "Making my analytical workflow more reproducible with {targets}"
-author: "[Jacqueline Grout](mailto:jacqueline.grout1@nhs.net) and [Matt Dray](mailto:matt.dray@nhs.net)"
+author: "[Jacqueline Grout](mailto:jacqueline.grout1@nhs.net)"
+=======
+subtitle: "{targets}"
+author: "[Jacqueline Grout](mailto:jacqueline.grout1@nhs.net)"
+>>>>>>> 607ac82ea31f280e36aad8793c6ba8725b7dbedb
 date: 2024-01-25
 date-format: "MMM D, YYYY"
 knitr:
@@ -18,7 +23,7 @@ format:
     slide-number: false
     auto-animate: true
     footer: |
-      view slides at [the-strategy-unit.github.io/data_science/presentations][ds_presentations]
+      view slides at [the-strategy-unit.github.io/data_science/presentations](the-strategy-unit.github.io/data_science/presentations)
     width: 1920
     height: 1080
 editor: 
@@ -51,7 +56,9 @@ editor:
 > In this presentation we aim to demonstrate the real-world use of {targets} in an analysis project, but first a brief
 > explanation
 
+::: fragment
 ### Without {targets} we
+:::
 
 ::: incremental
 -   Write a script
@@ -60,7 +67,9 @@ editor:
 -   Go to step 2
 :::
 
+::: fragment
 ### With {targets} we will
+:::
 
 ::: incremental
 -   learn how the various stages of our analysis fit together
@@ -91,7 +100,6 @@ source: [The `{targets}` R package user manual](https://books.ropensci.org/targe
 -   entire pipeline is reproducible
 -   visualise on one page
 -   saves time
-
 -   (maybe we need an advanced function writing session in another C&C?)
 :::
 
@@ -136,14 +144,10 @@ Current BHF project in {targets} and visualised with tar_visnetwork()
 
 ## Useful {targets} links
 
-[Tom's previous coffee and coding presentation](https://the-strategy-unit.github.io/data_science/presentations/2023-03-23_coffee-and-coding/#/title-slide)
-
-[Matt's previous presentations](https://www.rostrum.blog/posts/2020-09-27-targets-dsfest/)
-
-The [{targets} documentation](https://books.ropensci.org/targets/walkthrough.html) is detailed and easy to follow.
-
-[A demo repository demonstrated in last weeks NHSE C&C](https://github.com/Pablo-source/targets-test)
-
-[Software Carpentry](https://software-carpentry.org/) are developing a course here [Pre-alpha targets course](https://multimeric.github.io/targets-workshop/instructor/index.html)
+- [Tom's previous coffee and coding presentation](https://the-strategy-unit.github.io/data_science/presentations/2023-03-23_coffee-and-coding/#/title-slide)
+- [Matt's previous presentations](https://www.rostrum.blog/posts/2020-09-27-targets-dsfest/)
+- The [{targets} documentation](https://books.ropensci.org/targets/walkthrough.html) is detailed and easy to follow.
+- [A demo repository demonstrated in last weeks NHSE C&C](https://github.com/Pablo-source/targets-test)
+- [Software Carpentry](https://software-carpentry.org/) are developing a course here [Pre-alpha targets course](https://multimeric.github.io/targets-workshop/instructor/index.html)
 
 

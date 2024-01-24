@@ -95,7 +95,6 @@ source: [The `{targets}` R package user manual](https://books.ropensci.org/targe
 -   entire pipeline is reproducible
 -   visualise on one page
 -   saves time
-
 -   (maybe we need an advanced function writing session in another C&C?)
 :::
 

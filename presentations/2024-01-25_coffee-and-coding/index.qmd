@@ -139,14 +139,10 @@ Current BHF project in {targets} and visualised with tar_visnetwork()
 
 ## Useful {targets} links
 
-[Tom's previous coffee and coding presentation](https://the-strategy-unit.github.io/data_science/presentations/2023-03-23_coffee-and-coding/#/title-slide)
-
-[Matt's previous presentations](https://www.rostrum.blog/posts/2020-09-27-targets-dsfest/)
-
-The [{targets} documentation](https://books.ropensci.org/targets/walkthrough.html) is detailed and easy to follow.
-
-[A demo repository demonstrated in last weeks NHSE C&C](https://github.com/Pablo-source/targets-test)
-
-[Software Carpentry](https://software-carpentry.org/) are developing a course here [Pre-alpha targets course](https://multimeric.github.io/targets-workshop/instructor/index.html)
+- [Tom's previous coffee and coding presentation](https://the-strategy-unit.github.io/data_science/presentations/2023-03-23_coffee-and-coding/#/title-slide)
+- [Matt's previous presentations](https://www.rostrum.blog/posts/2020-09-27-targets-dsfest/)
+- The [{targets} documentation](https://books.ropensci.org/targets/walkthrough.html) is detailed and easy to follow.
+- [A demo repository demonstrated in last weeks NHSE C&C](https://github.com/Pablo-source/targets-test)
+- [Software Carpentry](https://software-carpentry.org/) are developing a course here [Pre-alpha targets course](https://multimeric.github.io/targets-workshop/instructor/index.html)
 
 

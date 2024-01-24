@@ -51,7 +51,9 @@ editor:
 > In this presentation we aim to demonstrate the real-world use of {targets} in an analysis project, but first a brief
 > explanation
 
+::: fragment
 ### Without {targets} we
+:::
 
 ::: incremental
 -   Write a script
@@ -60,7 +62,9 @@ editor:
 -   Go to step 2
 :::
 
+::: fragment
 ### With {targets} we will
+:::
 
 ::: incremental
 -   learn how the various stages of our analysis fit together

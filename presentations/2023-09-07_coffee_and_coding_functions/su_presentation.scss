@@ -1,0 +1,211 @@
+/*-- scss:defaults --*/
+$su-charcoal: #2c2825;
+$su-charcoal-l20: lighten($su-charcoal, 20%);
+$su-charcoal-l40: lighten($su-charcoal, 40%);
+$su-charcoal-l60: lighten($su-charcoal, 60%);
+$su-charcoal-l80: lighten($su-charcoal, 80%);
+
+$su-yellow: #f9bd07;
+$su-yellow-l20: lighten($su-yellow, 20%);
+$su-yellow-l40: lighten($su-yellow, 40%);
+$su-yellow-l60: lighten($su-yellow, 60%);
+$su-yellow-l80: lighten($su-yellow, 80%);
+
+$su-blue: #5881c1;
+$su-white: #f5f4f3;
+$su-red: #ec6555;
+$su-slate: #686f73;
+
+// load in font awesome icons
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css");
+
+
+$body-bg: $su-white;
+$body-color: $su-charcoal-l20;
+$highlight-color: $su-yellow;
+$link-color: $su-blue;
+$footer-bg: $su-charcoal;
+$footer-fg: $su-yellow;
+
+$presentation-heading-color: $su-charcoal;
+
+/*-- scss:rules --*/
+
+.reveal .slide blockquote {
+  border-left: 3px solid $text-muted;
+  padding-left: 0.6em;
+  background: #F6F7F7;
+}
+
+.reveal h2 {
+  padding-bottom: 0.3em;
+}
+
+.reveal .footer {
+  color: $su-yellow;
+  background-color: $su-charcoal;
+  display: block;
+  position: fixed;
+  bottom: 0px !important;
+  padding-bottom: 12px;
+  padding-top: 12px;
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+  z-index: 2;
+}
+
+// need to figure out how to add in :not(.panel-tabset-tabby)
+.reveal .slide ul {
+  li {
+    list-style: none;
+    /* Remove default bullets */
+  }
+
+  li::before {
+    content: "\25FC";
+    /* Add content: \2022 is the CSS Code/unicode for a bullet; add a space for easier alignment! */
+    color: $highlight-color;
+    /* Change the color */
+    display: inline-block;
+    /* Needed to add space between the bullet and the text */
+    width: 1.5em;
+    /* Also needed for space (tweak if needed) */
+    margin-left: -1.5em;
+    /* Also needed for space (tweak if needed) */
+    font-size: 66%;
+  }
+}
+
+.reveal .progress span {
+  background-color: $su-yellow;
+}
+
+.reveal .slide-logo {
+  z-index: 3;
+  bottom: -5px !important;
+}
+
+.slide-background:first-child {
+  background-color: $su-charcoal;
+  background-image: radial-gradient($su-charcoal-l20 1%, transparent 5%);
+  background-position: 0 0, 10px 10px;
+  background-size: 30px 30px;
+  background-repeat: repeat;
+  height: 100%;
+  width: 100%;
+}
+
+.slide-background:first-child .slide-background-content {
+  background-image: url("https://the-strategy-unit.github.io/assets/logo_yellow.svg");
+  top: 0.5em;
+  right: 0.5em;
+  height: 4em;
+  width: 4em;
+  position: absolute;
+}
+
+#title-slide {
+  text-align: left;
+}
+
+#title-slide h1 {
+  font-size: 2em;
+  color: $su-yellow !important;
+}
+
+#title-slide .subtitle {
+  color: $su-charcoal-l60;
+}
+
+#title-slide .quarto-title-authors {
+  justify-content: left;
+  display: block;
+}
+
+#title-slide .quarto-title-author {
+  padding-top: 1em;
+  color: $su-red;
+  padding: 0;
+}
+
+#title-slide .quarto-title-author a {
+  color: $su-blue;
+}
+
+#title-slide p.institute {
+  font-size: 0.75em;
+  color: $su-charcoal-l60;
+}
+
+#title-slide p.date {
+  font-size: 0.5em;
+  color: $su-charcoal-l40;
+}
+
+.reveal .slide-logo:first-child {
+  display: none;
+}
+
+.inverse {
+  .slide-background-content {
+    background-color: $su-charcoal;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: $su-charcoal-l40 !important;
+  }
+}
+
+.reveal .imitate-title {
+  font-size: 2em;
+}
+
+.reveal .inverse .imitate-title {
+  color: $su-yellow !important;
+}
+
+.text-bottom {
+  bottom: 1em;
+  position: absolute;
+}
+
+.no-bullets ul {
+  list-style-type: none;
+  /* Remove bullets */
+  padding: 0;
+  /* Remove padding */
+  margin: 0;
+  /* Remove margins */
+}
+
+.small-table table {
+  font-size: 1.65rem;
+}
+
+.small {
+  font-size: 1.2rem;
+}
+
+.yellow {
+  color: $su-yellow;
+}
+
+.light-yellow {
+  color: $su-yellow-l40;
+}
+
+.light-charcoal {
+  color: $su-charcoal-l40;
+}
+
+.very-light-charcoal {
+  color: $su-charcoal-l60;
+}
+
+.center {
+  text-align: center;
+}

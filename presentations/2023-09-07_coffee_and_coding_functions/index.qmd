@@ -1,0 +1,391 @@
+---
+title: "Repeating Yourself with Functions"
+subtitle: "Coffee and Coding"
+author: "[Sally Thompson](mailto:sally.thompson37@nhs.net)"
+date: 2023-09-07
+date-format: "DD MMMM YYYY"
+
+format:
+  revealjs:
+    theme: [default, su_presentation.scss]
+    self-contained: true
+    transition: none
+    chalkboard: false
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
+    width: 1920
+    height: 1080
+    footer: |
+      This is my first attempt at a Quarto presentation!
+      
+execute:
+  echo: true
+---
+
+```{r setup}
+#| echo: false
+
+library(here)
+library(purrr)
+library(lubridate)
+library(zoo)
+library(dplyr)
+library(janitor)
+library(ggpubr)
+library(StrategyUnitTheme)
+
+# drive loc
+zdrive_loc <- "Z:/Strategic Analytics/Projects 2022/1056 WMAP Cardiac/SD Modelling/"
+
+# load data - taken from UDAL
+new_rtt <- read.csv(paste0(zdrive_loc, "rtt data/rtt clock starts udal.csv")) |> 
+  clean_names() |> 
+  rename(provider_code = organisation_code,
+         count = clock_starts) |> 
+  mutate(snapshot_date = dmy(effective_snapshot_date),
+         rtt_yrmon = as.yearmon(snapshot_date),
+         rtt_mon = lubridate::month(snapshot_date))|> 
+  select(-c(x, treatment_function_code, effective_snapshot_date, snapshot_date)) |> 
+  mutate(count = case_when(count == 0 ~ 1,
+                           TRUE ~ count))
+
+```
+
+## Why?
+
+-   Forecasting project, need to do the same thing with data for 6 centres.
+-   Copy-paste runs risk of not doing the same thing each time (and boring/time-consuming/frustrating).
+-   Repetition --\> function.
+
+## What?
+
+::: columns
+::: {.column width="50%"}
+Demo with plots, equally applicable to 'doing stuff' with data.
+
+::: fragment
+```{r}
+
+# preview data
+head(new_rtt)
+```
+:::
+:::
+
+::: {.column width="50%"}
+::: fragment
+```{r}
+#| echo: false
+
+p1 <- new_rtt |> 
+  filter(provider_code == "RJE") |> 
+  ggplot(aes(x = rtt_yrmon, y = count)) +
+  geom_line() +
+  su_theme() +
+    theme(legend.position = "none") +
+  labs(title = "RJE",
+       subtitle = "time trend of new referrals")
+
+p2 <- new_rtt |> 
+  filter(provider_code == "RJE") |> 
+  ggplot(aes(x = month(rtt_yrmon), y = count)) +
+  geom_col() +
+  su_theme() +
+    theme(legend.position = "none") +
+  labs(
+       subtitle = "monthly pattern of new referrals")
+
+plots <- ggarrange(p1, p2, nrow = 2)
+
+```
+
+```{r}
+#| echo: false
+plots
+```
+
+::: {style="font-size: 0.7em;"}
+*Remember, this is about writing functions, not creating stunning visualisations!*
+:::
+:::
+
+::: fragment
+Repeat this for each of the 6 centres
+:::
+:::
+:::
+
+## How?
+
+Do it 'normally' for one centre. What are the parameters to change?
+
+```{r}
+#| output-location: column
+#| code-line-numbers: "|2|7|11"
+
+p1 <- new_rtt |> 
+  filter(provider_code == "RJE") |> 
+  ggplot(aes(x = rtt_yrmon, y = count)) +
+  geom_line() +
+  su_theme() +
+    theme(legend.position = "none") +
+  labs(title = "RJE",
+       subtitle = "time trend of new referrals")
+
+p2 <- new_rtt |> 
+  filter(provider_code == "RJE") |> 
+  ggplot(aes(x = month(rtt_yrmon), y = count)) +
+  geom_col() +
+  su_theme() +
+    theme(legend.position = "none") +
+  labs(
+       subtitle = "monthly pattern of new referrals")
+
+plots <- ggarrange(p1, p2, nrow = 2)
+
+plots
+```
+
+::: fragment
+This becomes the argument for the function.
+
+Choose a name for the `argument (!= variable_name)`
+
+In this example we will use `prov` in place of `"RJE"`
+:::
+
+::: aside
+Please remember, this is about writing functions, not creating stunning visualisations!
+:::
+
+## Anatomy of a Function
+
+```{r}
+#| eval: false
+
+fn_name <- function(arguments){
+  
+  # do stuff
+  
+}
+
+```
+
+Run the function with `fn_name(parameter as argument)`
+
+## Turning our code into a function
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| output: false
+
+p1 <- new_rtt |> 
+  filter(provider_code == "RJE") |> 
+  ggplot(aes(x = rtt_yrmon, y = count)) +
+  geom_line() +
+  su_theme() +
+    theme(legend.position = "none") +
+  labs(title = "RJE",
+       subtitle = "time trend of new referrals")
+
+p2 <- new_rtt |> 
+  filter(provider_code == "RJE") |> 
+  ggplot(aes(x = month(rtt_yrmon), y = count)) +
+  geom_col() +
+  su_theme() +
+    theme(legend.position = "none") +
+  labs(
+       subtitle = "monthly pattern of new referrals")
+
+plots <- ggarrange(p1, p2, nrow = 2)
+
+plots
+
+
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| output: false
+
+fn_plots <- function(prov){
+  
+    p1 <- new_rtt |> 
+      filter(provider_code == prov) |> 
+      ggplot(aes(x = rtt_yrmon, y = count)) +
+      geom_line() +
+      su_theme() +
+        theme(legend.position = "none") +
+      labs(title = prov,
+           subtitle = "time trend of new referrals")
+    
+    p2 <- new_rtt |> 
+      filter(provider_code == prov) |> 
+      ggplot(aes(x = month(rtt_yrmon), y = count)) +
+      geom_col() +
+      su_theme() +
+        theme(legend.position = "none") +
+      labs(
+           subtitle = "monthly pattern of new referrals")
+    
+    plots <- ggarrange(p1, p2, nrow = 2)
+    
+    plots
+    
+}
+```
+:::
+:::
+
+## Running our function
+
+::: columns
+::: {.column width="50%"}
+```{r}
+
+fn_plots <- function(prov){
+  
+    p1 <- new_rtt |> 
+      filter(provider_code == prov) |> 
+      ggplot(aes(x = rtt_yrmon, y = count)) +
+      geom_line() +
+      su_theme() +
+        theme(legend.position = "none") +
+      labs(title = prov,
+           subtitle = "time trend of new referrals")
+    
+    p2 <- new_rtt |> 
+      filter(provider_code == prov) |> 
+      ggplot(aes(x = month(rtt_yrmon), y = count)) +
+      geom_col() +
+      su_theme() +
+        theme(legend.position = "none") +
+      labs(
+           subtitle = "monthly pattern of new referrals")
+    
+    plots <- ggarrange(p1, p2, nrow = 2)
+    
+    plots
+    
+}
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+
+fn_plots("RKB")
+  
+```
+:::
+:::
+
+## What if we want more than one argument?
+
+Easy! Just add them to the arguments when you define the function.
+
+If I wanted to run this function on multiple dataframes I would change the function to:
+
+```{r}
+#| eval: false
+
+fn_plots <- function(df, prov){
+  
+    p1 <- df |> 
+      filter(provider_code == prov) 
+    # and the rest as before
+}
+
+```
+
+and run it with `fn_plots(new_rtt, "RKB")`.
+
+Note that the order of entering the parameters is important. If I tried to run `fn_plots("RKB", new_rtt)` it would look for a dataframe called `"RKB"` and a provider called `new_rtt`.
+
+## Working through a list of parameters {.scrollable}
+
+Avoid manually running `fn_plots()` for each provider.\
+Use `purrr::map` to iterate over a list
+
+```{r}
+#| output-location: column
+
+# create a vector of all the providers
+prov_labels <- c("RJE", "RKB", "RL4", "RRK", "RWE", "RX1")
+
+map(prov_labels, ~ fn_plots(.x))
+```
+
+## Troubleshooting - does the function work?
+
+Crawl before you can walk - make sure `fn_plot()` works for one parameter.
+
+Insert `browser()` into the function while testing - steps into the function (don't forget to remove it when it works!)
+
+::: columns
+::: column
+This is a new function that will save each time-trend plot
+
+```{r}
+#| eval: false
+
+fn_save_plot <- function(prov){
+  
+    p <- new_rtt |> 
+      filter(provider_code == prov) |> 
+      ggplot(aes(x = month(rtt_yrmon), y = count)) +
+      geom_col() +
+      su_theme() +
+        theme(legend.position = "none") +
+      labs(
+           subtitle = paste0(prov, " - monthly pattern of new referrals"))
+    
+    ggsave(paste0(prov, "_plot.png"), 
+           plot = p)
+  
+}
+
+```
+:::
+
+::: column
+![](browser_screenshot.png) ![](console_screenshot.png)
+:::
+:::
+
+::: aside
+Check out [Shannon Pileggi's slides](https://shannonpileggi.github.io/debugging-nhsr) for more options
+:::
+
+## Troubleshooting - does it walk the walk?
+
+When learning to walk, use `safely()` or `possibly()` in your `walk` function - it will indicate if any parameters have failed, rather than just fall down.
+
+::: columns
+::: column
+```{r}
+#| eval: false
+
+# wrap fn_plots in safely
+safe_pl <- safely(.f = fn_save_plot)
+
+map(prov_labels, ~ safe_pl(.x))
+
+
+# wrap fn_plots in possibly
+poss_pl <- possibly(.f = fn_save_plot)
+
+map(prov_labels, ~ poss_pl(.x))
+
+```
+:::
+
+::: column
+Console output of wrapping function in `possibly`
+
+![](possibly_screenshot.png)
+:::
+:::

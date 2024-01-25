@@ -114,14 +114,14 @@ Current BHF project in {targets} and visualised with tar_visnetwork()
 :::
 
 ## Code
-
+::: incremental
 -   it's like a recipe of steps
 -   it's easier to read
 -   you have built functions which you can transfer and reuse
 -   it's efficient, good practice
 -   debugging is easier because if/when it fails you know exactly which target it has failed on
 -   it creates intermediate cached objects you can fetch at any time
-
+:::
 
 
 ## How can I start using it?
@@ -141,5 +141,6 @@ Current BHF project in {targets} and visualised with tar_visnetwork()
 - The [{targets} documentation](https://books.ropensci.org/targets/walkthrough.html) is detailed and easy to follow.
 - [A demo repository demonstrated in last weeks NHSE C&C](https://github.com/Pablo-source/targets-test)
 - [Software Carpentry](https://software-carpentry.org/) are developing a course here [Pre-alpha targets course](https://multimeric.github.io/targets-workshop/instructor/index.html)
+- [BHF project demonstrated live in this presentation using {targets}](https://github.com/The-Strategy-Unit/bhf_chd-ethnicity)
 
 

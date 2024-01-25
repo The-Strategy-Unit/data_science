@@ -33,9 +33,7 @@ editor:
 ::: {.column width="50%"}
 
 -   Tom previously presented about {targets} at a coffee and coding last March and you can revisit his presentation and learn about the reasons why you should use the package to manage your pipeline and see a simple demonstration of how to use the package.
-
 -   Matt has presented previously about {targets} and making your workflows (pipelines) reproducible.
-
 -   So..... if you aren't really even sure why your pipeline needs managing as an analyst or whether you actually have one (you do) then links to their presentations are at the end
 
 
@@ -108,8 +106,11 @@ Let's look at a real life example in a live project...
 Current BHF project in {targets} and visualised with tar_visnetwork()
 
 ::: columns
-::: {.column width="50%"}
-![](vis1.png){fig-alt="A directed graph made with the targets R package where each node is a function or object and arrows between them indicate their dependencies." width="60%"}
+::: {.column width="30%"}
+![](vis1.png){fig-alt="A directed graph made with the targets R package where each node is a function or object and arrows between them indicate their dependencies." width="40%"}
+:::
+::: {.column width="20%"}
+![](vis3.png){fig-alt="Legend for graph made with the targets R package" width="30%"}
 :::
 
 ::: {.column width="50%"}
@@ -130,13 +131,10 @@ Current BHF project in {targets} and visualised with tar_visnetwork()
 
 ## How can I start using it?
 
->You could "retro-fit" it to your project, but ... ideally you should start your project off using {targets}  
-
->There are at least three of us in SU who have used it in our projects.  
-
->We are offering to hand hold you to get started with your next project.
-
->Matt, Tom, Jacqueline
+-   You could "retro-fit" it to your project, but ... ideally you should start your project off using {targets}
+-   There are at least three of us in SU who have used it in our projects.
+-   We are offering to hand hold you to get started with your next project.
+-   Matt, Tom, Jacqueline
 
 ## Useful {targets} links
 

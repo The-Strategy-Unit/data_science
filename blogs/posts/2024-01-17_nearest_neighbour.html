@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -83,7 +83,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -92,6 +98,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -114,9 +121,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Data Science @ The Strategy Unit</span>
     </a>
@@ -128,40 +135,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html" rel="" target="">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html" rel="" target="">
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../blogs/index.html" rel="" target="">
- <span class="menu-text">Blogs</span></a>
+    <a class="nav-link" href="../../blogs/index.html"> 
+<span class="menu-text">Blogs</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../presentations/index.html" rel="" target="">
- <span class="menu-text">Presentations</span></a>
+    <a class="nav-link" href="../../presentations/index.html"> 
+<span class="menu-text">Presentations</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-style-guide" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-style-guide" role="button" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Style Guide</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-style-guide">    
         <li>
-    <a class="dropdown-item" href="../../style/style_guide.html" rel="" target="">
+    <a class="dropdown-item" href="../../style/style_guide.html">
  <span class="dropdown-text">Style Guide</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../style/git_and_github.html" rel="" target="">
+    <a class="dropdown-item" href="../../style/git_and_github.html">
  <span class="dropdown-text">Using Git and GitHub</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../style/project_structure.html" rel="" target="">
+    <a class="dropdown-item" href="../../style/project_structure.html">
  <span class="dropdown-text">Project Structure</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../style/data_storage.html" rel="" target="">
+    <a class="dropdown-item" href="../../style/data_storage.html">
  <span class="dropdown-text">Data Storage</span></a>
   </li>  
     </ul>
@@ -169,15 +176,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="../../blogs/index.xml" rel="" target=""><i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../blogs/index.xml"> <i class="bi bi-rss" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -221,13 +228,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
 
-<div class="page-columns page-full"><p>Recently I have been gathering data by GP practice, from a variety of different sources. The ultimate purpose of my project is to be able to report at an ICB/sub-ICB level<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. The various datasets cover different timescales and consequently changes in GP practices over time have left me with mismatching datasets.</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;An ICB (Integrated Care Board) is a statutory NHS organisation responsible for planning health services for their local populations</p></li></div></div>
-<p>My approach has been to take as the basis of my project a recent GP List. Later in my project I want to perform calculations at a GP practice level based on an underlying health need and the data for this need is a CHD prevalence value from a dataset that is around 8 years old, and for which there is no update or alternative. From my recent list of 6454 practices, when I match to the need dataset, I am left with 151 practices without a value for need. If I remove these practices from the analysis then this could impact the analysis by sub-ICB since often a group of practices in the same area could be subject to changes, mergers and reorganisation.</p>
+
+<p>Recently I have been gathering data by GP practice, from a variety of different sources. The ultimate purpose of my project is to be able to report at an ICB/sub-ICB level<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. The various datasets cover different timescales and consequently changes in GP practices over time have left me with mismatching datasets.</p>
+<div class="no-row-height column-margin column-container"><p><sup>1</sup>&nbsp;An ICB (Integrated Care Board) is a statutory NHS organisation responsible for planning health services for their local populations</p></div><p>My approach has been to take as the basis of my project a recent GP List. Later in my project I want to perform calculations at a GP practice level based on an underlying health need and the data for this need is a CHD prevalence value from a dataset that is around 8 years old, and for which there is no update or alternative. From my recent list of 6454 practices, when I match to the need dataset, I am left with 151 practices without a value for need. If I remove these practices from the analysis then this could impact the analysis by sub-ICB since often a group of practices in the same area could be subject to changes, mergers and reorganisation.</p>
 <p>Here’s the packages and some demo objects to work with to create an example for two practices:</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Packages</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
@@ -264,38 +273,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>pal <span class="ot">&lt;-</span> <span class="fu">colorNumeric</span>(<span class="at">palette =</span> <span class="fu">viridis</span>(<span class="dv">2</span>), <span class="at">domain =</span> domain)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="page-columns page-full"><p>To provide a suitable estimate of need for the newer practices without values, all the practices in the dataset were geocoded<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> using the <code>geocode</code> function from the {tidygeocoder} package.</p><div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;Geocoding is the process of converting addresses (often the postcode) into geographic coordinates (such as latitude and longitude) that can be plotted on a map.</p></li></div></div>
-<div class="cell">
+<p>To provide a suitable estimate of need for the newer practices without values, all the practices in the dataset were geocoded<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> using the <code>geocode</code> function from the {tidygeocoder} package.</p>
+<div class="no-row-height column-margin column-container"><p><sup>2</sup>&nbsp;Geocoding is the process of converting addresses (often the postcode) into geographic coordinates (such as latitude and longitude) that can be plotted on a map.</p></div><div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>practices <span class="ot">&lt;-</span> practices <span class="sc">|&gt;</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">id =</span> <span class="fu">row_number</span>()) <span class="sc">|&gt;</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geocode</span>(<span class="at">postalcode =</span> postcode) <span class="sc">|&gt;</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_as_sf</span>(<span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"long"</span>, <span class="st">"lat"</span>), <span class="at">crs =</span> <span class="dv">4326</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>practices <span class="sc">|&gt;</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-
-<div id="lubipwmmke" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#lubipwmmke table {
+<div id="blxgvademx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#blxgvademx table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#lubipwmmke thead, #lubipwmmke tbody, #lubipwmmke tfoot, #lubipwmmke tr, #lubipwmmke td, #lubipwmmke th {
+#blxgvademx thead, #blxgvademx tbody, #blxgvademx tfoot, #blxgvademx tr, #blxgvademx td, #blxgvademx th {
   border-style: none;
 }
 
-#lubipwmmke p {
+#blxgvademx p {
   margin: 0;
   padding: 0;
 }
 
-#lubipwmmke .gt_table {
+#blxgvademx .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -321,12 +329,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#lubipwmmke .gt_caption {
+#blxgvademx .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#lubipwmmke .gt_title {
+#blxgvademx .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -338,7 +346,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#lubipwmmke .gt_subtitle {
+#blxgvademx .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -350,7 +358,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#lubipwmmke .gt_heading {
+#blxgvademx .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -362,13 +370,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#lubipwmmke .gt_bottom_border {
+#blxgvademx .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#lubipwmmke .gt_col_headings {
+#blxgvademx .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -383,7 +391,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#lubipwmmke .gt_col_heading {
+#blxgvademx .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -403,7 +411,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#lubipwmmke .gt_column_spanner_outer {
+#blxgvademx .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -415,15 +423,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#lubipwmmke .gt_column_spanner_outer:first-child {
+#blxgvademx .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#lubipwmmke .gt_column_spanner_outer:last-child {
+#blxgvademx .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#lubipwmmke .gt_column_spanner {
+#blxgvademx .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -435,11 +443,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#lubipwmmke .gt_spanner_row {
+#blxgvademx .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#lubipwmmke .gt_group_heading {
+#blxgvademx .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -465,7 +473,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#lubipwmmke .gt_empty_group_heading {
+#blxgvademx .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -480,15 +488,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#lubipwmmke .gt_from_md > :first-child {
+#blxgvademx .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#lubipwmmke .gt_from_md > :last-child {
+#blxgvademx .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#lubipwmmke .gt_row {
+#blxgvademx .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -507,7 +515,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#lubipwmmke .gt_stub {
+#blxgvademx .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -520,7 +528,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#lubipwmmke .gt_stub_row_group {
+#blxgvademx .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -534,15 +542,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#lubipwmmke .gt_row_group_first td {
+#blxgvademx .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#lubipwmmke .gt_row_group_first th {
+#blxgvademx .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#lubipwmmke .gt_summary_row {
+#blxgvademx .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -552,16 +560,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#lubipwmmke .gt_first_summary_row {
+#blxgvademx .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#lubipwmmke .gt_first_summary_row.thick {
+#blxgvademx .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#lubipwmmke .gt_last_summary_row {
+#blxgvademx .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -571,7 +579,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#lubipwmmke .gt_grand_summary_row {
+#blxgvademx .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -581,7 +589,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#lubipwmmke .gt_first_grand_summary_row {
+#blxgvademx .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -591,7 +599,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#lubipwmmke .gt_last_grand_summary_row_top {
+#blxgvademx .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -601,11 +609,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#lubipwmmke .gt_striped {
+#blxgvademx .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#lubipwmmke .gt_table_body {
+#blxgvademx .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -614,7 +622,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#lubipwmmke .gt_footnotes {
+#blxgvademx .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -628,7 +636,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#lubipwmmke .gt_footnote {
+#blxgvademx .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -637,7 +645,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#lubipwmmke .gt_sourcenotes {
+#blxgvademx .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -651,7 +659,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#lubipwmmke .gt_sourcenote {
+#blxgvademx .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -659,173 +667,200 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#lubipwmmke .gt_left {
+#blxgvademx .gt_left {
   text-align: left;
 }
 
-#lubipwmmke .gt_center {
+#blxgvademx .gt_center {
   text-align: center;
 }
 
-#lubipwmmke .gt_right {
+#blxgvademx .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#lubipwmmke .gt_font_normal {
+#blxgvademx .gt_font_normal {
   font-weight: normal;
 }
 
-#lubipwmmke .gt_font_bold {
+#blxgvademx .gt_font_bold {
   font-weight: bold;
 }
 
-#lubipwmmke .gt_font_italic {
+#blxgvademx .gt_font_italic {
   font-style: italic;
 }
 
-#lubipwmmke .gt_super {
+#blxgvademx .gt_super {
   font-size: 65%;
 }
 
-#lubipwmmke .gt_footnote_marks {
+#blxgvademx .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#lubipwmmke .gt_asterisk {
+#blxgvademx .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#lubipwmmke .gt_indent_1 {
+#blxgvademx .gt_indent_1 {
   text-indent: 5px;
 }
 
-#lubipwmmke .gt_indent_2 {
+#blxgvademx .gt_indent_2 {
   text-indent: 10px;
 }
 
-#lubipwmmke .gt_indent_3 {
+#blxgvademx .gt_indent_3 {
   text-indent: 15px;
 }
 
-#lubipwmmke .gt_indent_4 {
+#blxgvademx .gt_indent_4 {
   text-indent: 20px;
 }
 
-#lubipwmmke .gt_indent_5 {
+#blxgvademx .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-  <thead>
-    
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="practice_code">practice_code</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="postcode">postcode</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="has_orig_need">has_orig_need</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="value">value</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="id">id</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="geometry">geometry</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="practice_code" class="gt_row gt_left">P1</td>
-<td headers="postcode" class="gt_row gt_left">CV1 4FS</td>
-<td headers="has_orig_need" class="gt_row gt_right">0</td>
-<td headers="value" class="gt_row gt_right">NA</td>
-<td headers="id" class="gt_row gt_right">1</td>
-<td headers="geometry" class="gt_row gt_center">c(-1.50686326666667, 52.4141089666667)</td></tr>
-    <tr><td headers="practice_code" class="gt_row gt_left">P2</td>
-<td headers="postcode" class="gt_row gt_left">CV1 3GB</td>
-<td headers="has_orig_need" class="gt_row gt_right">1</td>
-<td headers="value" class="gt_row gt_right">7.3</td>
-<td headers="id" class="gt_row gt_right">2</td>
-<td headers="geometry" class="gt_row gt_center">c(-1.51888, 52.4034199)</td></tr>
-    <tr><td headers="practice_code" class="gt_row gt_left">P3</td>
-<td headers="postcode" class="gt_row gt_left">CV11 5TW</td>
-<td headers="has_orig_need" class="gt_row gt_right">1</td>
-<td headers="value" class="gt_row gt_right">6.9</td>
-<td headers="id" class="gt_row gt_right">3</td>
-<td headers="geometry" class="gt_row gt_center">c(-1.46746, 52.519)</td></tr>
-    <tr><td headers="practice_code" class="gt_row gt_left">P4</td>
-<td headers="postcode" class="gt_row gt_left">CV6 3HZ</td>
-<td headers="has_orig_need" class="gt_row gt_right">1</td>
-<td headers="value" class="gt_row gt_right">7.1</td>
-<td headers="id" class="gt_row gt_right">4</td>
-<td headers="geometry" class="gt_row gt_center">c(-1.52231, 52.42367)</td></tr>
-    <tr><td headers="practice_code" class="gt_row gt_left">P5</td>
-<td headers="postcode" class="gt_row gt_left">CV6 1HS</td>
-<td headers="has_orig_need" class="gt_row gt_right">1</td>
-<td headers="value" class="gt_row gt_right">7.7</td>
-<td headers="id" class="gt_row gt_right">5</td>
-<td headers="geometry" class="gt_row gt_center">c(-1.52542, 52.41989)</td></tr>
-    <tr><td headers="practice_code" class="gt_row gt_left">P6</td>
-<td headers="postcode" class="gt_row gt_left">CV6 5DF</td>
-<td headers="has_orig_need" class="gt_row gt_right">1</td>
-<td headers="value" class="gt_row gt_right">8.2</td>
-<td headers="id" class="gt_row gt_right">6</td>
-<td headers="geometry" class="gt_row gt_center">c(-1.498344825, 52.4250186)</td></tr>
-    <tr><td headers="practice_code" class="gt_row gt_left">P7</td>
-<td headers="postcode" class="gt_row gt_left">CV6 3FA</td>
-<td headers="has_orig_need" class="gt_row gt_right">1</td>
-<td headers="value" class="gt_row gt_right">7.9</td>
-<td headers="id" class="gt_row gt_right">7</td>
-<td headers="geometry" class="gt_row gt_center">c(-1.51787, 52.43135)</td></tr>
-    <tr><td headers="practice_code" class="gt_row gt_left">P8</td>
-<td headers="postcode" class="gt_row gt_left">CV1 2DL</td>
-<td headers="has_orig_need" class="gt_row gt_right">1</td>
-<td headers="value" class="gt_row gt_right">7.5</td>
-<td headers="id" class="gt_row gt_right">8</td>
-<td headers="geometry" class="gt_row gt_center">c(-1.49105, 52.40582)</td></tr>
-    <tr><td headers="practice_code" class="gt_row gt_left">P9</td>
-<td headers="postcode" class="gt_row gt_left">CV1 4JH</td>
-<td headers="has_orig_need" class="gt_row gt_right">1</td>
-<td headers="value" class="gt_row gt_right">7.7</td>
-<td headers="id" class="gt_row gt_right">9</td>
-<td headers="geometry" class="gt_row gt_center">c(-1.50653, 52.41953)</td></tr>
-    <tr><td headers="practice_code" class="gt_row gt_left">P10</td>
-<td headers="postcode" class="gt_row gt_left">CV10 0GQ</td>
-<td headers="has_orig_need" class="gt_row gt_right">1</td>
-<td headers="value" class="gt_row gt_right">7.5</td>
-<td headers="id" class="gt_row gt_right">10</td>
-<td headers="geometry" class="gt_row gt_center">c(-1.52197, 52.54074)</td></tr>
-    <tr><td headers="practice_code" class="gt_row gt_left">P11</td>
-<td headers="postcode" class="gt_row gt_left">CV10 0JH</td>
-<td headers="has_orig_need" class="gt_row gt_right">1</td>
-<td headers="value" class="gt_row gt_right">7.8</td>
-<td headers="id" class="gt_row gt_right">11</td>
-<td headers="geometry" class="gt_row gt_center">c(-1.5163199, 52.53723)</td></tr>
-    <tr><td headers="practice_code" class="gt_row gt_left">P12</td>
-<td headers="postcode" class="gt_row gt_left">CV11 5QT</td>
-<td headers="has_orig_need" class="gt_row gt_right">0</td>
-<td headers="value" class="gt_row gt_right">NA</td>
-<td headers="id" class="gt_row gt_right">12</td>
-<td headers="geometry" class="gt_row gt_center">c(-1.46927, 52.51899)</td></tr>
-    <tr><td headers="practice_code" class="gt_row gt_left">P13</td>
-<td headers="postcode" class="gt_row gt_left">CV11 6AB</td>
-<td headers="has_orig_need" class="gt_row gt_right">1</td>
-<td headers="value" class="gt_row gt_right">7.6</td>
-<td headers="id" class="gt_row gt_right">13</td>
-<td headers="geometry" class="gt_row gt_center">c(-1.45822, 52.52682)</td></tr>
-    <tr><td headers="practice_code" class="gt_row gt_left">P14</td>
-<td headers="postcode" class="gt_row gt_left">CV6 4DD</td>
-<td headers="has_orig_need" class="gt_row gt_right">1</td>
-<td headers="value" class="gt_row gt_right">7.9</td>
-<td headers="id" class="gt_row gt_right">14</td>
-<td headers="geometry" class="gt_row gt_center">c(-1.50832, 52.44104)</td></tr>
-  </tbody>
-  
-  
+
+<table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_col_headings">
+<th id="practice_code" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">practice_code</th>
+<th id="postcode" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">postcode</th>
+<th id="has_orig_need" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">has_orig_need</th>
+<th id="value" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">value</th>
+<th id="id" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">id</th>
+<th id="geometry" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">geometry</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="practice_code">P1</td>
+<td class="gt_row gt_left" headers="postcode">CV1 4FS</td>
+<td class="gt_row gt_right" headers="has_orig_need">0</td>
+<td class="gt_row gt_right" headers="value">NA</td>
+<td class="gt_row gt_right" headers="id">1</td>
+<td class="gt_row gt_center" headers="geometry">c(-1.50686326666667, 52.4141089666667)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="practice_code">P2</td>
+<td class="gt_row gt_left" headers="postcode">CV1 3GB</td>
+<td class="gt_row gt_right" headers="has_orig_need">1</td>
+<td class="gt_row gt_right" headers="value">7.3</td>
+<td class="gt_row gt_right" headers="id">2</td>
+<td class="gt_row gt_center" headers="geometry">c(-1.51888, 52.4034199)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="practice_code">P3</td>
+<td class="gt_row gt_left" headers="postcode">CV11 5TW</td>
+<td class="gt_row gt_right" headers="has_orig_need">1</td>
+<td class="gt_row gt_right" headers="value">6.9</td>
+<td class="gt_row gt_right" headers="id">3</td>
+<td class="gt_row gt_center" headers="geometry">c(-1.46746, 52.519)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="practice_code">P4</td>
+<td class="gt_row gt_left" headers="postcode">CV6 3HZ</td>
+<td class="gt_row gt_right" headers="has_orig_need">1</td>
+<td class="gt_row gt_right" headers="value">7.1</td>
+<td class="gt_row gt_right" headers="id">4</td>
+<td class="gt_row gt_center" headers="geometry">c(-1.52231, 52.42367)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="practice_code">P5</td>
+<td class="gt_row gt_left" headers="postcode">CV6 1HS</td>
+<td class="gt_row gt_right" headers="has_orig_need">1</td>
+<td class="gt_row gt_right" headers="value">7.7</td>
+<td class="gt_row gt_right" headers="id">5</td>
+<td class="gt_row gt_center" headers="geometry">c(-1.52542, 52.41989)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="practice_code">P6</td>
+<td class="gt_row gt_left" headers="postcode">CV6 5DF</td>
+<td class="gt_row gt_right" headers="has_orig_need">1</td>
+<td class="gt_row gt_right" headers="value">8.2</td>
+<td class="gt_row gt_right" headers="id">6</td>
+<td class="gt_row gt_center" headers="geometry">c(-1.498344825, 52.4250186)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="practice_code">P7</td>
+<td class="gt_row gt_left" headers="postcode">CV6 3FA</td>
+<td class="gt_row gt_right" headers="has_orig_need">1</td>
+<td class="gt_row gt_right" headers="value">7.9</td>
+<td class="gt_row gt_right" headers="id">7</td>
+<td class="gt_row gt_center" headers="geometry">c(-1.51787, 52.43135)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="practice_code">P8</td>
+<td class="gt_row gt_left" headers="postcode">CV1 2DL</td>
+<td class="gt_row gt_right" headers="has_orig_need">1</td>
+<td class="gt_row gt_right" headers="value">7.5</td>
+<td class="gt_row gt_right" headers="id">8</td>
+<td class="gt_row gt_center" headers="geometry">c(-1.49105, 52.40582)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="practice_code">P9</td>
+<td class="gt_row gt_left" headers="postcode">CV1 4JH</td>
+<td class="gt_row gt_right" headers="has_orig_need">1</td>
+<td class="gt_row gt_right" headers="value">7.7</td>
+<td class="gt_row gt_right" headers="id">9</td>
+<td class="gt_row gt_center" headers="geometry">c(-1.50653, 52.41953)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="practice_code">P10</td>
+<td class="gt_row gt_left" headers="postcode">CV10 0GQ</td>
+<td class="gt_row gt_right" headers="has_orig_need">1</td>
+<td class="gt_row gt_right" headers="value">7.5</td>
+<td class="gt_row gt_right" headers="id">10</td>
+<td class="gt_row gt_center" headers="geometry">c(-1.52197, 52.54074)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="practice_code">P11</td>
+<td class="gt_row gt_left" headers="postcode">CV10 0JH</td>
+<td class="gt_row gt_right" headers="has_orig_need">1</td>
+<td class="gt_row gt_right" headers="value">7.8</td>
+<td class="gt_row gt_right" headers="id">11</td>
+<td class="gt_row gt_center" headers="geometry">c(-1.5163199, 52.53723)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="practice_code">P12</td>
+<td class="gt_row gt_left" headers="postcode">CV11 5QT</td>
+<td class="gt_row gt_right" headers="has_orig_need">0</td>
+<td class="gt_row gt_right" headers="value">NA</td>
+<td class="gt_row gt_right" headers="id">12</td>
+<td class="gt_row gt_center" headers="geometry">c(-1.46927, 52.51899)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="practice_code">P13</td>
+<td class="gt_row gt_left" headers="postcode">CV11 6AB</td>
+<td class="gt_row gt_right" headers="has_orig_need">1</td>
+<td class="gt_row gt_right" headers="value">7.6</td>
+<td class="gt_row gt_right" headers="id">13</td>
+<td class="gt_row gt_center" headers="geometry">c(-1.45822, 52.52682)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="practice_code">P14</td>
+<td class="gt_row gt_left" headers="postcode">CV6 4DD</td>
+<td class="gt_row gt_right" headers="has_orig_need">1</td>
+<td class="gt_row gt_right" headers="value">7.9</td>
+<td class="gt_row gt_right" headers="id">14</td>
+<td class="gt_row gt_center" headers="geometry">c(-1.50832, 52.44104)</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
 <p>This map shows the practices, purple are the practices with no need data and yellow are practices with need data available.</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make map to display practices</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">leaflet</span>(practices) <span class="sc">|&gt;</span> </span>
@@ -833,8 +868,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addCircleMarkers</span>(<span class="at">color =</span> <span class="sc">~</span><span class="fu">pal</span>(has_orig_need)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item" id="htmlwidget-ebefab622e89070bb75e" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-ebefab622e89070bb75e">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addCircleMarkers","args":[[52.41410896666667,52.4034199,52.519,52.42367,52.41989,52.4250186,52.43135,52.40582,52.41953,52.54074,52.53723,52.51899,52.52682,52.44104],[-1.506863266666667,-1.51888,-1.46746,-1.52231,-1.52542,-1.498344825,-1.51787,-1.49105,-1.50653,-1.52197,-1.5163199,-1.46927,-1.45822,-1.50832],10,null,null,{"interactive":true,"className":"","stroke":true,"color":["#440154","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#440154","#FDE725","#FDE725"],"weight":5,"opacity":0.5,"fill":true,"fillColor":["#440154","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#440154","#FDE725","#FDE725"],"fillOpacity":0.2},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[52.4034199,52.54074],"lng":[-1.52542,-1.45822]}},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-74b5868887f47068d48a" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-74b5868887f47068d48a">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addCircleMarkers","args":[[52.41410896666667,52.4034199,52.519,52.42367,52.41989,52.4250186,52.43135,52.40582,52.41953,52.54074,52.53723,52.51899,52.52682,52.44104],[-1.506863266666667,-1.51888,-1.46746,-1.52231,-1.52542,-1.498344825,-1.51787,-1.49105,-1.50653,-1.52197,-1.5163199,-1.46927,-1.45822,-1.50832],10,null,null,{"interactive":true,"className":"","stroke":true,"color":["#440154","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#440154","#FDE725","#FDE725"],"weight":5,"opacity":0.5,"fill":true,"fillColor":["#440154","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#440154","#FDE725","#FDE725"],"fillOpacity":0.2},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[52.4034199,52.54074],"lng":[-1.52542,-1.45822]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>The data was split into those with, and without, a value for need. Using <code>st_join</code> from the {sf} package to join those without, and those with, a value for need, using the geometry to find all those within 1500m (1.5km).</p>
@@ -854,7 +889,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(<span class="at">x =</span> with_need, <span class="at">by =</span> <span class="fu">join_by</span>(<span class="st">"id"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">leaflet</span>(neighbours) <span class="sc">|&gt;</span> </span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addTiles</span>() <span class="sc">|&gt;</span></span>
@@ -867,8 +902,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">addCircles</span>(<span class="sc">-</span><span class="fl">1.46927</span>, <span class="fl">52.51899</span>,<span class="at">radius=</span><span class="dv">1500</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item" id="htmlwidget-17b16569ffc7a6cd445c" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-17b16569ffc7a6cd445c">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addCircleMarkers","args":[[52.4034199,52.519,52.42367,52.41989,52.4250186,52.40582,52.41953,52.52682],[-1.51888,-1.46746,-1.52231,-1.52542,-1.498344825,-1.49105,-1.50653,-1.45822],10,null,null,{"interactive":true,"className":"","stroke":true,"color":"purple","weight":5,"opacity":0.5,"fill":true,"fillColor":"purple","fillOpacity":0.2},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addMarkers","args":[52.4141089666667,-1.50686326666667,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Practice with no data",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addCircles","args":[52.4141089666667,-1.50686326666667,1500,null,null,{"interactive":true,"className":"","stroke":true,"color":"#03F","weight":5,"opacity":0.5,"fill":true,"fillColor":"#03F","fillOpacity":0.2},null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null,null]},{"method":"addMarkers","args":[52.51899,-1.46927,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Practice with no data",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addCircles","args":[52.51899,-1.46927,1500,null,null,{"interactive":true,"className":"","stroke":true,"color":"#03F","weight":5,"opacity":0.5,"fill":true,"fillColor":"#03F","fillOpacity":0.2},null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null,null]}],"limits":{"lat":[52.4034199,52.52682],"lng":[-1.52542,-1.45822]}},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-6e169bea4cd984c618a6" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-6e169bea4cd984c618a6">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addCircleMarkers","args":[[52.4034199,52.519,52.42367,52.41989,52.4250186,52.40582,52.41953,52.52682],[-1.51888,-1.46746,-1.52231,-1.52542,-1.498344825,-1.49105,-1.50653,-1.45822],10,null,null,{"interactive":true,"className":"","stroke":true,"color":"purple","weight":5,"opacity":0.5,"fill":true,"fillColor":"purple","fillOpacity":0.2},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addMarkers","args":[52.4141089666667,-1.50686326666667,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Practice with no data",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addCircles","args":[52.4141089666667,-1.50686326666667,1500,null,null,{"interactive":true,"className":"","stroke":true,"color":"#03F","weight":5,"opacity":0.5,"fill":true,"fillColor":"#03F","fillOpacity":0.2},null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null,null]},{"method":"addMarkers","args":[52.51899,-1.46927,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Practice with no data",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addCircles","args":[52.51899,-1.46927,1500,null,null,{"interactive":true,"className":"","stroke":true,"color":"#03F","weight":5,"opacity":0.5,"fill":true,"fillColor":"#03F","fillOpacity":0.2},null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null,null]}],"limits":{"lat":[52.4034199,52.52682],"lng":[-1.52542,-1.45822]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>The data for the “neighbours” was grouped by the practice code of those without need data and a mean value was calculated for each practice to generate an estimated value.</p>
@@ -885,31 +920,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">st_drop_geometry</span>(<span class="fu">select</span>(practice_code,need_est))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>  practices_with_neighbours_estimate <span class="sc">|&gt;</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>has_orig_need,<span class="sc">-</span>id) <span class="sc">|&gt;</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-
-<div id="lplcojhlxx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#lplcojhlxx table {
+<div id="uvgihuqiuk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#uvgihuqiuk table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#lplcojhlxx thead, #lplcojhlxx tbody, #lplcojhlxx tfoot, #lplcojhlxx tr, #lplcojhlxx td, #lplcojhlxx th {
+#uvgihuqiuk thead, #uvgihuqiuk tbody, #uvgihuqiuk tfoot, #uvgihuqiuk tr, #uvgihuqiuk td, #uvgihuqiuk th {
   border-style: none;
 }
 
-#lplcojhlxx p {
+#uvgihuqiuk p {
   margin: 0;
   padding: 0;
 }
 
-#lplcojhlxx .gt_table {
+#uvgihuqiuk .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -935,12 +969,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#lplcojhlxx .gt_caption {
+#uvgihuqiuk .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#lplcojhlxx .gt_title {
+#uvgihuqiuk .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -952,7 +986,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#lplcojhlxx .gt_subtitle {
+#uvgihuqiuk .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -964,7 +998,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#lplcojhlxx .gt_heading {
+#uvgihuqiuk .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -976,13 +1010,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#lplcojhlxx .gt_bottom_border {
+#uvgihuqiuk .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#lplcojhlxx .gt_col_headings {
+#uvgihuqiuk .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -997,7 +1031,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#lplcojhlxx .gt_col_heading {
+#uvgihuqiuk .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1017,7 +1051,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#lplcojhlxx .gt_column_spanner_outer {
+#uvgihuqiuk .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1029,15 +1063,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#lplcojhlxx .gt_column_spanner_outer:first-child {
+#uvgihuqiuk .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#lplcojhlxx .gt_column_spanner_outer:last-child {
+#uvgihuqiuk .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#lplcojhlxx .gt_column_spanner {
+#uvgihuqiuk .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1049,11 +1083,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#lplcojhlxx .gt_spanner_row {
+#uvgihuqiuk .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#lplcojhlxx .gt_group_heading {
+#uvgihuqiuk .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1079,7 +1113,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#lplcojhlxx .gt_empty_group_heading {
+#uvgihuqiuk .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1094,15 +1128,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#lplcojhlxx .gt_from_md > :first-child {
+#uvgihuqiuk .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#lplcojhlxx .gt_from_md > :last-child {
+#uvgihuqiuk .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#lplcojhlxx .gt_row {
+#uvgihuqiuk .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1121,7 +1155,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#lplcojhlxx .gt_stub {
+#uvgihuqiuk .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1134,7 +1168,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#lplcojhlxx .gt_stub_row_group {
+#uvgihuqiuk .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1148,15 +1182,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#lplcojhlxx .gt_row_group_first td {
+#uvgihuqiuk .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#lplcojhlxx .gt_row_group_first th {
+#uvgihuqiuk .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#lplcojhlxx .gt_summary_row {
+#uvgihuqiuk .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1166,16 +1200,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#lplcojhlxx .gt_first_summary_row {
+#uvgihuqiuk .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#lplcojhlxx .gt_first_summary_row.thick {
+#uvgihuqiuk .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#lplcojhlxx .gt_last_summary_row {
+#uvgihuqiuk .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1185,7 +1219,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#lplcojhlxx .gt_grand_summary_row {
+#uvgihuqiuk .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1195,7 +1229,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#lplcojhlxx .gt_first_grand_summary_row {
+#uvgihuqiuk .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1205,7 +1239,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#lplcojhlxx .gt_last_grand_summary_row_top {
+#uvgihuqiuk .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1215,11 +1249,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#lplcojhlxx .gt_striped {
+#uvgihuqiuk .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#lplcojhlxx .gt_table_body {
+#uvgihuqiuk .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1228,7 +1262,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#lplcojhlxx .gt_footnotes {
+#uvgihuqiuk .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1242,7 +1276,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#lplcojhlxx .gt_footnote {
+#uvgihuqiuk .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1251,7 +1285,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#lplcojhlxx .gt_sourcenotes {
+#uvgihuqiuk .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1265,7 +1299,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#lplcojhlxx .gt_sourcenote {
+#uvgihuqiuk .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1273,137 +1307,164 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#lplcojhlxx .gt_left {
+#uvgihuqiuk .gt_left {
   text-align: left;
 }
 
-#lplcojhlxx .gt_center {
+#uvgihuqiuk .gt_center {
   text-align: center;
 }
 
-#lplcojhlxx .gt_right {
+#uvgihuqiuk .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#lplcojhlxx .gt_font_normal {
+#uvgihuqiuk .gt_font_normal {
   font-weight: normal;
 }
 
-#lplcojhlxx .gt_font_bold {
+#uvgihuqiuk .gt_font_bold {
   font-weight: bold;
 }
 
-#lplcojhlxx .gt_font_italic {
+#uvgihuqiuk .gt_font_italic {
   font-style: italic;
 }
 
-#lplcojhlxx .gt_super {
+#uvgihuqiuk .gt_super {
   font-size: 65%;
 }
 
-#lplcojhlxx .gt_footnote_marks {
+#uvgihuqiuk .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#lplcojhlxx .gt_asterisk {
+#uvgihuqiuk .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#lplcojhlxx .gt_indent_1 {
+#uvgihuqiuk .gt_indent_1 {
   text-indent: 5px;
 }
 
-#lplcojhlxx .gt_indent_2 {
+#uvgihuqiuk .gt_indent_2 {
   text-indent: 10px;
 }
 
-#lplcojhlxx .gt_indent_3 {
+#uvgihuqiuk .gt_indent_3 {
   text-indent: 15px;
 }
 
-#lplcojhlxx .gt_indent_4 {
+#uvgihuqiuk .gt_indent_4 {
   text-indent: 20px;
 }
 
-#lplcojhlxx .gt_indent_5 {
+#uvgihuqiuk .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-  <thead>
-    
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="practice_code">practice_code</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="postcode">postcode</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="value">value</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="need_est">need_est</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="practice_code" class="gt_row gt_left">P1</td>
-<td headers="postcode" class="gt_row gt_left">CV1 4FS</td>
-<td headers="value" class="gt_row gt_right">NA</td>
-<td headers="need_est" class="gt_row gt_right">7.583333</td></tr>
-    <tr><td headers="practice_code" class="gt_row gt_left">P2</td>
-<td headers="postcode" class="gt_row gt_left">CV1 3GB</td>
-<td headers="value" class="gt_row gt_right">7.3</td>
-<td headers="need_est" class="gt_row gt_right">NA</td></tr>
-    <tr><td headers="practice_code" class="gt_row gt_left">P3</td>
-<td headers="postcode" class="gt_row gt_left">CV11 5TW</td>
-<td headers="value" class="gt_row gt_right">6.9</td>
-<td headers="need_est" class="gt_row gt_right">NA</td></tr>
-    <tr><td headers="practice_code" class="gt_row gt_left">P4</td>
-<td headers="postcode" class="gt_row gt_left">CV6 3HZ</td>
-<td headers="value" class="gt_row gt_right">7.1</td>
-<td headers="need_est" class="gt_row gt_right">NA</td></tr>
-    <tr><td headers="practice_code" class="gt_row gt_left">P5</td>
-<td headers="postcode" class="gt_row gt_left">CV6 1HS</td>
-<td headers="value" class="gt_row gt_right">7.7</td>
-<td headers="need_est" class="gt_row gt_right">NA</td></tr>
-    <tr><td headers="practice_code" class="gt_row gt_left">P6</td>
-<td headers="postcode" class="gt_row gt_left">CV6 5DF</td>
-<td headers="value" class="gt_row gt_right">8.2</td>
-<td headers="need_est" class="gt_row gt_right">NA</td></tr>
-    <tr><td headers="practice_code" class="gt_row gt_left">P7</td>
-<td headers="postcode" class="gt_row gt_left">CV6 3FA</td>
-<td headers="value" class="gt_row gt_right">7.9</td>
-<td headers="need_est" class="gt_row gt_right">NA</td></tr>
-    <tr><td headers="practice_code" class="gt_row gt_left">P8</td>
-<td headers="postcode" class="gt_row gt_left">CV1 2DL</td>
-<td headers="value" class="gt_row gt_right">7.5</td>
-<td headers="need_est" class="gt_row gt_right">NA</td></tr>
-    <tr><td headers="practice_code" class="gt_row gt_left">P9</td>
-<td headers="postcode" class="gt_row gt_left">CV1 4JH</td>
-<td headers="value" class="gt_row gt_right">7.7</td>
-<td headers="need_est" class="gt_row gt_right">NA</td></tr>
-    <tr><td headers="practice_code" class="gt_row gt_left">P10</td>
-<td headers="postcode" class="gt_row gt_left">CV10 0GQ</td>
-<td headers="value" class="gt_row gt_right">7.5</td>
-<td headers="need_est" class="gt_row gt_right">NA</td></tr>
-    <tr><td headers="practice_code" class="gt_row gt_left">P11</td>
-<td headers="postcode" class="gt_row gt_left">CV10 0JH</td>
-<td headers="value" class="gt_row gt_right">7.8</td>
-<td headers="need_est" class="gt_row gt_right">NA</td></tr>
-    <tr><td headers="practice_code" class="gt_row gt_left">P12</td>
-<td headers="postcode" class="gt_row gt_left">CV11 5QT</td>
-<td headers="value" class="gt_row gt_right">NA</td>
-<td headers="need_est" class="gt_row gt_right">7.250000</td></tr>
-    <tr><td headers="practice_code" class="gt_row gt_left">P13</td>
-<td headers="postcode" class="gt_row gt_left">CV11 6AB</td>
-<td headers="value" class="gt_row gt_right">7.6</td>
-<td headers="need_est" class="gt_row gt_right">NA</td></tr>
-    <tr><td headers="practice_code" class="gt_row gt_left">P14</td>
-<td headers="postcode" class="gt_row gt_left">CV6 4DD</td>
-<td headers="value" class="gt_row gt_right">7.9</td>
-<td headers="need_est" class="gt_row gt_right">NA</td></tr>
-  </tbody>
-  
-  
+
+<table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_col_headings">
+<th id="practice_code" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">practice_code</th>
+<th id="postcode" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">postcode</th>
+<th id="value" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">value</th>
+<th id="need_est" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">need_est</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="practice_code">P1</td>
+<td class="gt_row gt_left" headers="postcode">CV1 4FS</td>
+<td class="gt_row gt_right" headers="value">NA</td>
+<td class="gt_row gt_right" headers="need_est">7.583333</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="practice_code">P2</td>
+<td class="gt_row gt_left" headers="postcode">CV1 3GB</td>
+<td class="gt_row gt_right" headers="value">7.3</td>
+<td class="gt_row gt_right" headers="need_est">NA</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="practice_code">P3</td>
+<td class="gt_row gt_left" headers="postcode">CV11 5TW</td>
+<td class="gt_row gt_right" headers="value">6.9</td>
+<td class="gt_row gt_right" headers="need_est">NA</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="practice_code">P4</td>
+<td class="gt_row gt_left" headers="postcode">CV6 3HZ</td>
+<td class="gt_row gt_right" headers="value">7.1</td>
+<td class="gt_row gt_right" headers="need_est">NA</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="practice_code">P5</td>
+<td class="gt_row gt_left" headers="postcode">CV6 1HS</td>
+<td class="gt_row gt_right" headers="value">7.7</td>
+<td class="gt_row gt_right" headers="need_est">NA</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="practice_code">P6</td>
+<td class="gt_row gt_left" headers="postcode">CV6 5DF</td>
+<td class="gt_row gt_right" headers="value">8.2</td>
+<td class="gt_row gt_right" headers="need_est">NA</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="practice_code">P7</td>
+<td class="gt_row gt_left" headers="postcode">CV6 3FA</td>
+<td class="gt_row gt_right" headers="value">7.9</td>
+<td class="gt_row gt_right" headers="need_est">NA</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="practice_code">P8</td>
+<td class="gt_row gt_left" headers="postcode">CV1 2DL</td>
+<td class="gt_row gt_right" headers="value">7.5</td>
+<td class="gt_row gt_right" headers="need_est">NA</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="practice_code">P9</td>
+<td class="gt_row gt_left" headers="postcode">CV1 4JH</td>
+<td class="gt_row gt_right" headers="value">7.7</td>
+<td class="gt_row gt_right" headers="need_est">NA</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="practice_code">P10</td>
+<td class="gt_row gt_left" headers="postcode">CV10 0GQ</td>
+<td class="gt_row gt_right" headers="value">7.5</td>
+<td class="gt_row gt_right" headers="need_est">NA</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="practice_code">P11</td>
+<td class="gt_row gt_left" headers="postcode">CV10 0JH</td>
+<td class="gt_row gt_right" headers="value">7.8</td>
+<td class="gt_row gt_right" headers="need_est">NA</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="practice_code">P12</td>
+<td class="gt_row gt_left" headers="postcode">CV11 5QT</td>
+<td class="gt_row gt_right" headers="value">NA</td>
+<td class="gt_row gt_right" headers="need_est">7.250000</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="practice_code">P13</td>
+<td class="gt_row gt_left" headers="postcode">CV11 6AB</td>
+<td class="gt_row gt_right" headers="value">7.6</td>
+<td class="gt_row gt_right" headers="need_est">NA</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="practice_code">P14</td>
+<td class="gt_row gt_left" headers="postcode">CV6 4DD</td>
+<td class="gt_row gt_right" headers="value">7.9</td>
+<td class="gt_row gt_right" headers="need_est">NA</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -1416,24 +1477,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="cell">
 <div class="cell-output-display">
-
-<div id="rfjhgneazp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#rfjhgneazp table {
+<div id="owkmzegygp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#owkmzegygp table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#rfjhgneazp thead, #rfjhgneazp tbody, #rfjhgneazp tfoot, #rfjhgneazp tr, #rfjhgneazp td, #rfjhgneazp th {
+#owkmzegygp thead, #owkmzegygp tbody, #owkmzegygp tfoot, #owkmzegygp tr, #owkmzegygp td, #owkmzegygp th {
   border-style: none;
 }
 
-#rfjhgneazp p {
+#owkmzegygp p {
   margin: 0;
   padding: 0;
 }
 
-#rfjhgneazp .gt_table {
+#owkmzegygp .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1459,12 +1519,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#rfjhgneazp .gt_caption {
+#owkmzegygp .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#rfjhgneazp .gt_title {
+#owkmzegygp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1476,7 +1536,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#rfjhgneazp .gt_subtitle {
+#owkmzegygp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1488,7 +1548,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#rfjhgneazp .gt_heading {
+#owkmzegygp .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1500,13 +1560,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#rfjhgneazp .gt_bottom_border {
+#owkmzegygp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#rfjhgneazp .gt_col_headings {
+#owkmzegygp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1521,7 +1581,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#rfjhgneazp .gt_col_heading {
+#owkmzegygp .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1541,7 +1601,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#rfjhgneazp .gt_column_spanner_outer {
+#owkmzegygp .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1553,15 +1613,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#rfjhgneazp .gt_column_spanner_outer:first-child {
+#owkmzegygp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#rfjhgneazp .gt_column_spanner_outer:last-child {
+#owkmzegygp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#rfjhgneazp .gt_column_spanner {
+#owkmzegygp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1573,11 +1633,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#rfjhgneazp .gt_spanner_row {
+#owkmzegygp .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#rfjhgneazp .gt_group_heading {
+#owkmzegygp .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1603,7 +1663,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#rfjhgneazp .gt_empty_group_heading {
+#owkmzegygp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1618,15 +1678,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#rfjhgneazp .gt_from_md > :first-child {
+#owkmzegygp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#rfjhgneazp .gt_from_md > :last-child {
+#owkmzegygp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#rfjhgneazp .gt_row {
+#owkmzegygp .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1645,7 +1705,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#rfjhgneazp .gt_stub {
+#owkmzegygp .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1658,7 +1718,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#rfjhgneazp .gt_stub_row_group {
+#owkmzegygp .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1672,15 +1732,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#rfjhgneazp .gt_row_group_first td {
+#owkmzegygp .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#rfjhgneazp .gt_row_group_first th {
+#owkmzegygp .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#rfjhgneazp .gt_summary_row {
+#owkmzegygp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1690,16 +1750,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#rfjhgneazp .gt_first_summary_row {
+#owkmzegygp .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#rfjhgneazp .gt_first_summary_row.thick {
+#owkmzegygp .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#rfjhgneazp .gt_last_summary_row {
+#owkmzegygp .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1709,7 +1769,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#rfjhgneazp .gt_grand_summary_row {
+#owkmzegygp .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1719,7 +1779,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#rfjhgneazp .gt_first_grand_summary_row {
+#owkmzegygp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1729,7 +1789,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#rfjhgneazp .gt_last_grand_summary_row_top {
+#owkmzegygp .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1739,11 +1799,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#rfjhgneazp .gt_striped {
+#owkmzegygp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#rfjhgneazp .gt_table_body {
+#owkmzegygp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1752,7 +1812,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#rfjhgneazp .gt_footnotes {
+#owkmzegygp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1766,7 +1826,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#rfjhgneazp .gt_footnote {
+#owkmzegygp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1775,7 +1835,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#rfjhgneazp .gt_sourcenotes {
+#owkmzegygp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1789,7 +1849,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#rfjhgneazp .gt_sourcenote {
+#owkmzegygp .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1797,115 +1857,142 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#rfjhgneazp .gt_left {
+#owkmzegygp .gt_left {
   text-align: left;
 }
 
-#rfjhgneazp .gt_center {
+#owkmzegygp .gt_center {
   text-align: center;
 }
 
-#rfjhgneazp .gt_right {
+#owkmzegygp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#rfjhgneazp .gt_font_normal {
+#owkmzegygp .gt_font_normal {
   font-weight: normal;
 }
 
-#rfjhgneazp .gt_font_bold {
+#owkmzegygp .gt_font_bold {
   font-weight: bold;
 }
 
-#rfjhgneazp .gt_font_italic {
+#owkmzegygp .gt_font_italic {
   font-style: italic;
 }
 
-#rfjhgneazp .gt_super {
+#owkmzegygp .gt_super {
   font-size: 65%;
 }
 
-#rfjhgneazp .gt_footnote_marks {
+#owkmzegygp .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#rfjhgneazp .gt_asterisk {
+#owkmzegygp .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#rfjhgneazp .gt_indent_1 {
+#owkmzegygp .gt_indent_1 {
   text-indent: 5px;
 }
 
-#rfjhgneazp .gt_indent_2 {
+#owkmzegygp .gt_indent_2 {
   text-indent: 10px;
 }
 
-#rfjhgneazp .gt_indent_3 {
+#owkmzegygp .gt_indent_3 {
   text-indent: 15px;
 }
 
-#rfjhgneazp .gt_indent_4 {
+#owkmzegygp .gt_indent_4 {
   text-indent: 20px;
 }
 
-#rfjhgneazp .gt_indent_5 {
+#owkmzegygp .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-  <thead>
-    
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="practice_code">practice_code</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="need_to_use">need_to_use</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="practice_code" class="gt_row gt_left">P1</td>
-<td headers="need_to_use" class="gt_row gt_right">7.583333</td></tr>
-    <tr><td headers="practice_code" class="gt_row gt_left">P2</td>
-<td headers="need_to_use" class="gt_row gt_right">7.300000</td></tr>
-    <tr><td headers="practice_code" class="gt_row gt_left">P3</td>
-<td headers="need_to_use" class="gt_row gt_right">6.900000</td></tr>
-    <tr><td headers="practice_code" class="gt_row gt_left">P4</td>
-<td headers="need_to_use" class="gt_row gt_right">7.100000</td></tr>
-    <tr><td headers="practice_code" class="gt_row gt_left">P5</td>
-<td headers="need_to_use" class="gt_row gt_right">7.700000</td></tr>
-    <tr><td headers="practice_code" class="gt_row gt_left">P6</td>
-<td headers="need_to_use" class="gt_row gt_right">8.200000</td></tr>
-    <tr><td headers="practice_code" class="gt_row gt_left">P7</td>
-<td headers="need_to_use" class="gt_row gt_right">7.900000</td></tr>
-    <tr><td headers="practice_code" class="gt_row gt_left">P8</td>
-<td headers="need_to_use" class="gt_row gt_right">7.500000</td></tr>
-    <tr><td headers="practice_code" class="gt_row gt_left">P9</td>
-<td headers="need_to_use" class="gt_row gt_right">7.700000</td></tr>
-    <tr><td headers="practice_code" class="gt_row gt_left">P10</td>
-<td headers="need_to_use" class="gt_row gt_right">7.500000</td></tr>
-    <tr><td headers="practice_code" class="gt_row gt_left">P11</td>
-<td headers="need_to_use" class="gt_row gt_right">7.800000</td></tr>
-    <tr><td headers="practice_code" class="gt_row gt_left">P12</td>
-<td headers="need_to_use" class="gt_row gt_right">7.250000</td></tr>
-    <tr><td headers="practice_code" class="gt_row gt_left">P13</td>
-<td headers="need_to_use" class="gt_row gt_right">7.600000</td></tr>
-    <tr><td headers="practice_code" class="gt_row gt_left">P14</td>
-<td headers="need_to_use" class="gt_row gt_right">7.900000</td></tr>
-  </tbody>
-  
-  
+
+<table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_col_headings">
+<th id="practice_code" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">practice_code</th>
+<th id="need_to_use" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">need_to_use</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="practice_code">P1</td>
+<td class="gt_row gt_right" headers="need_to_use">7.583333</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="practice_code">P2</td>
+<td class="gt_row gt_right" headers="need_to_use">7.300000</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="practice_code">P3</td>
+<td class="gt_row gt_right" headers="need_to_use">6.900000</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="practice_code">P4</td>
+<td class="gt_row gt_right" headers="need_to_use">7.100000</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="practice_code">P5</td>
+<td class="gt_row gt_right" headers="need_to_use">7.700000</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="practice_code">P6</td>
+<td class="gt_row gt_right" headers="need_to_use">8.200000</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="practice_code">P7</td>
+<td class="gt_row gt_right" headers="need_to_use">7.900000</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="practice_code">P8</td>
+<td class="gt_row gt_right" headers="need_to_use">7.500000</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="practice_code">P9</td>
+<td class="gt_row gt_right" headers="need_to_use">7.700000</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="practice_code">P10</td>
+<td class="gt_row gt_right" headers="need_to_use">7.500000</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="practice_code">P11</td>
+<td class="gt_row gt_right" headers="need_to_use">7.800000</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="practice_code">P12</td>
+<td class="gt_row gt_right" headers="need_to_use">7.250000</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="practice_code">P13</td>
+<td class="gt_row gt_right" headers="need_to_use">7.600000</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="practice_code">P14</td>
+<td class="gt_row gt_right" headers="need_to_use">7.900000</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
 <p>For my project, this method has successfully generated a prevalence for 125 of the 151 practices without a need value, leaving just 26 practices without a need. This is using a 1.5 km radius. In each use case there will be a decision to make regarding a more accurate estimate (smaller radius) and therefore fewer matches versus a less accurate estimate (using a larger radius) and therefore more matches.</p>
-<div class="page-columns page-full"><p>This approach could be replicated for other similar uses/purposes. A topical example from an SU project is the need to assign population prevalence for hypertension and compare it to current QOF<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> data. Again, the prevalence data is a few years old so we have to move the historical data to fit with current practices and this leaves missing data that can be estimated using this method.</p><div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;QOF (Quality and Outcomes Framework) is a voluntary annual reward and incentive programme for all GP practices in England, detailing practice achievement results.</p></li></div></div>
+<p>This approach could be replicated for other similar uses/purposes. A topical example from an SU project is the need to assign population prevalence for hypertension and compare it to current QOF<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> data. Again, the prevalence data is a few years old so we have to move the historical data to fit with current practices and this leaves missing data that can be estimated using this method.</p>
 
 
-
+<div class="no-row-height column-margin column-container"><p><sup>3</sup>&nbsp;QOF (Quality and Outcomes Framework) is a voluntary annual reward and incentive programme for all GP practices in England, detailing practice achievement results.</p></div>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1949,6 +2036,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -2017,13 +2131,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -2102,10 +2218,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -2115,8 +2230,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -2129,6 +2253,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -2172,6 +2415,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -2197,6 +2441,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -2260,4 +2530,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/the-strategy-unit/data_science/edit/main/blogs/posts/2024-01-17_nearest_neighbour.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/the-strategy-unit/data_science/issues/new" class="toc-action">Report an issue</a></p></div></div></div></div></footer></body></html>
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/the-strategy-unit/data_science/edit/main/blogs/posts/2024-01-17_nearest_neighbour.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/the-strategy-unit/data_science/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

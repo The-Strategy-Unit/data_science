@@ -8,7 +8,7 @@
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.450">
+  <meta name="generator" content="quarto-1.4.549">
 
   <meta name="author" content="Tom Jemmett">
   <title>Data Science @ The Strategy Unit - Coffee and Coding</title>
@@ -31,7 +31,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -223,7 +223,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -479,21 +480,21 @@
 <p>We can visualise our pipeline using <code>tar_visnetwork()</code>.</p>
 </div><div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(targets)</span>
-<span id="cb1-2"><a href="#cb1-2"></a></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">tar_option_set</span>(</span>
-<span id="cb1-4"><a href="#cb1-4"></a>  <span class="at">packages =</span> <span class="fu">c</span>(<span class="st">"tibble"</span>, <span class="st">"dplyr"</span>, <span class="st">"ggplot2"</span>),</span>
-<span id="cb1-5"><a href="#cb1-5"></a>)</span>
-<span id="cb1-6"><a href="#cb1-6"></a></span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="fu">tar_source</span>()</span>
-<span id="cb1-8"><a href="#cb1-8"></a></span>
-<span id="cb1-9"><a href="#cb1-9"></a><span class="fu">list</span>(</span>
-<span id="cb1-10"><a href="#cb1-10"></a>  <span class="fu">tar_target</span>(raw_data, <span class="fu">get_data</span>()),</span>
-<span id="cb1-11"><a href="#cb1-11"></a>  <span class="fu">tar_target</span>(processed_data, <span class="fu">process_data</span>(raw_data)),</span>
-<span id="cb1-12"><a href="#cb1-12"></a>  <span class="fu">tar_target</span>(chart, <span class="fu">produce_chart</span>(processed_data)),</span>
-<span id="cb1-13"><a href="#cb1-13"></a>  <span class="fu">tar_target</span>(model, <span class="fu">build_model</span>(processed_data)),</span>
-<span id="cb1-14"><a href="#cb1-14"></a>  <span class="fu">tar_target</span>(report, <span class="fu">generate_report</span>(chart, model))</span>
-<span id="cb1-15"><a href="#cb1-15"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(targets)</span>
+<span id="cb1-2"><a></a></span>
+<span id="cb1-3"><a></a><span class="fu">tar_option_set</span>(</span>
+<span id="cb1-4"><a></a>  <span class="at">packages =</span> <span class="fu">c</span>(<span class="st">"tibble"</span>, <span class="st">"dplyr"</span>, <span class="st">"ggplot2"</span>),</span>
+<span id="cb1-5"><a></a>)</span>
+<span id="cb1-6"><a></a></span>
+<span id="cb1-7"><a></a><span class="fu">tar_source</span>()</span>
+<span id="cb1-8"><a></a></span>
+<span id="cb1-9"><a></a><span class="fu">list</span>(</span>
+<span id="cb1-10"><a></a>  <span class="fu">tar_target</span>(raw_data, <span class="fu">get_data</span>()),</span>
+<span id="cb1-11"><a></a>  <span class="fu">tar_target</span>(processed_data, <span class="fu">process_data</span>(raw_data)),</span>
+<span id="cb1-12"><a></a>  <span class="fu">tar_target</span>(chart, <span class="fu">produce_chart</span>(processed_data)),</span>
+<span id="cb1-13"><a></a>  <span class="fu">tar_target</span>(model, <span class="fu">build_model</span>(processed_data)),</span>
+<span id="cb1-14"><a></a>  <span class="fu">tar_target</span>(report, <span class="fu">generate_report</span>(chart, model))</span>
+<span id="cb1-15"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img data-src="visnetwork.png"></p>
 </div>
@@ -561,8 +562,10 @@
 </ul>
 <p>The <a href="https://books.ropensci.org/targets/walkthrough.html">{targets} documentation</a> is exceptionally detailed and easy to follow, and goes into more complex examples (such as dynamic branching of steps in a pipeline and high performance computing setups)</p>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 <p>view slides at <a href="https://the-strategy-unit.github.io/data_science/">the-strategy-unit.github.io/data_science/presentations</a></p>
+</div>
 </div>
 </section>
     </div>
@@ -592,7 +595,6 @@
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': true,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -892,10 +894,9 @@
         // clear code selection
         e.clearSelection();
       });
-      function tippyHover(el, contentFn) {
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -905,8 +906,17 @@
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 

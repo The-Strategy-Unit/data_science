@@ -8,7 +8,7 @@
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.450">
+  <meta name="generator" content="quarto-1.4.549">
 
   <meta name="author" content="Tom Jemmett">
   <title>Data Science @ The Strategy Unit - Coffee and Coding</title>
@@ -31,7 +31,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -223,7 +223,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -419,23 +420,23 @@
 <section id="which-is-easier-to-read" class="slide level2">
 <h2>Which is easier to read?</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>ae_attendances <span class="sc">|&gt;</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a>  <span class="fu">filter</span>(org_code <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"RNA"</span>, <span class="st">"RL4"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a>  <span class="fu">mutate</span>(<span class="at">performance =</span> <span class="dv">1</span> <span class="sc">+</span> breaches <span class="sc">/</span> attendances) <span class="sc">|&gt;</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a>  <span class="fu">filter</span>(type <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">|&gt;</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a>  <span class="fu">mutate</span>(<span class="at">met_target =</span> performance <span class="sc">&gt;=</span> <span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>ae_attendances <span class="sc">|&gt;</span></span>
+<span id="cb1-2"><a></a>  <span class="fu">filter</span>(org_code <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"RNA"</span>, <span class="st">"RL4"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb1-3"><a></a>  <span class="fu">mutate</span>(<span class="at">performance =</span> <span class="dv">1</span> <span class="sc">+</span> breaches <span class="sc">/</span> attendances) <span class="sc">|&gt;</span></span>
+<span id="cb1-4"><a></a>  <span class="fu">filter</span>(type <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-5"><a></a>  <span class="fu">mutate</span>(<span class="at">met_target =</span> performance <span class="sc">&gt;=</span> <span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>or</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>ae_attendances <span class="sc">|&gt;</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a>  <span class="fu">filter</span>(</span>
-<span id="cb2-3"><a href="#cb2-3"></a>    org_code <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"RNA"</span>, <span class="st">"RL4"</span>),</span>
-<span id="cb2-4"><a href="#cb2-4"></a>    type <span class="sc">==</span> <span class="dv">1</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb2-6"><a href="#cb2-6"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb2-7"><a href="#cb2-7"></a>    <span class="at">performance =</span> <span class="dv">1</span> <span class="sc">+</span> breaches <span class="sc">/</span> attendances,</span>
-<span id="cb2-8"><a href="#cb2-8"></a>    <span class="at">met_target =</span> performance <span class="sc">&gt;=</span> <span class="fl">0.95</span></span>
-<span id="cb2-9"><a href="#cb2-9"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>ae_attendances <span class="sc">|&gt;</span></span>
+<span id="cb2-2"><a></a>  <span class="fu">filter</span>(</span>
+<span id="cb2-3"><a></a>    org_code <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"RNA"</span>, <span class="st">"RL4"</span>),</span>
+<span id="cb2-4"><a></a>    type <span class="sc">==</span> <span class="dv">1</span></span>
+<span id="cb2-5"><a></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb2-6"><a></a>  <span class="fu">mutate</span>(</span>
+<span id="cb2-7"><a></a>    <span class="at">performance =</span> <span class="dv">1</span> <span class="sc">+</span> breaches <span class="sc">/</span> attendances,</span>
+<span id="cb2-8"><a></a>    <span class="at">met_target =</span> performance <span class="sc">&gt;=</span> <span class="fl">0.95</span></span>
+<span id="cb2-9"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <p><br> <br> spending a few seconds to neatly format your code can greatly improve the legibility to future readers, making the intent of the code far clearer, and will make finding bugs easier to spot.</p>
@@ -468,43 +469,43 @@
 </ul>
 </div><div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># Good</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>day_one</span>
-<span id="cb3-3"><a href="#cb3-3"></a>day_1</span>
-<span id="cb3-4"><a href="#cb3-4"></a></span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="co"># Bad</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a>DayOne</span>
-<span id="cb3-7"><a href="#cb3-7"></a>dayone</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># Good</span></span>
+<span id="cb3-2"><a></a>day_one</span>
+<span id="cb3-3"><a></a>day_1</span>
+<span id="cb3-4"><a></a></span>
+<span id="cb3-5"><a></a><span class="co"># Bad</span></span>
+<span id="cb3-6"><a></a>DayOne</span>
+<span id="cb3-7"><a></a>dayone</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># Good</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a>day_one</span>
-<span id="cb4-3"><a href="#cb4-3"></a></span>
-<span id="cb4-4"><a href="#cb4-4"></a><span class="co"># Bad</span></span>
-<span id="cb4-5"><a href="#cb4-5"></a>first_day_of_the_month</span>
-<span id="cb4-6"><a href="#cb4-6"></a>djm1</span>
-<span id="cb4-7"><a href="#cb4-7"></a></span>
-<span id="cb4-8"><a href="#cb4-8"></a><span class="co"># Bad</span></span>
-<span id="cb4-9"><a href="#cb4-9"></a>T <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
-<span id="cb4-10"><a href="#cb4-10"></a>c <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb4-11"><a href="#cb4-11"></a>mean <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">sum</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="co"># Good</span></span>
+<span id="cb4-2"><a></a>day_one</span>
+<span id="cb4-3"><a></a></span>
+<span id="cb4-4"><a></a><span class="co"># Bad</span></span>
+<span id="cb4-5"><a></a>first_day_of_the_month</span>
+<span id="cb4-6"><a></a>djm1</span>
+<span id="cb4-7"><a></a></span>
+<span id="cb4-8"><a></a><span class="co"># Bad</span></span>
+<span id="cb4-9"><a></a>T <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
+<span id="cb4-10"><a></a>c <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb4-11"><a></a>mean <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">sum</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># Good</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>iris <span class="sc">%&gt;%</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">group_by</span>(Species) <span class="sc">%&gt;%</span></span>
-<span id="cb5-4"><a href="#cb5-4"></a>  <span class="fu">summarize_if</span>(is.numeric, mean) <span class="sc">%&gt;%</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb5-6"><a href="#cb5-6"></a>  <span class="fu">gather</span>(measure, value, <span class="sc">-</span>Species) <span class="sc">%&gt;%</span></span>
-<span id="cb5-7"><a href="#cb5-7"></a>  <span class="fu">arrange</span>(value)</span>
-<span id="cb5-8"><a href="#cb5-8"></a></span>
-<span id="cb5-9"><a href="#cb5-9"></a><span class="co"># Bad</span></span>
-<span id="cb5-10"><a href="#cb5-10"></a>iris <span class="sc">%&gt;%</span></span>
-<span id="cb5-11"><a href="#cb5-11"></a>  <span class="fu">group_by</span>(Species) <span class="sc">%&gt;%</span></span>
-<span id="cb5-12"><a href="#cb5-12"></a>  <span class="fu">summarize_all</span>(mean) <span class="sc">%&gt;%</span></span>
-<span id="cb5-13"><a href="#cb5-13"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb5-14"><a href="#cb5-14"></a>  <span class="fu">gather</span>(measure, value, <span class="sc">-</span>Species) <span class="sc">%&gt;%</span></span>
-<span id="cb5-15"><a href="#cb5-15"></a>  <span class="fu">arrange</span>(value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="co"># Good</span></span>
+<span id="cb5-2"><a></a>iris <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a></a>  <span class="fu">group_by</span>(Species) <span class="sc">%&gt;%</span></span>
+<span id="cb5-4"><a></a>  <span class="fu">summarize_if</span>(is.numeric, mean) <span class="sc">%&gt;%</span></span>
+<span id="cb5-5"><a></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb5-6"><a></a>  <span class="fu">gather</span>(measure, value, <span class="sc">-</span>Species) <span class="sc">%&gt;%</span></span>
+<span id="cb5-7"><a></a>  <span class="fu">arrange</span>(value)</span>
+<span id="cb5-8"><a></a></span>
+<span id="cb5-9"><a></a><span class="co"># Bad</span></span>
+<span id="cb5-10"><a></a>iris <span class="sc">%&gt;%</span></span>
+<span id="cb5-11"><a></a>  <span class="fu">group_by</span>(Species) <span class="sc">%&gt;%</span></span>
+<span id="cb5-12"><a></a>  <span class="fu">summarize_all</span>(mean) <span class="sc">%&gt;%</span></span>
+<span id="cb5-13"><a></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb5-14"><a></a>  <span class="fu">gather</span>(measure, value, <span class="sc">-</span>Species) <span class="sc">%&gt;%</span></span>
+<span id="cb5-15"><a></a>  <span class="fu">arrange</span>(value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -540,7 +541,7 @@
 </div><div class="column" style="width:30%;">
 <p>running lintr can be done in the console, e.g.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>lintr<span class="sc">::</span><span class="fu">lintr_dir</span>(<span class="st">"."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>lintr<span class="sc">::</span><span class="fu">lintr_dir</span>(<span class="st">"."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>or via the Addins menu</p>
 <p><img data-src="lintr_addin.png"></p>
@@ -561,8 +562,10 @@
 <li>do not repeat yourself - if you are copying and pasting your code then you should be thinking about how to write a single function to handle this repeated logic</li>
 </ul>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 <p>view slides at <a href="https://the-strategy-unit.github.io/data_science/presentations/">the-strategy-unit.github.io/data_science/presentations</a></p>
+</div>
 </div>
 </section></section>
     </div>
@@ -592,7 +595,6 @@
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': true,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -892,10 +894,9 @@
         // clear code selection
         e.clearSelection();
       });
-      function tippyHover(el, contentFn) {
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -905,8 +906,17 @@
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 

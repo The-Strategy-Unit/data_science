@@ -8,7 +8,7 @@
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.450">
+  <meta name="generator" content="quarto-1.4.549">
 
   <meta name="author" content="Tom Jemmett">
   <title>Data Science @ The Strategy Unit - Unit testing in R</title>
@@ -31,7 +31,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -223,7 +223,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -564,57 +565,57 @@
 <section id="unit-testing" class="title-slide slide level1 inverse center">
 <h1>Unit <span class="yellow">Testing</span></h1>
 <div class="fragment">
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">install.packages</span>(<span class="st">"testthat"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2"></a></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">library</span>(testthat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">install.packages</span>(<span class="st">"testthat"</span>)</span>
+<span id="cb1-2"><a></a></span>
+<span id="cb1-3"><a></a><span class="fu">library</span>(testthat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="lets-create-a-simple-function" class="slide level2">
 <h2>Let’s create a simple function…</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>my_function <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
-<span id="cb2-2"><a href="#cb2-2"></a>  </span>
-<span id="cb2-3"><a href="#cb2-3"></a>  <span class="fu">stopifnot</span>(</span>
-<span id="cb2-4"><a href="#cb2-4"></a>    <span class="st">"x must be numeric"</span> <span class="ot">=</span> <span class="fu">is.numeric</span>(x),</span>
-<span id="cb2-5"><a href="#cb2-5"></a>    <span class="st">"y must be numeric"</span> <span class="ot">=</span> <span class="fu">is.numeric</span>(y),</span>
-<span id="cb2-6"><a href="#cb2-6"></a>    <span class="st">"x must be same length as y"</span> <span class="ot">=</span> <span class="fu">length</span>(x) <span class="sc">==</span> <span class="fu">length</span>(y),</span>
-<span id="cb2-7"><a href="#cb2-7"></a>    <span class="st">"cannot divide by zero!"</span> <span class="ot">=</span> y <span class="sc">!=</span> <span class="dv">0</span></span>
-<span id="cb2-8"><a href="#cb2-8"></a>  )</span>
-<span id="cb2-9"><a href="#cb2-9"></a></span>
-<span id="cb2-10"><a href="#cb2-10"></a>  x <span class="sc">/</span> y</span>
-<span id="cb2-11"><a href="#cb2-11"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>my_function <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb2-2"><a></a>  </span>
+<span id="cb2-3"><a></a>  <span class="fu">stopifnot</span>(</span>
+<span id="cb2-4"><a></a>    <span class="st">"x must be numeric"</span> <span class="ot">=</span> <span class="fu">is.numeric</span>(x),</span>
+<span id="cb2-5"><a></a>    <span class="st">"y must be numeric"</span> <span class="ot">=</span> <span class="fu">is.numeric</span>(y),</span>
+<span id="cb2-6"><a></a>    <span class="st">"x must be same length as y"</span> <span class="ot">=</span> <span class="fu">length</span>(x) <span class="sc">==</span> <span class="fu">length</span>(y),</span>
+<span id="cb2-7"><a></a>    <span class="st">"cannot divide by zero!"</span> <span class="ot">=</span> y <span class="sc">!=</span> <span class="dv">0</span></span>
+<span id="cb2-8"><a></a>  )</span>
+<span id="cb2-9"><a></a></span>
+<span id="cb2-10"><a></a>  x <span class="sc">/</span> y</span>
+<span id="cb2-11"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="lets-create-a-simple-function-1" class="slide level2">
 <h2>Let’s create a simple function…</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3" data-code-line-numbers="1,10,11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>my_function <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
-<span id="cb3-2"><a href="#cb3-2"></a>  </span>
-<span id="cb3-3"><a href="#cb3-3"></a>  <span class="fu">stopifnot</span>(</span>
-<span id="cb3-4"><a href="#cb3-4"></a>    <span class="st">"x must be numeric"</span> <span class="ot">=</span> <span class="fu">is.numeric</span>(x),</span>
-<span id="cb3-5"><a href="#cb3-5"></a>    <span class="st">"y must be numeric"</span> <span class="ot">=</span> <span class="fu">is.numeric</span>(y),</span>
-<span id="cb3-6"><a href="#cb3-6"></a>    <span class="st">"x must be same length as y"</span> <span class="ot">=</span> <span class="fu">length</span>(x) <span class="sc">==</span> <span class="fu">length</span>(y),</span>
-<span id="cb3-7"><a href="#cb3-7"></a>    <span class="st">"cannot divide by zero!"</span> <span class="ot">=</span> y <span class="sc">!=</span> <span class="dv">0</span></span>
-<span id="cb3-8"><a href="#cb3-8"></a>  )</span>
-<span id="cb3-9"><a href="#cb3-9"></a></span>
-<span id="cb3-10"><a href="#cb3-10"></a>  x <span class="sc">/</span> y</span>
-<span id="cb3-11"><a href="#cb3-11"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3" data-code-line-numbers="1,10,11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>my_function <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb3-2"><a></a>  </span>
+<span id="cb3-3"><a></a>  <span class="fu">stopifnot</span>(</span>
+<span id="cb3-4"><a></a>    <span class="st">"x must be numeric"</span> <span class="ot">=</span> <span class="fu">is.numeric</span>(x),</span>
+<span id="cb3-5"><a></a>    <span class="st">"y must be numeric"</span> <span class="ot">=</span> <span class="fu">is.numeric</span>(y),</span>
+<span id="cb3-6"><a></a>    <span class="st">"x must be same length as y"</span> <span class="ot">=</span> <span class="fu">length</span>(x) <span class="sc">==</span> <span class="fu">length</span>(y),</span>
+<span id="cb3-7"><a></a>    <span class="st">"cannot divide by zero!"</span> <span class="ot">=</span> y <span class="sc">!=</span> <span class="dv">0</span></span>
+<span id="cb3-8"><a></a>  )</span>
+<span id="cb3-9"><a></a></span>
+<span id="cb3-10"><a></a>  x <span class="sc">/</span> y</span>
+<span id="cb3-11"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="lets-create-a-simple-function-2" class="slide level2">
 <h2>Let’s create a simple function…</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4" data-code-line-numbers="3-8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>my_function <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
-<span id="cb4-2"><a href="#cb4-2"></a>  </span>
-<span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">stopifnot</span>(</span>
-<span id="cb4-4"><a href="#cb4-4"></a>    <span class="st">"x must be numeric"</span> <span class="ot">=</span> <span class="fu">is.numeric</span>(x),</span>
-<span id="cb4-5"><a href="#cb4-5"></a>    <span class="st">"y must be numeric"</span> <span class="ot">=</span> <span class="fu">is.numeric</span>(y),</span>
-<span id="cb4-6"><a href="#cb4-6"></a>    <span class="st">"x must be same length as y"</span> <span class="ot">=</span> <span class="fu">length</span>(x) <span class="sc">==</span> <span class="fu">length</span>(y),</span>
-<span id="cb4-7"><a href="#cb4-7"></a>    <span class="st">"cannot divide by zero!"</span> <span class="ot">=</span> y <span class="sc">!=</span> <span class="dv">0</span></span>
-<span id="cb4-8"><a href="#cb4-8"></a>  )</span>
-<span id="cb4-9"><a href="#cb4-9"></a></span>
-<span id="cb4-10"><a href="#cb4-10"></a>  x <span class="sc">/</span> y</span>
-<span id="cb4-11"><a href="#cb4-11"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4" data-code-line-numbers="3-8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>my_function <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb4-2"><a></a>  </span>
+<span id="cb4-3"><a></a>  <span class="fu">stopifnot</span>(</span>
+<span id="cb4-4"><a></a>    <span class="st">"x must be numeric"</span> <span class="ot">=</span> <span class="fu">is.numeric</span>(x),</span>
+<span id="cb4-5"><a></a>    <span class="st">"y must be numeric"</span> <span class="ot">=</span> <span class="fu">is.numeric</span>(y),</span>
+<span id="cb4-6"><a></a>    <span class="st">"x must be same length as y"</span> <span class="ot">=</span> <span class="fu">length</span>(x) <span class="sc">==</span> <span class="fu">length</span>(y),</span>
+<span id="cb4-7"><a></a>    <span class="st">"cannot divide by zero!"</span> <span class="ot">=</span> y <span class="sc">!=</span> <span class="dv">0</span></span>
+<span id="cb4-8"><a></a>  )</span>
+<span id="cb4-9"><a></a></span>
+<span id="cb4-10"><a></a>  x <span class="sc">/</span> y</span>
+<span id="cb4-11"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="footer">
 <p><a href="https://www.r-bloggers.com/2018/07/the-ten-rules-of-defensive-programming-in-r/">The Ten Rules of Defensive Programming in R</a></p>
@@ -623,139 +624,139 @@
 <section id="and-create-our-first-test" class="slide level2">
 <h2>… and create our first test</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">test_that</span>(<span class="st">"my_function correctly divides values"</span>, {</span>
-<span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">expect_equal</span>(</span>
-<span id="cb5-3"><a href="#cb5-3"></a>    <span class="fu">my_function</span>(<span class="dv">4</span>, <span class="dv">2</span>),</span>
-<span id="cb5-4"><a href="#cb5-4"></a>    <span class="dv">2</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a>  )</span>
-<span id="cb5-6"><a href="#cb5-6"></a>  <span class="fu">expect_equal</span>(</span>
-<span id="cb5-7"><a href="#cb5-7"></a>    <span class="fu">my_function</span>(<span class="dv">1</span>, <span class="dv">4</span>),</span>
-<span id="cb5-8"><a href="#cb5-8"></a>    <span class="fl">0.25</span></span>
-<span id="cb5-9"><a href="#cb5-9"></a>  )</span>
-<span id="cb5-10"><a href="#cb5-10"></a>  <span class="fu">expect_equal</span>(</span>
-<span id="cb5-11"><a href="#cb5-11"></a>    <span class="fu">my_function</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)),</span>
-<span id="cb5-12"><a href="#cb5-12"></a>    <span class="fu">c</span>(<span class="dv">2</span>, <span class="fl">0.25</span>)</span>
-<span id="cb5-13"><a href="#cb5-13"></a>  )</span>
-<span id="cb5-14"><a href="#cb5-14"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">test_that</span>(<span class="st">"my_function correctly divides values"</span>, {</span>
+<span id="cb5-2"><a></a>  <span class="fu">expect_equal</span>(</span>
+<span id="cb5-3"><a></a>    <span class="fu">my_function</span>(<span class="dv">4</span>, <span class="dv">2</span>),</span>
+<span id="cb5-4"><a></a>    <span class="dv">2</span></span>
+<span id="cb5-5"><a></a>  )</span>
+<span id="cb5-6"><a></a>  <span class="fu">expect_equal</span>(</span>
+<span id="cb5-7"><a></a>    <span class="fu">my_function</span>(<span class="dv">1</span>, <span class="dv">4</span>),</span>
+<span id="cb5-8"><a></a>    <span class="fl">0.25</span></span>
+<span id="cb5-9"><a></a>  )</span>
+<span id="cb5-10"><a></a>  <span class="fu">expect_equal</span>(</span>
+<span id="cb5-11"><a></a>    <span class="fu">my_function</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)),</span>
+<span id="cb5-12"><a></a>    <span class="fu">c</span>(<span class="dv">2</span>, <span class="fl">0.25</span>)</span>
+<span id="cb5-13"><a></a>  )</span>
+<span id="cb5-14"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="and-create-our-first-test-1" class="slide level2">
 <h2>… and create our first test</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6" data-code-line-numbers="1,14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">test_that</span>(<span class="st">"my_function correctly divides values"</span>, {</span>
-<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">expect_equal</span>(</span>
-<span id="cb6-3"><a href="#cb6-3"></a>    <span class="fu">my_function</span>(<span class="dv">4</span>, <span class="dv">2</span>),</span>
-<span id="cb6-4"><a href="#cb6-4"></a>    <span class="dv">2</span></span>
-<span id="cb6-5"><a href="#cb6-5"></a>  )</span>
-<span id="cb6-6"><a href="#cb6-6"></a>  <span class="fu">expect_equal</span>(</span>
-<span id="cb6-7"><a href="#cb6-7"></a>    <span class="fu">my_function</span>(<span class="dv">1</span>, <span class="dv">4</span>),</span>
-<span id="cb6-8"><a href="#cb6-8"></a>    <span class="fl">0.25</span></span>
-<span id="cb6-9"><a href="#cb6-9"></a>  )</span>
-<span id="cb6-10"><a href="#cb6-10"></a>  <span class="fu">expect_equal</span>(</span>
-<span id="cb6-11"><a href="#cb6-11"></a>    <span class="fu">my_function</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)),</span>
-<span id="cb6-12"><a href="#cb6-12"></a>    <span class="fu">c</span>(<span class="dv">2</span>, <span class="fl">0.25</span>)</span>
-<span id="cb6-13"><a href="#cb6-13"></a>  )</span>
-<span id="cb6-14"><a href="#cb6-14"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6" data-code-line-numbers="1,14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">test_that</span>(<span class="st">"my_function correctly divides values"</span>, {</span>
+<span id="cb6-2"><a></a>  <span class="fu">expect_equal</span>(</span>
+<span id="cb6-3"><a></a>    <span class="fu">my_function</span>(<span class="dv">4</span>, <span class="dv">2</span>),</span>
+<span id="cb6-4"><a></a>    <span class="dv">2</span></span>
+<span id="cb6-5"><a></a>  )</span>
+<span id="cb6-6"><a></a>  <span class="fu">expect_equal</span>(</span>
+<span id="cb6-7"><a></a>    <span class="fu">my_function</span>(<span class="dv">1</span>, <span class="dv">4</span>),</span>
+<span id="cb6-8"><a></a>    <span class="fl">0.25</span></span>
+<span id="cb6-9"><a></a>  )</span>
+<span id="cb6-10"><a></a>  <span class="fu">expect_equal</span>(</span>
+<span id="cb6-11"><a></a>    <span class="fu">my_function</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)),</span>
+<span id="cb6-12"><a></a>    <span class="fu">c</span>(<span class="dv">2</span>, <span class="fl">0.25</span>)</span>
+<span id="cb6-13"><a></a>  )</span>
+<span id="cb6-14"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="and-create-our-first-test-2" class="slide level2">
 <h2>… and create our first test</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7" data-code-line-numbers="3,7,11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">test_that</span>(<span class="st">"my_function correctly divides values"</span>, {</span>
-<span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">expect_equal</span>(</span>
-<span id="cb7-3"><a href="#cb7-3"></a>    <span class="fu">my_function</span>(<span class="dv">4</span>, <span class="dv">2</span>),</span>
-<span id="cb7-4"><a href="#cb7-4"></a>    <span class="dv">2</span></span>
-<span id="cb7-5"><a href="#cb7-5"></a>  )</span>
-<span id="cb7-6"><a href="#cb7-6"></a>  <span class="fu">expect_equal</span>(</span>
-<span id="cb7-7"><a href="#cb7-7"></a>    <span class="fu">my_function</span>(<span class="dv">1</span>, <span class="dv">4</span>),</span>
-<span id="cb7-8"><a href="#cb7-8"></a>    <span class="fl">0.25</span></span>
-<span id="cb7-9"><a href="#cb7-9"></a>  )</span>
-<span id="cb7-10"><a href="#cb7-10"></a>  <span class="fu">expect_equal</span>(</span>
-<span id="cb7-11"><a href="#cb7-11"></a>    <span class="fu">my_function</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)),</span>
-<span id="cb7-12"><a href="#cb7-12"></a>    <span class="fu">c</span>(<span class="dv">2</span>, <span class="fl">0.25</span>)</span>
-<span id="cb7-13"><a href="#cb7-13"></a>  )</span>
-<span id="cb7-14"><a href="#cb7-14"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7" data-code-line-numbers="3,7,11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">test_that</span>(<span class="st">"my_function correctly divides values"</span>, {</span>
+<span id="cb7-2"><a></a>  <span class="fu">expect_equal</span>(</span>
+<span id="cb7-3"><a></a>    <span class="fu">my_function</span>(<span class="dv">4</span>, <span class="dv">2</span>),</span>
+<span id="cb7-4"><a></a>    <span class="dv">2</span></span>
+<span id="cb7-5"><a></a>  )</span>
+<span id="cb7-6"><a></a>  <span class="fu">expect_equal</span>(</span>
+<span id="cb7-7"><a></a>    <span class="fu">my_function</span>(<span class="dv">1</span>, <span class="dv">4</span>),</span>
+<span id="cb7-8"><a></a>    <span class="fl">0.25</span></span>
+<span id="cb7-9"><a></a>  )</span>
+<span id="cb7-10"><a></a>  <span class="fu">expect_equal</span>(</span>
+<span id="cb7-11"><a></a>    <span class="fu">my_function</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)),</span>
+<span id="cb7-12"><a></a>    <span class="fu">c</span>(<span class="dv">2</span>, <span class="fl">0.25</span>)</span>
+<span id="cb7-13"><a></a>  )</span>
+<span id="cb7-14"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="and-create-our-first-test-3" class="slide level2">
 <h2>… and create our first test</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8" data-code-line-numbers="4,8,12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">test_that</span>(<span class="st">"my_function correctly divides values"</span>, {</span>
-<span id="cb8-2"><a href="#cb8-2"></a>  <span class="fu">expect_equal</span>(</span>
-<span id="cb8-3"><a href="#cb8-3"></a>    <span class="fu">my_function</span>(<span class="dv">4</span>, <span class="dv">2</span>),</span>
-<span id="cb8-4"><a href="#cb8-4"></a>    <span class="dv">2</span></span>
-<span id="cb8-5"><a href="#cb8-5"></a>  )</span>
-<span id="cb8-6"><a href="#cb8-6"></a>  <span class="fu">expect_equal</span>(</span>
-<span id="cb8-7"><a href="#cb8-7"></a>    <span class="fu">my_function</span>(<span class="dv">1</span>, <span class="dv">4</span>),</span>
-<span id="cb8-8"><a href="#cb8-8"></a>    <span class="fl">0.25</span></span>
-<span id="cb8-9"><a href="#cb8-9"></a>  )</span>
-<span id="cb8-10"><a href="#cb8-10"></a>  <span class="fu">expect_equal</span>(</span>
-<span id="cb8-11"><a href="#cb8-11"></a>    <span class="fu">my_function</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)),</span>
-<span id="cb8-12"><a href="#cb8-12"></a>    <span class="fu">c</span>(<span class="dv">2</span>, <span class="fl">0.25</span>)</span>
-<span id="cb8-13"><a href="#cb8-13"></a>  )</span>
-<span id="cb8-14"><a href="#cb8-14"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8" data-code-line-numbers="4,8,12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">test_that</span>(<span class="st">"my_function correctly divides values"</span>, {</span>
+<span id="cb8-2"><a></a>  <span class="fu">expect_equal</span>(</span>
+<span id="cb8-3"><a></a>    <span class="fu">my_function</span>(<span class="dv">4</span>, <span class="dv">2</span>),</span>
+<span id="cb8-4"><a></a>    <span class="dv">2</span></span>
+<span id="cb8-5"><a></a>  )</span>
+<span id="cb8-6"><a></a>  <span class="fu">expect_equal</span>(</span>
+<span id="cb8-7"><a></a>    <span class="fu">my_function</span>(<span class="dv">1</span>, <span class="dv">4</span>),</span>
+<span id="cb8-8"><a></a>    <span class="fl">0.25</span></span>
+<span id="cb8-9"><a></a>  )</span>
+<span id="cb8-10"><a></a>  <span class="fu">expect_equal</span>(</span>
+<span id="cb8-11"><a></a>    <span class="fu">my_function</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)),</span>
+<span id="cb8-12"><a></a>    <span class="fu">c</span>(<span class="dv">2</span>, <span class="fl">0.25</span>)</span>
+<span id="cb8-13"><a></a>  )</span>
+<span id="cb8-14"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="and-create-our-first-test-4" class="slide level2">
 <h2>… and create our first test</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9" data-code-line-numbers="2,5,6,9,10,13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">test_that</span>(<span class="st">"my_function correctly divides values"</span>, {</span>
-<span id="cb9-2"><a href="#cb9-2"></a>  <span class="fu">expect_equal</span>(</span>
-<span id="cb9-3"><a href="#cb9-3"></a>    <span class="fu">my_function</span>(<span class="dv">4</span>, <span class="dv">2</span>),</span>
-<span id="cb9-4"><a href="#cb9-4"></a>    <span class="dv">2</span></span>
-<span id="cb9-5"><a href="#cb9-5"></a>  )</span>
-<span id="cb9-6"><a href="#cb9-6"></a>  <span class="fu">expect_equal</span>(</span>
-<span id="cb9-7"><a href="#cb9-7"></a>    <span class="fu">my_function</span>(<span class="dv">1</span>, <span class="dv">4</span>),</span>
-<span id="cb9-8"><a href="#cb9-8"></a>    <span class="fl">0.25</span></span>
-<span id="cb9-9"><a href="#cb9-9"></a>  )</span>
-<span id="cb9-10"><a href="#cb9-10"></a>  <span class="fu">expect_equal</span>(</span>
-<span id="cb9-11"><a href="#cb9-11"></a>    <span class="fu">my_function</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)),</span>
-<span id="cb9-12"><a href="#cb9-12"></a>    <span class="fu">c</span>(<span class="dv">2</span>, <span class="fl">0.25</span>)</span>
-<span id="cb9-13"><a href="#cb9-13"></a>  )</span>
-<span id="cb9-14"><a href="#cb9-14"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9" data-code-line-numbers="2,5,6,9,10,13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">test_that</span>(<span class="st">"my_function correctly divides values"</span>, {</span>
+<span id="cb9-2"><a></a>  <span class="fu">expect_equal</span>(</span>
+<span id="cb9-3"><a></a>    <span class="fu">my_function</span>(<span class="dv">4</span>, <span class="dv">2</span>),</span>
+<span id="cb9-4"><a></a>    <span class="dv">2</span></span>
+<span id="cb9-5"><a></a>  )</span>
+<span id="cb9-6"><a></a>  <span class="fu">expect_equal</span>(</span>
+<span id="cb9-7"><a></a>    <span class="fu">my_function</span>(<span class="dv">1</span>, <span class="dv">4</span>),</span>
+<span id="cb9-8"><a></a>    <span class="fl">0.25</span></span>
+<span id="cb9-9"><a></a>  )</span>
+<span id="cb9-10"><a></a>  <span class="fu">expect_equal</span>(</span>
+<span id="cb9-11"><a></a>    <span class="fu">my_function</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)),</span>
+<span id="cb9-12"><a></a>    <span class="fu">c</span>(<span class="dv">2</span>, <span class="fl">0.25</span>)</span>
+<span id="cb9-13"><a></a>  )</span>
+<span id="cb9-14"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="and-create-our-first-test-5" class="slide level2">
 <h2>… and create our first test</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">test_that</span>(<span class="st">"my_function correctly divides values"</span>, {</span>
-<span id="cb10-2"><a href="#cb10-2"></a>  <span class="fu">expect_equal</span>(</span>
-<span id="cb10-3"><a href="#cb10-3"></a>    <span class="fu">my_function</span>(<span class="dv">4</span>, <span class="dv">2</span>),</span>
-<span id="cb10-4"><a href="#cb10-4"></a>    <span class="dv">2</span></span>
-<span id="cb10-5"><a href="#cb10-5"></a>  )</span>
-<span id="cb10-6"><a href="#cb10-6"></a>  <span class="fu">expect_equal</span>(</span>
-<span id="cb10-7"><a href="#cb10-7"></a>    <span class="fu">my_function</span>(<span class="dv">1</span>, <span class="dv">4</span>),</span>
-<span id="cb10-8"><a href="#cb10-8"></a>    <span class="fl">0.25</span></span>
-<span id="cb10-9"><a href="#cb10-9"></a>  )</span>
-<span id="cb10-10"><a href="#cb10-10"></a>  <span class="fu">expect_equal</span>(</span>
-<span id="cb10-11"><a href="#cb10-11"></a>    <span class="fu">my_function</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)),</span>
-<span id="cb10-12"><a href="#cb10-12"></a>    <span class="fu">c</span>(<span class="dv">2</span>, <span class="fl">0.25</span>)</span>
-<span id="cb10-13"><a href="#cb10-13"></a>  )</span>
-<span id="cb10-14"><a href="#cb10-14"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">test_that</span>(<span class="st">"my_function correctly divides values"</span>, {</span>
+<span id="cb10-2"><a></a>  <span class="fu">expect_equal</span>(</span>
+<span id="cb10-3"><a></a>    <span class="fu">my_function</span>(<span class="dv">4</span>, <span class="dv">2</span>),</span>
+<span id="cb10-4"><a></a>    <span class="dv">2</span></span>
+<span id="cb10-5"><a></a>  )</span>
+<span id="cb10-6"><a></a>  <span class="fu">expect_equal</span>(</span>
+<span id="cb10-7"><a></a>    <span class="fu">my_function</span>(<span class="dv">1</span>, <span class="dv">4</span>),</span>
+<span id="cb10-8"><a></a>    <span class="fl">0.25</span></span>
+<span id="cb10-9"><a></a>  )</span>
+<span id="cb10-10"><a></a>  <span class="fu">expect_equal</span>(</span>
+<span id="cb10-11"><a></a>    <span class="fu">my_function</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)),</span>
+<span id="cb10-12"><a></a>    <span class="fu">c</span>(<span class="dv">2</span>, <span class="fl">0.25</span>)</span>
+<span id="cb10-13"><a></a>  )</span>
+<span id="cb10-14"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Test passed 🥇</code></pre>
+<pre><code>Test passed 🥳</code></pre>
 </div>
 </div>
 </section>
 <section id="other-expect_-functions" class="slide level2">
 <h2>other <code>expect_*()</code> functions…</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">test_that</span>(<span class="st">"my_function correctly divides values"</span>, {</span>
-<span id="cb12-2"><a href="#cb12-2"></a>  <span class="fu">expect_lt</span>(</span>
-<span id="cb12-3"><a href="#cb12-3"></a>    <span class="fu">my_function</span>(<span class="dv">4</span>, <span class="dv">2</span>),</span>
-<span id="cb12-4"><a href="#cb12-4"></a>    <span class="dv">10</span></span>
-<span id="cb12-5"><a href="#cb12-5"></a>  )</span>
-<span id="cb12-6"><a href="#cb12-6"></a>  <span class="fu">expect_gt</span>(</span>
-<span id="cb12-7"><a href="#cb12-7"></a>    <span class="fu">my_function</span>(<span class="dv">1</span>, <span class="dv">4</span>),</span>
-<span id="cb12-8"><a href="#cb12-8"></a>    <span class="fl">0.2</span></span>
-<span id="cb12-9"><a href="#cb12-9"></a>  )</span>
-<span id="cb12-10"><a href="#cb12-10"></a>  <span class="fu">expect_length</span>(</span>
-<span id="cb12-11"><a href="#cb12-11"></a>    <span class="fu">my_function</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)),</span>
-<span id="cb12-12"><a href="#cb12-12"></a>    <span class="dv">2</span></span>
-<span id="cb12-13"><a href="#cb12-13"></a>  )</span>
-<span id="cb12-14"><a href="#cb12-14"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">test_that</span>(<span class="st">"my_function correctly divides values"</span>, {</span>
+<span id="cb12-2"><a></a>  <span class="fu">expect_lt</span>(</span>
+<span id="cb12-3"><a></a>    <span class="fu">my_function</span>(<span class="dv">4</span>, <span class="dv">2</span>),</span>
+<span id="cb12-4"><a></a>    <span class="dv">10</span></span>
+<span id="cb12-5"><a></a>  )</span>
+<span id="cb12-6"><a></a>  <span class="fu">expect_gt</span>(</span>
+<span id="cb12-7"><a></a>    <span class="fu">my_function</span>(<span class="dv">1</span>, <span class="dv">4</span>),</span>
+<span id="cb12-8"><a></a>    <span class="fl">0.2</span></span>
+<span id="cb12-9"><a></a>  )</span>
+<span id="cb12-10"><a></a>  <span class="fu">expect_length</span>(</span>
+<span id="cb12-11"><a></a>    <span class="fu">my_function</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)),</span>
+<span id="cb12-12"><a></a>    <span class="dv">2</span></span>
+<span id="cb12-13"><a></a>  )</span>
+<span id="cb12-14"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Test passed 😸</code></pre>
+<pre><code>Test passed 🌈</code></pre>
 </div>
 </div>
 <div class="footer">
@@ -769,18 +770,18 @@
 
 </div><div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">test_that</span>(<span class="st">"my_function works"</span>, {</span>
-<span id="cb14-2"><a href="#cb14-2"></a>  <span class="co"># arrange</span></span>
-<span id="cb14-3"><a href="#cb14-3"></a>  <span class="co">#  </span></span>
-<span id="cb14-4"><a href="#cb14-4"></a>  <span class="co">#</span></span>
-<span id="cb14-5"><a href="#cb14-5"></a>  <span class="co">#</span></span>
-<span id="cb14-6"><a href="#cb14-6"></a></span>
-<span id="cb14-7"><a href="#cb14-7"></a>  <span class="co"># act</span></span>
-<span id="cb14-8"><a href="#cb14-8"></a>  <span class="co">#</span></span>
-<span id="cb14-9"><a href="#cb14-9"></a></span>
-<span id="cb14-10"><a href="#cb14-10"></a>  <span class="co"># assert</span></span>
-<span id="cb14-11"><a href="#cb14-11"></a>  <span class="co">#</span></span>
-<span id="cb14-12"><a href="#cb14-12"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">test_that</span>(<span class="st">"my_function works"</span>, {</span>
+<span id="cb14-2"><a></a>  <span class="co"># arrange</span></span>
+<span id="cb14-3"><a></a>  <span class="co">#  </span></span>
+<span id="cb14-4"><a></a>  <span class="co">#</span></span>
+<span id="cb14-5"><a></a>  <span class="co">#</span></span>
+<span id="cb14-6"><a></a></span>
+<span id="cb14-7"><a></a>  <span class="co"># act</span></span>
+<span id="cb14-8"><a></a>  <span class="co">#</span></span>
+<span id="cb14-9"><a></a></span>
+<span id="cb14-10"><a></a>  <span class="co"># assert</span></span>
+<span id="cb14-11"><a></a>  <span class="co">#</span></span>
+<span id="cb14-12"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -800,18 +801,18 @@
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15" data-code-line-numbers="2-5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">test_that</span>(<span class="st">"my_function works"</span>, {</span>
-<span id="cb15-2"><a href="#cb15-2"></a>  <span class="co"># arrange</span></span>
-<span id="cb15-3"><a href="#cb15-3"></a>  x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb15-4"><a href="#cb15-4"></a>  y <span class="ot">&lt;-</span> <span class="dv">7</span></span>
-<span id="cb15-5"><a href="#cb15-5"></a>  expected <span class="ot">&lt;-</span> <span class="fl">0.714285</span></span>
-<span id="cb15-6"><a href="#cb15-6"></a></span>
-<span id="cb15-7"><a href="#cb15-7"></a>  <span class="co"># act</span></span>
-<span id="cb15-8"><a href="#cb15-8"></a>  <span class="co">#</span></span>
-<span id="cb15-9"><a href="#cb15-9"></a></span>
-<span id="cb15-10"><a href="#cb15-10"></a>  <span class="co"># assert</span></span>
-<span id="cb15-11"><a href="#cb15-11"></a>  <span class="co">#</span></span>
-<span id="cb15-12"><a href="#cb15-12"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15" data-code-line-numbers="2-5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">test_that</span>(<span class="st">"my_function works"</span>, {</span>
+<span id="cb15-2"><a></a>  <span class="co"># arrange</span></span>
+<span id="cb15-3"><a></a>  x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb15-4"><a></a>  y <span class="ot">&lt;-</span> <span class="dv">7</span></span>
+<span id="cb15-5"><a></a>  expected <span class="ot">&lt;-</span> <span class="fl">0.714285</span></span>
+<span id="cb15-6"><a></a></span>
+<span id="cb15-7"><a></a>  <span class="co"># act</span></span>
+<span id="cb15-8"><a></a>  <span class="co">#</span></span>
+<span id="cb15-9"><a></a></span>
+<span id="cb15-10"><a></a>  <span class="co"># assert</span></span>
+<span id="cb15-11"><a></a>  <span class="co">#</span></span>
+<span id="cb15-12"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -824,18 +825,18 @@
 <p>we <span class="yellow"><strong>act</strong></span> by calling the function</p>
 </div><div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16" data-code-line-numbers="7-8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">test_that</span>(<span class="st">"my_function works"</span>, {</span>
-<span id="cb16-2"><a href="#cb16-2"></a>  <span class="co"># arrange</span></span>
-<span id="cb16-3"><a href="#cb16-3"></a>  x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb16-4"><a href="#cb16-4"></a>  y <span class="ot">&lt;-</span> <span class="dv">7</span></span>
-<span id="cb16-5"><a href="#cb16-5"></a>  expected <span class="ot">&lt;-</span> <span class="fl">0.714285</span></span>
-<span id="cb16-6"><a href="#cb16-6"></a></span>
-<span id="cb16-7"><a href="#cb16-7"></a>  <span class="co"># act</span></span>
-<span id="cb16-8"><a href="#cb16-8"></a>  actual <span class="ot">&lt;-</span> <span class="fu">my_function</span>(x, y)</span>
-<span id="cb16-9"><a href="#cb16-9"></a></span>
-<span id="cb16-10"><a href="#cb16-10"></a>  <span class="co"># assert</span></span>
-<span id="cb16-11"><a href="#cb16-11"></a>  <span class="co">#</span></span>
-<span id="cb16-12"><a href="#cb16-12"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16" data-code-line-numbers="7-8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">test_that</span>(<span class="st">"my_function works"</span>, {</span>
+<span id="cb16-2"><a></a>  <span class="co"># arrange</span></span>
+<span id="cb16-3"><a></a>  x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb16-4"><a></a>  y <span class="ot">&lt;-</span> <span class="dv">7</span></span>
+<span id="cb16-5"><a></a>  expected <span class="ot">&lt;-</span> <span class="fl">0.714285</span></span>
+<span id="cb16-6"><a></a></span>
+<span id="cb16-7"><a></a>  <span class="co"># act</span></span>
+<span id="cb16-8"><a></a>  actual <span class="ot">&lt;-</span> <span class="fu">my_function</span>(x, y)</span>
+<span id="cb16-9"><a></a></span>
+<span id="cb16-10"><a></a>  <span class="co"># assert</span></span>
+<span id="cb16-11"><a></a>  <span class="co">#</span></span>
+<span id="cb16-12"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -849,18 +850,18 @@
 <p>we <span class="yellow"><strong>assert</strong></span> that the <strong>actual</strong> results match our <strong>expected</strong> results</p>
 </div><div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17" data-code-line-numbers="10-11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">test_that</span>(<span class="st">"my_function works"</span>, {</span>
-<span id="cb17-2"><a href="#cb17-2"></a>  <span class="co"># arrange</span></span>
-<span id="cb17-3"><a href="#cb17-3"></a>  x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb17-4"><a href="#cb17-4"></a>  y <span class="ot">&lt;-</span> <span class="dv">7</span></span>
-<span id="cb17-5"><a href="#cb17-5"></a>  expected <span class="ot">&lt;-</span> <span class="fl">0.714285</span></span>
-<span id="cb17-6"><a href="#cb17-6"></a></span>
-<span id="cb17-7"><a href="#cb17-7"></a>  <span class="co"># act</span></span>
-<span id="cb17-8"><a href="#cb17-8"></a>  actual <span class="ot">&lt;-</span> <span class="fu">my_function</span>(x, y)</span>
-<span id="cb17-9"><a href="#cb17-9"></a></span>
-<span id="cb17-10"><a href="#cb17-10"></a>  <span class="co"># assert</span></span>
-<span id="cb17-11"><a href="#cb17-11"></a>  <span class="fu">expect_equal</span>(actual, expected)</span>
-<span id="cb17-12"><a href="#cb17-12"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17" data-code-line-numbers="10-11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">test_that</span>(<span class="st">"my_function works"</span>, {</span>
+<span id="cb17-2"><a></a>  <span class="co"># arrange</span></span>
+<span id="cb17-3"><a></a>  x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb17-4"><a></a>  y <span class="ot">&lt;-</span> <span class="dv">7</span></span>
+<span id="cb17-5"><a></a>  expected <span class="ot">&lt;-</span> <span class="fl">0.714285</span></span>
+<span id="cb17-6"><a></a></span>
+<span id="cb17-7"><a></a>  <span class="co"># act</span></span>
+<span id="cb17-8"><a></a>  actual <span class="ot">&lt;-</span> <span class="fu">my_function</span>(x, y)</span>
+<span id="cb17-9"><a></a></span>
+<span id="cb17-10"><a></a>  <span class="co"># assert</span></span>
+<span id="cb17-11"><a></a>  <span class="fu">expect_equal</span>(actual, expected)</span>
+<span id="cb17-12"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -868,18 +869,18 @@
 <section id="our-test-failed" class="slide level2">
 <h2>Our test failed!?! 😢</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">test_that</span>(<span class="st">"my_function works"</span>, {</span>
-<span id="cb18-2"><a href="#cb18-2"></a>  <span class="co"># arrange</span></span>
-<span id="cb18-3"><a href="#cb18-3"></a>  x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb18-4"><a href="#cb18-4"></a>  y <span class="ot">&lt;-</span> <span class="dv">7</span></span>
-<span id="cb18-5"><a href="#cb18-5"></a>  expected <span class="ot">&lt;-</span> <span class="fl">0.714285</span></span>
-<span id="cb18-6"><a href="#cb18-6"></a></span>
-<span id="cb18-7"><a href="#cb18-7"></a>  <span class="co"># act</span></span>
-<span id="cb18-8"><a href="#cb18-8"></a>  actual <span class="ot">&lt;-</span> <span class="fu">my_function</span>(x, y)</span>
-<span id="cb18-9"><a href="#cb18-9"></a></span>
-<span id="cb18-10"><a href="#cb18-10"></a>  <span class="co"># assert</span></span>
-<span id="cb18-11"><a href="#cb18-11"></a>  <span class="fu">expect_equal</span>(actual, expected)</span>
-<span id="cb18-12"><a href="#cb18-12"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">test_that</span>(<span class="st">"my_function works"</span>, {</span>
+<span id="cb18-2"><a></a>  <span class="co"># arrange</span></span>
+<span id="cb18-3"><a></a>  x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb18-4"><a></a>  y <span class="ot">&lt;-</span> <span class="dv">7</span></span>
+<span id="cb18-5"><a></a>  expected <span class="ot">&lt;-</span> <span class="fl">0.714285</span></span>
+<span id="cb18-6"><a></a></span>
+<span id="cb18-7"><a></a>  <span class="co"># act</span></span>
+<span id="cb18-8"><a></a>  actual <span class="ot">&lt;-</span> <span class="fu">my_function</span>(x, y)</span>
+<span id="cb18-9"><a></a></span>
+<span id="cb18-10"><a></a>  <span class="co"># assert</span></span>
+<span id="cb18-11"><a></a>  <span class="fu">expect_equal</span>(actual, expected)</span>
+<span id="cb18-12"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>── Failure: my_function works ──────────────────────────────────────────────────
 `actual` not equal to `expected`.
@@ -895,20 +896,20 @@
 <section id="tolerance-to-the-rescue" class="slide level2">
 <h2>Tolerance to the rescue 🙂</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">test_that</span>(<span class="st">"my_function works"</span>, {</span>
-<span id="cb21-2"><a href="#cb21-2"></a>  <span class="co"># arrange</span></span>
-<span id="cb21-3"><a href="#cb21-3"></a>  x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb21-4"><a href="#cb21-4"></a>  y <span class="ot">&lt;-</span> <span class="dv">7</span></span>
-<span id="cb21-5"><a href="#cb21-5"></a>  expected <span class="ot">&lt;-</span> <span class="fl">0.714285</span></span>
-<span id="cb21-6"><a href="#cb21-6"></a></span>
-<span id="cb21-7"><a href="#cb21-7"></a>  <span class="co"># act</span></span>
-<span id="cb21-8"><a href="#cb21-8"></a>  actual <span class="ot">&lt;-</span> <span class="fu">my_function</span>(x, y)</span>
-<span id="cb21-9"><a href="#cb21-9"></a></span>
-<span id="cb21-10"><a href="#cb21-10"></a>  <span class="co"># assert</span></span>
-<span id="cb21-11"><a href="#cb21-11"></a>  <span class="fu">expect_equal</span>(actual, expected, <span class="at">tolerance =</span> <span class="fl">1e-6</span>)</span>
-<span id="cb21-12"><a href="#cb21-12"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">test_that</span>(<span class="st">"my_function works"</span>, {</span>
+<span id="cb21-2"><a></a>  <span class="co"># arrange</span></span>
+<span id="cb21-3"><a></a>  x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb21-4"><a></a>  y <span class="ot">&lt;-</span> <span class="dv">7</span></span>
+<span id="cb21-5"><a></a>  expected <span class="ot">&lt;-</span> <span class="fl">0.714285</span></span>
+<span id="cb21-6"><a></a></span>
+<span id="cb21-7"><a></a>  <span class="co"># act</span></span>
+<span id="cb21-8"><a></a>  actual <span class="ot">&lt;-</span> <span class="fu">my_function</span>(x, y)</span>
+<span id="cb21-9"><a></a></span>
+<span id="cb21-10"><a></a>  <span class="co"># assert</span></span>
+<span id="cb21-11"><a></a>  <span class="fu">expect_equal</span>(actual, expected, <span class="at">tolerance =</span> <span class="fl">1e-6</span>)</span>
+<span id="cb21-12"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Test passed 🎊</code></pre>
+<pre><code>Test passed 🥳</code></pre>
 </div>
 </div>
 <div class="fragment">
@@ -925,14 +926,14 @@
 <p><span class="yellow">we expect errors</span></p>
 </div><div class="column" style="width:60%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">test_that</span>(<span class="st">"my_function works"</span>, {</span>
-<span id="cb23-2"><a href="#cb23-2"></a>  <span class="fu">expect_error</span>(<span class="fu">my_function</span>(<span class="dv">5</span>, <span class="dv">0</span>))</span>
-<span id="cb23-3"><a href="#cb23-3"></a>  <span class="fu">expect_error</span>(<span class="fu">my_function</span>(<span class="st">"a"</span>, <span class="dv">3</span>))</span>
-<span id="cb23-4"><a href="#cb23-4"></a>  <span class="fu">expect_error</span>(<span class="fu">my_function</span>(<span class="dv">3</span>, <span class="st">"a"</span>))</span>
-<span id="cb23-5"><a href="#cb23-5"></a>  <span class="fu">expect_error</span>(<span class="fu">my_function</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">4</span>))</span>
-<span id="cb23-6"><a href="#cb23-6"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">test_that</span>(<span class="st">"my_function works"</span>, {</span>
+<span id="cb23-2"><a></a>  <span class="fu">expect_error</span>(<span class="fu">my_function</span>(<span class="dv">5</span>, <span class="dv">0</span>))</span>
+<span id="cb23-3"><a></a>  <span class="fu">expect_error</span>(<span class="fu">my_function</span>(<span class="st">"a"</span>, <span class="dv">3</span>))</span>
+<span id="cb23-4"><a></a>  <span class="fu">expect_error</span>(<span class="fu">my_function</span>(<span class="dv">3</span>, <span class="st">"a"</span>))</span>
+<span id="cb23-5"><a></a>  <span class="fu">expect_error</span>(<span class="fu">my_function</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">4</span>))</span>
+<span id="cb23-6"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Test passed 🌈</code></pre>
+<pre><code>Test passed 🎊</code></pre>
 </div>
 </div>
 </div>
@@ -943,13 +944,13 @@
 <div class="columns">
 <div class="column" style="width:60%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>my_new_function <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
-<span id="cb25-2"><a href="#cb25-2"></a>  <span class="cf">if</span> (x <span class="sc">&gt;</span> y) {</span>
-<span id="cb25-3"><a href="#cb25-3"></a>    <span class="st">"x"</span></span>
-<span id="cb25-4"><a href="#cb25-4"></a>  } <span class="cf">else</span> {</span>
-<span id="cb25-5"><a href="#cb25-5"></a>    <span class="st">"y"</span></span>
-<span id="cb25-6"><a href="#cb25-6"></a>  }</span>
-<span id="cb25-7"><a href="#cb25-7"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>my_new_function <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb25-2"><a></a>  <span class="cf">if</span> (x <span class="sc">&gt;</span> y) {</span>
+<span id="cb25-3"><a></a>    <span class="st">"x"</span></span>
+<span id="cb25-4"><a></a>  } <span class="cf">else</span> {</span>
+<span id="cb25-5"><a></a>    <span class="st">"y"</span></span>
+<span id="cb25-6"><a></a>  }</span>
+<span id="cb25-7"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:40%;">
 <p>Consider this function - there is <span class="yellow">branched logic</span>, so we need to carefully design tests to validate the logic works as intended.</p>
@@ -959,28 +960,28 @@
 <section id="another-simple-example-1" class="slide level2">
 <h2>Another (simple) example</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>my_new_function <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
-<span id="cb26-2"><a href="#cb26-2"></a>  <span class="cf">if</span> (x <span class="sc">&gt;</span> y) {</span>
-<span id="cb26-3"><a href="#cb26-3"></a>    <span class="st">"x"</span></span>
-<span id="cb26-4"><a href="#cb26-4"></a>  } <span class="cf">else</span> {</span>
-<span id="cb26-5"><a href="#cb26-5"></a>    <span class="st">"y"</span></span>
-<span id="cb26-6"><a href="#cb26-6"></a>  }</span>
-<span id="cb26-7"><a href="#cb26-7"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>my_new_function <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb26-2"><a></a>  <span class="cf">if</span> (x <span class="sc">&gt;</span> y) {</span>
+<span id="cb26-3"><a></a>    <span class="st">"x"</span></span>
+<span id="cb26-4"><a></a>  } <span class="cf">else</span> {</span>
+<span id="cb26-5"><a></a>    <span class="st">"y"</span></span>
+<span id="cb26-6"><a></a>  }</span>
+<span id="cb26-7"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">test_that</span>(<span class="st">"it returns 'x' if x is bigger than y"</span>, {</span>
-<span id="cb27-2"><a href="#cb27-2"></a>  <span class="fu">expect_equal</span>(<span class="fu">my_new_function</span>(<span class="dv">4</span>, <span class="dv">3</span>), <span class="st">"x"</span>)</span>
-<span id="cb27-3"><a href="#cb27-3"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">test_that</span>(<span class="st">"it returns 'x' if x is bigger than y"</span>, {</span>
+<span id="cb27-2"><a></a>  <span class="fu">expect_equal</span>(<span class="fu">my_new_function</span>(<span class="dv">4</span>, <span class="dv">3</span>), <span class="st">"x"</span>)</span>
+<span id="cb27-3"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Test passed 🥇</code></pre>
+<pre><code>Test passed 🎊</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">test_that</span>(<span class="st">"it returns 'y' if y is bigger than x"</span>, {</span>
-<span id="cb29-2"><a href="#cb29-2"></a>  <span class="fu">expect_equal</span>(<span class="fu">my_new_function</span>(<span class="dv">3</span>, <span class="dv">4</span>), <span class="st">"y"</span>)</span>
-<span id="cb29-3"><a href="#cb29-3"></a>  <span class="fu">expect_equal</span>(<span class="fu">my_new_function</span>(<span class="dv">3</span>, <span class="dv">3</span>), <span class="st">"y"</span>)</span>
-<span id="cb29-4"><a href="#cb29-4"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="fu">test_that</span>(<span class="st">"it returns 'y' if y is bigger than x"</span>, {</span>
+<span id="cb29-2"><a></a>  <span class="fu">expect_equal</span>(<span class="fu">my_new_function</span>(<span class="dv">3</span>, <span class="dv">4</span>), <span class="st">"y"</span>)</span>
+<span id="cb29-3"><a></a>  <span class="fu">expect_equal</span>(<span class="fu">my_new_function</span>(<span class="dv">3</span>, <span class="dv">3</span>), <span class="st">"y"</span>)</span>
+<span id="cb29-4"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Test passed 🥇</code></pre>
+<pre><code>Test passed 🎊</code></pre>
 </div>
 </div>
 </section>
@@ -1011,24 +1012,24 @@
 <div class="columns">
 <div class="column" style="width:70%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>my_big_function <span class="ot">&lt;-</span> <span class="cf">function</span>(type) {</span>
-<span id="cb31-2"><a href="#cb31-2"></a>  con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="st">"data.db"</span>)</span>
-<span id="cb31-3"><a href="#cb31-3"></a>  df <span class="ot">&lt;-</span> <span class="fu">tbl</span>(con, <span class="st">"data_table"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb31-4"><a href="#cb31-4"></a>    <span class="fu">collect</span>() <span class="sc">|&gt;</span></span>
-<span id="cb31-5"><a href="#cb31-5"></a>    <span class="fu">mutate</span>(<span class="fu">across</span>(date, lubridate<span class="sc">::</span>ymd))</span>
-<span id="cb31-6"><a href="#cb31-6"></a></span>
-<span id="cb31-7"><a href="#cb31-7"></a>  conditions <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(</span>
-<span id="cb31-8"><a href="#cb31-8"></a>    <span class="st">"conditions.csv"</span>, <span class="at">col_types =</span> <span class="st">"cc"</span></span>
-<span id="cb31-9"><a href="#cb31-9"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb31-10"><a href="#cb31-10"></a>    <span class="fu">filter</span>(condition_type <span class="sc">==</span> type)</span>
-<span id="cb31-11"><a href="#cb31-11"></a></span>
-<span id="cb31-12"><a href="#cb31-12"></a>  df <span class="sc">|&gt;</span></span>
-<span id="cb31-13"><a href="#cb31-13"></a>    <span class="fu">semi_join</span>(conditions, <span class="at">by =</span> <span class="st">"condition"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb31-14"><a href="#cb31-14"></a>    <span class="fu">count</span>(date) <span class="sc">|&gt;</span></span>
-<span id="cb31-15"><a href="#cb31-15"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(date, n)) <span class="sc">+</span></span>
-<span id="cb31-16"><a href="#cb31-16"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb31-17"><a href="#cb31-17"></a>    <span class="fu">geom_point</span>()</span>
-<span id="cb31-18"><a href="#cb31-18"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a>my_big_function <span class="ot">&lt;-</span> <span class="cf">function</span>(type) {</span>
+<span id="cb31-2"><a></a>  con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="st">"data.db"</span>)</span>
+<span id="cb31-3"><a></a>  df <span class="ot">&lt;-</span> <span class="fu">tbl</span>(con, <span class="st">"data_table"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb31-4"><a></a>    <span class="fu">collect</span>() <span class="sc">|&gt;</span></span>
+<span id="cb31-5"><a></a>    <span class="fu">mutate</span>(<span class="fu">across</span>(date, lubridate<span class="sc">::</span>ymd))</span>
+<span id="cb31-6"><a></a></span>
+<span id="cb31-7"><a></a>  conditions <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(</span>
+<span id="cb31-8"><a></a>    <span class="st">"conditions.csv"</span>, <span class="at">col_types =</span> <span class="st">"cc"</span></span>
+<span id="cb31-9"><a></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb31-10"><a></a>    <span class="fu">filter</span>(condition_type <span class="sc">==</span> type)</span>
+<span id="cb31-11"><a></a></span>
+<span id="cb31-12"><a></a>  df <span class="sc">|&gt;</span></span>
+<span id="cb31-13"><a></a>    <span class="fu">semi_join</span>(conditions, <span class="at">by =</span> <span class="st">"condition"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb31-14"><a></a>    <span class="fu">count</span>(date) <span class="sc">|&gt;</span></span>
+<span id="cb31-15"><a></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(date, n)) <span class="sc">+</span></span>
+<span id="cb31-16"><a></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb31-17"><a></a>    <span class="fu">geom_point</span>()</span>
+<span id="cb31-18"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:30%;">
 <p>Where do you even begin to start writing tests for something so complex?</p>
@@ -1036,8 +1037,8 @@
 <div class="small">
 <p><em>Note: to get the code on the left to fit on one page, I skipped including a few library calls</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb32-2"><a href="#cb32-2"></a><span class="fu">library</span>(DBI)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb32-2"><a></a><span class="fu">library</span>(DBI)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1047,60 +1048,60 @@
 <h2>Split the logic into smaller functions</h2>
 <p>Function to get the data from the database</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>get_data_from_sql <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb33-2"><a href="#cb33-2"></a>  con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="st">"data.db"</span>)</span>
-<span id="cb33-3"><a href="#cb33-3"></a>  <span class="fu">tbl</span>(con, <span class="st">"data_table"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb33-4"><a href="#cb33-4"></a>    <span class="fu">collect</span>() <span class="sc">|&gt;</span></span>
-<span id="cb33-5"><a href="#cb33-5"></a>    <span class="fu">mutate</span>(<span class="fu">across</span>(date, lubridate<span class="sc">::</span>ymd))</span>
-<span id="cb33-6"><a href="#cb33-6"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a>get_data_from_sql <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb33-2"><a></a>  con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="st">"data.db"</span>)</span>
+<span id="cb33-3"><a></a>  <span class="fu">tbl</span>(con, <span class="st">"data_table"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb33-4"><a></a>    <span class="fu">collect</span>() <span class="sc">|&gt;</span></span>
+<span id="cb33-5"><a></a>    <span class="fu">mutate</span>(<span class="fu">across</span>(date, lubridate<span class="sc">::</span>ymd))</span>
+<span id="cb33-6"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="split-the-logic-into-smaller-functions-1" class="slide level2">
 <h2>Split the logic into smaller functions</h2>
 <p>Function to get the relevant conditions</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a>get_conditions <span class="ot">&lt;-</span> <span class="cf">function</span>(type) {</span>
-<span id="cb34-2"><a href="#cb34-2"></a>  <span class="fu">read_csv</span>(</span>
-<span id="cb34-3"><a href="#cb34-3"></a>    <span class="st">"conditions.csv"</span>, <span class="at">col_types =</span> <span class="st">"cc"</span></span>
-<span id="cb34-4"><a href="#cb34-4"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb34-5"><a href="#cb34-5"></a>    <span class="fu">filter</span>(condition_type <span class="sc">==</span> type)</span>
-<span id="cb34-6"><a href="#cb34-6"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a>get_conditions <span class="ot">&lt;-</span> <span class="cf">function</span>(type) {</span>
+<span id="cb34-2"><a></a>  <span class="fu">read_csv</span>(</span>
+<span id="cb34-3"><a></a>    <span class="st">"conditions.csv"</span>, <span class="at">col_types =</span> <span class="st">"cc"</span></span>
+<span id="cb34-4"><a></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb34-5"><a></a>    <span class="fu">filter</span>(condition_type <span class="sc">==</span> type)</span>
+<span id="cb34-6"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="split-the-logic-into-smaller-functions-2" class="slide level2">
 <h2>Split the logic into smaller functions</h2>
 <p>Function to combine the data and create a count by date</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a>summarise_data <span class="ot">&lt;-</span> <span class="cf">function</span>(df, conditions) {</span>
-<span id="cb35-2"><a href="#cb35-2"></a>  df <span class="sc">|&gt;</span></span>
-<span id="cb35-3"><a href="#cb35-3"></a>    <span class="fu">semi_join</span>(conditions, <span class="at">by =</span> <span class="st">"condition"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb35-4"><a href="#cb35-4"></a>    <span class="fu">count</span>(date)</span>
-<span id="cb35-5"><a href="#cb35-5"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a>summarise_data <span class="ot">&lt;-</span> <span class="cf">function</span>(df, conditions) {</span>
+<span id="cb35-2"><a></a>  df <span class="sc">|&gt;</span></span>
+<span id="cb35-3"><a></a>    <span class="fu">semi_join</span>(conditions, <span class="at">by =</span> <span class="st">"condition"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb35-4"><a></a>    <span class="fu">count</span>(date)</span>
+<span id="cb35-5"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="split-the-logic-into-smaller-functions-3" class="slide level2">
 <h2>Split the logic into smaller functions</h2>
 <p>Function to generate a plot from the summarised data</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>create_plot <span class="ot">&lt;-</span> <span class="cf">function</span>(df) {</span>
-<span id="cb36-2"><a href="#cb36-2"></a>  df <span class="sc">|&gt;</span></span>
-<span id="cb36-3"><a href="#cb36-3"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(date, n)) <span class="sc">+</span></span>
-<span id="cb36-4"><a href="#cb36-4"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb36-5"><a href="#cb36-5"></a>    <span class="fu">geom_point</span>()</span>
-<span id="cb36-6"><a href="#cb36-6"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a>create_plot <span class="ot">&lt;-</span> <span class="cf">function</span>(df) {</span>
+<span id="cb36-2"><a></a>  df <span class="sc">|&gt;</span></span>
+<span id="cb36-3"><a></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(date, n)) <span class="sc">+</span></span>
+<span id="cb36-4"><a></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb36-5"><a></a>    <span class="fu">geom_point</span>()</span>
+<span id="cb36-6"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="split-the-logic-into-smaller-functions-4" class="slide level2">
 <h2>Split the logic into smaller functions</h2>
 <p>The original function refactored to use the new functions</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a>my_big_function <span class="ot">&lt;-</span> <span class="cf">function</span>(type) {</span>
-<span id="cb37-2"><a href="#cb37-2"></a>  conditions <span class="ot">&lt;-</span> <span class="fu">get_conditions</span>(type)</span>
-<span id="cb37-3"><a href="#cb37-3"></a></span>
-<span id="cb37-4"><a href="#cb37-4"></a>  <span class="fu">get_data_from_sql</span>() <span class="sc">|&gt;</span></span>
-<span id="cb37-5"><a href="#cb37-5"></a>    <span class="fu">summarise_data</span>(conditions) <span class="sc">|&gt;</span></span>
-<span id="cb37-6"><a href="#cb37-6"></a>    <span class="fu">create_plot</span>()</span>
-<span id="cb37-7"><a href="#cb37-7"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a>my_big_function <span class="ot">&lt;-</span> <span class="cf">function</span>(type) {</span>
+<span id="cb37-2"><a></a>  conditions <span class="ot">&lt;-</span> <span class="fu">get_conditions</span>(type)</span>
+<span id="cb37-3"><a></a></span>
+<span id="cb37-4"><a></a>  <span class="fu">get_data_from_sql</span>() <span class="sc">|&gt;</span></span>
+<span id="cb37-5"><a></a>    <span class="fu">summarise_data</span>(conditions) <span class="sc">|&gt;</span></span>
+<span id="cb37-6"><a></a>    <span class="fu">create_plot</span>()</span>
+<span id="cb37-7"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <p>This is going to be significantly easier to test, because we now can verify that the individual components work correctly, rather than having to consider all of the possibilities at once.</p>
@@ -1108,53 +1109,53 @@
 </section>
 <section id="lets-test-summarise_data" class="slide level2">
 <h2>Let’s test <code>summarise_data</code></h2>
-<div class="sourceCode" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a>summarise_data <span class="ot">&lt;-</span> <span class="cf">function</span>(df, conditions) {</span>
-<span id="cb38-2"><a href="#cb38-2"></a>  df <span class="sc">|&gt;</span></span>
-<span id="cb38-3"><a href="#cb38-3"></a>    <span class="fu">semi_join</span>(conditions, <span class="at">by =</span> <span class="st">"condition"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb38-4"><a href="#cb38-4"></a>    <span class="fu">count</span>(date)</span>
-<span id="cb38-5"><a href="#cb38-5"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a>summarise_data <span class="ot">&lt;-</span> <span class="cf">function</span>(df, conditions) {</span>
+<span id="cb38-2"><a></a>  df <span class="sc">|&gt;</span></span>
+<span id="cb38-3"><a></a>    <span class="fu">semi_join</span>(conditions, <span class="at">by =</span> <span class="st">"condition"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb38-4"><a></a>    <span class="fu">count</span>(date)</span>
+<span id="cb38-5"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="lets-test-summarise_data-1" class="slide level2">
 <h2>Let’s test <code>summarise_data</code></h2>
-<div class="sourceCode" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="fu">test_that</span>(<span class="st">"it summarises the data"</span>, {</span>
-<span id="cb39-2"><a href="#cb39-2"></a>  <span class="co"># arrange</span></span>
-<span id="cb39-3"><a href="#cb39-3"></a>  </span>
-<span id="cb39-4"><a href="#cb39-4"></a></span>
-<span id="cb39-5"><a href="#cb39-5"></a></span>
-<span id="cb39-6"><a href="#cb39-6"></a></span>
-<span id="cb39-7"><a href="#cb39-7"></a></span>
-<span id="cb39-8"><a href="#cb39-8"></a></span>
-<span id="cb39-9"><a href="#cb39-9"></a></span>
-<span id="cb39-10"><a href="#cb39-10"></a>  </span>
-<span id="cb39-11"><a href="#cb39-11"></a></span>
-<span id="cb39-12"><a href="#cb39-12"></a>  </span>
-<span id="cb39-13"><a href="#cb39-13"></a>  <span class="co"># act</span></span>
-<span id="cb39-14"><a href="#cb39-14"></a>  </span>
-<span id="cb39-15"><a href="#cb39-15"></a>  <span class="co"># assert</span></span>
-<span id="cb39-16"><a href="#cb39-16"></a>  </span>
-<span id="cb39-17"><a href="#cb39-17"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a><span class="fu">test_that</span>(<span class="st">"it summarises the data"</span>, {</span>
+<span id="cb39-2"><a></a>  <span class="co"># arrange</span></span>
+<span id="cb39-3"><a></a>  </span>
+<span id="cb39-4"><a></a></span>
+<span id="cb39-5"><a></a></span>
+<span id="cb39-6"><a></a></span>
+<span id="cb39-7"><a></a></span>
+<span id="cb39-8"><a></a></span>
+<span id="cb39-9"><a></a></span>
+<span id="cb39-10"><a></a>  </span>
+<span id="cb39-11"><a></a></span>
+<span id="cb39-12"><a></a>  </span>
+<span id="cb39-13"><a></a>  <span class="co"># act</span></span>
+<span id="cb39-14"><a></a>  </span>
+<span id="cb39-15"><a></a>  <span class="co"># assert</span></span>
+<span id="cb39-16"><a></a>  </span>
+<span id="cb39-17"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="lets-test-summarise_data-2" class="slide level2">
 <h2>Let’s test <code>summarise_data</code></h2>
 <div class="columns">
 <div class="column" style="width:75%;">
-<div class="sourceCode" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="fu">test_that</span>(<span class="st">"it summarises the data"</span>, {</span>
-<span id="cb40-2"><a href="#cb40-2"></a>  <span class="co"># arrange</span></span>
-<span id="cb40-3"><a href="#cb40-3"></a>  </span>
-<span id="cb40-4"><a href="#cb40-4"></a>  df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb40-5"><a href="#cb40-5"></a>    <span class="at">date =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">300</span>, <span class="cn">TRUE</span>),</span>
-<span id="cb40-6"><a href="#cb40-6"></a>    <span class="at">condition =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>), <span class="dv">300</span>, <span class="cn">TRUE</span>)</span>
-<span id="cb40-7"><a href="#cb40-7"></a>  )</span>
-<span id="cb40-8"><a href="#cb40-8"></a>  </span>
-<span id="cb40-9"><a href="#cb40-9"></a></span>
-<span id="cb40-10"><a href="#cb40-10"></a></span>
-<span id="cb40-11"><a href="#cb40-11"></a></span>
-<span id="cb40-12"><a href="#cb40-12"></a></span>
-<span id="cb40-13"><a href="#cb40-13"></a>  <span class="co"># act</span></span>
-<span id="cb40-14"><a href="#cb40-14"></a>  </span>
-<span id="cb40-15"><a href="#cb40-15"></a>  <span class="co"># assert</span></span>
-<span id="cb40-16"><a href="#cb40-16"></a>  </span>
-<span id="cb40-17"><a href="#cb40-17"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a><span class="fu">test_that</span>(<span class="st">"it summarises the data"</span>, {</span>
+<span id="cb40-2"><a></a>  <span class="co"># arrange</span></span>
+<span id="cb40-3"><a></a>  </span>
+<span id="cb40-4"><a></a>  df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb40-5"><a></a>    <span class="at">date =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">300</span>, <span class="cn">TRUE</span>),</span>
+<span id="cb40-6"><a></a>    <span class="at">condition =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>), <span class="dv">300</span>, <span class="cn">TRUE</span>)</span>
+<span id="cb40-7"><a></a>  )</span>
+<span id="cb40-8"><a></a>  </span>
+<span id="cb40-9"><a></a></span>
+<span id="cb40-10"><a></a></span>
+<span id="cb40-11"><a></a></span>
+<span id="cb40-12"><a></a></span>
+<span id="cb40-13"><a></a>  <span class="co"># act</span></span>
+<span id="cb40-14"><a></a>  </span>
+<span id="cb40-15"><a></a>  <span class="co"># assert</span></span>
+<span id="cb40-16"><a></a>  </span>
+<span id="cb40-17"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column small" style="width:25%;">
 <p>Generate some random data to build a reasonably sized data frame.</p>
 <p>You could also create a table manually, but part of the trick of writing good tests for this function is to make it so the dates don’t all have the same count.</p>
@@ -1167,23 +1168,23 @@
 <h2>Let’s test <code>summarise_data</code></h2>
 <div class="columns">
 <div class="column" style="width:75%;">
-<div class="sourceCode" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="fu">test_that</span>(<span class="st">"it summarises the data"</span>, {</span>
-<span id="cb41-2"><a href="#cb41-2"></a>  <span class="co"># arrange</span></span>
-<span id="cb41-3"><a href="#cb41-3"></a>  <span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb41-4"><a href="#cb41-4"></a>  df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb41-5"><a href="#cb41-5"></a>    <span class="at">date =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">300</span>, <span class="cn">TRUE</span>),</span>
-<span id="cb41-6"><a href="#cb41-6"></a>    <span class="at">condition =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>), <span class="dv">300</span>, <span class="cn">TRUE</span>)</span>
-<span id="cb41-7"><a href="#cb41-7"></a>  )</span>
-<span id="cb41-8"><a href="#cb41-8"></a>  </span>
-<span id="cb41-9"><a href="#cb41-9"></a></span>
-<span id="cb41-10"><a href="#cb41-10"></a></span>
-<span id="cb41-11"><a href="#cb41-11"></a></span>
-<span id="cb41-12"><a href="#cb41-12"></a></span>
-<span id="cb41-13"><a href="#cb41-13"></a>  <span class="co"># act</span></span>
-<span id="cb41-14"><a href="#cb41-14"></a>  </span>
-<span id="cb41-15"><a href="#cb41-15"></a>  <span class="co"># assert</span></span>
-<span id="cb41-16"><a href="#cb41-16"></a>  </span>
-<span id="cb41-17"><a href="#cb41-17"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a><span class="fu">test_that</span>(<span class="st">"it summarises the data"</span>, {</span>
+<span id="cb41-2"><a></a>  <span class="co"># arrange</span></span>
+<span id="cb41-3"><a></a>  <span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb41-4"><a></a>  df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb41-5"><a></a>    <span class="at">date =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">300</span>, <span class="cn">TRUE</span>),</span>
+<span id="cb41-6"><a></a>    <span class="at">condition =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>), <span class="dv">300</span>, <span class="cn">TRUE</span>)</span>
+<span id="cb41-7"><a></a>  )</span>
+<span id="cb41-8"><a></a>  </span>
+<span id="cb41-9"><a></a></span>
+<span id="cb41-10"><a></a></span>
+<span id="cb41-11"><a></a></span>
+<span id="cb41-12"><a></a></span>
+<span id="cb41-13"><a></a>  <span class="co"># act</span></span>
+<span id="cb41-14"><a></a>  </span>
+<span id="cb41-15"><a></a>  <span class="co"># assert</span></span>
+<span id="cb41-16"><a></a>  </span>
+<span id="cb41-17"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column small" style="width:25%;">
 <p>Tests need to be reproducible, and generating our table at random will give us unpredictable results.</p>
 <p>So, we need to set the random seed; now every time this test runs we will generate the same data.</p>
@@ -1194,23 +1195,23 @@
 <h2>Let’s test <code>summarise_data</code></h2>
 <div class="columns">
 <div class="column" style="width:75%;">
-<div class="sourceCode" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a><span class="fu">test_that</span>(<span class="st">"it summarises the data"</span>, {</span>
-<span id="cb42-2"><a href="#cb42-2"></a>  <span class="co"># arrange</span></span>
-<span id="cb42-3"><a href="#cb42-3"></a>  <span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb42-4"><a href="#cb42-4"></a>  df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb42-5"><a href="#cb42-5"></a>    <span class="at">date =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">300</span>, <span class="cn">TRUE</span>),</span>
-<span id="cb42-6"><a href="#cb42-6"></a>    <span class="at">condition =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>), <span class="dv">300</span>, <span class="cn">TRUE</span>)</span>
-<span id="cb42-7"><a href="#cb42-7"></a>  )</span>
-<span id="cb42-8"><a href="#cb42-8"></a>  conditions <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">condition =</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>))    </span>
-<span id="cb42-9"><a href="#cb42-9"></a>  </span>
-<span id="cb42-10"><a href="#cb42-10"></a></span>
-<span id="cb42-11"><a href="#cb42-11"></a></span>
-<span id="cb42-12"><a href="#cb42-12"></a></span>
-<span id="cb42-13"><a href="#cb42-13"></a>  <span class="co"># act</span></span>
-<span id="cb42-14"><a href="#cb42-14"></a>  </span>
-<span id="cb42-15"><a href="#cb42-15"></a>  <span class="co"># assert</span></span>
-<span id="cb42-16"><a href="#cb42-16"></a>  </span>
-<span id="cb42-17"><a href="#cb42-17"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a><span class="fu">test_that</span>(<span class="st">"it summarises the data"</span>, {</span>
+<span id="cb42-2"><a></a>  <span class="co"># arrange</span></span>
+<span id="cb42-3"><a></a>  <span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb42-4"><a></a>  df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb42-5"><a></a>    <span class="at">date =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">300</span>, <span class="cn">TRUE</span>),</span>
+<span id="cb42-6"><a></a>    <span class="at">condition =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>), <span class="dv">300</span>, <span class="cn">TRUE</span>)</span>
+<span id="cb42-7"><a></a>  )</span>
+<span id="cb42-8"><a></a>  conditions <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">condition =</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>))    </span>
+<span id="cb42-9"><a></a>  </span>
+<span id="cb42-10"><a></a></span>
+<span id="cb42-11"><a></a></span>
+<span id="cb42-12"><a></a></span>
+<span id="cb42-13"><a></a>  <span class="co"># act</span></span>
+<span id="cb42-14"><a></a>  </span>
+<span id="cb42-15"><a></a>  <span class="co"># assert</span></span>
+<span id="cb42-16"><a></a>  </span>
+<span id="cb42-17"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column small" style="width:25%;">
 <p>Create the conditions table. We don’t need all of the columns that are present in the real csv, just the ones that will make our code work.</p>
 <p>We also need to test that the filtering join (<code>semi_join</code>) is working, so we want to use a subset of the conditions that were used in <code>df</code>.</p>
@@ -1221,23 +1222,23 @@
 <h2>Let’s test <code>summarise_data</code></h2>
 <div class="columns">
 <div class="column" style="width:75%;">
-<div class="sourceCode" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a><span class="fu">test_that</span>(<span class="st">"it summarises the data"</span>, {</span>
-<span id="cb43-2"><a href="#cb43-2"></a>  <span class="co"># arrange</span></span>
-<span id="cb43-3"><a href="#cb43-3"></a>  <span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb43-4"><a href="#cb43-4"></a>  df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb43-5"><a href="#cb43-5"></a>    <span class="at">date =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">300</span>, <span class="cn">TRUE</span>),</span>
-<span id="cb43-6"><a href="#cb43-6"></a>    <span class="at">condition =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>), <span class="dv">300</span>, <span class="cn">TRUE</span>)</span>
-<span id="cb43-7"><a href="#cb43-7"></a>  )</span>
-<span id="cb43-8"><a href="#cb43-8"></a>  conditions <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">condition =</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>))    </span>
-<span id="cb43-9"><a href="#cb43-9"></a>  </span>
-<span id="cb43-10"><a href="#cb43-10"></a>  </span>
-<span id="cb43-11"><a href="#cb43-11"></a></span>
-<span id="cb43-12"><a href="#cb43-12"></a>  </span>
-<span id="cb43-13"><a href="#cb43-13"></a>  <span class="co"># act</span></span>
-<span id="cb43-14"><a href="#cb43-14"></a>  actual <span class="ot">&lt;-</span> <span class="fu">summarise_data</span>(df, conditions)</span>
-<span id="cb43-15"><a href="#cb43-15"></a>  <span class="co"># assert</span></span>
-<span id="cb43-16"><a href="#cb43-16"></a>  </span>
-<span id="cb43-17"><a href="#cb43-17"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a><span class="fu">test_that</span>(<span class="st">"it summarises the data"</span>, {</span>
+<span id="cb43-2"><a></a>  <span class="co"># arrange</span></span>
+<span id="cb43-3"><a></a>  <span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb43-4"><a></a>  df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb43-5"><a></a>    <span class="at">date =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">300</span>, <span class="cn">TRUE</span>),</span>
+<span id="cb43-6"><a></a>    <span class="at">condition =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>), <span class="dv">300</span>, <span class="cn">TRUE</span>)</span>
+<span id="cb43-7"><a></a>  )</span>
+<span id="cb43-8"><a></a>  conditions <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">condition =</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>))    </span>
+<span id="cb43-9"><a></a>  </span>
+<span id="cb43-10"><a></a>  </span>
+<span id="cb43-11"><a></a></span>
+<span id="cb43-12"><a></a>  </span>
+<span id="cb43-13"><a></a>  <span class="co"># act</span></span>
+<span id="cb43-14"><a></a>  actual <span class="ot">&lt;-</span> <span class="fu">summarise_data</span>(df, conditions)</span>
+<span id="cb43-15"><a></a>  <span class="co"># assert</span></span>
+<span id="cb43-16"><a></a>  </span>
+<span id="cb43-17"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column small" style="width:25%;">
 <p>Because we are generating <code>df</code> randomly, to figure out what our “expected” results are, I simply ran the code inside of the test to generate the “actual” results.</p>
 <p>Generally, this isn’t a good idea. You are creating the results of your test from the code; ideally, you want to be thinking about what the results of your function should be.</p>
@@ -1249,23 +1250,23 @@
 <h2>Let’s test <code>summarise_data</code></h2>
 <div class="columns">
 <div class="column" style="width:75%;">
-<div class="sourceCode" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="fu">test_that</span>(<span class="st">"it summarises the data"</span>, {</span>
-<span id="cb44-2"><a href="#cb44-2"></a>  <span class="co"># arrange</span></span>
-<span id="cb44-3"><a href="#cb44-3"></a>  <span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb44-4"><a href="#cb44-4"></a>  df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb44-5"><a href="#cb44-5"></a>    <span class="at">date =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">300</span>, <span class="cn">TRUE</span>),</span>
-<span id="cb44-6"><a href="#cb44-6"></a>    <span class="at">condition =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>), <span class="dv">300</span>, <span class="cn">TRUE</span>)</span>
-<span id="cb44-7"><a href="#cb44-7"></a>  )</span>
-<span id="cb44-8"><a href="#cb44-8"></a>  conditions <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">condition =</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>))    </span>
-<span id="cb44-9"><a href="#cb44-9"></a>  expected <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb44-10"><a href="#cb44-10"></a>    <span class="at">date =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
-<span id="cb44-11"><a href="#cb44-11"></a>    <span class="at">n =</span> <span class="fu">c</span>(<span class="dv">19</span>, <span class="dv">18</span>, <span class="dv">12</span>, <span class="dv">14</span>, <span class="dv">17</span>, <span class="dv">18</span>, <span class="dv">24</span>, <span class="dv">18</span>, <span class="dv">31</span>, <span class="dv">21</span>)</span>
-<span id="cb44-12"><a href="#cb44-12"></a>  )  </span>
-<span id="cb44-13"><a href="#cb44-13"></a>  <span class="co"># act</span></span>
-<span id="cb44-14"><a href="#cb44-14"></a>  actual <span class="ot">&lt;-</span> <span class="fu">summarise_data</span>(df, conditions)</span>
-<span id="cb44-15"><a href="#cb44-15"></a>  <span class="co"># assert</span></span>
-<span id="cb44-16"><a href="#cb44-16"></a>  </span>
-<span id="cb44-17"><a href="#cb44-17"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a><span class="fu">test_that</span>(<span class="st">"it summarises the data"</span>, {</span>
+<span id="cb44-2"><a></a>  <span class="co"># arrange</span></span>
+<span id="cb44-3"><a></a>  <span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb44-4"><a></a>  df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb44-5"><a></a>    <span class="at">date =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">300</span>, <span class="cn">TRUE</span>),</span>
+<span id="cb44-6"><a></a>    <span class="at">condition =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>), <span class="dv">300</span>, <span class="cn">TRUE</span>)</span>
+<span id="cb44-7"><a></a>  )</span>
+<span id="cb44-8"><a></a>  conditions <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">condition =</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>))    </span>
+<span id="cb44-9"><a></a>  expected <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb44-10"><a></a>    <span class="at">date =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
+<span id="cb44-11"><a></a>    <span class="at">n =</span> <span class="fu">c</span>(<span class="dv">19</span>, <span class="dv">18</span>, <span class="dv">12</span>, <span class="dv">14</span>, <span class="dv">17</span>, <span class="dv">18</span>, <span class="dv">24</span>, <span class="dv">18</span>, <span class="dv">31</span>, <span class="dv">21</span>)</span>
+<span id="cb44-12"><a></a>  )  </span>
+<span id="cb44-13"><a></a>  <span class="co"># act</span></span>
+<span id="cb44-14"><a></a>  actual <span class="ot">&lt;-</span> <span class="fu">summarise_data</span>(df, conditions)</span>
+<span id="cb44-15"><a></a>  <span class="co"># assert</span></span>
+<span id="cb44-16"><a></a>  </span>
+<span id="cb44-17"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column small" style="width:25%;">
 <p>That said, in cases where we can be confident (say by static analysis of our code) that it is correct, building tests in this way will give us the confidence going forwards that future changes do not break existing functionality.</p>
 <p>In this case, I have created the expected data frame using the results from running the function.</p>
@@ -1277,23 +1278,23 @@
 <div class="columns">
 <div class="column" style="width:75%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a><span class="fu">test_that</span>(<span class="st">"it summarises the data"</span>, {</span>
-<span id="cb45-2"><a href="#cb45-2"></a>  <span class="co"># arrange</span></span>
-<span id="cb45-3"><a href="#cb45-3"></a>  <span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb45-4"><a href="#cb45-4"></a>  df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb45-5"><a href="#cb45-5"></a>    <span class="at">date =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">300</span>, <span class="cn">TRUE</span>),</span>
-<span id="cb45-6"><a href="#cb45-6"></a>    <span class="at">condition =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>), <span class="dv">300</span>, <span class="cn">TRUE</span>)</span>
-<span id="cb45-7"><a href="#cb45-7"></a>  )</span>
-<span id="cb45-8"><a href="#cb45-8"></a>  conditions <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">condition =</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>))</span>
-<span id="cb45-9"><a href="#cb45-9"></a>  expected <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb45-10"><a href="#cb45-10"></a>    <span class="at">date =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
-<span id="cb45-11"><a href="#cb45-11"></a>    <span class="at">n =</span> <span class="fu">c</span>(<span class="dv">19</span>, <span class="dv">18</span>, <span class="dv">12</span>, <span class="dv">14</span>, <span class="dv">17</span>, <span class="dv">18</span>, <span class="dv">24</span>, <span class="dv">18</span>, <span class="dv">31</span>, <span class="dv">21</span>)</span>
-<span id="cb45-12"><a href="#cb45-12"></a>  )</span>
-<span id="cb45-13"><a href="#cb45-13"></a>  <span class="co"># act</span></span>
-<span id="cb45-14"><a href="#cb45-14"></a>  actual <span class="ot">&lt;-</span> <span class="fu">summarise_data</span>(df, conditions)</span>
-<span id="cb45-15"><a href="#cb45-15"></a>  <span class="co"># assert</span></span>
-<span id="cb45-16"><a href="#cb45-16"></a>  <span class="fu">expect_equal</span>(actual, expected)</span>
-<span id="cb45-17"><a href="#cb45-17"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a><span class="fu">test_that</span>(<span class="st">"it summarises the data"</span>, {</span>
+<span id="cb45-2"><a></a>  <span class="co"># arrange</span></span>
+<span id="cb45-3"><a></a>  <span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb45-4"><a></a>  df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb45-5"><a></a>    <span class="at">date =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">300</span>, <span class="cn">TRUE</span>),</span>
+<span id="cb45-6"><a></a>    <span class="at">condition =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>), <span class="dv">300</span>, <span class="cn">TRUE</span>)</span>
+<span id="cb45-7"><a></a>  )</span>
+<span id="cb45-8"><a></a>  conditions <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">condition =</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>))</span>
+<span id="cb45-9"><a></a>  expected <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb45-10"><a></a>    <span class="at">date =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
+<span id="cb45-11"><a></a>    <span class="at">n =</span> <span class="fu">c</span>(<span class="dv">19</span>, <span class="dv">18</span>, <span class="dv">12</span>, <span class="dv">14</span>, <span class="dv">17</span>, <span class="dv">18</span>, <span class="dv">24</span>, <span class="dv">18</span>, <span class="dv">31</span>, <span class="dv">21</span>)</span>
+<span id="cb45-12"><a></a>  )</span>
+<span id="cb45-13"><a></a>  <span class="co"># act</span></span>
+<span id="cb45-14"><a></a>  actual <span class="ot">&lt;-</span> <span class="fu">summarise_data</span>(df, conditions)</span>
+<span id="cb45-15"><a></a>  <span class="co"># assert</span></span>
+<span id="cb45-16"><a></a>  <span class="fu">expect_equal</span>(actual, expected)</span>
+<span id="cb45-17"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Test passed 😸</code></pre>
 </div>
@@ -1328,8 +1329,10 @@
 <p>Questions?</p>
 <p><a href="mailto:thomas.jemmett@nhs.net" target="_blank">thomas.jemmett@nhs.net</a> / DM me on slack</p>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 <p>view slides at <a href="https://the-strategy-unit.github.io/data_science/presentations/2023-08-23_nhs-r_unit-testing">the-strategy-unit.github.io/data_science/presentations</a></p>
+</div>
 </div>
 </section>
     </div>
@@ -1359,7 +1362,6 @@
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': true,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1659,10 +1661,9 @@
         // clear code selection
         e.clearSelection();
       });
-      function tippyHover(el, contentFn) {
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1672,8 +1673,17 @@
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 

@@ -10,6 +10,7 @@ knitr:
     echo: true
 format:
   revealjs:
+    incremental: true
     theme: [default, ../su_presentation.scss]
     transition: none
     chalkboard:

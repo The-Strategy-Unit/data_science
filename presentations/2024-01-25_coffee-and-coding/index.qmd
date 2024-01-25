@@ -31,11 +31,14 @@ editor:
 
 ::: columns
 ::: {.column width="50%"}
-Tom previously presented about {targets} at a coffee and coding last March and you can revisit his presentation and learn about the reasons why you should use the package to manage your pipeline and see a simple demonstration of how to use the package.  
 
-Matt has presented previously about {targets} and making your workflows (pipelines) reproducible.  
+-   Tom previously presented about {targets} at a coffee and coding last March and you can revisit his presentation and learn about the reasons why you should use the package to manage your pipeline and see a simple demonstration of how to use the package.
 
-So..... if you aren't really even sure why your pipeline needs managing as an analyst or whether you actually have one (you do) then links to their presentations are at the end  
+-   Matt has presented previously about {targets} and making your workflows (pipelines) reproducible.
+
+-   So..... if you aren't really even sure why your pipeline needs managing as an analyst or whether you actually have one (you do) then links to their presentations are at the end
+
+
 
 :::
 

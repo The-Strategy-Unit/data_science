@@ -53,23 +53,23 @@ So..... if you aren't really even sure why your pipeline needs managing as an an
 ### Without {targets} we
 :::
 
-::: incremental
+
 -   Write a script
 -   Execute script
 -   Make changes
 -   Go to step 2
-:::
+
 
 ::: fragment
 ### With {targets} we will
 :::
 
-::: incremental
+
 -   learn how the various stages of our analysis fit together
 -   save time by only running necessary stages as we cycle through the process
 -   help future you and colleagues re-visiting the analysis - Matt says "its like a time-capsule"
 -   make Reproducible Analytical Pipelines
-:::
+
 
 ::: footer
 source: [The `{targets}` R package user manual](https://books.ropensci.org/targets/)
@@ -77,24 +77,24 @@ source: [The `{targets}` R package user manual](https://books.ropensci.org/targe
 
 ## Explain the BHF project
 
-::: incremental
+
 -   original BHF project had 30+ metrics
 -   multiple inter-related processing steps
 -   each time a metric changed or a process was altered it impacted across the project
 -   there was potential for mistakes, duplication, lots of wasted time
 -   using targets provides a structure that handles these inter-relationships
-:::
+
 
 ## How {targets} can help
 
-::: incremental
+
 -   gets you thinking about your analysis and its building blocks
 -   targets forces you into a functions approach to workflow
 -   entire pipeline is reproducible
 -   visualise on one page
 -   saves time
 -   (maybe we need an advanced function writing session in another C&C?)
-:::
+
 
 ## Demonstration in the BHF project
 
@@ -106,7 +106,7 @@ Current BHF project in {targets} and visualised with tar_visnetwork()
 
 ::: columns
 ::: {.column width="50%"}
-![](vis1.png)
+![](vis1.png){fig-alt="A directed graph made with the targets R package where each node is a function or object and arrows between them indicate their dependencies." width="60%"}
 :::
 
 ::: {.column width="50%"}
@@ -115,14 +115,14 @@ Current BHF project in {targets} and visualised with tar_visnetwork()
 :::
 
 ## Code
-::: incremental
+
 -   it's like a recipe of steps
 -   it's easier to read
 -   you have built functions which you can transfer and reuse
 -   it's efficient, good practice
 -   debugging is easier because if/when it fails you know exactly which target it has failed on
 -   it creates intermediate cached objects you can fetch at any time
-:::
+
 
 
 ## How can I start using it?

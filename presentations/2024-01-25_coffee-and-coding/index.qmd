@@ -109,7 +109,7 @@ Current BHF project in {targets} and visualised with tar_visnetwork()
 :::
 
 ::: {.column width="50%"}
-![](vis2.png)
+![](vis2.png){fig-alt="A directed graph made with the targets R package where each node is a function or object and arrows between them indicate their dependencies. A node has been selected, highlighting all its upstream nodes." width="80%"}
 :::
 :::
 

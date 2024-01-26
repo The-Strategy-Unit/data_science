@@ -1,5 +1,12 @@
 ---
 title: Presentations
+format:
+  html: 
+    grid:
+      sidebar-width: 200px
+      body-width: 1100px
+      margin-width: 200px
+      gutter-width: 1.5rem
 ---
 
 ```{r}
@@ -50,6 +57,18 @@ dir(path, pattern = "index.qmd", recursive = TRUE, full.names = TRUE) |>
     )
   ) |>
   dplyr::select(-"date-format", -"subtitle", -"filename") |>
+  dplyr::arrange(desc(date)) |>
   gt::gt() |>
-  gt::cols_align("left")
+  gt::cols_align("left") |>
+  gt::cols_width(
+    title ~ px(650),
+    author ~ px(150),
+    date ~ px(100)
+  )|>
+  gt::tab_style(style = gt::cell_text(weight = "bold"), locations = gt::cells_column_labels(columns=everything()))|>
+  gt::cols_label(
+    starts_with("date") ~ "Date",
+    starts_with("author") ~ "Author",
+    starts_with("title") ~ "Title"
+  )
 ```

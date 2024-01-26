@@ -76,10 +76,10 @@ editor:
 source: [The `{targets}` R package user manual](https://books.ropensci.org/targets/)
 :::
 
-## Explain the BHF project
+## Explain the live project
 
 
--   original BHF project had 30+ metrics
+-   original project had 30+ metrics
 -   multiple inter-related processing steps
 -   each time a metric changed or a process was altered it impacted across the project
 -   there was potential for mistakes, duplication, lots of wasted time
@@ -97,13 +97,13 @@ source: [The `{targets}` R package user manual](https://books.ropensci.org/targe
 -   (maybe we need an advanced function writing session in another C&C?)
 
 
-## Demonstration in the BHF project
+## Demonstration in a live project
 
-Let's look at a real life example in a live project...
+[Let's look at a real life example in a live project...](https://github.com/The-Strategy-Unit/bhf_chd-ethnicity)
 
 ## Visualising
 
-Current BHF project in {targets} and visualised with tar_visnetwork()
+Current project in {targets} and visualised with tar_visnetwork()
 
 ::: columns
 ::: {.column width="30%"}
@@ -143,6 +143,6 @@ Current BHF project in {targets} and visualised with tar_visnetwork()
 - The [{targets} documentation](https://books.ropensci.org/targets/walkthrough.html) is detailed and easy to follow.
 - [A demo repository demonstrated in last weeks NHSE C&C](https://github.com/Pablo-source/targets-test)
 - [Software Carpentry](https://software-carpentry.org/) are developing a course here [Pre-alpha targets course](https://multimeric.github.io/targets-workshop/instructor/index.html)
-- [BHF project demonstrated live in this presentation using {targets}](https://github.com/The-Strategy-Unit/bhf_chd-ethnicity)
+- [Live project demonstrated in this presentation using {targets}](https://github.com/The-Strategy-Unit/bhf_chd-ethnicity)
 
 

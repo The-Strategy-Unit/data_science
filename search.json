@@ -56,11 +56,11 @@
     "text": "Aims\n\nIn this presentation we aim to demonstrate the real-world use of {targets} in an analysis project, but first a brief explanation\n\n\n\nWithout {targets} we\n\n\nWrite a script\nExecute script\nMake changes\nGo to step 2\n\n\n\nWith {targets} we will\n\n\nlearn how the various stages of our analysis fit together\nsave time by only running necessary stages as we cycle through the process\nhelp future you and colleagues re-visiting the analysis - Matt says “its like a time-capsule”\nmake Reproducible Analytical Pipelines\n\n\nsource: The {targets} R package user manual"
   },
   {
-    "objectID": "presentations/2024-01-25_coffee-and-coding/index.html#explain-the-bhf-project",
-    "href": "presentations/2024-01-25_coffee-and-coding/index.html#explain-the-bhf-project",
+    "objectID": "presentations/2024-01-25_coffee-and-coding/index.html#explain-the-live-project",
+    "href": "presentations/2024-01-25_coffee-and-coding/index.html#explain-the-live-project",
     "title": "Coffee and Coding",
-    "section": "Explain the BHF project",
-    "text": "Explain the BHF project\n\noriginal BHF project had 30+ metrics\nmultiple inter-related processing steps\neach time a metric changed or a process was altered it impacted across the project\nthere was potential for mistakes, duplication, lots of wasted time\nusing targets provides a structure that handles these inter-relationships"
+    "section": "Explain the live project",
+    "text": "Explain the live project\n\noriginal project had 30+ metrics\nmultiple inter-related processing steps\neach time a metric changed or a process was altered it impacted across the project\nthere was potential for mistakes, duplication, lots of wasted time\nusing targets provides a structure that handles these inter-relationships"
   },
   {
     "objectID": "presentations/2024-01-25_coffee-and-coding/index.html#how-targets-can-help",
@@ -70,18 +70,18 @@
     "text": "How {targets} can help\n\ngets you thinking about your analysis and its building blocks\ntargets forces you into a functions approach to workflow\nentire pipeline is reproducible\nvisualise on one page\nsaves time\n(maybe we need an advanced function writing session in another C&C?)"
   },
   {
-    "objectID": "presentations/2024-01-25_coffee-and-coding/index.html#demonstration-in-the-bhf-project",
-    "href": "presentations/2024-01-25_coffee-and-coding/index.html#demonstration-in-the-bhf-project",
+    "objectID": "presentations/2024-01-25_coffee-and-coding/index.html#demonstration-in-a-live-project",
+    "href": "presentations/2024-01-25_coffee-and-coding/index.html#demonstration-in-a-live-project",
     "title": "Coffee and Coding",
-    "section": "Demonstration in the BHF project",
-    "text": "Demonstration in the BHF project\nLet’s look at a real life example in a live project…"
+    "section": "Demonstration in a live project",
+    "text": "Demonstration in a live project\nLet’s look at a real life example in a live project…"
   },
   {
     "objectID": "presentations/2024-01-25_coffee-and-coding/index.html#visualising",
     "href": "presentations/2024-01-25_coffee-and-coding/index.html#visualising",
     "title": "Coffee and Coding",
     "section": "Visualising",
-    "text": "Visualising\nCurrent BHF project in {targets} and visualised with tar_visnetwork()"
+    "text": "Visualising\nCurrent project in {targets} and visualised with tar_visnetwork()"
   },
   {
     "objectID": "presentations/2024-01-25_coffee-and-coding/index.html#code",
@@ -102,7 +102,7 @@
     "href": "presentations/2024-01-25_coffee-and-coding/index.html#useful-targets-links",
     "title": "Coffee and Coding",
     "section": "Useful {targets} links",
-    "text": "Useful {targets} links\n\nTom’s previous coffee and coding presentation\nMatt’s previous presentations\nThe {targets} documentation is detailed and easy to follow.\nA demo repository demonstrated in last weeks NHSE C&C\nSoftware Carpentry are developing a course here Pre-alpha targets course\nBHF project demonstrated live in this presentation using {targets}\n\n\n\n\nview slides at the-strategy-unit.github.io/data_science/presentations"
+    "text": "Useful {targets} links\n\nTom’s previous coffee and coding presentation\nMatt’s previous presentations\nThe {targets} documentation is detailed and easy to follow.\nA demo repository demonstrated in last weeks NHSE C&C\nSoftware Carpentry are developing a course here Pre-alpha targets course\nLive project demonstrated in this presentation using {targets}\n\n\n\n\nview slides at the-strategy-unit.github.io/data_science/presentations"
   },
   {
     "objectID": "presentations/2023-05-23_data-science-for-good/index.html#patient-experience",
@@ -1255,7 +1255,7 @@
     "href": "presentations/2023-08-23_nhs-r_unit-testing/index.html#other-expect_-functions",
     "title": "Unit testing in R",
     "section": "other expect_*() functions…",
-    "text": "other expect_*() functions…\n\ntest_that(\"my_function correctly divides values\", {\n  expect_lt(\n    my_function(4, 2),\n    10\n  )\n  expect_gt(\n    my_function(1, 4),\n    0.2\n  )\n  expect_length(\n    my_function(c(4, 1), c(2, 4)),\n    2\n  )\n})\n\nTest passed 🌈\n\n\n\n{testthat} documentation"
+    "text": "other expect_*() functions…\n\ntest_that(\"my_function correctly divides values\", {\n  expect_lt(\n    my_function(4, 2),\n    10\n  )\n  expect_gt(\n    my_function(1, 4),\n    0.2\n  )\n  expect_length(\n    my_function(c(4, 1), c(2, 4)),\n    2\n  )\n})\n\nTest passed 😀\n\n\n\n{testthat} documentation"
   },
   {
     "objectID": "presentations/2023-08-23_nhs-r_unit-testing/index.html#arrange-act-assert",
@@ -1297,7 +1297,7 @@
     "href": "presentations/2023-08-23_nhs-r_unit-testing/index.html#tolerance-to-the-rescue",
     "title": "Unit testing in R",
     "section": "Tolerance to the rescue 🙂",
-    "text": "Tolerance to the rescue 🙂\n\ntest_that(\"my_function works\", {\n  # arrange\n  x &lt;- 5\n  y &lt;- 7\n  expected &lt;- 0.714285\n\n  # act\n  actual &lt;- my_function(x, y)\n\n  # assert\n  expect_equal(actual, expected, tolerance = 1e-6)\n})\n\nTest passed 🥇\n\n\n\n(this is a slightly artificial example, usually the default tolerance is good enough)"
+    "text": "Tolerance to the rescue 🙂\n\ntest_that(\"my_function works\", {\n  # arrange\n  x &lt;- 5\n  y &lt;- 7\n  expected &lt;- 0.714285\n\n  # act\n  actual &lt;- my_function(x, y)\n\n  # assert\n  expect_equal(actual, expected, tolerance = 1e-6)\n})\n\nTest passed 🌈\n\n\n\n(this is a slightly artificial example, usually the default tolerance is good enough)"
   },
   {
     "objectID": "presentations/2023-08-23_nhs-r_unit-testing/index.html#testing-edge-cases",
@@ -1318,7 +1318,7 @@
     "href": "presentations/2023-08-23_nhs-r_unit-testing/index.html#another-simple-example-1",
     "title": "Unit testing in R",
     "section": "Another (simple) example",
-    "text": "Another (simple) example\n\nmy_new_function &lt;- function(x, y) {\n  if (x &gt; y) {\n    \"x\"\n  } else {\n    \"y\"\n  }\n}\n\n\n\ntest_that(\"it returns 'x' if x is bigger than y\", {\n  expect_equal(my_new_function(4, 3), \"x\")\n})\n\nTest passed 😸\n\ntest_that(\"it returns 'y' if y is bigger than x\", {\n  expect_equal(my_new_function(3, 4), \"y\")\n  expect_equal(my_new_function(3, 3), \"y\")\n})\n\nTest passed 🥇"
+    "text": "Another (simple) example\n\nmy_new_function &lt;- function(x, y) {\n  if (x &gt; y) {\n    \"x\"\n  } else {\n    \"y\"\n  }\n}\n\n\n\ntest_that(\"it returns 'x' if x is bigger than y\", {\n  expect_equal(my_new_function(4, 3), \"x\")\n})\n\nTest passed 🥳\n\ntest_that(\"it returns 'y' if y is bigger than x\", {\n  expect_equal(my_new_function(3, 4), \"y\")\n  expect_equal(my_new_function(3, 3), \"y\")\n})\n\nTest passed 🥇"
   },
   {
     "objectID": "presentations/2023-08-23_nhs-r_unit-testing/index.html#how-to-design-good-tests",
@@ -1724,7 +1724,7 @@
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r---flows",
     "title": "System Dynamics in health and care",
     "section": "in R - flows",
-    "text": "in R - flows\nEasy to do with count, or group_by and summarise\n\n\n  admit_d &lt;- spell_dates |&gt; \n  group_by(date_admit) |&gt;\n  count(date_admit)\n\nhead(admit_d)\n\n\n# A tibble: 6 × 2\n# Groups:   date_admit [6]\n  date_admit     n\n  &lt;date&gt;     &lt;int&gt;\n1 2022-01-01    24\n2 2022-01-02    24\n3 2022-01-03    25\n4 2022-01-04    31\n5 2022-01-05    21\n6 2022-01-06    23"
+    "text": "in R - flows\nEasy to do with count, or group_by and summarise\n\n\n  admit_d &lt;- spell_dates |&gt; \n  group_by(date_admit) |&gt;\n  count(date_admit)\n\nhead(admit_d)\n\n\n# A tibble: 6 × 2\n# Groups:   date_admit [6]\n  date_admit     n\n  &lt;date&gt;     &lt;int&gt;\n1 2022-01-01    26\n2 2022-01-02    21\n3 2022-01-03    20\n4 2022-01-04    32\n5 2022-01-05    26\n6 2022-01-06    26"
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r---occupancy",
@@ -1745,7 +1745,7 @@
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods---flows",
     "title": "System Dynamics in health and care",
     "section": "Longer Time Periods - flows",
-    "text": "Longer Time Periods - flows\nUse lubridate::floor_date to generate the date at start of week/month\n\nadmit_wk &lt;- spell_dates |&gt; \n  mutate(week_start = floor_date(\n    date_admit, unit = \"week\", week_start = 1   # start week on Monday\n  )) |&gt; \n  count(week_start)     # could add other parameters such as provider code, TFC etc\n\nhead(admit_wk)\n\n\n\n# A tibble: 6 × 2\n  week_start     n\n  &lt;date&gt;     &lt;int&gt;\n1 2021-12-27    48\n2 2022-01-03   207\n3 2022-01-10   171\n4 2022-01-17   197\n5 2022-01-24   210\n6 2022-01-31   162\n\n\n\nMight run SD model in weeks or months - e.g. months for care homes Use lubridate to create new variable with start date of week/month/year etc"
+    "text": "Longer Time Periods - flows\nUse lubridate::floor_date to generate the date at start of week/month\n\nadmit_wk &lt;- spell_dates |&gt; \n  mutate(week_start = floor_date(\n    date_admit, unit = \"week\", week_start = 1   # start week on Monday\n  )) |&gt; \n  count(week_start)     # could add other parameters such as provider code, TFC etc\n\nhead(admit_wk)\n\n\n\n# A tibble: 6 × 2\n  week_start     n\n  &lt;date&gt;     &lt;int&gt;\n1 2021-12-27    47\n2 2022-01-03   188\n3 2022-01-10   189\n4 2022-01-17   201\n5 2022-01-24   182\n6 2022-01-31   200\n\n\n\nMight run SD model in weeks or months - e.g. months for care homes Use lubridate to create new variable with start date of week/month/year etc"
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods---occupancy",

@@ -35,11 +35,9 @@ library(janitor)
 library(ggpubr)
 library(StrategyUnitTheme)
 
-# drive loc
-zdrive_loc <- "Z:/Strategic Analytics/Projects 2022/1056 WMAP Cardiac/SD Modelling/"
 
 # load data - taken from UDAL
-new_rtt <- read.csv(paste0(zdrive_loc, "rtt data/rtt clock starts udal.csv")) |> 
+new_rtt <- read.csv("rtt clock starts.csv") |> 
   clean_names() |> 
   rename(provider_code = organisation_code,
          count = clock_starts) |> 

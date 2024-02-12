@@ -20,21 +20,22 @@ library(plotly)          # sankey visualisation framework
 library(reactable)       # viewing interactive datatables
 library(glue)            # concatenating strings
 library(tidygraph)       # api for graph / network manipulation
+library(scales)          # used for colour transformation
 ```
 
 # Introduction
 
-Intro to topic
+Sankey diagrams are great tools to visualise flows through a system. They show the flow / conversion rate after each step of a process and the width of the arrows is proportional to the flow / conversion rate.
 
--   TLHC programme
+I'm working on a project to evaluate the effectiveness of a screening programme for people aged between 55-74 years and a history of smoking[^1]. One report requirement is to be able to visualise how people have engaged with the programme, from recruitment, attendance at appointments, their outcome from risk assessment, low-dose CT scans and will eventually cover the impact of the screening on early detection of those diagnosed with lung cancer.
 
--   Requirement to visualise the patient journey as they move
+[^1]: For more background on the TLHC programme see <https://www.england.nhs.uk/contact-us/privacy-notice/how-we-use-your-information/our-services/evaluation-of-the-targeted-lung-health-check-programme/>
 
--   Benefits: seeing points of drop-off
+The use of Sankey plots has helped the programme team to better understand patient flows through the pathway, points of drop-off and differences between different intervention models.
 
--   Link to finalised product
+Here is a link to the final Sankey diagram for the full TLHC programme: <https://connect.strategyunitwm.nhs.uk/content/3f114580-bcb7-42d8-82a5-b607baf96da5/>
 
-Here is a link to the work : http:....
+This blog post is about the technical process of preparing record-level data for visualisation in a Sankey plot and the customisation to enhance look and feel.
 
 # Data wrangling
 
@@ -230,9 +231,9 @@ For invites 2 and 3 we perform two sets of summaries;
 
 -   the first where the values in the `to` and `from` fields contain details, and
 
--   the second to capture cases where the `to` destination is NULL. This is because the participant responded at the previous invite so there was no subsequent invite. In these cases we flow the participant to the overall invite outcome.[^1]
+-   the second to capture cases where the `to` destination is NULL. This is because the participant responded at the previous invite so there was no subsequent invite. In these cases we flow the participant to the overall invite outcome.[^2]
 
-[^1]: if you are thinking there is a lot of repetition here, you're right. In practice I abstracted both steps to a function and passed in the parameters for the `from` and `to` variables and simplified my workflow a little, however, I'm showing it in plain form here for simplification.
+[^2]: if you are thinking there is a lot of repetition here, you're right. In practice I abstracted both steps to a function and passed in the parameters for the `from` and `to` variables and simplified my workflow a little, however, I'm showing it in plain form here for simplification.
 
 ```{r}
 #| code-fold: true
@@ -347,7 +348,7 @@ First we extract our nodes and edges to separate data frames then convert the id
 Finally we pass these two dataframes to plotly's `node` and `link` function inputs to generate the plot.
 
 ```{r}
-#| code-fold: false
+#| code-fold: true
 #| fig-cap: Our first sankey
 #| fig-cap-location: top
 
@@ -389,16 +390,176 @@ plot_ly(
 )
 ```
 
-Not too bad!
+Not bad!
 
-We can see the structure of our Sankey now. See the relative proportions of participants who did or didn't respond to our first invite? Marvel at how those who responded to the first invite flow into our final outcome. How about those who didn't respond to the first invitation go on to receive a second invite? This looks functional.
+We can see the structure of our Sankey now. Can you see the relative proportions of participants who did or didn't respond to our first invite? Marvel at how those who responded to the first invite flow into our final outcome. How about those who didn't respond to the first invitation go on to receive a second invite? This looks functional.
 
 ## Styling our Sankey
 
-Want to:
+Now we have the foundations of our Sankey I'd like to move on to its presentation. Specifically I'd like to:
 
--   use colour coding to clearly group those who accept or decline the invite
+-   use colour coding to clearly group those who accept or decline the invite,
 
--   Improve readability of the node titles
+-   improve the readability of the node titles,
 
--   Add additional information to the pop-up boxes
+-   add additional information to the pop-up boxes when you hover over nodes and edges, and
+
+-   control the positioning of the nodes in the plot.
+
+As our `nodes` and `edges` objects are dataframes it is straightforward to add this styling information directly to them.
+
+For the nodes object we define colours based on the name of each node and manually position them in the plot
+
+```{r}
+#| code-fold: true
+#| fig-cap: Styling the nodes dataframe
+#| fig-cap-location: top
+
+# get the eligible population as a single value
+# NB, will be used to work out % amounts in each node and edge
+temp_eligible_pop <- df_flows |> 
+  filter(from == 'Eligible population') |> 
+  summarise(total = sum(flow, na.rm = T)) |> 
+  pull(total)
+
+# style our nodes object
+nodes <- nodes |> 
+  mutate(
+    # colour ----
+    # add colour definitions, green for accepted, red for declined
+    colour = case_when(
+      str_detect(name, 'Accepted') ~ '#44bd32',
+      str_detect(name, 'Declined') ~ '#c23616',
+      str_detect(name, 'No response') ~ '#7f8fa6',
+      str_detect(name, 'Eligible population') ~ '#7f8fa6'
+    ),
+    
+    # add a semi-transparent colour for the edges based on node colours
+    colour_fade = col2hcl(colour = colour, alpha = 0.3),
+    
+    # positioning ----
+    # NB, I found that to position nodes you need to supply both
+    # horizontal and vertical positions
+    # NNB, it was a bit of trial and error to get the these positions just
+    # right
+    
+    # horizontal positions (0 = left, 1 = right)
+    x = case_when(
+      str_detect(name, 'Eligible population') ~ 1,
+      str_detect(name, 'Invitation 1') ~ 2,
+      str_detect(name, 'Invitation 2') ~ 3,
+      str_detect(name, 'Invitation 3') ~ 4,
+      .default = 5
+    ) |> rescale(to = c(0.001, 0.9)),
+    
+    # vertical position (1 = bottom, 0 = top)
+    y = case_when(
+      str_detect(name, 'Eligible population') ~ 5,
+      # invite 1
+      str_detect(name, 'Invitation 1 Accepted') ~ 1,
+      str_detect(name, 'Invitation 1 No response') ~ 5,
+      str_detect(name, 'Invitation 1 Declined') ~ 8.5,
+      # invite 2
+      str_detect(name, 'Invitation 2 Accepted') ~ 2,
+      str_detect(name, 'Invitation 2 No response') ~ 5,
+      str_detect(name, 'Invitation 2 Declined') ~ 7.8,
+      # invite 3
+      str_detect(name, 'Invitation 3 Accepted') ~ 2.7,
+      str_detect(name, 'Invitation 3 No response') ~ 5.8,
+      str_detect(name, 'Invitation 3 Declined') ~ 7.2,
+      # final outcomes
+      str_detect(name, 'Accepted') ~ 1,
+      str_detect(name, 'No response') ~ 5,
+      str_detect(name, 'Declined') ~ 8,
+      .default = 5
+    ) |> rescale(to = c(0.001, 0.999))
+  ) |> 
+  # add in a custom field to show the percentage flow
+  left_join(
+    y = df_flows |> 
+      group_by(to) |> 
+      summarise(
+        flow = sum(flow, na.rm = T),
+        flow_perc = percent(flow / temp_eligible_pop, accuracy = 0.1),
+      ) |> 
+      select(name = to, flow_perc),
+    by = 'name'
+  )
+
+# view our nodes data
+nodes |> 
+  reactable(defaultPageSize = 5)
+```
+
+Next we move to styling the edges, which is a much simpler prospect:
+
+```{r}
+#| code-fold: true
+#| fig-cap: Styling the edges dataframe
+#| fig-cap-location: top
+
+edges <- edges |> 
+  mutate(
+    # add a label for each flow to tell us how many people are in each
+    label = number(flow, big.mark = ','),
+    # add a percentage flow figure
+    flow_perc = percent(flow / temp_eligible_pop, accuracy = 0.1)
+  ) |> 
+  # add the faded colour from our nodes object to match the destinations
+  left_join(
+    y = nodes |> select(to = id, colour_fade),
+    by = 'to'
+  )
+
+# view our edges data
+edges |> 
+  reactable(defaultPageSize = 5)
+```
+
+put it all together
+
+```{r}
+#| code-fold: true
+#| fig-cap: A stylish Sankey
+#| fig-cap-location: top
+
+# plot our stylised sankey
+plot_ly(
+  # setup
+  type = 'sankey',
+  orientation = 'h',
+  arrangement = 'snap',
+  
+  # use our node data
+  node = list(
+    label = nodes$name,
+    color = nodes$colour,
+    x = nodes$x,
+    y = nodes$y,
+    customdata = nodes$flow_perc,
+    hovertemplate = '%{label}<br /><b>%{value}</b> participants<br /><b>%{customdata}</b> of eligible population'
+  ),
+  
+  # use our link data
+  link = list(
+    source = edges$from,
+    target = edges$to,
+    value = edges$flow,
+    label = edges$label,
+    color = edges$colour_fade,
+    customdata = edges$flow_perc,
+    hovertemplate = '%{source.label} → %{target.label}<br /><b>%{value}</b> participants<br /><b>%{customdata}</b> of GP eligible population'
+  )
+) |> 
+  layout(
+    font = list(
+      family = 'Arial, Helvetica, sans-serif',
+      size = 12
+    ),
+    # make the background transparent (also removes the text shadow)
+    paper_bgcolor = 'rgba(0,0,0,0)'
+  ) |> 
+  config(
+    responsive = T
+  )
+```

@@ -27,7 +27,7 @@ library(scales)          # used for colour transformation
 
 Sankey diagrams are great tools to visualise flows through a system. They show the flow / conversion rate after each step of a process and the width of the arrows is proportional to the flow / conversion rate.
 
-I'm working on a project to evaluate the effectiveness of a screening programme for people aged between 55-74 years and a history of smoking[^1]. One report requirement is to be able to visualise how people have engaged with the programme, from recruitment, attendance at appointments, their outcome from risk assessment, low-dose CT scans and will eventually cover the impact of the screening on early detection of those diagnosed with lung cancer.
+I'm working on a project to evaluate the effectiveness of a risk screening programme for people aged between 55-74 years and a history of smoking[^1]. One report requirement is to be able to visualise how people have engaged with the programme, from recruitment, attendance at appointments, their outcome from risk assessment, low-dose CT scans and will eventually cover the impact of the screening on early detection of those diagnosed with lung cancer.
 
 [^1]: For more background on the TLHC programme see <https://www.england.nhs.uk/contact-us/privacy-notice/how-we-use-your-information/our-services/evaluation-of-the-targeted-lung-health-check-programme/>
 
@@ -516,7 +516,7 @@ edges |>
   reactable(defaultPageSize = 5)
 ```
 
-put it all together
+We now have stylised node and edge tables ready, so bring it all together. Note the use of `customdata` and `hovertemplate` help to bring in additional information and styling to the pop-up boxes that appear when you hover over each flow and node.
 
 ```{r}
 #| code-fold: true
@@ -540,7 +540,7 @@ plot_ly(
     hovertemplate = '%{label}<br /><b>%{value}</b> participants<br /><b>%{customdata}</b> of eligible population'
   ),
   
-  # use our link data
+  # use our edge data
   link = list(
     source = edges$from,
     target = edges$to,

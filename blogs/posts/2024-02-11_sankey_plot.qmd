@@ -1,0 +1,339 @@
+---
+title: "Visualising participant recruitment with Sankey plots"
+author:
+  - Craig Parylo
+date: "2024-02-11"
+categories: [learning, tutorial, visualisation]
+reference-location: margin
+citation-location: margin
+---
+
+```{r}
+#| code-fold: true
+#| warning: false
+#| message: false
+#| output: false
+
+# libraries
+library(tidyverse)       # 'tidy' data wrangling
+library(plotly)          # sankey visualisation framework
+library(reactable)       # viewing interactive datatables
+library(glue)            # concatenating strings
+library(tidygraph)       # api for graph / network manipulation
+```
+
+# Introduction
+
+Intro to topic
+
+-   TLHC programme
+
+-   Requirement to visualise the patient journey as they move
+
+-   Benefits: seeing points of drop-off
+
+-   Link to finalised product
+
+Here is a link to the work : http:....
+
+# Data wrangling
+
+## Get the data
+
+In this example we will work with a simplified version of the TLHC data focused on the invites to participate.
+
+The invites table holds details of the invitations made to people eligible for the screening programme and the outcome, i.e. whether the person accepted the invite, declined to participate or didn't respond.
+
+The people eligible for the programme are identified up-front and are represented by a unique ID with one row per person. Let us assume that each person receives at least one invitation to take part, they can have one of three outcomes:
+
+1.  They accept the invitation and agree to take part, or
+
+2.  The decline the invitation, or
+
+3.  They do not respond to the invitation.
+
+If the person doesn't respond to the first invitation they may be sent a second invitation and could be offered a third invitation if they didn't respond to the second.
+
+Here is the specification for our simplified invites table:
+
++----------------+---------+--------------------------------------------------------------------------------------+
+| Field          | Type    | Description                                                                          |
++================+=========+======================================================================================+
+| Participant ID | integer | A unique identifier for each person.                                                 |
++----------------+---------+--------------------------------------------------------------------------------------+
+| Invite date 1  | Date    | The date the person was first invited to participate.                                |
+|                |         |                                                                                      |
+|                |         | Every person will have a date in this field.                                         |
++----------------+---------+--------------------------------------------------------------------------------------+
+| Invite date 2  | Date    | The date a second invitation was sent.                                               |
++----------------+---------+--------------------------------------------------------------------------------------+
+| Invite date 3  | Date    | The date a third invitation was sent.                                                |
++----------------+---------+--------------------------------------------------------------------------------------+
+| Invite outcome | Text    | The outcome from the invite, one of either 'Accepted', 'Declined' or 'No response'.  |
++----------------+---------+--------------------------------------------------------------------------------------+
+
+: Invites specification
+
+Everyone receives at least one invite, so assuming a third of these respond (to either accept or decline) then two-thirds will receive a follow-up invite to which we assume half will respond meaning a the remainder of participants receive a third invite.
+
+Here we generate 100 rows of example data to populate our table.
+
+```{r}
+#| code-fold: true
+#| fig-cap: Generated invite table
+#| fig-cap-location: top
+
+# set a randomisation seed for reproducibility
+set.seed(seed = 1234)
+
+# define some parameters
+start_date = as.Date('2019-01-01')
+end_date = as.Date('2021-01-01')
+rows = 100
+
+df_invites_1 <- tibble(
+  # create a unique id for each participant
+  participant_id = 1:rows,
+  
+  # create a random initial invite date between our start and end dates
+  invite_1_date = sample(
+    seq(start_date, end_date, by = 'day'), 
+    size = rows, replace = T
+  ),
+  
+  # create a random outcome for this participant
+  invite_outcome = sample(
+    x = c('Accepted', 'Declined', 'No response'),
+    size = rows, replace = T
+  )
+)
+
+# take a sample of participants and allocate them a second invite date
+df_invites_2 <- df_invites_1 |>
+  # sample two thirds of participants to get a second invite
+  slice_sample(prop = 2/3) |>   
+  # allocate a second invite date between 10 and 30 days following the first
+  mutate(
+    invite_2_date = invite_1_date + sample(10:30, size = n(), replace = T)
+  ) |> 
+  # keep just id and second date
+  select(participant_id, invite_2_date)
+
+
+# take a sample of those with a second invite and allocate them a third invite date
+df_invites_3 <- df_invites_2 |> 
+  # sample half of these to get a third invite
+  slice_sample(prop = 1/2) |> 
+  # allocate third invite date between 10 to 30 days following the second
+  mutate(
+    invite_3_date = invite_2_date + sample(10:30, size = n(), replace = T)
+  ) |> 
+  # keep just id and second date
+  select(participant_id, invite_3_date)
+
+# combine the 2nd and 3rd invites with the first table
+df_invites <- df_invites_1 |> 
+  left_join(
+    y = df_invites_2, 
+    by = 'participant_id'
+  ) |> 
+  left_join(
+    y = df_invites_3,
+    by = 'participant_id'
+  ) |> 
+  # move the outcome field after the third invite
+  relocate(invite_outcome, .after = invite_3_date)
+
+# housekeeping
+rm(df_invites_1, df_invites_2, df_invites_3, start_date, end_date, rows)
+
+# view our data
+df_invites |> 
+  reactable(defaultPageSize = 5)
+```
+
+## Determine milestone outcomes
+
+The next step is to take our source table and convert the data into a series of milestones (and associated outcomes) that represents how our invited participants moved through the pathway.
+
+In our example we have five milestones to represent in our Sankey plot:
+
+-   Our eligible population (everyone in our invites table),
+
+-   The result from the first invitation,
+
+-   The result from the second invitation,
+
+-   The result from the third invitation,
+
+-   The overall invite outcome.
+
+Aside from the eligible population, (where everyone starts with the same value), participants will have one of several outcomes at each milestone. This step is about naming these milestones and the outcomes.
+
+It is important to note that each milestone-outcome must have unique values. An outcome of 'No response' can be recorded against the first, second and third invite, and we wish to see these outcomes separately represented on the Sankey (rather than just one 'No response'), so each outcome must be made unique. In this example we prefix the outcome from each invite with the number of the invite, e.g. 'Invite 1 No response'.
+
+The reason for this will become clearer when we come to plot the Sankey, but for now we produce these milestone-outcomes from our invites table.
+
+```{r}
+#| code-fold: true
+#| fig-cap: Milestone-outcomes for participants
+#| fig-cap-location: top
+
+df_milestones <- df_invites |> 
+  mutate(
+    # everyone starts in the eligible population
+    start_population = 'Eligible population',
+    
+    # work out what happened following the first invite
+    invite_1_outcome = case_when(
+      # if a second invite was sent we assume there was no outcome from the first
+      !is.na(invite_2_date) ~ 'Invitation 1 No response',
+      # otherwise the overall outcome resulted from the first invite
+      .default = glue('Invitation 1 {invite_outcome}')
+    ),
+    
+    # work out what happened following the second invite
+    invite_2_outcome = case_when(
+      # if a third invite was sent we assume there was no outcome from the second
+      !is.na(invite_3_date) ~ 'Invitation 2 No response',
+      # if a second invite was sent but no third then
+      !is.na(invite_2_date) ~ glue('Invitation 2 {invite_outcome}'),
+      # default to NA if neither of the above are true
+      .default = NA
+    ),
+    
+    # work out what happened following the third invite
+    invite_3_outcome = case_when(
+      # if a third invite was sent then the outcome is the overall outcome
+      !is.na(invite_3_date) ~ glue('Invitation 3 {invite_outcome}'),
+      # otherwise mark as NA
+      .default = NA
+    )
+  ) |> 
+  # exclude the dates as they are no longer needed
+  select(-contains('_date')) |> 
+  # move the overall invite outcome to the end
+  relocate(invite_outcome, .after = invite_3_outcome)
+
+# view our data
+df_milestones |> 
+  reactable(defaultPageSize = 5)
+```
+
+## Calculate flows
+
+Next we take pairs of milestone-outcomes and calculate the number of participants that moved between them.
+
+Here we utilise the power of `dplyr::summarise` with an argument `.by` to group by our data before counting the number of unique participants who move between our start and end groups.
+
+For invites 2 and 3 we perform two sets of summaries;
+
+-   the first where the values in the `to` and `from` fields contain details, and
+
+-   the second to capture cases where the `to` destination is NULL. This is because the participant responded at the previous invite so there was no subsequent invite. In these cases we flow the participant to the overall invite outcome.[^1]
+
+[^1]:  if you are thinking there is a lot of repetition here, you're right. In practice I abstracted both steps to a function and passed in the parameters for the `from` and `to` variables and simplified my workflow a little, however, I'm showing it in plain form here for simplification.
+
+```{r}
+#| code-fold: true
+#| fig-cap: Flows of participants between milestones
+#| fig-cap-location: top
+
+df_flows <- bind_rows(
+  
+  # flow from population to invite 1
+  df_milestones |> 
+    filter(!is.na(start_population) & !is.na(invite_1_outcome)) |> 
+    rename(from = start_population, to = invite_1_outcome) |> 
+    summarise(
+      flow = n_distinct(participant_id, na.rm = T),
+      .by = c(from, to)
+    ),
+  
+  # flow from invite 1 to invite 2 (where not NA)
+  df_milestones |> 
+    filter(!is.na(invite_1_outcome) & !is.na(invite_2_outcome)) |> 
+    rename(from = invite_1_outcome, to = invite_2_outcome) |> 
+    summarise(
+      flow = n_distinct(participant_id, na.rm = T),
+      .by = c(from, to)
+    ),
+  
+  # flow from invite 1 to overall invite outcome (where invite 2 is NA)
+  df_milestones |> 
+    filter(!is.na(invite_1_outcome) & is.na(invite_2_outcome)) |> 
+    rename(from = invite_1_outcome, to = invite_outcome) |> 
+    summarise(
+      flow = n_distinct(participant_id, na.rm = T),
+      .by = c(from, to)
+    ),
+  
+  # flow from invite 2 to invite 3 (where not NA)
+  df_milestones |> 
+    filter(!is.na(invite_2_outcome) & !is.na(invite_3_outcome)) |> 
+    rename(from = invite_2_outcome, to = invite_3_outcome) |> 
+    summarise(
+      flow = n_distinct(participant_id, na.rm = T),
+      .by = c(from, to)
+    ),
+  
+  # flow from invite 2 to overall invite outcome (where invite 3 is NA)
+  df_milestones |> 
+    filter(!is.na(invite_2_outcome) & is.na(invite_3_outcome)) |> 
+    rename(from = invite_2_outcome, to = invite_outcome) |> 
+    summarise(
+      flow = n_distinct(participant_id, na.rm = T),
+      .by = c(from, to)
+    ),
+  
+  # final flow - invite 3 to overall outcome (where both are not NA)
+  df_milestones |> 
+    filter(!is.na(invite_3_outcome) & !is.na(invite_outcome)) |> 
+    rename(from = invite_3_outcome, to = invite_outcome) |> 
+    summarise(
+      flow = n_distinct(participant_id, na.rm = T),
+      .by = c(from, to)
+    )
+)
+
+# view our data
+df_flows |> 
+  reactable(defaultPageSize = 5)
+```
+
+# Sankey plot
+
+We now have a neat little summary of movements of participants between the milestones in our recruitment pathway. However, this 'tidy' data isn't the format required by [plotly](https://plotly.com/r/sankey-diagram/), so the next steps are to prepare it ready for plotting.
+
+## Preparing for plotly
+
+Plotly expects to be fed two sets of data, nodes and edges:
+
+1.  Nodes - these are the milestones we have in our `from` and `to` fields,
+
+2.  Edges - these are the flows that occur between nodes, the `flow` in our table.
+
+It is possible to extract this data by hand, however, I found using the [tidygraph](https://tidygraph.data-imaginist.com) package much easier and more convenient.
+
+```{r}
+df_sankey <- df_flows |> 
+  # convert our flows data to a tidy graph object
+  as_tbl_graph()
+
+```
+
+The tidygraph package splits our data into nodes and edges, giving each node a unique id number and using that id as a reference in the edges table. We can selectively work on by 'activating' them:
+
+```{r}
+df_sankey |> 
+  activate(what = 'nodes') |> 
+  as_tibble() |> 
+  reactable(defaultPageSize = 5)
+```
+
+```{r}
+df_sankey |> 
+  activate(what = 'edges') |> 
+  as_tibble() |> 
+  reactable(defaultPageSize = 5)
+```

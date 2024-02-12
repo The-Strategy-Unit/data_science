@@ -56,21 +56,21 @@ If the person doesn't respond to the first invitation they may be sent a second 
 
 Here is the specification for our simplified invites table:
 
-+----------------+---------+--------------------------------------------------------------------------------------+
-| Field          | Type    | Description                                                                          |
-+================+=========+======================================================================================+
-| Participant ID | integer | A unique identifier for each person.                                                 |
-+----------------+---------+--------------------------------------------------------------------------------------+
-| Invite date 1  | Date    | The date the person was first invited to participate.                                |
-|                |         |                                                                                      |
-|                |         | Every person will have a date in this field.                                         |
-+----------------+---------+--------------------------------------------------------------------------------------+
-| Invite date 2  | Date    | The date a second invitation was sent.                                               |
-+----------------+---------+--------------------------------------------------------------------------------------+
-| Invite date 3  | Date    | The date a third invitation was sent.                                                |
-+----------------+---------+--------------------------------------------------------------------------------------+
-| Invite outcome | Text    | The outcome from the invite, one of either 'Accepted', 'Declined' or 'No response'.  |
-+----------------+---------+--------------------------------------------------------------------------------------+
++----------------+----------+-------------------------------------------------------------------------------------+
+| Field          | Type     | Description                                                                         |
++================+==========+=====================================================================================+
+| Participant ID | integer  | A unique identifier for each person.                                                |
++----------------+----------+-------------------------------------------------------------------------------------+
+| Invite date 1  | Date     | The date the person was first invited to participate.                               |
+|                |          |                                                                                     |
+|                |          | Every person will have a date in this field.                                        |
++----------------+----------+-------------------------------------------------------------------------------------+
+| Invite date 2  | Date     | The date a second invitation was sent.                                              |
++----------------+----------+-------------------------------------------------------------------------------------+
+| Invite date 3  | Date     | The date a third invitation was sent.                                               |
++----------------+----------+-------------------------------------------------------------------------------------+
+| Invite outcome | Text     | The outcome from the invite, one of either 'Accepted', 'Declined' or 'No response'. |
++----------------+----------+-------------------------------------------------------------------------------------+
 
 : Invites specification
 
@@ -232,7 +232,7 @@ For invites 2 and 3 we perform two sets of summaries;
 
 -   the second to capture cases where the `to` destination is NULL. This is because the participant responded at the previous invite so there was no subsequent invite. In these cases we flow the participant to the overall invite outcome.[^1]
 
-[^1]:  if you are thinking there is a lot of repetition here, you're right. In practice I abstracted both steps to a function and passed in the parameters for the `from` and `to` variables and simplified my workflow a little, however, I'm showing it in plain form here for simplification.
+[^1]: if you are thinking there is a lot of repetition here, you're right. In practice I abstracted both steps to a function and passed in the parameters for the `from` and `to` variables and simplified my workflow a little, however, I'm showing it in plain form here for simplification.
 
 ```{r}
 #| code-fold: true
@@ -322,7 +322,7 @@ df_sankey <- df_flows |>
 
 ```
 
-The tidygraph package splits our data into nodes and edges, giving each node a unique id number and using that id as a reference in the edges table. We can selectively work on by 'activating' them:
+The tidygraph package splits our data into nodes and edges. We can selectively work on each by 'activating' them - here is the nodes list:
 
 ```{r}
 df_sankey |> 
@@ -331,9 +331,74 @@ df_sankey |>
   reactable(defaultPageSize = 5)
 ```
 
+You can see each unique node name listed. The row numbers for these nodes are used as reference ids in the edges object:
+
 ```{r}
 df_sankey |> 
   activate(what = 'edges') |> 
   as_tibble() |> 
   reactable(defaultPageSize = 5)
 ```
+
+We now have enough information to generate our Sankey.
+
+First we extract our nodes and edges to separate data frames then convert the id values to be zero-based (starts at 0) as this is what plotly is expecting. To do this is as simple as subtracting 1 from the value of the ids.
+
+Finally we pass these two dataframes to plotly's `node` and `link` function inputs to generate the plot.
+
+```{r}
+#| code-fold: false
+#| fig-cap: Our first sankey
+#| fig-cap-location: top
+
+# extract the nodes to a dataframe
+nodes <- df_sankey |> 
+  activate(nodes) |> 
+  data.frame() |> 
+  mutate(
+    id = row_number() -1
+  )
+
+# extract the edges to a dataframe
+edges <- df_sankey |> 
+  activate(edges) |> 
+  data.frame() |> 
+  mutate(
+    from = from - 1,
+    to = to - 1
+  )
+
+# plot our sankey
+plot_ly(
+  # setup
+  type = 'sankey',
+  orientation = 'h',
+  arrangement = 'snap',
+  
+  # use our node data
+  node = list(
+    label = nodes$name
+  ),
+  
+  # use our link data
+  link = list(
+    source = edges$from,
+    target = edges$to,
+    value = edges$flow
+  )
+)
+```
+
+Not too bad!
+
+We can see the structure of our Sankey now. See the relative proportions of participants who did or didn't respond to our first invite? Marvel at how those who responded to the first invite flow into our final outcome. How about those who didn't respond to the first invitation go on to receive a second invite? This looks functional.
+
+## Styling our Sankey
+
+Want to:
+
+-   use colour coding to clearly group those who accept or decline the invite
+
+-   Improve readability of the node titles
+
+-   Add additional information to the pop-up boxes

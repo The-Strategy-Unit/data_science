@@ -1,15 +1,37 @@
 ---
-title: "Visualising participant recruitment with Sankey plots"
+title: "Visualising participant recruitment in R using Sankey plots"
 author:
   - Craig Parylo
-date: "2024-02-11"
-categories: [learning, tutorial, visualisation]
+date: "2024-02-28"
+categories: [learning, tutorial, visualisation, R]
 reference-location: margin
 citation-location: margin
 ---
 
+# Introduction
+
+Sankey diagrams are great tools to visualise flows through a system. They show connections between the steps of a process where the width of the arrows is proportional to the flow.
+
+I'm working on an evaluation of a risk screening process for people aged between 55-74 years and a history of smoking. In this Targeted Lung Health Check (TLHC) programme[^1] eligible people are invited to attend a free lung check where those assessed at high risk of lung cancer are then offered low-dose CT screening scans.
+
+[^1]: Please visit the [NHS England](https://www.england.nhs.uk/contact-us/privacy-notice/how-we-use-your-information/our-services/evaluation-of-the-targeted-lung-health-check-programme/) site for for more background.
+
+We used Sankey diagrams to visualise how people have engaged with the programme, from recruitment, attendance at appointments, their outcome from risk assessment, attendance at CT scans and will eventually be extended to cover the impact of the screening on early detection of those diagnosed with lung cancer.
+
+This blog post is about the technical process of preparing record-level data for visualisation in a Sankey plot using `R` and customising it to enhance look and feel. Here is how the finished product will look:
+
 ```{r}
-#| code-fold: true
+#| echo: false
+# here's one I prepared earlier
+readRDS(file = here::here('blogs', 'posts', 'assets', 'sankey_example.rds'))
+```
+
+# Data wrangling
+
+First we'll attach some packages. I'll be using [plotly](https://plotly.com/r/sankey-diagram/) for the visualisation of the Sankey chart, [tidygraph](https://tidygraph.data-imaginist.com/) for graph manipulation and [scales](https://scales.r-lib.org/) to handle colour transformation and rescaling values. We will also be using the [tidyverse](https://www.tidyverse.org/) and [glue](https://glue.tidyverse.org/) packages for general data wrangling and [reactable](https://glin.github.io/reactable/index.html) to preview our data as we go along.
+
+```{r}
+#| code-fold: false
 #| warning: false
 #| message: false
 #| output: false
@@ -23,33 +45,17 @@ library(tidygraph)       # api for graph / network manipulation
 library(scales)          # used for colour transformation
 ```
 
-# Introduction
-
-Sankey diagrams are great tools to visualise flows through a system. They show the flow / conversion rate after each step of a process and the width of the arrows is proportional to the flow / conversion rate.
-
-I'm working on a project to evaluate the effectiveness of a risk screening programme for people aged between 55-74 years and a history of smoking[^1]. One report requirement is to be able to visualise how people have engaged with the programme, from recruitment, attendance at appointments, their outcome from risk assessment, low-dose CT scans and will eventually cover the impact of the screening on early detection of those diagnosed with lung cancer.
-
-[^1]: For more background on the TLHC programme see <https://www.england.nhs.uk/contact-us/privacy-notice/how-we-use-your-information/our-services/evaluation-of-the-targeted-lung-health-check-programme/>
-
-The use of Sankey plots has helped the programme team to better understand patient flows through the pathway, points of drop-off and differences between different intervention models.
-
-Here is a link to the final Sankey diagram for the full TLHC programme: <https://connect.strategyunitwm.nhs.uk/content/3f114580-bcb7-42d8-82a5-b607baf96da5/>
-
-This blog post is about the technical process of preparing record-level data for visualisation in a Sankey plot and the customisation to enhance look and feel.
-
-# Data wrangling
-
 ## Get the data
 
-In this example we will work with a simplified version of the TLHC data focused on the invites to participate.
+In this example we will work with a simplified set of data focused on invitations.
 
-The invites table holds details of the invitations made to people eligible for the screening programme and the outcome, i.e. whether the person accepted the invite, declined to participate or didn't respond.
+The invites table holds details of when people were sent a letter or message inviting them to take part, how many times they were invited and how the person responded.
 
-The people eligible for the programme are identified up-front and are represented by a unique ID with one row per person. Let us assume that each person receives at least one invitation to take part, they can have one of three outcomes:
+The people eligible for the programme are identified up-front and are represented by a unique ID with one row per person. Let's assume each person receives at least one invitation to take part, they can have one of three outcomes:
 
-1.  They accept the invitation and agree to take part, or
+1.  They accept the invitation and agree to take part,
 
-2.  The decline the invitation, or
+2.  They decline the invitation,
 
 3.  They do not respond to the invitation.
 
@@ -60,7 +66,7 @@ Here is the specification for our simplified invites table:
 +----------------+----------+-------------------------------------------------------------------------------------+
 | Field          | Type     | Description                                                                         |
 +================+==========+=====================================================================================+
-| Participant ID | integer  | A unique identifier for each person.                                                |
+| Participant ID | Integer  | A unique identifier for each person.                                                |
 +----------------+----------+-------------------------------------------------------------------------------------+
 | Invite date 1  | Date     | The date the person was first invited to participate.                               |
 |                |          |                                                                                     |
@@ -75,7 +81,7 @@ Here is the specification for our simplified invites table:
 
 : Invites specification
 
-Everyone receives at least one invite, so assuming a third of these respond (to either accept or decline) then two-thirds will receive a follow-up invite to which we assume half will respond meaning a the remainder of participants receive a third invite.
+Everyone receives at least one invite. Assuming a third of these respond (to either accept or decline) then two-thirds receive a follow-up invite. Of these, we assume half respond, meaning the remaining participants receive a third invite.
 
 Here we generate 100 rows of example data to populate our table.
 
@@ -113,7 +119,7 @@ df_invites_1 <- tibble(
 df_invites_2 <- df_invites_1 |>
   # sample two thirds of participants to get a second invite
   slice_sample(prop = 2/3) |>   
-  # allocate a second invite date between 10 and 30 days following the first
+  # allocate a date between 10 and 30 days following the first
   mutate(
     invite_2_date = invite_1_date + sample(10:30, size = n(), replace = T)
   ) |> 
@@ -125,7 +131,7 @@ df_invites_2 <- df_invites_1 |>
 df_invites_3 <- df_invites_2 |> 
   # sample half of these to get a third invite
   slice_sample(prop = 1/2) |> 
-  # allocate third invite date between 10 to 30 days following the second
+  # allocate a date between 10 to 30 days following the second
   mutate(
     invite_3_date = invite_2_date + sample(10:30, size = n(), replace = T)
   ) |> 
@@ -169,9 +175,9 @@ In our example we have five milestones to represent in our Sankey plot:
 
 -   The overall invite outcome.
 
-Aside from the eligible population, (where everyone starts with the same value), participants will have one of several outcomes at each milestone. This step is about naming these milestones and the outcomes.
+Aside from the eligible population, where everyone starts with the same value, participants will have one of several outcomes at each milestone. This step is about naming these milestones and the outcomes.
 
-It is important to note that each milestone-outcome must have unique values. An outcome of 'No response' can be recorded against the first, second and third invite, and we wish to see these outcomes separately represented on the Sankey (rather than just one 'No response'), so each outcome must be made unique. In this example we prefix the outcome from each invite with the number of the invite, e.g. 'Invite 1 No response'.
+It is important that each milestone-outcome has unique values. An outcome of 'No response' can be recorded against the first, second and third invite, and we wish to see these outcomes separately represented on the Sankey (rather than just one 'No response'), so each outcome must be made unique. In this example we prefix the outcome from each invite with the number of the invite, e.g. 'Invite 1 No response'.
 
 The reason for this will become clearer when we come to plot the Sankey, but for now we produce these milestone-outcomes from our invites table.
 
@@ -227,13 +233,13 @@ Next we take pairs of milestone-outcomes and calculate the number of participant
 
 Here we utilise the power of `dplyr::summarise` with an argument `.by` to group by our data before counting the number of unique participants who move between our start and end groups.
 
-For invites 2 and 3 we perform two sets of summaries;
+For invites 2 and 3 we perform two sets of summaries:
 
--   the first where the values in the `to` and `from` fields contain details, and
+1.  The first where the values in the `to` and `from` fields contain details.
 
--   the second to capture cases where the `to` destination is NULL. This is because the participant responded at the previous invite so there was no subsequent invite. In these cases we flow the participant to the overall invite outcome.[^2]
+2.  The second to capture cases where the `to` destination is NULL. This is because the participant responded at the previous invite so there was no subsequent invite. In these cases we flow the participant to the overall invite outcome.[^2]
 
-[^2]: if you are thinking there is a lot of repetition here, you're right. In practice I abstracted both steps to a function and passed in the parameters for the `from` and `to` variables and simplified my workflow a little, however, I'm showing it in plain form here for simplification.
+[^2]: If you are thinking there is a lot of repetition here, you're right. In practice I abstracted both steps to a function and passed in the parameters for the `from` and `to` variables and simplified my workflow a little, however, I'm showing it in plain form here for simplification.
 
 ```{r}
 #| code-fold: true
@@ -308,13 +314,13 @@ We now have a neat little summary of movements of participants between the miles
 
 ## Preparing for plotly
 
-Plotly expects to be fed two sets of data, nodes and edges:
+Plotly expects to be fed two sets of data:
 
 1.  Nodes - these are the milestones we have in our `from` and `to` fields,
 
 2.  Edges - these are the flows that occur between nodes, the `flow` in our table.
 
-It is possible to extract this data by hand, however, I found using the [tidygraph](https://tidygraph.data-imaginist.com) package much easier and more convenient.
+It is possible to extract this data by hand but I found using the [tidygraph](https://tidygraph.data-imaginist.com) package was much easier and more convenient.
 
 ```{r}
 df_sankey <- df_flows |> 
@@ -332,7 +338,7 @@ df_sankey |>
   reactable(defaultPageSize = 5)
 ```
 
-You can see each unique node name listed. The row numbers for these nodes are used as reference ids in the edges object:
+You can see each unique node name listed. The row numbers for these nodes are used as reference IDs in the edges object:
 
 ```{r}
 df_sankey |> 
@@ -343,7 +349,7 @@ df_sankey |>
 
 We now have enough information to generate our Sankey.
 
-First we extract our nodes and edges to separate data frames then convert the id values to be zero-based (starts at 0) as this is what plotly is expecting. To do this is as simple as subtracting 1 from the value of the ids.
+First we extract our nodes and edges to separate data frames then convert the ID values to be zero-based (starts at 0) as this is what plotly is expecting. To do this is as simple as subtracting 1 from the value of the IDs.
 
 Finally we pass these two dataframes to plotly's `node` and `link` function inputs to generate the plot.
 
@@ -392,7 +398,11 @@ plot_ly(
 
 Not bad!
 
-We can see the structure of our Sankey now. Can you see the relative proportions of participants who did or didn't respond to our first invite? Marvel at how those who responded to the first invite flow into our final outcome. How about those who didn't respond to the first invitation go on to receive a second invite? This looks functional.
+We can see the structure of our Sankey now. Can you see the relative proportions of participants who did or didn't respond to our first invite? Marvel at how those who responded to the first invite flow into our final outcome. How about those who didn't respond to the first invitation go on to receive a second invite?
+
+Plotly's charts are interactive. Try hovering your cursor over the nodes and edges to highlight them and a pop-up box will appear giving you additional details. You can reorder the vertical position of the nodes by dragging them above or below an adjacent node.
+
+This looks functional.
 
 ## Styling our Sankey
 
@@ -516,7 +526,7 @@ edges |>
   reactable(defaultPageSize = 5)
 ```
 
-We now have stylised node and edge tables ready, so bring it all together. Note the use of `customdata` and `hovertemplate` help to bring in additional information and styling to the pop-up boxes that appear when you hover over each flow and node.
+We now have stylised node and edge tables ready and can bring it all together. Note the use of `customdata` and `hovertemplate` help to bring in additional information and styling to the pop-up boxes that appear when you hover over each flow and node.
 
 ```{r}
 #| code-fold: true
@@ -548,7 +558,7 @@ plot_ly(
     label = edges$label,
     color = edges$colour_fade,
     customdata = edges$flow_perc,
-    hovertemplate = '%{source.label} → %{target.label}<br /><b>%{value}</b> participants<br /><b>%{customdata}</b> of GP eligible population'
+    hovertemplate = '%{source.label} → %{target.label}<br /><b>%{value}</b> participants<br /><b>%{customdata}</b> of eligible population'
   )
 ) |> 
   layout(
@@ -559,7 +569,19 @@ plot_ly(
     # make the background transparent (also removes the text shadow)
     paper_bgcolor = 'rgba(0,0,0,0)'
   ) |> 
-  config(
-    responsive = T
-  )
+  config(responsive = T)
 ```
+
+# Conclusion
+
+Creating Sankey plots in R using plotly is an effective way to visualise patient pathways.
+
+In our project we embedded Sankey plots within an interactive [Shiny](https://shiny.posit.co/) app which allows for selective filters that update the resulting plot. This allowed us to quickly compare the effects of different models of delivering the screening programme, geography, deprivation levels, patient demographic, or any combination of these.
+
+Their use has helped the programme team better understand patient flows through the pathway, where the points of drop-off are and compare / contrast the effects of different models of delivering the screening programme on patient engagement.
+
+Feedback from external stakeholders has been positive too, noting how easy it is to engage with and understand this style of presentation.
+
+In this blog post we have wrangled a dataset to describe how people flow between steps in a process and then produced a Sankey diagram with some stylistic touches to make an effective visualisation.
+
+I hope this post helps you feel better prepared to use Sankeys in your work.

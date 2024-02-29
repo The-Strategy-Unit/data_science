@@ -63,21 +63,21 @@ If the person doesn't respond to the first invitation they may be sent a second 
 
 Here is the specification for our simplified invites table:
 
-+----------------+----------+-------------------------------------------------------------------------------------+
-| Field          | Type     | Description                                                                         |
-+================+==========+=====================================================================================+
-| Participant ID | Integer  | A unique identifier for each person.                                                |
-+----------------+----------+-------------------------------------------------------------------------------------+
-| Invite date 1  | Date     | The date the person was first invited to participate.                               |
-|                |          |                                                                                     |
-|                |          | Every person will have a date in this field.                                        |
-+----------------+----------+-------------------------------------------------------------------------------------+
-| Invite date 2  | Date     | The date a second invitation was sent.                                              |
-+----------------+----------+-------------------------------------------------------------------------------------+
-| Invite date 3  | Date     | The date a third invitation was sent.                                               |
-+----------------+----------+-------------------------------------------------------------------------------------+
-| Invite outcome | Text     | The outcome from the invite, one of either 'Accepted', 'Declined' or 'No response'. |
-+----------------+----------+-------------------------------------------------------------------------------------+
++----------------+---------+-------------------------------------------------------------------------------------+
+| Field          | Type    | Description                                                                         |
++================+=========+=====================================================================================+
+| Participant ID | Integer | A unique identifier for each person.                                                |
++----------------+---------+-------------------------------------------------------------------------------------+
+| Invite date 1  | Date    | The date the person was first invited to participate.                               |
+|                |         |                                                                                     |
+|                |         | Every person will have a date in this field.                                        |
++----------------+---------+-------------------------------------------------------------------------------------+
+| Invite date 2  | Date    | The date a second invitation was sent.                                              |
++----------------+---------+-------------------------------------------------------------------------------------+
+| Invite date 3  | Date    | The date a third invitation was sent.                                               |
++----------------+---------+-------------------------------------------------------------------------------------+
+| Invite outcome | Text    | The outcome from the invite, one of either 'Accepted', 'Declined' or 'No response'. |
++----------------+---------+-------------------------------------------------------------------------------------+
 
 : Invites specification
 

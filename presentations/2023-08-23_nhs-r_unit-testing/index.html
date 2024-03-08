@@ -8,7 +8,7 @@
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.549">
+  <meta name="generator" content="quarto-1.4.551">
 
   <meta name="author" content="Tom Jemmett">
   <title>Data Science @ The Strategy Unit - Unit testing in R</title>
@@ -734,7 +734,7 @@
 <span id="cb10-13"><a></a>  )</span>
 <span id="cb10-14"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Test passed 🎉</code></pre>
+<pre><code>Test passed 🥇</code></pre>
 </div>
 </div>
 </section>
@@ -909,7 +909,7 @@
 <span id="cb21-11"><a></a>  <span class="fu">expect_equal</span>(actual, expected, <span class="at">tolerance =</span> <span class="fl">1e-6</span>)</span>
 <span id="cb21-12"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Test passed 🌈</code></pre>
+<pre><code>Test passed 🎉</code></pre>
 </div>
 </div>
 <div class="fragment">
@@ -933,7 +933,7 @@
 <span id="cb23-5"><a></a>  <span class="fu">expect_error</span>(<span class="fu">my_function</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">4</span>))</span>
 <span id="cb23-6"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Test passed 😸</code></pre>
+<pre><code>Test passed 🌈</code></pre>
 </div>
 </div>
 </div>
@@ -974,14 +974,14 @@
 <span id="cb27-2"><a></a>  <span class="fu">expect_equal</span>(<span class="fu">my_new_function</span>(<span class="dv">4</span>, <span class="dv">3</span>), <span class="st">"x"</span>)</span>
 <span id="cb27-3"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Test passed 🥳</code></pre>
+<pre><code>Test passed 😀</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="fu">test_that</span>(<span class="st">"it returns 'y' if y is bigger than x"</span>, {</span>
 <span id="cb29-2"><a></a>  <span class="fu">expect_equal</span>(<span class="fu">my_new_function</span>(<span class="dv">3</span>, <span class="dv">4</span>), <span class="st">"y"</span>)</span>
 <span id="cb29-3"><a></a>  <span class="fu">expect_equal</span>(<span class="fu">my_new_function</span>(<span class="dv">3</span>, <span class="dv">3</span>), <span class="st">"y"</span>)</span>
 <span id="cb29-4"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Test passed 🥇</code></pre>
+<pre><code>Test passed 😸</code></pre>
 </div>
 </div>
 </section>
@@ -1661,6 +1661,24 @@
         // clear code selection
         e.clearSelection();
       });
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp("https:\/\/the-strategy-unit\.github\.io\/data_science");
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
       function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
@@ -1697,7 +1715,11 @@
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

@@ -56,3 +56,6 @@ format:
         - theme-dark.scss
         - cosmo
     toc: true
+
+execute: 
+  freeze: true

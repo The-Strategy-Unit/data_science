@@ -22,6 +22,7 @@ jobs:
       - name: Install System Dependencies
         run: |
           sudo apt update
+          sudo apt install -y cmake
           sudo apt install -y gdal-bin
           sudo apt install -y git
           sudo apt install -y libcurl4-openssl-dev
@@ -31,7 +32,6 @@ jobs:
           sudo apt install -y libgdal-dev
           sudo apt install -y libgeos-dev
           sudo apt install -y libglpk-dev
-          sudo apt install -y libgmp3-dev
           sudo apt install -y libharfbuzz-dev
           sudo apt install -y libicu-dev
           sudo apt install -y libjpeg-dev

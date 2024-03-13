@@ -35,9 +35,13 @@ packages <- read_json("renv.lock") |>
   }) |>
   flatten_chr() |>
   unique() |>
-  sort() |>
-  str_remove("^apt-get install -y ") |>
-  paste(collapse = " ")
+  sort()
 
-# copy the results of this into the action script
-paste("sudo apt update && sudo apt upgrade", packages)
+paste0(
+  "sudo apt update\n",
+  paste(
+    "sudo",
+    stringr::str_remove(packages, "-get"),
+    collapse = "\n"
+  )
+) |> clipr::write_clip()

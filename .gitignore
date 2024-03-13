@@ -13,3 +13,4 @@ site_libs/
 *.rmarkdown
 
 *_cache/
+*_freeze/

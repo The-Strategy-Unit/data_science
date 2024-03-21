@@ -1,23 +1,27 @@
 ---
 title: "RStudio Tips and Tricks"
 author: "Matt Dray"
-date: "2023-02-22"
-categories: [git, tutorial]
+date: "2024-03-21"
+categories: [learning, R]
 ---
 
-## Tricks and treats
+## Coffee & Coding
 
-In our latest Coffee & Coding session we chatted about tips and tricks for [RStudio](https://posit.co/products/open-source/rstudio/), a popular and free Integrated Development Environment (IDE) that many Strategy Unit analysts use to write R code.
+In a recent Coffee & Coding session we chatted about tips and tricks for [RStudio](https://posit.co/products/open-source/rstudio/), the popular and free Integrated Development Environment (IDE) that many Strategy Unit analysts use to write R code.
 
-RStudio has lots of neat features, but some are hidden in submenus or obfuscated by confusing terminology. This session was a chance for the community to uncover and discuss some hidden gems, big or small, that might help make our work easier and faster.
+RStudio has lots of neat features but many are tucked away in submenus. This session was a chance for the community to uncover and discuss some hidden gems to make our work easier and faster.
 
-Posit is the company who build and maintain RStudio. They host a number of cheatsheets on their website, [including one for RStudio](https://rstudio.github.io/cheatsheets/html/rstudio-ide.html). They also have a more [in-depth user guide](https://docs.posit.co/ide/user/).
+## Official guidance
+
+[Posit](https://posit.co/) is the company who build and maintain RStudio. They host a number of cheatsheets on their website, [including one for RStudio](https://rstudio.github.io/cheatsheets/html/rstudio-ide.html). They also have a more [in-depth user guide](https://docs.posit.co/ide/user/).
 
 ## Command palette
 
-RStudio has a powerful built-in [Command Palette](https://docs.posit.co/ide/user/ide/guide/ui/command-palette.html), which is a special search box that gives instant access to features and settings without needing to find them in the menus. Many of the tips and tricks we discussed can be found by searching in the Palette.
+RStudio has a powerful built-in [Command Palette](https://docs.posit.co/ide/user/ide/guide/ui/command-palette.html), which is a special search box that gives instant access to features and settings without needing to find them in the menus. Many of the tips and tricks we discussed can be found by searching in the Palette. Open it with the keyboard shortcut <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>.
 
-For example, Let's say you forgot how to restart R? If you open the Command Palette and start typing 'restart', you'll see the option 'Restart R Session'. Clicking it will do exactly that. Handily, the Palette also displays the keyboard shortcut (<kbd>Control</kbd> + <kbd>Shift</kbd> + <kbd>F10</kbd>) as a reminder.
+![Opening the Command Palette.](command-palette.png){fig.alt="The RStudio command palette. It's a search box with some suggested actiosn underneath, like 'create a new R script' and 'insert pipe operator'. Some of these options show what grouping they belong to, like 'help'. Others display keyboard shortcuts." width="100%"}
+
+For example, let's say you forgot how to restart R. If you open the Command Palette and start typing 'restart', you'll see the option 'Restart R Session'. Clicking it will do exactly that. Handily, the Palette also displays the keyboard shortcut (<kbd>Control</kbd> + <kbd>Shift</kbd> + <kbd>F10</kbd> on Windows) as a reminder.
 
 As for settings, a search for 'rainbow' in the Command Palette will find 'Use rainbow parentheses', an option to help prevent bracket-mismatch errors by colouring pairs of parentheses. What's nice is that the checkbox to toggle the feature appears right there in the palette so you can change it immediately.
 
@@ -27,13 +31,15 @@ I refer to menu paths and keyboard shortcuts in the rest of this post, but bear 
 
 In general, most settings can be found under Tools > Global Options... and many of these are discussed in the rest of this post.
 
+![Adjusting workspace and history settings.](options.png){fig.alt="RStudio options window opened to the 'basic' tab of the 'general'section. There are options to adjust things like yoru workspace and history settings. Other sections include settings for the console, appearance and accessibility." width="100%"}
+
 But there's a few settings in particular that we recommend you change to help maximise reproducibility and reduce the chance of confusion. Under General > Basic, uncheck 'Restore .Rdata into workspace at startup' and select 'Never' from the dropdown options next to 'Save workspace to .Rdata on exit'. These options mean you start with the 'blank slate' of an empty environment when you open a project, allowing you to rebuild objects from scratch[^restart].
 
 ## Keyboard shortcuts
 
-One way to speed up day-to-day coding is via keyboard shortcuts, rather than clicking buttons in the interface. 
+You can speed up day-to-day coding with keyboard shortcuts instead of clicking buttons in the interface. 
 
-You can see some available shortcuts in RStudio if you navigate to Help > Keyboard Shortcuts Help, or use the shortcut <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>K</kbd>. You can go to Help > Modify Keyboard Shortcuts... to search all shortcuts and change them to what you prefer[^terminal].
+You can see some available shortcuts in RStudio if you navigate to Help > Keyboard Shortcuts Help, or use the shortcut <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>K</kbd> (how meta). You can go to Help > Modify Keyboard Shortcuts... to search all shortcuts and change them to what you prefer[^terminal].
 
 We discussed a number of handy shortcuts that we use frequently[^cut]. You can:
 
@@ -51,31 +57,55 @@ You can change a number of settings to alter RStudio's theme, colours and fonts 
 
 You can [change the default theme](https://docs.posit.co/ide/user/ide/guide/ui/appearance.html) in Tools > Global Options... > Appearance > Editor theme and select one from the pre-installed list. You can upload new themes by clicking the 'Add' button and selecting a theme from your computer. They typically have the file extension .rsthemes and can be downloaded from the web, or you can create or tweak one yourself. [The {rsthemes} package](https://www.garrickadenbuie.com/project/rsthemes/) has a number of options and also allows you to switch between themes and automatically switch between light and dark themes depending on the time of day.
 
+![Customising the appearance and font.](appearance.png){fig.alt="RStudio options window opened to the 'appearance' section. The font has been changed to an installed font called 'Fira Code'. The theme has been changed to an installed theme called 'viridis'." width="100%"}
+
 In the same 'Appearance' submenu as the theme settings, you can find an option to change fonts. Monospace fonts, ones where each character takes up the same width, will appear here automatically if you've installed them on your computer. One popular font for coding is [Fira Code](https://github.com/tonsky/FiraCode), which has the special property of converting certain sets of characters into 'ligatures', which some people find easier to read. For example, the base pipe will appear as a rightward-pointing arrow rather than its constituent vertical-pipe and greater-than symbol (`|>`).
 
 ## Panes
+
+### Layout
 
 The structural layout of RStudio's panes can be adjusted. One simple thing you can do is minimise and maximise each pane by clicking the window icons in their upper-right corners. This is useful when you want more screen real-estate for a particular pane.
 
 You can move pane loations too. Click the 'Workspace Panes' button (a square with four more inside it) at the top of the IDE to see a number of settings. For example, you can select 'Console on the right' to move the R console to the upper-right pane, which you may prefer for maximimsing the vertical space in which code is shown. You could also click Pane Layout... in this menu to be taken to Tools > Global Options... > Pane layout, where you can click 'Add Column' to insert new script panes that allow you to inspect and write multiple files side-by-side.
 
+### Script navigation
+
 The script pane in particular has a nice feature for navigating through sections of your script or Quarto/R Markdown files. Click the 'Show Document Outline' button or use the keyboard shortcut <kbd>Control</kbd> + <kbd>Shift</kbd> + <kbd>O</kbd> to slide open a tray that provides a nice indented list of all the sections and function defintions in your file. 
 
-Section headers are auto-detected in a Quarto or R Markdown files wherever the Markdown header markuip has been used: one hashmark (`#`) for a level 1 header, two for level 2, and so on. To add section headers to an R Script, add at least four hyphens after a commented line that starts with `#`. Use two or more hashes at the start of the comment to increase the nestedness of that section.
+Section headers are auto-detected in a Quarto or R Markdown document wherever the Markdown header markup has been used: one hashmark (`#`) for a level 1 header, two for level 2, and so on. To add section headers to an R Script, add at least four hyphens after a commented line that starts with `#`. Use two or more hashes at the start of the comment to increase the nestedness of that section.
 
-As well as the document outline, there's also a clickable reminder in the lower-left of the script pane that reminds you of the name of the section that your cursor is currently in. You can click this to jump to other sections.
+```{r}
+#| label: headers
+#| eval: false
 
-## Right in front of your nose
+# Header ------------------------------------------------------------------
 
-* Go to project directory
-* [Background jobs](https://docs.posit.co/ide/user/ide/guide/tools/jobs.html), inside which Shiny apps can be run, leaving the console free
-ctrl and click
-snippets
-* name your chunks
+## Section ----
+
+### Subsection ----
+
+```
+
+Note that <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd> will open a dialog box for you to input the name of a section header, which will be inserted and automatically padded to 75 characters to provide a strong visual cue between sections.
+
+As well as the document outline, there's also a reminder in the lower-left of the script pane that gives the name of the section that your cursor is currently in. A symbol is also shown: a hashmark means it's a headed section and an 'f' means it's a function definition. You can click this to jump to other sections.
+
+![Navigating with headers in the R script pane.](rstudio-sections.png){fig.alt="RStudio script pane. There are three headers denoterd with one, two and three hash marks, named 'header', 'section' and 'subsection'. There is a demo functio nnamed 'add_one' in the subsection. The outline panel is open on the right and shows these items nested under each other. The cursor is on the subsection header and this is noted under the script." width="100%"}
+
+### Background jobs
+
+Perhaps an under-used pane is '[Background jobs](https://docs.posit.co/ide/user/ide/guide/tools/jobs.html)'. This is where you can run a separate R process that keeps your R console free. Go to Tools > Background Jobs > Start Background Job... to expose this tab if it isn't already listed alongside the R console.
+ 
+Why might you want to do this? As I write this post, there's a background process to detect changes to the Quarto document that I'm writing and then update a preview I have running in the browser. You can do something similar for Shiny apps. You can continue to develop your app and test things in the console and the app preview will update on save. You won't need to keep hitting the 'Render' or 'Run app' button every time you make a change.
 
 ## Magic wand
 
-There's a miscellany of useful tools available when you click the 'magic wand' button in the script pane. This includes:
+There's a miscellany of useful tools available when you click the 'magic wand' button in the script pane. 
+
+![Abracadabra! Casting open the 'magic wand' menu.](wand.png){fig.alt="The magic wand submenu, which contains options to do things like 'rename in scope', 'reflow comment' and 'reindent lines'." width="100%"}
+
+This includes:
 
 * 'Rename in Scope', which is like find-and-replace but you only change instances with the same 'scope', so you could select the variable `x`, go to Rename in Scope and then you can edit all instances of the variable in the document and change them at the same time (e.g. to rename them)
 * 'Reflow Comment', which you can click after higlighting a comments block to have the comments automatically line-break at the maximum width
@@ -85,7 +115,7 @@ Along with 'Comment/Uncomment Lines', 'Reindent Lines' and 'Reformat Lines', men
 
 ## Wrapping up
 
-Of course, our discussion was restricted by time. There are so many more tips and tricks to uncover. Let us know what we missed, or what your favourite shortcuts and settings are.
+Time was limited in our discussion. There are so many more tips and tricks that we didn't get to. Let us know what we missed, or what your favourite shortcuts and settings are.
 
 [^terminal]: You can 'snap focus' to the script and console panes with the pre-existing shortcuts <kbd>Control</kbd> + <kbd>1</kbd> and <kbd>Control</kbd> + <kbd>2</kbd>. My next most-used pane is the terminal, so I've re-mapped the shortcut to <kbd>Control</kbd> + <kbd>3</kbd>.
 [^cut]: The classic shortcuts of select-all (<kbd>Control</kbd> + <kbd>A</kbd>), cut (<kbd>Control</kbd> + <kbd>X</kbd>), copy <kbd>Control</kbd> + <kbd>C</kbd>, paste (<kbd>Control</kbd> + <kbd>V</kbd>), undo (<kbd>Control</kbd> + <kbd>Z</kbd>) and redo (<kbd>Control</kbd> + <kbd>Shift</kbd> + <kbd>Z</kbd>) are all available when editing.

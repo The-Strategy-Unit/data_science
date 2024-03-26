@@ -10,7 +10,155 @@
 <atom:link href="https://the-strategy-unit.github.io/data_science/blogs/index.xml" rel="self" type="application/rss+xml"/>
 <description>Blogs from the Data Science Team at The Strategy Unit</description>
 <generator>quarto-1.4.551</generator>
-<lastBuildDate>Wed, 28 Feb 2024 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 21 Mar 2024 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>RStudio Tips and Tricks</title>
+  <dc:creator>Matt Dray</dc:creator>
+  <link>https://the-strategy-unit.github.io/data_science/blogs/posts/2023-03-21-rstudio-tips/</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="coffee-coding" class="level2">
+<h2 class="anchored" data-anchor-id="coffee-coding">Coffee &amp; Coding</h2>
+<p>In a recent Coffee &amp; Coding session we chatted about tips and tricks for <a href="https://posit.co/products/open-source/rstudio/">RStudio</a>, the popular and free Integrated Development Environment (IDE) that many Strategy Unit analysts use to write R code.</p>
+<p>RStudio has lots of neat features but many are tucked away in submenus. This session was a chance for the community to uncover and discuss some hidden gems to make our work easier and faster.</p>
+</section>
+<section id="official-guidance" class="level2">
+<h2 class="anchored" data-anchor-id="official-guidance">Official guidance</h2>
+<p><a href="https://posit.co/">Posit</a> is the company who build and maintain RStudio. They host a number of cheatsheets on their website, <a href="https://rstudio.github.io/cheatsheets/html/rstudio-ide.html">including one for RStudio</a>. They also have a more <a href="https://docs.posit.co/ide/user/">in-depth user guide</a>.</p>
+</section>
+<section id="command-palette" class="level2">
+<h2 class="anchored" data-anchor-id="command-palette">Command palette</h2>
+<p>RStudio has a powerful built-in <a href="https://docs.posit.co/ide/user/ide/guide/ui/command-palette.html">Command Palette</a>, which is a special search box that gives instant access to features and settings without needing to find them in the menus. Many of the tips and tricks we discussed can be found by searching in the Palette. Open it with the keyboard shortcut <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2023-03-21-rstudio-tips/command-palette.png" class="img-fluid figure-img" style="width:100.0%" data-fig.alt="The RStudio command palette. It's a search box with some suggested actiosn underneath, like 'create a new R script' and 'insert pipe operator'. Some of these options show what grouping they belong to, like 'help'. Others display keyboard shortcuts."></p>
+<figcaption>Opening the Command Palette.</figcaption>
+</figure>
+</div>
+<p>For example, let’s say you forgot how to restart R. If you open the Command Palette and start typing ‘restart’, you’ll see the option ‘Restart R Session’. Clicking it will do exactly that. Handily, the Palette also displays the keyboard shortcut (<kbd>Control</kbd> + <kbd>Shift</kbd> + <kbd>F10</kbd> on Windows) as a reminder.</p>
+<p>As for settings, a search for ‘rainbow’ in the Command Palette will find ‘Use rainbow parentheses’, an option to help prevent bracket-mismatch errors by colouring pairs of parentheses. What’s nice is that the checkbox to toggle the feature appears right there in the palette so you can change it immediately.</p>
+<p>I refer to menu paths and keyboard shortcuts in the rest of this post, but bear in mind that you can use the Command Palette instead.</p>
+</section>
+<section id="options" class="level2">
+<h2 class="anchored" data-anchor-id="options">Options</h2>
+<p>In general, most settings can be found under Tools &gt; Global Options… and many of these are discussed in the rest of this post.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2023-03-21-rstudio-tips/options.png" class="img-fluid figure-img" style="width:100.0%" data-fig.alt="RStudio options window opened to the 'basic' tab of the 'general'section. There are options to adjust things like yoru workspace and history settings. Other sections include settings for the console, appearance and accessibility."></p>
+<figcaption>Adjusting workspace and history settings.</figcaption>
+</figure>
+</div>
+<p>But there’s a few settings in particular that we recommend you change to help maximise reproducibility and reduce the chance of confusion. Under General &gt; Basic, uncheck ‘Restore .Rdata into workspace at startup’ and select ‘Never’ from the dropdown options next to ‘Save workspace to .Rdata on exit’. These options mean you start with the ‘blank slate’ of an empty environment when you open a project, allowing you to rebuild objects from scratch<sup>1</sup>.</p>
+</section>
+<section id="keyboard-shortcuts" class="level2">
+<h2 class="anchored" data-anchor-id="keyboard-shortcuts">Keyboard shortcuts</h2>
+<p>You can speed up day-to-day coding with keyboard shortcuts instead of clicking buttons in the interface.</p>
+<p>You can see some available shortcuts in RStudio if you navigate to Help &gt; Keyboard Shortcuts Help, or use the shortcut <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>K</kbd> (how meta). You can go to Help &gt; Modify Keyboard Shortcuts… to search all shortcuts and change them to what you prefer<sup>2</sup>.</p>
+<p>We discussed a number of handy shortcuts that we use frequently<sup>3</sup>. You can:</p>
+<ul>
+<li>re-indent lines to the appropriate depth with <kbd>Control</kbd> + <kbd>I</kbd></li>
+<li>reformat code with <kbd>Control</kbd> + <kbd>Shift</kbd> + <kbd>A</kbd></li>
+<li>turn one or more lines into a comment with <kbd>Control</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd></li>
+<li>insert the pipe operator (<code>%&gt;%</code> or <code>|&gt;</code><sup>4</sup>) with <kbd>Control</kbd> + <kbd>Shift</kbd> + <kbd>M</kbd><sup>5</sup></li>
+<li>insert the assignment arrow (<code>&lt;-</code>) with <kbd>Alt</kbd> + <kbd>-</kbd> (hyphen)</li>
+<li>highlight a function in the script or console and press <kbd>F1</kbd> to open the function documentation in the ‘Help’ pane</li>
+<li>use ‘Find in Files’ to search for a particular variable, function or string across all the files in your project, with <kbd>Control</kbd> + <kbd>Shift</kbd> + <kbd>F</kbd></li>
+</ul>
+</section>
+<section id="themes" class="level2">
+<h2 class="anchored" data-anchor-id="themes">Themes</h2>
+<p>You can change a number of settings to alter RStudio’s theme, colours and fonts to whatever you desire.</p>
+<p>You can <a href="https://docs.posit.co/ide/user/ide/guide/ui/appearance.html">change the default theme</a> in Tools &gt; Global Options… &gt; Appearance &gt; Editor theme and select one from the pre-installed list. You can upload new themes by clicking the ‘Add’ button and selecting a theme from your computer. They typically have the file extension .rsthemes and can be downloaded from the web, or you can create or tweak one yourself. <a href="https://www.garrickadenbuie.com/project/rsthemes/">The {rsthemes} package</a> has a number of options and also allows you to switch between themes and automatically switch between light and dark themes depending on the time of day.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2023-03-21-rstudio-tips/appearance.png" class="img-fluid figure-img" style="width:100.0%" data-fig.alt="RStudio options window opened to the 'appearance' section. The font has been changed to an installed font called 'Fira Code'. The theme has been changed to an installed theme called 'viridis'."></p>
+<figcaption>Customising the appearance and font.</figcaption>
+</figure>
+</div>
+<p>In the same ‘Appearance’ submenu as the theme settings, you can find an option to change fonts. Monospace fonts, ones where each character takes up the same width, will appear here automatically if you’ve installed them on your computer. One popular font for coding is <a href="https://github.com/tonsky/FiraCode">Fira Code</a>, which has the special property of converting certain sets of characters into ‘ligatures’, which some people find easier to read. For example, the base pipe will appear as a rightward-pointing arrow rather than its constituent vertical-pipe and greater-than symbol (<code>|&gt;</code>).</p>
+</section>
+<section id="panes" class="level2">
+<h2 class="anchored" data-anchor-id="panes">Panes</h2>
+<section id="layout" class="level3">
+<h3 class="anchored" data-anchor-id="layout">Layout</h3>
+<p>The structural layout of RStudio’s panes can be adjusted. One simple thing you can do is minimise and maximise each pane by clicking the window icons in their upper-right corners. This is useful when you want more screen real-estate for a particular pane.</p>
+<p>You can move pane loations too. Click the ‘Workspace Panes’ button (a square with four more inside it) at the top of the IDE to see a number of settings. For example, you can select ‘Console on the right’ to move the R console to the upper-right pane, which you may prefer for maximimsing the vertical space in which code is shown. You could also click Pane Layout… in this menu to be taken to Tools &gt; Global Options… &gt; Pane layout, where you can click ‘Add Column’ to insert new script panes that allow you to inspect and write multiple files side-by-side.</p>
+</section>
+<section id="script-navigation" class="level3">
+<h3 class="anchored" data-anchor-id="script-navigation">Script navigation</h3>
+<p>The script pane in particular has a nice feature for navigating through sections of your script or Quarto/R Markdown files. Click the ‘Show Document Outline’ button or use the keyboard shortcut <kbd>Control</kbd> + <kbd>Shift</kbd> + <kbd>O</kbd> to slide open a tray that provides a nice indented list of all the sections and function defintions in your file.</p>
+<p>Section headers are auto-detected in a Quarto or R Markdown document wherever the Markdown header markup has been used: one hashmark (<code>#</code>) for a level 1 header, two for level 2, and so on. To add section headers to an R Script, add at least four hyphens after a commented line that starts with <code>#</code>. Use two or more hashes at the start of the comment to increase the nestedness of that section.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Header ------------------------------------------------------------------</span></span>
+<span id="cb1-2"></span>
+<span id="cb1-3"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">## Section ----</span></span>
+<span id="cb1-4"></span>
+<span id="cb1-5"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">### Subsection ----</span></span></code></pre></div>
+</div>
+<p>Note that <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd> will open a dialog box for you to input the name of a section header, which will be inserted and automatically padded to 75 characters to provide a strong visual cue between sections.</p>
+<p>As well as the document outline, there’s also a reminder in the lower-left of the script pane that gives the name of the section that your cursor is currently in. A symbol is also shown: a hashmark means it’s a headed section and an ‘f’ means it’s a function definition. You can click this to jump to other sections.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2023-03-21-rstudio-tips/rstudio-sections.png" class="img-fluid figure-img" style="width:100.0%" data-fig.alt="RStudio script pane. There are three headers denoterd with one, two and three hash marks, named 'header', 'section' and 'subsection'. There is a demo functio nnamed 'add_one' in the subsection. The outline panel is open on the right and shows these items nested under each other. The cursor is on the subsection header and this is noted under the script."></p>
+<figcaption>Navigating with headers in the R script pane.</figcaption>
+</figure>
+</div>
+</section>
+<section id="background-jobs" class="level3">
+<h3 class="anchored" data-anchor-id="background-jobs">Background jobs</h3>
+<p>Perhaps an under-used pane is ‘<a href="https://docs.posit.co/ide/user/ide/guide/tools/jobs.html">Background jobs</a>’. This is where you can run a separate R process that keeps your R console free. Go to Tools &gt; Background Jobs &gt; Start Background Job… to expose this tab if it isn’t already listed alongside the R console.</p>
+<p>Why might you want to do this? As I write this post, there’s a background process to detect changes to the Quarto document that I’m writing and then update a preview I have running in the browser. You can do something similar for Shiny apps. You can continue to develop your app and test things in the console and the app preview will update on save. You won’t need to keep hitting the ‘Render’ or ‘Run app’ button every time you make a change.</p>
+</section>
+</section>
+<section id="magic-wand" class="level2">
+<h2 class="anchored" data-anchor-id="magic-wand">Magic wand</h2>
+<p>There’s a miscellany of useful tools available when you click the ‘magic wand’ button in the script pane.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2023-03-21-rstudio-tips/wand.png" class="img-fluid figure-img" style="width:100.0%" data-fig.alt="The magic wand submenu, which contains options to do things like 'rename in scope', 'reflow comment' and 'reindent lines'."></p>
+<figcaption>Abracadabra! Casting open the ‘magic wand’ menu.</figcaption>
+</figure>
+</div>
+<p>This includes:</p>
+<ul>
+<li>‘Rename in Scope’, which is like find-and-replace but you only change instances with the same ‘scope’, so you could select the variable <code>x</code>, go to Rename in Scope and then you can edit all instances of the variable in the document and change them at the same time (e.g.&nbsp;to rename them)</li>
+<li>‘Reflow Comment’, which you can click after higlighting a comments block to have the comments automatically line-break at the maximum width</li>
+<li>‘Insert Roxygen Skeleton’, which you can click when your cursor is inside the body of a function you’ve written and a {roxygen2} documentation template will be added above your function with the <code>@params</code> argument names pre-filled</li>
+</ul>
+<p>Along with ‘Comment/Uncomment Lines’, ‘Reindent Lines’ and ‘Reformat Lines’, mentioned above in the keyboard shortcuts section.</p>
+</section>
+<section id="wrapping-up" class="level2">
+<h2 class="anchored" data-anchor-id="wrapping-up">Wrapping up</h2>
+<p>Time was limited in our discussion. There are so many more tips and tricks that we didn’t get to. Let us know what we missed, or what your favourite shortcuts and settings are.</p>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>For the same reason it’s a good idea to restart R on a frequent basis. You may assume that an object <code>x</code> in your environment was made in a certain way and contains certain information, but does it? What if you overwrote it at some point and forgot? Best to wipe the slate clean and rebuild it from scratch. Jenny Bryan has <a href="https://www.tidyverse.org/blog/2017/12/workflow-vs-script/">written an explainer</a>.↩︎</p></li>
+<li id="fn2"><p>You can ‘snap focus’ to the script and console panes with the pre-existing shortcuts <kbd>Control</kbd> + <kbd>1</kbd> and <kbd>Control</kbd> + <kbd>2</kbd>. My next most-used pane is the terminal, so I’ve re-mapped the shortcut to <kbd>Control</kbd> + <kbd>3</kbd>.↩︎</p></li>
+<li id="fn3"><p>The classic shortcuts of select-all (<kbd>Control</kbd> + <kbd>A</kbd>), cut (<kbd>Control</kbd> + <kbd>X</kbd>), copy <kbd>Control</kbd> + <kbd>C</kbd>, paste (<kbd>Control</kbd> + <kbd>V</kbd>), undo (<kbd>Control</kbd> + <kbd>Z</kbd>) and redo (<kbd>Control</kbd> + <kbd>Shift</kbd> + <kbd>Z</kbd>) are all available when editing.↩︎</p></li>
+<li id="fn4"><p>Note that you can set the default pipe to the base-R version (<code>|&gt;</code>) by checking the box at Tools &gt; Global Options… &gt; Code &gt; Use native pipe operator↩︎</p></li>
+<li id="fn5"><p>Probably ‘M’ for {magrittr}, the name of the package that contains the <code>%&gt;%</code> incarnation of the operator.↩︎</p></li>
+</ol>
+</section></div> ]]></description>
+  <category>learning</category>
+  <category>R</category>
+  <guid>https://the-strategy-unit.github.io/data_science/blogs/posts/2023-03-21-rstudio-tips/</guid>
+  <pubDate>Thu, 21 Mar 2024 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Visualising participant recruitment in R using Sankey plots</title>
   <dc:creator>Craig Parylo</dc:creator>

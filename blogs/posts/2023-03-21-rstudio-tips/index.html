@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Matt Dray">
+<meta name="dcterms.date" content="2024-03-21">
 
-<title>Data Science @ The Strategy Unit - Data Science Blog</title>
+<title>Data Science @ The Strategy Unit - RStudio Tips and Tricks</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,29 +22,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,67 +104,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="alternate" type="application/rss+xml" title="Data Science @ The Strategy Unit" href="index.xml" data-external="1"></head>
+</head>
 
 <body class="nav-fixed">
 
@@ -139,7 +115,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Data Science @ The Strategy Unit</span>
     </a>
   </div>
@@ -150,19 +126,19 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="../../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../about.html"> 
+    <a class="nav-link" href="../../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../blogs/index.html" aria-current="page"> 
+    <a class="nav-link" href="../../../blogs/index.html"> 
 <span class="menu-text">Blogs</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../presentations/index.html"> 
+    <a class="nav-link" href="../../../presentations/index.html"> 
 <span class="menu-text">Presentations</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -171,19 +147,19 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-style-guide">    
         <li>
-    <a class="dropdown-item" href="../style/style_guide.html">
+    <a class="dropdown-item" href="../../../style/style_guide.html">
  <span class="dropdown-text">Style Guide</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../style/git_and_github.html">
+    <a class="dropdown-item" href="../../../style/git_and_github.html">
  <span class="dropdown-text">Using Git and GitHub</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../style/project_structure.html">
+    <a class="dropdown-item" href="../../../style/project_structure.html">
  <span class="dropdown-text">Project Structure</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../style/data_storage.html">
+    <a class="dropdown-item" href="../../../style/data_storage.html">
  <span class="dropdown-text">Data Storage</span></a>
   </li>  
     </ul>
@@ -191,7 +167,7 @@ window.Quarto = {
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="../blogs/index.xml"> <i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../../blogs/index.xml"> <i class="bi bi-rss" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -204,25 +180,60 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(7)</span></div><div class="category" data-category="R">R <span class="quarto-category-count">(2)</span></div><div class="category" data-category="git">git <span class="quarto-category-count">(3)</span></div><div class="category" data-category="learning">learning <span class="quarto-category-count">(4)</span></div><div class="category" data-category="tutorial">tutorial <span class="quarto-category-count">(4)</span></div><div class="category" data-category="visualisation">visualisation <span class="quarto-category-count">(1)</span></div></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#coffee-coding" id="toc-coffee-coding" class="nav-link active" data-scroll-target="#coffee-coding">Coffee &amp; Coding</a></li>
+  <li><a href="#official-guidance" id="toc-official-guidance" class="nav-link" data-scroll-target="#official-guidance">Official guidance</a></li>
+  <li><a href="#command-palette" id="toc-command-palette" class="nav-link" data-scroll-target="#command-palette">Command palette</a></li>
+  <li><a href="#options" id="toc-options" class="nav-link" data-scroll-target="#options">Options</a></li>
+  <li><a href="#keyboard-shortcuts" id="toc-keyboard-shortcuts" class="nav-link" data-scroll-target="#keyboard-shortcuts">Keyboard shortcuts</a></li>
+  <li><a href="#themes" id="toc-themes" class="nav-link" data-scroll-target="#themes">Themes</a></li>
+  <li><a href="#panes" id="toc-panes" class="nav-link" data-scroll-target="#panes">Panes</a>
+  <ul class="collapse">
+  <li><a href="#layout" id="toc-layout" class="nav-link" data-scroll-target="#layout">Layout</a></li>
+  <li><a href="#script-navigation" id="toc-script-navigation" class="nav-link" data-scroll-target="#script-navigation">Script navigation</a></li>
+  <li><a href="#background-jobs" id="toc-background-jobs" class="nav-link" data-scroll-target="#background-jobs">Background jobs</a></li>
+  </ul></li>
+  <li><a href="#magic-wand" id="toc-magic-wand" class="nav-link" data-scroll-target="#magic-wand">Magic wand</a></li>
+  <li><a href="#wrapping-up" id="toc-wrapping-up" class="nav-link" data-scroll-target="#wrapping-up">Wrapping up</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/the-strategy-unit/data_science/edit/main/blogs/posts/2023-03-21-rstudio-tips/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/the-strategy-unit/data_science/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Data Science Blog</h1>
-</div>
+<h1 class="title">RStudio Tips and Tricks</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">learning</div>
+    <div class="quarto-category">R</div>
+  </div>
+  </div>
 
 
 
-<div class="quarto-title-meta column-page-left">
+<div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Matt Dray </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 21, 2024</p>
+    </div>
+  </div>
   
     
   </div>
@@ -232,269 +243,134 @@ window.Quarto = {
 </header>
 
 
+<section id="coffee-coding" class="level2">
+<h2 class="anchored" data-anchor-id="coffee-coding">Coffee &amp; Coding</h2>
+<p>In a recent Coffee &amp; Coding session we chatted about tips and tricks for <a href="https://posit.co/products/open-source/rstudio/">RStudio</a>, the popular and free Integrated Development Environment (IDE) that many Strategy Unit analysts use to write R code.</p>
+<p>RStudio has lots of neat features but many are tucked away in submenus. This session was a chance for the community to uncover and discuss some hidden gems to make our work easier and faster.</p>
+</section>
+<section id="official-guidance" class="level2">
+<h2 class="anchored" data-anchor-id="official-guidance">Official guidance</h2>
+<p><a href="https://posit.co/">Posit</a> is the company who build and maintain RStudio. They host a number of cheatsheets on their website, <a href="https://rstudio.github.io/cheatsheets/html/rstudio-ide.html">including one for RStudio</a>. They also have a more <a href="https://docs.posit.co/ide/user/">in-depth user guide</a>.</p>
+</section>
+<section id="command-palette" class="level2">
+<h2 class="anchored" data-anchor-id="command-palette">Command palette</h2>
+<p>RStudio has a powerful built-in <a href="https://docs.posit.co/ide/user/ide/guide/ui/command-palette.html">Command Palette</a>, which is a special search box that gives instant access to features and settings without needing to find them in the menus. Many of the tips and tricks we discussed can be found by searching in the Palette. Open it with the keyboard shortcut <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="command-palette.png" class="img-fluid figure-img" style="width:100.0%" data-fig.alt="The RStudio command palette. It's a search box with some suggested actiosn underneath, like 'create a new R script' and 'insert pipe operator'. Some of these options show what grouping they belong to, like 'help'. Others display keyboard shortcuts."></p>
+<figcaption>Opening the Command Palette.</figcaption>
+</figure>
+</div>
+<p>For example, let’s say you forgot how to restart R. If you open the Command Palette and start typing ‘restart’, you’ll see the option ‘Restart R Session’. Clicking it will do exactly that. Handily, the Palette also displays the keyboard shortcut (<kbd>Control</kbd> + <kbd>Shift</kbd> + <kbd>F10</kbd> on Windows) as a reminder.</p>
+<p>As for settings, a search for ‘rainbow’ in the Command Palette will find ‘Use rainbow parentheses’, an option to help prevent bracket-mismatch errors by colouring pairs of parentheses. What’s nice is that the checkbox to toggle the feature appears right there in the palette so you can change it immediately.</p>
+<p>I refer to menu paths and keyboard shortcuts in the rest of this post, but bear in mind that you can use the Command Palette instead.</p>
+</section>
+<section id="options" class="level2">
+<h2 class="anchored" data-anchor-id="options">Options</h2>
+<p>In general, most settings can be found under Tools &gt; Global Options… and many of these are discussed in the rest of this post.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="options.png" class="img-fluid figure-img" style="width:100.0%" data-fig.alt="RStudio options window opened to the 'basic' tab of the 'general'section. There are options to adjust things like yoru workspace and history settings. Other sections include settings for the console, appearance and accessibility."></p>
+<figcaption>Adjusting workspace and history settings.</figcaption>
+</figure>
+</div>
+<p>But there’s a few settings in particular that we recommend you change to help maximise reproducibility and reduce the chance of confusion. Under General &gt; Basic, uncheck ‘Restore .Rdata into workspace at startup’ and select ‘Never’ from the dropdown options next to ‘Save workspace to .Rdata on exit’. These options mean you start with the ‘blank slate’ of an empty environment when you open a project, allowing you to rebuild objects from scratch<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
+</section>
+<section id="keyboard-shortcuts" class="level2">
+<h2 class="anchored" data-anchor-id="keyboard-shortcuts">Keyboard shortcuts</h2>
+<p>You can speed up day-to-day coding with keyboard shortcuts instead of clicking buttons in the interface.</p>
+<p>You can see some available shortcuts in RStudio if you navigate to Help &gt; Keyboard Shortcuts Help, or use the shortcut <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>K</kbd> (how meta). You can go to Help &gt; Modify Keyboard Shortcuts… to search all shortcuts and change them to what you prefer<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
+<p>We discussed a number of handy shortcuts that we use frequently<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. You can:</p>
+<ul>
+<li>re-indent lines to the appropriate depth with <kbd>Control</kbd> + <kbd>I</kbd></li>
+<li>reformat code with <kbd>Control</kbd> + <kbd>Shift</kbd> + <kbd>A</kbd></li>
+<li>turn one or more lines into a comment with <kbd>Control</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd></li>
+<li>insert the pipe operator (<code>%&gt;%</code> or <code>|&gt;</code><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>) with <kbd>Control</kbd> + <kbd>Shift</kbd> + <kbd>M</kbd><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></li>
+<li>insert the assignment arrow (<code>&lt;-</code>) with <kbd>Alt</kbd> + <kbd>-</kbd> (hyphen)</li>
+<li>highlight a function in the script or console and press <kbd>F1</kbd> to open the function documentation in the ‘Help’ pane</li>
+<li>use ‘Find in Files’ to search for a particular variable, function or string across all the files in your project, with <kbd>Control</kbd> + <kbd>Shift</kbd> + <kbd>F</kbd></li>
+</ul>
+</section>
+<section id="themes" class="level2">
+<h2 class="anchored" data-anchor-id="themes">Themes</h2>
+<p>You can change a number of settings to alter RStudio’s theme, colours and fonts to whatever you desire.</p>
+<p>You can <a href="https://docs.posit.co/ide/user/ide/guide/ui/appearance.html">change the default theme</a> in Tools &gt; Global Options… &gt; Appearance &gt; Editor theme and select one from the pre-installed list. You can upload new themes by clicking the ‘Add’ button and selecting a theme from your computer. They typically have the file extension .rsthemes and can be downloaded from the web, or you can create or tweak one yourself. <a href="https://www.garrickadenbuie.com/project/rsthemes/">The {rsthemes} package</a> has a number of options and also allows you to switch between themes and automatically switch between light and dark themes depending on the time of day.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="appearance.png" class="img-fluid figure-img" style="width:100.0%" data-fig.alt="RStudio options window opened to the 'appearance' section. The font has been changed to an installed font called 'Fira Code'. The theme has been changed to an installed theme called 'viridis'."></p>
+<figcaption>Customising the appearance and font.</figcaption>
+</figure>
+</div>
+<p>In the same ‘Appearance’ submenu as the theme settings, you can find an option to change fonts. Monospace fonts, ones where each character takes up the same width, will appear here automatically if you’ve installed them on your computer. One popular font for coding is <a href="https://github.com/tonsky/FiraCode">Fira Code</a>, which has the special property of converting certain sets of characters into ‘ligatures’, which some people find easier to read. For example, the base pipe will appear as a rightward-pointing arrow rather than its constituent vertical-pipe and greater-than symbol (<code>|&gt;</code>).</p>
+</section>
+<section id="panes" class="level2">
+<h2 class="anchored" data-anchor-id="panes">Panes</h2>
+<section id="layout" class="level3">
+<h3 class="anchored" data-anchor-id="layout">Layout</h3>
+<p>The structural layout of RStudio’s panes can be adjusted. One simple thing you can do is minimise and maximise each pane by clicking the window icons in their upper-right corners. This is useful when you want more screen real-estate for a particular pane.</p>
+<p>You can move pane loations too. Click the ‘Workspace Panes’ button (a square with four more inside it) at the top of the IDE to see a number of settings. For example, you can select ‘Console on the right’ to move the R console to the upper-right pane, which you may prefer for maximimsing the vertical space in which code is shown. You could also click Pane Layout… in this menu to be taken to Tools &gt; Global Options… &gt; Pane layout, where you can click ‘Add Column’ to insert new script panes that allow you to inspect and write multiple files side-by-side.</p>
+</section>
+<section id="script-navigation" class="level3">
+<h3 class="anchored" data-anchor-id="script-navigation">Script navigation</h3>
+<p>The script pane in particular has a nice feature for navigating through sections of your script or Quarto/R Markdown files. Click the ‘Show Document Outline’ button or use the keyboard shortcut <kbd>Control</kbd> + <kbd>Shift</kbd> + <kbd>O</kbd> to slide open a tray that provides a nice indented list of all the sections and function defintions in your file.</p>
+<p>Section headers are auto-detected in a Quarto or R Markdown document wherever the Markdown header markup has been used: one hashmark (<code>#</code>) for a level 1 header, two for level 2, and so on. To add section headers to an R Script, add at least four hyphens after a commented line that starts with <code>#</code>. Use two or more hashes at the start of the comment to increase the nestedness of that section.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Header ------------------------------------------------------------------</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Section ----</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="do">### Subsection ----</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Note that <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd> will open a dialog box for you to input the name of a section header, which will be inserted and automatically padded to 75 characters to provide a strong visual cue between sections.</p>
+<p>As well as the document outline, there’s also a reminder in the lower-left of the script pane that gives the name of the section that your cursor is currently in. A symbol is also shown: a hashmark means it’s a headed section and an ‘f’ means it’s a function definition. You can click this to jump to other sections.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="rstudio-sections.png" class="img-fluid figure-img" style="width:100.0%" data-fig.alt="RStudio script pane. There are three headers denoterd with one, two and three hash marks, named 'header', 'section' and 'subsection'. There is a demo functio nnamed 'add_one' in the subsection. The outline panel is open on the right and shows these items nested under each other. The cursor is on the subsection header and this is noted under the script."></p>
+<figcaption>Navigating with headers in the R script pane.</figcaption>
+</figure>
+</div>
+</section>
+<section id="background-jobs" class="level3">
+<h3 class="anchored" data-anchor-id="background-jobs">Background jobs</h3>
+<p>Perhaps an under-used pane is ‘<a href="https://docs.posit.co/ide/user/ide/guide/tools/jobs.html">Background jobs</a>’. This is where you can run a separate R process that keeps your R console free. Go to Tools &gt; Background Jobs &gt; Start Background Job… to expose this tab if it isn’t already listed alongside the R console.</p>
+<p>Why might you want to do this? As I write this post, there’s a background process to detect changes to the Quarto document that I’m writing and then update a preview I have running in the browser. You can do something similar for Shiny apps. You can continue to develop your app and test things in the console and the app preview will update on save. You won’t need to keep hitting the ‘Render’ or ‘Run app’ button every time you make a change.</p>
+</section>
+</section>
+<section id="magic-wand" class="level2">
+<h2 class="anchored" data-anchor-id="magic-wand">Magic wand</h2>
+<p>There’s a miscellany of useful tools available when you click the ‘magic wand’ button in the script pane.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="wand.png" class="img-fluid figure-img" style="width:100.0%" data-fig.alt="The magic wand submenu, which contains options to do things like 'rename in scope', 'reflow comment' and 'reindent lines'."></p>
+<figcaption>Abracadabra! Casting open the ‘magic wand’ menu.</figcaption>
+</figure>
+</div>
+<p>This includes:</p>
+<ul>
+<li>‘Rename in Scope’, which is like find-and-replace but you only change instances with the same ‘scope’, so you could select the variable <code>x</code>, go to Rename in Scope and then you can edit all instances of the variable in the document and change them at the same time (e.g.&nbsp;to rename them)</li>
+<li>‘Reflow Comment’, which you can click after higlighting a comments block to have the comments automatically line-break at the maximum width</li>
+<li>‘Insert Roxygen Skeleton’, which you can click when your cursor is inside the body of a function you’ve written and a {roxygen2} documentation template will be added above your function with the <code>@params</code> argument names pre-filled</li>
+</ul>
+<p>Along with ‘Comment/Uncomment Lines’, ‘Reindent Lines’ and ‘Reformat Lines’, mentioned above in the keyboard shortcuts section.</p>
+</section>
+<section id="wrapping-up" class="level2">
+<h2 class="anchored" data-anchor-id="wrapping-up">Wrapping up</h2>
+<p>Time was limited in our discussion. There are so many more tips and tricks that we didn’t get to. Let us know what we missed, or what your favourite shortcuts and settings are.</p>
 
 
+</section>
 
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="learning,R" data-listing-date-sort="1710979200000" data-listing-file-modified-sort="1711448765143" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1833">
-<div class="thumbnail">
-<p><a href="../blogs/posts/2023-03-21-rstudio-tips/index.html" class="no-external"></a></p><a href="../blogs/posts/2023-03-21-rstudio-tips/index.html" class="no-external">
-<p class="card-img-top"><img src="posts/2023-03-21-rstudio-tips/command-palette.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="../blogs/posts/2023-03-21-rstudio-tips/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blogs/posts/2023-03-21-rstudio-tips/index.html" class="no-external">RStudio Tips and Tricks</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../blogs/posts/2023-03-21-rstudio-tips/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('learning'); return false;">
-learning
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
-R
-</div>
-</div>
-<div class="listing-description">
-<a href="../blogs/posts/2023-03-21-rstudio-tips/index.html" class="no-external">In a recent Coffee &amp; Coding session we chatted about tips and tricks for RStudio, the popular and free Integrated Development Environment (IDE) that many Strategy Unit…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="../blogs/posts/2023-03-21-rstudio-tips/index.html" class="no-external">
-<div class="listing-date">
-Mar 21, 2024
-</div>
-<div class="listing-author">
-Matt Dray
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="learning,tutorial,visualisation,R" data-listing-date-sort="1709078400000" data-listing-file-modified-sort="1711448765143" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="22" data-listing-word-count-sort="4306">
-<div class="thumbnail">
-<p><a href="../blogs/posts/2024-02-28_sankey_plot.html" class="no-external"></a></p><a href="../blogs/posts/2024-02-28_sankey_plot.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="../blogs/posts/2024-02-28_sankey_plot.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blogs/posts/2024-02-28_sankey_plot.html" class="no-external">Visualising participant recruitment in R using Sankey plots</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../blogs/posts/2024-02-28_sankey_plot.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('learning'); return false;">
-learning
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('tutorial'); return false;">
-tutorial
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('visualisation'); return false;">
-visualisation
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
-R
-</div>
-</div>
-<div class="listing-description">
-<a href="../blogs/posts/2024-02-28_sankey_plot.html" class="no-external">Sankey diagrams are great tools to visualise flows through a system. They show connections between the steps of a process where the width of the arrows is proportional to…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="../blogs/posts/2024-02-28_sankey_plot.html" class="no-external">
-<div class="listing-date">
-Feb 28, 2024
-</div>
-<div class="listing-author">
-Craig Parylo
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="learning" data-listing-date-sort="1705449600000" data-listing-file-modified-sort="1711448765143" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="920">
-<div class="thumbnail">
-<p><a href="../blogs/posts/2024-01-17_nearest_neighbour.html" class="no-external"></a></p><a href="../blogs/posts/2024-01-17_nearest_neighbour.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="../blogs/posts/2024-01-17_nearest_neighbour.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blogs/posts/2024-01-17_nearest_neighbour.html" class="no-external">Nearest neighbour imputation</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../blogs/posts/2024-01-17_nearest_neighbour.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('learning'); return false;">
-learning
-</div>
-</div>
-<div class="listing-description">
-<a href="../blogs/posts/2024-01-17_nearest_neighbour.html" class="no-external">Recently I have been gathering data by GP practice, from a variety of different sources. The ultimate purpose of my project is to be able to report at an ICB/sub-ICB level<sup>1</sup>.…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="../blogs/posts/2024-01-17_nearest_neighbour.html" class="no-external">
-<div class="listing-date">
-Jan 17, 2024
-</div>
-<div class="listing-author">
-Jacqueline Grout
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="learning" data-listing-date-sort="1704844800000" data-listing-file-modified-sort="1711448765143" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="337">
-<div class="thumbnail">
-<p><a href="../blogs/posts/2024-01-10-advent-of-code-and-test-driven-development.html" class="no-external"></a></p><a href="../blogs/posts/2024-01-10-advent-of-code-and-test-driven-development.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="../blogs/posts/2024-01-10-advent-of-code-and-test-driven-development.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blogs/posts/2024-01-10-advent-of-code-and-test-driven-development.html" class="no-external">Advent of Code and Test Driven Development</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../blogs/posts/2024-01-10-advent-of-code-and-test-driven-development.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('learning'); return false;">
-learning
-</div>
-</div>
-<div class="listing-description">
-<a href="../blogs/posts/2024-01-10-advent-of-code-and-test-driven-development.html" class="no-external">Advent of Code is an annual event, where daily coding puzzles are released from 1st – 24th December. We ran one of our fortnightly Coffee &amp; Coding sessions introducing…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="../blogs/posts/2024-01-10-advent-of-code-and-test-driven-development.html" class="no-external">
-<div class="listing-date">
-Jan 10, 2024
-</div>
-<div class="listing-author">
-YiWen Hon
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="git,tutorial" data-listing-date-sort="1682467200000" data-listing-file-modified-sort="1711448765143" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="371">
-<div class="thumbnail">
-<p><a href="../blogs/posts/2023-04-26_alternative_remotes.html" class="no-external"></a></p><a href="../blogs/posts/2023-04-26_alternative_remotes.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="../blogs/posts/2023-04-26_alternative_remotes.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blogs/posts/2023-04-26_alternative_remotes.html" class="no-external">Alternative remote repositories</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../blogs/posts/2023-04-26_alternative_remotes.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('git'); return false;">
-git
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('tutorial'); return false;">
-tutorial
-</div>
-</div>
-<div class="listing-description">
-<a href="../blogs/posts/2023-04-26_alternative_remotes.html" class="no-external">It’s great when someone send’s you a pull request on GitHub to fix bugs or add new features to your project, but you probably always want to check the other persons work in…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="../blogs/posts/2023-04-26_alternative_remotes.html" class="no-external">
-<div class="listing-date">
-Apr 26, 2023
-</div>
-<div class="listing-author">
-Tom Jemmett
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-categories="git,tutorial" data-listing-date-sort="1682467200000" data-listing-file-modified-sort="1711448765143" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="290">
-<div class="thumbnail">
-<p><a href="../blogs/posts/2023-04-26-reinstalling-r-packages.html" class="no-external"></a></p><a href="../blogs/posts/2023-04-26-reinstalling-r-packages.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="../blogs/posts/2023-04-26-reinstalling-r-packages.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blogs/posts/2023-04-26-reinstalling-r-packages.html" class="no-external">Reinstalling R Packages</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../blogs/posts/2023-04-26-reinstalling-r-packages.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('git'); return false;">
-git
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('tutorial'); return false;">
-tutorial
-</div>
-</div>
-<div class="listing-description">
-<a href="../blogs/posts/2023-04-26-reinstalling-r-packages.html" class="no-external">R 4.3.0 was released last week. Anytime you update R you will probably find yourself in the position where no packages are installed. This is by design - the packages that…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="../blogs/posts/2023-04-26-reinstalling-r-packages.html" class="no-external">
-<div class="listing-date">
-Apr 26, 2023
-</div>
-<div class="listing-author">
-Tom Jemmett
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-categories="git,tutorial" data-listing-date-sort="1679616000000" data-listing-file-modified-sort="1711448765143" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="885">
-<div class="thumbnail">
-<p><a href="../blogs/posts/2023-03-24_hotfix-with-git.html" class="no-external"></a></p><a href="../blogs/posts/2023-03-24_hotfix-with-git.html" class="no-external">
-<p class="card-img-top"><img src="posts/2023-03-24_hotfix-with-git_files/figure-html/unnamed-chunk-1-1.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="../blogs/posts/2023-03-24_hotfix-with-git.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blogs/posts/2023-03-24_hotfix-with-git.html" class="no-external">Creating a hotfix with git</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../blogs/posts/2023-03-24_hotfix-with-git.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('git'); return false;">
-git
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('tutorial'); return false;">
-tutorial
-</div>
-</div>
-<div class="listing-description">
-<a href="../blogs/posts/2023-03-24_hotfix-with-git.html" class="no-external">I recently discovered a bug in a code-base which needed to be fixed and deployed back to production A.S.A.P., but since the last release the code has moved on significantly.…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="../blogs/posts/2023-03-24_hotfix-with-git.html" class="no-external">
-<div class="listing-date">
-Mar 24, 2023
-</div>
-<div class="listing-author">
-Tom Jemmett
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>For the same reason it’s a good idea to restart R on a frequent basis. You may assume that an object <code>x</code> in your environment was made in a certain way and contains certain information, but does it? What if you overwrote it at some point and forgot? Best to wipe the slate clean and rebuild it from scratch. Jenny Bryan has <a href="https://www.tidyverse.org/blog/2017/12/workflow-vs-script/">written an explainer</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>You can ‘snap focus’ to the script and console panes with the pre-existing shortcuts <kbd>Control</kbd> + <kbd>1</kbd> and <kbd>Control</kbd> + <kbd>2</kbd>. My next most-used pane is the terminal, so I’ve re-mapped the shortcut to <kbd>Control</kbd> + <kbd>3</kbd>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>The classic shortcuts of select-all (<kbd>Control</kbd> + <kbd>A</kbd>), cut (<kbd>Control</kbd> + <kbd>X</kbd>), copy <kbd>Control</kbd> + <kbd>C</kbd>, paste (<kbd>Control</kbd> + <kbd>V</kbd>), undo (<kbd>Control</kbd> + <kbd>Z</kbd>) and redo (<kbd>Control</kbd> + <kbd>Shift</kbd> + <kbd>Z</kbd>) are all available when editing.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Note that you can set the default pipe to the base-R version (<code>|&gt;</code>) by checking the box at Tools &gt; Global Options… &gt; Code &gt; Use native pipe operator<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Probably ‘M’ for {magrittr}, the name of the package that contains the <code>%&gt;%</code> incarnation of the operator.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -1053,4 +929,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/the-strategy-unit/data_science/edit/main/blogs/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/the-strategy-unit/data_science/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/the-strategy-unit/data_science/edit/main/blogs/posts/2023-03-21-rstudio-tips/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/the-strategy-unit/data_science/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

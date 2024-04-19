@@ -1,4 +1,7 @@
-## Data science team repo
+[![All Contributors](https://img.shields.io/github/all-contributors/projectOwner/projectName?color=ee8449&style=flat-square)](#contributors)
+
+
+# Data science team repo
 
 If you have any questions or need help, please contact anyone from [the Data Science team](https://the-strategy-unit.github.io/data_science/about.html).
 
@@ -7,8 +10,6 @@ This repo features:
 * Presentations the team have delivered
 * A website/ blog that the data science team can use to blog and compile other forms of resources
 * Guidance on good coding practices, also known as a "style guide"
-
-
 
 ## Contributing to this repo
 
@@ -47,3 +48,14 @@ Please note this project uses {renv}. On Windows, I needed to install the R tool
 2. Push your content to your branch in GitHub (`git push origin branchname`). 
 3. Then, on GitHub, make a pull request to main. Put any member of the Data Science team down as a reviewer. Link your pull request with your issue by typing `Closes #issuenumber` in the comment field of your pull request.
 4. When approved and merged to main, the Quarto page will automatically be rendered thanks to the GitHub action that has been set up.
+
+### Contributors
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->

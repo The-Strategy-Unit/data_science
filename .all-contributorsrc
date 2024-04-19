@@ -16,6 +16,15 @@
         "blog",
         "talk"
       ]
+    },
+    {
+      "login": "yiwen-h",
+      "name": "YiWen Hon",
+      "avatar_url": "https://avatars.githubusercontent.com/u/60136255?v=4",
+      "profile": "https://www.linkedin.com/in/yiwen-h/",
+      "contributions": [
+        "blog"
+      ]
     }
   ],
   "contributorsPerLine": 7,

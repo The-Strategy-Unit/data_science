@@ -1,6 +1,6 @@
 [![All Contributors](https://img.shields.io/github/all-contributors/projectOwner/projectName?color=ee8449&style=flat-square)](#contributors)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 
@@ -64,6 +64,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="http://matt-dray.com"><img src="https://avatars.githubusercontent.com/u/18232097?v=4?s=100" width="100px;" alt="Matt Dray"/><br /><sub><b>Matt Dray</b></sub></a><br /><a href="#blog-matt-dray" title="Blogposts">📝</a> <a href="#talk-matt-dray" title="Talks">📢</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://www.linkedin.com/in/yiwen-h/"><img src="https://avatars.githubusercontent.com/u/60136255?v=4?s=100" width="100px;" alt="YiWen Hon"/><br /><sub><b>YiWen Hon</b></sub></a><br /><a href="#blog-yiwen-h" title="Blogposts">📝</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/jacgrout"><img src="https://avatars.githubusercontent.com/u/103451105?v=4?s=100" width="100px;" alt="Jacqueline Grout"/><br /><sub><b>Jacqueline Grout</b></sub></a><br /><a href="#blog-jacgrout" title="Blogposts">📝</a></td>
     </tr>
   </tbody>
 </table>

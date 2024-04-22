@@ -23,7 +23,8 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/60136255?v=4",
       "profile": "https://www.linkedin.com/in/yiwen-h/",
       "contributions": [
-        "blog"
+        "blog", 
+        "talk"
       ]
     },
     {
@@ -38,6 +39,7 @@
   ],
   "contributorsPerLine": 7,
   "skipCi": true,
+  "contributorsSortAlphabetically": true,
   "repoType": "github",
   "repoHost": "https://github.com",
   "projectName": "data_science",

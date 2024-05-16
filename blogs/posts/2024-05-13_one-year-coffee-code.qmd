@@ -2,7 +2,7 @@
 title: "One year of coffee & code"
 author:
   - Rhian Davies
-date: "2024-02-28"
+date: "2024-05-13"
 categories: [learning]
 reference-location: margin
 citation-location: margin
@@ -15,7 +15,7 @@ Coffee and coding sessions run every two weeks and usually take the form of a sh
 
 We figured it would be a good idea to do a quick survey of attendees to make sure that the sessions were beneficial and see if there were any suggestions for future sessions. We had 11 responses, all of which were really positive, with 90% agreeing that the sessions are interesting, and over 80% saying that they learn new things. Respondents said that the sessions were well varied across the technical spectrum and that they "almost always learn something useful"
 
-The two main themes of the results were that sessions were _inclusive_ and _sparked collaboration_ :sparkles:
+The two main themes of the results were that sessions were _inclusive_ and _sparked collaboration_ ✨
 
 > I like that everyone can contribute
 

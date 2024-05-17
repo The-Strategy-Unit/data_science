@@ -883,181 +883,6 @@
     "text": "How we can help each other get there\n\nWork as a team!\nCoffee and coding!\nAsk for help!\nDo pair coding!\nGet your code reviewed!\nJoin the NHS-R/ NHSPycom communities\n\n\n\n\nview slides at the-strategy-unit.github.io/data_science/presentations"
   },
   {
-    "objectID": "presentations/2024-01-25_coffee-and-coding/index.html#targets-for-analysts",
-    "href": "presentations/2024-01-25_coffee-and-coding/index.html#targets-for-analysts",
-    "title": "Coffee and Coding",
-    "section": "{targets} for analysts",
-    "text": "{targets} for analysts\n\n\n\nTom previously presented about {targets} at a coffee and coding last March and you can revisit his presentation and learn about the reasons why you should use the package to manage your pipeline and see a simple demonstration of how to use the package.\nMatt has presented previously about {targets} and making your workflows (pipelines) reproducible.\nSo….. if you aren’t really even sure why your pipeline needs managing as an analyst or whether you actually have one (you do) then links to their presentations are at the end"
-  },
-  {
-    "objectID": "presentations/2024-01-25_coffee-and-coding/index.html#aims",
-    "href": "presentations/2024-01-25_coffee-and-coding/index.html#aims",
-    "title": "Coffee and Coding",
-    "section": "Aims",
-    "text": "Aims\n\nIn this presentation we aim to demonstrate the real-world use of {targets} in an analysis project, but first a brief explanation\n\n\n\nWithout {targets} we\n\n\nWrite a script\nExecute script\nMake changes\nGo to step 2\n\n\n\nWith {targets} we will\n\n\nlearn how the various stages of our analysis fit together\nsave time by only running necessary stages as we cycle through the process\nhelp future you and colleagues re-visiting the analysis - Matt says “its like a time-capsule”\nmake Reproducible Analytical Pipelines\n\n\nsource: The {targets} R package user manual"
-  },
-  {
-    "objectID": "presentations/2024-01-25_coffee-and-coding/index.html#explain-the-live-project",
-    "href": "presentations/2024-01-25_coffee-and-coding/index.html#explain-the-live-project",
-    "title": "Coffee and Coding",
-    "section": "Explain the live project",
-    "text": "Explain the live project\n\noriginal project had 30+ metrics\nmultiple inter-related processing steps\neach time a metric changed or a process was altered it impacted across the project\nthere was potential for mistakes, duplication, lots of wasted time\nusing targets provides a structure that handles these inter-relationships"
-  },
-  {
-    "objectID": "presentations/2024-01-25_coffee-and-coding/index.html#how-targets-can-help",
-    "href": "presentations/2024-01-25_coffee-and-coding/index.html#how-targets-can-help",
-    "title": "Coffee and Coding",
-    "section": "How {targets} can help",
-    "text": "How {targets} can help\n\ngets you thinking about your analysis and its building blocks\ntargets forces you into a functions approach to workflow\nentire pipeline is reproducible\nvisualise on one page\nsaves time\n(maybe we need an advanced function writing session in another C&C?)"
-  },
-  {
-    "objectID": "presentations/2024-01-25_coffee-and-coding/index.html#demonstration-in-a-live-project",
-    "href": "presentations/2024-01-25_coffee-and-coding/index.html#demonstration-in-a-live-project",
-    "title": "Coffee and Coding",
-    "section": "Demonstration in a live project",
-    "text": "Demonstration in a live project\nLet’s look at a real life example in a live project…"
-  },
-  {
-    "objectID": "presentations/2024-01-25_coffee-and-coding/index.html#visualising",
-    "href": "presentations/2024-01-25_coffee-and-coding/index.html#visualising",
-    "title": "Coffee and Coding",
-    "section": "Visualising",
-    "text": "Visualising\nCurrent project in {targets} and visualised with tar_visnetwork()"
-  },
-  {
-    "objectID": "presentations/2024-01-25_coffee-and-coding/index.html#code",
-    "href": "presentations/2024-01-25_coffee-and-coding/index.html#code",
-    "title": "Coffee and Coding",
-    "section": "Code",
-    "text": "Code\n\nit’s like a recipe of steps\nit’s easier to read\nyou have built functions which you can transfer and reuse\nit’s efficient, good practice\ndebugging is easier because if/when it fails you know exactly which target it has failed on\nit creates intermediate cached objects you can fetch at any time"
-  },
-  {
-    "objectID": "presentations/2024-01-25_coffee-and-coding/index.html#how-can-i-start-using-it",
-    "href": "presentations/2024-01-25_coffee-and-coding/index.html#how-can-i-start-using-it",
-    "title": "Coffee and Coding",
-    "section": "How can I start using it?",
-    "text": "How can I start using it?\n\nYou could “retro-fit” it to your project, but … ideally you should start your project off using {targets}\nThere are at least three of us in SU who have used it in our projects.\nWe are offering to hand hold you to get started with your next project.\nMatt, Tom, Jacqueline"
-  },
-  {
-    "objectID": "presentations/2024-01-25_coffee-and-coding/index.html#useful-targets-links",
-    "href": "presentations/2024-01-25_coffee-and-coding/index.html#useful-targets-links",
-    "title": "Coffee and Coding",
-    "section": "Useful {targets} links",
-    "text": "Useful {targets} links\n\nTom’s previous coffee and coding presentation\nMatt’s previous presentations\nThe {targets} documentation is detailed and easy to follow.\nA demo repository demonstrated in last weeks NHSE C&C\nSoftware Carpentry are developing a course here Pre-alpha targets course\nLive project demonstrated in this presentation using {targets}\n\n\n\n\nview slides at the-strategy-unit.github.io/data_science/presentations"
-  },
-  {
-    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#what-is-data-science",
-    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#what-is-data-science",
-    "title": "Travels with R and Python",
-    "section": "What is data science?",
-    "text": "What is data science?\n\n“A data scientist knows more about computer science than the average statistician, and more about statistics than the average computer scientist”\n\n(Josh Wills, a former head of data engineering at Slack)"
-  },
-  {
-    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#drew-conways-famous-venn-diagram",
-    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#drew-conways-famous-venn-diagram",
-    "title": "Travels with R and Python",
-    "section": "Drew Conway’s famous Venn diagram",
-    "text": "Drew Conway’s famous Venn diagram\n\nSource"
-  },
-  {
-    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#what-are-the-skills-of-data-science",
-    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#what-are-the-skills-of-data-science",
-    "title": "Travels with R and Python",
-    "section": "What are the skills of data science?",
-    "text": "What are the skills of data science?\n\nAnalysis\n\nML\nStats\nData viz\n\nSoftware engineering\n\nProgramming\nSQL/ data\nDevOps\nRAP"
-  },
-  {
-    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#what-are-the-skills-of-data-science-1",
-    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#what-are-the-skills-of-data-science-1",
-    "title": "Travels with R and Python",
-    "section": "What are the skills of data science?",
-    "text": "What are the skills of data science?\n\nDomain knowledge\n\nCommunication\nProblem formulation\nDashboards and reports"
-  },
-  {
-    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#stats-and-data-viz",
-    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#stats-and-data-viz",
-    "title": "Travels with R and Python",
-    "section": "Stats and data viz",
-    "text": "Stats and data viz\n\nML leans a bit more towards atheoretical prediction\nStats leans a bit more towards inference (but they both do both)\nData scientists may use different visualisations\n\nInteractive web based tools\nDashboard based visualisers e.g. {stminsights}"
-  },
-  {
-    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#software-engineering",
-    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#software-engineering",
-    "title": "Travels with R and Python",
-    "section": "Software engineering",
-    "text": "Software engineering\n\nProgramming\n\nNo/ low code data science?\n\nSQL/ data\n\nTend to use reproducible automated processes\n\nDevOps\n\nPlan, code, build, test, release, deploy, operate, monitor\n\nRAP\n\nI will come back to this"
-  },
-  {
-    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#domain-knowledge",
-    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#domain-knowledge",
-    "title": "Travels with R and Python",
-    "section": "Domain knowledge",
-    "text": "Domain knowledge\n\nDo stuff that matters\n\nThe best minds of my generation are thinking about how to make people click ads. That sucks. Jeffrey Hammerbacher\n\nConvince other people that it matters\nThis is the hardest part of data science"
-  },
-  {
-    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#rap",
-    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#rap",
-    "title": "Travels with R and Python",
-    "section": "RAP",
-    "text": "RAP\n\nData science isn’t RAP\nRAP isn’t data science\nThey are firm friends"
-  },
-  {
-    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#reproducibility",
-    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#reproducibility",
-    "title": "Travels with R and Python",
-    "section": "Reproducibility",
-    "text": "Reproducibility\n\nReproducibility in science\nThe $6B spreadsheet error\nGeorge Osbourne’s austerity was based on a spreadsheet error\nFor us, reproducibility also means we can do the same analysis 50 times in one minute\n\nWhich is why I started down the road of data science"
-  },
-  {
-    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#what-is-rap",
-    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#what-is-rap",
-    "title": "Travels with R and Python",
-    "section": "What is RAP",
-    "text": "What is RAP\n\na process in which code is used to minimise manual, undocumented steps, and a clear, properly documented process is produced in code which can reliably give the same result from the same dataset\nRAP should be:\n\n\nthe core working practice that must be supported by all platforms and teams; make this a core focus of NHS analyst training\n\n\nGoldacre review"
-  },
-  {
-    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#levels-of-rap--baseline",
-    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#levels-of-rap--baseline",
-    "title": "Travels with R and Python",
-    "section": "Levels of RAP- Baseline",
-    "text": "Levels of RAP- Baseline\n\nData produced by code in an open-source language (e.g., Python, R, SQL)\nCode is version controlled\nRepository includes a README.md file that clearly details steps a user must follow to reproduce the code\nCode has been peer reviewed\nCode is published in the open and linked to & from accompanying publication (if relevant)\n\n\nSource: NHS Digital RAP community of practice"
-  },
-  {
-    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#levels-of-rap--silver",
-    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#levels-of-rap--silver",
-    "title": "Travels with R and Python",
-    "section": "Levels of RAP- Silver",
-    "text": "Levels of RAP- Silver\n\nCode is well-documented…\nCode is well-organised following standard directory format\nReusable functions and/or classes are used where appropriate\nPipeline includes a testing framework\nRepository includes dependency information (e.g. requirements.txt, PipFile, environment.yml)\nData is handled and output in a Tidy data format\n\n\nSource: NHS Digital RAP community of practice"
-  },
-  {
-    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#levels-of-rap--gold",
-    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#levels-of-rap--gold",
-    "title": "Travels with R and Python",
-    "section": "Levels of RAP- Gold",
-    "text": "Levels of RAP- Gold\n\nCode is fully packaged\nRepository automatically runs tests etc. via CI/CD or a different integration/deployment tool e.g. GitHub Actions\nProcess runs based on event-based triggers (e.g., new data in database) or on a schedule\nChanges to the RAP are clearly signposted. E.g. a changelog in the package, releases etc. (See gov.uk info on Semantic Versioning)\n\n\nSource: NHS Digital RAP community of practice"
-  },
-  {
-    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#data-science-in-healthcare",
-    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#data-science-in-healthcare",
-    "title": "Travels with R and Python",
-    "section": "Data science in healthcare",
-    "text": "Data science in healthcare\n\nForecasting\n\nStats versus ML\n\nText mining\n\nR versus Python\n\nDemand modelling\n\nDevOps as a way of life"
-  },
-  {
-    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#get-involved",
-    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#get-involved",
-    "title": "Travels with R and Python",
-    "section": "Get involved!",
-    "text": "Get involved!\n\nNHS-R community\n\nWebinars, training, conference, Slack\n\nNHS Pycom\n\nditto…\n\nMLCSU GitHub?\nBuild links with the other CSUs"
-  },
-  {
-    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#contact",
-    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#contact",
-    "title": "Travels with R and Python",
-    "section": "Contact",
-    "text": "Contact\n\n\n\n\n strategy.unit@nhs.net\n The-Strategy-Unit\n\n\n\n\n\n chris.beeley1@nhs.net\n chrisbeeley\n\n\n\n\n\n\n\nview slides at the-strategy-unit.github.io/data_science/presentations"
-  },
-  {
     "objectID": "presentations/2023-07-11_haca-nhp-demand-model/index.html#the-team",
     "href": "presentations/2023-07-11_haca-nhp-demand-model/index.html#the-team",
     "title": "An Introduction to the New Hospital Programme Demand Model",
@@ -1266,6 +1091,321 @@
     "title": "An Introduction to the New Hospital Programme Demand Model",
     "section": "Questions?",
     "text": "Questions?\n\nContact The Strategy Unit\n\n\n strategy.unit@nhs.net\n The-Strategy-Unit\n\n\nContact Me\n\n\n thomas.jemmett@nhs.net\n tomjemmett\n\n\n\n\n\nview slides at https://tinyurl.com/haca23nhp"
+  },
+  {
+    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#what-is-data-science",
+    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#what-is-data-science",
+    "title": "Travels with R and Python",
+    "section": "What is data science?",
+    "text": "What is data science?\n\n“A data scientist knows more about computer science than the average statistician, and more about statistics than the average computer scientist”\n\n(Josh Wills, a former head of data engineering at Slack)"
+  },
+  {
+    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#drew-conways-famous-venn-diagram",
+    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#drew-conways-famous-venn-diagram",
+    "title": "Travels with R and Python",
+    "section": "Drew Conway’s famous Venn diagram",
+    "text": "Drew Conway’s famous Venn diagram\n\nSource"
+  },
+  {
+    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#what-are-the-skills-of-data-science",
+    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#what-are-the-skills-of-data-science",
+    "title": "Travels with R and Python",
+    "section": "What are the skills of data science?",
+    "text": "What are the skills of data science?\n\nAnalysis\n\nML\nStats\nData viz\n\nSoftware engineering\n\nProgramming\nSQL/ data\nDevOps\nRAP"
+  },
+  {
+    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#what-are-the-skills-of-data-science-1",
+    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#what-are-the-skills-of-data-science-1",
+    "title": "Travels with R and Python",
+    "section": "What are the skills of data science?",
+    "text": "What are the skills of data science?\n\nDomain knowledge\n\nCommunication\nProblem formulation\nDashboards and reports"
+  },
+  {
+    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#stats-and-data-viz",
+    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#stats-and-data-viz",
+    "title": "Travels with R and Python",
+    "section": "Stats and data viz",
+    "text": "Stats and data viz\n\nML leans a bit more towards atheoretical prediction\nStats leans a bit more towards inference (but they both do both)\nData scientists may use different visualisations\n\nInteractive web based tools\nDashboard based visualisers e.g. {stminsights}"
+  },
+  {
+    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#software-engineering",
+    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#software-engineering",
+    "title": "Travels with R and Python",
+    "section": "Software engineering",
+    "text": "Software engineering\n\nProgramming\n\nNo/ low code data science?\n\nSQL/ data\n\nTend to use reproducible automated processes\n\nDevOps\n\nPlan, code, build, test, release, deploy, operate, monitor\n\nRAP\n\nI will come back to this"
+  },
+  {
+    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#domain-knowledge",
+    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#domain-knowledge",
+    "title": "Travels with R and Python",
+    "section": "Domain knowledge",
+    "text": "Domain knowledge\n\nDo stuff that matters\n\nThe best minds of my generation are thinking about how to make people click ads. That sucks. Jeffrey Hammerbacher\n\nConvince other people that it matters\nThis is the hardest part of data science"
+  },
+  {
+    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#rap",
+    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#rap",
+    "title": "Travels with R and Python",
+    "section": "RAP",
+    "text": "RAP\n\nData science isn’t RAP\nRAP isn’t data science\nThey are firm friends"
+  },
+  {
+    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#reproducibility",
+    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#reproducibility",
+    "title": "Travels with R and Python",
+    "section": "Reproducibility",
+    "text": "Reproducibility\n\nReproducibility in science\nThe $6B spreadsheet error\nGeorge Osbourne’s austerity was based on a spreadsheet error\nFor us, reproducibility also means we can do the same analysis 50 times in one minute\n\nWhich is why I started down the road of data science"
+  },
+  {
+    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#what-is-rap",
+    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#what-is-rap",
+    "title": "Travels with R and Python",
+    "section": "What is RAP",
+    "text": "What is RAP\n\na process in which code is used to minimise manual, undocumented steps, and a clear, properly documented process is produced in code which can reliably give the same result from the same dataset\nRAP should be:\n\n\nthe core working practice that must be supported by all platforms and teams; make this a core focus of NHS analyst training\n\n\nGoldacre review"
+  },
+  {
+    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#levels-of-rap--baseline",
+    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#levels-of-rap--baseline",
+    "title": "Travels with R and Python",
+    "section": "Levels of RAP- Baseline",
+    "text": "Levels of RAP- Baseline\n\nData produced by code in an open-source language (e.g., Python, R, SQL)\nCode is version controlled\nRepository includes a README.md file that clearly details steps a user must follow to reproduce the code\nCode has been peer reviewed\nCode is published in the open and linked to & from accompanying publication (if relevant)\n\n\nSource: NHS Digital RAP community of practice"
+  },
+  {
+    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#levels-of-rap--silver",
+    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#levels-of-rap--silver",
+    "title": "Travels with R and Python",
+    "section": "Levels of RAP- Silver",
+    "text": "Levels of RAP- Silver\n\nCode is well-documented…\nCode is well-organised following standard directory format\nReusable functions and/or classes are used where appropriate\nPipeline includes a testing framework\nRepository includes dependency information (e.g. requirements.txt, PipFile, environment.yml)\nData is handled and output in a Tidy data format\n\n\nSource: NHS Digital RAP community of practice"
+  },
+  {
+    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#levels-of-rap--gold",
+    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#levels-of-rap--gold",
+    "title": "Travels with R and Python",
+    "section": "Levels of RAP- Gold",
+    "text": "Levels of RAP- Gold\n\nCode is fully packaged\nRepository automatically runs tests etc. via CI/CD or a different integration/deployment tool e.g. GitHub Actions\nProcess runs based on event-based triggers (e.g., new data in database) or on a schedule\nChanges to the RAP are clearly signposted. E.g. a changelog in the package, releases etc. (See gov.uk info on Semantic Versioning)\n\n\nSource: NHS Digital RAP community of practice"
+  },
+  {
+    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#data-science-in-healthcare",
+    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#data-science-in-healthcare",
+    "title": "Travels with R and Python",
+    "section": "Data science in healthcare",
+    "text": "Data science in healthcare\n\nForecasting\n\nStats versus ML\n\nText mining\n\nR versus Python\n\nDemand modelling\n\nDevOps as a way of life"
+  },
+  {
+    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#get-involved",
+    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#get-involved",
+    "title": "Travels with R and Python",
+    "section": "Get involved!",
+    "text": "Get involved!\n\nNHS-R community\n\nWebinars, training, conference, Slack\n\nNHS Pycom\n\nditto…\n\nMLCSU GitHub?\nBuild links with the other CSUs"
+  },
+  {
+    "objectID": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#contact",
+    "href": "presentations/2023-08-02_mlcsu-ksn-meeting/index.html#contact",
+    "title": "Travels with R and Python",
+    "section": "Contact",
+    "text": "Contact\n\n\n\n\n strategy.unit@nhs.net\n The-Strategy-Unit\n\n\n\n\n\n chris.beeley1@nhs.net\n chrisbeeley\n\n\n\n\n\n\n\nview slides at the-strategy-unit.github.io/data_science/presentations"
+  },
+  {
+    "objectID": "presentations/2024-01-25_coffee-and-coding/index.html#targets-for-analysts",
+    "href": "presentations/2024-01-25_coffee-and-coding/index.html#targets-for-analysts",
+    "title": "Coffee and Coding",
+    "section": "{targets} for analysts",
+    "text": "{targets} for analysts\n\n\n\nTom previously presented about {targets} at a coffee and coding last March and you can revisit his presentation and learn about the reasons why you should use the package to manage your pipeline and see a simple demonstration of how to use the package.\nMatt has presented previously about {targets} and making your workflows (pipelines) reproducible.\nSo….. if you aren’t really even sure why your pipeline needs managing as an analyst or whether you actually have one (you do) then links to their presentations are at the end"
+  },
+  {
+    "objectID": "presentations/2024-01-25_coffee-and-coding/index.html#aims",
+    "href": "presentations/2024-01-25_coffee-and-coding/index.html#aims",
+    "title": "Coffee and Coding",
+    "section": "Aims",
+    "text": "Aims\n\nIn this presentation we aim to demonstrate the real-world use of {targets} in an analysis project, but first a brief explanation\n\n\n\nWithout {targets} we\n\n\nWrite a script\nExecute script\nMake changes\nGo to step 2\n\n\n\nWith {targets} we will\n\n\nlearn how the various stages of our analysis fit together\nsave time by only running necessary stages as we cycle through the process\nhelp future you and colleagues re-visiting the analysis - Matt says “its like a time-capsule”\nmake Reproducible Analytical Pipelines\n\n\nsource: The {targets} R package user manual"
+  },
+  {
+    "objectID": "presentations/2024-01-25_coffee-and-coding/index.html#explain-the-live-project",
+    "href": "presentations/2024-01-25_coffee-and-coding/index.html#explain-the-live-project",
+    "title": "Coffee and Coding",
+    "section": "Explain the live project",
+    "text": "Explain the live project\n\noriginal project had 30+ metrics\nmultiple inter-related processing steps\neach time a metric changed or a process was altered it impacted across the project\nthere was potential for mistakes, duplication, lots of wasted time\nusing targets provides a structure that handles these inter-relationships"
+  },
+  {
+    "objectID": "presentations/2024-01-25_coffee-and-coding/index.html#how-targets-can-help",
+    "href": "presentations/2024-01-25_coffee-and-coding/index.html#how-targets-can-help",
+    "title": "Coffee and Coding",
+    "section": "How {targets} can help",
+    "text": "How {targets} can help\n\ngets you thinking about your analysis and its building blocks\ntargets forces you into a functions approach to workflow\nentire pipeline is reproducible\nvisualise on one page\nsaves time\n(maybe we need an advanced function writing session in another C&C?)"
+  },
+  {
+    "objectID": "presentations/2024-01-25_coffee-and-coding/index.html#demonstration-in-a-live-project",
+    "href": "presentations/2024-01-25_coffee-and-coding/index.html#demonstration-in-a-live-project",
+    "title": "Coffee and Coding",
+    "section": "Demonstration in a live project",
+    "text": "Demonstration in a live project\nLet’s look at a real life example in a live project…"
+  },
+  {
+    "objectID": "presentations/2024-01-25_coffee-and-coding/index.html#visualising",
+    "href": "presentations/2024-01-25_coffee-and-coding/index.html#visualising",
+    "title": "Coffee and Coding",
+    "section": "Visualising",
+    "text": "Visualising\nCurrent project in {targets} and visualised with tar_visnetwork()"
+  },
+  {
+    "objectID": "presentations/2024-01-25_coffee-and-coding/index.html#code",
+    "href": "presentations/2024-01-25_coffee-and-coding/index.html#code",
+    "title": "Coffee and Coding",
+    "section": "Code",
+    "text": "Code\n\nit’s like a recipe of steps\nit’s easier to read\nyou have built functions which you can transfer and reuse\nit’s efficient, good practice\ndebugging is easier because if/when it fails you know exactly which target it has failed on\nit creates intermediate cached objects you can fetch at any time"
+  },
+  {
+    "objectID": "presentations/2024-01-25_coffee-and-coding/index.html#how-can-i-start-using-it",
+    "href": "presentations/2024-01-25_coffee-and-coding/index.html#how-can-i-start-using-it",
+    "title": "Coffee and Coding",
+    "section": "How can I start using it?",
+    "text": "How can I start using it?\n\nYou could “retro-fit” it to your project, but … ideally you should start your project off using {targets}\nThere are at least three of us in SU who have used it in our projects.\nWe are offering to hand hold you to get started with your next project.\nMatt, Tom, Jacqueline"
+  },
+  {
+    "objectID": "presentations/2024-01-25_coffee-and-coding/index.html#useful-targets-links",
+    "href": "presentations/2024-01-25_coffee-and-coding/index.html#useful-targets-links",
+    "title": "Coffee and Coding",
+    "section": "Useful {targets} links",
+    "text": "Useful {targets} links\n\nTom’s previous coffee and coding presentation\nMatt’s previous presentations\nThe {targets} documentation is detailed and easy to follow.\nA demo repository demonstrated in last weeks NHSE C&C\nSoftware Carpentry are developing a course here Pre-alpha targets course\nLive project demonstrated in this presentation using {targets}\n\n\n\n\nview slides at the-strategy-unit.github.io/data_science/presentations"
+  },
+  {
+    "objectID": "presentations/2024-05-16_store-data-safely/index.html#why",
+    "href": "presentations/2024-05-16_store-data-safely/index.html#why",
+    "title": "Store Data Safely",
+    "section": "Why?",
+    "text": "Why?\nBecause:\n\ndata may be sensitive\nGitHub was designed for source control of code\nGitHub has repository file-size limits\nit makes data independent from code\nit prevents repetition"
+  },
+  {
+    "objectID": "presentations/2024-05-16_store-data-safely/index.html#other-approaches",
+    "href": "presentations/2024-05-16_store-data-safely/index.html#other-approaches",
+    "title": "Store Data Safely",
+    "section": "Other approaches",
+    "text": "Other approaches\nTo prevent data commits:\n\nuse a .gitignore file (*.csv, etc)\nuse Git hooks\navoid ‘add all’ (git add .) when staging\nensure thorough reviews of (small) pull-requests"
+  },
+  {
+    "objectID": "presentations/2024-05-16_store-data-safely/index.html#what-if-i-committed-data",
+    "href": "presentations/2024-05-16_store-data-safely/index.html#what-if-i-committed-data",
+    "title": "Store Data Safely",
+    "section": "What if I committed data?",
+    "text": "What if I committed data?\n‘It depends’, but if it’s sensitive:\n\n‘undo’ the commit with git reset\nuse a tool like BFG to expunge the file from Git history\ndelete the repo and restart 🔥\n\nA data security breach may have to be reported."
+  },
+  {
+    "objectID": "presentations/2024-05-16_store-data-safely/index.html#data-hosting-solutions",
+    "href": "presentations/2024-05-16_store-data-safely/index.html#data-hosting-solutions",
+    "title": "Store Data Safely",
+    "section": "Data-hosting solutions",
+    "text": "Data-hosting solutions\nWe’ll talk about two main options for The Strategy Unit:\n\nPosit Connect and the {pins} package\nAzure Data Storage\n\nWhich to use? It depends."
+  },
+  {
+    "objectID": "presentations/2024-05-16_store-data-safely/index.html#a-platform-by-posit",
+    "href": "presentations/2024-05-16_store-data-safely/index.html#a-platform-by-posit",
+    "title": "Store Data Safely",
+    "section": "A platform by Posit",
+    "text": "A platform by Posit\n\n\nhttps://connect.strategyunitwm.nhs.uk/"
+  },
+  {
+    "objectID": "presentations/2024-05-16_store-data-safely/index.html#a-package-by-posit",
+    "href": "presentations/2024-05-16_store-data-safely/index.html#a-package-by-posit",
+    "title": "Store Data Safely",
+    "section": "A package by Posit",
+    "text": "A package by Posit\n\n\nhttps://pins.rstudio.com/"
+  },
+  {
+    "objectID": "presentations/2024-05-16_store-data-safely/index.html#basic-approach",
+    "href": "presentations/2024-05-16_store-data-safely/index.html#basic-approach",
+    "title": "Store Data Safely",
+    "section": "Basic approach",
+    "text": "Basic approach\ninstall.packages(\"pins\")\nlibrary(pins)\n\nboard_connect()\npin_write(board, data, \"pin_name\")\npin_read(board, \"user_name/pin_name\")"
+  },
+  {
+    "objectID": "presentations/2024-05-16_store-data-safely/index.html#live-demo",
+    "href": "presentations/2024-05-16_store-data-safely/index.html#live-demo",
+    "title": "Store Data Safely",
+    "section": "Live demo",
+    "text": "Live demo\n\nLink RStudio to Posit Connect (authenticate)\nConnect to the board\nWrite a new pin\nCheck pin status and details\nPin versions\nUse pinned data\nUnpin your pin"
+  },
+  {
+    "objectID": "presentations/2024-05-16_store-data-safely/index.html#should-i-use-it",
+    "href": "presentations/2024-05-16_store-data-safely/index.html#should-i-use-it",
+    "title": "Store Data Safely",
+    "section": "Should I use it?",
+    "text": "Should I use it?\n\n\n⚠️ {pins} is not great because:\n\nyou should not upload sensitive data!\nthere’s a file-size upload limit\npin organisation is a bit awkward (no subfolders)\n\n\n{pins} is helpful because:\n\nauthentication is straightforward\ndata can be versioned\nyou can control permissions\nthere are R and Python versions of the package"
+  },
+  {
+    "objectID": "presentations/2024-05-16_store-data-safely/index.html#what-is-azure-data-storage",
+    "href": "presentations/2024-05-16_store-data-safely/index.html#what-is-azure-data-storage",
+    "title": "Store Data Safely",
+    "section": "What is Azure Data Storage?",
+    "text": "What is Azure Data Storage?\nMicrosoft cloud storage for unstructured data or ‘blobs’ (Binary Large Objects): data objects in binary form that do not necessarily conform to any file format.\nHow is it different?\n\nNo hierarchy – although you can make pseudo-‘folders’ with the blobnames.\nAuthenticates with your Microsoft account."
+  },
+  {
+    "objectID": "presentations/2024-05-16_store-data-safely/index.html#authenticating-to-azure-data-storage",
+    "href": "presentations/2024-05-16_store-data-safely/index.html#authenticating-to-azure-data-storage",
+    "title": "Store Data Safely",
+    "section": "Authenticating to Azure Data Storage",
+    "text": "Authenticating to Azure Data Storage\n\nYou are all part of the “strategy-unit-analysts” group; this gives you read/write access to specific Azure storage containers.\nYou can store sensitive information like the container ID in a local .Renviron or .env file that should be ignored by git.\nUsing {AzureAuth}, {AzureStor} and your credentials, you can connect to the Azure storage container, upload files and download them, or read the files directly from storage!"
+  },
+  {
+    "objectID": "presentations/2024-05-16_store-data-safely/index.html#step-1-load-your-environment-variables",
+    "href": "presentations/2024-05-16_store-data-safely/index.html#step-1-load-your-environment-variables",
+    "title": "Store Data Safely",
+    "section": "Step 1: load your environment variables",
+    "text": "Step 1: load your environment variables\nStore sensitive info in an .Renviron file that’s kept out of your Git history! The info can then be loaded in your script.\n.Renviron:\nAZ_STORAGE_EP=https://STORAGEACCOUNT.blob.core.windows.net/\nScript:\nep_uri &lt;- Sys.getenv(\"AZ_STORAGE_EP\")\nTip: reload .Renviron with readRenviron(\".Renviron\")"
+  },
+  {
+    "objectID": "presentations/2024-05-16_store-data-safely/index.html#step-1-load-your-environment-variables-1",
+    "href": "presentations/2024-05-16_store-data-safely/index.html#step-1-load-your-environment-variables-1",
+    "title": "Store Data Safely",
+    "section": "Step 1: load your environment variables",
+    "text": "Step 1: load your environment variables\nIn the demo script we are providing, you will need these environment variables:\nep_uri &lt;- Sys.getenv(\"AZ_STORAGE_EP\")\napp_id &lt;- Sys.getenv(\"AZ_APP_ID\")\ncontainer_name &lt;- Sys.getenv(\"AZ_STORAGE_CONTAINER\")\ntenant &lt;- Sys.getenv(\"AZ_TENANT_ID\")"
+  },
+  {
+    "objectID": "presentations/2024-05-16_store-data-safely/index.html#step-2-authenticate-with-azure",
+    "href": "presentations/2024-05-16_store-data-safely/index.html#step-2-authenticate-with-azure",
+    "title": "Store Data Safely",
+    "section": "Step 2: Authenticate with Azure",
+    "text": "Step 2: Authenticate with Azure\n\n\ntoken &lt;- AzureAuth::get_azure_token(\n  \"https://storage.azure.com\",\n  tenant = tenant,\n  app = app_id,\n  auth_type = \"device_code\",\n)\nThe first time you do this, you will have link to authenticate in your browser and a code in your terminal to enter. Use the browser that works best with your @mlcsu.nhs.uk account!"
+  },
+  {
+    "objectID": "presentations/2024-05-16_store-data-safely/index.html#step-3-connect-to-container",
+    "href": "presentations/2024-05-16_store-data-safely/index.html#step-3-connect-to-container",
+    "title": "Store Data Safely",
+    "section": "Step 3: Connect to container",
+    "text": "Step 3: Connect to container\nendpoint &lt;- AzureStor::blob_endpoint(ep_uri, token = token)\ncontainer &lt;- AzureStor::storage_container(endpoint, container_name)\n\n# List files in container\nblob_list &lt;- AzureStor::list_blobs(container)\nIf you get 403 error, delete your token and re-authenticate, try a different browser/incognito, etc.\nTo clear Azure tokens: AzureAuth::clean_token_directory()"
+  },
+  {
+    "objectID": "presentations/2024-05-16_store-data-safely/index.html#interact-with-the-container",
+    "href": "presentations/2024-05-16_store-data-safely/index.html#interact-with-the-container",
+    "title": "Store Data Safely",
+    "section": "Interact with the container",
+    "text": "Interact with the container\nIt’s possible to interact with the container via your browser!\nYou can upload and download files using the Graphical User Interface (GUI), login with your @mlcsu.nhs.uk account: https://portal.azure.com/#home\nAlthough it’s also cooler to interact via code… 😎"
+  },
+  {
+    "objectID": "presentations/2024-05-16_store-data-safely/index.html#interact-with-the-container-1",
+    "href": "presentations/2024-05-16_store-data-safely/index.html#interact-with-the-container-1",
+    "title": "Store Data Safely",
+    "section": "Interact with the container",
+    "text": "Interact with the container\n# Upload contents of a local directory to container\nAzureStor::storage_multiupload(\n  container,\n  \"LOCAL_FOLDERNAME/*\",\n  \"FOLDERNAME_ON_AZURE\"\n)\n\n# Upload specific file to container\nAzureStor::storage_upload(\n  container,\n  \"data/ronald.jpeg\",\n  \"newdir/ronald.jpeg\"\n)"
+  },
+  {
+    "objectID": "presentations/2024-05-16_store-data-safely/index.html#load-csv-files-directly-from-azure-container",
+    "href": "presentations/2024-05-16_store-data-safely/index.html#load-csv-files-directly-from-azure-container",
+    "title": "Store Data Safely",
+    "section": "Load csv files directly from Azure container",
+    "text": "Load csv files directly from Azure container\ndf_from_azure &lt;- AzureStor::storage_read_csv(\n  container,\n  \"newdir/cats.csv\",\n  show_col_types = FALSE\n)\n\n# Load file directly from Azure container (by storing it in memory)\n\nparquet_in_memory &lt;- AzureStor::storage_download(\n  container, src = \"newdir/cats.parquet\", dest = NULL\n)\n\nparq_df &lt;- arrow::read_parquet(parquet_in_memory)"
+  },
+  {
+    "objectID": "presentations/2024-05-16_store-data-safely/index.html#interact-with-the-container-2",
+    "href": "presentations/2024-05-16_store-data-safely/index.html#interact-with-the-container-2",
+    "title": "Store Data Safely",
+    "section": "Interact with the container",
+    "text": "Interact with the container\n# Delete from Azure container (!!!)\nAzureStor::delete_storage_file(container, BLOB_NAME)"
+  },
+  {
+    "objectID": "presentations/2024-05-16_store-data-safely/index.html#what-does-this-achieve",
+    "href": "presentations/2024-05-16_store-data-safely/index.html#what-does-this-achieve",
+    "title": "Store Data Safely",
+    "section": "What does this achieve?",
+    "text": "What does this achieve?\n\nData is not in the repository, it is instead stored in a secure location\nCode can be open – sensitive information like Azure container name stored as environment variables\nLarge filesizes possible, other people can also access the same container.\nNaming conventions can help to keep blobs organised (these create pseudo-folders)\n\n\n\n\nLearn more about Data Science at The Strategy Unit"
   },
   {
     "objectID": "presentations/2023-03-23_coffee-and-coding/index.html#what-is-targets",

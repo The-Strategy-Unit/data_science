@@ -143,7 +143,7 @@ Store sensitive info in an .Renviron file that's kept out of your Git history! T
 .Renviron: 
 
 ```
-AZ_STORAGE_EP=https://CONTAINERGROUP.blob.core.windows.net/
+AZ_STORAGE_EP=https://STORAGEACCOUNT.blob.core.windows.net/
 ```
 
 Script: 

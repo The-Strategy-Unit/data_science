@@ -1,5 +1,5 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 
@@ -67,6 +67,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="http://matt-dray.com"><img src="https://avatars.githubusercontent.com/u/18232097?v=4?s=100" width="100px;" alt="Matt Dray"/><br /><sub><b>Matt Dray</b></sub></a><br /><a href="#blog-matt-dray" title="Blogposts">📝</a> <a href="#talk-matt-dray" title="Talks">📢</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://tjmt.uk/"><img src="https://avatars.githubusercontent.com/u/12023696?v=4?s=100" width="100px;" alt="Tom Jemmett"/><br /><sub><b>Tom Jemmett</b></sub></a><br /><a href="#blog-tomjemmett" title="Blogposts">📝</a> <a href="#talk-tomjemmett" title="Talks">📢</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://www.linkedin.com/in/yiwen-h/"><img src="https://avatars.githubusercontent.com/u/60136255?v=4?s=100" width="100px;" alt="YiWen Hon"/><br /><sub><b>YiWen Hon</b></sub></a><br /><a href="#blog-yiwen-h" title="Blogposts">📝</a> <a href="#talk-yiwen-h" title="Talks">📢</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://philosopher-analyst.netlify.app/"><img src="https://avatars.githubusercontent.com/u/39963221?v=4?s=100" width="100px;" alt="Zoë Turner"/><br /><sub><b>Zoë Turner</b></sub></a><br /><a href="https://github.com/The-Strategy-Unit/data_science/commits?author=Lextuga007" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>

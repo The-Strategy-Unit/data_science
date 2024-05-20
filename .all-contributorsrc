@@ -64,6 +64,15 @@
       "contributions": [
         "blog"
       ]
+    },
+    {
+      "login": "Lextuga007",
+      "name": "Zoë Turner",
+      "avatar_url": "https://avatars.githubusercontent.com/u/39963221?v=4",
+      "profile": "https://philosopher-analyst.netlify.app/",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,

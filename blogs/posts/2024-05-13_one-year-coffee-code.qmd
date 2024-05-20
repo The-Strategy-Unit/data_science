@@ -8,7 +8,7 @@ reference-location: margin
 citation-location: margin
 ---
 
-The data science team have been running coffee & coding sessions for just over a year now. When I joined that Stategy Unit, I was really pleased to see these sessions running as I think making time to discuss and share technical knowledge is highly valuable, especially as an organisation grows. 
+The data science team have been running coffee & coding sessions for just over a year now. When I joined that Strategy Unit, I was really pleased to see these sessions running as I think making time to discuss and share technical knowledge is highly valuable, especially as an organisation grows. 
 
 Coffee and coding sessions run every two weeks and usually take the form of a short presentation, followed by a discussion. Although we have had a variety of different sessions including live coding demos and show and tell for projects.
 

@@ -30,6 +30,7 @@ dir(path, pattern = "index.qmd", recursive = TRUE, full.names = TRUE) |>
       i <- i[do.call(seq, as.list(which(i == "---")[1:2] + c(1, -1)))]
       yaml::read_yaml(text = i) |>
         purrr::keep(is.atomic) |>
+        purrr::map(paste, collapse = ", ") |>
         tibble::as_tibble()
     }
   ) |>
@@ -37,7 +38,7 @@ dir(path, pattern = "index.qmd", recursive = TRUE, full.names = TRUE) |>
   dplyr::mutate(
     dplyr::across(
       "author",
-      \(.x) stringr::str_replace(.x, "^\\[(.*)\\]\\(.*\\)$", "\\1")
+      \(.x) stringr::str_replace_all(.x, "\\[([^\\]]*)\\]\\([^\\)]*\\)", "\\1")
     ),
     dplyr::across(
       "date",
@@ -64,8 +65,8 @@ dir(path, pattern = "index.qmd", recursive = TRUE, full.names = TRUE) |>
     title ~ px(650),
     author ~ px(150),
     date ~ px(100)
-  )|>
-  gt::tab_style(style = gt::cell_text(weight = "bold"), locations = gt::cells_column_labels(columns=everything()))|>
+  ) |>
+  gt::tab_style(style = gt::cell_text(weight = "bold"), locations = gt::cells_column_labels(columns = everything())) |>
   gt::cols_label(
     starts_with("date") ~ "Date",
     starts_with("author") ~ "Author",

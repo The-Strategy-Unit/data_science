@@ -1,7 +1,9 @@
 ---
 title: "Store Data Safely"
 subtitle: "Coffee & Coding"
-author: "[YiWen Hon](mailto:yiwen.hon1@nhs.net) & [Matt Dray](mailto:matt.dray@nhs.net)"
+author:
+  - "[YiWen Hon](mailto:yiwen.hon1@nhs.net)"
+  - "[Matt Dray](mailto:matt.dray@nhs.net)"
 date: 2024-05-16
 date-format: "MMM D, YYYY"
 format:

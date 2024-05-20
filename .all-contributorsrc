@@ -23,7 +23,7 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/60136255?v=4",
       "profile": "https://www.linkedin.com/in/yiwen-h/",
       "contributions": [
-        "blog", 
+        "blog",
         "talk"
       ]
     },
@@ -34,6 +34,15 @@
       "profile": "http://chrisbeeley.net",
       "contributions": [
         "talk"
+      ]
+    },
+    {
+      "login": "tomjemmett",
+      "name": "Tom Jemmett",
+      "avatar_url": "https://avatars.githubusercontent.com/u/12023696?v=4",
+      "profile": "https://tjmt.uk/",
+      "contributions": [
+        "blog"
       ]
     }
   ],

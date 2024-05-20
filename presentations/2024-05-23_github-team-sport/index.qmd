@@ -14,58 +14,137 @@ format:
     slide-number: false
     auto-animate: true
     footer: |
-      Learn more about [Data Science at The Strategy Unit ](https://the-strategy-unit.github.io/data_science/)
+      Learn more about [The Strategy Unit](https://www.strategyunitwm.nhs.uk/)
 ---
+
+## tl;dr
+
+:::: {.columns}
+
+::: {.column width='60%'}
+* GitHub is a _necessary_ tool for teamwork
+* Make the most of its features
+* Find what works for you
+:::
+
+:::{.column width='40%'}
+![](github-mark.svg){width="100%"}
+:::
+
+::::
+
+::: {.notes}
+
+* 'Too long; didn't read'.
+* GitHub can help you keep on top of your code-based projects, sure.
+* But mututal understanding is required in a team to keep on top of things and make your lives easier.
+* Features are good, using them collaboratively is better.
+
+:::
+
 
 # About us {.inverse}
 
 ## The Strategy Unit (SU)
 
-* Hosted by [Midlands and Lancashire CSU](), NHS
+:::: {.columns}
+
+::: {.column width='60%'}
+* Hosted by [NHS Midlands and Lancashire](https://www.midlandsandlancashirecsu.nhs.uk/), NHS
 * 'Internal consultancy'
-* [National Hospital Programme]() (NHP)
+* National Hospital Programme (NHP)
+:::
+
+::: {.column width='40%'}
+![](../../logo_yellow.svg)
+:::
+
+::::
+
+::: {.notes}
+
+* Initially a 'start-up' style operation and has expanded to 70+ staff.
+* We sell our services mostly internally to the NHS.
+* The National Hospital Programme is a big focus for us at the moment: modelling to help design hospitals.
+
+:::
 
 ## The Data Science Team
 
-* Gone from 2 to 6 in a year
-* R and Python
-* Modelling, Quarto documentation and Shiny apps
+![](cb.jpg){width="15%"}
+![](tj.png){width="15%"}
+![](om.png){width="15%"}
+![](yh.jpg){width="15%"}
+![](rd.jpg){width="15%"}
+![](md.jpg){width="15%"}
 
-## GitHub at The Strategy Unit
+* Expanded to 6 people
+* Modelling, Quarto, Shiny
+* Remote
 
-* We're [encouraging adoption]() at the SU
-* Aiming for [open by default]()
-* GitHub link is [on the homepage]()!
+::: {.notes}
+
+* A new team, expanding rapidly from 2 to 6 in about a year.
+* Experience from within the NHS, Civil Service and consultancy.
+* Remote across England.
+* So: few standardised processes; different experiences; important work. What do?
+
+:::
+
+## GitHub at the SU
+
+* We're encouraging adoption
+* Aiming for open by default
+* GitHub link is [on the homepage](https://www.strategyunitwm.nhs.uk/)!
+
+::: {.notes}
+
+* It's not just the DS team.
+* We have many other analysts eager to learn and contribute.
+* How can we set good standards and encourage use?
+
+:::
 
 # What this is about {.inverse}
 
 ## Alternate titles
 
 * 'Using GitHub at The Strategy Unit' 
-* 'A loose GitHub playbook'
 * 'GitHub in a small team'
 * 'GitHub: what works for us'
 * 'GitHub etiquette'
 
-## Angle
+## Talk angle
 
-* This is a talk about what we've found useful as a small (<=6) data science team working with GitHub (might be transferable to GitLab and other services). This is what works for us so far, but isn't gospel. We're still learning. Maybe you'll find it useful.
+* Non-technical, lo-fi
+* GitHub as a tool
+* Human interaction
+
+::: {.notes}
+
 * This is not a technical talk about how to use Git for version control. It's a talk about planning, workflows, standards and communication. With GitHub.
 * Some of these things are flexible and individual choice, but the spirit holds true (e.g. commit messages can 'start with a verb' or be 'conventional', but they should do the job of describing the changes in the commit, regardless).
 * Should you do these things if working as a solo developer? I'd say yes. Much of this advice is generally good practice. It's also good to form habits.
 
-# What we've learnt {.inverse}
+:::
 
-## Flow
+# What works for us {.inverse}
 
-As in internal contributor to a repo.
+::: {.notes}
 
-1. Make an issue with enough detail. Link to other issues if appropriate. Label the issue. add it to a milestone. Assign someone to the issue if relevant. 
-2. Create a branch. Name it to include the issue number and short description, e.g. '123-add-filter'. Commit to the branch early and often with atomic commits.
-3. Raise a PR. Link to the issue that you're closing in the form '#123' and explain briefly what the PR does. Assign yourself to the PR and select a reviewer.
-4. Await review, respond to comments and suggestions. Merge the PR when approved and delete the branch.
+* We're still learning what's good for us; here's some stuff that's worked for us so far.
+* We bring skills and experience from different teams and with different experience.
+* Things may differ between repos and projects; nothing is set in stone.
 
-## Repos
+:::
+
+## Repositories
+
+* Owner and deputy
+* No data!
+* READMEs, .gitignore, etc
+
+::: {.notes}
 
 * Repos must contain a README to explain the purpose and to explain the requirements and steps to re-run it.
 * Repos should be named succinctly but descriptively. Use a prefix for repos if they're part of the same project (e.g. 'nhp_*').
@@ -75,7 +154,32 @@ As in internal contributor to a repo.
 * No data is stored in GitHub. Data files are on Azure or Posit Connect.
 * Use a .gitignore to exclude likely data files (as well as other unnecessary files). We're thinking about common templates/cookiecutters.
 
+:::
+
+## Flow
+
+1. Issue
+2. Branch
+3. Pull request
+
+::: {.notes}
+
+As in internal contributor to a repo.
+
+1. Make an issue with enough detail. Link to other issues if appropriate. Label the issue. add it to a milestone. Assign someone to the issue if relevant. 
+2. Create a branch. Name it to include the issue number and short description, e.g. '123-add-filter'. Commit to the branch early and often with atomic commits.
+3. Raise a PR. Link to the issue that you're closing in the form '#123' and explain briefly what the PR does. Assign yourself to the PR and select a reviewer.
+4. Await review, respond to comments and suggestions. Merge the PR when approved and delete the branch.
+
+:::
+
 ## Issues
+
+* Not just 'problems'
+* Labels, including MoSCoW
+* Milestones, priorities, deadlines
+
+::: {.notes}
 
 * Issues aren't always 'problems'. They can be reminders (e.g. of tech debt) or questions for further discussion. 
 * Every ticket should have at least two labels ('enhancement', 'bug', 'documentation', etc, _plus_ MoSCoW). This will help to sort and prioritise them.
@@ -88,14 +192,30 @@ As in internal contributor to a repo.
 * Make use of checklists in issues by using markdown notation for checkboxes. This can help keep track of progress. These show up in the issue preview so you can see what percentage of that issue is completed.
 * Feel free to 'hide' comments if the information is out of date, etc. This can help keep remove ambiguity and keep conversations current.
 
+:::
+
 ## Branches
+
+* One issue, one person
+* Ephemeral
+* Helpful naming
+
+::: {.notes}
 
 * Branch names should be numbered to match their issue, e.g. '123-add-filter'. This makes it obvious what issue is being fixed by that branch and should help identify if more than one person has a branch open for the same issue.
 * Only one person works on a branch at a time. This person is the one assigned to the relevant issue.
 * If commits from someone else are required, then all parties must communicate about the current state of the branch to ensure they pull changes and avoid merge conflicts.
 * Branches are ephemeral and die when the PR is merged. They should be deleted (this can be done automatically). The only branches to exist at all times should be main and a deployment branch, if necessary. All others should be active branches so it's clear what's being worked on.
 
+:::
+
 ## Commits
+
+* Do not commit to main!
+* Small, early and often
+* Meaningful message
+
+::: {.notes}
 
 * Do not commit directly to main. Your work must be independently checked first to limit the chance of mistakes.
 * Make your commits small in terms of code and files touched, if possible. This makes the Git history easier to read and makes reviews easier too.
@@ -103,7 +223,15 @@ As in internal contributor to a repo.
 * Don't dump your work into a commit because it's the end of the day.
 * Make your commit messages meaningful. What does the commit do? Start with a verb in present tense ('adds', not 'added'). Or use 'conventional' commits.
 
-## PRs
+:::
+
+## Pull requests
+
+* Solves an issue
+* Small
+* Assignee, reviewer
+
+::: {.notes}
 
 * PRs should solve the issue they're related to. Occasionally one fix may solve another.
 * They should be named to explain what they do. The issue might be 'the red button doesn't work'; the PR might be 'fix the red button'.
@@ -115,14 +243,30 @@ As in internal contributor to a repo.
 * Merging or rebasing is not something we worry about too much. Nor is squashing.
 * GitHub Actions for continuous integration. R-CMD check at least for R projects. Start with r-lib examples as a basis.
 
+:::
+
 ## Reviewing PRs
+
+* Does it solve the problem?
+* Suggestions
+* Discussion
+
+::: {.notes}
 
 * The reviewer should typically check that the changes result in the issue being fixed. This may require pulling the branch and then testing it, but may not be necessary for small changes.
 * The reviewer should seek clarification and add comments where something isn't clear.
 * Use 'suggestions' as a reviewer rather than committing to someone else's branch.
 * When working at pace (when aren't we?), we should err towards approval if the issue is completed rather than an endless cycle of asking for small changes. The submitter and reviewer should decide whether smaller things like code style or change in approach should be added as a new issue with a 'techdebt' label.
 
+:::
+
 ## Releases
+
+* [Semantic](https://semver.org/), x.y.z
+* Autofill with PR names
+* Don't release on a Friday 🙃
+
+::: {.notes}
 
 * Tag the history and release on GitHub concurrently to keep them in sync (this is done automatically if the release is done from the GitHub interface).
 * Semantic (x.y.z where x is breaking, y is new features and z is patches for bugs).
@@ -130,19 +274,28 @@ As in internal contributor to a repo.
 * We align releases with sprints, though patches may occur more frequently.
 * We link releases to deployment in many cases. Don't release to prod on a Friday, lol.
 
-## What next?
+:::
+
+# A good sport {.inverse}
+
+## GitHub is a team member!
+
+* Automation with Actions
+* Issue templates, repo templates
+* All-in-one planner
+
+::: {.notes}
 
 * We use Trello to plan things and have to link to GitHub repos and issues in Trello cards. Can we use GitHub as our planner across multiple repos instead? Seems possible and we had a demo from a former colleague recently.
 * We have much of this recorded on our website, but we could add more to it.
 * What do you do? What ideas do you have for us?
 
-# Summary {.inverse}
+:::
 
-## Are we... curling? 🥌
+## Are we curling? 🥌
 
 * Small team
-* Working in sync
-* Adjusting to the environment
+* Working in sync, adjusting
 * Specialist roles
 
 ## The bottom line, actually

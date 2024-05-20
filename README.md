@@ -1,5 +1,5 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 
@@ -62,6 +62,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tbody>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="http://chrisbeeley.net"><img src="https://avatars.githubusercontent.com/u/1259867?v=4?s=100" width="100px;" alt="Chris Beeley"/><br /><sub><b>Chris Beeley</b></sub></a><br /><a href="#talk-ChrisBeeley" title="Talks">📢</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://www.strategyunitwm.nhs.uk/"><img src="https://avatars.githubusercontent.com/u/105867449?v=4?s=100" width="100px;" alt="Craig Parylo"/><br /><sub><b>Craig Parylo</b></sub></a><br /><a href="#blog-craig-parylo" title="Blogposts">📝</a> <a href="#talk-craig-parylo" title="Talks">📢</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/jacgrout"><img src="https://avatars.githubusercontent.com/u/103451105?v=4?s=100" width="100px;" alt="Jacqueline Grout"/><br /><sub><b>Jacqueline Grout</b></sub></a><br /><a href="#talk-jacgrout" title="Talks">📢</a> <a href="#blog-jacgrout" title="Blogposts">📝</a></td>
       <td align="center" valign="top" width="14.28%"><a href="http://matt-dray.com"><img src="https://avatars.githubusercontent.com/u/18232097?v=4?s=100" width="100px;" alt="Matt Dray"/><br /><sub><b>Matt Dray</b></sub></a><br /><a href="#blog-matt-dray" title="Blogposts">📝</a> <a href="#talk-matt-dray" title="Talks">📢</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://tjmt.uk/"><img src="https://avatars.githubusercontent.com/u/12023696?v=4?s=100" width="100px;" alt="Tom Jemmett"/><br /><sub><b>Tom Jemmett</b></sub></a><br /><a href="#blog-tomjemmett" title="Blogposts">📝</a> <a href="#talk-tomjemmett" title="Talks">📢</a></td>

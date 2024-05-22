@@ -20,36 +20,51 @@ format:
 ## tl;dr
 
 :::: {.columns}
+
 ::: {.column width='60%'}
+
 * 'Quality' isn't just 'good code'
 * Communication and teamwork
 * GitHub can help
 :::
+
 :::{.column width='40%'}
+
 ![](github-mark.svg){width="100%"}
 :::
+
 ::::
 
+
 ::: {.notes}
+
 * 'Too long; didn't read'.
 * GitHub isn't just a dumping ground for code and Git history.
 * It's a platform for working with teammates.
 * Quality is improved by good communication, organisation and reduction of the 'bus factor'.
+
 :::
 
 # About us {.inverse}
 
-## [The Strategy Unit](https://www.strategyunitwm.nhs.uk/) (SU)
+## The Strategy Unit (SU)
 
 :::: {.columns}
+
 ::: {.column width='60%'}
+
 * Hosted by [NHS Midlands and Lancashire](https://www.midlandsandlancashirecsu.nhs.uk/)
 * An 'internal consultancy'
 * Growing in size and reputation
+
 :::
+
 ::: {.column width='40%'}
+
 ![](../../logo_yellow.svg){width="100%"}
+
 :::
+
 ::::
 
 ::: {.notes}
@@ -58,6 +73,7 @@ format:
 * 'We produce high-quality, multi-disciplinary analytical work – and we help people apply the results.'
 * 'Our proposition is simple: better evidence, better decisions, better outcomes.'
 * Expansion is tricky; how can we maintain quality?
+
 :::
 
 ## The Data Science Team
@@ -74,11 +90,13 @@ format:
 * New Hospital Programme (NHP)
 
 ::: {.notes}
+
 * A new team, expanding rapidly from 2 to 6 in about a year.
 * Remote across England.
 * Experience from within the NHS, Civil Service and consultancy.
 * The National Hospital Programme is a big focus for us at the moment: modelling to help design hospitals.
 * So: few standardised processes; different experiences; important work. What do?
+
 :::
 
 ## GitHub at the SU
@@ -88,30 +106,45 @@ format:
 * GitHub is [linked on the homepage](https://www.strategyunitwm.nhs.uk/)
 
 ::: {.notes}
+
 * It's not just the DS team.
 * We have many other analysts eager to learn and contribute.
 * How can we set good standards and encourage use?
 * We're running Coffee & Coding sessions, teaching and encouraging talks and blogs on our site.
 * We want to drive up quality by making code open too.
 * It's a statement of intent that the SU homepage links to our GitHub organisation.
+
 :::
 
-# These slides {.inverse}
-
-::: {.notes}
-* That context is important so you can understand who we are and the environment we work in.
-* So what 
-:::
+# This talk {.inverse}
 
 ## What this is
 
-* Non-technical, lo-fi
-* What's been working for us
+* Low-tech, no code
 * Tips and etiquette, not directives
+* What's been working for us
 
 ::: {.notes}
-* This is not a technical talk about how to use Git for version control. It's a talk about planning, workflows, standards and communication. With GitHub.
-* Some of these things are flexible and individual choice, but the spirit holds true. 
+
+* This is not a technical talk about how to use Git for version control. 
+* It's a talk about planning, workflows, standards and communication. With GitHub.
+* It's things that our team have been doing.
+* Largely it's about the spirit, no-one is going to be in trouble for slight personal differences.
+
+:::
+
+## The 'bus factor'
+
+* We should maintain quality
+* We need redundancy
+* Standardised processes can help
+
+::: {.notes}
+
+* We should encourage standard practices in case someone is ill or away.
+* This also makes it easier when new team members join.
+* This helps us maintain quality.
+
 :::
 
 ## 'Rules'
@@ -121,157 +154,189 @@ format:
 * Know _why_ you're breaking the rules
 
 ::: {.notes}
-* We have some suggested best practices listed on our site.
-* But nothing here is etched into stone.
-* Above all, it's important we engage with each other in the right spirit.
+
+* Nothing here is etched into stone.
+* There will be times where rules can be broken.
+* But we shouldn't be complacent.
+
 :::
 
-# What's working for us {.inverse}
+# What we do {.inverse}
 
 ::: {.notes}
+
 * So, let's move onto some specific examples of how we've been using GitHub for our work.
 * I haven't included everything.
 * Some ideas are literal features of the platform, others are more like 'suggested best practice'.
 * Hopefully there'll be at least one thing that's new to you and that you might want to use in your own team.
-:::
 
-## Repositories
-
-* 'Owner' and 'deputy' roles
-* No data
-* Templates
-
-::: {.notes}
-* Owners/deputies are in charge of 'GitHub gardening' (keeping issues in order, labelling, milestones, etc).
-* There are at least one of each to help minimise 'the bus factor'.
-* The owner can be auto-selected as the reviewer. We're experimenting with this for repos with external contributors, especially.
-* Data is stored elsewhere, on Azure or Posit Connect, due to sensitivyt and size.
-* Use a .gitignore to exclude likely data files (as well as other unnecessary files). We're thinking about common templates/cookiecutters.
-* Communication (README, .gitignores) and vigilance (code review) are good tools too. 
 :::
 
 ## GitHub flow
 
+1. Create a repository
 1. Write issues
-2. Review backlog
-3. Create branch
-4. Make pull request
-5. Review
-6. Release
+1. Review backlog
+1. Create a branch
+1. Make a pull request
+1. Review
+1. Release
 
 ::: {.notes}
-As in internal contributor to a repo.
 
-1. Make an issue with enough detail. Link to other issues if appropriate. Label the issue. add it to a milestone. Assign someone to the issue if relevant. 
-2. Create a branch. Name it to include the issue number and short description, e.g. '123-add-filter'. Commit to the branch early and often with atomic commits.
-3. Raise a PR. Link to the issue that you're closing in the form '#123' and explain briefly what the PR does. Assign yourself to the PR and select a reviewer.
-4. Await review, respond to comments and suggestions. Merge the PR when approved and delete the branch.
+* This is a fairly generic GitHub flow.
+* I'll talk through a few things in each of these categories.
+
+:::
+
+## Repositories
+
+* Assign 'owner' and 'deputy' roles
+* Don't contain data
+* Add README and .gitignore
+
+::: {.notes}
+
+* Owners/deputies are in charge of 'GitHub gardening' (keeping issues in order, labelling, milestones, etc).
+* Deputies help with bus factor.
+* The owner can be auto-selected as the reviewer. We're experimenting with this for repos with external contributors, especially.
+* Data is stored elsewhere, on Azure or Posit Connect, due to sensitivity and size.
+* Use a .gitignore to exclude likely data files (as well as other unnecessary files). We're thinking about common templates/cookiecutters.
+* Communication (README, .gitignores) and vigilance (code review) are good tools too. 
+
 :::
 
 ## Issues
 
-* Not just 'problems'
-* Labels, including MoSCoW
-* Milestones, priorities, deadlines
+* Aren't just 'problems'
+* Use labels, including MoSCoW
+* Explain the need
 
 ::: {.notes}
-* Issues aren't always 'problems'. They can be reminders (e.g. of tech debt) or questions for further discussion. 
-* Every ticket should have at least two labels ('enhancement', 'bug', 'documentation', etc, _plus_ MoSCoW). This will help to sort and prioritise them.
+
+* Issues can be reminders or questions for further discussion. 
+* Tickets should get two labels: 'enhancement', 'bug', 'documentation', 'techdebt', etc, _plus_ MoSCoW.
+* Issue templates can ensure certain info is provided, which is especially good for external contributors.
+* Refer to other related commits by number (e.g. `#1`), which stops you repeating the same information.
+* Prefer to reopen an issue if it doesn't actually work.
+* Issues can track separate sub-issues.
+* You can add checklists with markdown checkbox: `- [ ]` (these appear in the issue preview).
+* You can 'hide' comments if they're out of date, etc.
+
+:::
+
+## Backlog
+
+* Talk, review and reflect
+* Use the labels
+* Sort into milestones
+
+::: {.notes}
+
+* We assess what needs to be done in sprint planning meetings.
+* What _needs_ to be done in the sprint period, what other issues support those goals?
+* Is there time for other tasks, like clearing techdebt? 
 * All issues should be assigned to a milestone.
 * Issues in milestones should be sorted in priority order/order of expected completion (MoSCoW labels will help with this).
-* Use issue templates to ensure particular information is supplied. This is probably most useful for external contributors. We're experimenting with this.
-* Refer to other related commits by number (keeps).
-* Reopen an issue if the fix did not work as expected. The earlier context is useful if new changes need to be made.
-* Feel free to break down an issue into separate issues if needed. You can use the original issue to track the smaller issues if you want.
-* Make use of checklists in issues by using markdown notation for checkboxes. This can help keep track of progress. These show up in the issue preview so you can see what percentage of that issue is completed.
-* Feel free to 'hide' comments if the information is out of date, etc. This can help keep remove ambiguity and keep conversations current.
+
 :::
 
 ## Branches
 
-* One issue, one person
-* Ephemeral
-* Helpful naming
+* One issue, one branch, one person
+* Burn them
+* Name them sensibly
 
 ::: {.notes}
+
 * Branch names should be numbered to match their issue, e.g. '123-add-filter'. This makes it obvious what issue is being fixed by that branch and should help identify if more than one person has a branch open for the same issue.
 * Only one person works on a branch at a time. This person is the one assigned to the relevant issue.
 * If commits from someone else are required, then all parties must communicate about the current state of the branch to ensure they pull changes and avoid merge conflicts.
 * Branches are ephemeral and die when the PR is merged. They should be deleted (this can be done automatically). The only branches to exist at all times should be main and a deployment branch, if necessary. All others should be active branches so it's clear what's being worked on.
+
 :::
 
 ## Commits
 
 * Do not commit to main!
-* Small, early and often
-* Meaningful message
+* 'Small, early and often'
+* Use a meaningful message
 
 ::: {.notes}
+
 * Do not commit directly to main. Your work must be independently checked first to limit the chance of mistakes.
 * Make your commits small in terms of code and files touched, if possible. This makes the Git history easier to read and makes reviews easier too.
 * Commit and push early and often into your branch. This can help others see progress and helps reduce the bus factor.
 * Don't dump your work into a commit because it's the end of the day.
-* Make your commit messages meaningful. What does the commit do? Start with a verb in present tense ('adds', not 'added'). Or use 'conventional' commits.
+* Make your commit messages meaningful. What does the commit do? Start with a verb in present tense ('adds', not 'added'). Or maybe use 'conventional' commits.
+
 :::
 
 ## Pull requests (PRs)
 
-* Solves an issue
-* Small
-* Assignee, reviewer
+* Solve an issue
+* Are small, with 'atomic' commits
+* Select the assignee (submitter) and reviewer
 
 ::: {.notes}
+
 * PRs should solve the issue they're related to. Occasionally one fix may solve another.
 * They should be named to explain what they do. The issue might be 'the red button doesn't work'; the PR might be 'fix the red button'.
 * They should be small in terms of lines of code and files touched. This will make it easier and faster to understand and assess the changes.
-* The submitter should mark themself as the 'assignee' and choose a reviewer. You may want to chat with the reviewer to ley them know if they have time.
+* The submitter should mark themself as the 'assignee' and choose a reviewer. You may want to chat with the reviewer to let them know if they have time.
 * For context, link to the issue(s) being closed with the magic words ('closes', 'fixes', etc), which will also close those issues as completed.
-* Short explanation or bullet-points of what the PR does. Provide any extra information to make the reviewer's life easier (areas of focus, maybe) or to ask a question about some aspect of what you've written.
+* Include a short explanation or bullet-points of what the PR does. Provide any extra information to make the reviewer's life easier (areas of focus, maybe) or to ask a question about some aspect of what you've written.
 * The PR submitter is the one who clicks the merge button. This is in case the submitter realises there's something they need to add or change before the merge.
-* Merging or rebasing is not something we worry about too much. Nor is squashing.
-* GitHub Actions for continuous integration. R-CMD check at least for R projects. Start with r-lib examples as a basis.
+
 :::
 
 ## Reviewing PRs
 
-* Does it solve the problem?
-* Suggestions
-* Discussion
+* Be helpful, be kind
+* Use [GitHub suggestions](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/incorporating-feedback-in-your-pull-request)
+* Discuss if unclear
 
 ::: {.notes}
+
 * The reviewer should typically check that the changes result in the issue being fixed. This may require pulling the branch and then testing it, but may not be necessary for small changes.
 * The reviewer should seek clarification and add comments where something isn't clear.
 * Use 'suggestions' as a reviewer rather than committing to someone else's branch.
 * When working at pace (when aren't we?), we should err towards approval if the issue is completed rather than an endless cycle of asking for small changes. The submitter and reviewer should decide whether smaller things like code style or change in approach should be added as a new issue with a 'techdebt' label.
+
 :::
 
 ## Releases
 
-* [Semantic](https://semver.org/), x.y.z
-* Autofill with PR names
+* Use [semantic](https://semver.org/) versioning (1.2.3)
+* Autofill notes with PR names
 * Don't release on a Friday 🙃
 
 ::: {.notes}
+
 * Tag the history and release on GitHub concurrently to keep them in sync (this is done automatically if the release is done from the GitHub interface).
 * Semantic (x.y.z where x is breaking, y is new features and z is patches for bugs).
 * We typically just autofill the release description with the constituent PR titles. Which means it's important to give them meaningful names.
 * We align releases with sprints, though patches may occur more frequently.
 * We link releases to deployment in many cases. Don't release to prod on a Friday, lol.
+
 :::
 
 # Surprise twist... {.inverse}
 
 ## GitHub is a team member
 
-* Automation with Actions
-* Issue templates, repo templates
-* All-in-one planner?
+* Automate with Actions
+* Provide issue and repo templates
+* An all-in-one planner?
 
 ::: {.notes}
+
 * I lied: we have 6 _human_ team members.
 * We use GitHub to automate some boring things.
+* GitHub Actions for continuous integration. R-CMD check at least for R projects. Start with r-lib examples as a basis.
 * We're looking towards things like templates at the issue and repo levels; again to remove drudgery.
 * We use Trello to plan things and have to link to GitHub repos and issues in Trello cards. Can we use GitHub as our planner across multiple repos instead? Seems possible.
+
 :::
 
 # Be a good sport {.inverse}
@@ -280,11 +345,13 @@ As in internal contributor to a repo.
 
 * Small team
 * Specialist roles
-* Working in sync, adjusting
+* Working in sync
 
 ::: {.notes}
+
 * You have been wondering: if this is a 'team sport', what sport is it?
-* This is a terrible metaphor. But think about it.
+* This is a terrible metaphor. _But think about it._
+
 :::
 
 ## The bottom line, actually
@@ -294,8 +361,10 @@ As in internal contributor to a repo.
 3. Be kind
 
 ::: {.notes}
-* The ideas in this talk were about GitHub.
-* These things have helped us, and could help you, to drive up quality.
-* But none of these are replacements for being good humans.
-* GitHub just provides some affordances to help with these things.
+
+* The ideas in this talk are things that have helped us, and could help you, to drive up and maintain quality.
+* But none of these are replacements for being good team members.
+* GitHub just provides some affordances to help you.
+* Did you learn at least one thing? What has you team been doing?
+
 :::

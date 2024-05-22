@@ -23,9 +23,9 @@ format:
 
 ::: {.column width='60%'}
 
-* 'Quality' isn't just 'good code'
-* Communication and teamwork
-* GitHub can help
+* 'Quality' isn't just good code
+* _Teamwork makes the dream work_
+* GitHub is a communication tool
 :::
 
 :::{.column width='40%'}
@@ -101,6 +101,8 @@ format:
 
 ## GitHub at the SU
 
+![](su-home.png){width="100%"}
+
 * We should be exemplars
 * Aiming for open by default
 * GitHub is [linked on the homepage](https://www.strategyunitwm.nhs.uk/)
@@ -133,7 +135,7 @@ format:
 
 :::
 
-## The 'bus factor'
+## The 'bus factor' 🚍
 
 * We should maintain quality
 * We need redundancy
@@ -176,7 +178,7 @@ format:
 
 1. Create a repository
 1. Write issues
-1. Review backlog
+1. Plan 
 1. Create a branch
 1. Make a pull request
 1. Review
@@ -192,7 +194,7 @@ format:
 ## Repositories
 
 * Assign 'owner' and 'deputy' roles
-* Don't contain data
+* Store data elsewhere
 * Add README and .gitignore
 
 ::: {.notes}
@@ -208,9 +210,23 @@ format:
 
 ## Issues
 
+:::: {.columns}
+
+::: {.column width='40%'}
+
 * Aren't just 'problems'
 * Use labels, including MoSCoW
 * Explain the need
+
+:::
+
+::: {.column width='60%'}
+
+![](labels.png)
+
+:::
+
+::::
 
 ::: {.notes}
 
@@ -225,7 +241,9 @@ format:
 
 :::
 
-## Backlog
+## Plan
+
+![](milestones.png)
 
 * Talk, review and reflect
 * Use the labels
@@ -243,9 +261,11 @@ format:
 
 ## Branches
 
+![](branch.png)
+
 * One issue, one branch, one person
-* Burn them
 * Name them sensibly
+* Burn them
 
 ::: {.notes}
 
@@ -274,9 +294,23 @@ format:
 
 ## Pull requests (PRs)
 
+:::: {.columns}
+
+::: {.column width='40%'}
+
 * Solve an issue
 * Are small, with 'atomic' commits
 * Select the assignee (submitter) and reviewer
+
+:::
+
+::: {.column width='60%'}
+
+![](pr.png)
+
+:::
+
+::::
 
 ::: {.notes}
 
@@ -292,9 +326,23 @@ format:
 
 ## Reviewing PRs
 
+:::: {.columns}
+
+::: {.column width='40%'}
+
 * Be helpful, be kind
 * Use [GitHub suggestions](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/incorporating-feedback-in-your-pull-request)
 * Discuss if unclear
+
+:::
+
+::: {.column width='60%'}
+
+![](suggest.png)
+
+:::
+
+::::
 
 ::: {.notes}
 
@@ -324,6 +372,8 @@ format:
 # Surprise twist... {.inverse}
 
 ## GitHub is a team member
+
+![](action.png)
 
 * Automate with Actions
 * Provide issue and repo templates
@@ -356,9 +406,23 @@ format:
 
 ## The bottom line, actually
 
+:::: {.columns}
+
+::: {.column width='40%'}
+
 1. Communicate
 2. Help each other
 3. Be kind
+
+:::
+
+::: {.column width='60%'}
+
+![](curling.gif)
+
+:::
+
+::::
 
 ::: {.notes}
 

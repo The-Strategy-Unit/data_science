@@ -417,11 +417,25 @@ format:
 
 ## Are we [curling](https://en.wikipedia.org/wiki/Curling)? 🥌
 
+:::: {.columns}
+
+::: {.column width='50%'}
+
 We:
 
 * are a small team
 * assume specialist roles
 * work in sync
+
+:::
+
+::: {.column width='50%'}
+
+![](curling.png)
+
+:::
+
+::::
 
 ::: {.notes}
 

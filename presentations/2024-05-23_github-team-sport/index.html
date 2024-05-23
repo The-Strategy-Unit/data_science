@@ -359,8 +359,8 @@
 <ul>
 <li>‘Too long; didn’t read’.</li>
 <li>GitHub isn’t just a dumping ground for code and Git history.</li>
-<li>It’s a platform for working with teammates.</li>
-<li>Quality is improved by good communication, organisation and reduction of the ‘bus factor’.</li>
+<li>It’s a platform for working with teammates to get things done.</li>
+<li>Quality is improved by good communication, organisation and reduction of something called the ‘bus factor’ that I’ll get to in a minute.</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -377,15 +377,30 @@
 <section>
 <section id="about-us" class="title-slide slide level1 inverse center">
 <h1>About us</h1>
-
+<aside class="notes">
+<ul>
+<li>I’ll start with some context about the organisation so you understand how we work.</li>
+<li>There’s a link to the website at the bottom of each slide.</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="the-strategy-unit-su" class="slide level2">
 <h2>The Strategy Unit (SU)</h2>
 <div class="columns">
 <div class="column" style="width:60%;">
 <ul>
-<li>Hosted by <a href="https://www.midlandsandlancashirecsu.nhs.uk/">NHS Midlands and Lancashire</a></li>
 <li>An ‘internal consultancy’</li>
+<li>Hosted by <a href="https://www.midlandsandlancashirecsu.nhs.uk/">NHS Midlands and Lancashire</a></li>
 <li>Growing in size and reputation</li>
 </ul>
 </div><div class="column" style="width:40%;">
@@ -396,6 +411,7 @@
 <ul>
 <li>Initially a ‘start-up’ style operation that has expanded to 70+ staff.</li>
 <li>‘We produce high-quality, multi-disciplinary analytical work – and we help people apply the results.’</li>
+<li>A lot of our work is on the important New Hospital Programme (NHP).</li>
 <li>‘Our proposition is simple: better evidence, better decisions, better outcomes.’</li>
 <li>Expansion is tricky; how can we maintain quality?</li>
 </ul>
@@ -412,20 +428,20 @@
       }</style></aside>
 </section>
 <section id="the-data-science-team" class="slide level2">
-<h2>The Data Science Team</h2>
+<h2>The <a href="https://the-strategy-unit.github.io/data_science/">Data Science</a> Team</h2>
 <p><img data-src="cb.jpg" style="width:15.0%"> <img data-src="tj.png" style="width:15.0%"> <img data-src="om.png" style="width:15.0%"> <img data-src="yh.jpg" style="width:15.0%"> <img data-src="rd.jpg" style="width:15.0%"> <img data-src="md.jpg" style="width:15.0%"></p>
 <ul>
 <li>Expanded to 6, all remote</li>
 <li>Modelling, Quarto, Shiny</li>
-<li>New Hospital Programme (NHP)</li>
+<li><a href="https://connect.strategyunitwm.nhs.uk/nhp/project_information/">New Hospital Programme</a> (NHP)</li>
 </ul>
 <aside class="notes">
 <ul>
 <li>A new team, expanding rapidly from 2 to 6 in about a year.</li>
 <li>Remote across England.</li>
-<li>Experience from within the NHS, Civil Service and consultancy.</li>
-<li>The National Hospital Programme is a big focus for us at the moment: modelling to help design hospitals.</li>
-<li>So: few standardised processes; different experiences; important work. What do?</li>
+<li>Experience from across the NHS and consultancy. I spent a decade in five central government departments before this.</li>
+<li>We’re helping to model and design apps for the NHP to help build hospitals.</li>
+<li>So: growing team, different experiences, important work, but few standardised processes. What to do?</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -445,13 +461,13 @@
 <img data-src="su-home.png" style="width:100.0%" class="r-stretch"><ul>
 <li>We should be exemplars</li>
 <li>Aiming for open by default</li>
-<li>GitHub is <a href="https://www.strategyunitwm.nhs.uk/">linked on the homepage</a></li>
+<li>GitHub is <a href="https://www.strategyunitwm.nhs.uk/">on the homepage</a> and there’s <a href="https://the-strategy-unit.github.io/data_science/">a Data Science site</a></li>
 </ul>
 <aside class="notes">
 <ul>
 <li>It’s not just the DS team.</li>
 <li>We have many other analysts eager to learn and contribute.</li>
-<li>How can we set good standards and encourage use?</li>
+<li>How can we set good standards and encourage use across the organisation?</li>
 <li>We’re running Coffee &amp; Coding sessions, teaching and encouraging talks and blogs on our site.</li>
 <li>We want to drive up quality by making code open too.</li>
 <li>It’s a statement of intent that the SU homepage links to our GitHub organisation.</li>
@@ -471,7 +487,22 @@
 <section>
 <section id="this-talk" class="title-slide slide level1 inverse center">
 <h1>This talk</h1>
-
+<aside class="notes">
+<ul>
+<li>So that’s the context: we’re experienced, but fledgling as a team, and keen to do things well.</li>
+<li>These slides are some of the ways we’ve been working so far with a focus on GitHub, specifically.</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="what-this-is" class="slide level2">
 <h2>What this is</h2>
@@ -482,10 +513,10 @@
 </ul>
 <aside class="notes">
 <ul>
-<li>This is not a technical talk about how to use Git for version control.</li>
-<li>It’s a talk about planning, workflows, standards and communication. With GitHub.</li>
-<li>It’s things that our team have been doing.</li>
-<li>Largely it’s about the spirit, no-one is going to be in trouble for slight personal differences.</li>
+<li>But this is not a technical talk about how to use Git for version control.</li>
+<li>Mostly it’s about planning, workflows, standards and communication.</li>
+<li>It’s things that our team have been doing and the ideas are evolving.</li>
+<li>I’ve worked mostly alone on GitHub projects in my career and never worked in a data science team of even this size. So at worst these slides are a way for me to write down what I’m learning.</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -500,7 +531,7 @@
       }</style></aside>
 </section>
 <section id="the-bus-factor" class="slide level2">
-<h2>The ‘bus factor’ 🚍</h2>
+<h2>The ‘<a href="https://en.wikipedia.org/wiki/Bus_factor">bus factor</a>’ 🚍</h2>
 <ul>
 <li>We should maintain quality</li>
 <li>We need redundancy</li>
@@ -508,6 +539,7 @@
 </ul>
 <aside class="notes">
 <ul>
+<li>Why do we care about discussing and ‘formalising’ these ideas?</li>
 <li>We should encourage standard practices in case someone is ill or away.</li>
 <li>This also makes it easier when new team members join.</li>
 <li>This helps us maintain quality.</li>
@@ -533,7 +565,7 @@
 </ul>
 <aside class="notes">
 <ul>
-<li>Nothing here is etched into stone.</li>
+<li>To be clear though, nothing here is etched into stone.</li>
 <li>There will be times where rules can be broken.</li>
 <li>But we shouldn’t be complacent.</li>
 </ul>
@@ -556,6 +588,7 @@
 <ul>
 <li>So, let’s move onto some specific examples of how we’ve been using GitHub for our work.</li>
 <li>I haven’t included everything.</li>
+<li>Many of our best examples are currently on closed repos that will be opened with time, due to various sensitivities.</li>
 <li>Some ideas are literal features of the platform, others are more like ‘suggested best practice’.</li>
 <li>Hopefully there’ll be at least one thing that’s new to you and that you might want to use in your own team.</li>
 </ul>
@@ -602,18 +635,19 @@
 <section id="repositories" class="slide level2">
 <h2>Repositories</h2>
 <ul>
-<li>Assign ‘owner’ and ‘deputy’ roles</li>
+<li>Assign ‘<a href="https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners">owner</a>’ and ‘deputy’ roles</li>
+<li>Add <a href="https://www.makeareadme.com/">README</a> and <a href="https://github.com/github/gitignore">.gitignore</a></li>
 <li>Store data elsewhere</li>
-<li>Add README and .gitignore</li>
 </ul>
 <aside class="notes">
 <ul>
+<li>Easy starter: tell people what the purpose of the repo is and how to use it. This is what a README is for. This is an absolute must to lower the bus factor.</li>
+<li>We should be prevent accidental file upload immediately. Use a .gitignore to exclude likely data files (as well as other unnecessary files). We’re thinking about common templates/cookiecutters.</li>
+<li>Communicative files (README, .gitignores) are good, but so is vigilance (code review).</li>
 <li>Owners/deputies are in charge of ‘GitHub gardening’ (keeping issues in order, labelling, milestones, etc).</li>
 <li>Deputies help with bus factor.</li>
 <li>The owner can be auto-selected as the reviewer. We’re experimenting with this for repos with external contributors, especially.</li>
-<li>Data is stored elsewhere, on Azure or Posit Connect, due to sensitivity and size.</li>
-<li>Use a .gitignore to exclude likely data files (as well as other unnecessary files). We’re thinking about common templates/cookiecutters.</li>
-<li>Communication (README, .gitignores) and vigilance (code review) are good tools too.</li>
+<li>Data is stored elsewhere, on Azure or Posit Connect, due to sensitivity and size. This should be planned before you begin and recorded in the README.</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -633,8 +667,8 @@
 <div class="column" style="width:40%;">
 <ul>
 <li>Aren’t just ‘problems’</li>
-<li>Use labels, including MoSCoW</li>
-<li>Explain the need</li>
+<li>Use <a href="https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels">labels</a>, including <a href="https://en.wikipedia.org/wiki/MoSCoW_method">MoSCoW</a></li>
+<li>Explain the need, be informative</li>
 </ul>
 </div><div class="column" style="width:60%;">
 <p><img data-src="labels.png"></p>
@@ -642,8 +676,8 @@
 </div>
 <aside class="notes">
 <ul>
-<li>Issues can be reminders or questions for further discussion.</li>
-<li>Tickets should get two labels: ‘enhancement’, ‘bug’, ‘documentation’, ‘techdebt’, etc, <em>plus</em> MoSCoW.</li>
+<li>Issues can be reminders or questions for further discussion, not just features to build.</li>
+<li>Tickets should get two labels. We use a topic like ‘enhancement’, ‘bug’, ‘documentation’, ‘techdebt’, etc, <em>plus</em> MoSCoW (must, should, could, won’t) to help prioritisation.</li>
 <li>Issue templates can ensure certain info is provided, which is especially good for external contributors.</li>
 <li>Refer to other related commits by number (e.g.&nbsp;<code>#1</code>), which stops you repeating the same information.</li>
 <li>Prefer to reopen an issue if it doesn’t actually work.</li>
@@ -668,16 +702,18 @@
 
 <img data-src="milestones.png" class="r-stretch"><ul>
 <li>Talk, review and reflect</li>
-<li>Use the labels</li>
-<li>Sort into milestones</li>
+<li>Use labels to prioritise</li>
+<li>Sort into <a href="https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones">milestones</a></li>
 </ul>
 <aside class="notes">
 <ul>
-<li>We assess what needs to be done in sprint planning meetings.</li>
-<li>What <em>needs</em> to be done in the sprint period, what other issues support those goals?</li>
+<li>We have a repo and issues, what do we do now? Where to start?</li>
+<li>We’ve begun working in sprints of about 4 weeks. We have sprint planning meetings to plan things out.</li>
+<li>Consider what <em>needs</em> to be done in the sprint period, what other issues support those goals?</li>
 <li>Is there time for other tasks, like clearing techdebt?</li>
 <li>All issues should be assigned to a milestone.</li>
 <li>Issues in milestones should be sorted in priority order/order of expected completion (MoSCoW labels will help with this).</li>
+<li>This helps focus the goals of the sprint and keep us on track.</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -695,16 +731,17 @@
 <h2>Branches</h2>
 
 <img data-src="branch.png" class="r-stretch"><ul>
-<li>One issue, one branch, one person</li>
+<li><a href="https://docs.github.com/en/issues/tracking-your-work-with-issues/creating-a-branch-for-an-issue">One issue, one branch</a>, one <a href="https://docs.github.com/en/issues/tracking-your-work-with-issues/assigning-issues-and-pull-requests-to-other-github-users">assigned person</a></li>
 <li>Name them sensibly</li>
-<li>Burn them</li>
+<li><a href="https://docs.github.com/en/issues/tracking-your-work-with-issues/closing-an-issue">Burn them</a></li>
 </ul>
 <aside class="notes">
 <ul>
-<li>Branch names should be numbered to match their issue, e.g.&nbsp;‘123-add-filter’. This makes it obvious what issue is being fixed by that branch and should help identify if more than one person has a branch open for the same issue.</li>
 <li>Only one person works on a branch at a time. This person is the one assigned to the relevant issue.</li>
+<li>Branch names should be numbered to match their issue, e.g.&nbsp;‘123-add-filter’. This makes it obvious what issue is being fixed by that branch and should help identify if more than one person has a branch open for the same issue.</li>
 <li>If commits from someone else are required, then all parties must communicate about the current state of the branch to ensure they pull changes and avoid merge conflicts.</li>
-<li>Branches are ephemeral and die when the PR is merged. They should be deleted (this can be done automatically). The only branches to exist at all times should be main and a deployment branch, if necessary. All others should be active branches so it’s clear what’s being worked on.</li>
+<li>Branches are ephemeral and die when the PR is merged. They should be deleted (this can be done automatically).</li>
+<li>The only branches to exist at all times should be main and a deployment branch, if necessary. All others should be active branches so it’s clear what’s being worked on.</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -720,13 +757,15 @@
 </section>
 <section id="commits" class="slide level2">
 <h2>Commits</h2>
-<ul>
-<li>Do not commit to main!</li>
+
+<img data-src="commit.png" class="r-stretch"><ul>
+<li>Don’t commit to main!</li>
 <li>‘Small, early and often’</li>
-<li>Use a meaningful message</li>
+<li>Make messages meaningful</li>
 </ul>
 <aside class="notes">
 <ul>
+<li>There’s not a lot of earth-shattering advice to give here; this stuff is fairly standard.</li>
 <li>Do not commit directly to main. Your work must be independently checked first to limit the chance of mistakes.</li>
 <li>Make your commits small in terms of code and files touched, if possible. This makes the Git history easier to read and makes reviews easier too.</li>
 <li>Commit and push early and often into your branch. This can help others see progress and helps reduce the bus factor.</li>
@@ -748,13 +787,13 @@
 <section id="pull-requests-prs" class="slide level2">
 <h2>Pull requests (PRs)</h2>
 <div class="columns">
-<div class="column" style="width:40%;">
+<div class="column" style="width:50%;">
 <ul>
-<li>Solve an issue</li>
-<li>Are small, with ‘atomic’ commits</li>
-<li>Select the assignee (submitter) and reviewer</li>
+<li>Small and <a href="https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue">closes an issue</a></li>
+<li>Select the <a href="https://docs.github.com/en/issues/tracking-your-work-with-issues/assigning-issues-and-pull-requests-to-other-github-users">assignee</a> and reviewer</li>
+<li>The assignee merges</li>
 </ul>
-</div><div class="column" style="width:60%;">
+</div><div class="column" style="width:50%;">
 <p><img data-src="pr.png"></p>
 </div>
 </div>
@@ -783,13 +822,13 @@
 <section id="reviewing-prs" class="slide level2">
 <h2>Reviewing PRs</h2>
 <div class="columns">
-<div class="column" style="width:40%;">
+<div class="column" style="width:45%;">
 <ul>
 <li>Be helpful, be kind</li>
 <li>Use <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/incorporating-feedback-in-your-pull-request">GitHub suggestions</a></li>
 <li>Discuss if unclear</li>
 </ul>
-</div><div class="column" style="width:60%;">
+</div><div class="column" style="width:55%;">
 <p><img data-src="suggest.png"></p>
 </div>
 </div>
@@ -816,7 +855,7 @@
 <h2>Releases</h2>
 <ul>
 <li>Use <a href="https://semver.org/">semantic</a> versioning (1.2.3)</li>
-<li>Autofill notes with PR names</li>
+<li><a href="https://docs.github.com/en/repositories/releasing-projects-on-github/automatically-generated-release-notes">Autofill notes</a> with PR names</li>
 <li>Don’t release on a Friday 🙃</li>
 </ul>
 <aside class="notes">
@@ -848,14 +887,13 @@
 <h2>GitHub is a team member</h2>
 
 <img data-src="action.png" class="r-stretch"><ul>
-<li>Automate with Actions</li>
-<li>Provide issue and repo templates</li>
-<li>An all-in-one planner?</li>
+<li>Automate with <a href="https://docs.github.com/en/actions/learn-github-actions">Actions</a></li>
+<li>Provide <a href="https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository">issue</a> and <a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-template-repository">repo</a> templates</li>
+<li>An all-in-one <a href="https://docs.github.com/en/issues/planning-and-tracking-with-projects">planner</a>?</li>
 </ul>
 <aside class="notes">
 <ul>
-<li>I lied: we have 6 <em>human</em> team members.</li>
-<li>We use GitHub to automate some boring things.</li>
+<li>I lied: we have 6 <em>human</em> team members. GitHub itself has features that can automate away some boring things and help prevent accidents or forgetfulness.</li>
 <li>GitHub Actions for continuous integration. R-CMD check at least for R projects. Start with r-lib examples as a basis.</li>
 <li>We’re looking towards things like templates at the issue and repo levels; again to remove drudgery.</li>
 <li>We use Trello to plan things and have to link to GitHub repos and issues in Trello cards. Can we use GitHub as our planner across multiple repos instead? Seems possible.</li>
@@ -878,12 +916,19 @@
 
 </section>
 <section id="are-we-curling" class="slide level2">
-<h2>Are we curling? 🥌</h2>
+<h2>Are we <a href="https://en.wikipedia.org/wiki/Curling">curling</a>? 🥌</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>We:</p>
 <ul>
-<li>Small team</li>
-<li>Specialist roles</li>
-<li>Working in sync</li>
+<li>are a small team</li>
+<li>assume specialist roles</li>
+<li>work in sync</li>
 </ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="curling.png"></p>
+</div>
+</div>
 <aside class="notes">
 <ul>
 <li>You have been wondering: if this is a ‘team sport’, what sport is it?</li>
@@ -904,22 +949,23 @@
 <section id="the-bottom-line-actually" class="slide level2">
 <h2>The bottom line, actually</h2>
 <div class="columns">
-<div class="column" style="width:40%;">
+<div class="column" style="width:70%;">
+<p><img data-src="curling.gif" style="width:100.0%"></p>
+</div><div class="column" style="width:30%;">
 <ol type="1">
 <li>Communicate</li>
 <li>Help each other</li>
 <li>Be kind</li>
 </ol>
-</div><div class="column" style="width:60%;">
-<p><img data-src="curling.gif"></p>
 </div>
 </div>
 <aside class="notes">
 <ul>
-<li>The ideas in this talk are things that have helped us, and could help you, to drive up and maintain quality.</li>
+<li>The ideas in this talk are things that have helped us, and could help you, to drive up and maintain quality. Some were obvious, some were specific features you might not have known about.</li>
 <li>But none of these are replacements for being good team members.</li>
 <li>GitHub just provides some affordances to help you.</li>
-<li>Did you learn at least one thing? What has you team been doing?</li>
+<li>I am the guy falling over, the stones are tasks, my team mates are picking me up and dusting me off.</li>
+<li>Did you learn at least one thing? What has your team been doing? What works for you?</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {

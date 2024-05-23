@@ -1790,49 +1790,49 @@
     "href": "presentations/2024-05-23_github-team-sport/index.html#tldr",
     "title": "GitHub as a team sport",
     "section": "tl;dr",
-    "text": "tl;dr\n\n\n\n‘Quality’ isn’t just good code\nTeamwork makes the dream work\nGitHub is a communication tool\n\n\n\n\n\n\n\n‘Too long; didn’t read’.\nGitHub isn’t just a dumping ground for code and Git history.\nIt’s a platform for working with teammates.\nQuality is improved by good communication, organisation and reduction of the ‘bus factor’."
+    "text": "tl;dr\n\n\n\n‘Quality’ isn’t just good code\nTeamwork makes the dream work\nGitHub is a communication tool\n\n\n\n\n\n\n\n‘Too long; didn’t read’.\nGitHub isn’t just a dumping ground for code and Git history.\nIt’s a platform for working with teammates to get things done.\nQuality is improved by good communication, organisation and reduction of something called the ‘bus factor’ that I’ll get to in a minute."
   },
   {
     "objectID": "presentations/2024-05-23_github-team-sport/index.html#the-strategy-unit-su",
     "href": "presentations/2024-05-23_github-team-sport/index.html#the-strategy-unit-su",
     "title": "GitHub as a team sport",
     "section": "The Strategy Unit (SU)",
-    "text": "The Strategy Unit (SU)\n\n\n\nHosted by NHS Midlands and Lancashire\nAn ‘internal consultancy’\nGrowing in size and reputation\n\n\n\n\n\n\n\nInitially a ‘start-up’ style operation that has expanded to 70+ staff.\n‘We produce high-quality, multi-disciplinary analytical work – and we help people apply the results.’\n‘Our proposition is simple: better evidence, better decisions, better outcomes.’\nExpansion is tricky; how can we maintain quality?"
+    "text": "The Strategy Unit (SU)\n\n\n\nAn ‘internal consultancy’\nHosted by NHS Midlands and Lancashire\nGrowing in size and reputation\n\n\n\n\n\n\n\nInitially a ‘start-up’ style operation that has expanded to 70+ staff.\n‘We produce high-quality, multi-disciplinary analytical work – and we help people apply the results.’\nA lot of our work is on the important New Hospital Programme (NHP).\n‘Our proposition is simple: better evidence, better decisions, better outcomes.’\nExpansion is tricky; how can we maintain quality?"
   },
   {
     "objectID": "presentations/2024-05-23_github-team-sport/index.html#the-data-science-team",
     "href": "presentations/2024-05-23_github-team-sport/index.html#the-data-science-team",
     "title": "GitHub as a team sport",
     "section": "The Data Science Team",
-    "text": "The Data Science Team\n     \n\nExpanded to 6, all remote\nModelling, Quarto, Shiny\nNew Hospital Programme (NHP)\n\n\n\nA new team, expanding rapidly from 2 to 6 in about a year.\nRemote across England.\nExperience from within the NHS, Civil Service and consultancy.\nThe National Hospital Programme is a big focus for us at the moment: modelling to help design hospitals.\nSo: few standardised processes; different experiences; important work. What do?"
+    "text": "The Data Science Team\n     \n\nExpanded to 6, all remote\nModelling, Quarto, Shiny\nNew Hospital Programme (NHP)\n\n\n\nA new team, expanding rapidly from 2 to 6 in about a year.\nRemote across England.\nExperience from across the NHS and consultancy. I spent a decade in five central government departments before this.\nWe’re helping to model and design apps for the NHP to help build hospitals.\nSo: growing team, different experiences, important work, but few standardised processes. What to do?"
   },
   {
     "objectID": "presentations/2024-05-23_github-team-sport/index.html#github-at-the-su",
     "href": "presentations/2024-05-23_github-team-sport/index.html#github-at-the-su",
     "title": "GitHub as a team sport",
     "section": "GitHub at the SU",
-    "text": "GitHub at the SU\n\n\nWe should be exemplars\nAiming for open by default\nGitHub is linked on the homepage\n\n\n\nIt’s not just the DS team.\nWe have many other analysts eager to learn and contribute.\nHow can we set good standards and encourage use?\nWe’re running Coffee & Coding sessions, teaching and encouraging talks and blogs on our site.\nWe want to drive up quality by making code open too.\nIt’s a statement of intent that the SU homepage links to our GitHub organisation."
+    "text": "GitHub at the SU\n\n\nWe should be exemplars\nAiming for open by default\nGitHub is on the homepage and there’s a Data Science site\n\n\n\nIt’s not just the DS team.\nWe have many other analysts eager to learn and contribute.\nHow can we set good standards and encourage use across the organisation?\nWe’re running Coffee & Coding sessions, teaching and encouraging talks and blogs on our site.\nWe want to drive up quality by making code open too.\nIt’s a statement of intent that the SU homepage links to our GitHub organisation."
   },
   {
     "objectID": "presentations/2024-05-23_github-team-sport/index.html#what-this-is",
     "href": "presentations/2024-05-23_github-team-sport/index.html#what-this-is",
     "title": "GitHub as a team sport",
     "section": "What this is",
-    "text": "What this is\n\nLow-tech, no code\nTips and etiquette, not directives\nWhat’s been working for us\n\n\n\nThis is not a technical talk about how to use Git for version control.\nIt’s a talk about planning, workflows, standards and communication. With GitHub.\nIt’s things that our team have been doing.\nLargely it’s about the spirit, no-one is going to be in trouble for slight personal differences."
+    "text": "What this is\n\nLow-tech, no code\nTips and etiquette, not directives\nWhat’s been working for us\n\n\n\nBut this is not a technical talk about how to use Git for version control.\nMostly it’s about planning, workflows, standards and communication.\nIt’s things that our team have been doing and the ideas are evolving.\nI’ve worked mostly alone on GitHub projects in my career and never worked in a data science team of even this size. So at worst these slides are a way for me to write down what I’m learning."
   },
   {
     "objectID": "presentations/2024-05-23_github-team-sport/index.html#the-bus-factor",
     "href": "presentations/2024-05-23_github-team-sport/index.html#the-bus-factor",
     "title": "GitHub as a team sport",
     "section": "The ‘bus factor’ 🚍",
-    "text": "The ‘bus factor’ 🚍\n\nWe should maintain quality\nWe need redundancy\nStandardised processes can help\n\n\n\nWe should encourage standard practices in case someone is ill or away.\nThis also makes it easier when new team members join.\nThis helps us maintain quality."
+    "text": "The ‘bus factor’ 🚍\n\nWe should maintain quality\nWe need redundancy\nStandardised processes can help\n\n\n\nWhy do we care about discussing and ‘formalising’ these ideas?\nWe should encourage standard practices in case someone is ill or away.\nThis also makes it easier when new team members join.\nThis helps us maintain quality."
   },
   {
     "objectID": "presentations/2024-05-23_github-team-sport/index.html#rules",
     "href": "presentations/2024-05-23_github-team-sport/index.html#rules",
     "title": "GitHub as a team sport",
     "section": "‘Rules’",
-    "text": "‘Rules’\n\nIt’s the spirit that counts\nDo as I say, not as I do\nKnow why you’re breaking the rules\n\n\n\nNothing here is etched into stone.\nThere will be times where rules can be broken.\nBut we shouldn’t be complacent."
+    "text": "‘Rules’\n\nIt’s the spirit that counts\nDo as I say, not as I do\nKnow why you’re breaking the rules\n\n\n\nTo be clear though, nothing here is etched into stone.\nThere will be times where rules can be broken.\nBut we shouldn’t be complacent."
   },
   {
     "objectID": "presentations/2024-05-23_github-team-sport/index.html#github-flow",
@@ -1846,42 +1846,42 @@
     "href": "presentations/2024-05-23_github-team-sport/index.html#repositories",
     "title": "GitHub as a team sport",
     "section": "Repositories",
-    "text": "Repositories\n\nAssign ‘owner’ and ‘deputy’ roles\nStore data elsewhere\nAdd README and .gitignore\n\n\n\nOwners/deputies are in charge of ‘GitHub gardening’ (keeping issues in order, labelling, milestones, etc).\nDeputies help with bus factor.\nThe owner can be auto-selected as the reviewer. We’re experimenting with this for repos with external contributors, especially.\nData is stored elsewhere, on Azure or Posit Connect, due to sensitivity and size.\nUse a .gitignore to exclude likely data files (as well as other unnecessary files). We’re thinking about common templates/cookiecutters.\nCommunication (README, .gitignores) and vigilance (code review) are good tools too."
+    "text": "Repositories\n\nAssign ‘owner’ and ‘deputy’ roles\nAdd README and .gitignore\nStore data elsewhere\n\n\n\nEasy starter: tell people what the purpose of the repo is and how to use it. This is what a README is for. This is an absolute must to lower the bus factor.\nWe should be prevent accidental file upload immediately. Use a .gitignore to exclude likely data files (as well as other unnecessary files). We’re thinking about common templates/cookiecutters.\nCommunicative files (README, .gitignores) are good, but so is vigilance (code review).\nOwners/deputies are in charge of ‘GitHub gardening’ (keeping issues in order, labelling, milestones, etc).\nDeputies help with bus factor.\nThe owner can be auto-selected as the reviewer. We’re experimenting with this for repos with external contributors, especially.\nData is stored elsewhere, on Azure or Posit Connect, due to sensitivity and size. This should be planned before you begin and recorded in the README."
   },
   {
     "objectID": "presentations/2024-05-23_github-team-sport/index.html#issues",
     "href": "presentations/2024-05-23_github-team-sport/index.html#issues",
     "title": "GitHub as a team sport",
     "section": "Issues",
-    "text": "Issues\n\n\n\nAren’t just ‘problems’\nUse labels, including MoSCoW\nExplain the need\n\n\n\n\n\n\n\nIssues can be reminders or questions for further discussion.\nTickets should get two labels: ‘enhancement’, ‘bug’, ‘documentation’, ‘techdebt’, etc, plus MoSCoW.\nIssue templates can ensure certain info is provided, which is especially good for external contributors.\nRefer to other related commits by number (e.g. #1), which stops you repeating the same information.\nPrefer to reopen an issue if it doesn’t actually work.\nIssues can track separate sub-issues.\nYou can add checklists with markdown checkbox: - [ ] (these appear in the issue preview).\nYou can ‘hide’ comments if they’re out of date, etc."
+    "text": "Issues\n\n\n\nAren’t just ‘problems’\nUse labels, including MoSCoW\nExplain the need, be informative\n\n\n\n\n\n\n\nIssues can be reminders or questions for further discussion, not just features to build.\nTickets should get two labels. We use a topic like ‘enhancement’, ‘bug’, ‘documentation’, ‘techdebt’, etc, plus MoSCoW (must, should, could, won’t) to help prioritisation.\nIssue templates can ensure certain info is provided, which is especially good for external contributors.\nRefer to other related commits by number (e.g. #1), which stops you repeating the same information.\nPrefer to reopen an issue if it doesn’t actually work.\nIssues can track separate sub-issues.\nYou can add checklists with markdown checkbox: - [ ] (these appear in the issue preview).\nYou can ‘hide’ comments if they’re out of date, etc."
   },
   {
     "objectID": "presentations/2024-05-23_github-team-sport/index.html#plan",
     "href": "presentations/2024-05-23_github-team-sport/index.html#plan",
     "title": "GitHub as a team sport",
     "section": "Plan",
-    "text": "Plan\n\n\nTalk, review and reflect\nUse the labels\nSort into milestones\n\n\n\nWe assess what needs to be done in sprint planning meetings.\nWhat needs to be done in the sprint period, what other issues support those goals?\nIs there time for other tasks, like clearing techdebt?\nAll issues should be assigned to a milestone.\nIssues in milestones should be sorted in priority order/order of expected completion (MoSCoW labels will help with this)."
+    "text": "Plan\n\n\nTalk, review and reflect\nUse labels to prioritise\nSort into milestones\n\n\n\nWe have a repo and issues, what do we do now? Where to start?\nWe’ve begun working in sprints of about 4 weeks. We have sprint planning meetings to plan things out.\nConsider what needs to be done in the sprint period, what other issues support those goals?\nIs there time for other tasks, like clearing techdebt?\nAll issues should be assigned to a milestone.\nIssues in milestones should be sorted in priority order/order of expected completion (MoSCoW labels will help with this).\nThis helps focus the goals of the sprint and keep us on track."
   },
   {
     "objectID": "presentations/2024-05-23_github-team-sport/index.html#branches",
     "href": "presentations/2024-05-23_github-team-sport/index.html#branches",
     "title": "GitHub as a team sport",
     "section": "Branches",
-    "text": "Branches\n\n\nOne issue, one branch, one person\nName them sensibly\nBurn them\n\n\n\nBranch names should be numbered to match their issue, e.g. ‘123-add-filter’. This makes it obvious what issue is being fixed by that branch and should help identify if more than one person has a branch open for the same issue.\nOnly one person works on a branch at a time. This person is the one assigned to the relevant issue.\nIf commits from someone else are required, then all parties must communicate about the current state of the branch to ensure they pull changes and avoid merge conflicts.\nBranches are ephemeral and die when the PR is merged. They should be deleted (this can be done automatically). The only branches to exist at all times should be main and a deployment branch, if necessary. All others should be active branches so it’s clear what’s being worked on."
+    "text": "Branches\n\n\nOne issue, one branch, one assigned person\nName them sensibly\nBurn them\n\n\n\nOnly one person works on a branch at a time. This person is the one assigned to the relevant issue.\nBranch names should be numbered to match their issue, e.g. ‘123-add-filter’. This makes it obvious what issue is being fixed by that branch and should help identify if more than one person has a branch open for the same issue.\nIf commits from someone else are required, then all parties must communicate about the current state of the branch to ensure they pull changes and avoid merge conflicts.\nBranches are ephemeral and die when the PR is merged. They should be deleted (this can be done automatically).\nThe only branches to exist at all times should be main and a deployment branch, if necessary. All others should be active branches so it’s clear what’s being worked on."
   },
   {
     "objectID": "presentations/2024-05-23_github-team-sport/index.html#commits",
     "href": "presentations/2024-05-23_github-team-sport/index.html#commits",
     "title": "GitHub as a team sport",
     "section": "Commits",
-    "text": "Commits\n\nDo not commit to main!\n‘Small, early and often’\nUse a meaningful message\n\n\n\nDo not commit directly to main. Your work must be independently checked first to limit the chance of mistakes.\nMake your commits small in terms of code and files touched, if possible. This makes the Git history easier to read and makes reviews easier too.\nCommit and push early and often into your branch. This can help others see progress and helps reduce the bus factor.\nDon’t dump your work into a commit because it’s the end of the day.\nMake your commit messages meaningful. What does the commit do? Start with a verb in present tense (‘adds’, not ‘added’). Or maybe use ‘conventional’ commits."
+    "text": "Commits\n\n\nDon’t commit to main!\n‘Small, early and often’\nMake messages meaningful\n\n\n\nThere’s not a lot of earth-shattering advice to give here; this stuff is fairly standard.\nDo not commit directly to main. Your work must be independently checked first to limit the chance of mistakes.\nMake your commits small in terms of code and files touched, if possible. This makes the Git history easier to read and makes reviews easier too.\nCommit and push early and often into your branch. This can help others see progress and helps reduce the bus factor.\nDon’t dump your work into a commit because it’s the end of the day.\nMake your commit messages meaningful. What does the commit do? Start with a verb in present tense (‘adds’, not ‘added’). Or maybe use ‘conventional’ commits."
   },
   {
     "objectID": "presentations/2024-05-23_github-team-sport/index.html#pull-requests-prs",
     "href": "presentations/2024-05-23_github-team-sport/index.html#pull-requests-prs",
     "title": "GitHub as a team sport",
     "section": "Pull requests (PRs)",
-    "text": "Pull requests (PRs)\n\n\n\nSolve an issue\nAre small, with ‘atomic’ commits\nSelect the assignee (submitter) and reviewer\n\n\n\n\n\n\n\nPRs should solve the issue they’re related to. Occasionally one fix may solve another.\nThey should be named to explain what they do. The issue might be ‘the red button doesn’t work’; the PR might be ‘fix the red button’.\nThey should be small in terms of lines of code and files touched. This will make it easier and faster to understand and assess the changes.\nThe submitter should mark themself as the ‘assignee’ and choose a reviewer. You may want to chat with the reviewer to let them know if they have time.\nFor context, link to the issue(s) being closed with the magic words (‘closes’, ‘fixes’, etc), which will also close those issues as completed.\nInclude a short explanation or bullet-points of what the PR does. Provide any extra information to make the reviewer’s life easier (areas of focus, maybe) or to ask a question about some aspect of what you’ve written.\nThe PR submitter is the one who clicks the merge button. This is in case the submitter realises there’s something they need to add or change before the merge."
+    "text": "Pull requests (PRs)\n\n\n\nSmall and closes an issue\nSelect the assignee and reviewer\nThe assignee merges\n\n\n\n\n\n\n\nPRs should solve the issue they’re related to. Occasionally one fix may solve another.\nThey should be named to explain what they do. The issue might be ‘the red button doesn’t work’; the PR might be ‘fix the red button’.\nThey should be small in terms of lines of code and files touched. This will make it easier and faster to understand and assess the changes.\nThe submitter should mark themself as the ‘assignee’ and choose a reviewer. You may want to chat with the reviewer to let them know if they have time.\nFor context, link to the issue(s) being closed with the magic words (‘closes’, ‘fixes’, etc), which will also close those issues as completed.\nInclude a short explanation or bullet-points of what the PR does. Provide any extra information to make the reviewer’s life easier (areas of focus, maybe) or to ask a question about some aspect of what you’ve written.\nThe PR submitter is the one who clicks the merge button. This is in case the submitter realises there’s something they need to add or change before the merge."
   },
   {
     "objectID": "presentations/2024-05-23_github-team-sport/index.html#reviewing-prs",
@@ -1902,21 +1902,21 @@
     "href": "presentations/2024-05-23_github-team-sport/index.html#github-is-a-team-member",
     "title": "GitHub as a team sport",
     "section": "GitHub is a team member",
-    "text": "GitHub is a team member\n\n\nAutomate with Actions\nProvide issue and repo templates\nAn all-in-one planner?\n\n\n\nI lied: we have 6 human team members.\nWe use GitHub to automate some boring things.\nGitHub Actions for continuous integration. R-CMD check at least for R projects. Start with r-lib examples as a basis.\nWe’re looking towards things like templates at the issue and repo levels; again to remove drudgery.\nWe use Trello to plan things and have to link to GitHub repos and issues in Trello cards. Can we use GitHub as our planner across multiple repos instead? Seems possible."
+    "text": "GitHub is a team member\n\n\nAutomate with Actions\nProvide issue and repo templates\nAn all-in-one planner?\n\n\n\nI lied: we have 6 human team members. GitHub itself has features that can automate away some boring things and help prevent accidents or forgetfulness.\nGitHub Actions for continuous integration. R-CMD check at least for R projects. Start with r-lib examples as a basis.\nWe’re looking towards things like templates at the issue and repo levels; again to remove drudgery.\nWe use Trello to plan things and have to link to GitHub repos and issues in Trello cards. Can we use GitHub as our planner across multiple repos instead? Seems possible."
   },
   {
     "objectID": "presentations/2024-05-23_github-team-sport/index.html#are-we-curling",
     "href": "presentations/2024-05-23_github-team-sport/index.html#are-we-curling",
     "title": "GitHub as a team sport",
     "section": "Are we curling? 🥌",
-    "text": "Are we curling? 🥌\n\nSmall team\nSpecialist roles\nWorking in sync\n\n\n\nYou have been wondering: if this is a ‘team sport’, what sport is it?\nThis is a terrible metaphor. But think about it."
+    "text": "Are we curling? 🥌\n\n\nWe:\n\nare a small team\nassume specialist roles\nwork in sync\n\n\n\n\n\n\n\nYou have been wondering: if this is a ‘team sport’, what sport is it?\nThis is a terrible metaphor. But think about it."
   },
   {
     "objectID": "presentations/2024-05-23_github-team-sport/index.html#the-bottom-line-actually",
     "href": "presentations/2024-05-23_github-team-sport/index.html#the-bottom-line-actually",
     "title": "GitHub as a team sport",
     "section": "The bottom line, actually",
-    "text": "The bottom line, actually\n\n\n\nCommunicate\nHelp each other\nBe kind\n\n\n\n\n\n\n\nThe ideas in this talk are things that have helped us, and could help you, to drive up and maintain quality.\nBut none of these are replacements for being good team members.\nGitHub just provides some affordances to help you.\nDid you learn at least one thing? What has you team been doing?\n\n\n\n\n\nLearn more about The Strategy Unit"
+    "text": "The bottom line, actually\n\n\n\n\n\nCommunicate\nHelp each other\nBe kind\n\n\n\n\n\nThe ideas in this talk are things that have helped us, and could help you, to drive up and maintain quality. Some were obvious, some were specific features you might not have known about.\nBut none of these are replacements for being good team members.\nGitHub just provides some affordances to help you.\nI am the guy falling over, the stones are tasks, my team mates are picking me up and dusting me off.\nDid you learn at least one thing? What has your team been doing? What works for you?\n\n\n\n\n\nLearn more about The Strategy Unit"
   },
   {
     "objectID": "presentations/2023-03-09_midlands-analyst-rap/index.html#what-is-rap",

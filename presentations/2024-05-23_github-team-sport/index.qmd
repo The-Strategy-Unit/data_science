@@ -40,12 +40,19 @@ format:
 
 * 'Too long; didn't read'.
 * GitHub isn't just a dumping ground for code and Git history.
-* It's a platform for working with teammates.
-* Quality is improved by good communication, organisation and reduction of the 'bus factor'.
+* It's a platform for working with teammates to get things done.
+* Quality is improved by good communication, organisation and reduction of something called the 'bus factor' that I'll get to in a minute.
 
 :::
 
 # About us {.inverse}
+
+::: {.notes}
+
+* I'll start with some context about the organisation so you understand how we work.
+* There's a link to the website at the bottom of each slide.
+
+:::
 
 ## The Strategy Unit (SU)
 
@@ -53,8 +60,8 @@ format:
 
 ::: {.column width='60%'}
 
-* Hosted by [NHS Midlands and Lancashire](https://www.midlandsandlancashirecsu.nhs.uk/)
 * An 'internal consultancy'
+* Hosted by [NHS Midlands and Lancashire](https://www.midlandsandlancashirecsu.nhs.uk/)
 * Growing in size and reputation
 
 :::
@@ -71,12 +78,13 @@ format:
 
 * Initially a 'start-up' style operation that has expanded to 70+ staff.
 * 'We produce high-quality, multi-disciplinary analytical work – and we help people apply the results.'
+* A lot of our work is on the important New Hospital Programme (NHP).
 * 'Our proposition is simple: better evidence, better decisions, better outcomes.'
 * Expansion is tricky; how can we maintain quality?
 
 :::
 
-## The Data Science Team
+## The [Data Science](https://the-strategy-unit.github.io/data_science/) Team
 
 ![](cb.jpg){width="15%"}
 ![](tj.png){width="15%"}
@@ -87,15 +95,16 @@ format:
 
 * Expanded to 6, all remote
 * Modelling, Quarto, Shiny
-* New Hospital Programme (NHP)
+* [New Hospital Programme](https://connect.strategyunitwm.nhs.uk/nhp/project_information/) (NHP)
+
 
 ::: {.notes}
 
 * A new team, expanding rapidly from 2 to 6 in about a year.
 * Remote across England.
-* Experience from within the NHS, Civil Service and consultancy.
-* The National Hospital Programme is a big focus for us at the moment: modelling to help design hospitals.
-* So: few standardised processes; different experiences; important work. What do?
+* Experience from across the NHS and consultancy. I spent a decade in five central government departments before this.
+* We're helping to model and design apps for the NHP to help build hospitals.
+* So: growing team, different experiences, important work, but few standardised processes. What to do?
 
 :::
 
@@ -105,13 +114,13 @@ format:
 
 * We should be exemplars
 * Aiming for open by default
-* GitHub is [linked on the homepage](https://www.strategyunitwm.nhs.uk/)
+* GitHub is [on the homepage](https://www.strategyunitwm.nhs.uk/) and there's [a Data Science site](https://the-strategy-unit.github.io/data_science/)
 
 ::: {.notes}
 
 * It's not just the DS team.
 * We have many other analysts eager to learn and contribute.
-* How can we set good standards and encourage use?
+* How can we set good standards and encourage use across the organisation?
 * We're running Coffee & Coding sessions, teaching and encouraging talks and blogs on our site.
 * We want to drive up quality by making code open too.
 * It's a statement of intent that the SU homepage links to our GitHub organisation.
@@ -119,6 +128,13 @@ format:
 :::
 
 # This talk {.inverse}
+
+::: {.notes}
+
+* So that's the context: we're experienced, but fledgling as a team, and keen to do things well.
+* These slides are some of the ways we've been working so far with a focus on GitHub, specifically.
+
+:::
 
 ## What this is
 
@@ -128,14 +144,14 @@ format:
 
 ::: {.notes}
 
-* This is not a technical talk about how to use Git for version control. 
-* It's a talk about planning, workflows, standards and communication. With GitHub.
-* It's things that our team have been doing.
-* Largely it's about the spirit, no-one is going to be in trouble for slight personal differences.
+* But this is not a technical talk about how to use Git for version control. 
+* Mostly it's about planning, workflows, standards and communication.
+* It's things that our team have been doing and the ideas are evolving.
+* I've worked mostly alone on GitHub projects in my career and never worked in a data science team of even this size. So at worst these slides are a way for me to write down what I'm learning.
 
 :::
 
-## The 'bus factor' 🚍
+## The '[bus factor](https://en.wikipedia.org/wiki/Bus_factor)' 🚍
 
 * We should maintain quality
 * We need redundancy
@@ -143,6 +159,7 @@ format:
 
 ::: {.notes}
 
+* Why do we care about discussing and 'formalising' these ideas?
 * We should encourage standard practices in case someone is ill or away.
 * This also makes it easier when new team members join.
 * This helps us maintain quality.
@@ -157,7 +174,7 @@ format:
 
 ::: {.notes}
 
-* Nothing here is etched into stone.
+* To be clear though, nothing here is etched into stone.
 * There will be times where rules can be broken.
 * But we shouldn't be complacent.
 
@@ -168,7 +185,8 @@ format:
 ::: {.notes}
 
 * So, let's move onto some specific examples of how we've been using GitHub for our work.
-* I haven't included everything.
+* I haven't included everything. 
+* Many of our best examples are currently on closed repos that will be opened with time, due to various sensitivities.
 * Some ideas are literal features of the platform, others are more like 'suggested best practice'.
 * Hopefully there'll be at least one thing that's new to you and that you might want to use in your own team.
 
@@ -193,18 +211,19 @@ format:
 
 ## Repositories
 
-* Assign 'owner' and 'deputy' roles
+* Assign '[owner](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners)' and 'deputy' roles
+* Add [README](https://www.makeareadme.com/) and [.gitignore](https://github.com/github/gitignore)
 * Store data elsewhere
-* Add README and .gitignore
 
 ::: {.notes}
 
-* Owners/deputies are in charge of 'GitHub gardening' (keeping issues in order, labelling, milestones, etc).
+* Easy starter: tell people what the purpose of the repo is and how to use it. This is what a README is for. This is an absolute must to lower the bus factor.
+* We should be prevent accidental file upload immediately. Use a .gitignore to exclude likely data files (as well as other unnecessary files). We're thinking about common templates/cookiecutters.
+* Communicative files (README, .gitignores) are good, but so is vigilance (code review).
+* Owners/deputies are in charge of 'GitHub gardening' (keeping issues in order, labelling, milestones, etc). 
 * Deputies help with bus factor.
 * The owner can be auto-selected as the reviewer. We're experimenting with this for repos with external contributors, especially.
-* Data is stored elsewhere, on Azure or Posit Connect, due to sensitivity and size.
-* Use a .gitignore to exclude likely data files (as well as other unnecessary files). We're thinking about common templates/cookiecutters.
-* Communication (README, .gitignores) and vigilance (code review) are good tools too. 
+* Data is stored elsewhere, on Azure or Posit Connect, due to sensitivity and size. This should be planned before you begin and recorded in the README.
 
 :::
 
@@ -215,8 +234,8 @@ format:
 ::: {.column width='40%'}
 
 * Aren't just 'problems'
-* Use labels, including MoSCoW
-* Explain the need
+* Use [labels](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels), including [MoSCoW](https://en.wikipedia.org/wiki/MoSCoW_method)
+* Explain the need, be informative
 
 :::
 
@@ -230,8 +249,8 @@ format:
 
 ::: {.notes}
 
-* Issues can be reminders or questions for further discussion. 
-* Tickets should get two labels: 'enhancement', 'bug', 'documentation', 'techdebt', etc, _plus_ MoSCoW.
+* Issues can be reminders or questions for further discussion, not just features to build.
+* Tickets should get two labels. We use a topic like 'enhancement', 'bug', 'documentation', 'techdebt', etc, _plus_ MoSCoW (must, should, could, won't) to help prioritisation.
 * Issue templates can ensure certain info is provided, which is especially good for external contributors.
 * Refer to other related commits by number (e.g. `#1`), which stops you repeating the same information.
 * Prefer to reopen an issue if it doesn't actually work.
@@ -246,16 +265,18 @@ format:
 ![](milestones.png)
 
 * Talk, review and reflect
-* Use the labels
-* Sort into milestones
+* Use labels to prioritise
+* Sort into [milestones](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones)
 
 ::: {.notes}
 
-* We assess what needs to be done in sprint planning meetings.
-* What _needs_ to be done in the sprint period, what other issues support those goals?
+* We have a repo and issues, what do we do now? Where to start?
+* We've begun working in sprints of about 4 weeks. We have sprint planning meetings to plan things out.
+* Consider what _needs_ to be done in the sprint period, what other issues support those goals?
 * Is there time for other tasks, like clearing techdebt? 
 * All issues should be assigned to a milestone.
 * Issues in milestones should be sorted in priority order/order of expected completion (MoSCoW labels will help with this).
+* This helps focus the goals of the sprint and keep us on track.
 
 :::
 
@@ -263,27 +284,31 @@ format:
 
 ![](branch.png)
 
-* One issue, one branch, one person
+* [One issue, one branch](https://docs.github.com/en/issues/tracking-your-work-with-issues/creating-a-branch-for-an-issue), one [assigned person](https://docs.github.com/en/issues/tracking-your-work-with-issues/assigning-issues-and-pull-requests-to-other-github-users)
 * Name them sensibly
-* Burn them
+* [Burn them](https://docs.github.com/en/issues/tracking-your-work-with-issues/closing-an-issue)
 
 ::: {.notes}
 
-* Branch names should be numbered to match their issue, e.g. '123-add-filter'. This makes it obvious what issue is being fixed by that branch and should help identify if more than one person has a branch open for the same issue.
 * Only one person works on a branch at a time. This person is the one assigned to the relevant issue.
+* Branch names should be numbered to match their issue, e.g. '123-add-filter'. This makes it obvious what issue is being fixed by that branch and should help identify if more than one person has a branch open for the same issue.
 * If commits from someone else are required, then all parties must communicate about the current state of the branch to ensure they pull changes and avoid merge conflicts.
-* Branches are ephemeral and die when the PR is merged. They should be deleted (this can be done automatically). The only branches to exist at all times should be main and a deployment branch, if necessary. All others should be active branches so it's clear what's being worked on.
+* Branches are ephemeral and die when the PR is merged. They should be deleted (this can be done automatically).
+* The only branches to exist at all times should be main and a deployment branch, if necessary. All others should be active branches so it's clear what's being worked on.
 
 :::
 
 ## Commits
 
-* Do not commit to main!
+![](commit.png)
+
+* Don't commit to main!
 * 'Small, early and often'
-* Use a meaningful message
+* Make messages meaningful
 
 ::: {.notes}
 
+* There's not a lot of earth-shattering advice to give here; this stuff is fairly standard.
 * Do not commit directly to main. Your work must be independently checked first to limit the chance of mistakes.
 * Make your commits small in terms of code and files touched, if possible. This makes the Git history easier to read and makes reviews easier too.
 * Commit and push early and often into your branch. This can help others see progress and helps reduce the bus factor.
@@ -296,15 +321,15 @@ format:
 
 :::: {.columns}
 
-::: {.column width='40%'}
+::: {.column width='50%'}
 
-* Solve an issue
-* Are small, with 'atomic' commits
-* Select the assignee (submitter) and reviewer
+* Small and [closes an issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue)
+* Select the [assignee](https://docs.github.com/en/issues/tracking-your-work-with-issues/assigning-issues-and-pull-requests-to-other-github-users) and reviewer
+* The assignee merges
 
 :::
 
-::: {.column width='60%'}
+::: {.column width='50%'}
 
 ![](pr.png)
 
@@ -328,7 +353,7 @@ format:
 
 :::: {.columns}
 
-::: {.column width='40%'}
+::: {.column width='45%'}
 
 * Be helpful, be kind
 * Use [GitHub suggestions](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/incorporating-feedback-in-your-pull-request)
@@ -336,7 +361,7 @@ format:
 
 :::
 
-::: {.column width='60%'}
+::: {.column width='55%'}
 
 ![](suggest.png)
 
@@ -356,7 +381,7 @@ format:
 ## Releases
 
 * Use [semantic](https://semver.org/) versioning (1.2.3)
-* Autofill notes with PR names
+* [Autofill notes](https://docs.github.com/en/repositories/releasing-projects-on-github/automatically-generated-release-notes) with PR names
 * Don't release on a Friday 🙃
 
 ::: {.notes}
@@ -375,14 +400,13 @@ format:
 
 ![](action.png)
 
-* Automate with Actions
-* Provide issue and repo templates
-* An all-in-one planner?
+* Automate with [Actions](https://docs.github.com/en/actions/learn-github-actions)
+* Provide [issue](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository) and [repo](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-template-repository) templates
+* An all-in-one [planner](https://docs.github.com/en/issues/planning-and-tracking-with-projects)?
 
 ::: {.notes}
 
-* I lied: we have 6 _human_ team members.
-* We use GitHub to automate some boring things.
+* I lied: we have 6 _human_ team members. GitHub itself has features that can automate away some boring things and help prevent accidents or forgetfulness.
 * GitHub Actions for continuous integration. R-CMD check at least for R projects. Start with r-lib examples as a basis.
 * We're looking towards things like templates at the issue and repo levels; again to remove drudgery.
 * We use Trello to plan things and have to link to GitHub repos and issues in Trello cards. Can we use GitHub as our planner across multiple repos instead? Seems possible.
@@ -391,11 +415,13 @@ format:
 
 # Be a good sport {.inverse}
 
-## Are we curling? 🥌
+## Are we [curling](https://en.wikipedia.org/wiki/Curling)? 🥌
 
-* Small team
-* Specialist roles
-* Working in sync
+We:
+
+* are a small team
+* assume specialist roles
+* work in sync
 
 ::: {.notes}
 
@@ -408,7 +434,13 @@ format:
 
 :::: {.columns}
 
-::: {.column width='40%'}
+::: {.column width='70%'}
+
+![](curling.gif){width='100%'}
+
+:::
+
+::: {.column width='30%'}
 
 1. Communicate
 2. Help each other
@@ -416,19 +448,14 @@ format:
 
 :::
 
-::: {.column width='60%'}
-
-![](curling.gif)
-
-:::
-
 ::::
 
 ::: {.notes}
 
-* The ideas in this talk are things that have helped us, and could help you, to drive up and maintain quality.
+* The ideas in this talk are things that have helped us, and could help you, to drive up and maintain quality. Some were obvious, some were specific features you might not have known about.
 * But none of these are replacements for being good team members.
 * GitHub just provides some affordances to help you.
-* Did you learn at least one thing? What has you team been doing?
+* I am the guy falling over, the stones are tasks, my team mates are picking me up and dusting me off. 
+* Did you learn at least one thing? What has your team been doing? What works for you?
 
 :::

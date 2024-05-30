@@ -46,9 +46,18 @@ editor:
 > Think free as in free speech, not free beer (Stallman)
 
 * Open source does not mean free of charge! Software freedom implies the ability to sell code
+* Free of charge does not mean open source! Many free to download pieces of software are not open source (Zoom, for example)
+
+![](software_diagram.svg)
+
+By Chao-Kuei et al. - <a rel="nofollow" class="external free" href="https://www.gnu.org/philosophy/categories.en.html">https://www.gnu.org/philosophy/categories.en.html</a>, <a href="http://www.gnu.org/licenses/gpl.html" title="GNU General Public License">GPL</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=41220550">Link</a>
 
 ## The four freedoms
 
+* Freedom 0: The freedom to use the program for any purpose.
+* Freedom 1: The freedom to study how the program works, and change it to make it do what you wish.
+* Freedom 2: The freedom to redistribute and make copies so you can help your neighbor.
+* Freedom 3: The freedom to improve the program, and release your improvements (and modified versions in general) to the public, so that the whole community benefits.
 
 ## Cathedral and the bazaar
 
@@ -78,17 +87,31 @@ editor:
 ## What licences exist?
 
 * Permissive
-  * Such as MIT but there are other. Recommended by NHSX [draft guidelines on open source](https://github.com/nhsx/open-source-policy)
+  * Such as MIT but there are others. Recommended by NHSX [draft guidelines on open source](https://github.com/nhsx/open-source-policy)
+  * Apache is a notable permissive licence- includes a patent licence
+  * In our work the [OGL](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/) is also relevant- civil servant publish stuff under OGL (and MIT- it isn't particularly recommended for code)
+* Copyleft
+  * GPL2, GPL3, AGPL [("the GPL of the web")](https://www.tldrlegal.com/license/gnu-affero-general-public-license-v3-agpl-3-0)
+  * MPL is a notable copyleft licence- can combine with proprietary code as long as kept separate
+* Note that most of the licences are impossible to read! There is a website to explain [tl;dr](https://www.tldrlegal.com/)
 
 ## What is copyright and why does it matter
 
+* Copyright is assigned at the moment of creation
+* If you made it in your own time, it's yours (usually!)
+* If you made it at work, it belongs to your employer
+* If someone paid you to make it ("work for hire") it belongs to them
+* Crucially, the copyright holder can relicence software
+  * If it's jointly authored it depends if it's a "collective" or "joint" work
+  * Honestly it's pretty complicated. Just vest copyright in an organisation or group of individuals you trust
+  * Goldacre review suggests using Crown copyright for copyright in the NHS because it's a "shoal, not a big fish" (with apologies to Ben whom I am misquoting)
 
 ## Iceweasel
 
 * Iceweasel is a story of **trademark** rather than copyright
 * Debian (a Linux flavour) had the permission to use the source code of Firefox, but not the logo
 * So they took the source code and made their own version 
-
+* This sounds very obscure and unimportant but it could become important in future projects of ours, like...
 
 ## What we have learned in recent projects
 
@@ -104,3 +127,4 @@ editor:
 * The patient experience QDC project
 * Our current project
 * Open source code is not necessarily to be run, but understood and learned from
+* Building a group of people who can use and contribute to your code is arguably as important as writing it

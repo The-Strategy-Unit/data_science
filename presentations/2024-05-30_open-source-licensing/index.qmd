@@ -10,7 +10,6 @@ knitr:
     echo: true
 format:
   revealjs:
-    incremental: true
     theme: [default, ../su_presentation.scss]
     transition: none
     chalkboard:
@@ -34,3 +33,67 @@ editor:
 - What licences exist?
 - What is copyright and why does it matter
 - Mention iceweasel, our day surgery friends
+
+## A note on Richard Stallman
+
+* Richard Stallman has been [heavily criticised for some of this views](https://drewdevault.com/2023/11/25/2023-11-26-RMS-on-sex.html)
+* He is hard to ignore when talking about open source so I am going to talk about him
+* Nothing in this talk should be read as endorsing any of his comments outside (or inside) the world of open source
+
+## The origin of open source
+
+* In the 50s and 60s source code was routinely shared with hardware and users were often expected to modify to run on their hardware
+* By the late 1960s the production cost of software was rising relative to hardware and proprietary licences became more prevalent
+* In 1980 Richard Stallman's department at MIT took delivery of a printer they were not able to modify the source ccode for
+* Richard Stallman launched the GNU project in 1983 to fight for software freedoms
+* MIT licence was launched in the late 1980s
+* [Cathedral and the bazaar](http://www.catb.org/esr/writings/cathedral-bazaar/) was released in 1997 (more on which later)
+
+## What is open source?
+
+> Think free as in free speech, not free beer (Stallman)
+
+* Open source does not mean free of charge! Software freedom implies the ability to sell code
+
+## The four freedoms
+
+
+## Cathedral and the bazaar
+
+* Every good work of software starts by scratching a developer's personal itch.
+* Good programmers know what to write. Great ones know what to rewrite (and reuse).
+* Plan to throw one [version] away; you will, anyhow (copied from Frederick Brooks's The Mythical Man-Month).
+* If you have the right attitude, interesting problems will find you.
+* When you lose interest in a program, your last duty to it is to hand it off to a competent successor.
+* Treating your users as co-developers is your least-hassle route to rapid code improvement and effective debugging.
+* Release early. Release often. And listen to your customers.
+* Given a large enough beta-tester and co-developer base, almost every problem will be characterized quickly and the fix obvious to someone.
+* Smart data structures and dumb code works a lot better than the other way around.
+* If you treat your beta-testers as if they're your most valuable resource, they will respond by becoming your most valuable resource.
+
+## Cathedral and the bazaar (cont.)
+
+* The next best thing to having good ideas is recognizing good ideas from your users. Sometimes the latter is better.
+* Often, the most striking and innovative solutions come from realizing that your concept of the problem was wrong.
+* Perfection (in design) is achieved not when there is nothing more to add, but rather when there is nothing more to take away. (Attributed to Antoine de Saint-Exupéry)
+* Any tool should be useful in the expected way, but a truly great tool lends itself to uses you never expected.
+* When writing gateway software of any kind, take pains to disturb the data stream as little as possible—and never throw away information unless the recipient forces you to!
+* When your language is nowhere near Turing-complete, syntactic sugar can be your friend.
+* A security system is only as secure as its secret. Beware of pseudo-secrets.
+* To solve an interesting problem, start by finding a problem that is interesting to you.
+* Provided the development coordinator has a communications medium at least as good as the Internet, and knows how to lead without coercion, many heads are inevitably better than one.
+
+## What we have learned in recent projects
+
+* The huge benefits of being open
+  * Transparency
+  * Working with customers
+  * Goodwill
+* Nonfree mitigators
+* Different licences for different repos
+
+## "Open source as in piano"
+
+* The patient experience QDC project
+* Our current project
+* Open source code is not necessarily to be run, but understood and learned from

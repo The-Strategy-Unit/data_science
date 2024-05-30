@@ -26,14 +26,6 @@ editor:
     wrap: 120
 ---
 
-## Summary
-
-- Why open source?
-- What is open source?
-- What licences exist?
-- What is copyright and why does it matter
-- Mention iceweasel, our day surgery friends
-
 ## A note on Richard Stallman
 
 * Richard Stallman has been [heavily criticised for some of this views](https://drewdevault.com/2023/11/25/2023-11-26-RMS-on-sex.html)
@@ -82,6 +74,21 @@ editor:
 * A security system is only as secure as its secret. Beware of pseudo-secrets.
 * To solve an interesting problem, start by finding a problem that is interesting to you.
 * Provided the development coordinator has a communications medium at least as good as the Internet, and knows how to lead without coercion, many heads are inevitably better than one.
+
+## What licences exist?
+
+* Permissive
+  * Such as MIT but there are other. Recommended by NHSX [draft guidelines on open source](https://github.com/nhsx/open-source-policy)
+
+## What is copyright and why does it matter
+
+
+## Iceweasel
+
+* Iceweasel is a story of **trademark** rather than copyright
+* Debian (a Linux flavour) had the permission to use the source code of Firefox, but not the logo
+* So they took the source code and made their own version 
+
 
 ## What we have learned in recent projects
 

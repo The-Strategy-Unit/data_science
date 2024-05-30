@@ -36,7 +36,7 @@ editor:
 
 * In the 50s and 60s source code was routinely shared with hardware and users were often expected to modify to run on their hardware
 * By the late 1960s the production cost of software was rising relative to hardware and proprietary licences became more prevalent
-* In 1980 Richard Stallman's department at MIT took delivery of a printer they were not able to modify the source ccode for
+* In 1980 Richard Stallman's department at MIT took delivery of a printer they were not able to modify the source code for
 * Richard Stallman launched the GNU project in 1983 to fight for software freedoms
 * MIT licence was launched in the late 1980s
 * [Cathedral and the bazaar](http://www.catb.org/esr/writings/cathedral-bazaar/) was released in 1997 (more on which later)
@@ -84,6 +84,15 @@ By Chao-Kuei et al. - <a rel="nofollow" class="external free" href="https://www.
 * To solve an interesting problem, start by finding a problem that is interesting to you.
 * Provided the development coordinator has a communications medium at least as good as the Internet, and knows how to lead without coercion, many heads are inevitably better than one.
 
+## The disciplines of open source are the disciplines of good data science
+
+* Meaningful README
+* Meaningful commit messages
+* Modularity
+* Separating data code from analytic code from interactive code 
+* Assigning issues and pull requests for action/ review
+* Don't forget one of the most lazy and incompetent developers you will ever work with is yourself, six months later
+
 ## What licences exist?
 
 * Permissive
@@ -92,7 +101,10 @@ By Chao-Kuei et al. - <a rel="nofollow" class="external free" href="https://www.
   * In our work the [OGL](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/) is also relevant- civil servant publish stuff under OGL (and MIT- it isn't particularly recommended for code)
 * Copyleft
   * GPL2, GPL3, AGPL [("the GPL of the web")](https://www.tldrlegal.com/license/gnu-affero-general-public-license-v3-agpl-3-0)
+  * Note that the provisions of the GPL only apply when you **distribute** the code
+  * At a certain point it all gets too complicated and you need a lawyer
   * MPL is a notable copyleft licence- can combine with proprietary code as long as kept separate
+* Arguments for permissive/ copyleft- getting your code used versus preserving software freedoms for other people
 * Note that most of the licences are impossible to read! There is a website to explain [tl;dr](https://www.tldrlegal.com/)
 
 ## What is copyright and why does it matter
@@ -121,6 +133,17 @@ By Chao-Kuei et al. - <a rel="nofollow" class="external free" href="https://www.
   * Goodwill
 * Nonfree mitigators
 * Different licences for different repos
+
+## Software freedom means allowing people to do stuff you don't like
+
+* Freedom 0: The freedom to use the program for any purpose.
+* Freedom 3: The freedom to improve the program, and release your improvements (and modified versions in general) to the public, so that the whole community benefits.
+* The code isn't the only thing with worth in the project
+* This is why there are whole businesses founded on "here's the Linux source code"
+* So when we're sharing code we are **letting** people do stupid things with it but we're not **recommending** that they do stupid things with it 
+* People do stupid things with Excel and Microsoft don't accept liability for that, and neither should we
+* This issue of sharing analytic code and merchantability for a particular purpose is poorly understood and I think everyone needs to be clearer on it (us, and our customers)
+* In my view a world where consultants are selling **our** code is better than a world where they're selling **their** spreadsheets
 
 ## "Open source as in piano"
 

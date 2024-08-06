@@ -8,10 +8,10 @@
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.554">
+  <meta name="generator" content="quarto-1.5.56">
 
   <meta name="author" content="Tom Jemmett">
-  <title>Data Science @ The Strategy Unit - Unit testing in R</title>
+  <title>Data Science @ The Strategy Unit – Unit testing in R</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -42,7 +42,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -70,7 +70,7 @@
     code span.at { color: #657422; } /* Attribute */
     code span.bn { color: #ad0000; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
     code span.ch { color: #20794d; } /* Char */
     code span.cn { color: #8f5902; } /* Constant */
     code span.co { color: #5e5e5e; } /* Comment */
@@ -84,7 +84,7 @@
     code span.fu { color: #4758ab; } /* Function */
     code span.im { color: #00769e; } /* Import */
     code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
     code span.op { color: #5e5e5e; } /* Operator */
     code span.ot { color: #003b4f; } /* Other */
     code span.pp { color: #ad0000; } /* Preprocessor */
@@ -430,8 +430,7 @@
 
 </div><div class="column" style="width:45%;">
 <h4 id="dynamically">Dynamically</h4>
-</div>
-</div>
+</div></div>
 </section>
 <section id="how-can-we-test-our-code-1" class="slide level2">
 <h2>How can we test our code?</h2>
@@ -455,8 +454,7 @@
 <li class="fragment">testing can be manual, or automated</li>
 </ul>
 </div>
-</div>
-</div>
+</div></div>
 <aside class="notes">
 <ul>
 <li>non-functional testing covers things like performance, security, and usability testing</li>
@@ -783,8 +781,7 @@
 <span id="cb14-11"><a></a>  <span class="co">#</span></span>
 <span id="cb14-12"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="arrange-act-assert-1" class="slide level2">
 <h2>Arrange, Act, Assert</h2>
@@ -814,8 +811,7 @@
 <span id="cb15-11"><a></a>  <span class="co">#</span></span>
 <span id="cb15-12"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="arrange-act-assert-2" class="slide level2">
 <h2>Arrange, Act, Assert</h2>
@@ -838,8 +834,7 @@
 <span id="cb16-11"><a></a>  <span class="co">#</span></span>
 <span id="cb16-12"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="arrange-act-assert-3" class="slide level2">
 <h2>Arrange, Act, Assert</h2>
@@ -863,8 +858,7 @@
 <span id="cb17-11"><a></a>  <span class="fu">expect_equal</span>(actual, expected)</span>
 <span id="cb17-12"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="our-test-failed" class="slide level2">
 <h2>Our test failed!?! 😢</h2>
@@ -936,8 +930,7 @@
 <pre><code>Test passed 🎊</code></pre>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="another-simple-example" class="slide level2">
 <h2>Another (simple) example</h2>
@@ -954,8 +947,7 @@
 </div>
 </div><div class="column" style="width:40%;">
 <p>Consider this function - there is <span class="yellow">branched logic</span>, so we need to carefully design tests to validate the logic works as intended.</p>
-</div>
-</div>
+</div></div>
 </section>
 <section id="another-simple-example-1" class="slide level2">
 <h2>Another (simple) example</h2>
@@ -1041,8 +1033,7 @@
 <span id="cb32-2"><a></a><span class="fu">library</span>(DBI)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="split-the-logic-into-smaller-functions" class="slide level2">
 <h2>Split the logic into smaller functions</h2>
@@ -1161,8 +1152,7 @@
 <p>You could also create a table manually, but part of the trick of writing good tests for this function is to make it so the dates don’t all have the same count.</p>
 <p>The reason for this is it’s harder to know for sure that the count worked if every row returns the same value.</p>
 <p>We don’t need the values to be exactly like they are in the real data, just close enough. Instead of dates, we can use numbers, and instead of actual conditions, we can use letters.</p>
-</div>
-</div>
+</div></div>
 </section>
 <section id="lets-test-summarise_data-3" class="slide level2">
 <h2>Let’s test <code>summarise_data</code></h2>
@@ -1188,8 +1178,7 @@
 </div><div class="column small" style="width:25%;">
 <p>Tests need to be reproducible, and generating our table at random will give us unpredictable results.</p>
 <p>So, we need to set the random seed; now every time this test runs we will generate the same data.</p>
-</div>
-</div>
+</div></div>
 </section>
 <section id="lets-test-summarise_data-4" class="slide level2">
 <h2>Let’s test <code>summarise_data</code></h2>
@@ -1215,8 +1204,7 @@
 </div><div class="column small" style="width:25%;">
 <p>Create the conditions table. We don’t need all of the columns that are present in the real csv, just the ones that will make our code work.</p>
 <p>We also need to test that the filtering join (<code>semi_join</code>) is working, so we want to use a subset of the conditions that were used in <code>df</code>.</p>
-</div>
-</div>
+</div></div>
 </section>
 <section id="lets-test-summarise_data-5" class="slide level2">
 <h2>Let’s test <code>summarise_data</code></h2>
@@ -1243,8 +1231,7 @@
 <p>Because we are generating <code>df</code> randomly, to figure out what our “expected” results are, I simply ran the code inside of the test to generate the “actual” results.</p>
 <p>Generally, this isn’t a good idea. You are creating the results of your test from the code; ideally, you want to be thinking about what the results of your function should be.</p>
 <p>Imagine your function doesn’t work as intended, there is some subtle bug that you are not yet aware of. By writing tests “backwards” you may write test cases that confirm the results, but not expose the bug. This is why it’s good to think about edge cases.</p>
-</div>
-</div>
+</div></div>
 </section>
 <section id="lets-test-summarise_data-6" class="slide level2">
 <h2>Let’s test <code>summarise_data</code></h2>
@@ -1270,8 +1257,7 @@
 </div><div class="column small" style="width:25%;">
 <p>That said, in cases where we can be confident (say by static analysis of our code) that it is correct, building tests in this way will give us the confidence going forwards that future changes do not break existing functionality.</p>
 <p>In this case, I have created the expected data frame using the results from running the function.</p>
-</div>
-</div>
+</div></div>
 </section>
 <section id="lets-test-summarise_data-7" class="slide level2">
 <h2>Let’s test <code>summarise_data</code></h2>
@@ -1301,8 +1287,7 @@
 </div>
 </div><div class="column small" style="width:25%;">
 <p>The test works!</p>
-</div>
-</div>
+</div></div>
 </section>
 <section id="next-steps" class="slide level2">
 <h2>Next steps</h2>
@@ -1617,18 +1602,7 @@
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1660,7 +1634,29 @@
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
           var filterRegex = new RegExp("https:\/\/the-strategy-unit\.github\.io\/data_science");
@@ -1668,7 +1664,7 @@
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {

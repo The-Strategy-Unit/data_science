@@ -10,10 +10,10 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.554">
+  <meta name="generator" content="quarto-1.5.56">
 
   <meta name="author" content="Tom Jemmett">
-  <title>Data Science @ The Strategy Unit - An Introduction to the New Hospital Programme Demand Model</title>
+  <title>Data Science @ The Strategy Unit – An Introduction to the New Hospital Programme Demand Model</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -348,6 +348,9 @@
 </section>
 <section id="the-team" class="slide level2">
 <h2>The team</h2>
+<div>
+
+</div>
 <div class="quarto-layout-panel" data-layout-ncol="4">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
@@ -402,8 +405,7 @@
 <li>likely needs double the number of spaces within the next decade</li>
 </ul>
 <p><a href="https://www.bbc.co.uk/news/uk-scotland-glasgow-west-65644082">BBC article</a></p>
-</div>
-</div>
+</div></div>
 </section>
 <section id="review-of-existing-models" class="slide level2">
 <h2>Review of existing models</h2>
@@ -556,8 +558,7 @@
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="model-overview" class="slide level2">
 <h2>Model Overview</h2>
@@ -853,8 +854,7 @@
 <li><a href="https://www.jstatsoft.org/article/download/v040i01/468">Split, Apply, Combine (H. Wickham, 2011)</a></li>
 </ul>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="model-parameters" class="slide level2">
 <h2>Model Parameters</h2>
@@ -887,8 +887,7 @@
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="model-parameters-2" class="slide level2">
 <h2>Model Parameters</h2>
@@ -912,8 +911,7 @@
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="model-parameters-3" class="slide level2">
 <h2>Model Parameters</h2>
@@ -937,14 +935,13 @@
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="model-run-example-1" class="slide level2">
 <h2>Model Run Example (1)</h2>
 <div class="columns small-table">
 <div class="column" style="width:50%;">
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: right;">id</th>
@@ -1010,8 +1007,7 @@
 
 </div><div class="column" style="width:25%;">
 
-</div>
-</div>
+</div></div>
 <div class="absolute" style="bottom: 10px; ">
 <p>Start with baseline data - we are going to sample each row exactly once (column <code>f</code>).</p>
 </div>
@@ -1020,7 +1016,7 @@
 <h2>Model Run Example (2)</h2>
 <div class="columns small-table">
 <div class="column" style="width:50%;">
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: right;">id</th>
@@ -1083,7 +1079,7 @@
 </tbody>
 </table>
 </div><div class="column" style="width:25%;">
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: right;">age</th>
@@ -1125,7 +1121,7 @@
 </tbody>
 </table>
 </div><div class="column" style="width:25%;">
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: right;">f</th>
@@ -1152,8 +1148,7 @@
 </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 <div class="absolute" style="bottom: 10px; ">
 <p>We perform a step where we join based on age and sex, then update the <code>f</code> column.</p>
 </div>
@@ -1162,7 +1157,7 @@
 <h2>Model Run Example (3)</h2>
 <div class="columns small-table">
 <div class="column" style="width:50%;">
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: right;">id</th>
@@ -1225,7 +1220,7 @@
 </tbody>
 </table>
 </div><div class="column" style="width:25%;">
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: center;">specialty</th>
@@ -1244,7 +1239,7 @@
 </tbody>
 </table>
 </div><div class="column" style="width:25%;">
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: right;">f</th>
@@ -1271,8 +1266,7 @@
 </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 <div class="absolute" style="bottom: 10px; ">
 <p>The next step joins on the specialty column, again updating <code>f</code>. Note, if there is no value to join on, then we multiply by 1.</p>
 </div>
@@ -1281,7 +1275,7 @@
 <h2>Model Run Example (4)</h2>
 <div class="columns small-table">
 <div class="column" style="width:50%;">
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: right;">id</th>
@@ -1351,7 +1345,7 @@
 </tbody>
 </table>
 </div><div class="column" style="width:50%;">
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: right;">id</th>
@@ -1413,8 +1407,7 @@
 </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 <div class="absolute" style="bottom: 10px; ">
 <p>Once all of the steps are performed, sample a random value <code>n</code> from a Poisson distribution with <code>λ=f</code>, then we select each row <code>n</code> times.</p>
 </div>
@@ -1423,7 +1416,7 @@
 <h2>Model Run Example (5)</h2>
 <div class="columns small-table">
 <div class="column" style="width:50%;">
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: right;">id</th>
@@ -1494,7 +1487,7 @@
 </tbody>
 </table>
 </div><div class="column" style="width:50%;">
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: right;">id</th>
@@ -1556,8 +1549,7 @@
 </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 <div class="absolute" style="bottom: 10px; ">
 <p>After resampling, we apply efficiency steps. E.g., similar joins are used to create column <code>g</code>, which is then used to sample a new LOS from a binomial distribution.</p>
 </div>
@@ -1927,18 +1919,7 @@
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1970,7 +1951,29 @@
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
           var filterRegex = new RegExp("https:\/\/the-strategy-unit\.github\.io\/data_science");
@@ -1978,7 +1981,7 @@
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {

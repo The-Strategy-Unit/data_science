@@ -1,0 +1,116 @@
+---
+title: "Map and Nest"
+author: "Rhian Davies"
+date: "2023-08-08"
+categories: [purrr, rstats, tutorial]
+knitr:
+  opts_chunk:
+    fig.height: 2.5
+    echo: false
+    dev: png
+    dev.args:
+      bg: transparent
+---
+
+I want to share a framework with you that I like using a lot. It's the nest-map and it's helped me countless times when I'm drowning in plots and data.
+
+Basically we combine purrr mapping with tidy nesting, which allows me to keep raw data close by while iterating over different analyses. This way, I can easily track back from a summary or plot to the original data, ensuring everything is linked and accessible.
+
+The main funtions we'll need are 
+
+- `tidyr::nest()`
+- `dplyr::mutate()
+- `purrr::map()`
+- `purrr::walk()`
+
+
+
+
+## Example on staff data
+
+
+
+```{r}
+staff_group <- readRDS(file = "workforce_staff_group.rds")
+```
+
+Nest into mini datasets
+
+```{r}
+group_by_ics <- staff_group |>
+    tidyr::nest(raw_data = -ics_name)
+```
+
+You can grab the mini datasets and explore interactively.
+E.g. grab the first mini data 
+```{r}
+group_by_ics$raw_data[[1]]
+```
+
+Apply a function to every subset of the data
+
+```{r}
+processed_staff <-
+group_by_ics |>
+    dplyr::mutate(
+        staff_percent = purrr::map(raw_data, convert_percent)
+    )
+```
+
+Make some plots
+
+```{r}
+graphs <-
+processed_staff |>
+    dplyr::mutate(
+        barchart =  purrr::map(staff_percent, plot_barchart)
+    ) 
+```
+
+And another plot
+
+```{r}
+graphs <-
+processed_staff |>
+    dplyr::mutate(
+        waffle =  purrr::map2(raw_data, ics_name, ~plot_waffle(.x, title = .y))
+    ) 
+```
+
+## Altogether now
+
+```{r}
+results <-
+staff_group |>
+    tidyr::nest(raw_data = -ics_name) |>
+    dplyr::mutate(
+        staff_percent = purrr::map(raw_data, convert_percent),
+        barchart =  purrr::map(staff_percent, plot_barchart),
+        waffle =  purrr::map2(raw_data, ics_name, ~plot_waffle(.x, title = .y))
+    )     |>
+    tidyr::pivot_longer(cols = c(barchart, waffle), names_to = "plot_type", values_to = "plot") |>
+    dplyr::mutate(filename = glue::glue("{snakecase::to_snake_case(ics_name)}_{plot_type}.png")) |>
+    dplyr::slice(1:10)
+```
+
+
+Now that we've generated all these plots, we might want to save them. 
+
+
+The `walk()` family of functions are used for their side-effects.
+
+
+Save everything
+```{r}
+purrr::walk2(
+  results$filename,
+  results$plot,
+  \(filename, plot) ggplot2::ggsave(file.path("plots", filename), plot, width = 10, height = 6)
+)
+```
+
+By keeping everything together in one nested structure, I find it much easier to keep track of my analyses.
+
+By appending new columns for processed data and plots all within the same nested structure, I can streamline my workflow, making it easy to check, iterate, and visualize data consistently.
+
+For example, I took NHS staff data and used tidy nesting to group it by ICS regions, which allowed me to apply various transformations and visualizations while keeping the raw data intact. I also utilized functions like mutate and map to 

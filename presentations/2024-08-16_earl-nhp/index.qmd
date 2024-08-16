@@ -1,0 +1,86 @@
+---
+title: "Using R and Python to model future hospital activity: the NHP Demand and Capacity model"
+subtitle: "EARL Conference 2024"
+author: 
+  - "[Tom Jemmett](mailto:thomas.jemmett@nhs.net)"
+  - "[YiWen Hon](mailto:yiwen.hon1@nhs.net)"
+date: 2024-09-05
+date-format: "MMM D, YYYY"
+format:
+  revealjs:
+    theme: [default, ../su_presentation.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
+    footer: |
+      Learn more about [The Strategy Unit](https://www.strategyunitwm.nhs.uk/)
+---
+
+## The New Hospital Programme (NHP)
+
+::: {.notes}
+TODO: Get Chris to look at this slide
+:::
+
+- Commitment to build 40 new hospitals
+- New hospitals need to be sized for the future needs of the communities they serve
+- Our model is the first standardized national approach to this process (??) - rethink and reword
+
+## About us: The Strategy Unit (SU)
+
+:::: {.columns}
+
+::: {.column width='60%'}
+
+* An NHS research and analysis consultancy
+* Hosted by [NHS Midlands and Lancashire Commissioning Support Unit](https://www.midlandsandlancashirecsu.nhs.uk/)
+* Data Science team is new but rapidly growing
+
+:::
+
+::: {.column width='40%'}
+
+![](../../logo_yellow.svg){width="100%"}
+
+:::
+
+::::
+
+## The NHP model in a nutshell
+
+(Some kind of diagram?)
+
+::: {.notes}
+maybe mention about HES?
+:::
+
+- Take hospital activity from a baseline year
+- Apply change factors outside of our control, such as demographic and non-demographic change
+- Apply change factors that can be undertaken to reduce hospital activity (activity mitigators - 120 of them! (give examples))
+- Data from the baseline year is sampled to approximate future hospital activity in the horizon year
+
+## Architecture of the NHP model
+
+::: {.notes}
+Check legibility of fonts of diagrams
+
+:::
+
+![](NHP-2024-08-16-142840.png)
+
+## NHP model infrastructure
+
+- Inputs and outputs apps in R {shiny} for users to set parameters and explore results
+- Model written in Python, triggered via API
+- Azure Storage used to store data
+
+
+## Conclusion
+
+- Future developments incl. Spark
+- Hope to open source code (are we allowed to say this?)
+
+

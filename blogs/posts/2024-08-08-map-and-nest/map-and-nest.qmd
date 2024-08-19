@@ -2,7 +2,7 @@
 title: "Map and Nest"
 author: "Rhian Davies"
 date: "2023-08-08"
-categories: [purrr, rstats, tutorial]
+categories: [purrr, R, tutorial]
 knitr:
   opts_chunk:
     fig.height: 2.5
@@ -12,42 +12,50 @@ knitr:
       bg: transparent
 ---
 
-I want to share a framework with you that I like using a lot. It's the nest-map and it's helped me countless times when I'm drowning in plots and data.
+I want to share a framework with you that I like using occasionally for data analysis. It's the nest-and-map and it's helped me countless times when I'm drowning in plots and data.
 
-Basically we combine purrr mapping with tidy nesting, which allows me to keep raw data close by while iterating over different analyses. This way, I can easily track back from a summary or plot to the original data, ensuring everything is linked and accessible.
+Basically we combine the [{purrr}](https://purrr.tidyverse.org/) mapping with [{tidyr}](https://tidyr.tidyverse.org/) nesting, which allows me to keep raw data close by while iterating over different analyses. This way, I can easily track back from a summary or plot to the original raw data, ensuring everything is linked and accessible.
+
+I find it useful for when I want to keep a basic linkage between plots and raw data, without needing a full-blown data processing pipeline.
 
 The main funtions we'll need are 
 
 - `tidyr::nest()`
-- `dplyr::mutate()
+- `dplyr::mutate()`
 - `purrr::map()`
 - `purrr::walk()`
 
 
+## Example on NHS workforce statistics 
 
-
-## Example on staff data
-
+The [NHS workforce statistics](https://digital.nhs.uk/data-and-information/publications/statistical/nhs-workforce-statistics) are official statistics published monthly for England. 
 
 
 ```{r}
 staff_group <- readRDS(file = "workforce_staff_group.rds")
 ```
 
-Nest into mini datasets
+I want to perform an analysis for each of the 42 integrated care systems (ICS). The {tidyr} `nest()` function a creates a list-column which contains a mini dataframe just each group.
 
+Let's group by ICS, and call the nested data column `raw_data`.
 ```{r}
 group_by_ics <- staff_group |>
     tidyr::nest(raw_data = -ics_name)
 ```
 
-You can grab the mini datasets and explore interactively.
-E.g. grab the first mini data 
+```{r}
+#' echo: false
+head(group_by_ics)
+```
+
+We can grab these mini datasets in the usual way and explore them interactively.
+
 ```{r}
 group_by_ics$raw_data[[1]]
 ```
 
-Apply a function to every subset of the data
+
+Apply a function to every subset of the data. ^[In this example, we actually didn't need to nest first. We could have performed the `mutate()` step on the full dataset.]
 
 ```{r}
 processed_staff <-
@@ -57,7 +65,14 @@ group_by_ics |>
     )
 ```
 
-Make some plots
+
+Where I think this map-and-nest process really comes into it's own is when I'm plotting. Often, I find myself wanting to create a couple of different plots for each grouping, and then optionally save the plots with sensible names. 
+
+Particulary in the analysis stage, I like having these plots in the same row as the raw data, so I can quickly compare and validate, perhaps whilst pair programming.
+
+I've created [two functions]() `plot_barchart()` and `plot_waffle()`, which take the data and create charts.
+
+Using `mutuate()` I can create a new column called `barchart` and I can `map()` the function `plot_barchart()`, applying it to each row at a time.
 
 ```{r}
 graphs <-
@@ -67,7 +82,9 @@ processed_staff |>
     ) 
 ```
 
-And another plot
+The resulting column `barchart` is again a list-column`, but this time instead of containing a tibble, it holds a ggplot object. A whole ggplot in a single cell. ^[This totally blew my mind the first time I saw it 🤯.]
+
+If we want to pass two arguments in, we can replace `map()` with `map2()`. Here we're using `map2() to pass the `ics_name` column as a title.
 
 ```{r}
 graphs <-
@@ -77,7 +94,9 @@ processed_staff |>
     ) 
 ```
 
-## Altogether now
+
+All of these `mutate()` steps can actually be called in one step. Here's the full workflow again in full after a little refactor.
+I've also used `pivot_longer()` to move the two plotting columns into a single plot column. This will make it easier for me to add a nice filename, and save them all.
 
 ```{r}
 results <-
@@ -89,19 +108,16 @@ staff_group |>
         waffle =  purrr::map2(raw_data, ics_name, ~plot_waffle(.x, title = .y))
     )     |>
     tidyr::pivot_longer(cols = c(barchart, waffle), names_to = "plot_type", values_to = "plot") |>
-    dplyr::mutate(filename = glue::glue("{snakecase::to_snake_case(ics_name)}_{plot_type}.png")) |>
-    dplyr::slice(1:10)
+    dplyr::mutate(filename = glue::glue("{snakecase::to_snake_case(ics_name)}_{plot_type}.png"))
 ```
 
 
-Now that we've generated all these plots, we might want to save them. 
+The `walk()` family of functions in {purrr} are used when the function you're applying does not return an object, but is being used for it's side-effect, for exampe reading or writing.
 
+Here we can call `walk2()`, passing in both the filename column and the plots column to save all the plots.
 
-The `walk()` family of functions are used for their side-effects.
-
-
-Save everything
 ```{r}
+#' eval: false
 purrr::walk2(
   results$filename,
   results$plot,
@@ -110,7 +126,4 @@ purrr::walk2(
 ```
 
 By keeping everything together in one nested structure, I find it much easier to keep track of my analyses.
-
-By appending new columns for processed data and plots all within the same nested structure, I can streamline my workflow, making it easy to check, iterate, and visualize data consistently.
-
-For example, I took NHS staff data and used tidy nesting to group it by ICS regions, which allowed me to apply various transformations and visualizations while keeping the raw data intact. I also utilized functions like mutate and map to 
+If you're doing a more complex or permenant analysis, you might want to consider setting up a more formal data processing pipeline, and following RAP principals. 

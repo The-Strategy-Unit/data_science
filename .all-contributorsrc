@@ -14,7 +14,8 @@
       "profile": "http://matt-dray.com",
       "contributions": [
         "blog",
-        "talk"
+        "talk",
+        "doc"
       ]
     },
     {
@@ -23,8 +24,9 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/60136255?v=4",
       "profile": "https://www.linkedin.com/in/yiwen-h/",
       "contributions": [
-        "blog", 
-        "talk"
+        "blog",
+        "talk",
+        "doc"
       ]
     },
     {
@@ -33,7 +35,56 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/1259867?v=4",
       "profile": "http://chrisbeeley.net",
       "contributions": [
-        "talk"
+        "talk",
+        "doc"
+      ]
+    },
+    {
+      "login": "tomjemmett",
+      "name": "Tom Jemmett",
+      "avatar_url": "https://avatars.githubusercontent.com/u/12023696?v=4",
+      "profile": "https://tjmt.uk/",
+      "contributions": [
+        "blog",
+        "talk",
+        "doc"
+      ]
+    },
+    {
+      "login": "jacgrout",
+      "name": "Jacqueline Grout",
+      "avatar_url": "https://avatars.githubusercontent.com/u/103451105?v=4",
+      "profile": "https://github.com/jacgrout",
+      "contributions": [
+        "talk",
+        "blog"
+      ]
+    },
+    {
+      "login": "craig-parylo",
+      "name": "Craig Parylo",
+      "avatar_url": "https://avatars.githubusercontent.com/u/105867449?v=4",
+      "profile": "https://www.strategyunitwm.nhs.uk/",
+      "contributions": [
+        "blog"
+      ]
+    },
+    {
+      "login": "Lextuga007",
+      "name": "Zoë Turner",
+      "avatar_url": "https://avatars.githubusercontent.com/u/39963221?v=4",
+      "profile": "https://philosopher-analyst.netlify.app/",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "StatsRhian",
+      "name": "Rhian Davies",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7017740?v=4",
+      "profile": "http://rhian.rbind.io",
+      "contributions": [
+        "blog"
       ]
     }
   ],

@@ -1,0 +1,265 @@
+---
+title: "Store Data Safely"
+subtitle: "Coffee & Coding"
+author:
+  - "[YiWen Hon](mailto:yiwen.hon1@nhs.net)"
+  - "[Matt Dray](mailto:matt.dray@nhs.net)"
+date: 2024-05-16
+date-format: "MMM D, YYYY"
+format:
+  revealjs:
+    theme: [default, ../su_presentation.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
+    footer: |
+      Learn more about [Data Science at The Strategy Unit ](https://the-strategy-unit.github.io/data_science/)
+---
+
+# Avoid storing data on GitHub {.inverse}
+
+## Why?
+
+Because:
+
+* data may be sensitive
+* GitHub was designed for source control of _code_
+* GitHub has repository file-size limits
+* it makes data independent from code
+* it prevents repetition
+
+## Other approaches
+
+To prevent data commits:
+
+* use [a .gitignore file](https://github.com/github/gitignore/blob/main/R.gitignore) (*.csv, etc)
+* use [Git hooks](https://www.atlassian.com/git/tutorials/git-hooks)
+* avoid 'add all' (`git add .`) when staging
+* ensure thorough reviews of (small) pull-requests
+
+## What if I committed data?
+
+'It depends', but if it's sensitive:
+
+* 'undo' the commit with [git reset](https://www.atlassian.com/git/tutorials/undoing-changes/git-reset)
+* use a [tool like BFG](https://rtyley.github.io/bfg-repo-cleaner/) to expunge the file from Git history
+* delete the repo and restart 🔥
+
+A data security breach [may have to be reported](https://csucloudservices.sharepoint.com/SitePages/Report-a-breach.aspx).
+
+## Data-hosting solutions
+
+We'll talk about two main options for The Strategy Unit: 
+
+1. Posit Connect and the {pins} package
+2. Azure Data Storage
+
+Which to use? It depends.
+
+# {pins} 📌 {.inverse}
+
+## A platform by Posit
+
+![](connect.png)
+
+:::{.footer}
+[https://connect.strategyunitwm.nhs.uk/](https://connect.strategyunitwm.nhs.uk/)
+:::
+
+## A package by Posit
+
+![](pins.png)
+
+:::{.footer}
+[https://pins.rstudio.com/](https://pins.rstudio.com/)
+:::
+
+## Basic approach
+
+```r
+install.packages("pins")
+library(pins)
+
+board_connect()
+pin_write(board, data, "pin_name")
+pin_read(board, "user_name/pin_name")
+```
+
+## Live demo
+
+1. Link RStudio to Posit Connect (authenticate)
+1. Connect to the board
+1. Write a new pin
+1. Check pin status and details
+1. Pin versions
+1. Use pinned data
+1. Unpin your pin
+
+## Should I use it?
+
+:::: {.columns}
+
+::: {.column width='50%'}
+⚠️ {pins} is not great because:
+
+* you should not upload sensitive data!
+* there's a file-size upload limit
+* pin organisation is a bit awkward (no subfolders)
+:::
+
+::: {.column width='50%'}
+{pins} is helpful because:
+
+* authentication is straightforward
+* data can be versioned
+* you can control permissions
+* there are R and Python versions of the package
+:::
+
+::::
+
+# Azure Data Storage 🟦 {.inverse}
+
+## What is Azure Data Storage?
+
+Microsoft cloud storage for unstructured data or 'blobs' (Binary Large Objects): data objects in binary form that do not necessarily conform to any file format.
+
+How is it different?
+
+* No hierarchy – although you can make pseudo-'folders' with the blobnames.
+* Authenticates with your Microsoft account.
+
+## Authenticating to Azure Data Storage
+
+* You are all part of the “strategy-unit-analysts” group; this gives you [read/write access to specific Azure storage containers](https://portal.azure.com/#view/Microsoft_AAD_IAM/GroupDetailsMenuBlade/~/SubscriptionResources/groupId/7d67c846-34cf-4a1f-97d1-fcd40c6b3a86).
+* You can store sensitive information like the container ID in a local .Renviron or .env file that should be ignored by git.
+* Using {AzureAuth}, {AzureStor} and your credentials, you can connect to the Azure storage container, upload files and download them, or read the files directly from storage!
+
+## Step 1: load your environment variables
+
+Store sensitive info in an .Renviron file that's kept out of your Git history! The info can then be loaded in your script.
+
+.Renviron: 
+
+```
+AZ_STORAGE_EP=https://STORAGEACCOUNT.blob.core.windows.net/
+```
+
+Script: 
+
+```r
+ep_uri <- Sys.getenv("AZ_STORAGE_EP")
+```
+
+Tip: reload .Renviron with `readRenviron(".Renviron")`
+
+## Step 1: load your environment variables
+
+In the demo script we are providing, you will need these environment variables:
+
+```r
+ep_uri <- Sys.getenv("AZ_STORAGE_EP")
+app_id <- Sys.getenv("AZ_APP_ID")
+container_name <- Sys.getenv("AZ_STORAGE_CONTAINER")
+tenant <- Sys.getenv("AZ_TENANT_ID")
+```
+
+## Step 2: Authenticate with Azure
+
+
+
+:::: {.columns}
+
+::: {.column width='70%'}
+```r
+token <- AzureAuth::get_azure_token(
+  "https://storage.azure.com",
+  tenant = tenant,
+  app = app_id,
+  auth_type = "device_code",
+)
+```
+
+The first time you do this, you will have link to authenticate in your browser and a code in your terminal to enter. Use the browser that works best with your \@mlcsu.nhs.uk account!
+:::
+
+::: {.column width='30%'}
+![](auth.png){fig-alt="A Microsoft authentication screen asking if the user is trying to sign into a named Azure container."}
+:::
+
+::::
+
+## Step 3: Connect to container
+
+```r
+endpoint <- AzureStor::blob_endpoint(ep_uri, token = token)
+container <- AzureStor::storage_container(endpoint, container_name)
+
+# List files in container
+blob_list <- AzureStor::list_blobs(container)
+```
+
+If you get 403 error, delete your token and re-authenticate, try a different browser/incognito, etc.
+
+To clear Azure tokens: `AzureAuth::clean_token_directory()`
+
+## Interact with the container
+
+It’s possible to interact with the container via your browser!
+
+You can upload and download files using the Graphical User Interface (GUI), login with your \@mlcsu.nhs.uk account: [https://portal.azure.com/#home](https://portal.azure.com/#home)
+
+Although it’s also cooler to interact via code… 😎
+
+## Interact with the container
+
+```r
+# Upload contents of a local directory to container
+AzureStor::storage_multiupload(
+  container,
+  "LOCAL_FOLDERNAME/*",
+  "FOLDERNAME_ON_AZURE"
+)
+
+# Upload specific file to container
+AzureStor::storage_upload(
+  container,
+  "data/ronald.jpeg",
+  "newdir/ronald.jpeg"
+)
+```
+
+## Load csv files directly from Azure container
+
+```r
+df_from_azure <- AzureStor::storage_read_csv(
+  container,
+  "newdir/cats.csv",
+  show_col_types = FALSE
+)
+
+# Load file directly from Azure container (by storing it in memory)
+
+parquet_in_memory <- AzureStor::storage_download(
+  container, src = "newdir/cats.parquet", dest = NULL
+)
+
+parq_df <- arrow::read_parquet(parquet_in_memory)
+```
+
+## Interact with the container
+
+```r
+# Delete from Azure container (!!!)
+AzureStor::delete_storage_file(container, BLOB_NAME)
+```
+
+## What does this achieve?
+
+* Data is not in the repository, it is instead stored in a secure location
+* Code can be open – sensitive information like Azure container name stored as environment variables
+* Large filesizes possible, other people can also access the same container.
+* Naming conventions can help to keep blobs organised (these create pseudo-folders)

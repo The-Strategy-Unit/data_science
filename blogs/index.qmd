@@ -2,6 +2,8 @@
 title: "Data Science Blog"
 listing:
   contents: posts
+  exclude: 
+    filename: "azure_python.ipynb"
   sort: "date desc"
   type: default
   categories: true

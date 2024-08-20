@@ -25,7 +25,43 @@ editor:
     wrap: 120
 ---
 
-## Introduction
+## How did we get here?
+
+* Waterfall approaches were used in the early days of software development
+  * Requirements
+  * Design
+  * Development
+  * Integration
+  * Testing
+  * Deployment
+* You only move to the next stage when the first one is complete
+* (although actually it turns out you kind of don't...)
+
+## The agile manifesto
+
+* Some of the ideas for agile floated around in the 20th century
+* Shewart's Plan-Do-Study-Act cycle
+* [The New New Product Development Game](https://hbr.org/1986/01/the-new-new-product-development-game)
+
+## The agile advantage
+
+* Feature creep
+* Users ask for:
+  * Everything they need
+  * Everything they think they may need
+  * Everything they want
+  * Everything they think they may want
+>[Source](https://www.dummies.com/book/business-careers-money/business/project-management/agile-project-management-for-dummies-3rd-edition-281622/)
+
+## Zawinski’s Law 
+
+["every program attempts to expand until it can read mail. Those programs which cannot so expand are replaced by ones which can"]{style="font-size: 120px;"}
+
+>[Source](https://en.wikipedia.org/wiki/Jamie_Zawinski#Zawinski's_Law)
+
+## Using agile outside of software
+
+* Data science is outside of software (IMHO)
 
 
 

@@ -12,11 +12,7 @@ knitr:
       bg: transparent
 ---
 
-I want to share a framework with you that I like using occasionally for data analysis. It's the nest-and-map and it's helped me countless times when I'm drowning in plots and data.
-
-Basically we combine the [{purrr}](https://purrr.tidyverse.org/) mapping with [{tidyr}](https://tidyr.tidyverse.org/) nesting, which allows me to keep raw data close by while iterating over different analyses. This way, I can easily track back from a summary or plot to the original raw data, ensuring everything is linked and accessible.
-
-I find it useful for when I want to keep a basic linkage between plots and raw data, without needing a full-blown data processing pipeline.
+I want to share a framework that I like using occasionally for data analysis. It's the nest-and-map and it's helped me countless times when I'm working with related datasets. By combining [{purrr}](https://purrr.tidyverse.org/) mapping with [{tidyr}](https://tidyr.tidyverse.org/) nesting, I can keep raw data to hand while performing over different analyses. This allows me to easily track back from a summary or plot to the original raw data, ensuring everything is linked.
 
 The main funtions we'll need are 
 
@@ -28,7 +24,7 @@ The main funtions we'll need are
 
 ## Example on NHS workforce statistics 
 
-The [NHS workforce statistics](https://digital.nhs.uk/data-and-information/publications/statistical/nhs-workforce-statistics) are official statistics published monthly for England. 
+The [NHS workforce statistics](https://digital.nhs.uk/data-and-information/publications/statistical/nhs-workforce-statistics) are official statistics published monthly for England.
 
 
 ```{r}
@@ -43,6 +39,8 @@ group_by_ics <- staff_group |>
     tidyr::nest(raw_data = -ics_name)
 ```
 
+The new column is a list-column, with each cell containing an entire tibble of data relating to that individual ICS.
+
 ```{r}
 #' echo: false
 head(group_by_ics)
@@ -54,8 +52,7 @@ We can grab these mini datasets in the usual way and explore them interactively.
 group_by_ics$raw_data[[1]]
 ```
 
-
-Apply a function to every subset of the data. ^[In this example, we actually didn't need to nest first. We could have performed the `mutate()` step on the full dataset.]
+Next, let's apply some simple processing, say converting absolute numbers into percentages, to each of the ICSs in turn. We use `mutate()` to create a new list-column `staff_percent` and `map()` to apply the processing function to each cell in turn. ^[In this example, we actually didn't need to nest first. We could have performed the `mutate()` step on the full dataset.]
 
 ```{r}
 processed_staff <-
@@ -65,14 +62,9 @@ group_by_ics |>
     )
 ```
 
+Where I think this map-and-nest process really comes into it's own is when I'm plotting. Often, I find myself wanting to create a couple of different plots for each grouping, and then optionally save the plots with sensible names. Particulary in the analysis stage, I like having these plots in the same row as the raw data, so I can quickly compare and validate, perhaps whilst pair programming.
 
-Where I think this map-and-nest process really comes into it's own is when I'm plotting. Often, I find myself wanting to create a couple of different plots for each grouping, and then optionally save the plots with sensible names. 
-
-Particulary in the analysis stage, I like having these plots in the same row as the raw data, so I can quickly compare and validate, perhaps whilst pair programming.
-
-I've created [two functions]() `plot_barchart()` and `plot_waffle()`, which take the data and create charts.
-
-Using `mutuate()` I can create a new column called `barchart` and I can `map()` the function `plot_barchart()`, applying it to each row at a time.
+I've created [two functions]() `plot_barchart()` and `plot_waffle()`, which take the data and create charts. Again, using `mutate()` I can create a new column called `barchart` and I can `map()` the function `plot_barchart()`, applying it to each row at a time.
 
 ```{r}
 graphs <-
@@ -82,9 +74,9 @@ processed_staff |>
     ) 
 ```
 
-The resulting column `barchart` is again a list-column`, but this time instead of containing a tibble, it holds a ggplot object. A whole ggplot in a single cell. ^[This totally blew my mind the first time I saw it 🤯.]
+The resulting column `barchart` is again a list-column, but this time instead of containing a tibble, it holds a ggplot object. A whole ggplot in a single cell. ^[This totally blew my mind the first time I saw it 🤯.]
 
-If we want to pass two arguments in, we can replace `map()` with `map2()`. Here we're using `map2() to pass the `ics_name` column as a title.
+If we want to pass two arguments to our function, we can replace `map()` with `map2()`. Here we're using `map2() to pass the `ics_name` column to use as a title in our waffle plot.
 
 ```{r}
 graphs <-
@@ -94,9 +86,10 @@ processed_staff |>
     ) 
 ```
 
+![An example bar chart plot](example_bar_chart.png)
 
 All of these `mutate()` steps can actually be called in one step. Here's the full workflow again in full after a little refactor.
-I've also used `pivot_longer()` to move the two plotting columns into a single plot column. This will make it easier for me to add a nice filename, and save them all.
+I've also used `pivot_longer()` to move the two plotting columns into a single plot column. This will make it easier for me to generate nice filenames, and save the plots.
 
 ```{r}
 results <-
@@ -111,10 +104,9 @@ staff_group |>
     dplyr::mutate(filename = glue::glue("{snakecase::to_snake_case(ics_name)}_{plot_type}.png"))
 ```
 
+The `walk()` family of functions in {purrr} are used when the function you're applying does not return an object, but is being used for it's side-effect, for example reading or writing files.
 
-The `walk()` family of functions in {purrr} are used when the function you're applying does not return an object, but is being used for it's side-effect, for exampe reading or writing.
-
-Here we can call `walk2()`, passing in both the filename column and the plots column to save all the plots.
+Here we call `walk2()`, passing in both the filename column and the plots column are arguments to save all the plots.
 
 ```{r}
 #' eval: false
@@ -125,5 +117,5 @@ purrr::walk2(
 )
 ```
 
-By keeping everything together in one nested structure, I find it much easier to keep track of my analyses.
+By keeping everything together in one nested structure, I personally find it much easier to keep track of my analyses.
 If you're doing a more complex or permenant analysis, you might want to consider setting up a more formal data processing pipeline, and following RAP principals. 

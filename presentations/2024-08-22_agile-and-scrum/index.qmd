@@ -1,0 +1,31 @@
+---
+title: "Agile and scrum working"
+author: "[Chris Beeley](mailto:chris.beeley1@nhs.net)"
+date: 2024-08-22
+date-format: "MMM D, YYYY"
+knitr:
+  opts_chunk: 
+    eval: false
+    echo: true
+format:
+  revealjs:
+    theme: [default, ../su_presentation.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
+    footer: |
+      view slides at [the-strategy-unit.github.io/data_science/presentations](the-strategy-unit.github.io/data_science/presentations)
+    width: 1920
+    height: 1080
+editor: 
+  markdown: 
+    wrap: 120
+---
+
+## Introduction
+
+
+

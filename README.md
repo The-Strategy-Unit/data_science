@@ -25,7 +25,7 @@ Please note this project uses {renv}. On Windows, I needed to install the R tool
 
 ### How to create a new presentation
 
-1. Make the presentation with quarto, and put it in `presentations/` in a `YYYY-MM-DD_Talk-title` folder. Your presentation should conform to the SU branding.
+Make the presentation with quarto, and put it in `presentations/` in a `YYYY-MM-DD_Talk-title` folder. Your presentation should conform to the SU branding.
 
 ### How to create a new blogpost 
 

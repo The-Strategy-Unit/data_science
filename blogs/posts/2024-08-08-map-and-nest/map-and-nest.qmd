@@ -6,7 +6,7 @@ categories: [purrr, R, tutorial]
 knitr:
   opts_chunk:
     fig.height: 2.5
-    echo: false
+    echo: true
     dev: png
     dev.args:
       bg: transparent
@@ -24,14 +24,18 @@ The main funtions we'll need are
 
 ## Example on NHS workforce statistics 
 
-The [NHS workforce statistics](https://digital.nhs.uk/data-and-information/publications/statistical/nhs-workforce-statistics) are official statistics published monthly for England.
+```{r}
+#| echo: false
+source("helper-functions.R")
+```
 
+The [NHS workforce statistics](https://digital.nhs.uk/data-and-information/publications/statistical/nhs-workforce-statistics) are official statistics published monthly for England.
 
 ```{r}
 staff_group <- readRDS(file = "workforce_staff_group.rds")
 ```
 
-I want to perform an analysis for each of the 42 integrated care systems (ICS). The {tidyr} `nest()` function a creates a list-column which contains a mini dataframe just each group.
+I want to perform an analysis for each of the 42 integrated care systems (ICS). The {tidyr} `nest()` function creates a list-column, where each cell contains a mini dataframe for each grouping.
 
 Let's group by ICS, and call the nested data column `raw_data`.
 ```{r}
@@ -62,9 +66,9 @@ group_by_ics |>
     )
 ```
 
-Where I think this map-and-nest process really comes into it's own is when I'm plotting. Often, I find myself wanting to create a couple of different plots for each grouping, and then optionally save the plots with sensible names. Particulary in the analysis stage, I like having these plots in the same row as the raw data, so I can quickly compare and validate, perhaps whilst pair programming.
+Where I think this map-and-nest process really comes into it's own us creating plots. Often, I find myself wanting to create a couple of different plots for each grouping, and then optionally save the plots with sensible names. Particulary in the analysis stage, I like having these plots in the same row as the raw data, so I can quickly compare and validate.
 
-I've created [two functions]() `plot_barchart()` and `plot_waffle()`, which take the data and create charts. Again, using `mutate()` I can create a new column called `barchart` and I can `map()` the function `plot_barchart()`, applying it to each row at a time.
+I've created [two functions](https://github.com/The-Strategy-Unit/data_science/tree/main/blogs/posts/2024-08-08-map-and-nest/helper-functions.R) `plot_barchart()` and `plot_waffle()`, which take the data and create charts. Again, using `mutate()` I can create a new column called `barchart` and I can `map()` the function `plot_barchart()`, applying it to each row at a time.
 
 ```{r}
 graphs <-
@@ -76,7 +80,7 @@ processed_staff |>
 
 The resulting column `barchart` is again a list-column, but this time instead of containing a tibble, it holds a ggplot object. A whole ggplot in a single cell. ^[This totally blew my mind the first time I saw it 🤯.]
 
-If we want to pass two arguments to our function, we can replace `map()` with `map2()`. Here we're using `map2() to pass the `ics_name` column to use as a title in our waffle plot.
+If we want to pass two arguments to our function, we can replace `map()` with `map2()`. Here we're using `map2()` to pass the `ics_name` column to use as a title in our waffle plot.
 
 ```{r}
 graphs <-
@@ -87,6 +91,8 @@ processed_staff |>
 ```
 
 ![An example bar chart plot](example_bar_chart.png)
+
+## Putting it all together
 
 All of these `mutate()` steps can actually be called in one step. Here's the full workflow again in full after a little refactor.
 I've also used `pivot_longer()` to move the two plotting columns into a single plot column. This will make it easier for me to generate nice filenames, and save the plots.
@@ -109,7 +115,7 @@ The `walk()` family of functions in {purrr} are used when the function you're ap
 Here we call `walk2()`, passing in both the filename column and the plots column are arguments to save all the plots.
 
 ```{r}
-#' eval: false
+#| eval: false
 purrr::walk2(
   results$filename,
   results$plot,

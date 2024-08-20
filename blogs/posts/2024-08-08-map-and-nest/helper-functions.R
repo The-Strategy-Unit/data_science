@@ -42,10 +42,10 @@ raw_staff |>
     tidyr::pivot_longer(cols = dplyr::everything(), names_to = "names", values_to = "vals") |>
     dplyr::mutate(vals = round(vals / 100))
 
-ggplot(waffle_data, aes(fill = names, values = vals)) +
-  geom_waffle(n_rows = 8, size = 0.33, colour = "white") +
-  coord_equal() +
-  theme_void() + 
+ggplot2::ggplot(waffle_data, ggplot2::aes(fill = names, values = vals)) +
+  waffle::geom_waffle(n_rows = 8, size = 0.33, colour = "white") +
+  ggplot2::coord_equal() +
+  ggplot2::theme_void() + 
   ggplot2::theme(legend.title = ggplot2::element_blank()) +
   ggplot2::ggtitle(title)
 }

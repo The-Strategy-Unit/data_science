@@ -20,6 +20,12 @@ execute:
   error: true
 ---
 
+```{r lockfile}
+#| include: FALSE
+renv::use(lockfile = "renv.lock")
+```
+
+
 [ds_presentations]: https://the-strategy-unit.github.io/data_science/presentations/2023-08-23_nhs-r_unit-testing
 
 

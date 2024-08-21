@@ -12,7 +12,7 @@ knitr:
       bg: transparent
 ---
 
-I want to share a framework that I like using occasionally for data analysis. It's the nest-and-map and it's helped me countless times when I'm working with related datasets. By combining [{purrr}](https://purrr.tidyverse.org/) mapping with [{tidyr}](https://tidyr.tidyverse.org/) nesting, I can keep raw data to hand while performing over different analyses. This allows me to easily track back from a summary or plot to the original raw data, ensuring everything is linked.
+I want to share a framework that I like using occasionally for data analysis. It's the nest-and-map and it's helped me countless times when I'm working with related datasets. By combining [{purrr}](https://purrr.tidyverse.org/) mapping with [{tidyr}](https://tidyr.tidyverse.org/) nesting, I can keep my analysis steps linked, allowing me to easily track from a summary or plot, back to the original data.
 
 The main funtions we'll need are 
 
@@ -20,7 +20,6 @@ The main funtions we'll need are
 - `dplyr::mutate()`
 - `purrr::map()`
 - `purrr::walk()`
-
 
 ## Example on NHS workforce statistics 
 

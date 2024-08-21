@@ -18,8 +18,6 @@ format:
     auto-animate: true
     footer: |
       view slides at [the-strategy-unit.github.io/data_science/presentations](the-strategy-unit.github.io/data_science/presentations)
-    width: 1920
-    height: 1080
 editor: 
   markdown: 
     wrap: 120
@@ -28,20 +26,54 @@ editor:
 ## How did we get here?
 
 * Waterfall approaches were used in the early days of software development
-  * Requirements
-  * Design
-  * Development
-  * Integration
-  * Testing
-  * Deployment
+  * Requirements; Design; Development; Integration; Testing; Deployment
 * You only move to the next stage when the first one is complete
 * (although actually it turns out you kind of don't...)
 
-## The agile manifesto
+## The road to agile
 
 * Some of the ideas for agile floated around in the 20th century
 * Shewart's Plan-Do-Study-Act cycle
-* [The New New Product Development Game](https://hbr.org/1986/01/the-new-new-product-development-game)
+* [The New New Product Development Game](https://hbr.org/1986/01/the-new-new-product-development-game) in 1986
+* Scrum (which we'll return to) was proposed in 1993
+* In 2001 the Manifesto for Agile Software Development was published
+
+## The agile manifesto
+
+![](agile.png)
+
+[Copyright © 2001 Kent Beck, Mike Beedle, Arie van Bennekum, Alistair Cockburn, Ward Cunningham, Martin Fowler, James Grenning, Jim Highsmith, Andrew Hunt, Ron Jeffries, Jon Kern, Brian Marick]{style="font-size: 12px;"}
+
+[Robert C. Martin, Steve Mellor, Ken Schwaber, Jeff Sutherland, Dave Thomas]{style="font-size: 12px;"}
+
+[this declaration may be freely copied in any form,
+but only in its entirety through this notice.]{style="font-size: 12px;"}
+
+## Agile principles- software and the MVP
+
+* Our highest priority is to satisfy the customer through early and continuous delivery of valuable software.
+* Deliver working software frequently, from a couple of weeks to a couple of months, with a preference to the shorter timescale.
+* Working software is the primary measure of progress.
+
+(these principles and those on following slides copyright Ibid.)
+
+## Agile principles- working with customers
+
+* Welcome changing requirements, even late in development. Agile processes harness change for the customer's competitive advantage.
+* Business people and developers must work together daily throughout the project. 
+
+## Agile principles- teamwork
+
+* Build projects around motivated individuals. Give them the environment and support they need, and trust them to get the job done.
+* The most efficient and effective method of conveying information to and within a development team is face-to-face conversation.
+* The best architectures, requirements, and designs emerge from self-organizing teams.
+* At regular intervals, the team reflects on how to become more effective, then tunes and adjusts its behavior accordingly. 
+
+## Agile principles- project management
+
+* Agile processes promote sustainable development. The sponsors, developers, and users should be able to maintain a constant pace indefinitely.
+* Continuous attention to technical excellence and good design enhances agility.
+* Simplicity--the art of maximizing the amount of work not done--is essential.
 
 ## The agile advantage
 
@@ -51,13 +83,48 @@ editor:
   * Everything they think they may need
   * Everything they want
   * Everything they think they may want
+
 >[Source](https://www.dummies.com/book/business-careers-money/business/project-management/agile-project-management-for-dummies-3rd-edition-281622/)
 
 ## Zawinski’s Law 
 
-["every program attempts to expand until it can read mail. Those programs which cannot so expand are replaced by ones which can"]{style="font-size: 120px;"}
+["every program attempts to expand until it can read mail. Those programs which cannot so expand are replaced by ones which can"]{style="font-size: 60px;"}
 
 >[Source](https://en.wikipedia.org/wiki/Jamie_Zawinski#Zawinski's_Law)
+
+## Agile methods
+
+* There are lots of agile methdologies
+* I'm not going to embarrass myself by pretending to understand them
+* Examples include Lean, Crystal, and Extreme Programming
+
+## Scrum
+
+* Scrum is the agile methodology we have adopted
+* Despite dire warnings to the contrary we have not adopted it wholesale but most of its principles
+* The fundamental organising principle of work in scrum is a **sprint** lasting 1-4 weeks
+* Each sprint finishes with a defined and useful piece of software that can be shown to/ used by customers
+
+## Product owner
+
+* This person is responsible for the backlog- what goes in to the sprint
+* The backlog should be inclusive of all of the things that customers want or might want
+* They backlog should be prioritised
+* The product owner does this through deep and frequent conversations with customers
+
+## Scrum master helps the scrum team
+
+* "By coaching the team members in self-management and cross-functionality
+* Focus on creating high-value Increments that meet the Definition of Done
+* Influence the removal of impediments to the Scrum Team’s progress
+* Ensure that all Scrum events take place and are positive, productive, and kept within the timebox."
+
+[Source](https://www.scrum.org/resources/what-is-a-scrum-master)
+
+## The backlog
+
+* Having an accurate and well prioritised backlog is key
+* Don't estimate the backlog in hours- use "T shirt sizes" or "points"
 
 ## Using agile outside of software
 

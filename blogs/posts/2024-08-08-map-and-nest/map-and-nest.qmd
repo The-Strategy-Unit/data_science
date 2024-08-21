@@ -24,11 +24,6 @@ The main funtions we'll need are
 
 ## Example on NHS workforce statistics 
 
-```{r}
-#| echo: false
-source("helper-functions.R")
-```
-
 The [NHS workforce statistics](https://digital.nhs.uk/data-and-information/publications/statistical/nhs-workforce-statistics) are official statistics published monthly for England.
 
 ```{r}
@@ -56,7 +51,26 @@ We can grab these mini datasets in the usual way and explore them interactively.
 group_by_ics$raw_data[[1]]
 ```
 
-Next, let's apply some simple processing, say converting absolute numbers into percentages, to each of the ICSs in turn. We use `mutate()` to create a new list-column `staff_percent` and `map()` to apply the processing function to each cell in turn. ^[In this example, we actually didn't need to nest first. We could have performed the `mutate()` step on the full dataset.]
+Next, let's apply some simple processing, say converting absolute numbers into percentages, to each of the ICSs in turn.
+
+<details>
+```{r}
+#' Convert percent
+#' @param raw_staff Tibble containing organisation_name, total and a number of staff categories
+#' @return Tibble like raw_staff but with staff categories represented as percentages rather than absolute numbers
+convert_percent <- function(staff){
+    staff |>
+    dplyr::mutate(dplyr::across(.cols = -c(organisation_name, total),
+                  .fns =  \(x)x/total)) |>
+    dplyr::rename("Doctors" = "hchs_doctors",
+                  "Nurses" = "nurses_health_visitors",
+                  "Ambulance staff" = "ambulance_staff",
+                  "Midwives" = "midwives")
+}
+```
+</details>
+
+ We use `mutate()` to create a new list-column `staff_percent` and `map()` to apply the processing function to each cell in turn. ^[In this example, we actually didn't need to nest first. We could have performed the `mutate()` step on the full dataset.]
 
 ```{r}
 processed_staff <-
@@ -68,7 +82,52 @@ group_by_ics |>
 
 Where I think this map-and-nest process really comes into its own is creating plots. Often, I find myself wanting to create a couple of different plots for each grouping, and then optionally save the plots with sensible names. Particularly in the analysis stage, I like having these plots in the same row as the raw data, so I can quickly compare and validate.
 
-I've created [two functions](https://github.com/The-Strategy-Unit/data_science/tree/main/blogs/posts/2024-08-08-map-and-nest/helper-functions.R) `plot_barchart()` and `plot_waffle()`, which take the data and create charts. Again, using `mutate()` I can create a new column called `barchart` and I can `map()` the function `plot_barchart()`, applying it to each row at a time.
+I've created two functions, `plot_barchart()` and `plot_waffle()` which take the data and create charts.
+
+<details>
+```{r}
+#' Plot barchart
+#' Makes a bar chart of staff perentages by organisation
+#' @param df tibble of staff data in percent format
+plot_barchart <- function(df) {
+  df |>
+    dplyr::filter(organisation_name != "Total") |>
+    dplyr::select(-total) |>
+    tidyr::pivot_longer(cols = -c(organisation_name), names_to = "job", values_to = "percent") |>
+    ggplot2::ggplot(ggplot2::aes(x = percent, y = organisation_name, fill = job)) +
+    ggplot2::geom_col(position = "dodge") + 
+    ggplot2::scale_x_continuous(labels = scales::percent_format(scale = 100)) +
+    ggplot2::labs(x = "", y = "") +
+    StrategyUnitTheme::scale_fill_su() + 
+    ggplot2::theme_minimal() + 
+    ggplot2::theme(legend.title = ggplot2::element_blank())
+}
+
+#' Plot waffle
+#' Makes a waffle chart to visualise staff breakdown at an ICS level
+#' @param raw_staff count data of staff
+#' @param title Title for the graphic
+plot_waffle <- function(raw_staff, title) {
+waffle_data <-
+raw_staff |>
+    dplyr::filter(organisation_name == "Total") |>
+    dplyr::select(-total, -organisation_name) |>
+    tidyr::pivot_longer(cols = dplyr::everything(), names_to = "names", values_to = "vals") |>
+    dplyr::mutate(vals = round(vals / 100))
+
+ggplot2::ggplot(waffle_data, ggplot2::aes(fill = names, values = vals)) +
+  waffle::geom_waffle(n_rows = 8, size = 0.33, colour = "white") +
+  ggplot2::coord_equal() +
+  ggplot2::theme_void() + 
+  ggplot2::theme(legend.title = ggplot2::element_blank()) +
+  ggplot2::ggtitle(title)
+}
+```
+
+
+</details>
+
+ Again, using `mutate()` I can create a new column called `barchart` and I can `map()` the function `plot_barchart()`, applying it to each row at a time.
 
 ```{r}
 graphs <-

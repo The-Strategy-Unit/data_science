@@ -66,7 +66,7 @@ group_by_ics |>
     )
 ```
 
-Where I think this map-and-nest process really comes into it's own us creating plots. Often, I find myself wanting to create a couple of different plots for each grouping, and then optionally save the plots with sensible names. Particulary in the analysis stage, I like having these plots in the same row as the raw data, so I can quickly compare and validate.
+Where I think this map-and-nest process really comes into its own is creating plots. Often, I find myself wanting to create a couple of different plots for each grouping, and then optionally save the plots with sensible names. Particularly in the analysis stage, I like having these plots in the same row as the raw data, so I can quickly compare and validate.
 
 I've created [two functions](https://github.com/The-Strategy-Unit/data_science/tree/main/blogs/posts/2024-08-08-map-and-nest/helper-functions.R) `plot_barchart()` and `plot_waffle()`, which take the data and create charts. Again, using `mutate()` I can create a new column called `barchart` and I can `map()` the function `plot_barchart()`, applying it to each row at a time.
 

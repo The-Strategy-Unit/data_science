@@ -86,7 +86,11 @@ If we want to pass two arguments to our function, we can replace `map()` with `m
 graphs <-
 processed_staff |>
     dplyr::mutate(
-        waffle =  purrr::map2(raw_data, ics_name, ~plot_waffle(.x, title = .y))
+        waffle =  purrr::map2(
+            .x = raw_data, 
+            .y = ics_name, 
+            ~plot_waffle(.x, title = .y)
+        )
     ) 
 ```
 

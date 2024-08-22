@@ -77,20 +77,31 @@ but only in its entirety through this notice.]{style="font-size: 12px;"}
 
 ## The agile advantage
 
-* Feature creep
-* Users ask for:
-  * Everything they need
-  * Everything they think they may need
-  * Everything they want
-  * Everything they think they may want
+* Better use of fixed resources to deliver an unknown outcome, rather than unknown resources to deliver a fixed outcome
+* Continuous delivery
 
->[Source](https://www.dummies.com/book/business-careers-money/business/project-management/agile-project-management-for-dummies-3rd-edition-281622/)
+![](skateboard.png)
 
-## Zawinski’s Law 
+## Feature creep
 
-["every program attempts to expand until it can read mail. Those programs which cannot so expand are replaced by ones which can"]{style="font-size: 60px;"}
+* Users ask for: [everything they need, everything they think they may need, everything they want, everything they think they may want](https://www.dummies.com/book/business-careers-money/business/project-management/agile-project-management-for-dummies-3rd-edition-281622/)
 
->[Source](https://en.wikipedia.org/wiki/Jamie_Zawinski#Zawinski's_Law)
+["every program attempts to expand until it can read mail. Those programs which cannot so expand are replaced by ones which can"]{style="font-size: 50px;"}
+
+>[Zawinski’s Law- Source](https://en.wikipedia.org/wiki/Jamie_Zawinski#Zawinski's_Law)
+
+## Regular stakeholder feedback
+
+* Agile teams are very responsive to product feedback 
+* The project we're curently working on is **very** agile whether we like it or not
+* Our customers never know what they want until we show them something they **don't** want
+
+## More agile advantages
+
+* Early and cheap failure
+* Continous testing and QA
+* Reduction in unproductive work
+* Team can improve regularly, not just the product
 
 ## Agile methods
 
@@ -125,10 +136,53 @@ but only in its entirety through this notice.]{style="font-size: 12px;"}
 
 * Having an accurate and well prioritised backlog is key
 * Don't estimate the backlog in hours- use "T shirt sizes" or "points"
+* People are terrible at estimating how long things take- particularly in software
+* Everything in the backlog needs a defined "Done" state
+
+## Sprint planning
+
+* The team, the product owner, and the scrum master plan the sprint
+* Sprints should be a fixed length of time less than one month
+* The sprint cannot be changed or added to (we break this rule)
+* The team works autonomously in the sprint- nobody decides who does what except the team
+* Can take three hours and should if it needs to
+
+## Standup
+
+* Every day, for no more than 15 minutes (teams often stand up to reinforce this rule) team and scrum master meet
+* Each person answers three questions
+  * What did you do yesterday to help the team finish the sprint?
+  * What will you do today to help the team finish the sprint?
+  * Is there an obstacle blocking you or the team from achieveing the sprint goal
+
+## Sprint retro
+
+* What went well, what could have gone better, and what to improve next time
+* Looking at process, not blaming individuals
+* Requires maturity and trust to bring up issues, and to respond to them in a constructive way
+* Should agree at the end on one process improvement which goes in the next sprint
+* We've had some really, really good retros and I think it's a really important process for a team
+
+## Team perspective
+
+* Product owner- that's me
+  * Focus, clarity and transparency, team delivery, clear and appropriate responsibilities
+* Scrum master- YiWen
+* Team member- Matt
+* Team member- Rhian
+
+## Scrum values
+
+* Courage
+* Focus
+* Commitment
+* Respect
+* Openness
 
 ## Using agile outside of software
 
 * Data science is outside of software (IMHO)
-
-
+  * We don't have daily standups and some of our processes run longer than in software development
+* [You can build cars with Agile](https://wikispeed.com/)
+* [Marketing and UX design](https://www.nimblework.com/blog/agile-methodologies-for-non-software-teams/)
 

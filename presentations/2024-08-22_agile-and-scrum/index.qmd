@@ -99,13 +99,13 @@ but only in its entirety through this notice.]{style="font-size: 12px;"}
 ## More agile advantages
 
 * Early and cheap failure
-* Continous testing and QA
+* Continuous testing and QA
 * Reduction in unproductive work
 * Team can improve regularly, not just the product
 
 ## Agile methods
 
-* There are lots of agile methdologies
+* There are lots of agile methodologies
 * I'm not going to embarrass myself by pretending to understand them
 * Examples include Lean, Crystal, and Extreme Programming
 
@@ -120,7 +120,7 @@ but only in its entirety through this notice.]{style="font-size: 12px;"}
 
 * This person is responsible for the backlog- what goes in to the sprint
 * The backlog should be inclusive of all of the things that customers want or might want
-* They backlog should be prioritised
+* The backlog should be prioritised
 * The product owner does this through deep and frequent conversations with customers
 
 ## Scrum master helps the scrum team

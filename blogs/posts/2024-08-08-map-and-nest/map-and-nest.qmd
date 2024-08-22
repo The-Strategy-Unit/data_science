@@ -143,16 +143,14 @@ processed_staff |>
 
 The resulting column `barchart` is again a list-column, but this time instead of containing a tibble, it holds a ggplot object. A whole ggplot in a single cell. ^[This totally blew my mind the first time I saw it 🤯.]
 
-If we want to pass two arguments to our function, we can replace `map()` with `map2()`. Here we're using `map2()` to pass the `ics_name` column to use as a title in our waffle plot.
+If we want to pass two arguments to our function, we can replace `map()` with `map2()`. Here we're using `map2()` to pass the `ics_name` column to use as a title in our waffle plot. ^[We're mapping the relationship between the two inputs and the `plot_waffle()` with an anonymous function. This shorthand syntax for anonymous functions came in R v 4.1.0. For compatibility with older versions of R, you'll need the `~` operator. For the different ways you can specify functions in {purrr} see the [help file](https://purrr.tidyverse.org/reference/map.html).]
 
 ```{r}
 graphs <-
 processed_staff |>
     dplyr::mutate(
-        waffle =  purrr::map2(
-            .x = raw_data, 
-            .y = ics_name, 
-            ~plot_waffle(.x, title = .y)
+        waffle =  purrr::map2(raw_data, ics_name, 
+            \(data, title) plot_waffle(data, title)
         )
     ) 
 ```
@@ -171,7 +169,7 @@ staff_group |>
     dplyr::mutate(
         staff_percent = purrr::map(raw_data, convert_percent),
         barchart =  purrr::map(staff_percent, plot_barchart),
-        waffle =  purrr::map2(raw_data, ics_name, ~plot_waffle(.x, title = .y))
+        waffle =  purrr::map2(raw_data, ics_name, \(data, title) plot_waffle(data, title)) 
     )     |>
     tidyr::pivot_longer(cols = c(barchart, waffle), names_to = "plot_type", values_to = "plot") |>
     dplyr::mutate(filename = glue::glue("{snakecase::to_snake_case(ics_name)}_{plot_type}.png"))

@@ -1,0 +1,196 @@
+---
+title: "Nearest neighbour imputation"
+author:
+  - Jacqueline Grout
+date: "2024-01-17"
+categories: [learning]
+reference-location: margin
+citation-location: margin
+---
+
+```{r lockfile}
+#| include: FALSE
+renv::use(lockfile = "renv.lock")
+```
+
+
+Recently I have been gathering data by GP practice, from a variety of different sources. The ultimate purpose of my project is to be able to report at an ICB/sub-ICB level[^1]. The various datasets cover different timescales and consequently changes in GP practices over time have left me with mismatching datasets.
+
+[^1]: An ICB (Integrated Care Board) is a statutory NHS organisation responsible for planning health services for their local populations
+
+My approach has been to take as the basis of my project a recent GP List. Later in my project I want to perform calculations at a GP practice level based on an underlying health need and the data for this need is a CHD prevalence value from a dataset that is around 8 years old, and for which there is no update or alternative. From my recent list of 6454 practices, when I match to the need dataset, I am left with 151 practices without a value for need. If I remove these practices from the analysis then this could impact the analysis by sub-ICB since often a group of practices in the same area could be subject to changes, mergers and reorganisation.
+
+Here's the packages and some demo objects to work with to create an example for two practices:
+
+```{r}
+#| code-fold: true
+#| warning: false
+#| message: false
+#| output: false
+
+
+# Packages
+library(tidyverse)
+library(sf)
+library(tidygeocoder)
+library(leaflet)
+library(viridisLite)
+library(gt)
+
+# Create some data with two practices with no need data
+# and a selection of practices locally with need data
+practices <- tribble(
+  ~practice_code, ~postcode, ~has_orig_need, ~value,
+  "P1", "CV1 4FS", 0, NA,
+  "P2", "CV1 3GB", 1, 7.3,
+  "P3", "CV11 5TW", 1, 6.9,
+  "P4", "CV6 3HZ", 1, 7.1,
+  "P5", "CV6 1HS", 1, 7.7,
+  "P6", "CV6 5DF", 1, 8.2,
+  "P7", "CV6 3FA", 1, 7.9,
+  "P8", "CV1 2DL", 1, 7.5,
+  "P9", "CV1 4JH", 1, 7.7,
+  "P10", "CV10 0GQ", 1, 7.5,
+  "P11", "CV10 0JH", 1, 7.8,
+  "P12", "CV11 5QT", 0, NA,
+  "P13", "CV11 6AB", 1, 7.6,
+  "P14", "CV6 4DD", 1, 7.9
+)
+
+# get domain of numeric data
+(domain <- range(practices$has_orig_need))
+
+# make a colour palette
+pal <- colorNumeric(palette = viridis(2), domain = domain)
+
+```
+
+To provide a suitable estimate of need for the newer practices without values, all the practices in the dataset were geocoded[^2] using the `geocode` function from the {tidygeocoder} package.
+
+[^2]: Geocoding is the process of converting addresses (often the postcode) into geographic coordinates (such as latitude and longitude) that can be plotted on a map.
+
+```{r}
+#| output: false
+practices <- practices |>
+  mutate(id = row_number()) |>
+  geocode(postalcode = postcode) |>
+  st_as_sf(coords = c("long", "lat"), crs = 4326)
+
+
+```
+
+```{r}
+#| code-fold: true
+#| warning: false
+#| message: false
+practices |>
+  gt()
+```
+
+This map shows the practices, purple are the practices with no need data and yellow are practices with need data available.
+
+```{r}
+#| code-fold: true
+#| warning: false
+#| message: false
+# make map to display practices
+leaflet(practices) |>
+  addTiles() |>
+  addCircleMarkers(color = ~ pal(has_orig_need))
+
+```
+
+The data was split into those with, and without, a value for need. Using `st_join` from the {sf} package to join those without, and those with, a value for need, using the geometry to find all those within 1500m (1.5km).
+
+```{r}
+
+no_need <- practices |>
+  filter(has_orig_need == 0)
+
+with_need <- practices |>
+  filter(has_orig_need == 1)
+
+
+neighbours <- no_need |>
+  select(no_need_postcode = postcode, no_need_prac_code = practice_code) |>
+  st_join(with_need, st_is_within_distance, 1500) |>
+  st_drop_geometry() |>
+  select(id, no_need_postcode, no_need_prac_code) |>
+  inner_join(x = with_need, by = join_by("id"))
+
+
+```
+
+```{r}
+#| code-fold: true
+#| warning: false
+#| message: false
+
+
+leaflet(neighbours) |>
+  addTiles() |>
+  addCircleMarkers(color = "purple") |>
+  addMarkers(-1.50686326666667, 52.4141089666667, popup = "Practice with no data") |>
+  addCircles(-1.50686326666667, 52.4141089666667, radius = 1500) |>
+  addMarkers(-1.46927, 52.51899, popup = "Practice with no data") |>
+  addCircles(-1.46927, 52.51899, radius = 1500)
+```
+
+The data for the "neighbours" was grouped by the practice code of those without need data and a mean value was calculated for each practice to generate an estimated value.
+
+```{r}
+
+neighbours_estimate <- neighbours |>
+  group_by(no_need_prac_code) |>
+  summarise(need_est = mean(value)) |>
+  st_drop_geometry(select(no_need_prac_code, need_est))
+
+
+
+```
+
+The original data was joined back to the "neighbours".
+
+```{r}
+
+practices_with_neighbours_estimate <- practices |>
+  left_join(neighbours_estimate, join_by(practice_code == no_need_prac_code)) |>
+  st_drop_geometry(select(practice_code, need_est))
+```
+
+```{r}
+#| code-fold: true
+#| warning: false
+#| message: false
+practices_with_neighbours_estimate |>
+  select(-has_orig_need, -id) |>
+  gt()
+
+```
+
+Finally, an updated data frame was created of the need data using the actual need for the practice where available, otherwise using estimated need.
+
+```{r}
+
+practices_with_neighbours_estimate <- practices_with_neighbours_estimate |>
+  mutate(need_to_use = case_when(value >= 0 ~ value,
+    .default = need_est
+  )) |>
+  select(practice_code, need_to_use)
+
+```
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+practices_with_neighbours_estimate |>
+  gt()
+```
+
+For my project, this method has successfully generated a prevalence for 125 of the 151 practices without a need value, leaving just 26 practices without a need. This is using a 1.5 km radius. In each use case there will be a decision to make regarding a more accurate estimate (smaller radius) and therefore fewer matches versus a less accurate estimate (using a larger radius) and therefore more matches.
+
+This approach could be replicated for other similar uses/purposes. A topical example from an SU project is the need to assign population prevalence for hypertension and compare it to current QOF[^3] data. Again, the prevalence data is a few years old so we have to move the historical data to fit with current practices and this leaves missing data that can be estimated using this method.
+
+
+[^3]: QOF (Quality and Outcomes Framework) is a voluntary annual reward and incentive programme for all GP practices in England, detailing practice achievement results. 

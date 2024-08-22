@@ -1,0 +1,35 @@
+---
+title: "One year of coffee & coding"
+author:
+  - Rhian Davies
+date: "2024-05-13"
+categories: [learning]
+reference-location: margin
+citation-location: margin
+---
+
+```{r lockfile}
+#| include: FALSE
+renv::use(lockfile = "renv.lock")
+```
+
+
+The data science team have been running coffee & coding sessions for just over a year now. When I joined that Strategy Unit, I was really pleased to see these sessions running as I think making time to discuss and share technical knowledge is highly valuable, especially as an organisation grows. 
+
+Coffee and coding sessions run every two weeks and usually take the form of a short presentation, followed by a discussion. Although we have had a variety of different sessions including live coding demos and show and tell for projects.
+
+We figured it would be a good idea to do a quick survey of attendees to make sure that the sessions were beneficial and see if there were any suggestions for future sessions. We had 11 responses, all of which were really positive, with 90% agreeing that the sessions are interesting, and over 80% saying that they learn new things. Respondents said that the sessions were well varied across the technical spectrum and that they "almost always learn something useful".
+
+The two main themes of the results were that sessions were _inclusive_ and _sparked collaboration._ ✨
+
+> I like that everyone can contribute
+
+> It's great seeing what else people are doing
+
+> I get more ideas for future projects
+
+Some of the main suggestions included more content for newer programmers and encouraging the wider analytical team to share real project examples. 
+
+So with that, why not consider presenting? The sessions are informal and everyone is welcome to contribute. If you've got something to share, please let a member of the data science team know.
+
+As a reminder, materials for our previous sessions are available under [Presentations](https://the-strategy-unit.github.io/data_science/presentations/).

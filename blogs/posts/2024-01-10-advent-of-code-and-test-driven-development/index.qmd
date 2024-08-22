@@ -1,0 +1,30 @@
+---
+title: "Advent of Code and Test Driven Development"
+author: "YiWen Hon"
+date: "2024-01-10"
+categories: [learning]
+---
+
+```{r lockfile}
+#| include: FALSE
+renv::use(lockfile = "renv.lock")
+```
+
+
+[Advent of Code]( https://adventofcode.com/) is an annual event, where daily coding puzzles are released from 1st – 24th December. 
+We ran one of our fortnightly Coffee & Coding sessions introducing Advent of Code to people who code in the Strategy Unit, as well as the concept of test-driven development as a potential way of approaching the puzzles.
+
+[Test-driven development](https://developer.ibm.com/articles/5-steps-of-test-driven-development/) (TDD) is an approach to coding which involves writing the test for a function BEFORE we write the function. 
+This might seem quite counterintuitive, but it makes it easier to identify bugs 🐛 when they are introduced to our code, and ensures that our functions meet all necessary criteria. 
+From my experience, this takes quite a long time to implement and can be quite tedious, but it is definitely worth it overall, especially as your project develops. 
+Testing is also recommended in the [NHS Reproducible Analytical Pipeline (RAP)](https://nhsdigital.github.io/rap-community-of-practice/introduction_to_RAP/levels_of_RAP/) guidelines. 
+
+An interesting thing to note about TDD is that we're always expecting our first test to fail, and indeed failing tests are useful and important! 
+If we wrote tests that just passed all the time, this would not be useful at all for our code.
+
+The way that Advent of Code is structured, with test data for each puzzle and an expected test result, makes it very amenable to a test-driven approach. 
+In order to support this, Matt and I created template repositories for a test-driven approach to Advent of Code, in [Python](https://github.com/yiwen-h/aoc_python_template) and in [R]( https://github.com/matt-dray/aoc.rstats.template). 
+
+Our goal when setting this up was to introduce others in the Strategy Unit to both TDD and Advent of Code. 
+Advent of code can be challenging and I personally struggle to get past the first week, but it encourages creative (and maybe even fun?!) approaches to coding problems. 
+I'm glad that we had the chance to explore some of the puzzles together in Coffee & Coding – it was interesting to see so many different approaches to the same problem, and hopefully it also gave us all the chance to practice writing tests.

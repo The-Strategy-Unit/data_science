@@ -26,6 +26,12 @@ editor:
     wrap: 120
 ---
 
+```{r lockfile}
+#| include: FALSE
+renv::use(lockfile = "renv.lock")
+```
+
+
 ## A note on Richard Stallman
 
 * Richard Stallman has been [heavily criticised for some of this views](https://drewdevault.com/2023/11/25/2023-11-26-RMS-on-sex.html)

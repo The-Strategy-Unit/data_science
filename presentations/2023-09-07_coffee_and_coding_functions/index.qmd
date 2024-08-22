@@ -23,6 +23,12 @@ execute:
   echo: true
 ---
 
+```{r lockfile}
+#| include: FALSE
+renv::use(lockfile = "renv.lock")
+```
+
+
 ```{r setup}
 #| echo: false
 

@@ -1,0 +1,77 @@
+---
+title: "Alternative remote repositories"
+author: "Tom Jemmett"
+date: "2023-04-26"
+categories: [git, tutorial]
+knitr:
+  opts_chunk:
+    fig.height: 2.5
+    echo: false
+    dev: png
+    dev.args:
+      bg: transparent
+---
+
+```{r lockfile}
+#| include: FALSE
+renv::use(lockfile = "renv.lock")
+```
+
+
+It's great when someone send's you a pull request on GitHub to fix bugs or add new features to your project, but you probably always want to check the other persons work in someway before merging that pull request.
+
+All of the steps below are intended to be entered via a terminal.
+
+Let's imagine that we have a GitHub account called example and a repository called test, and we use https rather than ssh.
+
+```
+$ git remote get-url origin
+# https://github.com/example/test.git
+```
+
+Now, let's say we have someone who has submitted a Pull Request (PR), and their username is friend. We can add a new remote for their fork with
+
+```
+$ git remote add friend https://github.com/friend/test.git
+```
+
+Here, I name the remote exactly as per the persons GitHub username for no other reason than making it easier to track things later on. You could name this remote whatever you like, but you will need to make sure that the remote url matches their repository correctly.
+
+We are now able to checkout their remote branch. First, we will want to fetch their work:
+
+```
+# make sure to replace the remote name to what you set it to before
+$ git fetch friend
+```
+
+Now, hopefully they have commited to a branch with a name that you haven't used. Let's say they created a branch called `my_work`. You can then simply run
+
+```
+$ git switch friend/my_work
+```
+
+This should checkout the `my_work` branch locally for you.
+
+Now, if they have happened to use a branch name that you are already using, or more likely, directly commited to their own `main` branch, you will need to do checkout to a new branch:
+
+```
+# replace friend as above to be the name of the remote, and main to be the branch
+# that they have used
+# replace their_work with whatever you want to call this branch locally
+$ git checkout friend/main -b their_work
+```
+
+You are now ready to run their code and check everything is good to merge!
+
+Finally, If you want to clean up your local repository you can remove the new branch that you checked out and the new remote with the following steps:
+
+```
+# switch back to one of your branches, e.g. main
+$ git checkout main
+
+# then remove the branch that you created above
+$ git branch -D their_work
+
+# you can remove the remote
+$ git remote remove friend
+```

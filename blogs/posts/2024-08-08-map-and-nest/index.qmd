@@ -1,7 +1,7 @@
 ---
 title: "Map and Nest"
 author: "Rhian Davies"
-date: "2023-08-08"
+date: "2024-08-08"
 categories: [purrr, R, tutorial]
 knitr:
   opts_chunk:

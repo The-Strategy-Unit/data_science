@@ -10,7 +10,698 @@
 <atom:link href="https://the-strategy-unit.github.io/data_science/blogs/index.xml" rel="self" type="application/rss+xml"/>
 <description>Blogs from the Data Science Team at The Strategy Unit</description>
 <generator>quarto-1.5.56</generator>
-<lastBuildDate>Wed, 22 May 2024 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 08 Aug 2024 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Map and Nest</title>
+  <dc:creator>Rhian Davies</dc:creator>
+  <link>https://the-strategy-unit.github.io/data_science/blogs/posts/2024-08-08-map-and-nest/</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>I want to share a framework that I like using occasionally for data analysis. It’s the nest-and-map and it’s helped me countless times when I’m working with related datasets. By combining <a href="https://purrr.tidyverse.org/">{purrr}</a> mapping with <a href="https://tidyr.tidyverse.org/">{tidyr}</a> nesting, I can keep my analysis steps linked, allowing me to easily track from a summary or plot, back to the original data.</p>
+<p>The main funtions we’ll need are</p>
+<ul>
+<li><code>tidyr::nest()</code></li>
+<li><code>dplyr::mutate()</code></li>
+<li><code>purrr::map()</code></li>
+<li><code>purrr::walk()</code></li>
+</ul>
+<section id="example-on-nhs-workforce-statistics" class="level2">
+<h2 class="anchored" data-anchor-id="example-on-nhs-workforce-statistics">Example on NHS workforce statistics</h2>
+<p>The <a href="https://digital.nhs.uk/data-and-information/publications/statistical/nhs-workforce-statistics">NHS workforce statistics</a> are official statistics published monthly for England.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1">staff_group <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">readRDS</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">file =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"workforce_staff_group.rds"</span>)</span></code></pre></div>
+</div>
+<p>I want to perform an analysis for each of the 42 integrated care systems (ICS). The {tidyr} <code>nest()</code> function creates a list-column, where each cell contains a mini dataframe for each grouping.</p>
+<p>Let’s group by ICS, and call the nested data column <code>raw_data</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">group_by_ics <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> staff_group <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb2-2">    tidyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nest</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">raw_data =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>ics_name)</span></code></pre></div>
+</div>
+<p>The new column is a list-column, with each cell containing an entire tibble of data relating to that individual ICS.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' echo: false</span></span>
+<span id="cb3-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">head</span>(group_by_ics)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  ics_name             raw_data         
+  &lt;chr&gt;                &lt;list&gt;           
+1 South East London    &lt;tibble [8 × 6]&gt; 
+2 North East London    &lt;tibble [7 × 6]&gt; 
+3 North Central London &lt;tibble [12 × 6]&gt;
+4 North West London    &lt;tibble [10 × 6]&gt;
+5 South West London    &lt;tibble [8 × 6]&gt; 
+6 Devon                &lt;tibble [7 × 6]&gt; </code></pre>
+</div>
+</div>
+<p>We can grab these mini datasets in the usual way and explore them interactively.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">group_by_ics<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>raw_data[[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>]]</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8 × 6
+  organisation_name           total hchs_doctors nurses_health_visitors midwives
+  &lt;chr&gt;                       &lt;dbl&gt;        &lt;dbl&gt;                  &lt;dbl&gt;    &lt;dbl&gt;
+1 Total                       58394         7108                  14939      926
+2 Guy's and St Thomas' NHS F… 21361         3003                   6196      281
+3 King's College Hospital NH… 13158         2443                   4202      375
+4 Lewisham and Greenwich NHS…  6617          979                   2103      271
+5 London Ambulance Service N…  7050            4                     44        0
+6 NHS South East London ICB     617            9                     43        0
+7 Oxleas NHS Foundation Trust  4094          200                   1196        0
+8 South London and Maudsley …  5496          471                   1155        0
+# ℹ 1 more variable: ambulance_staff &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p>Next, let’s apply some simple processing, say converting absolute numbers into percentages, to each of the ICSs in turn.</p>
+<p>We use <code>mutate()</code> to create a new list-column <code>staff_percent</code> and <code>map()</code> to apply the processing function to each cell in turn. <sup>1</sup></p>
+<details>
+<summary>
+See function definition for <code>convert_percent()</code>
+</summary>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' Convert percent</span></span>
+<span id="cb7-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' @param raw_staff Tibble containing organisation_name, total and a number of staff categories</span></span>
+<span id="cb7-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' @return Tibble like raw_staff but with staff categories represented as percentages rather than absolute numbers</span></span>
+<span id="cb7-4">convert_percent <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(staff){</span>
+<span id="cb7-5">    staff <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb7-6">    dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">across</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.cols =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(organisation_name, total),</span>
+<span id="cb7-7">                  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.fns =</span>  \(x)x<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>total)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb7-8">    dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rename</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Doctors"</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"hchs_doctors"</span>,</span>
+<span id="cb7-9">                  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Nurses"</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"nurses_health_visitors"</span>,</span>
+<span id="cb7-10">                  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Ambulance staff"</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ambulance_staff"</span>,</span>
+<span id="cb7-11">                  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Midwives"</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"midwives"</span>)</span>
+<span id="cb7-12">}</span></code></pre></div>
+</div>
+</details>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1">processed_staff <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span></span>
+<span id="cb8-2">group_by_ics <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb8-3">    dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(</span>
+<span id="cb8-4">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">staff_percent =</span> purrr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">map</span>(raw_data, convert_percent)</span>
+<span id="cb8-5">    )</span></code></pre></div>
+</div>
+<p>Where I think this map-and-nest process really comes into its own is creating plots. Often, I find myself wanting to create a couple of different plots for each grouping, and then optionally save the plots with sensible names. Particularly in the analysis stage, I like having these plots in the same row as the raw data, so I can quickly compare and validate.</p>
+<p>I’ve created two functions, <code>plot_barchart()</code> and <code>plot_waffle()</code> which take the data and create charts.</p>
+<details>
+<summary>
+See definition for <code>plot_barchart()</code> &amp; <code>plot_waffle()</code>
+</summary>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' Plot barchart</span></span>
+<span id="cb9-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' Makes a bar chart of staff perentages by organisation</span></span>
+<span id="cb9-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' @param df tibble of staff data in percent format</span></span>
+<span id="cb9-4">plot_barchart <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(df) {</span>
+<span id="cb9-5">  df <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb9-6">    dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(organisation_name <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Total"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb9-7">    dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>total) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb9-8">    tidyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pivot_longer</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cols =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(organisation_name), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">names_to =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"job"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">values_to =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"percent"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb9-9">    ggplot2<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(ggplot2<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> percent, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> organisation_name, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> job)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-10">    ggplot2<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_col</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">position =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"dodge"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb9-11">    ggplot2<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_x_continuous</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">labels =</span> scales<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">percent_format</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">scale =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-12">    ggplot2<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">""</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">""</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-13">    StrategyUnitTheme<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_fill_su</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb9-14">    ggplot2<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb9-15">    ggplot2<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">legend.title =</span> ggplot2<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_blank</span>())</span>
+<span id="cb9-16">}</span>
+<span id="cb9-17"></span>
+<span id="cb9-18"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' Plot waffle</span></span>
+<span id="cb9-19"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' Makes a waffle chart to visualise staff breakdown at an ICS level</span></span>
+<span id="cb9-20"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' @param raw_staff count data of staff</span></span>
+<span id="cb9-21"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' @param title Title for the graphic</span></span>
+<span id="cb9-22">plot_waffle <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(raw_staff, title) {</span>
+<span id="cb9-23">waffle_data <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span></span>
+<span id="cb9-24">raw_staff <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb9-25">    dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(organisation_name <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Total"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb9-26">    dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>total, <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>organisation_name) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb9-27">    tidyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pivot_longer</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cols =</span> dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">everything</span>(), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">names_to =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"names"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">values_to =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"vals"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb9-28">    dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">vals =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">round</span>(vals <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>))</span>
+<span id="cb9-29"></span>
+<span id="cb9-30">ggplot2<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(waffle_data, ggplot2<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> names, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">values =</span> vals)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-31">  waffle<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_waffle</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">n_rows =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">8</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.33</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">colour =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"white"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-32">  ggplot2<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">coord_equal</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-33">  ggplot2<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_void</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb9-34">  ggplot2<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">legend.title =</span> ggplot2<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_blank</span>()) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-35">  ggplot2<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggtitle</span>(title)</span>
+<span id="cb9-36">}</span></code></pre></div>
+</div>
+</details>
+<p>Again, using <code>mutate()</code> I can create a new column called <code>barchart</code> and I can <code>map()</code> the function <code>plot_barchart()</code>, applying it to each row at a time.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">graphs <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span></span>
+<span id="cb10-2">processed_staff <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb10-3">    dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(</span>
+<span id="cb10-4">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">barchart =</span>  purrr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">map</span>(staff_percent, plot_barchart)</span>
+<span id="cb10-5">    ) </span></code></pre></div>
+</div>
+<p>The resulting column <code>barchart</code> is again a list-column, but this time instead of containing a tibble, it holds a ggplot object. A whole ggplot in a single cell. <sup>2</sup></p>
+<p>If we want to pass two arguments to our function, we can replace <code>map()</code> with <code>map2()</code>. Here we’re using <code>map2()</code> to pass the <code>ics_name</code> column to use as a title in our waffle plot. <sup>3</sup></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1">graphs <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span></span>
+<span id="cb11-2">processed_staff <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb11-3">    dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(</span>
+<span id="cb11-4">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">waffle =</span>  purrr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">map2</span>(raw_data, ics_name, </span>
+<span id="cb11-5">            \(data, title) <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">plot_waffle</span>(data, title)</span>
+<span id="cb11-6">        )</span>
+<span id="cb11-7">    ) </span></code></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2024-08-08-map-and-nest/example_bar_chart.png" class="img-fluid figure-img"></p>
+<figcaption>An example bar chart plot</figcaption>
+</figure>
+</div>
+</section>
+<section id="putting-it-all-together" class="level2">
+<h2 class="anchored" data-anchor-id="putting-it-all-together">Putting it all together</h2>
+<p>All of these <code>mutate()</code> steps can actually be called in one step. Here’s the full workflow again in full after a little refactor. I’ve also used <code>pivot_longer()</code> to move the two plotting columns into a single plot column. This will make it easier for me to generate nice filenames, and save the plots.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1">results <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span></span>
+<span id="cb12-2">staff_group <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb12-3">    tidyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nest</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">raw_data =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>ics_name) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb12-4">    dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(</span>
+<span id="cb12-5">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">staff_percent =</span> purrr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">map</span>(raw_data, convert_percent),</span>
+<span id="cb12-6">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">barchart =</span>  purrr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">map</span>(staff_percent, plot_barchart),</span>
+<span id="cb12-7">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">waffle =</span>  purrr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">map2</span>(raw_data, ics_name, \(data, title) <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">plot_waffle</span>(data, title)) </span>
+<span id="cb12-8">    )     <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb12-9">    tidyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pivot_longer</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cols =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(barchart, waffle), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">names_to =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"plot_type"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">values_to =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"plot"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb12-10">    dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">filename =</span> glue<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">glue</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"{snakecase::to_snake_case(ics_name)}_{plot_type}.png"</span>))</span></code></pre></div>
+</div>
+<p>The <code>walk()</code> family of functions in {purrr} are used when the function you’re applying does not return an object, but is being used for it’s side-effect, for example reading or writing files.</p>
+<p>Here we call <code>walk2()</code>, passing in both the filename column and the plots column are arguments to save all the plots.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1">purrr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">walk2</span>(</span>
+<span id="cb13-2">  results<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>filename,</span>
+<span id="cb13-3">  results<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>plot,</span>
+<span id="cb13-4">  \(filename, plot) ggplot2<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggsave</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">file.path</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"plots"</span>, filename), plot, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">width =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">height =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6</span>)</span>
+<span id="cb13-5">)</span></code></pre></div>
+</div>
+<p>By keeping everything together in one nested structure, I personally find it much easier to keep track of my analyses. If you’re doing a more complex or permenant analysis, you might want to consider setting up a more formal data processing pipeline, and following RAP principals.</p>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>In this example, we actually didn’t need to nest first. We could have performed the <code>mutate()</code> step on the full dataset.↩︎</p></li>
+<li id="fn2"><p>This totally blew my mind the first time I saw it 🤯.↩︎</p></li>
+<li id="fn3"><p>We’re mapping the relationship between the two inputs and the <code>plot_waffle()</code> with an anonymous function. This shorthand syntax for anonymous functions came in R v 4.1.0. For compatibility with older versions of R, you’ll need the <code>~</code> operator. For the different ways you can specify functions in {purrr} see the <a href="https://purrr.tidyverse.org/reference/map.html">help file</a>.↩︎</p></li>
+</ol>
+</section></div> ]]></description>
+  <category>purrr</category>
+  <category>R</category>
+  <category>tutorial</category>
+  <guid>https://the-strategy-unit.github.io/data_science/blogs/posts/2024-08-08-map-and-nest/</guid>
+  <pubDate>Thu, 08 Aug 2024 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Storing data safely</title>
   <dc:creator>[YiWen Hon](mailto:yiwen.hon1@nhs.net)</dc:creator>
@@ -5237,697 +5928,6 @@ font-style: inherit;">select</span>(practice_code,need_to_use) </span></code></p
   <category>learning</category>
   <guid>https://the-strategy-unit.github.io/data_science/blogs/posts/2024-01-10-advent-of-code-and-test-driven-development.html</guid>
   <pubDate>Wed, 10 Jan 2024 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Map and Nest</title>
-  <dc:creator>Rhian Davies</dc:creator>
-  <link>https://the-strategy-unit.github.io/data_science/blogs/posts/2024-08-08-map-and-nest/</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>I want to share a framework that I like using occasionally for data analysis. It’s the nest-and-map and it’s helped me countless times when I’m working with related datasets. By combining <a href="https://purrr.tidyverse.org/">{purrr}</a> mapping with <a href="https://tidyr.tidyverse.org/">{tidyr}</a> nesting, I can keep my analysis steps linked, allowing me to easily track from a summary or plot, back to the original data.</p>
-<p>The main funtions we’ll need are</p>
-<ul>
-<li><code>tidyr::nest()</code></li>
-<li><code>dplyr::mutate()</code></li>
-<li><code>purrr::map()</code></li>
-<li><code>purrr::walk()</code></li>
-</ul>
-<section id="example-on-nhs-workforce-statistics" class="level2">
-<h2 class="anchored" data-anchor-id="example-on-nhs-workforce-statistics">Example on NHS workforce statistics</h2>
-<p>The <a href="https://digital.nhs.uk/data-and-information/publications/statistical/nhs-workforce-statistics">NHS workforce statistics</a> are official statistics published monthly for England.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1">staff_group <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">readRDS</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">file =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"workforce_staff_group.rds"</span>)</span></code></pre></div>
-</div>
-<p>I want to perform an analysis for each of the 42 integrated care systems (ICS). The {tidyr} <code>nest()</code> function creates a list-column, where each cell contains a mini dataframe for each grouping.</p>
-<p>Let’s group by ICS, and call the nested data column <code>raw_data</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">group_by_ics <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> staff_group <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb2-2">    tidyr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">nest</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">raw_data =</span> <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span>ics_name)</span></code></pre></div>
-</div>
-<p>The new column is a list-column, with each cell containing an entire tibble of data relating to that individual ICS.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#' echo: false</span></span>
-<span id="cb3-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">head</span>(group_by_ics)</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 2
-  ics_name             raw_data         
-  &lt;chr&gt;                &lt;list&gt;           
-1 South East London    &lt;tibble [8 × 6]&gt; 
-2 North East London    &lt;tibble [7 × 6]&gt; 
-3 North Central London &lt;tibble [12 × 6]&gt;
-4 North West London    &lt;tibble [10 × 6]&gt;
-5 South West London    &lt;tibble [8 × 6]&gt; 
-6 Devon                &lt;tibble [7 × 6]&gt; </code></pre>
-</div>
-</div>
-<p>We can grab these mini datasets in the usual way and explore them interactively.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">group_by_ics<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>raw_data[[<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>]]</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 8 × 6
-  organisation_name           total hchs_doctors nurses_health_visitors midwives
-  &lt;chr&gt;                       &lt;dbl&gt;        &lt;dbl&gt;                  &lt;dbl&gt;    &lt;dbl&gt;
-1 Total                       58394         7108                  14939      926
-2 Guy's and St Thomas' NHS F… 21361         3003                   6196      281
-3 King's College Hospital NH… 13158         2443                   4202      375
-4 Lewisham and Greenwich NHS…  6617          979                   2103      271
-5 London Ambulance Service N…  7050            4                     44        0
-6 NHS South East London ICB     617            9                     43        0
-7 Oxleas NHS Foundation Trust  4094          200                   1196        0
-8 South London and Maudsley …  5496          471                   1155        0
-# ℹ 1 more variable: ambulance_staff &lt;dbl&gt;</code></pre>
-</div>
-</div>
-<p>Next, let’s apply some simple processing, say converting absolute numbers into percentages, to each of the ICSs in turn.</p>
-<p>We use <code>mutate()</code> to create a new list-column <code>staff_percent</code> and <code>map()</code> to apply the processing function to each cell in turn. <sup>1</sup></p>
-<details>
-<summary>
-See function definition for <code>convert_percent()</code>
-</summary>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#' Convert percent</span></span>
-<span id="cb7-2"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#' @param raw_staff Tibble containing organisation_name, total and a number of staff categories</span></span>
-<span id="cb7-3"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#' @return Tibble like raw_staff but with staff categories represented as percentages rather than absolute numbers</span></span>
-<span id="cb7-4">convert_percent <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">function</span>(staff){</span>
-<span id="cb7-5">    staff <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb7-6">    dplyr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">mutate</span>(dplyr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">across</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">.cols =</span> <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(organisation_name, total),</span>
-<span id="cb7-7">                  <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">.fns =</span>  \(x)x<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span>total)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb7-8">    dplyr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">rename</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Doctors"</span> <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"hchs_doctors"</span>,</span>
-<span id="cb7-9">                  <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Nurses"</span> <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"nurses_health_visitors"</span>,</span>
-<span id="cb7-10">                  <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Ambulance staff"</span> <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"ambulance_staff"</span>,</span>
-<span id="cb7-11">                  <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Midwives"</span> <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"midwives"</span>)</span>
-<span id="cb7-12">}</span></code></pre></div>
-</div>
-</details>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1">processed_staff <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span></span>
-<span id="cb8-2">group_by_ics <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb8-3">    dplyr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">mutate</span>(</span>
-<span id="cb8-4">        <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">staff_percent =</span> purrr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">map</span>(raw_data, convert_percent)</span>
-<span id="cb8-5">    )</span></code></pre></div>
-</div>
-<p>Where I think this map-and-nest process really comes into its own is creating plots. Often, I find myself wanting to create a couple of different plots for each grouping, and then optionally save the plots with sensible names. Particularly in the analysis stage, I like having these plots in the same row as the raw data, so I can quickly compare and validate.</p>
-<p>I’ve created two functions, <code>plot_barchart()</code> and <code>plot_waffle()</code> which take the data and create charts.</p>
-<details>
-<summary>
-See definition for <code>plot_barchart()</code> &amp; <code>plot_waffle()</code>
-</summary>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#' Plot barchart</span></span>
-<span id="cb9-2"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#' Makes a bar chart of staff perentages by organisation</span></span>
-<span id="cb9-3"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#' @param df tibble of staff data in percent format</span></span>
-<span id="cb9-4">plot_barchart <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">function</span>(df) {</span>
-<span id="cb9-5">  df <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb9-6">    dplyr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">filter</span>(organisation_name <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">!=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Total"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb9-7">    dplyr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">select</span>(<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span>total) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb9-8">    tidyr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">pivot_longer</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">cols =</span> <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(organisation_name), <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">names_to =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"job"</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">values_to =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"percent"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb9-9">    ggplot2<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot</span>(ggplot2<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">x =</span> percent, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">y =</span> organisation_name, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">fill =</span> job)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb9-10">    ggplot2<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_col</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">position =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"dodge"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> </span>
-<span id="cb9-11">    ggplot2<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">scale_x_continuous</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">labels =</span> scales<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">percent_format</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">scale =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">100</span>)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb9-12">    ggplot2<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">""</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">""</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb9-13">    StrategyUnitTheme<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">scale_fill_su</span>() <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> </span>
-<span id="cb9-14">    ggplot2<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">theme_minimal</span>() <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> </span>
-<span id="cb9-15">    ggplot2<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">legend.title =</span> ggplot2<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">element_blank</span>())</span>
-<span id="cb9-16">}</span>
-<span id="cb9-17"></span>
-<span id="cb9-18"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#' Plot waffle</span></span>
-<span id="cb9-19"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#' Makes a waffle chart to visualise staff breakdown at an ICS level</span></span>
-<span id="cb9-20"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#' @param raw_staff count data of staff</span></span>
-<span id="cb9-21"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#' @param title Title for the graphic</span></span>
-<span id="cb9-22">plot_waffle <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">function</span>(raw_staff, title) {</span>
-<span id="cb9-23">waffle_data <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span></span>
-<span id="cb9-24">raw_staff <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb9-25">    dplyr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">filter</span>(organisation_name <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">==</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Total"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb9-26">    dplyr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">select</span>(<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span>total, <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span>organisation_name) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb9-27">    tidyr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">pivot_longer</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">cols =</span> dplyr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">everything</span>(), <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">names_to =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"names"</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">values_to =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"vals"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb9-28">    dplyr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">vals =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">round</span>(vals <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">100</span>))</span>
-<span id="cb9-29"></span>
-<span id="cb9-30">ggplot2<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot</span>(waffle_data, ggplot2<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">fill =</span> names, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">values =</span> vals)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb9-31">  waffle<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_waffle</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">n_rows =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">8</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">size =</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.33</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">colour =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"white"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb9-32">  ggplot2<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">coord_equal</span>() <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb9-33">  ggplot2<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">theme_void</span>() <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> </span>
-<span id="cb9-34">  ggplot2<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">legend.title =</span> ggplot2<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">element_blank</span>()) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb9-35">  ggplot2<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggtitle</span>(title)</span>
-<span id="cb9-36">}</span></code></pre></div>
-</div>
-</details>
-<p>Again, using <code>mutate()</code> I can create a new column called <code>barchart</code> and I can <code>map()</code> the function <code>plot_barchart()</code>, applying it to each row at a time.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">graphs <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span></span>
-<span id="cb10-2">processed_staff <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb10-3">    dplyr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">mutate</span>(</span>
-<span id="cb10-4">        <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">barchart =</span>  purrr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">map</span>(staff_percent, plot_barchart)</span>
-<span id="cb10-5">    ) </span></code></pre></div>
-</div>
-<p>The resulting column <code>barchart</code> is again a list-column, but this time instead of containing a tibble, it holds a ggplot object. A whole ggplot in a single cell. <sup>2</sup></p>
-<p>If we want to pass two arguments to our function, we can replace <code>map()</code> with <code>map2()</code>. Here we’re using <code>map2()</code> to pass the <code>ics_name</code> column to use as a title in our waffle plot. <sup>3</sup></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1">graphs <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span></span>
-<span id="cb11-2">processed_staff <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb11-3">    dplyr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">mutate</span>(</span>
-<span id="cb11-4">        <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">waffle =</span>  purrr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">map2</span>(raw_data, ics_name, </span>
-<span id="cb11-5">            \(data, title) <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">plot_waffle</span>(data, title)</span>
-<span id="cb11-6">        )</span>
-<span id="cb11-7">    ) </span></code></pre></div>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2024-08-08-map-and-nest/example_bar_chart.png" class="img-fluid figure-img"></p>
-<figcaption>An example bar chart plot</figcaption>
-</figure>
-</div>
-</section>
-<section id="putting-it-all-together" class="level2">
-<h2 class="anchored" data-anchor-id="putting-it-all-together">Putting it all together</h2>
-<p>All of these <code>mutate()</code> steps can actually be called in one step. Here’s the full workflow again in full after a little refactor. I’ve also used <code>pivot_longer()</code> to move the two plotting columns into a single plot column. This will make it easier for me to generate nice filenames, and save the plots.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1">results <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span></span>
-<span id="cb12-2">staff_group <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb12-3">    tidyr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">nest</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">raw_data =</span> <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span>ics_name) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb12-4">    dplyr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">mutate</span>(</span>
-<span id="cb12-5">        <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">staff_percent =</span> purrr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">map</span>(raw_data, convert_percent),</span>
-<span id="cb12-6">        <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">barchart =</span>  purrr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">map</span>(staff_percent, plot_barchart),</span>
-<span id="cb12-7">        <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">waffle =</span>  purrr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">map2</span>(raw_data, ics_name, \(data, title) <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">plot_waffle</span>(data, title)) </span>
-<span id="cb12-8">    )     <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb12-9">    tidyr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">pivot_longer</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">cols =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(barchart, waffle), <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">names_to =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"plot_type"</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">values_to =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"plot"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb12-10">    dplyr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">filename =</span> glue<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">glue</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"{snakecase::to_snake_case(ics_name)}_{plot_type}.png"</span>))</span></code></pre></div>
-</div>
-<p>The <code>walk()</code> family of functions in {purrr} are used when the function you’re applying does not return an object, but is being used for it’s side-effect, for example reading or writing files.</p>
-<p>Here we call <code>walk2()</code>, passing in both the filename column and the plots column are arguments to save all the plots.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1">purrr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">walk2</span>(</span>
-<span id="cb13-2">  results<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>filename,</span>
-<span id="cb13-3">  results<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>plot,</span>
-<span id="cb13-4">  \(filename, plot) ggplot2<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggsave</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">file.path</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"plots"</span>, filename), plot, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">width =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">10</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">height =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">6</span>)</span>
-<span id="cb13-5">)</span></code></pre></div>
-</div>
-<p>By keeping everything together in one nested structure, I personally find it much easier to keep track of my analyses. If you’re doing a more complex or permenant analysis, you might want to consider setting up a more formal data processing pipeline, and following RAP principals.</p>
-
-
-</section>
-
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>In this example, we actually didn’t need to nest first. We could have performed the <code>mutate()</code> step on the full dataset.↩︎</p></li>
-<li id="fn2"><p>This totally blew my mind the first time I saw it 🤯.↩︎</p></li>
-<li id="fn3"><p>We’re mapping the relationship between the two inputs and the <code>plot_waffle()</code> with an anonymous function. This shorthand syntax for anonymous functions came in R v 4.1.0. For compatibility with older versions of R, you’ll need the <code>~</code> operator. For the different ways you can specify functions in {purrr} see the <a href="https://purrr.tidyverse.org/reference/map.html">help file</a>.↩︎</p></li>
-</ol>
-</section></div> ]]></description>
-  <category>purrr</category>
-  <category>R</category>
-  <category>tutorial</category>
-  <guid>https://the-strategy-unit.github.io/data_science/blogs/posts/2024-08-08-map-and-nest/</guid>
-  <pubDate>Tue, 08 Aug 2023 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Reinstalling R Packages</title>

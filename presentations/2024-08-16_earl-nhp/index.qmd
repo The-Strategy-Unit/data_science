@@ -22,12 +22,14 @@ format:
 ## The New Hospital Programme (NHP)
 
 ::: {.notes}
-TODO: Get Chris to look at this slide
+TODO: Merge PR from Chris
 :::
 
-- Commitment to build 40 new hospitals
-- New hospitals need to be sized for the future needs of the communities they serve
-- Our model is the first standardized national approach to this process (??) - rethink and reword
+- Manifesto commitment to build 40 new hospitals with RAAC hospitals recently prioritised
+- It's important to size the hospitals according to the type and quantity of activity there will be in the future
+- There are many proprietary black box models in use for estimating acute activity in the future
+- Strategy Unit was asked to develop a model to be used across all of the builds, a model owned and operated by the NHS, for the NHS
+- The model is provided for use across NHP and the NHS generally and we hope to open source soon
 
 ## About us: The Strategy Unit (SU)
 
@@ -81,6 +83,7 @@ Check legibility of fonts of diagrams
 ## Conclusion
 
 - Future developments incl. Spark
-- Hope to open source code (are we allowed to say this?)
+- Much of the methdology and code is already open sourced
+- We hope to open source the model code soon (this year)
 
 

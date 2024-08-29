@@ -22,12 +22,13 @@ format:
 ## The New Hospital Programme (NHP)
 
 ::: {.notes}
-TODO: Get Chris to look at this slide
+- Replacing crumbling infrastructure in some cases, completely new builds in others
+- Previously this work was usually outsourced to private consultancies using diverse, often hidden methodologies
 :::
 
 - Commitment to build 40 new hospitals
 - New hospitals need to be sized for the future needs of the communities they serve
-- Our model is the first standardized national approach to this process (??) - rethink and reword
+- Our model is the first standardized national approach to forecasting hospital demand (??)
 
 ## About us: The Strategy Unit (SU)
 
@@ -49,38 +50,58 @@ TODO: Get Chris to look at this slide
 
 ::::
 
-## The NHP model in a nutshell
+## The NHP model in a nutshell (1)
 
-(Some kind of diagram?)
+![](nhp_model_diagram.png)
 
 ::: {.notes}
-maybe mention about HES?
+- We use NHS England's Hospital Episode Statistics (HES) data
+- A probabilistic model which factors in the uncertainty associated with making forecasts about future demand, using Monte Carlo simulation.
+- There are close to 100 activity mitigators. Examples include smoking cessation activities which may reduce smoking related admissions in the future, or use of teleappointments to reduce in-person outpatient appointments.
 :::
 
-- Take hospital activity from a baseline year
-- Apply change factors outside of our control, such as demographic and non-demographic change
-- Apply change factors that can be undertaken to reduce hospital activity (activity mitigators - 120 of them! (give examples))
-- Data from the baseline year is sampled to approximate future hospital activity in the horizon year
+## The NHP model in a nutshell (2)
+
+A probabilistic Monte Carlo simulation model, which: 
+
+- Takes hospital activity from a baseline year
+- Applies change factors outside of our control, such as demographic and non-demographic change
+- Applies change factors that can be undertaken to reduce hospital activity - "activity mitigators"
+- Produces a forecast of future demand based on the baseline data
+
+## NHP model infrastructure
+
+- Inputs and outputs apps are written in R {Shiny}
+- Data pipelines written in R {targets}
+- Model itself is written in Python
+- All infrastructure is hosted in Azure
+
+::: {.notes}
+- All originally written by Tom
+- As the team has grown we have shared responsibilities - YiWen in Python, Matt with Shiny, Tom as technical lead
+
+:::
 
 ## Architecture of the NHP model
 
 ::: {.notes}
-Check legibility of fonts of diagrams
+
+- Inputs and outputs apps are how users interact with the model. They can set different parameters and explore the results using these apps
+- Model runs in a Docker container and we use an API to trigger it
 
 :::
 
 ![](NHP-2024-08-16-142840.png)
 
-## NHP model infrastructure
-
-- Inputs and outputs apps in R {shiny} for users to set parameters and explore results
-- Model written in Python, triggered via API
-- Azure Storage used to store data
 
 
 ## Conclusion
 
-- Future developments incl. Spark
-- Hope to open source code (are we allowed to say this?)
+- Model is currently in use
+- Planned future developments include:
+  + Moving data and data pipelines into Databricks
+  + Open sourcing model code (??)
+  + National and regional forecasting
+
 
 

@@ -1,0 +1,30 @@
+block-beta
+
+columns 5
+
+space space db[("Database")]:1 space space
+space space:3 space
+space d("Data"):1 space r("Results"):1 space
+db --> d
+
+space:5
+
+i("Inputs app"):1
+space
+m("Model"):1
+space
+o("Outputs app"):1
+
+i --> d
+d --> i
+m --> r
+d --> m
+r --> o
+i --> m
+
+style db fill:#5881c1,stroke:#fff,color:#fff
+style d  fill:#5881c1,stroke:#fff,color:#fff
+style r  fill:#5881c1,stroke:#fff,color:#fff
+style i  fill:#f9bd07,stroke:#fff,color:#000
+style m  fill:#ec6555,stroke:#fff,color:#fff
+style o  fill:#f9bd07,stroke:#fff,color:#000

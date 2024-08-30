@@ -1,0 +1,169 @@
+---
+title: "Using R and Python to model future hospital activity"
+subtitle: "EARL Conference 2024"
+author: 
+  - "[YiWen Hon](mailto:yiwen.hon1@nhs.net)"
+  - "[Matt Dray](mailto:matt.dray@nhs.net)"
+  - "[Tom Jemmett](mailto:thomas.jemmett@nhs.net)"
+date: 2024-09-05
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, ../su_presentation.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
+    footer: |
+      Learn more about [The Strategy Unit](https://www.strategyunitwm.nhs.uk/)
+---
+
+## The New Hospital Programme (NHP)
+
+:::: {.columns}
+
+::: {.column width='40%'}
+
+- A manifesto commitment
+- Future activity must be modelled
+- Need consistency across schemes
+
+:::
+
+::: {.column width='60%'}
+
+![](kettering-raac.png){width='100%' fig-alt="The headline of a BBC article that says 'Raac: Top floor of Kettering General Hospital Wing vacated'. There is a picture of the hospital with a caption that starts 'crumbling Raac was discovered in the roof."}
+
+:::
+
+::::
+
+::: {.notes}
+
+- A manifesto commitment to build 40 hospitals (now Raac prioritised).
+- Replacing crumbling infrastructure in some cases, completely new builds in others.
+- It's important to size the hospitals according to the type and quantity of activity there will be in the future.
+- Previously this work was usually outsourced to private consultancies using diverse, often hidden methodologies.
+- There are many proprietary black box models in use for estimating acute activity in the future.
+- Strategy Unit was asked to develop a model to be used across all of the builds, a model owned and operated by the NHS, for the NHS.
+- The model is provided for use across NHP and the NHS generally and we hope to open source soon.
+
+:::
+
+## About us
+
+:::: {.columns}
+
+::: {.column width='60%'}
+
+* An NHS research and analysis consultancy
+* Hosted by [NHS Midlands and Lancashire](https://www.midlandsandlancashirecsu.nhs.uk/)
+* A growing data-science capability
+
+:::
+
+::: {.column width='40%'}
+
+![](../../logo_yellow.svg){width='100%' fig-alt='The logo for The Strategy Unit, which is a rounded yellow speech-bubble shape containing the name of the organisation.'}
+
+:::
+
+::::
+
+## {.center}
+
+![](nhp-model-diagram-transparent.png){fig-alt='Diagram showing the model flow. We start with baseline activity and capacity, which flows throiugh demand-supply imbalances, demographic and non-demographic changes and finally actitivyt mitigators. The outcome is modelled future activity.'}
+
+::: {.notes}
+
+A probabilistic Monte Carlo simulation that: 
+
+1. Takes hospital activity from a baseline year
+2. Applies change factors that:
+    + are outside of our control (e.g. population changes)
+    + can reduce hospital activity (mitigators, e.g. medical interventions)
+3. forecasts future demand
+
+
+- We use NHS England's Hospital Episode Statistics (HES) data
+- A probabilistic model which factors in the uncertainty associated with making forecasts about future demand, using Monte Carlo simulation.
+- There are close to 100 activity mitigators. Examples include smoking cessation activities which may reduce smoking related admissions in the future, or use of teleappointments to reduce in-person outpatient appointments.
+
+:::
+
+## Tools and platforms
+
+* Data pipelines: {targets} {{< fa brands r-project >}}
+* Model: Python {{< fa brands python >}} in Docker {{< fa brands docker >}}
+* Apps: {shiny} with {golem}  {{< fa brands r-project >}} on Posit Connect
+* Infrastructure and storage: Azure {{< fa brands microsoft >}}
+* Version control and collaboration: Git {{< fa brands git-alt >}} and GitHub {{< fa brands github >}}
+* Documentation: Quarto 
+
+::: {.notes}
+
+- The model is built in Python and involves a lot of _pandas_ DataFrame manipulations.
+- The data pipeline is orchestrated by {targets} for its recipe-like format and so we re-run only what needs re-running.
+- Users input model paramters in one Shiny app and view results in another. This uses modules and {golem} for its package focus.
+- We use Azure for storage of model input data and JSON files of results.
+- All originally written by Tom.
+- As the team has grown we have shared responsibilities: YiWen in Python, Matt with Shiny, Tom as technical lead.
+
+:::
+
+## {.center}
+
+![](architecture-mermaid-transparent.png){fig-alt='A diagram showing the architecture of the model and apps. Data is processed from the database by the targets package and stored in an Azure storage account. the model and inputs and outputs apps collected data from there. Selections in the inputs app feed into the model.'}
+
+::: {.notes}
+
+- A targets pipeline prepares the data and passes into an Azure storage account.
+- The users, trusts, interact with a Shiny app to set the input parameters. The app provides some contextual information to the user based on the data in Azure. Users click a button to run the model.
+- The model runs in a Docker container and we use an API to trigger it.
+- The model results are stored, ready for collection and presentation in an outputs app. Users can view charts and tables and download files for further analysis.
+
+:::
+
+## {.center}
+
+![](outputs-beeswarm.png){fig-alt="The NHP Model Results app. On the left is a navbar with a 'home' tab and other tabs grouped under headings of 'results' and 'information'. Users can select individual sites. In the main body is a series of dropdown boxes to select the type of data to show. There's also a beeswarm plot showing the model-run distribution."}
+
+::: {.notes}
+
+- TODO
+
+:::
+
+## Next
+
+- Move data and pipelines into Databricks
+- Open-source model code
+- Forecast nationally and regionally
+
+::: {.notes}
+
+- TODO
+
+::: 
+
+# Thank you {.inverse}
+
+:::: {.columns}
+
+::: {.column width='60%'}
+
+- Using R and Python to Model Future Hospital Activity: The New Hospital Programme Demand and Capacity Model
+- [YiWen Hon](mailto:yiwen.hon1@nhs.net), [Matt Dray](mailto:matt.dray@nhs.net) and [Tom Jemmett](mailto:thomas.jemmett@nhs.net)
+- [The Strategy Unit](https://www.strategyunitwm.nhs.uk/), [NHS ML](https://www.midlandsandlancashirecsu.nhs.uk/)
+
+:::
+
+::: {.column width='40%'}
+
+![](earl-nhp-qr.svg)
+
+:::
+
+::::

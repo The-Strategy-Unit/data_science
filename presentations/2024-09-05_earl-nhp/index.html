@@ -7,12 +7,16 @@
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.5.57">
 
-  <meta name="author" content="Chris Beeley">
-  <meta name="dcterms.date" content="2024-05-30">
-  <title>Data Science @ The Strategy Unit – Open source licensing</title>
+  <meta name="author" content="YiWen Hon">
+  <meta name="author" content="Matt Dray">
+  <meta name="author" content="Tom Jemmett">
+  <meta name="dcterms.date" content="2024-09-05">
+  <title>Data Science @ The Strategy Unit – Using R and Python to model future hospital activity</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -329,181 +333,256 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Open source licensing</h1>
-  <p class="subtitle">Or: how I learned to stop worrying and love openness</p>
+  <h1 class="title">Using R and Python to model future hospital activity</h1>
+  <p class="subtitle">EARL Conference 2024</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-<a href="mailto:chris.beeley1@nhs.net" target="_blank">Chris Beeley</a> 
+<a href="mailto:yiwen.hon1@nhs.net" target="_blank">YiWen Hon</a> 
+</div>
+</div>
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+<a href="mailto:matt.dray@nhs.net" target="_blank">Matt Dray</a> 
+</div>
+</div>
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+<a href="mailto:thomas.jemmett@nhs.net" target="_blank">Tom Jemmett</a> 
 </div>
 </div>
 </div>
 
-  <p class="date">May 30, 2024</p>
+  <p class="date">5 September 2024</p>
 </section>
-<section id="a-note-on-richard-stallman" class="slide level2">
-<h2>A note on Richard Stallman</h2>
+<section id="the-new-hospital-programme-nhp" class="slide level2">
+<h2>The New Hospital Programme (NHP)</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
 <ul>
-<li>Richard Stallman has been <a href="https://drewdevault.com/2023/11/25/2023-11-26-RMS-on-sex.html">heavily criticised for some of this views</a></li>
-<li>He is hard to ignore when talking about open source so I am going to talk about him</li>
-<li>Nothing in this talk should be read as endorsing any of his comments outside (or inside) the world of open source</li>
+<li>A manifesto commitment</li>
+<li>Future activity must be modelled</li>
+<li>Need consistency across schemes</li>
 </ul>
+</div><div class="column" style="width:60%;">
+<p><img data-src="kettering-raac.png" style="width:100.0%" alt="The headline of a BBC article that says 'Raac: Top floor of Kettering General Hospital Wing vacated'. There is a picture of the hospital with a caption that starts 'crumbling Raac was discovered in the roof."></p>
+</div></div>
+<aside class="notes">
+<ul>
+<li>Building new hospitals - replacing crumbling infrastructure in some cases, completely new builds in others.</li>
+<li>It’s important to size the hospitals according to the type and quantity of activity there will be in the future.</li>
+<li>There are many proprietary black box models in use for estimating healthcare activity in the future - no consistency, difficult to compare results</li>
+<li>Strategy Unit was asked to develop a model to be used across all of the builds: a model owned and operated by the NHS, for the NHS.</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<p>::::</p>
 </section>
-<section id="the-origin-of-open-source" class="slide level2">
-<h2>The origin of open source</h2>
-<ul>
-<li>In the 50s and 60s source code was routinely shared with hardware and users were often expected to modify to run on their hardware</li>
-<li>By the late 1960s the production cost of software was rising relative to hardware and proprietary licences became more prevalent</li>
-<li>In 1980 Richard Stallman’s department at MIT took delivery of a printer they were not able to modify the source code for</li>
-<li>Richard Stallman launched the GNU project in 1983 to fight for software freedoms</li>
-<li>MIT licence was launched in the late 1980s</li>
-<li><a href="http://www.catb.org/esr/writings/cathedral-bazaar/">Cathedral and the bazaar</a> was released in 1997 (more on which later)</li>
-</ul>
-</section>
-<section id="what-is-open-source" class="slide level2">
-<h2>What is open source?</h2>
-<blockquote>
-<p>Think free as in free speech, not free beer (Stallman)</p>
-</blockquote>
-<ul>
-<li>Open source does not mean free of charge! Software freedom implies the ability to sell code</li>
-<li>Free of charge does not mean open source! Many free to download pieces of software are not open source (Zoom, for example)</li>
-</ul>
+<section id="model-process" class="slide level2 center" data-menu-title="Model process diagram">
+<h2></h2>
 
-<img data-src="software_diagram.svg" class="r-stretch"><p>By Chao-Kuei et al.&nbsp;- <a rel="nofollow" class="external free" href="https://www.gnu.org/philosophy/categories.en.html">https://www.gnu.org/philosophy/categories.en.html</a>, <a href="http://www.gnu.org/licenses/gpl.html" title="GNU General Public License">GPL</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=41220550">Link</a></p>
-</section>
-<section id="the-four-freedoms" class="slide level2">
-<h2>The four freedoms</h2>
+<img data-src="nhp-model-diagram-transparent.png" alt="Diagram showing the model flow. We start with baseline activity and capacity, which flows throiugh demand-supply imbalances, demographic and non-demographic changes and finally actitivyt mitigators. The outcome is modelled future activity." class="r-stretch"><aside class="notes">
+<p>A probabilistic Monte Carlo simulation that:</p>
+<ol type="1">
+<li>Takes hospital activity from a baseline year, using NHS England’s Hospital Episode Statistics (HES) data</li>
+<li>Applies variables that:
 <ul>
-<li>Freedom 0: The freedom to use the program for any purpose.</li>
-<li>Freedom 1: The freedom to study how the program works, and change it to make it do what you wish.</li>
-<li>Freedom 2: The freedom to redistribute and make copies so you can help your neighbor.</li>
-<li>Freedom 3: The freedom to improve the program, and release your improvements (and modified versions in general) to the public, so that the whole community benefits.</li>
-</ul>
-</section>
-<section id="cathedral-and-the-bazaar" class="slide level2">
-<h2>Cathedral and the bazaar</h2>
-<ul>
-<li>Every good work of software starts by scratching a developer’s personal itch.</li>
-<li>Good programmers know what to write. Great ones know what to rewrite (and reuse).</li>
-<li>Plan to throw one [version] away; you will, anyhow (copied from Frederick Brooks’s The Mythical Man-Month).</li>
-<li>If you have the right attitude, interesting problems will find you.</li>
-<li>When you lose interest in a program, your last duty to it is to hand it off to a competent successor.</li>
-<li>Treating your users as co-developers is your least-hassle route to rapid code improvement and effective debugging.</li>
-<li>Release early. Release often. And listen to your customers.</li>
-<li>Given a large enough beta-tester and co-developer base, almost every problem will be characterized quickly and the fix obvious to someone.</li>
-<li>Smart data structures and dumb code works a lot better than the other way around.</li>
-<li>If you treat your beta-testers as if they’re your most valuable resource, they will respond by becoming your most valuable resource.</li>
-</ul>
-</section>
-<section id="cathedral-and-the-bazaar-cont." class="slide level2">
-<h2>Cathedral and the bazaar (cont.)</h2>
-<ul>
-<li>The next best thing to having good ideas is recognizing good ideas from your users. Sometimes the latter is better.</li>
-<li>Often, the most striking and innovative solutions come from realizing that your concept of the problem was wrong.</li>
-<li>Perfection (in design) is achieved not when there is nothing more to add, but rather when there is nothing more to take away. (Attributed to Antoine de Saint-Exupéry)</li>
-<li>Any tool should be useful in the expected way, but a truly great tool lends itself to uses you never expected.</li>
-<li>When writing gateway software of any kind, take pains to disturb the data stream as little as possible—and never throw away information unless the recipient forces you to!</li>
-<li>When your language is nowhere near Turing-complete, syntactic sugar can be your friend.</li>
-<li>A security system is only as secure as its secret. Beware of pseudo-secrets.</li>
-<li>To solve an interesting problem, start by finding a problem that is interesting to you.</li>
-<li>Provided the development coordinator has a communications medium at least as good as the Internet, and knows how to lead without coercion, many heads are inevitably better than one.</li>
-</ul>
-</section>
-<section id="the-disciplines-of-open-source-are-the-disciplines-of-good-data-science" class="slide level2">
-<h2>The disciplines of open source are the disciplines of good data science</h2>
-<ul>
-<li>Meaningful README</li>
-<li>Meaningful commit messages</li>
-<li>Modularity</li>
-<li>Separating data code from analytic code from interactive code</li>
-<li>Assigning issues and pull requests for action/ review</li>
-<li>Don’t forget one of the most lazy and incompetent developers you will ever work with is yourself, six months later</li>
-</ul>
-</section>
-<section id="what-licences-exist" class="slide level2">
-<h2>What licences exist?</h2>
-<ul>
-<li>Permissive
-<ul>
-<li>Such as MIT but there are others. Recommended by NHSX <a href="https://github.com/nhsx/open-source-policy">draft guidelines on open source</a></li>
-<li>Apache is a notable permissive licence- includes a patent licence</li>
-<li>In our work the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">OGL</a> is also relevant- civil servant publish stuff under OGL (and MIT- it isn’t particularly recommended for code)</li>
+<li>are outside of our control (e.g.&nbsp;population changes, using ONS projections)</li>
+<li>can reduce hospital activity (mitigators, e.g.&nbsp;virtual wards or teleappointments)</li>
 </ul></li>
-<li>Copyleft
-<ul>
-<li>GPL2, GPL3, AGPL <a href="https://www.tldrlegal.com/license/gnu-affero-general-public-license-v3-agpl-3-0">(“the GPL of the web”)</a></li>
-<li>Note that the provisions of the GPL only apply when you <strong>distribute</strong> the code</li>
-<li>At a certain point it all gets too complicated and you need a lawyer</li>
-<li>MPL is a notable copyleft licence- can combine with proprietary code as long as kept separate</li>
-</ul></li>
-<li>Arguments for permissive/ copyleft- getting your code used versus preserving software freedoms for other people</li>
-<li>Note that most of the licences are impossible to read! There is a website to explain <a href="https://www.tldrlegal.com/">tl;dr</a></li>
-</ul>
+<li>Forecasts future demand based on these variables, outputting probabilistic predictive intervals</li>
+</ol>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
-<section id="what-is-copyright-and-why-does-it-matter" class="slide level2">
-<h2>What is copyright and why does it matter</h2>
+<section id="our-challenges" class="slide level2">
+<h2>Our challenges</h2>
 <ul>
-<li>Copyright is assigned at the moment of creation</li>
-<li>If you made it in your own time, it’s yours (usually!)</li>
-<li>If you made it at work, it belongs to your employer</li>
-<li>If someone paid you to make it (“work for hire”) it belongs to them</li>
-<li>Crucially, the copyright holder can relicence software
-<ul>
-<li>If it’s jointly authored it depends if it’s a “collective” or “joint” work</li>
-<li>Honestly it’s pretty complicated. Just vest copyright in an organisation or group of individuals you trust</li>
-<li>Goldacre review suggests using Crown copyright for copyright in the NHS because it’s a “shoal, not a big fish” (with apologies to Ben whom I am misquoting)</li>
-</ul></li>
+<li>28 hospitals currently using the model</li>
+<li>Model is being developed whilst in production</li>
+<li>Model is very complex - technically, and for end users</li>
 </ul>
+<aside class="notes">
+<ol type="1">
+<li>Hospitals are actively using the model while it is still in development, which can be tricky</li>
+<li>Dataset is massive for each hospital - hundreds and thousands of rows - all activity for a hospital trust in one year</li>
+<li>Model can accommodate hundreds of different variables, understanding and setting these can be challenging for end users</li>
+<li>We have comprehensive, openly available documentation and also a team of Model Relationship Managers to help address this</li>
+</ol>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
-<section id="iceweasel" class="slide level2">
-<h2>Iceweasel</h2>
+<section id="tools-and-platforms" class="slide level2">
+<h2>Tools and platforms</h2>
 <ul>
-<li>Iceweasel is a story of <strong>trademark</strong> rather than copyright</li>
-<li>Debian (a Linux flavour) had the permission to use the source code of Firefox, but not the logo</li>
-<li>So they took the source code and made their own version</li>
-<li>This sounds very obscure and unimportant but it could become important in future projects of ours, like…</li>
+<li>Data pipelines: {targets} <i class="fa-brands fa-r-project" aria-label="r-project"></i>, SQL <i class="fa-solid fa-database" aria-label="database"></i></li>
+<li>Model: Python <i class="fa-brands fa-python" aria-label="python"></i>, Docker <i class="fa-brands fa-docker" aria-label="docker"></i></li>
+<li>Apps: {shiny} and {golem} <i class="fa-brands fa-r-project" aria-label="r-project"></i>, Posit Connect <i class="fa-solid fa-layer-group" aria-label="layer-group"></i></li>
+<li>Infrastructure and storage: Azure <i class="fa-brands fa-microsoft" aria-label="microsoft"></i></li>
+<li>Documentation: Quarto <i class="fa-solid fa-feather" aria-label="feather"></i></li>
+<li>Version control and collaboration: Git <i class="fa-brands fa-git-alt" aria-label="git-alt"></i>, GitHub <i class="fa-brands fa-github" aria-label="github"></i></li>
 </ul>
+<aside class="notes">
+<ul>
+<li>So how did we solve the problem?</li>
+<li>Here’s a rundown of the tools and platforms that we use.</li>
+<li>The data pipeline is orchestrated by {targets} for its recipe-like format and so we re-run only what needs re-running.</li>
+<li>The model is built in Python and involves a lot of <em>pandas</em> DataFrame manipulations.</li>
+<li>We use Azure for storage of model input data and JSON files of results.</li>
+<li>Users input model paramters in one Shiny app and view results in another. This uses modules and {golem} for its package focus, as well as {bs4Dash}. We have development and productino environments.</li>
+<li>We have a deployed Quarto website that contains the documentation for the whole project.</li>
+<li>In general, we’re following the principles of Reproducible Analytical Pipelines (RAP) in everything we do.</li>
+<li>All originally written by Tom.</li>
+<li>As the team has grown we have shared responsibilities: YiWen in Python, Matt with Shiny, Tom as technical lead.</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
-<section id="what-we-have-learned-in-recent-projects" class="slide level2">
-<h2>What we have learned in recent projects</h2>
+<section id="structure" class="slide level2 center" data-menu-title="Structure">
+<h2></h2>
+
+<img data-src="architecture-mermaid-transparent.png" alt="A diagram showing the architecture of the model and apps. Data is processed from the database by the targets package and stored in an Azure storage account. the model and inputs and outputs apps collected data from there. Selections in the inputs app feed into the model." class="r-stretch"><aside class="notes">
 <ul>
-<li>The huge benefits of being open
-<ul>
-<li>Transparency</li>
-<li>Working with customers</li>
-<li>Goodwill</li>
-</ul></li>
-<li>Nonfree mitigators</li>
-<li>Different licences for different repos</li>
+<li>This is a simplified overview of the structure and flow of information through the system.</li>
+<li>The full structure is quite complex, reflecting the complexity of user needs and the scale of the task.</li>
+<li>Data from our database is processed and stored in Azure Storage Containers via a targets pipeline. Additional data, like ONS population projections, are also stored.</li>
+<li>The users interact with a Shiny app to set their input parameters. The app provides some contextual information derived from the data held in Azure. Users click a button to run the model.</li>
+<li>The model is deployed as a Docker container in Azure Continer Instances, triggered by an API call.</li>
+<li>The model results are stored as JSON in an Azure container, ready for collection and presentation in an outputs app.</li>
+<li>Users can view charts and tables and download files for further analysis.</li>
+<li>So there’s clear front- and backends and we have</li>
+<li>Further complexity is added by the need to process and present information despite changes to the model over time.</li>
+<li>We use development and production environments for our apps to help reduce errors.</li>
 </ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
-<section id="software-freedom-means-allowing-people-to-do-stuff-you-dont-like" class="slide level2">
-<h2>Software freedom means allowing people to do stuff you don’t like</h2>
+<section id="outputs-app" class="slide level2 center" data-menu-title="Outputs app">
+<h2></h2>
+
+<img data-src="outputs-beeswarm.png" alt="The NHP Model Results app. On the left is a navbar with a 'home' tab and other tabs grouped under headings of 'results' and 'information'. Users can select individual sites. In the main body is a series of dropdown boxes to select the type of data to show. There's also a beeswarm plot showing the model-run distribution." class="r-stretch"><aside class="notes">
 <ul>
-<li>Freedom 0: The freedom to use the program for any purpose.</li>
-<li>Freedom 3: The freedom to improve the program, and release your improvements (and modified versions in general) to the public, so that the whole community benefits.</li>
-<li>The code isn’t the only thing with worth in the project</li>
-<li>This is why there are whole businesses founded on “here’s the Linux source code”</li>
-<li>So when we’re sharing code we are <strong>letting</strong> people do stupid things with it but we’re not <strong>recommending</strong> that they do stupid things with it</li>
-<li>People do stupid things with Excel and Microsoft don’t accept liability for that, and neither should we</li>
-<li>This issue of sharing analytic code and merchantability for a particular purpose is poorly understood and I think everyone needs to be clearer on it (us, and our customers)</li>
-<li>In my view a world where consultants are selling <strong>our</strong> code is better than a world where they’re selling <strong>their</strong> spreadsheets</li>
+<li>Here’s a preview of the outputs app.</li>
+<li>In the navbar you can see that users can aggregate by hospital sites; view charts and tables; and download results files for further processing.</li>
+<li>There are also context-specific drodown menus to focus in on certain data. For example, to see results by activity type: inpatients, outpatients or A&amp;E.</li>
+<li>In this particular tab we can see a beeswarm plot showing each simulation as an individual point. This kind of presentation is important to remind users that the model outputs a distribution; that there are range of possibilities.</li>
+<li>The data provided here to users is used to drive decisions about the size of hospital that will be developed.</li>
 </ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
-<section id="open-source-as-in-piano" class="slide level2">
-<h2>“Open source as in piano”</h2>
+<section id="next" class="slide level2">
+<h2>Next</h2>
 <ul>
-<li>The patient experience QDC project</li>
-<li>Our current project</li>
-<li>Open source code is not necessarily to be run, but understood and learned from</li>
-<li>Building a group of people who can use and contribute to your code is arguably as important as writing it</li>
+<li>Forecast regionally and nationally</li>
+<li>Move data and pipelines into Databricks</li>
+<li>Open-source model code</li>
 </ul>
+<aside class="notes">
+<ul>
+<li>We’re currently working with hospitals and trusts, but we’re also expanding the geographical scale to produce results at the regional and national scale. This will require some thinking around processing, modelling and generating outputs.</li>
+<li>We’re currently transferring data processing into Databricks, partly to bring all the steps into one platform but also as an opportunity to speed up the processing by using Spark.</li>
+<li>Finally, we already have some aspects in the open, like the project information site, but we’d also like to open-source the model code itself so that others can use and develop it.</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="thank-you" class="title-slide slide level1 inverse center">
+<h1>Thank you</h1>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li>Using R and Python to Model Future Hospital Activity: The New Hospital Programme Demand and Capacity Model</li>
+<li><a href="mailto:yiwen.hon1@nhs.net" target="_blank">YiWen Hon</a>, <a href="mailto:matt.dray@nhs.net" target="_blank">Matt Dray</a> and <a href="mailto:thomas.jemmett@nhs.net" target="_blank">Tom Jemmett</a></li>
+<li><a href="https://www.strategyunitwm.nhs.uk/">The Strategy Unit</a>, <a href="https://www.midlandsandlancashirecsu.nhs.uk/">NHS ML</a></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="earl-nhp-qr.svg"></p>
+</div></div>
+<aside class="notes">
+<ul>
+<li>So, we’ve made innovative use of both Python and R together–along with a raft of other tools–to help solve a complex and important issue within the healthcare sector.</li>
+<li>This QR code takes you to the URL for this talk.</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
-<p>view slides at <a href="the-strategy-unit.github.io/data_science/presentations" target="_blank">the-strategy-unit.github.io/data_science/presentations</a></p>
+<p>Learn more about <a href="https://www.strategyunitwm.nhs.uk/">The Strategy Unit</a></p>
 </div>
 </div>
 </section>
@@ -685,9 +764,9 @@
         // The "normal" size of the presentation, aspect ratio will be preserved
         // when the presentation is scaled to fit different resolutions. Can be
         // specified using percentage units.
-        width: 1920,
+        width: 1050,
 
-        height: 1080,
+        height: 700,
 
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
@@ -719,44 +798,6 @@
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

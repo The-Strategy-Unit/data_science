@@ -51,7 +51,7 @@ format:
 
 ::::
 
-## {.center}
+## {#model-process data-menu-title="Model process diagram" .center}
 
 ![](nhp-model-diagram-transparent.png){fig-alt='Diagram showing the model flow. We start with baseline activity and capacity, which flows throiugh demand-supply imbalances, demographic and non-demographic changes and finally actitivyt mitigators. The outcome is modelled future activity.'}
 
@@ -84,56 +84,72 @@ A probabilistic Monte Carlo simulation that:
 
 ## Tools and platforms
 
-* Data pipelines: {targets} {{< fa brands r-project >}}
-* Model: Python {{< fa brands python >}} in Docker {{< fa brands docker >}}
-* Apps: {shiny} with {golem}  {{< fa brands r-project >}} on Posit Connect
+* Data pipelines: {targets} {{< fa brands r-project >}}, SQL {{< fa database >}}
+* Model: Python {{< fa brands python >}}, Docker {{< fa brands docker >}}
+* Apps: {shiny} and {golem} {{< fa brands r-project >}}, Posit Connect {{< fa layer-group >}}
 * Infrastructure and storage: Azure {{< fa brands microsoft >}}
-* Version control and collaboration: Git {{< fa brands git-alt >}} and GitHub {{< fa brands github >}}
-* Documentation: Quarto 
+* Documentation: Quarto {{< fa feather >}}
+* Version control and collaboration: Git {{< fa brands git-alt >}}, GitHub {{< fa brands github >}}
 
 ::: {.notes}
 
-- The model is built in Python and involves a lot of _pandas_ DataFrame manipulations.
+- So how did we solve the problem?
+- Here's a rundown of the tools and platforms that we use.
 - The data pipeline is orchestrated by {targets} for its recipe-like format and so we re-run only what needs re-running.
-- Users input model paramters in one Shiny app and view results in another. This uses modules and {golem} for its package focus.
+- The model is built in Python and involves a lot of _pandas_ DataFrame manipulations.
 - We use Azure for storage of model input data and JSON files of results.
+- Users input model paramters in one Shiny app and view results in another. This uses modules and {golem} for its package focus, as well as {bs4Dash}. We have development and productino environments.
+- We have a deployed Quarto website that contains the documentation for the whole project.
+- In general, we're following the principles of Reproducible Analytical Pipelines (RAP) in everything we do.
 - All originally written by Tom.
 - As the team has grown we have shared responsibilities: YiWen in Python, Matt with Shiny, Tom as technical lead.
 
 :::
 
-## {.center}
+## {#structure data-menu-title="Structure" .center}
 
 ![](architecture-mermaid-transparent.png){fig-alt='A diagram showing the architecture of the model and apps. Data is processed from the database by the targets package and stored in an Azure storage account. the model and inputs and outputs apps collected data from there. Selections in the inputs app feed into the model.'}
 
 ::: {.notes}
 
-- A targets pipeline prepares the data and passes into an Azure storage account.
-- The users, trusts, interact with a Shiny app to set the input parameters. The app provides some contextual information to the user based on the data in Azure. Users click a button to run the model.
-- The model runs in a Docker container and we use an API to trigger it.
-- The model results are stored, ready for collection and presentation in an outputs app. Users can view charts and tables and download files for further analysis.
+- This is a simplified overview of the structure and flow of information through the system.
+- The full structure is quite complex, reflecting the complexity of user needs and the scale of the task.
+- Data from our database is processed and stored in Azure Storage Containers via a targets pipeline. Additional data, like ONS population projections, are also stored.
+- The users interact with a Shiny app to set their input parameters. The app provides some contextual information derived from the data held in Azure. Users click a button to run the model.
+- The model is deployed as a Docker container in Azure Continer Instances, triggered by an API call.
+- The model results are stored as JSON in an Azure container, ready for collection and presentation in an outputs app.
+- Users can view charts and tables and download files for further analysis.
+- So there's clear front- and backends and we have
+- Further complexity is added by the need to process and present information despite changes to the model over time.
+- We use development and production environments for our apps to help reduce errors.
 
 :::
 
-## {.center}
+## {#outputs-app data-menu-title="Outputs app" .center}
 
 ![](outputs-beeswarm.png){fig-alt="The NHP Model Results app. On the left is a navbar with a 'home' tab and other tabs grouped under headings of 'results' and 'information'. Users can select individual sites. In the main body is a series of dropdown boxes to select the type of data to show. There's also a beeswarm plot showing the model-run distribution."}
 
 ::: {.notes}
 
-- TODO
+- Here's a preview of the outputs app.
+- In the navbar you can see that users can aggregate by hospital sites; view charts and tables; and download results files for further processing.
+- There are also context-specific drodown menus to focus in on certain data. For example, to see results by activity type: inpatients, outpatients or A&E.
+- In this particular tab we can see a beeswarm plot showing each simulation as an individual point. This kind of presentation is important to remind users that the model outputs a distribution; that there are range of possibilities.
+- The data provided here to users is used to drive decisions about the size of hospital that will be developed.
 
 :::
 
 ## Next
 
+- Forecast regionally and nationally
 - Move data and pipelines into Databricks
 - Open-source model code
-- Forecast nationally and regionally
 
 ::: {.notes}
 
-- TODO
+- We're currently working with hospitals and trusts, but we're also expanding the geographical scale to produce results at the regional and national scale. This will require some thinking around processing, modelling and generating outputs.
+- We're currently transferring data processing into Databricks, partly to bring all the steps into one platform but also as an opportunity to speed up the processing by using Spark.
+- Finally, we already have some aspects in the open, like the project information site, but we'd also like to open-source the model code itself so that others can use and develop it.
 
 ::: 
 
@@ -156,3 +172,10 @@ A probabilistic Monte Carlo simulation that:
 :::
 
 ::::
+
+::: {.notes}
+
+- So, we've made innovative use of both Python and R together--along with a raft of other tools--to help solve a complex and important issue within the healthcare sector.
+- This QR code takes you to the URL for this talk.
+
+::: 

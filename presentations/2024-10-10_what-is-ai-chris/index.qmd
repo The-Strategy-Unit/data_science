@@ -53,6 +53,37 @@ editor:
 * Work with perceptrons (single layer neural networks)
 * Competing with symbolic representation work
 
+## The first AI winter
+
+* Early successes didn't continue
+* Limited computer power- many examples were "toys"
+* Combinatorial explosions- many problems could only be solved in exponential time
+* Representing common sense reason and knowledge requires immense amounts of data
+
+## Moravec's paradox
+
+> Encoded in the large, highly evolved sensory and motor portions of the human brain is a billion years of experience about the nature of the world and how to survive in it. The deliberate process we call reasoning is, I believe, the thinnest veneer of human thought, effective only because it is supported by this much older and much more powerful, though usually unconscious, sensorimotor knowledge. We are all prodigious olympians in perceptual and motor areas, so good that we make the difficult look easy. Abstract thought, though, is a new trick, perhaps less than 100 thousand years old. We have not yet mastered it. It is not all that intrinsically difficult; it just seems so when we do it
+
 ## The "AI effect"
 
 > The AI effect" refers to a phenomenon where either the definition of AI or the concept of intelligence is adjusted to exclude capabilities that AI systems have mastered. This often manifests as tasks that AI can now perform successfully no longer being considered part of AI, or as the notion of intelligence itself being redefined to exclude AI achievements ([wikipedia](https://en.wikipedia.org/wiki/AI_effect))
+
+## Machine learning
+
+![](ml.png)
+
+## Right, so, really, what is AI?
+
+* Classification is often called "AI"
+* Various types of classification problems:
+  * Given a risk score will this patient require hospitalisation?
+  * Given a piece of patient feedback which of these 10 categories is it about?
+  * Given an X ray is it probable that this patient has cancer?
+
+## Risk score
+
+## No, really, tell me, what is AI?
+
+* There are two elements of a classification problem that can be "difficult"
+  * Input
+  * Computation

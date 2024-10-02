@@ -1,0 +1,58 @@
+---
+title: "What is AI?"
+author: "Data science team, Strategy Unit"
+date: 2024-10-10
+date-format: "MMM D, YYYY"
+knitr:
+  opts_chunk: 
+    eval: false
+    echo: true
+format:
+  revealjs:
+    theme: [default, ../su_presentation.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
+    footer: |
+      view slides at [the-strategy-unit.github.io/data_science/presentations](the-strategy-unit.github.io/data_science/presentations)
+editor: 
+  markdown: 
+    wrap: 120
+---
+
+## What is AI?
+
+* This is quite obviously a very large question
+* In a meeting of 5 data scientists there are 6 opinions
+* I'm going to start overinclusive
+* Then I'm going to give a quite narrow "Wot I think"
+* Concepts and vocabulary to reason about (and use, procure, produce...) AI
+
+## Start with the dictionary
+
+> Merriam Webster: Software designed to imitate intelligent aspects of human behavio[u]r
+
+> Wikipedia: [AI is] is a field of research in computer science that develops and studies methods and software that enable machines to perceive their environment and use learning and intelligence to take actions that maximize their chances of achieving defined goals
+
+## Early history of AI
+
+* 1930-1950
+    * The Turing test
+    * Manipulation of symbolic representations analogy for thought
+    * Psychology <-> Artifical intelligence
+
+## 1950s & 1960s
+
+> 1965, H. A. Simon: "machines will be capable, within twenty years, of doing any work a man can do."
+
+> 1970, Marvin Minsky (in Life Magazine): "In from three to eight years we will have a machine with the general intelligence of an average human being."
+
+* Work with perceptrons (single layer neural networks)
+* Competing with symbolic representation work
+
+## The "AI effect"
+
+> The AI effect" refers to a phenomenon where either the definition of AI or the concept of intelligence is adjusted to exclude capabilities that AI systems have mastered. This often manifests as tasks that AI can now perform successfully no longer being considered part of AI, or as the notion of intelligence itself being redefined to exclude AI achievements ([wikipedia](https://en.wikipedia.org/wiki/AI_effect))

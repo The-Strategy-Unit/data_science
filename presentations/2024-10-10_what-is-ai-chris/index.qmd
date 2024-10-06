@@ -62,11 +62,21 @@ editor:
 
 ## Moravec's paradox
 
-> Encoded in the large, highly evolved sensory and motor portions of the human brain is a billion years of experience about the nature of the world and how to survive in it. The deliberate process we call reasoning is, I believe, the thinnest veneer of human thought, effective only because it is supported by this much older and much more powerful, though usually unconscious, sensorimotor knowledge. We are all prodigious olympians in perceptual and motor areas, so good that we make the difficult look easy. Abstract thought, though, is a new trick, perhaps less than 100 thousand years old. We have not yet mastered it. It is not all that intrinsically difficult; it just seems so when we do it
+> Encoded in the large, highly evolved sensory and motor portions of the human brain is a billion years of experience about the nature of the world and how to survive in it... We are all prodigious olympians in perceptual and motor areas, so good that we make the difficult look easy. Abstract thought, though, is a new trick, perhaps less than 100 thousand years old. We have not yet mastered it. It is not all that intrinsically difficult; it just seems so when we do it
 
 ## The "AI effect"
 
 > The AI effect" refers to a phenomenon where either the definition of AI or the concept of intelligence is adjusted to exclude capabilities that AI systems have mastered. This often manifests as tasks that AI can now perform successfully no longer being considered part of AI, or as the notion of intelligence itself being redefined to exclude AI achievements ([wikipedia](https://en.wikipedia.org/wiki/AI_effect))
+
+## The coffee test
+
+"A machine is required to enter an average American home and figure out how to make coffee: find the coffee machine, find the coffee, add water, find a mug, and brew the coffee by pushing the proper buttons." ([source](https://en.wikipedia.org/wiki/Artificial_general_intelligence#Characteristics))
+
+## A narrower definition of "AI" for us to use
+
+* Searching the possibility space of the game of chess is not AI- because it doesn't scale
+* A robot coming to your house and making a cup of coffee **is** AI but it's way more sophisticated than we need
+* Useful AI systems today are basically something inbetween
 
 ## Machine learning
 
@@ -76,14 +86,46 @@ editor:
 
 * Classification is often called "AI"
 * Various types of classification problems:
-  * Given a risk score will this patient require hospitalisation?
+  * Given a set of observations will this patient require hospitalisation?
   * Given a piece of patient feedback which of these 10 categories is it about?
   * Given an X ray is it probable that this patient has cancer?
-
-## Risk score
 
 ## No, really, tell me, what is AI?
 
 * There are two elements of a classification problem that can be "difficult"
   * Input
   * Computation
+* I'd really like to avoid calling anything AI if one or both of those things is not complex
+
+## Risk score
+
+* Sometimes you see any predictive algorithm as "AI"
+
+```{r, echo = FALSE, eval = TRUE}
+
+fit = glm(vs ~ hp, data=mtcars, family=binomial)
+newdat <- data.frame(hp=seq(min(mtcars$hp), max(mtcars$hp),len=100))
+newdat$vs = predict(fit, newdata=newdat, type="response")
+plot(vs~hp, data=mtcars, col="red4", ylab = "Outcome", xlab = "Score")
+lines(vs ~ hp, newdat, col="green4", lwd=2)
+
+```
+
+## Deep learning
+
+* Deep learning is literally artificial intelligence
+
+![](dl.png)
+
+([source](https://blog.bismart.com/en/difference-between-machine-learning-deep-learning))
+
+## Deep learning predictions
+
+* Deep learning models meet a reasonable standard for "AI"
+* They do this by being able to model complex non linear relationships and without any prior knowledge, rules, or models (a little bit like a human baby, in fact)
+* Deep learning models for prediction can absorb large numbers of variables and produce predictions based on highly complex relationships within the data, merely by being trained appropriately
+
+## Classifying patient experience feedback
+
+
+

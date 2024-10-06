@@ -139,8 +139,24 @@ lines(vs ~ hp, newdat, col="green4", lwd=2)
 * Complex input
 * For comment theme- non complex computation (logistic regression)
 * For sentiment- transfer learning
-* It would appear that for patient experience data
-  * Theme does not require intelligence- linear models of word counts suffice
-  * Sentiment does require pretrained deep learning models of language
-  * We can see intuitively that detecting theme is "harder" than sentiment
+* Theme does not require intelligence- linear models of word counts suffice
+* Sentiment does require pretrained deep learning models of language
+* We can see intuitively that detecting sentiment is "harder" than theme
+
+## Large language models
+
+* Passes the Turing test (e.g. ChatGPT)
+* Can **not** make you coffee
+* The fundamental training is done by "masking" words and asking the model to predict them
+* ChatGPT has been called "a stochastic parrot"
+* Despite appearances, ChatGPT has no understanding other than a deep knowledge of the probabilistic structure of words in language
+
+## Summary
+
+* AI is lots of things and has been called lots of things
+* Even some apparently "intelligent" tasks are not really so intelligent when you know how they work
+* My own view is that a useful definition of AI includes:
+  * Modelling complex nonlinear systems without an explicit model
+  * Deep learning predictive algorithms meet this criterion, as do LLMs
+
 

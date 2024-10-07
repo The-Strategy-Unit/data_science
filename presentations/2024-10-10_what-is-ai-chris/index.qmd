@@ -35,7 +35,7 @@ editor:
 
 > Merriam Webster: Software designed to imitate intelligent aspects of human behavio[u]r
 
-> Wikipedia: [AI is] is a field of research in computer science that develops and studies methods and software that enable machines to perceive their environment and use learning and intelligence to take actions that maximize their chances of achieving defined goals
+> Wikipedia: [AI] is a field of research in computer science that develops and studies methods and software that enable machines to perceive their environment and use learning and intelligence to take actions that maximize their chances of achieving defined goals
 
 ## Modern AI
 

@@ -75,7 +75,7 @@ editor:
 
 ## The "AI effect"
 
-> The AI effect" refers to a phenomenon where either the definition of AI or the concept of intelligence is adjusted to exclude capabilities that AI systems have mastered. This often manifests as tasks that AI can now perform successfully no longer being considered part of AI, or as the notion of intelligence itself being redefined to exclude AI achievements ([wikipedia](https://en.wikipedia.org/wiki/AI_effect))
+> "The AI effect" refers to a phenomenon where either the definition of AI or the concept of intelligence is adjusted to exclude capabilities that AI systems have mastered. This often manifests as tasks that AI can now perform successfully no longer being considered part of AI, or as the notion of intelligence itself being redefined to exclude AI achievements ([wikipedia](https://en.wikipedia.org/wiki/AI_effect))
 
 ## The coffee test
 

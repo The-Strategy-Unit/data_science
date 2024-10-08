@@ -1,0 +1,150 @@
+---
+title: "What is AI?"
+author: "Data science team, Strategy Unit"
+date: 2024-10-10
+date-format: "MMM D, YYYY"
+knitr:
+  opts_chunk: 
+    eval: false
+    echo: true
+format:
+  revealjs:
+    theme: [default, ../su_presentation.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
+    footer: |
+      view slides at [the-strategy-unit.github.io/data_science/presentations](the-strategy-unit.github.io/data_science/presentations)
+editor: 
+  markdown: 
+    wrap: 120
+---
+
+## Generative AI ✨
+
+* Creates new content
+* Learns from examples
+* Many applications
+
+::: {.notes}
+* Generative AI uses patterns from data (like text, images, or sound) to create new, similar content.
+* It’s trained on large datasets and then generates things based on what it has learned.
+* Can write stories, make art, create music, or even simulate human conversations.
+:::
+
+## Modalities 🖼️
+
+* Images
+* Audio/Video
+* Text
+
+::: {.notes}
+* Written content like stories, code or conversations (e.g. ChatGPT).
+* Visuals, from drawings to photorealistic images (e.g. DALL-E).
+* Music, voices, or even entire videos with sound and motion (e.g. deepfake videos).
+:::
+
+## It's just a (fancy) parrot 🦜
+
+* Learns from lots of text
+* Predicts words
+* Generates responses
+
+::: {.notes}
+* A large language model is trained on massive amounts of text to understand language patterns and meaning.
+* It works by predicting the next word or phrase based on what you’ve written, like auto-complete but much smarter.
+* Using what it’s learned, it creates new sentences, answers questions, or writes content that makes sense in context.
+:::
+
+## Text, but not AI 💬
+
+* Search engines
+* Spam filters
+* Sentiment analysis
+
+::: {.notes}
+* Search engines retrieve information from existing sources based on keywords but don’t create new content.
+* Filters use language patterns to detect and block unwanted messages without generating new text.
+* Sentiment analysis is about analysing text to determine emotions (positive, negative, neutral) but they don’t generate new language or ideas.
+:::
+
+## In healthcare 🏥
+
+* Medical documentation
+* Virtual health assistants (chatbots)
+* Drug discovery research
+
+::: {.notes}
+* Automatically generate and organize patient notes from doctors' dictations, saving time on paperwork.
+* Provide 24/7 support by answering common medical questions and guiding patients through symptom checks.
+* Analyze vast amounts of medical literature and data to help identify new potential treatments or drug interactions.
+:::
+
+## IRL models 🤖
+
+* [Open source healthcare-focused models](https://research.aimultiple.com/large-language-models-in-healthcare/#open-source-healthcare-focused-llms)
+* [Google's MedLM](https://cloud.google.com/blog/topics/healthcare-life-sciences/introducing-medlm-for-the-healthcare-industry)
+* [Nature: LLMs in medicine](https://www.nature.com/articles/s41591-023-02448-8) and [the future landscape](https://www.nature.com/articles/s43856-023-00370-1)
+
+## IRL case studies 🧑‍⚕️
+
+* [NHS: Chatbot for mental health referrals](https://transform.england.nhs.uk/key-tools-and-info/digital-playbooks/workforce-digital-playbook/using-an-ai-chatbot-to-streamline-mental-health-referrals/)
+* [Responding to cancer patients (The Lancet)](https://www.thelancet.com/action/showPdf?pii=S2589-7500%2824%2900060-8)
+* [DrugGPT: drug exploration](https://github.com/LIYUESEN/druggpt)
+
+## Pros ➕
+
+* Increases service accessibility, reduces pressure
+* Can be trained for domain specificity
+* Research assistance
+
+::: {.notes}
+* Could ease pressure by providing info/assistance to users anytime, making services like customer support available 24/7.
+* Could be trained on healthcare texts. See example of [GDS's GOV.UK Chat experiment](https://insidegovuk.blog.gov.uk/2024/01/18/the-findings-of-our-first-generative-ai-experiment-gov-uk-chat/)
+* Helps researchers summarize articles, extract key information, and identify trends from large datasets quickly.
+:::
+
+## Cons ➖
+
+* Can make mistakes
+* Ethical: bias, computational cost, data
+* Is not human
+
+::: {.notes}
+* Sometimes gives wrong or confusing information, especially on complex topics. May provide inaccurate medical advice or information, leading to potential misdiagnoses or harmful decisions.
+* Can reflect biases found in the data it was trained on, leading to unfair responses that could be plain wrong for the target audience.
+* Lack of accountability: it can be unclear who is responsible, complicating patient care and trust issues.
+* Requires significant computational power and resources, which can be expensive and environmentally taxing.
+* Doesn't understand emotions, context, or nuance.
+:::
+
+## Consider 🤔
+
+* Have you considered user needs?
+* Are there legal issues?
+* What policies should you follow?
+
+::: {.notes}
+* * Are there more classic, better understood AI approaches you could use? NLP?
+* Test the limits of the system; where is it likely to fail or give bad information?
+* Provide an alternative to users in certain cases (e.g. non-chatbot given the chance of 'conversation loops').
+* Could your product technically be [a medical device](https://medregs.blog.gov.uk/2023/03/03/large-language-models-and-software-as-a-medical-device/)?
+* Have you performed a data protection impact assessment?
+* Are you thinking about the humans at the end of the process? The uisers of your service? [See GDS's example regarding chatbots]( https://www.gov.uk/guidance/using-chatbots-and-webchat-tools).
+:::
+
+## Policies 📜
+
+* [GenAI framework for HM Gov](https://assets.publishing.service.gov.uk/media/65c3b5d628a4a00012d2ba5c/6.8558_CO_Generative_AI_Framework_Report_v7_WEB.pdf)
+* [Civil servants guidance]( https://www.gov.uk/government/publications/guidance-to-civil-servants-on-use-of-generative-ai/guidance-to-civil-servants-on-use-of-generative-ai)
+* [NHS-R statement](https://tools.nhsrcommunity.com/statement-on-artificial-intelligence.html)
+* [Nugget](https://csucloudservices.sharepoint.com/SitePages/ML-staff-evaluate-Microsoft-Copilot.aspx): 'Please note that no team or individual should use AI tools that are not currently being evaluated.'
+
+## Further reading 📚
+
+* [3 Blue 1 Brown](https://youtube.com/watch?v=wjZofJX0v4M)
+* [Computerphile](https://www.youtube.com/watch?v=of4UDMvi2Kw)
+* [NHS Library learning zone](https://library.hee.nhs.uk/learning-academy/learning-zone/artificial-intelligence)

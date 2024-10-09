@@ -14,7 +14,7 @@ format:
     preview-links: auto
     slide-number: false
     auto-animate: true
-    reference-location: document
+    reference-location: margin
     footer: |
       Learn more about [The Strategy Unit](https://www.strategyunitwm.nhs.uk/)
 ---
@@ -30,31 +30,101 @@ Of those two million records that were scanned, more than **400,000 people** wer
 
 ## How it works
 
-- Health records are structured data - can be stored in a table / dataframe
+- The input: Health records
+- Health records can be structured or unstructured
+    - Structured: can be stored in a table
+    - Unstructured: can't be stored in a table, different shapes/sizes (e.g. text, audio, images)
 
-[ Provide example here ]
+## Example of structured data in health records
 
-[ Very briefly talk about the different types of models ]
+| ID | BMI | Age | IMD Decile | Smoker | Blood Pressure |
+|---|---|---|---|---|---|
+|1| 17 | 49 | 3 | 1 | 110/70 |
+|2| 25 | 67 | 1 | 1 | 129/70 |
+|3| 20 | 39 | 8 | 0 | 140/90 |
+|4| 28 | 81 | 6 | 0 | 130/85 |
+|5| 29 | 41 | 4 | 0 | 120/80 |
 
-[ Show some code for how to train a model? (it's not hugely complicated) ]
+Data is consistent within each column in the table.
 
-## Pros
+## Example of unstructured data in health records
 
-- These models can be more easily explained - not a black box like LLMs
-- Can surface patterns in the data that are not immediately obvious
+| ID | Notes                                                                    |
+|----|--------------------------------------------------------------------------|
+| 1  | Shortness of breath                                                      |
+| 2  | Patient attended clinic following one week of fever, vomiting, and abdominal pain. |
 
-## Cons
+The length of each sentence is different - data not consistent.
 
-- The quality of the data determines the quality of the model
+## A simple approach to classifying data
 
-## Issues to look out for
+:::: {.columns}
+::: {.column width="50%"}
 
-Is the model being retrained?
-
-::: {.notes}
-
-- Notes go here
+Clustering algorithms like K Nearest Neighbours are on the more basic end of the scale, requiring very little computational power.
 
 :::
 
+::: {.column width="40%"}
+
+![Example of k-nearest neighbour classification, with red triangles representing one class, blue squares representing another, and a new datapoint as a green circle which has two close red triangle neighbours and one blue square neighbour.](https://upload.wikimedia.org/wikipedia/commons/e/e7/KnnClassification.svg)^[Antti Ajanki AnAj, CC BY-SA 3.0 <http://creativecommons.org/licenses/by-sa/3.0/>, via Wikimedia Commons]
+
+:::
+::::
+
+## More complex approaches to classifying data {.small}
+
+![Complex diagram showing a decision tree for choosing the right estimator for different machine learning problems](https://scikit-learn.org/1.3/_static/ml_map.png)^[https://scikit-learn.org/1.3/tutorial/machine_learning_map/]
+
+::: {.notes}
+
+- There are dozens of different algorithms out there
+- Complex neural networks can take days to train if the dataset is large enough
+- Each algorithm has different strengths and weaknesses
+
+:::
+
+## Is the input or the computation complex?
+
+The University of Leeds has helped **train an AI system** called Optimise, that looked at **health records** of more than **two million people**.
+
+...
+
+Of those two million records that were scanned, more than **400,000 people** were identified as being high risk for the likes of heart failure, stroke and diabetes.
+
+## Pros and cons of simple "A.I." approaches
+
+:::: {.columns}
+::: {.column width="50%"}
+
+Pros:
+
+- Simple models are more easily explained
+- Can sometimes find new patterns in the data
+
+:::
+
+::: {.column width="50%"}
+
+Cons:
+
+- The quality of the data determines the quality of the model
+- Not able to handle very complex tasks
+
+::: 
+::::
+
+## 🚩 Issues to look out for 🚩
+
+- How complex is the input, or the computational approach?
+- Does the model get updated?
+- Where did the data come from?
+- Have issues of bias or ethics been considered?
+
+
+::: {.notes}
+
+- Continuously learning, or learning from mistakes vs. snapshot in time
+
+:::
 

@@ -1,0 +1,434 @@
+---
+title: "Computer Vision"
+subtitle: "Is this AI?"
+author: 
+  - "[Tom Jemmett](mailto:thomas.jemmett@nhs.net)"
+date: 2024-10-10
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, ../su_presentation.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
+    reference-location: document
+    footer: |
+      Learn more about [The Strategy Unit](https://www.strategyunitwm.nhs.uk/)
+---
+
+## What is Computer Vision (CV)
+
+::: {.fragment}
+> Computer vision is a field of **computer science** that focuses on enabling **computers to
+> identify and understand objects and people** in **images and videos**.
+:::
+
+::: {.fragment}
+> Like other types of AI, computer vision seeks to **perform and automate tasks** that **replicate
+> human capabilities**.
+:::
+
+::: {.fragment}
+> In this case, computer vision seeks to replicate both the way **humans see**, and
+> the way humans **make sense** of what they see.
+:::
+
+::: footer
+Source: [What is computer vision? Microsoft](https://azure.microsoft.com/en-gb/resources/
+cloud-computing-dictionary/what-is-computer-vision#object-classification)
+:::
+
+# What tasks can CV be used for? {.center .inverse}
+
+---
+
+## Classification
+
+::: {.fragment fragment-index=6}
+*Assign a single label to each image*
+:::
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+::: {.fragment fragment-index=1}
+![](https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/refs/heads/master/n02102177_Welsh_springer_spaniel.JPEG){height=300px}
+:::
+
+::: {.fragment fragment-index=3}
+Dog
+:::
+::: {.fragment fragment-index=4}
+Welsh Spaniel
+:::
+::: {.fragment fragment-index=5}
+Animal in water
+:::
+
+:::
+
+::: {.column width="20%"}
+:::
+
+::: {.column width="40%"}
+
+::: {.fragment fragment-index=2}
+![](https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/refs/heads/master/n02102480_Sussex_spaniel.JPEG){height=300px}
+:::
+
+::: {.fragment fragment-index=3}
+Dog
+:::
+::: {.fragment fragment-index=4}
+Sussex Spaniel
+:::
+::: {.fragment fragment-index=5}
+Animal on land
+:::
+
+:::
+
+::::
+
+::: footer
+Images from [imagenet](https://www.image-net.org/)
+:::
+
+
+## Multi-Classification
+
+
+::: {.fragment fragment-index=2}
+*Assign one or more labels to each image*
+:::
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+![](https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/refs/heads/master/n02102177_Welsh_springer_spaniel.JPEG){height=300px}
+
+::: {.fragment fragment-index=1}
+Dog, Welsh Spaniel, Animal in water
+:::
+
+:::
+
+::: {.column width="20%"}
+:::
+
+::: {.column width="40%"}
+
+![](https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/refs/heads/master/n02102480_Sussex_spaniel.JPEG){height=300px}
+
+::: {.fragment fragment-index=1}
+Dog, Sussex Spaniel, Animal on land
+:::
+
+:::
+
+::::
+
+::: footer
+Images from [imagenet](https://www.image-net.org/)
+:::
+
+## Object Detection
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Detected-with-YOLO--Schreibtisch-mit-Objekten.jpg/1119px-Detected-with-YOLO--Schreibtisch-mit-Objekten.jpg)
+
+::: footer
+Image sourced from [Wikimedia](https://commons.wikimedia.org/wiki/File:Detected-with-YOLO--Schreibtisch-mit-Objekten.jpg)
+:::
+
+## Event Detection
+
+![](https://www.autonomousvehicleinternational.com/wp-content/uploads/2022/05/AdobeStock_215808766-1024x596.jpeg)
+
+::: footer
+[Is camera-only the future of self-driving cars?](https://www.autonomousvehicleinternational.com/features/is-camera-only-the-future-of-self-driving-cars.html)
+:::
+
+## How does CV work? { .inverse}
+
+### for classification tasks
+
+::: {.incremental}
+- get a very large corpus or labelled images
+- convert the images to a form that the computer can work with (tensors)
+- feed into a convolutional neural network
+- profit?
+:::
+
+## Large corpus of labelled images
+
+### ImageNet
+
+* a large visual database
+* over 14 million hand-annotated images
+* more than 20,000 categories
+* each category has "several hundred" images
+* started in 2006
+
+## Convert the images to tensors
+
+:::: {.columns}
+
+::: {.column width="50%"}
+A fancy way of saying:
+
+turn the images into a 2d table
+
+of values between 0 and 1
+:::
+
+::: {.column width="50%"}
+<div position="relative">
+
+::: { .fragment .fade-in-then-out fragment-index=1}
+<div style="position:absolute; margin-left: auto; margin-right: auto;">
+
+```{r}
+#| fig-width: 5
+#| fig-height: 5
+
+i <- 0
+j <- 0
+
+f <- \(x, y) pmin(1, sqrt((x - 5)^2 + (y - 5)^2) / sqrt(32))
+
+p <- purrr::map(
+  0:10,
+  \(i) purrr::map(
+    0:10,
+    \(j) list(x = i, y = j, v = f(i, j))
+  )
+) |>
+  purrr::flatten() |>
+  dplyr::bind_rows() |>
+  ggplot2::ggplot(ggplot2::aes(x = x, y = y)) +
+  ggplot2::geom_tile(ggplot2::aes(fill = v)) +
+  ggplot2::scale_fill_gradient(low = "black", high = "white") +
+  ggplot2::coord_fixed() +
+  ggplot2::theme_void() +
+  ggplot2::theme(
+    legend.position = "none",
+    plot.background = ggplot2::element_rect(fill = "#f5f4f3", colour = NA)
+  )
+
+p
+```
+
+</div>
+:::
+
+::: { .fragment .fade-in-then-out fragment-index=2}
+<div style="position:absolute; margin-left: auto; margin-right: auto;">
+
+```{r}
+#| fig-width: 5
+#| fig-height: 5
+p + ggplot2::geom_label(ggplot2::aes(label = scales::number(v, 0.01)))
+```
+
+</div>
+:::
+</div>
+:::
+
+::::
+
+## (Convolutional) Neural Networks
+
+{{< video https://youtu.be/aircAruvnKk start="215" width="100%" height="85%" >}}
+
+::: footer
+[3Blue1Brown, YouTube Channel](https://www.youtube.com/c/3blue1brown)
+:::
+
+## Use pre-trained models
+
+Models that have been pre-trained on some image datasets which can be downloaded and used
+
+::: { .incremental }
+* [ResNet](https://huggingface.co/microsoft/resnet-50) (Microsoft Research)
+* [Inception](https://huggingface.co/docs/timm/en/models/inception-v4) (Google)
+* [Trending classifiers from Hugging Face](https://huggingface.co/models?pipeline_tag=image-classification&sort=trending)
+:::
+
+:::{ .fragment }
+Transfer learning is the concept of taking a pre-trained model as a basis, then fine-tuning it to
+classify based on your own images.
+:::
+
+## How can CV be used in Healthcare? { .inverse }
+
+* classification
+* multi-classification
+* object detection
+* event detection
+
+## How can CV be used in Healthcare? { .inverse }
+
+<div style="line-height: 1em">
+::: { .incremental }
+* detecting disease or injury
+* monitoring patients vitals, e.g. respiratory rate
+* detecting bounds of a tumour when planning radiotherapy
+* automating cell counting
+* calculating the grade of a cancer
+* monitor for long-term changes, e.g. AAA
+* devices for patients with vision impairments
+* detecting when patients move (fall prevention)
+* monitoring the hygiene of a ward
+:::
+</div>
+
+## Issues with Computer Vision
+
+<div position="relative">
+
+<div style="position:absolute; margin-left: auto; margin-right: auto;">
+
+![](https://ichef.bbci.co.uk/ace/standard/624/cpsprodpb/BC13/production/_83974184_29ba8607-9446-4298-9d9e-d33514811487.jpg.webp)
+
+</div>
+
+::: { .fragment }
+<div style="position:absolute; margin-top: 15rem; margin-left: 15rem; margin-right: auto;">
+
+![](https://ichef.bbci.co.uk/ace/standard/624/cpsprodpb/2253/production/_83978780_3e99ce73-ad5b-46d4-9c71-2f1545a32520.jpg.webp)
+
+
+</div>
+:::
+</div>
+
+## Issues with Computer Vision
+
+> ... one neural network learned to differentiate between dogs and wolves. It didn’t learn the
+> differences between dogs and wolves, but instead learned that wolves were on snow in their picture
+> and dogs were on grass.
+
+::: footer
+[Dogs, Wolves, Data Science, and Why Machines Must Learn Like Humans Do (2017)](https://medium.com/veon-careers/dogs-wolves-data-science-and-why-machines-must-learn-like-humans-do-213b08036a10)
+:::
+
+## Issues with Computer Vision
+
+![](https://www.science.org/do/10.1126/science.aay4197/full/ca_0621NID_Ai_Medical_Imaging_online-1644894873413.jpg)
+
+::: footer
+[Artificial intelligence could revolutionize medical care. But don't trust it to read your x-ray just yet (2019)](https://www.science.org/content/article/artificial-intelligence-could-revolutionize-medical-care-don-t-trust-it-read-your-x-ray)
+:::
+
+
+## Issues with Computer Vision
+
+::: {.fragment fragment-index=1}
+* algorithm trained at Mount Sinai Hospital, New York City
+* Busy ICU, many elderly patients
+* 34% of their x-rays came from patients with pneumonia
+* 93% accuracy
+:::
+
+::: {.fragment fragment-index=2}
+* tested at other sites, pneumonia ~1% of x-rays
+* accuracy dropped to 73%-80%
+:::
+
+::: footer
+[Artificial intelligence could revolutionize medical care. But don't trust it to read your x-ray just yet (2019)](https://www.science.org/content/article/artificial-intelligence-could-revolutionize-medical-care-don-t-trust-it-read-your-x-ray)
+:::
+
+## Issues with Computer Vision
+
+> At Mount Sinai, many of the infected patients were **too sick to get out of bed**, and so doctors
+> used a **portable chest x-ray machine**. Portable x-ray images **look very different** from those
+> created when a patient is standing up. Because of what it learned from Mount Sinai's x-rays, the
+> **algorithm began to associate a portable x-ray with illness**. It also **anticipated a high rate
+> of pneumonia**.
+
+::: footer
+[Artificial intelligence could revolutionize medical care. But don't trust it to read your x-ray just yet (2019)](https://www.science.org/content/article/artificial-intelligence-could-revolutionize-medical-care-don-t-trust-it-read-your-x-ray)
+:::
+
+## The Unique Problems of Medical Computer Vision
+
+:::: { .columns }
+
+::: {.column width=50%}
+![](https://sironamedical.com/wp-content/uploads/2022/07/Screen-Shot-2022-01-04-at-3.44.56-PM.png)
+:::
+
+::: { .column width=50%}
+::: { .medium }
+> This is the very unique problem of medical computer vision: we are attempting to solve a small
+> signal on the background of small noise whereas standard computer vision’s problem is a large
+> signal on the background of large noise.
+:::
+:::
+
+::::
+
+::: footer
+[The Unique Problems of Medical Computer Vision](https://sironamedical.com/the-unique-problems-of-medical-computer-vision/)
+:::
+
+
+## The Unique Problems of Medical Computer Vision
+
+:::: {.columns}
+
+:::{.column width=45%}
+:::{ .fragment fragment-index=1}
+:::{ .small }
+Is this a dog?
+:::
+
+![](https://upload.wikimedia.org/wikipedia/commons/c/c4/Springer_Spaniel_Wide_Shot.jpg)
+:::
+
+:::{ .fragment fragment-index=2}
+:::{ .small }
+[English Springer Spaniel in a Field, Wikipedia](https://en.wikipedia.org/wiki/English_Springer_Spaniel#/media/File:Springer_Spaniel_Wide_Shot.jpg)
+:::
+:::
+:::
+
+:::{.column width=10%}
+:::
+
+:::{.column width=45%}
+:::{ .fragment fragment-index=3}
+:::{ .small }
+[Small-cell carcinoma of the lung, Wikipedia](https://en.wikipedia.org/wiki/Small-cell_carcinoma#/media/File:Lung_small_cell_carcinoma_(1)_by_core_needle_biopsy.jpg)
+:::
+
+![](https://upload.wikimedia.org/wikipedia/commons/5/54/Lung_small_cell_carcinoma_%281%29_by_core_needle_biopsy.jpg)
+:::
+:::
+
+::::
+
+:::{ .fragment fragment-index=4}
+:::{ .small }
+Annotations of cats & dogs is cheaper than reviewing medical scans/slides. The latter adds an
+additional burden on health systems.
+:::
+:::
+
+## Other issues with CV
+
+:::{ .incremental }
+* Early detection vs over diagnosis
+* [Adversarial attacks](https://arxiv.org/pdf/2209.01962) can trick CV algorithms to incorrectly
+classify images
+* Computational power (environmental impact)
+* Governance: have we got consent to use images?
+* Explainability of Neural Networks
+:::

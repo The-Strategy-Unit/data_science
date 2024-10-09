@@ -2066,13 +2066,6 @@
     "text": "Is the input or the computation complex?\n“We used UK primary care EHR data from 2,081,139 individuals aged ≥ 30 years…\nWe trained a random forest classifier using age, sex, ethnicity and comorbidities (OPTIMISE).”1\nNadarajah, Ramesh, et al. “Machine learning to identify community-dwelling individuals at higher risk of incident cardio-renal-metabolic diseases and death.” Future Healthcare Journal 11 (2024): 100109. https://www.sciencedirect.com/science/article/pii/S2514664524002212"
   },
   {
-    "objectID": "presentations/2024-10-10_what-is-ai-yiwen/index.html#how-do-we-know-if-a-model-is-good",
-    "href": "presentations/2024-10-10_what-is-ai-yiwen/index.html#how-do-we-know-if-a-model-is-good",
-    "title": "Identifying patients at risk",
-    "section": "How do we know if a model is good?",
-    "text": "How do we know if a model is good?\nBeware of metrics like “accuracy”\nIf only 1% of the population is at risk of heart disease, and the model is a broken model that never ever predicts someone is at risk, this model would still have 99% accuracy, because it would be right 99/100 times!\nCarefully consider what is important to measure, given the context.\n\nIn the scenario above, a measure like “recall” would be more useful.1\n\nhttps://www.youtube.com/watch?v=qWfzIYCvBqo"
-  },
-  {
     "objectID": "presentations/2024-10-10_what-is-ai-yiwen/index.html#pros-and-cons-of-simple-a.i.-approaches",
     "href": "presentations/2024-10-10_what-is-ai-yiwen/index.html#pros-and-cons-of-simple-a.i.-approaches",
     "title": "Identifying patients at risk",

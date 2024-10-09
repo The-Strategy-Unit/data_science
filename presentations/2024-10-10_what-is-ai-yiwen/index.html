@@ -443,42 +443,45 @@
 </table>
 <p>The length of each sentence is different - data not consistent.</p>
 </section>
-<section id="a-simple-approach-to-classifying-data" class="slide level2">
-<h2>A simple approach to classifying data</h2>
+<section id="a-simple-approach-to-classifying-data-knn" class="slide level2">
+<h2>A simple approach to classifying data: KNN</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p>Clustering algorithms like K Nearest Neighbours are on the more basic end of the scale, requiring very little computational power.</p>
+<p>Clustering algorithms like K Nearest Neighbours (KNN) are on the more basic end of the scale, requiring very little computational power.</p>
 </div><div class="column" style="width:40%;">
 <p><img data-src="https://upload.wikimedia.org/wikipedia/commons/e/e7/KnnClassification.svg" alt="Example of k-nearest neighbour classification, with red triangles representing one class, blue squares representing another, and a new datapoint as a green circle which has two close red triangle neighbours and one blue square neighbour."><sup>1</sup></p>
 </div></div>
 <aside><ol class="aside-footnotes"><li id="fn2"><p>Antti Ajanki AnAj, CC BY-SA 3.0 <a href="http://creativecommons.org/licenses/by-sa/3.0/" class="uri">http://creativecommons.org/licenses/by-sa/3.0/</a>, via Wikimedia Commons</p></li></ol></aside></section>
-<section id="more-complex-approaches-to-classifying-data" class="slide level2 small">
-<h2>More complex approaches to classifying data</h2>
+<section id="a-simple-approach-to-classifying-data-decision-tree" class="slide level2">
+<h2>A simple approach to classifying data: Decision Tree</h2>
+<p><img data-src="https://www.researchgate.net/profile/Dan-Andrei-Sitar-Taut/publication/26635430/figure/fig1/AS:883068449607681@1587551333416/Decision-tree-classifying-patients-with-coronary-artery-disease.ppm" alt="Example of a decision tree"><sup>1</sup></p>
+<aside><ol class="aside-footnotes"><li id="fn3"><p>https://www.researchgate.net/publication/26635430_Using_Machine_Learning_Algorithms_in_Cardiovascular_Disease_Risk_Evaluation</p></li></ol></aside></section>
+<section id="there-are-many-different-models-out-there" class="slide level2 small">
+<h2>There are many different models out there! 🥴</h2>
 <p><img data-src="https://scikit-learn.org/1.3/_static/ml_map.png" alt="Complex diagram showing a decision tree for choosing the right estimator for different machine learning problems"><sup>1</sup></p>
-<aside class="notes">
+<aside><ol class="aside-footnotes"><li id="fn4"><p>https://scikit-learn.org/1.3/tutorial/machine_learning_map/</p></li></ol></aside></section>
+<section id="what-makes-a-model-simple-or-complex" class="slide level2">
+<h2>What makes a model simple or complex?</h2>
 <ul>
 <li>There are dozens of different algorithms out there</li>
-<li>Complex neural networks can take days to train if the dataset is large enough</li>
 <li>Each algorithm has different strengths and weaknesses</li>
+<li>What makes a model simple or complex is the amount of computational power required and how much the model needs to “learn” - how many parameters there are</li>
 </ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<aside><ol class="aside-footnotes"><li id="fn3"><p>https://scikit-learn.org/1.3/tutorial/machine_learning_map/</p></li></ol></aside></section>
+</section>
 <section id="is-the-input-or-the-computation-complex" class="slide level2">
 <h2>Is the input or the computation complex?</h2>
-<p>The University of Leeds has helped <strong>train an AI system</strong> called Optimise, that looked at <strong>health records</strong> of more than <strong>two million people</strong>.</p>
-<p>…</p>
-<p>Of those two million records that were scanned, more than <strong>400,000 people</strong> were identified as being high risk for the likes of heart failure, stroke and diabetes.</p>
-</section>
+<p>“We used UK primary care EHR data from 2,081,139 individuals aged ≥ 30 years…</p>
+<p>We trained a random forest classifier using age, sex, ethnicity and comorbidities (OPTIMISE).”<sup>1</sup></p>
+<aside><ol class="aside-footnotes"><li id="fn5"><p>Nadarajah, Ramesh, et al.&nbsp;“Machine learning to identify community-dwelling individuals at higher risk of incident cardio-renal-metabolic diseases and death.” Future Healthcare Journal 11 (2024): 100109. https://www.sciencedirect.com/science/article/pii/S2514664524002212</p></li></ol></aside></section>
+<section id="how-do-we-know-if-a-model-is-good" class="slide level2">
+<h2>How do we know if a model is good?</h2>
+<p>Beware of metrics like “accuracy”</p>
+<p>If only 1% of the population is at risk of heart disease, and the model is a broken model that never ever predicts someone is at risk, this model would still have 99% accuracy, because it would be right 99/100 times!</p>
+<p>Carefully consider what is important to measure, given the context.</p>
+<div class="fragment">
+<p>In the scenario above, a measure like “recall” would be more useful.<sup>1</sup></p>
+</div>
+<aside><ol class="aside-footnotes"><li id="fn6"><p>https://www.youtube.com/watch?v=qWfzIYCvBqo</p></li></ol></aside></section>
 <section id="pros-and-cons-of-simple-a.i.-approaches" class="slide level2">
 <h2>Pros and cons of simple “A.I.” approaches</h2>
 <div class="columns">
@@ -500,6 +503,7 @@
 <h2>🚩 Issues to look out for 🚩</h2>
 <ul>
 <li>How complex is the input, or the computational approach?</li>
+<li>How is the model’s performance measured?</li>
 <li>Does the model get updated?</li>
 <li>Where did the data come from?</li>
 <li>Have issues of bias or ethics been considered?</li>

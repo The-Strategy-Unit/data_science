@@ -93,18 +93,6 @@ Clustering algorithms like K Nearest Neighbours (KNN) are on the more basic end 
 
 We trained a random forest classifier using age, sex, ethnicity and comorbidities (OPTIMISE)."^[Nadarajah, Ramesh, et al. "Machine learning to identify community-dwelling individuals at higher risk of incident cardio-renal-metabolic diseases and death." Future Healthcare Journal 11 (2024): 100109. https://www.sciencedirect.com/science/article/pii/S2514664524002212]
 
-## How do we know if a model is good?
-
-Beware of metrics like "accuracy"
-
-If only 1% of the population is at risk of heart disease, and the model is a broken model that never ever predicts someone is at risk, this model would still have 99% accuracy, because it would be right 99/100 times!
-
-Carefully consider what is important to measure, given the context.
-
-::: {.fragment}
-In the scenario above, a measure like "recall" would be more useful.^[https://www.youtube.com/watch?v=qWfzIYCvBqo]
-:::
-
 ## Pros and cons of simple "A.I." approaches
 
 :::: {.columns}

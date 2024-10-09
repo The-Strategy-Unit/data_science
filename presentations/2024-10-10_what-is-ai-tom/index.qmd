@@ -66,7 +66,7 @@ Dog
 Welsh Spaniel
 :::
 ::: {.fragment fragment-index=5}
-Animial in water
+Animal in water
 :::
 
 :::
@@ -87,7 +87,7 @@ Dog
 Sussex Spaniel
 :::
 ::: {.fragment fragment-index=5}
-Animial on land
+Animal on land
 :::
 
 :::
@@ -113,7 +113,7 @@ Images from [imagenet](https://www.image-net.org/)
 ![](https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/refs/heads/master/n02102177_Welsh_springer_spaniel.JPEG){height=300px}
 
 ::: {.fragment fragment-index=1}
-Dog, Welsh Spaniel, Animial in water
+Dog, Welsh Spaniel, Animal in water
 :::
 
 :::
@@ -126,7 +126,7 @@ Dog, Welsh Spaniel, Animial in water
 ![](https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/refs/heads/master/n02102480_Sussex_spaniel.JPEG){height=300px}
 
 ::: {.fragment fragment-index=1}
-Dog, Sussex Spaniel, Animial on land
+Dog, Sussex Spaniel, Animal on land
 :::
 
 :::
@@ -282,9 +282,9 @@ classify based on your own images.
 * automating cell counting
 * calculating the grade of a cancer
 * monitor for long-term changes, e.g. AAA
-* devices for patients with vision impairements
+* devices for patients with vision impairments
 * detecting when patients move (fall prevention)
-* monitoring the hygeine of a ward
+* monitoring the hygiene of a ward
 :::
 </div>
 

@@ -1,0 +1,228 @@
+---
+title: "Large Language Models (LLMs): Is this AI?"
+author: "Data Science team, Strategy Unit"
+date: 2024-10-10
+date-format: "MMM D, YYYY"
+knitr:
+  opts_chunk: 
+    eval: false
+    echo: true
+format:
+  revealjs:
+    theme: [default, ../su_presentation.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
+    footer: |
+      view slides at [the-strategy-unit.github.io/data_science/presentations](the-strategy-unit.github.io/data_science/presentations)
+editor: 
+  markdown: 
+    wrap: 120
+---
+
+## Generative AI ✨
+
+* Creates new content
+* Trained on lots of examples
+* Can _mimic_ creativity
+
+::: {.notes}
+* Generative AI uses patterns from data (like text, images, or sound) to create new, similar content.
+* It’s trained on large datasets and then generates things based on what it has learned.
+* Can write stories, make art, create music, or even simulate human conversations.
+:::
+
+## Modalities 🖼️
+
+:::: {.columns}
+
+::: {.column width='50%'}
+* Images (e.g. [DALL-E](https://openai.com/index/dall-e-3/))
+* Audio/video (e.g. [Adobe Express](https://www.adobe.com/express/create/video))
+* Text (e.g. [ChatGPT](https://chatgpt.com/))
+:::
+
+::: {.column width='50%'}
+![](nose-hair.png){fig-alt="A doctor performing a procedure on a patient using a large pair of tweezers on their nose. It's in a cartoony style with isomatric projection. The wall has a sign saying 'chronic nose hair'."}
+:::
+
+::::
+
+::: {.notes}
+* Written content like stories, code or conversations.
+* Visuals, from drawings to photorealistic images.
+* Music, voices, or even entire videos with sound and motion.
+* These slides are about that last one, text, via Large Language Models (LLMs).
+:::
+
+## Text 🔤
+
+* Spam filters
+* Sentiment
+* Topic detection
+* Word prediction
+* ...
+
+::: {.notes}
+* Before we get into LLMs, it's worth recognising how many tools we use that involve some kind of text processing (perhaps AI driven).
+* Pattern detection, comparison to previous spam, keyword detection.
+* Summarising customer reviews as positive or negative (sentiment analysis).
+* Automatically identify key themes or topics within large collections of unstructured text (e.g. topic modelling).
+:::
+
+## Large Language Models (LLMs) 🦜
+
+* A (fancy?) parrot
+* Learns from lots of text
+* Predicts next word
+
+![](llm.png){fig-alt="A sentence that says 'the cat sat on the' followed by a blank. The words 'jumper', 'cushion', 'mat', 'grass' and 'dog' are show to the right with bars next to them. 'Mat' has the longest bar indicating the highest probability of it being the next word."}
+
+::: {.notes}
+* Breaks down text: the model processes input text by breaking it into smaller units (like words or subwords).
+* Finds patterns: it learns relationships between the units.
+* Generates predictions: based on the input, it predicts the most likely next word or phrase to generate coherent responses or text.
+:::
+
+## In healthcare 🏥
+
+* Organise medical documents
+* [Drug discovery](https://github.com/LIYUESEN/druggpt) research
+* Chatbots
+* ...
+
+::: {.notes}
+* Automatically generate, organise, summarise patient notes.
+* Analyse medical literature and data to help identify new potential treatments or drug interactions.
+* Provide 24/7 support by answering common medical questions and guiding patients through symptom checks.
+:::
+
+## IRL models 🤖
+
+* [Healthcare-focused models](https://research.aimultiple.com/large-language-models-in-healthcare/#open-source-healthcare-focused-llms)
+* [Google's MedLM](https://cloud.google.com/blog/topics/healthcare-life-sciences/introducing-medlm-for-the-healthcare-industry)
+* Nature: [LLMs in medicine](https://www.nature.com/articles/s41591-023-02448-8) and [the future landscape](https://www.nature.com/articles/s43856-023-00370-1)
+
+::: {.notes}
+* Specifically-developed LLMs for healthcare applications already exist, many are openly available.
+* Google's MedLM has a price tag.
+* There's a couple of Nature articles on current applications and potential future landscape.
+:::
+
+## Case study 🧠
+
+* NHS: [chatbot for mental health referrals](https://transform.england.nhs.uk/key-tools-and-info/digital-playbooks/workforce-digital-playbook/using-an-ai-chatbot-to-streamline-mental-health-referrals/)
+* Used [Limbic 'Access'](https://www.limbic.ai/nhs-talking-therapies) 'e-triage' chatbot
+* According to Limbic:
+
+> 'Nearly 40% of NHS Talking Therapies already trust Limbic to improve their services'
+
+::: {.notes}
+* There's an admin burden.
+* Took place in the Surrey and Borders Partnership NHS Foundation Trust
+:::
+
+## Case study 🧠
+
+:::: {.columns}
+
+::: {.column width='50%'}
+Patient
+
+![](limbic.png){fig-alt="A user interface to the Limbic Access system, which shows a chatbot asking the suer if they need help. There are buttons saying 'yes' and 'not thanks'."}
+:::
+
+::: {.column width='50%'}
+Clinician
+
+![](limbic-2.png){fig-alt="A clinician user interface to the Limbic Access system, which summarises an interaction with a patient."}
+:::
+
+::::
+
+* From [the NHS-E Transformation Directorate write-up](https://transform.england.nhs.uk/key-tools-and-info/digital-playbooks/workforce-digital-playbook/using-an-ai-chatbot-to-streamline-mental-health-referrals/):
+- ~99% of patients that left feedback said that Limbic was helpful
+- the service has seen a 30% increase in referrals and initial evidence indicates that Limbic improved out of hours access
+- on a pro-rata basis, a saving of 3000 hours (4 psychological wellbeing practitioners)
+- nearly 20% of referrals were identified as ineligible and signposted to a more appropriate service
+
+## But... ⚠️
+
+[The effect of using a large language model to respond to
+patient messages (The Lancet)](https://www.thelancet.com/action/showPdf?pii=S2589-7500%2824%2900060-8)
+
+> ...raises the question of the extent to which LLM assistance is decision support versus LLM-based decision making
+
+> ...a minority of LLM drafts, if left unedited, could lead to severe harm or death
+
+::: {.notes}
+* Brigham and Women’s Hospital, USA.
+* Investigated how 'LLM [GPT-4] assistance for electronic patient portal messaging in electronic health record systems (ie, using an LLM to draft a response for a clinician to edit) might
+impact subjective efficiency, clinical recommendations,
+and potential harms' for cancer patients.
+* Found safety errors, and in one instance the advice given to a patient could have been fatal. 
+:::
+
+## Pros ➕
+
+* For providers: could reduce pressure
+* For users: increases service accessibility
+* Can be trained for domain specificity
+
+::: {.notes}
+* Could ease pressure by providing info/assistance to users anytime, making services like customer support available 24/7.
+* Healthcare is very broad, but we can train on specific subsets of information to tailor the outcome. However, we do need plenty of data.
+:::
+
+## Cons ➖
+
+* Ethical issues, like:
+  - bias
+  - computational cost
+  - data origins
+  - privacy
+* Not human
+* [It lies](https://link.springer.com/article/10.1007/s10676-024-09775-5)
+
+::: {.notes}
+* Sometimes gives wrong or confusing information, especially on complex topics. May provide inaccurate medical advice or information, leading to potential misdiagnoses or harmful decisions. 
+* 'Hallucination' is perhaps a weasel word.
+* Can reflect biases found in the data it was trained on, leading to unfair responses that could be plain wrong for the target audience.
+* Lack of accountability: it can be unclear who is responsible, complicating patient care and trust issues.
+* Requires significant computational power and resources, which can be expensive and environmentally taxing.
+* Doesn't understand emotions, context, or nuance, which are all important in clinical settings.
+:::
+
+## Consider 🤔
+
+* Are there [legal issues](https://medregs.blog.gov.uk/2023/03/03/large-language-models-and-software-as-a-medical-device/)?
+* Have you considered [user needs](https://www.gov.uk/guidance/using-chatbots-and-webchat-tools)?
+* Should you follow policies (e.g. [HM gov](https://assets.publishing.service.gov.uk/media/65c3b5d628a4a00012d2ba5c/6.8558_CO_Generative_AI_Framework_Report_v7_WEB.pdf), [NHS](https://transform.england.nhs.uk/information-governance/guidance/artificial-intelligence/#healthcare_worker),  [trust](https://www.linkedin.com/posts/andy-mayne_approval-use-of-artificial-intelligence-activity-7246442745060278272-ZOjB))?
+
+::: {.notes}
+* Could your product technically be [a medical device](https://medregs.blog.gov.uk/2023/03/03/large-language-models-and-software-as-a-medical-device/), for example?
+* Have you performed a data protection impact assessment?
+* Are there more classic, better understood AI approaches you could use? NLP?
+* Test the limits of the system; where is it likely to fail or give bad information?
+* Provide an alternative to users in certain cases (e.g. non-chatbot given the chance of 'conversation loops').
+* Are you thinking about the humans at the end of the process? The users of your service?
+:::
+
+## To ponder ❓
+
+* Is this AI? 
+* Are LLMs an appropriate tool in healthcare?
+* How might you feel interacting with an LLM-driven service?
+* How can we protect patient privacy?
+* How do we deal with LLMs as tools for decision _support_ vs decision _making_?
+* Who is responsible for errors, or even death?
+
+## Further reading 📚
+
+* [NHS Knowledge and Library Services: AI](https://library.hee.nhs.uk/learning-academy/learning-zone/artificial-intelligence)
+* [3 Blue 1 Brown](https://youtube.com/watch?v=wjZofJX0v4M) (YouTube)
+* [Computerphile](https://www.youtube.com/watch?v=of4UDMvi2Kw) (YouTube)
+* [GOV.UK chatbot experiment](https://insidegovuk.blog.gov.uk/2024/01/18/the-findings-of-our-first-generative-ai-experiment-gov-uk-chat/)

@@ -1,6 +1,6 @@
 ---
-title: "What is AI?"
-author: "Data science team, Strategy Unit"
+title: "Large Language Models (LLMs): Is this AI?"
+author: "Data Science team, Strategy Unit"
 date: 2024-10-10
 date-format: "MMM D, YYYY"
 knitr:
@@ -26,8 +26,8 @@ editor:
 ## Generative AI ✨
 
 * Creates new content
-* Learns from examples
-* Can mimic creativity
+* Trained on lots of examples
+* Can _mimic_ creativity
 
 ::: {.notes}
 * Generative AI uses patterns from data (like text, images, or sound) to create new, similar content.
@@ -37,9 +37,19 @@ editor:
 
 ## Modalities 🖼️
 
+:::: {.columns}
+
+::: {.column width='50%'}
 * Images (e.g. [DALL-E](https://openai.com/index/dall-e-3/))
 * Audio/video (e.g. [Adobe Express](https://www.adobe.com/express/create/video))
 * Text (e.g. [ChatGPT](https://chatgpt.com/))
+:::
+
+::: {.column width='50%'}
+![](nose-hair.png){fig-alt="A doctor performing a procedure on a patient using a large pair of tweezers on their nose. It's in a cartoony style with isomatric projection. The wall has a sign saying 'chronic nose hair'."}
+:::
+
+::::
 
 ::: {.notes}
 * Written content like stories, code or conversations.
@@ -53,6 +63,8 @@ editor:
 * Spam filters
 * Sentiment
 * Topic detection
+* Word prediction
+* ...
 
 ::: {.notes}
 * Before we get into LLMs, it's worth recognising how many tools we use that involve some kind of text processing (perhaps AI driven).
@@ -67,6 +79,8 @@ editor:
 * Learns from lots of text
 * Predicts next word
 
+![](llm.png){fig-alt="A sentence that says 'the cat sat on the' followed by a blank. The words 'jumper', 'cushion', 'mat', 'grass' and 'dog' are show to the right with bars next to them. 'Mat' has the longest bar indicating the highest probability of it being the next word."}
+
 ::: {.notes}
 * Breaks down text: the model processes input text by breaking it into smaller units (like words or subwords).
 * Finds patterns: it learns relationships between the units.
@@ -77,7 +91,8 @@ editor:
 
 * Organise medical documents
 * [Drug discovery](https://github.com/LIYUESEN/druggpt) research
-* Virtual health assistants (chatbots)
+* Chatbots
+* ...
 
 ::: {.notes}
 * Automatically generate, organise, summarise patient notes.
@@ -100,20 +115,41 @@ editor:
 ## Case study 🧠
 
 * NHS: [chatbot for mental health referrals](https://transform.england.nhs.uk/key-tools-and-info/digital-playbooks/workforce-digital-playbook/using-an-ai-chatbot-to-streamline-mental-health-referrals/)
-* Used [Limbic Access](https://www.limbic.ai/nhs-talking-therapies) 'e-triage' chatbot
-* Now used in ~40% of NHS Talking Therapies
+* Used [Limbic 'Access'](https://www.limbic.ai/nhs-talking-therapies) 'e-triage' chatbot
+* According to Limbic:
+
+> 'Nearly 40% of NHS Talking Therapies already trust Limbic to improve their services'
 
 ::: {.notes}
 * There's an admin burden.
 * Took place in the Surrey and Borders Partnership NHS Foundation Trust
+:::
+
+## Case study 🧠
+
+:::: {.columns}
+
+::: {.column width='50%'}
+Patient
+
+![](limbic.png){fig-alt="A user interface to the Limbic Access system, which shows a chatbot asking the suer if they need help. There are buttons saying 'yes' and 'not thanks'."}
+:::
+
+::: {.column width='50%'}
+Clinician
+
+![](limbic-2.png){fig-alt="A clinician user interface to the Limbic Access system, which summarises an interaction with a patient."}
+:::
+
+::::
+
 * From [the NHS-E Transformation Directorate write-up](https://transform.england.nhs.uk/key-tools-and-info/digital-playbooks/workforce-digital-playbook/using-an-ai-chatbot-to-streamline-mental-health-referrals/):
 - ~99% of patients that left feedback said that Limbic was helpful
 - the service has seen a 30% increase in referrals and initial evidence indicates that Limbic improved out of hours access
 - on a pro-rata basis, a saving of 3000 hours (4 psychological wellbeing practitioners)
 - nearly 20% of referrals were identified as ineligible and signposted to a more appropriate service
-:::
 
-## Case study ⚠️
+## But... ⚠️
 
 [The effect of using a large language model to respond to
 patient messages (The Lancet)](https://www.thelancet.com/action/showPdf?pii=S2589-7500%2824%2900060-8)
@@ -149,7 +185,7 @@ and potential harms' for cancer patients.
   - data origins
   - privacy
 * Not human
-* It lies
+* [It lies](https://link.springer.com/article/10.1007/s10676-024-09775-5)
 
 ::: {.notes}
 * Sometimes gives wrong or confusing information, especially on complex topics. May provide inaccurate medical advice or information, leading to potential misdiagnoses or harmful decisions. 
@@ -164,7 +200,7 @@ and potential harms' for cancer patients.
 
 * Are there [legal issues](https://medregs.blog.gov.uk/2023/03/03/large-language-models-and-software-as-a-medical-device/)?
 * Have you considered [user needs](https://www.gov.uk/guidance/using-chatbots-and-webchat-tools)?
-* What policies should you follow?
+* Should you follow policies (e.g. [HM gov](https://assets.publishing.service.gov.uk/media/65c3b5d628a4a00012d2ba5c/6.8558_CO_Generative_AI_Framework_Report_v7_WEB.pdf), [NHS](https://transform.england.nhs.uk/information-governance/guidance/artificial-intelligence/#healthcare_worker),  [trust](https://www.linkedin.com/posts/andy-mayne_approval-use-of-artificial-intelligence-activity-7246442745060278272-ZOjB))?
 
 ::: {.notes}
 * Could your product technically be [a medical device](https://medregs.blog.gov.uk/2023/03/03/large-language-models-and-software-as-a-medical-device/), for example?
@@ -175,17 +211,9 @@ and potential harms' for cancer patients.
 * Are you thinking about the humans at the end of the process? The users of your service?
 :::
 
-## Policies and statements 📜
+## To ponder ❓
 
-* [GenAI framework for HM Gov](https://assets.publishing.service.gov.uk/media/65c3b5d628a4a00012d2ba5c/6.8558_CO_Generative_AI_Framework_Report_v7_WEB.pdf)
-* [Civil servants guidance]( https://www.gov.uk/government/publications/guidance-to-civil-servants-on-use-of-generative-ai/guidance-to-civil-servants-on-use-of-generative-ai)
-* [NHS-R statement](https://tools.nhsrcommunity.com/statement-on-artificial-intelligence.html)
-* [Nugget](https://csucloudservices.sharepoint.com/SitePages/ML-staff-evaluate-Microsoft-Copilot.aspx):
-
-> Please note that no team or individual should use AI tools that are not currently being evaluated.
-
-## To ponder 🤔
-
+* Is this AI? 
 * Are LLMs an appropriate tool in healthcare?
 * How might you feel interacting with an LLM-driven service?
 * How can we protect patient privacy?

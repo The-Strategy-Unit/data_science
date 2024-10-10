@@ -1744,109 +1744,81 @@
     "text": "Next\n\nForecast regionally and nationally\nMove data and pipelines into Databricks\nOpen-source model code\n\n\n\nWe’re currently working with hospitals and trusts, but we’re also expanding the geographical scale to produce results at the regional and national scale. This will require some thinking around processing, modelling and generating outputs.\nWe’re currently transferring data processing into Databricks, partly to bring all the steps into one platform but also as an opportunity to speed up the processing by using Spark.\nFinally, we already have some aspects in the open, like the project information site, but we’d also like to open-source the model code itself so that others can use and develop it."
   },
   {
-    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#patient-experience",
-    "href": "presentations/2023-05-23_data-science-for-good/index.html#patient-experience",
-    "title": "What good data science looks like",
-    "section": "Patient experience",
-    "text": "Patient experience\n\nThe NHS collects a lot of patient experience data\nRate the service 1-5 (Very poor… Excellent) but also give written feedback\n\n“Parking was difficult”\n“Doctor was rude”\n“You saved my life”\n\nMany organisations lack the staffing to read all of the feedback in a systematic way\nProduce an algorithm to rate theme and “criticality”"
+    "objectID": "presentations/2024-10-10_what-is-ai-yiwen/index.html#ai-could-help-identify-high-risk-heart-patients",
+    "href": "presentations/2024-10-10_what-is-ai-yiwen/index.html#ai-could-help-identify-high-risk-heart-patients",
+    "title": "Identifying patients at risk",
+    "section": "AI could help identify high-risk heart patients1",
+    "text": "AI could help identify high-risk heart patients1\nThe University of Leeds has helped train an AI system called Optimise, that looked at health records of more than two million people.\n…\nOf those two million records that were scanned, more than 400,000 people were identified as being high risk for the likes of heart failure, stroke and diabetes.\nhttps://www.bbc.co.uk/news/articles/cj620yl96kzo"
   },
   {
-    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#help-people-to-do-their-jobs",
-    "href": "presentations/2023-05-23_data-science-for-good/index.html#help-people-to-do-their-jobs",
-    "title": "What good data science looks like",
-    "section": "Help people to do their jobs",
-    "text": "Help people to do their jobs\n\nText based data is complex and built on human experience\nThe tool should enhance, not replace, human understanding\nEnhancing search and filtering\n\nIf they read 100 comments today, which should they read?\n\n“A recommendation engine for feedback data”"
+    "objectID": "presentations/2024-10-10_what-is-ai-yiwen/index.html#how-it-works",
+    "href": "presentations/2024-10-10_what-is-ai-yiwen/index.html#how-it-works",
+    "title": "Identifying patients at risk",
+    "section": "How it works",
+    "text": "How it works\n\nThe input: Health records\nHealth records can be structured or unstructured\n\nStructured: can be stored in a table\nUnstructured: can’t be stored in a table, different shapes/sizes (e.g. text, audio, images)"
   },
   {
-    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#reflect-what-users-want",
-    "href": "presentations/2023-05-23_data-science-for-good/index.html#reflect-what-users-want",
-    "title": "What good data science looks like",
-    "section": "Reflect what users want",
-    "text": "Reflect what users want\n\nI have worked with this data since before it existed\nI came to realise that people were struggling to read all of their data\nFits alongside other work happening within NHSE\n\nA framework for understanding patient experience"
+    "objectID": "presentations/2024-10-10_what-is-ai-yiwen/index.html#example-of-structured-data-in-health-records",
+    "href": "presentations/2024-10-10_what-is-ai-yiwen/index.html#example-of-structured-data-in-health-records",
+    "title": "Identifying patients at risk",
+    "section": "Example of structured data in health records",
+    "text": "Example of structured data in health records\n\n\n\nID\nBMI\nAge\nIMD Decile\nSmoker\nBlood Pressure\n\n\n\n\n1\n17\n49\n3\n1\n110/70\n\n\n2\n25\n67\n1\n1\n129/70\n\n\n3\n20\n39\n8\n0\n140/90\n\n\n4\n28\n81\n6\n0\n130/85\n\n\n5\n29\n41\n4\n0\n120/80\n\n\n\nData is consistent within each column in the table."
   },
   {
-    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#useful",
-    "href": "presentations/2023-05-23_data-science-for-good/index.html#useful",
-    "title": "What good data science looks like",
-    "section": "Useful",
-    "text": "Useful\n\nA fundamental principle is that everyone can use\nIf you can run the code, run it\nIf you can use the API, use it\nIf you just want the dashboard, use it\nCredit to the growth charts API"
+    "objectID": "presentations/2024-10-10_what-is-ai-yiwen/index.html#example-of-unstructured-data-in-health-records",
+    "href": "presentations/2024-10-10_what-is-ai-yiwen/index.html#example-of-unstructured-data-in-health-records",
+    "title": "Identifying patients at risk",
+    "section": "Example of unstructured data in health records",
+    "text": "Example of unstructured data in health records\n\n\n\n\n\n\n\nID\nNotes\n\n\n\n\n1\nShortness of breath\n\n\n2\nPatient attended clinic following one week of fever, vomiting, and abdominal pain.\n\n\n\nThe length of each sentence is different - data not consistent."
   },
   {
-    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#understandable",
-    "href": "presentations/2023-05-23_data-science-for-good/index.html#understandable",
-    "title": "What good data science looks like",
-    "section": "Understandable",
-    "text": "Understandable\n\nTuned to the users needs\nNot simply tuning accuracy scores\nLook at the type of mistake the model is making\nLook at the category it’s predicting\n\nWe can lose a few of common unimportant categories\nWe need to get every rare and important category"
+    "objectID": "presentations/2024-10-10_what-is-ai-yiwen/index.html#a-simple-approach-to-classifying-data-knn",
+    "href": "presentations/2024-10-10_what-is-ai-yiwen/index.html#a-simple-approach-to-classifying-data-knn",
+    "title": "Identifying patients at risk",
+    "section": "A simple approach to classifying data: KNN",
+    "text": "A simple approach to classifying data: KNN\n\n\nClustering algorithms like K Nearest Neighbours (KNN) are on the more basic end of the scale, requiring very little computational power.\n\n1\n\nAntti Ajanki AnAj, CC BY-SA 3.0 http://creativecommons.org/licenses/by-sa/3.0/, via Wikimedia Commons"
   },
   {
-    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#iterative",
-    "href": "presentations/2023-05-23_data-science-for-good/index.html#iterative",
-    "title": "What good data science looks like",
-    "section": "Iterative",
-    "text": "Iterative\n\nYear one\n\n10 categories\nModerate criticality performance\nNo deep learning\nWeak dashboard\nPositive evaluation"
+    "objectID": "presentations/2024-10-10_what-is-ai-yiwen/index.html#a-simple-approach-to-classifying-data-decision-tree",
+    "href": "presentations/2024-10-10_what-is-ai-yiwen/index.html#a-simple-approach-to-classifying-data-decision-tree",
+    "title": "Identifying patients at risk",
+    "section": "A simple approach to classifying data: Decision Tree",
+    "text": "A simple approach to classifying data: Decision Tree\n1\nhttps://www.researchgate.net/publication/26635430_Using_Machine_Learning_Algorithms_in_Cardiovascular_Disease_Risk_Evaluation"
   },
   {
-    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#iterative-1",
-    "href": "presentations/2023-05-23_data-science-for-good/index.html#iterative-1",
-    "title": "What good data science looks like",
-    "section": "Iterative",
-    "text": "Iterative\n\nYear two\n\n30-50 categories\nStrong criticality performance\nDeep learning\nImproved dashboard\nWIP\n\nOverall five minor versions of algorithm and seven of dashboard"
+    "objectID": "presentations/2024-10-10_what-is-ai-yiwen/index.html#there-are-many-different-models-out-there",
+    "href": "presentations/2024-10-10_what-is-ai-yiwen/index.html#there-are-many-different-models-out-there",
+    "title": "Identifying patients at risk",
+    "section": "There are many different models out there! 🥴",
+    "text": "There are many different models out there! 🥴\n1\nhttps://scikit-learn.org/1.3/tutorial/machine_learning_map/"
   },
   {
-    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#documented",
-    "href": "presentations/2023-05-23_data-science-for-good/index.html#documented",
-    "title": "What good data science looks like",
-    "section": "Documented",
-    "text": "Documented\n\nWe’ve documented in the way you usually would\nWe were asked in year 1 to provide plain English documentation\nWe made a website with all the product details"
+    "objectID": "presentations/2024-10-10_what-is-ai-yiwen/index.html#what-makes-a-model-simple-or-complex",
+    "href": "presentations/2024-10-10_what-is-ai-yiwen/index.html#what-makes-a-model-simple-or-complex",
+    "title": "Identifying patients at risk",
+    "section": "What makes a model simple or complex?",
+    "text": "What makes a model simple or complex?\n\nThere are dozens of different algorithms out there\nEach algorithm has different strengths and weaknesses\nWhat makes a model simple or complex is the amount of computational power required and how much the model needs to “learn” - how many parameters there are"
   },
   {
-    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#develop-skills-of-the-staff-technical-and-otherwise",
-    "href": "presentations/2023-05-23_data-science-for-good/index.html#develop-skills-of-the-staff-technical-and-otherwise",
-    "title": "What good data science looks like",
-    "section": "Develop skills of the staff, technical and otherwise",
-    "text": "Develop skills of the staff, technical and otherwise\n\nYear one created a Python programmer\nYear two created an R/ Shiny programmer\nThe team has learned:\n\nStatic website generation\nText cleaning/ searching/ mining\nCollaborative coding practices\nWorking with and communicating with users\nLinux, databases, APIs…"
+    "objectID": "presentations/2024-10-10_what-is-ai-yiwen/index.html#is-the-input-or-the-computation-complex",
+    "href": "presentations/2024-10-10_what-is-ai-yiwen/index.html#is-the-input-or-the-computation-complex",
+    "title": "Identifying patients at risk",
+    "section": "Is the input or the computation complex?",
+    "text": "Is the input or the computation complex?\n“We used UK primary care EHR data from 2,081,139 individuals aged ≥ 30 years…\nWe trained a random forest classifier using age, sex, ethnicity and comorbidities (OPTIMISE).”1\nNadarajah, Ramesh, et al. “Machine learning to identify community-dwelling individuals at higher risk of incident cardio-renal-metabolic diseases and death.” Future Healthcare Journal 11 (2024): 100109. https://www.sciencedirect.com/science/article/pii/S2514664524002212"
   },
   {
-    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#benefits-from-and-benefits-the-community",
-    "href": "presentations/2023-05-23_data-science-for-good/index.html#benefits-from-and-benefits-the-community",
-    "title": "What good data science looks like",
-    "section": "Benefits from, and benefits, the community",
-    "text": "Benefits from, and benefits, the community\n\nNHSBSA R Shiny template"
+    "objectID": "presentations/2024-10-10_what-is-ai-yiwen/index.html#pros-and-cons-of-simple-a.i.-approaches",
+    "href": "presentations/2024-10-10_what-is-ai-yiwen/index.html#pros-and-cons-of-simple-a.i.-approaches",
+    "title": "Identifying patients at risk",
+    "section": "Pros and cons of simple “A.I.” approaches",
+    "text": "Pros and cons of simple “A.I.” approaches\n\n\nPros:\n\nSimple models are more easily explained\nCan sometimes find new patterns in the data\n\n\nCons:\n\nThe quality of the data determines the quality of the model\nNot able to handle very complex tasks"
   },
   {
-    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#benefits-from-and-benefits-the-community-1",
-    "href": "presentations/2023-05-23_data-science-for-good/index.html#benefits-from-and-benefits-the-community-1",
-    "title": "What good data science looks like",
-    "section": "Benefits from, and benefits, the community",
-    "text": "Benefits from, and benefits, the community\n\nWe benefit and benefit from\n\nNHS-R\nNHS-Pycom\nGovernment Digital Service\nColleagues and friends"
-  },
-  {
-    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#open-and-reproducible",
-    "href": "presentations/2023-05-23_data-science-for-good/index.html#open-and-reproducible",
-    "title": "What good data science looks like",
-    "section": "Open and reproducible",
-    "text": "Open and reproducible\n\nOff the shelf, proprietary data collection systems dominate\nThey often offer bundled analytic products of low quality\nThe DS time can’t and doesn’t want to offer a complete data system\nHow can we best contribute to improving patient experience for patients in the NHS?\n\nIf the patient experience data won’t come to the mountain…"
-  },
-  {
-    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#open-source-ftw",
-    "href": "presentations/2023-05-23_data-science-for-good/index.html#open-source-ftw",
-    "title": "What good data science looks like",
-    "section": "Open source FTW!",
-    "text": "Open source FTW!\n\nOften individuals in the NHS don’t want private companies to “benefit” from open code\nBut if they make their products better with open code the patients win\nBest practice as code"
-  },
-  {
-    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#fun",
-    "href": "presentations/2023-05-23_data-science-for-good/index.html#fun",
-    "title": "What good data science looks like",
-    "section": "Fun!",
-    "text": "Fun!\n\nCombing through spreadsheets looking for one comment is not fun\nDoing things the same way you did them last year is not fun\nTrying to implement a project that is too complicated is not fun\n\n \n\nWorking with a diverse team with different skills is fun\nAccessing high quality documentation to understand a project better is fun*"
-  },
-  {
-    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#team-and-code",
-    "href": "presentations/2023-05-23_data-science-for-good/index.html#team-and-code",
-    "title": "What good data science looks like",
-    "section": "Team and code",
-    "text": "Team and code\n\nAndreas Soteriades (Y1)\nYiWen Hon, Oluwasegun Apejoye (Y2)\n\n \n\npxtextmining\nexperiencesdashboard\nDocumentation\n\n\n\nchris.beeley1@nhs.net\nhttps://fosstodon.org/@chrisbeeley\n\n\n\n\nview slides at the-strategy-unit.github.io/data_science/presentations"
+    "objectID": "presentations/2024-10-10_what-is-ai-yiwen/index.html#issues-to-look-out-for",
+    "href": "presentations/2024-10-10_what-is-ai-yiwen/index.html#issues-to-look-out-for",
+    "title": "Identifying patients at risk",
+    "section": "🚩 Issues to look out for 🚩",
+    "text": "🚩 Issues to look out for 🚩\n\nHow complex is the input, or the computational approach?\nHow is the model’s performance measured?\nDoes the model get updated?\nWhere did the data come from?\nHave issues of bias or ethics been considered?\n\n\n\nContinuously learning, or learning from mistakes vs. snapshot in time\n\n\n\n\n\nLearn more about The Strategy Unit"
   },
   {
     "objectID": "presentations/2023-02-01_what-is-data-science/index.html#what-is-data-science",
@@ -1996,81 +1968,207 @@
     "text": "Note\nAll copyrighted material is reused under Fair Dealing\n\n\n\nview slides at the-strategy-unit.github.io/data_science/presentations"
   },
   {
-    "objectID": "presentations/2024-10-10_what-is-ai-yiwen/index.html#ai-could-help-identify-high-risk-heart-patients",
-    "href": "presentations/2024-10-10_what-is-ai-yiwen/index.html#ai-could-help-identify-high-risk-heart-patients",
-    "title": "Identifying patients at risk",
-    "section": "AI could help identify high-risk heart patients1",
-    "text": "AI could help identify high-risk heart patients1\nThe University of Leeds has helped train an AI system called Optimise, that looked at health records of more than two million people.\n…\nOf those two million records that were scanned, more than 400,000 people were identified as being high risk for the likes of heart failure, stroke and diabetes.\nhttps://www.bbc.co.uk/news/articles/cj620yl96kzo"
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#patient-experience",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#patient-experience",
+    "title": "What good data science looks like",
+    "section": "Patient experience",
+    "text": "Patient experience\n\nThe NHS collects a lot of patient experience data\nRate the service 1-5 (Very poor… Excellent) but also give written feedback\n\n“Parking was difficult”\n“Doctor was rude”\n“You saved my life”\n\nMany organisations lack the staffing to read all of the feedback in a systematic way\nProduce an algorithm to rate theme and “criticality”"
   },
   {
-    "objectID": "presentations/2024-10-10_what-is-ai-yiwen/index.html#how-it-works",
-    "href": "presentations/2024-10-10_what-is-ai-yiwen/index.html#how-it-works",
-    "title": "Identifying patients at risk",
-    "section": "How it works",
-    "text": "How it works\n\nThe input: Health records\nHealth records can be structured or unstructured\n\nStructured: can be stored in a table\nUnstructured: can’t be stored in a table, different shapes/sizes (e.g. text, audio, images)"
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#help-people-to-do-their-jobs",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#help-people-to-do-their-jobs",
+    "title": "What good data science looks like",
+    "section": "Help people to do their jobs",
+    "text": "Help people to do their jobs\n\nText based data is complex and built on human experience\nThe tool should enhance, not replace, human understanding\nEnhancing search and filtering\n\nIf they read 100 comments today, which should they read?\n\n“A recommendation engine for feedback data”"
   },
   {
-    "objectID": "presentations/2024-10-10_what-is-ai-yiwen/index.html#example-of-structured-data-in-health-records",
-    "href": "presentations/2024-10-10_what-is-ai-yiwen/index.html#example-of-structured-data-in-health-records",
-    "title": "Identifying patients at risk",
-    "section": "Example of structured data in health records",
-    "text": "Example of structured data in health records\n\n\n\nID\nBMI\nAge\nIMD Decile\nSmoker\nBlood Pressure\n\n\n\n\n1\n17\n49\n3\n1\n110/70\n\n\n2\n25\n67\n1\n1\n129/70\n\n\n3\n20\n39\n8\n0\n140/90\n\n\n4\n28\n81\n6\n0\n130/85\n\n\n5\n29\n41\n4\n0\n120/80\n\n\n\nData is consistent within each column in the table."
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#reflect-what-users-want",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#reflect-what-users-want",
+    "title": "What good data science looks like",
+    "section": "Reflect what users want",
+    "text": "Reflect what users want\n\nI have worked with this data since before it existed\nI came to realise that people were struggling to read all of their data\nFits alongside other work happening within NHSE\n\nA framework for understanding patient experience"
   },
   {
-    "objectID": "presentations/2024-10-10_what-is-ai-yiwen/index.html#example-of-unstructured-data-in-health-records",
-    "href": "presentations/2024-10-10_what-is-ai-yiwen/index.html#example-of-unstructured-data-in-health-records",
-    "title": "Identifying patients at risk",
-    "section": "Example of unstructured data in health records",
-    "text": "Example of unstructured data in health records\n\n\n\n\n\n\n\nID\nNotes\n\n\n\n\n1\nShortness of breath\n\n\n2\nPatient attended clinic following one week of fever, vomiting, and abdominal pain.\n\n\n\nThe length of each sentence is different - data not consistent."
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#useful",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#useful",
+    "title": "What good data science looks like",
+    "section": "Useful",
+    "text": "Useful\n\nA fundamental principle is that everyone can use\nIf you can run the code, run it\nIf you can use the API, use it\nIf you just want the dashboard, use it\nCredit to the growth charts API"
   },
   {
-    "objectID": "presentations/2024-10-10_what-is-ai-yiwen/index.html#a-simple-approach-to-classifying-data-knn",
-    "href": "presentations/2024-10-10_what-is-ai-yiwen/index.html#a-simple-approach-to-classifying-data-knn",
-    "title": "Identifying patients at risk",
-    "section": "A simple approach to classifying data: KNN",
-    "text": "A simple approach to classifying data: KNN\n\n\nClustering algorithms like K Nearest Neighbours (KNN) are on the more basic end of the scale, requiring very little computational power.\n\n1\n\nAntti Ajanki AnAj, CC BY-SA 3.0 http://creativecommons.org/licenses/by-sa/3.0/, via Wikimedia Commons"
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#understandable",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#understandable",
+    "title": "What good data science looks like",
+    "section": "Understandable",
+    "text": "Understandable\n\nTuned to the users needs\nNot simply tuning accuracy scores\nLook at the type of mistake the model is making\nLook at the category it’s predicting\n\nWe can lose a few of common unimportant categories\nWe need to get every rare and important category"
   },
   {
-    "objectID": "presentations/2024-10-10_what-is-ai-yiwen/index.html#a-simple-approach-to-classifying-data-decision-tree",
-    "href": "presentations/2024-10-10_what-is-ai-yiwen/index.html#a-simple-approach-to-classifying-data-decision-tree",
-    "title": "Identifying patients at risk",
-    "section": "A simple approach to classifying data: Decision Tree",
-    "text": "A simple approach to classifying data: Decision Tree\n1\nhttps://www.researchgate.net/publication/26635430_Using_Machine_Learning_Algorithms_in_Cardiovascular_Disease_Risk_Evaluation"
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#iterative",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#iterative",
+    "title": "What good data science looks like",
+    "section": "Iterative",
+    "text": "Iterative\n\nYear one\n\n10 categories\nModerate criticality performance\nNo deep learning\nWeak dashboard\nPositive evaluation"
   },
   {
-    "objectID": "presentations/2024-10-10_what-is-ai-yiwen/index.html#there-are-many-different-models-out-there",
-    "href": "presentations/2024-10-10_what-is-ai-yiwen/index.html#there-are-many-different-models-out-there",
-    "title": "Identifying patients at risk",
-    "section": "There are many different models out there! 🥴",
-    "text": "There are many different models out there! 🥴\n1\nhttps://scikit-learn.org/1.3/tutorial/machine_learning_map/"
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#iterative-1",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#iterative-1",
+    "title": "What good data science looks like",
+    "section": "Iterative",
+    "text": "Iterative\n\nYear two\n\n30-50 categories\nStrong criticality performance\nDeep learning\nImproved dashboard\nWIP\n\nOverall five minor versions of algorithm and seven of dashboard"
   },
   {
-    "objectID": "presentations/2024-10-10_what-is-ai-yiwen/index.html#what-makes-a-model-simple-or-complex",
-    "href": "presentations/2024-10-10_what-is-ai-yiwen/index.html#what-makes-a-model-simple-or-complex",
-    "title": "Identifying patients at risk",
-    "section": "What makes a model simple or complex?",
-    "text": "What makes a model simple or complex?\n\nThere are dozens of different algorithms out there\nEach algorithm has different strengths and weaknesses\nWhat makes a model simple or complex is the amount of computational power required and how much the model needs to “learn” - how many parameters there are"
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#documented",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#documented",
+    "title": "What good data science looks like",
+    "section": "Documented",
+    "text": "Documented\n\nWe’ve documented in the way you usually would\nWe were asked in year 1 to provide plain English documentation\nWe made a website with all the product details"
   },
   {
-    "objectID": "presentations/2024-10-10_what-is-ai-yiwen/index.html#is-the-input-or-the-computation-complex",
-    "href": "presentations/2024-10-10_what-is-ai-yiwen/index.html#is-the-input-or-the-computation-complex",
-    "title": "Identifying patients at risk",
-    "section": "Is the input or the computation complex?",
-    "text": "Is the input or the computation complex?\n“We used UK primary care EHR data from 2,081,139 individuals aged ≥ 30 years…\nWe trained a random forest classifier using age, sex, ethnicity and comorbidities (OPTIMISE).”1\nNadarajah, Ramesh, et al. “Machine learning to identify community-dwelling individuals at higher risk of incident cardio-renal-metabolic diseases and death.” Future Healthcare Journal 11 (2024): 100109. https://www.sciencedirect.com/science/article/pii/S2514664524002212"
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#develop-skills-of-the-staff-technical-and-otherwise",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#develop-skills-of-the-staff-technical-and-otherwise",
+    "title": "What good data science looks like",
+    "section": "Develop skills of the staff, technical and otherwise",
+    "text": "Develop skills of the staff, technical and otherwise\n\nYear one created a Python programmer\nYear two created an R/ Shiny programmer\nThe team has learned:\n\nStatic website generation\nText cleaning/ searching/ mining\nCollaborative coding practices\nWorking with and communicating with users\nLinux, databases, APIs…"
   },
   {
-    "objectID": "presentations/2024-10-10_what-is-ai-yiwen/index.html#pros-and-cons-of-simple-a.i.-approaches",
-    "href": "presentations/2024-10-10_what-is-ai-yiwen/index.html#pros-and-cons-of-simple-a.i.-approaches",
-    "title": "Identifying patients at risk",
-    "section": "Pros and cons of simple “A.I.” approaches",
-    "text": "Pros and cons of simple “A.I.” approaches\n\n\nPros:\n\nSimple models are more easily explained\nCan sometimes find new patterns in the data\n\n\nCons:\n\nThe quality of the data determines the quality of the model\nNot able to handle very complex tasks"
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#benefits-from-and-benefits-the-community",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#benefits-from-and-benefits-the-community",
+    "title": "What good data science looks like",
+    "section": "Benefits from, and benefits, the community",
+    "text": "Benefits from, and benefits, the community\n\nNHSBSA R Shiny template"
   },
   {
-    "objectID": "presentations/2024-10-10_what-is-ai-yiwen/index.html#issues-to-look-out-for",
-    "href": "presentations/2024-10-10_what-is-ai-yiwen/index.html#issues-to-look-out-for",
-    "title": "Identifying patients at risk",
-    "section": "🚩 Issues to look out for 🚩",
-    "text": "🚩 Issues to look out for 🚩\n\nHow complex is the input, or the computational approach?\nHow is the model’s performance measured?\nDoes the model get updated?\nWhere did the data come from?\nHave issues of bias or ethics been considered?\n\n\n\nContinuously learning, or learning from mistakes vs. snapshot in time\n\n\n\n\n\nLearn more about The Strategy Unit"
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#benefits-from-and-benefits-the-community-1",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#benefits-from-and-benefits-the-community-1",
+    "title": "What good data science looks like",
+    "section": "Benefits from, and benefits, the community",
+    "text": "Benefits from, and benefits, the community\n\nWe benefit and benefit from\n\nNHS-R\nNHS-Pycom\nGovernment Digital Service\nColleagues and friends"
+  },
+  {
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#open-and-reproducible",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#open-and-reproducible",
+    "title": "What good data science looks like",
+    "section": "Open and reproducible",
+    "text": "Open and reproducible\n\nOff the shelf, proprietary data collection systems dominate\nThey often offer bundled analytic products of low quality\nThe DS time can’t and doesn’t want to offer a complete data system\nHow can we best contribute to improving patient experience for patients in the NHS?\n\nIf the patient experience data won’t come to the mountain…"
+  },
+  {
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#open-source-ftw",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#open-source-ftw",
+    "title": "What good data science looks like",
+    "section": "Open source FTW!",
+    "text": "Open source FTW!\n\nOften individuals in the NHS don’t want private companies to “benefit” from open code\nBut if they make their products better with open code the patients win\nBest practice as code"
+  },
+  {
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#fun",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#fun",
+    "title": "What good data science looks like",
+    "section": "Fun!",
+    "text": "Fun!\n\nCombing through spreadsheets looking for one comment is not fun\nDoing things the same way you did them last year is not fun\nTrying to implement a project that is too complicated is not fun\n\n \n\nWorking with a diverse team with different skills is fun\nAccessing high quality documentation to understand a project better is fun*"
+  },
+  {
+    "objectID": "presentations/2023-05-23_data-science-for-good/index.html#team-and-code",
+    "href": "presentations/2023-05-23_data-science-for-good/index.html#team-and-code",
+    "title": "What good data science looks like",
+    "section": "Team and code",
+    "text": "Team and code\n\nAndreas Soteriades (Y1)\nYiWen Hon, Oluwasegun Apejoye (Y2)\n\n \n\npxtextmining\nexperiencesdashboard\nDocumentation\n\n\n\nchris.beeley1@nhs.net\nhttps://fosstodon.org/@chrisbeeley\n\n\n\n\nview slides at the-strategy-unit.github.io/data_science/presentations"
+  },
+  {
+    "objectID": "presentations/2024-10-10_what-is-ai-matt/index.html#generative-ai",
+    "href": "presentations/2024-10-10_what-is-ai-matt/index.html#generative-ai",
+    "title": "Large Language Models (LLMs): Is this AI?",
+    "section": "Generative AI ✨",
+    "text": "Generative AI ✨\n\nCreates new content\nTrained on lots of examples\nCan mimic creativity\n\n\n\nGenerative AI uses patterns from data (like text, images, or sound) to create new, similar content.\nIt’s trained on large datasets and then generates things based on what it has learned.\nCan write stories, make art, create music, or even simulate human conversations."
+  },
+  {
+    "objectID": "presentations/2024-10-10_what-is-ai-matt/index.html#modalities",
+    "href": "presentations/2024-10-10_what-is-ai-matt/index.html#modalities",
+    "title": "Large Language Models (LLMs): Is this AI?",
+    "section": "Modalities 🖼️",
+    "text": "Modalities 🖼️\n\n\n\nImages (e.g. DALL-E)\nAudio/video (e.g. Adobe Express)\nText (e.g. ChatGPT)\n\n\n\n\n\n\nWritten content like stories, code or conversations.\nVisuals, from drawings to photorealistic images.\nMusic, voices, or even entire videos with sound and motion.\nThese slides are about that last one, text, via Large Language Models (LLMs)."
+  },
+  {
+    "objectID": "presentations/2024-10-10_what-is-ai-matt/index.html#text",
+    "href": "presentations/2024-10-10_what-is-ai-matt/index.html#text",
+    "title": "Large Language Models (LLMs): Is this AI?",
+    "section": "Text 🔤",
+    "text": "Text 🔤\n\nSpam filters\nSentiment\nTopic detection\nWord prediction\n…\n\n\n\nBefore we get into LLMs, it’s worth recognising how many tools we use that involve some kind of text processing (perhaps AI driven).\nPattern detection, comparison to previous spam, keyword detection.\nSummarising customer reviews as positive or negative (sentiment analysis).\nAutomatically identify key themes or topics within large collections of unstructured text (e.g. topic modelling)."
+  },
+  {
+    "objectID": "presentations/2024-10-10_what-is-ai-matt/index.html#large-language-models-llms",
+    "href": "presentations/2024-10-10_what-is-ai-matt/index.html#large-language-models-llms",
+    "title": "Large Language Models (LLMs): Is this AI?",
+    "section": "Large Language Models (LLMs) 🦜",
+    "text": "Large Language Models (LLMs) 🦜\n\nA (fancy?) parrot\nLearns from lots of text\nPredicts next word\n\n\n\n\nBreaks down text: the model processes input text by breaking it into smaller units (like words or subwords).\nFinds patterns: it learns relationships between the units.\nGenerates predictions: based on the input, it predicts the most likely next word or phrase to generate coherent responses or text."
+  },
+  {
+    "objectID": "presentations/2024-10-10_what-is-ai-matt/index.html#in-healthcare",
+    "href": "presentations/2024-10-10_what-is-ai-matt/index.html#in-healthcare",
+    "title": "Large Language Models (LLMs): Is this AI?",
+    "section": "In healthcare 🏥",
+    "text": "In healthcare 🏥\n\nOrganise medical documents\nDrug discovery research\nChatbots\n…\n\n\n\nAutomatically generate, organise, summarise patient notes.\nAnalyse medical literature and data to help identify new potential treatments or drug interactions.\nProvide 24/7 support by answering common medical questions and guiding patients through symptom checks."
+  },
+  {
+    "objectID": "presentations/2024-10-10_what-is-ai-matt/index.html#irl-models",
+    "href": "presentations/2024-10-10_what-is-ai-matt/index.html#irl-models",
+    "title": "Large Language Models (LLMs): Is this AI?",
+    "section": "IRL models 🤖",
+    "text": "IRL models 🤖\n\nHealthcare-focused models\nGoogle’s MedLM\nNature: LLMs in medicine and the future landscape\n\n\n\nSpecifically-developed LLMs for healthcare applications already exist, many are openly available.\nGoogle’s MedLM has a price tag.\nThere’s a couple of Nature articles on current applications and potential future landscape."
+  },
+  {
+    "objectID": "presentations/2024-10-10_what-is-ai-matt/index.html#case-study",
+    "href": "presentations/2024-10-10_what-is-ai-matt/index.html#case-study",
+    "title": "Large Language Models (LLMs): Is this AI?",
+    "section": "Case study 🧠",
+    "text": "Case study 🧠\n\nNHS: chatbot for mental health referrals\nUsed Limbic ‘Access’ ‘e-triage’ chatbot\nAccording to Limbic:\n\n\n‘Nearly 40% of NHS Talking Therapies already trust Limbic to improve their services’\n\n\n\nThere’s an admin burden.\nTook place in the Surrey and Borders Partnership NHS Foundation Trust"
+  },
+  {
+    "objectID": "presentations/2024-10-10_what-is-ai-matt/index.html#case-study-1",
+    "href": "presentations/2024-10-10_what-is-ai-matt/index.html#case-study-1",
+    "title": "Large Language Models (LLMs): Is this AI?",
+    "section": "Case study 🧠",
+    "text": "Case study 🧠\n\n\nPatient\n\n\nClinician\n\n\n\nFrom the NHS-E Transformation Directorate write-up:\n~99% of patients that left feedback said that Limbic was helpful\nthe service has seen a 30% increase in referrals and initial evidence indicates that Limbic improved out of hours access\non a pro-rata basis, a saving of 3000 hours (4 psychological wellbeing practitioners)\nnearly 20% of referrals were identified as ineligible and signposted to a more appropriate service"
+  },
+  {
+    "objectID": "presentations/2024-10-10_what-is-ai-matt/index.html#but",
+    "href": "presentations/2024-10-10_what-is-ai-matt/index.html#but",
+    "title": "Large Language Models (LLMs): Is this AI?",
+    "section": "But… ⚠️",
+    "text": "But… ⚠️\nThe effect of using a large language model to respond to patient messages (The Lancet)\n\n…raises the question of the extent to which LLM assistance is decision support versus LLM-based decision making\n\n\n…a minority of LLM drafts, if left unedited, could lead to severe harm or death\n\n\n\nBrigham and Women’s Hospital, USA.\nInvestigated how ‘LLM [GPT-4] assistance for electronic patient portal messaging in electronic health record systems (ie, using an LLM to draft a response for a clinician to edit) might impact subjective efficiency, clinical recommendations, and potential harms’ for cancer patients.\nFound safety errors, and in one instance the advice given to a patient could have been fatal."
+  },
+  {
+    "objectID": "presentations/2024-10-10_what-is-ai-matt/index.html#pros",
+    "href": "presentations/2024-10-10_what-is-ai-matt/index.html#pros",
+    "title": "Large Language Models (LLMs): Is this AI?",
+    "section": "Pros ➕",
+    "text": "Pros ➕\n\nFor providers: could reduce pressure\nFor users: increases service accessibility\nCan be trained for domain specificity\n\n\n\nCould ease pressure by providing info/assistance to users anytime, making services like customer support available 24/7.\nHealthcare is very broad, but we can train on specific subsets of information to tailor the outcome. However, we do need plenty of data."
+  },
+  {
+    "objectID": "presentations/2024-10-10_what-is-ai-matt/index.html#cons",
+    "href": "presentations/2024-10-10_what-is-ai-matt/index.html#cons",
+    "title": "Large Language Models (LLMs): Is this AI?",
+    "section": "Cons ➖",
+    "text": "Cons ➖\n\nEthical issues, like:\n\nbias\ncomputational cost\ndata origins\nprivacy\n\nNot human\nIt lies\n\n\n\nSometimes gives wrong or confusing information, especially on complex topics. May provide inaccurate medical advice or information, leading to potential misdiagnoses or harmful decisions.\n‘Hallucination’ is perhaps a weasel word.\nCan reflect biases found in the data it was trained on, leading to unfair responses that could be plain wrong for the target audience.\nLack of accountability: it can be unclear who is responsible, complicating patient care and trust issues.\nRequires significant computational power and resources, which can be expensive and environmentally taxing.\nDoesn’t understand emotions, context, or nuance, which are all important in clinical settings."
+  },
+  {
+    "objectID": "presentations/2024-10-10_what-is-ai-matt/index.html#consider",
+    "href": "presentations/2024-10-10_what-is-ai-matt/index.html#consider",
+    "title": "Large Language Models (LLMs): Is this AI?",
+    "section": "Consider 🤔",
+    "text": "Consider 🤔\n\nAre there legal issues?\nHave you considered user needs?\nShould you follow policies (e.g. HM gov, NHS, trust)?\n\n\n\nCould your product technically be a medical device, for example?\nHave you performed a data protection impact assessment?\nAre there more classic, better understood AI approaches you could use? NLP?\nTest the limits of the system; where is it likely to fail or give bad information?\nProvide an alternative to users in certain cases (e.g. non-chatbot given the chance of ‘conversation loops’).\nAre you thinking about the humans at the end of the process? The users of your service?"
+  },
+  {
+    "objectID": "presentations/2024-10-10_what-is-ai-matt/index.html#to-ponder",
+    "href": "presentations/2024-10-10_what-is-ai-matt/index.html#to-ponder",
+    "title": "Large Language Models (LLMs): Is this AI?",
+    "section": "To ponder ❓",
+    "text": "To ponder ❓\n\nIs this AI?\nAre LLMs an appropriate tool in healthcare?\nHow might you feel interacting with an LLM-driven service?\nHow can we protect patient privacy?\nHow do we deal with LLMs as tools for decision support vs decision making?\nWho is responsible for errors, or even death?"
+  },
+  {
+    "objectID": "presentations/2024-10-10_what-is-ai-matt/index.html#further-reading",
+    "href": "presentations/2024-10-10_what-is-ai-matt/index.html#further-reading",
+    "title": "Large Language Models (LLMs): Is this AI?",
+    "section": "Further reading 📚",
+    "text": "Further reading 📚\n\nNHS Knowledge and Library Services: AI\n3 Blue 1 Brown (YouTube)\nComputerphile (YouTube)\nGOV.UK chatbot experiment\n\n\n\n\nview slides at the-strategy-unit.github.io/data_science/presentations"
   },
   {
     "objectID": "presentations/2023-03-09_coffee-and-coding/index.html#which-is-easier-to-read",
@@ -2616,7 +2714,7 @@
     "href": "presentations/index.html",
     "title": "Presentations",
     "section": "",
-    "text": "Title\nAuthor\nDate\n\n\n\n\nWhat is AI?\nData science team, Strategy Unit\n2024-10-10\n\n\nComputer Vision: Is this AI?\nTom Jemmett\n2024-10-10\n\n\nIdentifying patients at risk: Is this AI?\nYiWen Hon\n2024-10-10\n\n\nRAP: A cautionary tale\nNA\n2024-10-09\n\n\nUsing R and Python to model future hospital activity: EARL Conference 2024\nYiWen Hon, Matt Dray, Tom Jemmett\n2024-09-05\n\n\nAgile and scrum working\nChris Beeley\n2024-08-22\n\n\nOpen source licensing: Or: how I learned to stop worrying and love openness\nChris Beeley\n2024-05-30\n\n\nGitHub as a team sport: DfT QA Month\nMatt Dray\n2024-05-23\n\n\nStore Data Safely: Coffee & Coding\nYiWen Hon, Matt Dray\n2024-05-16\n\n\nCoffee and Coding: Making my analytical workflow more reproducible with {targets}\nJacqueline Grout\n2024-01-25\n\n\nConference Check-in App: NHS-R/NHS.pycom 2023\nTom Jemmett\n2023-10-17\n\n\nSystem Dynamics in health and care: fitting square data into round models\nSally Thompson\n2023-10-09\n\n\nRepeating Yourself with Functions: Coffee and Coding\nSally Thompson\n2023-09-07\n\n\nCoffee and Coding: Working with Geospatial Data in R\nTom Jemmett\n2023-08-24\n\n\nUnit testing in R: NHS-R Community Webinar\nTom Jemmett\n2023-08-23\n\n\nEverything you ever wanted to know about data science: but were too afraid to ask\nChris Beeley\n2023-08-02\n\n\nTravels with R and Python: the power of data science in healthcare\nChris Beeley\n2023-08-02\n\n\nAn Introduction to the New Hospital Programme Demand Model: HACA 2023\nTom Jemmett\n2023-07-11\n\n\nWhat good data science looks like\nChris Beeley\n2023-05-23\n\n\nText mining of patient experience data\nChris Beeley\n2023-05-15\n\n\nCoffee and Coding: {targets}\nTom Jemmett\n2023-03-23\n\n\nCollaborative working\nChris Beeley\n2023-03-23\n\n\nCoffee and Coding: Good Coding Practices\nTom Jemmett\n2023-03-09\n\n\nRAP: what is it and how can my team start using it effectively?\nChris Beeley\n2023-03-09\n\n\nCoffee and coding: Intro session\nChris Beeley\n2023-02-23"
+    "text": "Title\nAuthor\nDate\n\n\n\n\nWhat is AI?\nData science team, Strategy Unit\n2024-10-10\n\n\nLarge Language Models (LLMs): Is this AI?\nData Science team, Strategy Unit\n2024-10-10\n\n\nComputer Vision: Is this AI?\nTom Jemmett\n2024-10-10\n\n\nIdentifying patients at risk: Is this AI?\nYiWen Hon\n2024-10-10\n\n\nRAP: A cautionary tale\nNA\n2024-10-09\n\n\nUsing R and Python to model future hospital activity: EARL Conference 2024\nYiWen Hon, Matt Dray, Tom Jemmett\n2024-09-05\n\n\nAgile and scrum working\nChris Beeley\n2024-08-22\n\n\nOpen source licensing: Or: how I learned to stop worrying and love openness\nChris Beeley\n2024-05-30\n\n\nGitHub as a team sport: DfT QA Month\nMatt Dray\n2024-05-23\n\n\nStore Data Safely: Coffee & Coding\nYiWen Hon, Matt Dray\n2024-05-16\n\n\nCoffee and Coding: Making my analytical workflow more reproducible with {targets}\nJacqueline Grout\n2024-01-25\n\n\nConference Check-in App: NHS-R/NHS.pycom 2023\nTom Jemmett\n2023-10-17\n\n\nSystem Dynamics in health and care: fitting square data into round models\nSally Thompson\n2023-10-09\n\n\nRepeating Yourself with Functions: Coffee and Coding\nSally Thompson\n2023-09-07\n\n\nCoffee and Coding: Working with Geospatial Data in R\nTom Jemmett\n2023-08-24\n\n\nUnit testing in R: NHS-R Community Webinar\nTom Jemmett\n2023-08-23\n\n\nEverything you ever wanted to know about data science: but were too afraid to ask\nChris Beeley\n2023-08-02\n\n\nTravels with R and Python: the power of data science in healthcare\nChris Beeley\n2023-08-02\n\n\nAn Introduction to the New Hospital Programme Demand Model: HACA 2023\nTom Jemmett\n2023-07-11\n\n\nWhat good data science looks like\nChris Beeley\n2023-05-23\n\n\nText mining of patient experience data\nChris Beeley\n2023-05-15\n\n\nCoffee and Coding: {targets}\nTom Jemmett\n2023-03-23\n\n\nCollaborative working\nChris Beeley\n2023-03-23\n\n\nCoffee and Coding: Good Coding Practices\nTom Jemmett\n2023-03-09\n\n\nRAP: what is it and how can my team start using it effectively?\nChris Beeley\n2023-03-09\n\n\nCoffee and coding: Intro session\nChris Beeley\n2023-02-23"
   },
   {
     "objectID": "presentations/2024-10-09-rap-cautionary-tales/index.html#many-moons-ago",

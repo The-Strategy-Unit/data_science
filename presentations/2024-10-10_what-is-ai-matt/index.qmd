@@ -41,7 +41,7 @@ editor:
 
 ::: {.column width='50%'}
 * Images (e.g. [DALL-E](https://openai.com/index/dall-e-3/))
-* Audio/video (e.g. [Adobe Express](https://www.adobe.com/express/create/video))
+* Audio/video (e.g. [inVideo AI](https://invideo.io/))
 * Text (e.g. [ChatGPT](https://chatgpt.com/))
 :::
 

@@ -288,25 +288,6 @@ classify based on your own images.
 :::
 </div>
 
-## Issues with Computer Vision
-
-<div position="relative">
-
-<div style="position:absolute; margin-left: auto; margin-right: auto;">
-
-![](https://ichef.bbci.co.uk/ace/standard/624/cpsprodpb/BC13/production/_83974184_29ba8607-9446-4298-9d9e-d33514811487.jpg.webp)
-
-</div>
-
-::: { .fragment }
-<div style="position:absolute; margin-top: 15rem; margin-left: 15rem; margin-right: auto;">
-
-![](https://ichef.bbci.co.uk/ace/standard/624/cpsprodpb/2253/production/_83978780_3e99ce73-ad5b-46d4-9c71-2f1545a32520.jpg.webp)
-
-
-</div>
-:::
-</div>
 
 ## Issues with Computer Vision
 

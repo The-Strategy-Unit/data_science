@@ -516,32 +516,25 @@
     "href": "presentations/2024-10-10_what-is-ai-tom/index.html#issues-with-computer-vision",
     "title": "Computer Vision",
     "section": "Issues with Computer Vision",
-    "text": "Issues with Computer Vision"
+    "text": "Issues with Computer Vision\n\n… one neural network learned to differentiate between dogs and wolves. It didn’t learn the differences between dogs and wolves, but instead learned that wolves were on snow in their picture and dogs were on grass.\n\n\nDogs, Wolves, Data Science, and Why Machines Must Learn Like Humans Do (2017)"
   },
   {
     "objectID": "presentations/2024-10-10_what-is-ai-tom/index.html#issues-with-computer-vision-1",
     "href": "presentations/2024-10-10_what-is-ai-tom/index.html#issues-with-computer-vision-1",
     "title": "Computer Vision",
     "section": "Issues with Computer Vision",
-    "text": "Issues with Computer Vision\n\n… one neural network learned to differentiate between dogs and wolves. It didn’t learn the differences between dogs and wolves, but instead learned that wolves were on snow in their picture and dogs were on grass.\n\n\nDogs, Wolves, Data Science, and Why Machines Must Learn Like Humans Do (2017)"
+    "text": "Issues with Computer Vision\n\n\nArtificial intelligence could revolutionize medical care. But don’t trust it to read your x-ray just yet (2019)"
   },
   {
     "objectID": "presentations/2024-10-10_what-is-ai-tom/index.html#issues-with-computer-vision-2",
     "href": "presentations/2024-10-10_what-is-ai-tom/index.html#issues-with-computer-vision-2",
     "title": "Computer Vision",
     "section": "Issues with Computer Vision",
-    "text": "Issues with Computer Vision\n\n\nArtificial intelligence could revolutionize medical care. But don’t trust it to read your x-ray just yet (2019)"
+    "text": "Issues with Computer Vision\n\n\nalgorithm trained at Mount Sinai Hospital, New York City\nBusy ICU, many elderly patients\n34% of their x-rays came from patients with pneumonia\n93% accuracy\n\n\n\n\ntested at other sites, pneumonia ~1% of x-rays\naccuracy dropped to 73%-80%\n\n\n\nArtificial intelligence could revolutionize medical care. But don’t trust it to read your x-ray just yet (2019)"
   },
   {
     "objectID": "presentations/2024-10-10_what-is-ai-tom/index.html#issues-with-computer-vision-3",
     "href": "presentations/2024-10-10_what-is-ai-tom/index.html#issues-with-computer-vision-3",
-    "title": "Computer Vision",
-    "section": "Issues with Computer Vision",
-    "text": "Issues with Computer Vision\n\n\nalgorithm trained at Mount Sinai Hospital, New York City\nBusy ICU, many elderly patients\n34% of their x-rays came from patients with pneumonia\n93% accuracy\n\n\n\n\ntested at other sites, pneumonia ~1% of x-rays\naccuracy dropped to 73%-80%\n\n\n\nArtificial intelligence could revolutionize medical care. But don’t trust it to read your x-ray just yet (2019)"
-  },
-  {
-    "objectID": "presentations/2024-10-10_what-is-ai-tom/index.html#issues-with-computer-vision-4",
-    "href": "presentations/2024-10-10_what-is-ai-tom/index.html#issues-with-computer-vision-4",
     "title": "Computer Vision",
     "section": "Issues with Computer Vision",
     "text": "Issues with Computer Vision\n\nAt Mount Sinai, many of the infected patients were too sick to get out of bed, and so doctors used a portable chest x-ray machine. Portable x-ray images look very different from those created when a patient is standing up. Because of what it learned from Mount Sinai’s x-rays, the algorithm began to associate a portable x-ray with illness. It also anticipated a high rate of pneumonia.\n\n\nArtificial intelligence could revolutionize medical care. But don’t trust it to read your x-ray just yet (2019)"

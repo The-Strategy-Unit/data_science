@@ -195,14 +195,18 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#using-git-and-github" id="toc-using-git-and-github" class="nav-link active" data-scroll-target="#using-git-and-github">Using Git and GitHub</a>
   <ul class="collapse">
-  <li><a href="#workflow-for-writing-code-with-git-and-github" id="toc-workflow-for-writing-code-with-git-and-github" class="nav-link" data-scroll-target="#workflow-for-writing-code-with-git-and-github">Workflow for writing code with Git and GitHub:</a>
+  <li><a href="#workflow-with-git-and-github" id="toc-workflow-with-git-and-github" class="nav-link" data-scroll-target="#workflow-with-git-and-github">Workflow with Git and GitHub</a>
   <ul class="collapse">
   <li><a href="#create-an-issue" id="toc-create-an-issue" class="nav-link" data-scroll-target="#create-an-issue">Create an issue</a></li>
   <li><a href="#create-a-branch" id="toc-create-a-branch" class="nav-link" data-scroll-target="#create-a-branch">Create a branch</a></li>
-  <li><a href="#reviewing-a-pr" id="toc-reviewing-a-pr" class="nav-link" data-scroll-target="#reviewing-a-pr">Reviewing a PR</a></li>
-  <li><a href="#reviewing-methodology" id="toc-reviewing-methodology" class="nav-link" data-scroll-target="#reviewing-methodology">Reviewing methodology</a></li>
-  <li><a href="#preparing-a-package-release-of-your-code" id="toc-preparing-a-package-release-of-your-code" class="nav-link" data-scroll-target="#preparing-a-package-release-of-your-code">Preparing a package release of your code</a></li>
   </ul></li>
+  <li><a href="#reviewing-a-pr" id="toc-reviewing-a-pr" class="nav-link" data-scroll-target="#reviewing-a-pr">Reviewing a PR</a>
+  <ul class="collapse">
+  <li><a href="#reviewing-methodology" id="toc-reviewing-methodology" class="nav-link" data-scroll-target="#reviewing-methodology">Reviewing methodology</a></li>
+  </ul></li>
+  <li><a href="#preparing-a-package-release-of-your-code" id="toc-preparing-a-package-release-of-your-code" class="nav-link" data-scroll-target="#preparing-a-package-release-of-your-code">Preparing a package release of your code</a></li>
+  <li><a href="#repository-organisation" id="toc-repository-organisation" class="nav-link" data-scroll-target="#repository-organisation">Repository organisation</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further reading</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/the-strategy-unit/data_science/edit/main/style/git_and_github.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/the-strategy-unit/data_science/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -215,11 +219,6 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="using-git-and-github" class="level1 page-columns page-full">
 <h1>Using Git and GitHub</h1>
-<p>All commits should be <a href="https://dev.to/samuelfaure/how-atomic-git-commits-dramatically-increased-my-productivity-and-will-increase-yours-too-4a84">atomic</a>, in short,</p>
-<blockquote class="blockquote">
-<p>Each commit does one, and only one simple thing, that can be summed up in a simple sentence.</p>
-</blockquote>
-<p>All of your commits should be in branches, the only changes that are made to the <code>main</code> branch would be via pull requests (PR) that have been reviewed by at minimum one colleague.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -230,11 +229,11 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Never</strong> push to <code>main</code>!</p>
+<p><strong>Never</strong> push to the <code>main</code> branch! Code must always be reviewed first.</p>
 </div>
 </div>
-<section id="workflow-for-writing-code-with-git-and-github" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="workflow-for-writing-code-with-git-and-github">Workflow for writing code with Git and GitHub:</h2>
+<section id="workflow-with-git-and-github" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="workflow-with-git-and-github">Workflow with Git and GitHub</h2>
 <section id="create-an-issue" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="create-an-issue">Create an issue</h3>
 <p>If you haven’t already, file an issue that describes what you are doing - whether it be fixing a bug, adding a feature, or something else. Issues help to keep track of both the work to be done, and the work that has been done.</p>
@@ -257,14 +256,23 @@ Important
 <div class="no-row-height column-margin column-container"><div class="margin-aside">
 <p>If you used the <code>create branch</code> button on GitHub it will automatically close the issue when merged.</p>
 </div></div><p>Locally you can then work on the branch, pushing your code regularly to GitHub so it can be run and inspected when you are not around.</p>
+<section id="write-commits" class="level4">
+<h4 class="anchored" data-anchor-id="write-commits">Write commits</h4>
+<p>All commits should be <a href="https://dev.to/samuelfaure/how-atomic-git-commits-dramatically-increased-my-productivity-and-will-increase-yours-too-4a84">atomic</a>, in short,</p>
+<blockquote class="blockquote">
+<p>Each commit does one, and only one simple thing, that can be summed up in a simple sentence.</p>
+</blockquote>
+<p>All of your commits should be in branches, the only changes that are made to the <code>main</code> branch would be via pull requests (PR) that have been reviewed by at minimum one colleague.</p>
 <p>When you think that your changes are ready to be merged, it’s time to create a PR and request a code review.</p>
 </section>
-<section id="reviewing-a-pr" class="level3 page-columns page-full">
-<h3 class="anchored" data-anchor-id="reviewing-a-pr">Reviewing a PR</h3>
+</section>
+</section>
+<section id="reviewing-a-pr" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="reviewing-a-pr">Reviewing a PR</h2>
 <p>When you create a PR, you must do two things:</p>
 <ol type="1">
-<li>immediately make someone an assignee - this is the person who will merge the PR. Typically, this should be the person creating the PR (you)</li>
-<li>select a person (or people) to review the PR</li>
+<li>Immediately make someone an assignee - this is the person who will merge the PR. Typically, this should be the person creating the PR (you)</li>
+<li>Select a person (or people) to review the PR</li>
 </ol>
 <p>If your code is not yet ready to be merged then you should use a draft PR.</p>
 
@@ -274,8 +282,7 @@ Important
 
 <div class="no-row-height column-margin column-container"><div class="margin-aside">
 <p>Most merges will be the default <code>Create a merge commit</code> but sometimes you may wish to <code>Squash and merge</code>. As the person requesting the PR, you can select whichever option is wanted from the drop-down in GitHub as part of the PR.</p>
-</div></div></section>
-<section id="reviewing-methodology" class="level3 page-columns page-full">
+</div></div><section id="reviewing-methodology" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="reviewing-methodology">Reviewing methodology</h3>
 <p>By using this approach of the assignee completing the merge, it ensures that code quality is maintained and prevents code from being merged when it is not yet ready. For example, you may have started a PR thinking your work is complete, and a reviewer checks the code and agrees to merge, however, you may realise that there are still things to work on, or there are issues that need to be addressed.</p>
 <p>The person who is assigned to the PR should be the only person making commits to the branch and this will prevent merge conflicts. If you wish for someone else to collaborate on the branch, then you should assign the PR to that person. At that point, they can pull your branch down and work on it, but you must stop using that branch locally.</p>
@@ -302,12 +309,31 @@ Important
 <p>In circumstances where the person who created the PR is an outside collaborator and doesn’t have permission to merge, then the reviewer should also be the assignee. In these circumstances, the collaborator will be working from their local fork and will be the only person who can push to the branch. The reviewer, once happy to approve the changes, can merge the PR.</p>
 </section>
 </section>
-<section id="preparing-a-package-release-of-your-code" class="level3">
-<h3 class="anchored" data-anchor-id="preparing-a-package-release-of-your-code">Preparing a package release of your code</h3>
-<p>We use <a href="https://semver.org/">semantic versioning</a>.</p>
-
-
 </section>
+<section id="preparing-a-package-release-of-your-code" class="level2">
+<h2 class="anchored" data-anchor-id="preparing-a-package-release-of-your-code">Preparing a package release of your code</h2>
+<p>We use <a href="https://semver.org/">semantic versioning</a>.</p>
+</section>
+<section id="repository-organisation" class="level2">
+<h2 class="anchored" data-anchor-id="repository-organisation">Repository organisation</h2>
+<p>Each of the team’s repositories should have two assigned roles: owner and deputy.</p>
+<p>The owner is likely to be the person who created the repository and/or has good knowledge of its content. The responsibility of the owner is to:</p>
+<ul>
+<li>have overall responsibility for quality</li>
+<li>triage issues, label them (especially ‘bug’ and ‘must’) and put into milestones</li>
+<li>tag and release the code and, if relevant, deploy it</li>
+<li>bring important issues to sprint by adding to backlog</li>
+<li>define how PRs are reviewed (e.g.&nbsp;issue/PR templates, CI Actions) and that they are reviewed</li>
+<li>ensure adequate testing is in place</li>
+<li>add and maintain the <a href="https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners">CODEOWNERS file</a></li>
+</ul>
+<p>The deputy should perform these duties in the absence of the owner and provide updates to the owner on their return.</p>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further reading</h2>
+<p>See also our <a href="../presentations/2024-05-23_github-team-sport/index.html" target="_blank">GitHub as a Team Sport</a> presentation.</p>
+
+
 </section>
 </section>
 

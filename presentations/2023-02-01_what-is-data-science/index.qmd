@@ -17,12 +17,6 @@ format:
     auto-animate: true
 ---
 
-```{r lockfile}
-#| include: FALSE
-renv::use(lockfile = "renv.lock")
-```
-
-
 [ds_presentations]: https://the-strategy-unit.github.io/data_science/
 
 ## What is data science?

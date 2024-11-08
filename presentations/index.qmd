@@ -11,12 +11,6 @@ execute:
   freeze: false
 ---
 
-```{r lockfile}
-#| include: FALSE
-renv::use(lockfile = "renv.lock")
-```
-
-
 ```{r}
 #| echo: false
 

@@ -1,0 +1,113 @@
+---
+title: "RAP"
+subtitle: "A cautionary tale"
+author: 
+  - name: Tom Jemmett
+    email: thomas.jemmett@nhs.net
+date: 2024-10-09
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, ../su_presentation.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
+    reference-location: document
+    footer: |
+      Learn more about [The Strategy Unit](https://www.strategyunitwm.nhs.uk/)
+---
+
+# I am an idiot {.centre .inverse}
+
+## Many moons ago...
+
+:::{ .incremental }
+
+* I received an FOI request
+* It was clearly sent to multiple trusts
+* It was the second year this request was sent through
+* They provided the figures we sent the year before
+* I hadn't saved my work from the year before
+* I wrote the query to answer the request
+* Checked to see I got broadly similar results to the previous year
+
+:::
+
+## My figures were way off {.centre .inverse}
+
+:::{ .fragment }
+<div style="position: fixed; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%);">
+![](https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExdXpoOHJzNTljeTlqNjEzN3ZzdXJubnZucmlxYTU5dm10eXJpbTRscyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/QuPFL61aiRYZOtPrTI/giphy.webp)
+</div>
+:::
+
+## What could I have done differently?
+
+:::{ .incremental }
+* Saved my Sql query?
+* Saved the Excel file along with the query?
+* Saved a full set of instructions alongside?
+:::
+
+:::{ .fragment }
+It’s easy not to do these when it's (seemingly) a super simple request.
+:::
+
+:::{ .fragment }
+If you haven't got a good structure in your team for where to save these kinds of requests,
+then does it even help to save them?
+:::
+
+## What would I do differently now?
+
+* Ideally, use something like Quarto (.Qmd) [all one script]
+  - query the data from the database
+  - do any data transformations needed
+  - save the results to the required format
+* save it in version control with a sensible name (Year/FOI #?)
+* **document what it is doing**
+* Make this part of our teams strategy for dealing with FOI's
+
+## Another cautionary example
+
+:::{ .incremental }
+* A colleague was the point of contact for one specialty
+* They always produced their reports
+* One month they were off
+* ☎️ "We need the report for our meeting, now"
+* What report?
+:::
+
+## The report...
+
+:::{ .incremental }
+* After a bit of searching I found a couple of different Excel files
+* Which one was the most recent?
+* Guessed based on time stamps
+* Inside the file were three sheets: `Sql`, `Data`, `Table`
+* Could I just run the `Sql`, dump it into `Data`, and refresh the `Table`?
+* There was no notes or documentation
+:::
+
+## Did I provide the correct report for the user? { .center .inverse }
+
+:::{ .fragment }
+### 🤷‍♂️
+:::
+
+## 🥉/🥈/🥇 RAP is cool and all... but
+
+:::{.incremental}
+* There are so many easy wins that get you most of the way
+* Consistently save files
+* Store any query and steps to reproduce alongside results
+* Use PowerQuery or equivalent to automate data->Excel
+* Use `.Rmd`/`.Qmd` documents to do everything in one file
+* Utilise git/version control
+* blah blah blah, docker, CI/CD...
+:::
+
+## { .centre .inverse background-image="https://i.imgflip.com/96473z.jpg" background-size="1000px"}

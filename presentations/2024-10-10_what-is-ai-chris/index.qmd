@@ -1,0 +1,162 @@
+---
+title: "What is AI?"
+author: "Data science team, Strategy Unit"
+date: 2024-10-10
+date-format: "MMM D, YYYY"
+knitr:
+  opts_chunk: 
+    eval: false
+    echo: true
+format:
+  revealjs:
+    theme: [default, ../su_presentation.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
+    footer: |
+      view slides at [the-strategy-unit.github.io/data_science/presentations](the-strategy-unit.github.io/data_science/presentations)
+editor: 
+  markdown: 
+    wrap: 120
+---
+
+## What is AI?
+
+* This is quite obviously a very large question
+* In a meeting of 5 data scientists there are 6 opinions
+* I'm going to start overinclusive
+* Then I'm going to give a quite narrow "Wot I think"
+* Concepts and vocabulary to reason about (and use, procure, produce...) AI
+
+## Start with the dictionary
+
+> Merriam Webster: Software designed to imitate intelligent aspects of human behavio[u]r
+
+> Wikipedia: [AI] is a field of research in computer science that develops and studies methods and software that enable machines to perceive their environment and use learning and intelligence to take actions that maximize their chances of achieving defined goals
+
+## Modern AI
+
+* Web search engines
+* Recommendation systems 
+* Interacting via human speech 
+* Autonomous vehicles
+* Generative AI
+* Strategy games (e.g. chess, go)
+
+## Early history of AI
+
+* 1930-1950
+    * The Turing test
+    * Manipulation of symbolic representations analogy for thought
+    * Psychology <-> Artifical intelligence
+
+## 1950s & 1960s
+
+> 1965, H. A. Simon: "machines will be capable, within twenty years, of doing any work a man can do."
+
+> 1970, Marvin Minsky (in Life Magazine): "In from three to eight years we will have a machine with the general intelligence of an average human being."
+
+* Work with perceptrons (single layer neural networks)
+* Competing with symbolic representation work
+
+## The first AI winter
+
+* Early successes didn't continue
+* Limited computer power- many examples were "toys"
+* Combinatorial explosions- many problems could only be solved in exponential time
+* Representing common sense reason and knowledge requires immense amounts of data
+
+## Moravec's paradox
+
+> Encoded in the large, highly evolved sensory and motor portions of the human brain is a billion years of experience about the nature of the world and how to survive in it... We are all prodigious olympians in perceptual and motor areas, so good that we make the difficult look easy. Abstract thought, though, is a new trick, perhaps less than 100 thousand years old. We have not yet mastered it. It is not all that intrinsically difficult; it just seems so when we do it
+
+## The "AI effect"
+
+> "The AI effect" refers to a phenomenon where either the definition of AI or the concept of intelligence is adjusted to exclude capabilities that AI systems have mastered. This often manifests as tasks that AI can now perform successfully no longer being considered part of AI, or as the notion of intelligence itself being redefined to exclude AI achievements ([wikipedia](https://en.wikipedia.org/wiki/AI_effect))
+
+## The coffee test
+
+"A machine is required to enter an average American home and figure out how to make coffee: find the coffee machine, find the coffee, add water, find a mug, and brew the coffee by pushing the proper buttons." ([source](https://en.wikipedia.org/wiki/Artificial_general_intelligence#Characteristics))
+
+## A narrower definition of "AI" for us to use
+
+* Searching the possibility space of the game of chess is not AI- because it doesn't scale
+* A robot coming to your house and making a cup of coffee **is** AI but it's way more sophisticated than we need
+* Useful AI systems today are basically something inbetween
+
+## Machine learning
+
+![](ml.png)
+
+## Right, so, really, what is AI?
+
+* Classification is often called "AI"
+* Various types of classification problems:
+  * Given a set of observations will this patient require hospitalisation?
+  * Given a piece of patient feedback which of these 10 categories is it about?
+  * Given an X ray is it probable that this patient has cancer?
+
+## No, really, tell me, what is AI?
+
+* There are two elements of a classification problem that can be "difficult"
+  * Input
+  * Computation
+* I'd really like to avoid calling anything AI if one or both of those things is not complex
+
+## Risk score
+
+* Sometimes you see any predictive algorithm as "AI"
+
+```{r, echo = FALSE, eval = TRUE}
+
+fit = glm(vs ~ hp, data=mtcars, family=binomial)
+newdat <- data.frame(hp=seq(min(mtcars$hp), max(mtcars$hp),len=100))
+newdat$vs = predict(fit, newdata=newdat, type="response")
+plot(vs~hp, data=mtcars, col="red4", ylab = "Outcome", xlab = "Score")
+lines(vs ~ hp, newdat, col="green4", lwd=2)
+
+```
+
+## Deep learning
+
+* Deep learning is literally artificial intelligence
+
+![](dl.png)
+
+([source](https://blog.bismart.com/en/difference-between-machine-learning-deep-learning))
+
+## Deep learning predictions
+
+* Deep learning models meet a reasonable standard for "AI"
+* They model complex non linear relationships without any prior knowledge, rules, or models (a little bit like a human baby, in fact)
+* Deep learning models for prediction can absorb large numbers of variables and produce predictions based on highly complex relationships within the data, merely by being trained appropriately
+
+## Classifying patient experience feedback
+
+* Complex input
+* For comment theme- non complex computation (logistic regression)
+* For sentiment- transfer learning
+* Theme does not require intelligence- linear models of word counts suffice
+* Sentiment does require pretrained deep learning models of language
+* We can see intuitively that detecting sentiment is "harder" than theme
+
+## Large language models
+
+* Passes the Turing test (e.g. ChatGPT)
+* Can **not** make you coffee
+* The fundamental training is done by "masking" words and asking the model to predict them
+* ChatGPT has been called "a stochastic parrot"
+* Despite appearances, ChatGPT has no understanding other than a deep knowledge of the probabilistic structure of words in language
+
+## Summary
+
+* AI is lots of things and has been called lots of things
+* Even some apparently "intelligent" tasks are not really so intelligent when you know how they work
+* My own view is that a useful definition of AI includes:
+  * Modelling complex nonlinear systems without an explicit model
+  * Deep learning predictive algorithms meet this criterion, as do LLMs
+
+

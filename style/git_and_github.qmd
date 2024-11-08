@@ -1,16 +1,11 @@
 # Using Git and GitHub
 
-All commits should be [atomic](https://dev.to/samuelfaure/how-atomic-git-commits-dramatically-increased-my-productivity-and-will-increase-yours-too-4a84), in short,
-
-> Each commit does one, and only one simple thing, that can be summed up in a simple sentence.
-
-All of your commits should be in branches, the only changes that are made to the `main` branch would be via pull requests (PR) that have been reviewed by at minimum one colleague.
-
 ::: {.callout-important appearance="default" icon="true"}
-**Never** push to `main`!
+**Never** push to the `main` branch!
+Code must always be reviewed first. 
 :::
 
-## Workflow for writing code with Git and GitHub:
+## Workflow with Git and GitHub
 
 ### Create an issue
 
@@ -42,15 +37,23 @@ If you used the `create branch` button on GitHub it will automatically close the
 
 Locally you can then work on the branch, pushing your code regularly to GitHub so it can be run and inspected when you are not around.
 
+#### Write commits
+
+All commits should be [atomic](https://dev.to/samuelfaure/how-atomic-git-commits-dramatically-increased-my-productivity-and-will-increase-yours-too-4a84), in short,
+
+> Each commit does one, and only one simple thing, that can be summed up in a simple sentence.
+
+All of your commits should be in branches, the only changes that are made to the `main` branch would be via pull requests (PR) that have been reviewed by at minimum one colleague.
+
 When you think that your changes are ready to be merged, it's time to create a PR and request a code review.
 
-### Reviewing a PR
+## Reviewing a PR
 
 When you create a PR, you must do two things:
 
-1.  immediately make someone an assignee - this is the person who will merge the PR.
+1.  Immediately make someone an assignee - this is the person who will merge the PR.
     Typically, this should be the person creating the PR (you)
-2.  select a person (or people) to review the PR
+2.  Select a person (or people) to review the PR
 
 If your code is not yet ready to be merged then you should use a draft PR.
 
@@ -93,6 +96,27 @@ In circumstances where the person who created the PR is an outside collaborator 
 In these circumstances, the collaborator will be working from their local fork and will be the only person who can push to the branch.
 The reviewer, once happy to approve the changes, can merge the PR.
 
-### Preparing a package release of your code
+## Preparing a package release of your code
 
 We use [semantic versioning](https://semver.org/).
+
+## Repository organisation
+
+Each of the team's repositories should have two assigned roles: owner and deputy.
+
+The owner is likely to be the person who created the repository and/or has good knowledge of its content.
+The responsibility of the owner is to:
+
+* have overall responsibility for quality
+* triage issues, label them (especially 'bug' and 'must') and put into milestones
+* tag and release the code and, if relevant, deploy it
+* bring important issues to sprint by adding to backlog
+* define how PRs are reviewed (e.g. issue/PR templates, CI Actions) and that they are reviewed
+* ensure adequate testing is in place 
+* add and maintain the [CODEOWNERS file](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners)
+
+The deputy should perform these duties in the absence of the owner and provide updates to the owner on their return.
+
+## Further reading
+
+See also our [GitHub as a Team Sport](../presentations/2024-05-23_github-team-sport/index.qmd) presentation.

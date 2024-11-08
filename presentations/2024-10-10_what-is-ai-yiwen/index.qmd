@@ -1,0 +1,132 @@
+---
+title: "Identifying patients at risk"
+subtitle: "Is this AI?"
+author: 
+  - "[YiWen Hon](mailto:yiwen.hon1@nhs.net)"
+date: 2024-10-10
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, ../su_presentation.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
+    reference-location: margin
+    footer: |
+      Learn more about [The Strategy Unit](https://www.strategyunitwm.nhs.uk/)
+---
+
+## AI could help identify high-risk heart patients^[https://www.bbc.co.uk/news/articles/cj620yl96kzo]
+
+The University of Leeds has helped **train an AI system** called Optimise, that looked at **health records** of more than **two million people**.
+
+...
+
+Of those two million records that were scanned, more than **400,000 people** were identified as being high risk for the likes of heart failure, stroke and diabetes.
+
+
+## How it works
+
+- The input: Health records
+- Health records can be structured or unstructured
+    - Structured: can be stored in a table
+    - Unstructured: can't be stored in a table, different shapes/sizes (e.g. text, audio, images)
+
+## Example of structured data in health records
+
+| ID | BMI | Age | IMD Decile | Smoker | Blood Pressure |
+|---|---|---|---|---|---|
+|1| 17 | 49 | 3 | 1 | 110/70 |
+|2| 25 | 67 | 1 | 1 | 129/70 |
+|3| 20 | 39 | 8 | 0 | 140/90 |
+|4| 28 | 81 | 6 | 0 | 130/85 |
+|5| 29 | 41 | 4 | 0 | 120/80 |
+
+Data is consistent within each column in the table.
+
+## Example of unstructured data in health records
+
+| ID | Notes                                                                    |
+|----|--------------------------------------------------------------------------|
+| 1  | Shortness of breath                                                      |
+| 2  | Patient attended clinic following one week of fever, vomiting, and abdominal pain. |
+
+The length of each sentence is different - data not consistent.
+
+## A simple approach to classifying data: KNN
+
+:::: {.columns}
+::: {.column width="50%"}
+
+Clustering algorithms like K Nearest Neighbours (KNN) are on the more basic end of the scale, requiring very little computational power.
+
+:::
+
+::: {.column width="40%"}
+
+![Example of k-nearest neighbour classification, with red triangles representing one class, blue squares representing another, and a new datapoint as a green circle which has two close red triangle neighbours and one blue square neighbour.](https://upload.wikimedia.org/wikipedia/commons/e/e7/KnnClassification.svg)^[Antti Ajanki AnAj, CC BY-SA 3.0 <http://creativecommons.org/licenses/by-sa/3.0/>, via Wikimedia Commons]
+
+:::
+::::
+
+
+## A simple approach to classifying data: Decision Tree
+
+![Example of a decision tree](https://www.researchgate.net/profile/Dan-Andrei-Sitar-Taut/publication/26635430/figure/fig1/AS:883068449607681@1587551333416/Decision-tree-classifying-patients-with-coronary-artery-disease.ppm)^[https://www.researchgate.net/publication/26635430_Using_Machine_Learning_Algorithms_in_Cardiovascular_Disease_Risk_Evaluation]
+
+## There are many different models out there! 🥴 {.small}
+
+![Complex diagram showing a decision tree for choosing the right estimator for different machine learning problems](https://scikit-learn.org/1.3/_static/ml_map.png)^[https://scikit-learn.org/1.3/tutorial/machine_learning_map/]
+
+## What makes a model simple or complex?
+
+- There are dozens of different algorithms out there
+- Each algorithm has different strengths and weaknesses
+- What makes a model simple or complex is the amount of computational power required and how much the model needs to "learn" - how many parameters there are
+
+## Is the input or the computation complex?
+
+"We used UK primary care EHR data from 2,081,139 individuals aged ≥ 30 years... 
+
+We trained a random forest classifier using age, sex, ethnicity and comorbidities (OPTIMISE)."^[Nadarajah, Ramesh, et al. "Machine learning to identify community-dwelling individuals at higher risk of incident cardio-renal-metabolic diseases and death." Future Healthcare Journal 11 (2024): 100109. https://www.sciencedirect.com/science/article/pii/S2514664524002212]
+
+## Pros and cons of simple "A.I." approaches
+
+:::: {.columns}
+::: {.column width="50%"}
+
+Pros:
+
+- Simple models are more easily explained
+- Can sometimes find new patterns in the data
+
+:::
+
+::: {.column width="50%"}
+
+Cons:
+
+- The quality of the data determines the quality of the model
+- Not able to handle very complex tasks
+
+::: 
+::::
+
+## 🚩 Issues to look out for 🚩
+
+- How complex is the input, or the computational approach?
+- How is the model's performance measured?
+- Does the model get updated?
+- Where did the data come from?
+- Have issues of bias or ethics been considered?
+
+
+::: {.notes}
+
+- Continuously learning, or learning from mistakes vs. snapshot in time
+
+:::
+

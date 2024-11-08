@@ -168,6 +168,10 @@ $presentation-heading-color: $su-charcoal;
   color: $su-yellow !important;
 }
 
+.reveal .inverse {
+  color: $su-white;
+}
+
 .text-bottom {
   bottom: 1em;
   position: absolute;
@@ -188,6 +192,10 @@ $presentation-heading-color: $su-charcoal;
 
 .small {
   font-size: 1.2rem;
+}
+
+.medium {
+  font-size: 2rem;
 }
 
 .yellow {

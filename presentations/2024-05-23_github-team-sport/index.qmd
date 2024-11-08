@@ -17,12 +17,6 @@ format:
       Learn more about [The Strategy Unit](https://www.strategyunitwm.nhs.uk/)
 ---
 
-```{r lockfile}
-#| include: FALSE
-renv::use(lockfile = "renv.lock")
-```
-
-
 ## tl;dr
 
 :::: {.columns}

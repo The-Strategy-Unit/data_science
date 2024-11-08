@@ -19,11 +19,6 @@ format:
       Learn more about [Data Science at The Strategy Unit ](https://the-strategy-unit.github.io/data_science/)
 ---
 
-```{r lockfile}
-#| include: FALSE
-renv::use(lockfile = "renv.lock")
-```
-
 # Avoid storing data on GitHub {.inverse}
 
 ## Why?

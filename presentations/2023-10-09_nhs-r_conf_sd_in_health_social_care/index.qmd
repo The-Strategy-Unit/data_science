@@ -27,11 +27,6 @@ execute:
   warning: false
 ---
 
-```{r lockfile}
-#| include: FALSE
-renv::use(lockfile = "renv.lock")
-```
-
 ```{r setup}
 #| include: false
 #| label: setup

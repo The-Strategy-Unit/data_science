@@ -23,6 +23,7 @@ editor:
     wrap: 120
 ---
 
+
 ## How did we get here?
 
 * Waterfall approaches were used in the early days of software development

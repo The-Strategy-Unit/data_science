@@ -27,6 +27,12 @@ editor:
     wrap: 120
 ---
 
+```{r lockfile}
+#| include: FALSE
+renv::use(lockfile = "renv.lock")
+```
+
+
 ## `{targets}` for analysts
 
 ::: columns

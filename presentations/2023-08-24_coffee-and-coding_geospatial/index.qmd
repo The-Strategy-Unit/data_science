@@ -21,6 +21,12 @@ execute:
   echo: true
 ---
 
+```{r lockfile}
+#| include: FALSE
+renv::use(lockfile = "renv.lock")
+```
+
+
 [ds_presentations]: https://the-strategy-unit.github.io/data_science/presentations/
 
 ## Packages we are using today
@@ -281,7 +287,7 @@ iso <- osrmIsochrone(location, breaks = seq(0, 60, 15), res = 10)
 isochrone_ids <- unique(iso$id)
 
 pal <- colorFactor(
-  viridis::viridis(length(isochrone_ids)),
+  viridisLite::viridis(length(isochrone_ids)),
   isochrone_ids
 )
 

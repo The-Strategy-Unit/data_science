@@ -10,3 +10,11 @@ Here, we host information about how we work, links to presentations, and blogpos
 All members of the Strategy Unit are welcome to contribute.
 
 [su_web]: https://strategyunitwm.nhs.uk/
+
+```{r}
+#| include: false
+ 
+# list some packages that are needed in general for rendering
+library(rmarkdown) # I'm a bit confused as to why rmarkdown is a dependency for quarto?
+library(yaml)
+```

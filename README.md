@@ -20,18 +20,52 @@ This repo features:
 3. Clone the repository (in RStudio, File > New Project > Checkout a project from a version controlled repository). Paste in the URL of this repository, or the forked repository if you have forked it.
 4. Check out the main branch and check it's up to date in the RStudio Terminal  (type `git checkout main && git pull` in terminal)
 5. Check out a new branch  (`git checkout -b issue-number` in terminal)
+6. Follow instructions in the {renv} section.
 
-Please note this project uses {renv}. On Windows, I needed to install the R toolchain [RTools](https://cran.r-project.org/bin/windows/Rtools/) to compile some of the packages. If you have {renv} installed, run `renv::install()` in your Console to install all the packages required by this project to render the Quarto webpage.
+### {renv}
+
+Please note this project uses {renv}. This is a way of managing the different packages 
+that are required for each blogpost and presentation.
+
+1. Install the R toolchain [RTools](https://cran.r-project.org/bin/windows/Rtools/) to compile some of the packages. 
+2. Install {renv} (`install.packages("renv")` in console)
+3. Run `renv::restore()` in Console to install all the required packages, and ensure that you are on the version of R detailed in the `renv.lock` file in the parent directory.
+
+There is a separate renv lockfile for each blogpost/presentation so it will be difficult to render the whole website at once.
+
+To work on an already published blogpost/presentation:
+
+1. Run `renv::use(lockfile="/path/to/page/renv.lock")` in Console
+2. Edit the .qmd file that you are working on. To preview your changes, run `quarto preview path/to/page.qmd` in terminal.
 
 ### How to create a new presentation
 
-Make the presentation with quarto, and put it in `presentations/` in a `YYYY-MM-DD_Talk-title` folder. Your presentation should conform to the SU branding.
+1. Make the presentation with quarto, and put it in `presentations/` in a `YYYY-MM-DD_Talk-title` folder. Your presentation should conform to the SU branding. It should have the filename `index.qmd`
+2. If your presentation requires any specific packages, capture them with `renv::snapshot("PATH_TO_THE_FOLDER")` and ensure that you include in the top of your .qmd file (after the yaml) the following code chunk, without the hashes (#)
+
+```
+#```
+{r lockfile}
+#| include: FALSE
+renv::use(lockfile = "renv.lock")
+#```
+```
 
 ### How to create a new blogpost 
 
 1. Navigate to the `blogs/posts` folder
-2. Copy a previous blogpost file and use that as your template
-3. If you want to see how it looks before pushing to GitHub, click Render in RStudio. The HTML version of your new post should open in your browser.
+2. Create a folder for your blogpost, following the naming convention `YYYY-MM-DD_title-of-post`
+3. Copy a previous blogpost index.qmd file into your folder and use that as your template
+4. Write your blogpost. To preview changes, run `quarto preview path/to/index.qmd` in terminal.
+5. If your blogpost requires any specific packages, capture them with `renv::snapshot("PATH_TO_THE_FOLDER")` and ensure that you include in the top of your .qmd file (after the yaml) the following code chunk, without the hashes (#)
+
+```
+#```
+{r lockfile}
+#| include: FALSE
+renv::use(lockfile = "renv.lock")
+#```
+```
 
 
 ### How to create/edit pages on the website

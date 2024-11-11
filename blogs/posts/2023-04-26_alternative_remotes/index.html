@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Tom Jemmett">
-<meta name="dcterms.date" content="2023-03-24">
+<meta name="dcterms.date" content="2023-04-26">
 
-<title>Creating a hotfix with git – Data Science @ The Strategy Unit</title>
+<title>Alternative remote repositories – Data Science @ The Strategy Unit</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -25,24 +25,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -81,7 +81,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Data Science @ The Strategy Unit</span>
     </a>
   </div>
@@ -92,19 +92,19 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
+    <a class="nav-link" href="../../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html"> 
+    <a class="nav-link" href="../../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../blogs/index.html"> 
+    <a class="nav-link" href="../../../blogs/index.html"> 
 <span class="menu-text">Blogs</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../presentations/index.html"> 
+    <a class="nav-link" href="../../../presentations/index.html"> 
 <span class="menu-text">Presentations</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -113,19 +113,19 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-style-guide">    
         <li>
-    <a class="dropdown-item" href="../../style/style_guide.html">
+    <a class="dropdown-item" href="../../../style/style_guide.html">
  <span class="dropdown-text">Style Guide</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../style/git_and_github.html">
+    <a class="dropdown-item" href="../../../style/git_and_github.html">
  <span class="dropdown-text">Using Git and GitHub</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../style/project_structure.html">
+    <a class="dropdown-item" href="../../../style/project_structure.html">
  <span class="dropdown-text">Project Structure</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../style/data_storage.html">
+    <a class="dropdown-item" href="../../../style/data_storage.html">
  <span class="dropdown-text">Data Storage</span></a>
   </li>  
     </ul>
@@ -133,7 +133,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="../../blogs/index.xml"> <i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../../blogs/index.xml"> <i class="bi bi-rss" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -149,21 +149,15 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#fixing-my-codebase" id="toc-fixing-my-codebase" class="nav-link active" data-scroll-target="#fixing-my-codebase">Fixing my codebase</a></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/the-strategy-unit/data_science/edit/main/blogs/posts/2023-03-24_hotfix-with-git.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/the-strategy-unit/data_science/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Creating a hotfix with git</h1>
+<h1 class="title">Alternative remote repositories</h1>
   <div class="quarto-categories">
     <div class="quarto-category">git</div>
     <div class="quarto-category">tutorial</div>
@@ -184,7 +178,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 24, 2023</p>
+      <p class="date">April 26, 2023</p>
     </div>
   </div>
   
@@ -196,70 +190,37 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>I recently discovered a bug in a code-base which needed to be fixed and deployed back to production A.S.A.P., but since the last release the code has moved on significantly. The history looks something a bit like:</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="2023-03-24_hotfix-with-git_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>That is, we have a tag which is the code that is currently in production (which we need to patch), a number of commits after that tag to main (which were separate branches merged via pull requests), and a current development branch.</p>
-<p>I need to somehow: 1. go back to the tagged release, 2. check that code out, 3. patch that code, 4. commit this change, but insert the commit before all of the new commits after the tag</p>
-<p>There are at least two ways that I know to do this, one would be with an <a href="https://about.gitlab.com/blog/2020/11/23/keep-git-history-clean-with-interactive-rebase/">interactive rebase</a>, but I used a slightly longer method, but one I feel is a little less likely to get wrong.</p>
-<p>Below are the step’s that I took. One thing I should note is this worked well for my particular issue because the change didn’t cause any merge conflicts later on.</p>
-<section id="fixing-my-codebase" class="level2">
-<h2 class="anchored" data-anchor-id="fixing-my-codebase">Fixing my codebase</h2>
-<p>First, we need to checkout the tag</p>
-<pre><code>git checkout -b hotfix v0.2.0</code></pre>
-<p>This creates a new branch called <code>hotfix</code> off of the tag <code>v0.2.0</code>.</p>
-<p>Now that I have the code base checked out at the point I need to fix, I can make the change that is needed, and commit the change</p>
-<pre><code>git add [FILENAME]
-git commit -m "fixes the code"</code></pre>
-<p><em>(Obviously, I used the actual file name and gave a better commit message. I Promise 😝)</em></p>
-<p>Now my code is fixed, I create a new tag for this “release”, as well as push the code to production (this step is omitted here)</p>
-<pre><code>git tag v0.2.1 -m "version 0.2.0"</code></pre>
-<p>At this point, our history looks something like</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="2023-03-24_hotfix-with-git_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>What we want to do is break the link between main and <code>v0.2.0</code>, instead attaching to<code>v0.2.1</code>. First though, I want to make sure that if I make a mistake, I’m not making it on the main branch.</p>
-<pre><code>git checkout main
-git checkout -b apply-hotfix</code></pre>
-<p>Then we can fix our history using the rebase command</p>
-<pre><code>git rebase hotfix</code></pre>
-<p>What this does is it rolls back to the point where the branch that we are rebasing (<code>apply-hotfix</code>) and the <code>hotfix</code> branch both share a common commit (<code>v0.2.0</code> tag). It then applies the commits in the <code>hotfix</code> branch, before reapplying the commits from <code>apply-hotfix</code> (a.k.a. the <code>main</code> branch).</p>
-<p>One thing to note, if you have any merge conflicts created by your fix, then the rebase will stop and ask you to fix the merge conflicts. There is some information in the GitHub doc’s for [resolving merge conflicts after a Git rebase][2].</p>
-<p>[2]: https://docs.github.com/en/get-started/using-git/resolving-merge-conflicts-after-a-git-rebase</p>
-<p>At this point, we can check that the commit history looks correct</p>
-<pre><code>git log v0.2.0..HEAD</code></pre>
-<p>If we are happy, then we can apply this to the <code>main</code> branch. I do this by renaming the <code>apply-hotfix</code> branch as <code>main</code>. First, you have to delete the <code>main</code> branch to allow us to rename the branch.</p>
-<pre><code>git branch -D main
-git branch -m main</code></pre>
-<p>We also need to update the other branches to use the new main branch</p>
-<pre><code>git checkout branch
-git rebase main</code></pre>
-<p>Now, we should have a history like</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="2023-03-24_hotfix-with-git_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
+<p>It’s great when someone send’s you a pull request on GitHub to fix bugs or add new features to your project, but you probably always want to check the other persons work in someway before merging that pull request.</p>
+<p>All of the steps below are intended to be entered via a terminal.</p>
+<p>Let’s imagine that we have a GitHub account called example and a repository called test, and we use https rather than ssh.</p>
+<pre><code>$ git remote get-url origin
+# https://github.com/example/test.git</code></pre>
+<p>Now, let’s say we have someone who has submitted a Pull Request (PR), and their username is friend. We can add a new remote for their fork with</p>
+<pre><code>$ git remote add friend https://github.com/friend/test.git</code></pre>
+<p>Here, I name the remote exactly as per the persons GitHub username for no other reason than making it easier to track things later on. You could name this remote whatever you like, but you will need to make sure that the remote url matches their repository correctly.</p>
+<p>We are now able to checkout their remote branch. First, we will want to fetch their work:</p>
+<pre><code># make sure to replace the remote name to what you set it to before
+$ git fetch friend</code></pre>
+<p>Now, hopefully they have commited to a branch with a name that you haven’t used. Let’s say they created a branch called <code>my_work</code>. You can then simply run</p>
+<pre><code>$ git switch friend/my_work</code></pre>
+<p>This should checkout the <code>my_work</code> branch locally for you.</p>
+<p>Now, if they have happened to use a branch name that you are already using, or more likely, directly commited to their own <code>main</code> branch, you will need to do checkout to a new branch:</p>
+<pre><code># replace friend as above to be the name of the remote, and main to be the branch
+# that they have used
+# replace their_work with whatever you want to call this branch locally
+$ git checkout friend/main -b their_work</code></pre>
+<p>You are now ready to run their code and check everything is good to merge!</p>
+<p>Finally, If you want to clean up your local repository you can remove the new branch that you checked out and the new remote with the following steps:</p>
+<pre><code># switch back to one of your branches, e.g. main
+$ git checkout main
+
+# then remove the branch that you created above
+$ git branch -D their_work
+
+# you can remove the remote
+$ git remote remove friend</code></pre>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -831,4 +792,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/the-strategy-unit/data_science/edit/main/blogs/posts/2023-03-24_hotfix-with-git.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/the-strategy-unit/data_science/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/the-strategy-unit/data_science/edit/main/blogs/posts/2023-04-26_alternative_remotes/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/the-strategy-unit/data_science/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

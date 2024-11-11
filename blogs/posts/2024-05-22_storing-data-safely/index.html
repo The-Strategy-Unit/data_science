@@ -197,7 +197,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#azure-storage-in-r" id="toc-azure-storage-in-r" class="nav-link" data-scroll-target="#azure-storage-in-r">Azure Storage in R</a></li>
   <li><a href="#azure-storage-in-python" id="toc-azure-storage-in-python" class="nav-link" data-scroll-target="#azure-storage-in-python">Azure Storage in Python</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/the-strategy-unit/data_science/edit/main/blogs/posts/2024-05-22-storing-data-safely/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/the-strategy-unit/data_science/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="azure_python-preview.html"><i class="bi bi-journal-code"></i>Interacting with Azure Storage with Python</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/the-strategy-unit/data_science/edit/main/blogs/posts/2024-05-22_storing-data-safely/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/the-strategy-unit/data_science/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="azure_python-preview.html"><i class="bi bi-journal-code"></i>Interacting with Azure Storage with Python</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -254,14 +254,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Setup -------------------------------------------------------------------</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"pins"</span>,<span class="st">"dplyr"</span>))  <span class="co"># if not yet installed</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"pins"</span>, <span class="st">"dplyr"</span>)) <span class="co"># if not yet installed</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>({</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(pins)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(dplyr)  <span class="co"># for wrangling and the 'starwars' demo dataset</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(dplyr) <span class="co"># for wrangling and the 'starwars' demo dataset</span></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>})</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>board <span class="ot">&lt;-</span> <span class="fu">board_connect</span>()  <span class="co"># will error if you haven't authenticated before</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>board <span class="ot">&lt;-</span> <span class="fu">board_connect</span>() <span class="co"># will error if you haven't authenticated before</span></span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Error in `check_auth()`: ! auth = `auto` has failed to find a way to authenticate:</span></span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># • `server` and `key` not provided for `auth = 'manual'`</span></span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># • Can't find CONNECT_SERVER and CONNECT_API_KEY envvars for `auth = 'envvar'`</span></span>
@@ -279,7 +279,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Connecting to Posit Connect 2024.03.0 at</span></span>
 <span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="co"># &lt;https://connect.strategyunitwm.nhs.uk&gt;</span></span>
 <span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>board <span class="sc">|&gt;</span> <span class="fu">pin_list</span>()  <span class="co"># see all the pins on that board</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>board <span class="sc">|&gt;</span> <span class="fu">pin_list</span>() <span class="co"># see all the pins on that board</span></span>
 <span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a pin ------------------------------------------------------------</span></span>
@@ -300,9 +300,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>pin_name <span class="ot">&lt;-</span> <span class="st">"matt.dray/starwars_demo"</span></span>
 <span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>board <span class="sc">|&gt;</span> <span class="fu">pin_exists</span>(pin_name)  <span class="co"># logical, TRUE/FALSE</span></span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>board <span class="sc">|&gt;</span> <span class="fu">pin_meta</span>(pin_name)  <span class="co"># metadata, see also 'metadata' arg in pin_write()</span></span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>board <span class="sc">|&gt;</span> <span class="fu">pin_browse</span>(pin_name)  <span class="co"># view the pin in the browser</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>board <span class="sc">|&gt;</span> <span class="fu">pin_exists</span>(pin_name) <span class="co"># logical, TRUE/FALSE</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>board <span class="sc">|&gt;</span> <span class="fu">pin_meta</span>(pin_name) <span class="co"># metadata, see also 'metadata' arg in pin_write()</span></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>board <span class="sc">|&gt;</span> <span class="fu">pin_browse</span>(pin_name) <span class="co"># view the pin in the browser</span></span>
 <span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="co"># Permissions -------------------------------------------------------------</span></span>
@@ -317,7 +317,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>starwars_droids <span class="ot">&lt;-</span> starwars <span class="sc">|&gt;</span></span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(species <span class="sc">==</span> <span class="st">"Droid"</span>)  <span class="co"># beep boop</span></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(species <span class="sc">==</span> <span class="st">"Droid"</span>) <span class="co"># beep boop</span></span>
 <span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>board <span class="sc">|&gt;</span> <span class="fu">pin_write</span>(</span>
 <span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>  starwars_droids,</span>
@@ -326,8 +326,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a><span class="co"># Writing to pin 'matt.dray/starwars_demo'</span></span>
 <span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a>board <span class="sc">|&gt;</span> <span class="fu">pin_versions</span>(pin_name)  <span class="co"># see version history</span></span>
-<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a>board <span class="sc">|&gt;</span> <span class="fu">pin_versions_prune</span>(pin_name, <span class="at">n =</span> <span class="dv">1</span>)  <span class="co"># remove history</span></span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a>board <span class="sc">|&gt;</span> <span class="fu">pin_versions</span>(pin_name) <span class="co"># see version history</span></span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a>board <span class="sc">|&gt;</span> <span class="fu">pin_versions_prune</span>(pin_name, <span class="at">n =</span> <span class="dv">1</span>) <span class="co"># remove history</span></span>
 <span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>board <span class="sc">|&gt;</span> <span class="fu">pin_versions</span>(pin_name)</span>
 <span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a><span class="co"># What if you try to overwrite the data but it hasn't changed?</span></span>
@@ -349,14 +349,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a><span class="co"># the Posit Connect instance where they're both hosted.</span></span>
 <span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a>board <span class="sc">|&gt;</span></span>
-<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pin_read</span>(pin_name) <span class="sc">|&gt;</span>  <span class="co"># like you would use e.g. read_csv</span></span>
-<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a>  <span class="fu">with</span>(<span class="at">data =</span> _, <span class="fu">plot</span>(mass, height))  <span class="co"># wow!</span></span>
+<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pin_read</span>(pin_name) <span class="sc">|&gt;</span> <span class="co"># like you would use e.g. read_csv</span></span>
+<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a>  <span class="fu">with</span>(<span class="at">data =</span> _, <span class="fu">plot</span>(mass, height)) <span class="co"># wow!</span></span>
 <span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a><span class="co"># Delete pin --------------------------------------------------------------</span></span>
 <span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a>board <span class="sc">|&gt;</span> <span class="fu">pin_exists</span>(pin_name)  <span class="co"># logical, good function for error handling</span></span>
+<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a>board <span class="sc">|&gt;</span> <span class="fu">pin_exists</span>(pin_name) <span class="co"># logical, good function for error handling</span></span>
 <span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a>board <span class="sc">|&gt;</span> <span class="fu">pin_delete</span>(pin_name)</span>
 <span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a>board <span class="sc">|&gt;</span> <span class="fu">pin_exists</span>(pin_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -370,7 +370,7 @@ AZ_STORAGE_CONTAINER=container-name
 AZ_TENANT_ID=long-sequence-of-numbers-and-letters
 AZ_APP_ID=another-long-sequence-of-numbers-and-letters</code></pre>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"AzureAuth"</span>,<span class="st">"AzureStor"</span>, <span class="st">"arrow"</span>)) <span class="co"># if not yet installed</span></span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"AzureAuth"</span>, <span class="st">"AzureStor"</span>, <span class="st">"arrow"</span>)) <span class="co"># if not yet installed</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Load all environment variables</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>ep_uri <span class="ot">&lt;-</span> <span class="fu">Sys.getenv</span>(<span class="st">"AZ_STORAGE_EP"</span>)</span>
@@ -396,7 +396,7 @@ AZ_APP_ID=another-long-sequence-of-numbers-and-letters</code></pre>
 <span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="co"># List files in container</span></span>
 <span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>blob_list <span class="ot">&lt;-</span> AzureStor<span class="sc">::</span><span class="fu">list_blobs</span>(container)</span>
 <span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="co"># If you get a 403 error when trying to interact with the container, you may </span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="co"># If you get a 403 error when trying to interact with the container, you may</span></span>
 <span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="co"># have to clear your Azure token and re-authenticate using a different browser.</span></span>
 <span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Use AzureAuth::clean_token_directory() to clear your token, then repeat the</span></span>
 <span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="co"># AzureAuth::get_azure_token() step above.</span></span>
@@ -417,17 +417,18 @@ AZ_APP_ID=another-long-sequence-of-numbers-and-letters</code></pre>
 <span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>  <span class="at">show_col_types =</span> <span class="cn">FALSE</span></span>
 <span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a><span class="co"># Load file directly from Azure container (by temporarily downloading file </span></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a><span class="co"># Load file directly from Azure container (by temporarily downloading file</span></span>
 <span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a><span class="co"># and storing it in memory)</span></span>
 <span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>parquet_in_memory <span class="ot">&lt;-</span> AzureStor<span class="sc">::</span><span class="fu">storage_download</span>(</span>
-<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>  container, <span class="at">src =</span> <span class="st">"newdir/cats.parquet"</span>, <span class="at">dest =</span> <span class="cn">NULL</span></span>
-<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>parq_df <span class="ot">&lt;-</span> arrow<span class="sc">::</span><span class="fu">read_parquet</span>(parquet_in_memory)</span>
-<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a><span class="co"># Delete from Azure container (!!!)</span></span>
-<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (blobfile <span class="cf">in</span> blob_list<span class="sc">$</span>name) {</span>
-<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>  AzureStor<span class="sc">::</span><span class="fu">delete_storage_file</span>(container, blobfile)</span>
-<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>  container,</span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>  <span class="at">src =</span> <span class="st">"newdir/cats.parquet"</span>, <span class="at">dest =</span> <span class="cn">NULL</span></span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>parq_df <span class="ot">&lt;-</span> arrow<span class="sc">::</span><span class="fu">read_parquet</span>(parquet_in_memory)</span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a><span class="co"># Delete from Azure container (!!!)</span></span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (blobfile <span class="cf">in</span> blob_list<span class="sc">$</span>name) {</span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>  AzureStor<span class="sc">::</span><span class="fu">delete_storage_file</span>(container, blobfile)</span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="azure-storage-in-python" class="level2">
@@ -1200,4 +1201,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/the-strategy-unit/data_science/edit/main/blogs/posts/2024-05-22-storing-data-safely/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/the-strategy-unit/data_science/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/the-strategy-unit/data_science/edit/main/blogs/posts/2024-05-22_storing-data-safely/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/the-strategy-unit/data_science/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

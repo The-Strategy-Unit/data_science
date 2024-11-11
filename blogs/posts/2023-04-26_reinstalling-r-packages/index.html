@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="YiWen Hon">
-<meta name="dcterms.date" content="2024-01-10">
+<meta name="author" content="Tom Jemmett">
+<meta name="dcterms.date" content="2023-04-26">
 
-<title>Advent of Code and Test Driven Development – Data Science @ The Strategy Unit</title>
+<title>Reinstalling R Packages – Data Science @ The Strategy Unit</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,27 +22,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -81,7 +115,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Data Science @ The Strategy Unit</span>
     </a>
   </div>
@@ -92,19 +126,19 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
+    <a class="nav-link" href="../../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html"> 
+    <a class="nav-link" href="../../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../blogs/index.html"> 
+    <a class="nav-link" href="../../../blogs/index.html"> 
 <span class="menu-text">Blogs</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../presentations/index.html"> 
+    <a class="nav-link" href="../../../presentations/index.html"> 
 <span class="menu-text">Presentations</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -113,19 +147,19 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-style-guide">    
         <li>
-    <a class="dropdown-item" href="../../style/style_guide.html">
+    <a class="dropdown-item" href="../../../style/style_guide.html">
  <span class="dropdown-text">Style Guide</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../style/git_and_github.html">
+    <a class="dropdown-item" href="../../../style/git_and_github.html">
  <span class="dropdown-text">Using Git and GitHub</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../style/project_structure.html">
+    <a class="dropdown-item" href="../../../style/project_structure.html">
  <span class="dropdown-text">Project Structure</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../style/data_storage.html">
+    <a class="dropdown-item" href="../../../style/data_storage.html">
  <span class="dropdown-text">Data Storage</span></a>
   </li>  
     </ul>
@@ -133,7 +167,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="../../blogs/index.xml"> <i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../../blogs/index.xml"> <i class="bi bi-rss" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -157,9 +191,10 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Advent of Code and Test Driven Development</h1>
+<h1 class="title">Reinstalling R Packages</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">learning</div>
+    <div class="quarto-category">git</div>
+    <div class="quarto-category">tutorial</div>
   </div>
   </div>
 
@@ -170,14 +205,14 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>YiWen Hon </p>
+             <p>Tom Jemmett </p>
           </div>
   </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 10, 2024</p>
+      <p class="date">April 26, 2023</p>
     </div>
   </div>
   
@@ -189,11 +224,14 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><a href="https://adventofcode.com/">Advent of Code</a> is an annual event, where daily coding puzzles are released from 1st – 24th December. We ran one of our fortnightly Coffee &amp; Coding sessions introducing Advent of Code to people who code in the Strategy Unit, as well as the concept of test-driven development as a potential way of approaching the puzzles.</p>
-<p><a href="https://developer.ibm.com/articles/5-steps-of-test-driven-development/">Test-driven development</a> (TDD) is an approach to coding which involves writing the test for a function BEFORE we write the function. This might seem quite counterintuitive, but it makes it easier to identify bugs 🐛 when they are introduced to our code, and ensures that our functions meet all necessary criteria. From my experience, this takes quite a long time to implement and can be quite tedious, but it is definitely worth it overall, especially as your project develops. Testing is also recommended in the <a href="https://nhsdigital.github.io/rap-community-of-practice/introduction_to_RAP/levels_of_RAP/">NHS Reproducible Analytical Pipeline (RAP)</a> guidelines.</p>
-<p>An interesting thing to note about TDD is that we’re always expecting our first test to fail, and indeed failing tests are useful and important! If we wrote tests that just passed all the time, this would not be useful at all for our code.</p>
-<p>The way that Advent of Code is structured, with test data for each puzzle and an expected test result, makes it very amenable to a test-driven approach. In order to support this, Matt and I created template repositories for a test-driven approach to Advent of Code, in <a href="https://github.com/yiwen-h/aoc_python_template">Python</a> and in <a href="https://github.com/matt-dray/aoc.rstats.template">R</a>.</p>
-<p>Our goal when setting this up was to introduce others in the Strategy Unit to both TDD and Advent of Code. Advent of code can be challenging and I personally struggle to get past the first week, but it encourages creative (and maybe even fun?!) approaches to coding problems. I’m glad that we had the chance to explore some of the puzzles together in Coffee &amp; Coding – it was interesting to see so many different approaches to the same problem, and hopefully it also gave us all the chance to practice writing tests.</p>
+<p><a href="https://stat.ethz.ch/pipermail/r-announce/2023/000691.html">R 4.3.0 was released</a> last week. Anytime you update R you will probably find yourself in the position where no packages are installed. This is by design - the packages that you have installed may need to be updated and recompiled to work under new versions of R.</p>
+<p>You may find yourself wanting to have all of the packages that you previously used, so one approach that some people take is to copy the previous library folder to the new versions folder. This isn’t a good idea and could potentially break your R install.</p>
+<p>Another approach would be to export the list of packages in R before updating and then using that list after you have updated R. This can cause issues though if you install from places other than CRAN, e.g.&nbsp;bioconductor, or from GitHub.</p>
+<p>Some of these approaches are discussed on the <a href="https://community.rstudio.com/t/reinstalling-packages-on-new-version-of-r/7670/4">RStudio Community Forum</a>. But I prefer an approach of having a “spring clean”, instead only installing the packages that I know that I need.</p>
+<p>I maintain a <a href="https://gist.github.com/tomjemmett/c105d3e0fbea7558088f68c65e68e1ed/">list of the packages that I used</a> as a gist. Using this, I can then simply run this script on any new R install. In fact, if you click the “raw” button on the gist, and copy that url, you can simply run</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"https://gist.githubusercontent.com/tomjemmett/c105d3e0fbea7558088f68c65e68e1ed/raw/a1db4b5fa0d24562d16d3f57fe8c25fb0d8aa53e/setup.R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Generally, sourcing a url is a bad idea - the reason for this is if it’s not a link that you control, then someone could update the contents and run arbritary code on your machine. In this case, I’m happy to run this as it’s my own gist, but you should be mindful if running it yourself!</p>
+<p>If you look at the script I first install a number of packages from CRAN, then I install packages that only exist on GitHub.</p>
 
 
 
@@ -767,4 +805,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/the-strategy-unit/data_science/edit/main/blogs/posts/2024-01-10-advent-of-code-and-test-driven-development.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/the-strategy-unit/data_science/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/the-strategy-unit/data_science/edit/main/blogs/posts/2023-04-26_reinstalling-r-packages/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/the-strategy-unit/data_science/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

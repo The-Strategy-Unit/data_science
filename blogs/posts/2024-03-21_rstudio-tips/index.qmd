@@ -5,6 +5,12 @@ date: "2024-03-21"
 categories: [learning, R]
 ---
 
+```{r lockfile}
+#| include: FALSE
+renv::use(lockfile = "renv.lock")
+```
+
+
 ## Coffee & Coding
 
 In a recent Coffee & Coding session we chatted about tips and tricks for [RStudio](https://posit.co/products/open-source/rstudio/), the popular and free Integrated Development Environment (IDE) that many Strategy Unit analysts use to write R code.

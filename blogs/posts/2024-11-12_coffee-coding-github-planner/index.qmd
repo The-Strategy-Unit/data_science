@@ -1,0 +1,42 @@
+---
+title: "Using Github to plan and organise Coffee & Coding"
+author: "YiWen Hon"
+date: "2024-11-12"
+categories: [GitHub, learning]
+---
+
+## Coffee & Coding
+
+Coffee & Coding is a fortnightly hour-long session organised by the Data Science team, open to all members of the Strategy Unit with an interest in coding. It's been [well received](../2024-05-13_one-year-coffee-code/index.qmd) and is a valued source of professional development and general geekery in the team.
+
+We've been experimenting with using [GitHub](https://github.com/) as an organisational tool for our team's work, and are testing the same approach for Coffee & Coding sessions as well. Previously, future Coffee & Coding sessions were haphazardly listed in a Google Doc that was only accessible to members of the Data Science team, and we wanted a more open approach. We also didn't have a good record of topics that were previously covered.
+
+You'll need a GitHub account to enjoy the full functionality of the planner. If you need help setting this up, get in touch with any member of the Data Science team.
+
+Any feedback on this new system for organising and planning Coffee & Coding is very welcome! Hope you enjoy using it.
+
+## Viewing upcoming sessions
+
+We have created [a fully open GitHub project for tracking Coffee & Coding sessions](https://github.com/orgs/The-Strategy-Unit/projects/14/views/1). Any sessions with scheduled dates can be seen in the "Upcoming sessions" view. Clicking on a session title brings up more information, including a brief overview of the session and the people running it. Users with GitHub accounts can make comments or post emoji reactions.
+
+![Viewing upcoming session details](upcoming-sessions.gif){fig-alt="A short clip showing a person clicking on an upcoming session title. A pop up box appears with more information"}
+
+## Adding session ideas
+
+To add a session idea:
+
+1. [Create a new issue](https://github.com/The-Strategy-Unit/data_science/issues/new?template=Blank+issue) on the [data_science repository](https://github.com/The-Strategy-Unit/data_science). Provide a useful title and description for the session.
+2. Give your new issue the label C&C☕
+3. If you would like to run or contribute to the session, assign yourself to it.
+4. Click "Create" to save your session idea as a GitHub issue. You should then be able to see it listed as a "Potential session" on the planner, and others will be able to view, vote for, and comment on your session idea.
+
+![Adding a session idea](creating-session.gif){fig-alt="A short clip showing a person creating a new session idea as a GitHub issue, and giving it a title, description, and label"}
+
+## Voting for session ideas 
+
+We will use thumbs up (👍) emoji reactions to suggested sessions as a voting system to help us with planning and scheduling.
+
+If you see any potential sessions that you are interested in, react to them with a thumbs up emoji. You can see all planned sessions, in order of votes received, [listed here](https://github.com/The-Strategy-Unit/data_science/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22C%26C%20%E2%98%95%22%20sort%3Areactions-%2B1-desc).
+
+![Voting for a session idea](voting-for-session.gif){fig-alt="A short clip showing a person reacting to a GitHub issue with a thumbs up emoji"}
+

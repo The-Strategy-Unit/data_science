@@ -1,5 +1,5 @@
 ---
-title: "Using Github to plan and organise Coffee & Coding"
+title: "Using GitHub to plan and organise Coffee & Coding"
 author: "YiWen Hon"
 date: "2024-11-12"
 categories: [GitHub, learning]

@@ -1,0 +1,22 @@
+---
+title: "Forged in fire"
+subtitle: "Project management lessons from the frontline"
+author: 
+  - "[Chris Beeley](mailto:chris.beeley1@nhs.net)"
+date: 2024-11-21
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, ../su_presentation.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
+    footer: |
+      Learn more about [The Strategy Unit](https://www.strategyunitwm.nhs.uk/)
+---
+
+## Intro
+

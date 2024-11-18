@@ -20,3 +20,40 @@ format:
 
 ## Intro
 
+* I got a new job two years ago
+* Learning ++
+* I want to tell the story
+* I've drawn from three wells:
+  * Agile/ Scrum
+  * MLOps
+  * The skills and experience of those around me
+* This talk will not properly define scrum or MLOps
+
+## The New Hospital Programme
+
+* January 2023: Development phase
+* April-ish: Thinking about deployment
+* October-ish: Model is on its way to full production and much remains to do
+
+## Operational mode
+
+* The team was growing in November
+* There were two priorities
+  * Increase bus factor for Tom (which I'll come back to)
+  * Deploy the first production ready version
+
+## The first deployed version
+
+* December-ish: Many needs that were not anticipated
+* This first release kicked off lots of other work
+* The second release kicked off lots of other work
+* It was very hard to do any long term planning
+* By March we were confused and tired (and it was all my fault)
+
+## Scrum
+
+* We are not doing "proper" scrum
+* Product owner, scrum master, everyone else
+* Five week sprints with a one week recovery run between each one
+* Sprint planning, sprint catchup, sprint retro
+

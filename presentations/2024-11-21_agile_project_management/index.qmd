@@ -57,3 +57,52 @@ format:
 * Five week sprints with a one week recovery run between each one
 * Sprint planning, sprint catchup, sprint retro
 
+## Sprint retro
+
+* What went well, what could have gone better, and what to improve next time
+* Looking at process, not blaming individuals
+* Requires maturity and trust to bring up issues, and to respond to them in a constructive way
+* Should agree at the end on one process improvement which goes in the next sprint
+* We've had some really, really good retros and I think it's a really important process for a team
+
+## What did scrum give the team?
+
+* Simultaneous releases of linked repos
+* The team works autonomously in the sprint
+* Better conversations about "no"
+* The planning and retro process improves the team's processes, not just the code
+
+## Product owner
+
+* My lessson- get out the way
+* A better connection between high level and low level planning
+* Clear release dates and responsibilities
+* Clear what I should be doing
+
+## Agility
+
+* This project was agile whether we liked it or not!
+* My 2022 agile definition:
+  * Customers can't make up their minds
+  * It's hard to design software all at once
+  * Continuous delivery keeps customers happy
+
+## Some edited highlights from [The agile manifesto](https://agilemanifesto.org/)
+
+* "Welcome changing requirements, even late in development"
+* "At regular intervals, the team reflects on how to become more effective, then tunes and adjusts its behavior accordingly"
+* "Continuous attention to technical excellence and good design enhances agility"
+* "Simplicity- the art of maximizing the amount of work not done- is essential"
+
+## How scrum helped
+
+* Those shaping the project wanted to be able to make quick changes- and see the long term plan
+* Agility is a mindset, a mode of practice
+* If anything we were actually **too** agile
+* Being agile is all about being able to review and make decisions frequently
+* But it isn't about changing what you're doing all the time
+* Good code and good teams are ready to change direction- whether they change or not
+
+## MLOps
+
+

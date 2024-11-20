@@ -46,7 +46,8 @@ renv::use(lockfile = "renv.lock")
 
 * 'Too long; didn't read'.
 * GitHub isn't just a dumping ground for code and version histories.
-* There are features that can help with communciation and collboration.
+* There are features that can help with communication and collaboration.
+
 * We've been learning what works for us as our team continues to grow.
 
 :::

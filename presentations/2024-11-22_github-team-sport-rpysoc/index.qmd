@@ -1,0 +1,363 @@
+---
+title: "GitHub as a team sport"
+subtitle: "NHS RPySOC 2024"
+author: "[Matt Dray](mailto:matt.dray@nhs.net)"
+date: 2024-11-22
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, ../su_presentation.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
+    footer: |
+      Learn more about [The Strategy Unit](https://www.strategyunitwm.nhs.uk/)
+---
+
+```{r lockfile}
+#| include: FALSE
+renv::use(lockfile = "renv.lock")
+```
+
+
+## tl;dr
+
+:::: {.columns}
+
+::: {.column width='60%'}
+
+* GitHub organises code
+* GitHub can help organise _people_
+* We're learning as we go
+
+:::
+
+:::{.column width='40%'}
+
+![](github-mark.svg){width="100%" fig-alt="The GitHub logo, which is the silhouette of a cat-octopus hybrid."}
+:::
+
+::::
+
+::: {.notes}
+
+* 'Too long; didn't read'.
+* GitHub isn't just a dumping ground for code and version histories.
+* There are features that can help with communication and collaboration.
+
+* We've been learning what works for us as our team continues to grow.
+
+:::
+
+# Context {.inverse}
+
+::: {.notes}
+
+* I'll start with background and motivation.
+* What's the problem we're trying to solve?
+
+:::
+
+## The [Data Science](https://the-strategy-unit.github.io/data_science/) Team
+
+![](cb.jpg){width="11%" fig-alt="Profile photo of Chris, bearded and jacketed."}
+![](tj.png){width="11%" fig-alt="Profile photo of Tom with a natty jumper and an intense gaze."}
+![](yh.jpg){width="11%" fig-alt="Profile photo of YiWen in a sea of books."}
+![](rd.jpg){width="11%" fig-alt="Profile photo of Rhian, smiling in a liminal space."}
+![](md.jpg){width="11%" fig-alt="Profile photo of Matt, seemingly on his first day of school."}
+![](blue.png){width="11%" fig-alt="The helmet of the blue Power Ranger, which represents Ozayr."}
+![](red.png){width="11%" fig-alt="The helmet of the red Power Ranger, which represents a new team member."}
+![](yellow.png){width="11%" fig-alt="The helmet of the yellow Power Ranger, which represents a new team member."}
+
+* Expanding to 8, all remote
+* Complex [New Hospital Programme](https://connect.strategyunitwm.nhs.uk/nhp/project_information/) (NHP)
+* How should we work together?
+
+::: {.notes}
+
+* We're a growing team (soon to be 8).
+* We've got different backgrounds and experiences.
+* We do modelling, data pipelines, apps, etc.
+* We work largely on a big, complicated project with lots of stakeholders and tasks.
+* We want to bring other teams in the SU along with us.
+* Are there tools or approaches we can use to help us?
+
+:::
+
+## The dream
+
+:::: {.columns}
+
+::: {.column width='40%'}
+
+* Order from chaos
+* Good communication
+* '[Bus factor](https://en.wikipedia.org/wiki/Bus_factor)' reduction
+
+:::
+
+::: {.column width='60%'}
+
+![](fine.png){width="100%" fig-alt="The 'this is fine' meme. A cartoon dog in a little hat is sat in a room that's on fire, saying 'this is fine'."}
+
+:::
+
+::::
+
+::: {.notes}
+
+* We have a big project with lots of repositories. We have lots of different tasks and goals.
+* We want to improve clarity and reduce the chance of misunderstanding and error.
+* We don't want information locked up in one person's brain.
+
+:::
+
+## Living the dream
+
+:::: {.columns}
+
+::: {.column width='40%'}
+
+* This works (for now)
+* New folks are joining
+* Things ~~can~~ will change
+
+:::
+
+::: {.column width='60%'}
+
+![](antifine.png){fig-alt="The 'this is fine' meme but in reverse. Normally the meme is a cartoon dog sat in a room that's on fire, saying 'this is fine'. In this version, a cartoon flame says 'this is fine' surrounded by a room full of dogs."}
+
+:::
+
+::::
+
+::: {.notes}
+
+* We've been slowly changing how we work and the tools we use.
+* Our standards will make it easier for new starters, but they should also have an influence on how we do things.
+* Nothing is set in stone. We're continually thinking about what works and what doesn't.
+
+:::
+
+# So, GitHub {.inverse}
+
+::: {.notes}
+
+* This is a talk about a widely used tool and how we're making use of its features to meet our needs.
+* I'll give a few examples of some of the things we're doing.
+* I'll start broad and get narrower.
+* Examples, because there's not enough time to talk about everything.
+* We follow some basic GitHub like tenets 'one issue, one branch, one pull request' and 'commits should be small', but there's some other things I wanted to mentionin particular.
+* A lot of this will apply to other tools, like GitLab.
+* I hope there's one thing, big or small, that you might consider for your next project.
+
+:::
+
+## GitHub [Projects](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+* We're '[agile](https://en.wikipedia.org/wiki/Agile_software_development)'
+* Many tasks/respositories
+* We want to show progress
+
+:::
+
+::: {.column width='50%'}
+
+![](projects-issue.png){width="100%" fig-alt="An excerpt from the side-panel of a GitHub issue. It'sa box showing how the issue fits into the project. There are labels to show the status, the sprint it belongs to, its planning state, due date, priority, level and size."}
+
+:::
+
+::::
+
+::: {.notes}
+
+* We work in sprints.
+* There's lots to keep track of: the model, a couple of apps, a documentation site, etc.
+* We want to show others how things are progressing.
+* GitHub Projects helps us by arranging individual tasks from across lots of different repositories.
+* We can also add custom labelling to help us organise and track.
+
+:::
+
+## {background-image="projects.png" alt="A kanban-style board made of tasks. We're in a tab named 'curent sprint' and there are tasks on cards with labels and an assigned person's avatar. There are columns for 'backlog', 'in progress' and 'in review'."}
+
+::: {.notes}
+
+* We can show the tasks in kanban style, or as a list or as a calendar.
+* We can filter down to show only certain labels, statuses or assigned people.
+* This is helps us find, organise and focus during sprint planning and weekly sprint catch-ups.
+
+:::
+
+## Division of labour
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+* The '[scrum](https://en.wikipedia.org/wiki/Scrum_(software_development)) master'
+* [Owners and deputies](https://the-strategy-unit.github.io/data_science/style/git_and_github.html#repository-organisation) ([CODEOWNERS](https://docs.github.com/en/enterprise-cloud@latest/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners))
+* Issue and pull-request [assignees](https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/assigning-issues-and-pull-requests-to-other-github-users)
+
+:::
+
+::: {.column width='50%'}
+
+![](pr.png){width="100%" fig-alt="A PR request showing one person labelled as the assignee and one person identified as the reviewer."}
+
+:::
+
+::::
+
+::: {.notes}
+
+* At the level of the sprint, we have a scrum master that oversees the movement of tasks from the backlog and takes us through the GitHub Project in weekly sprint catch-ups.
+* Within each repository we have an owner and deputy on each repository, with the goal of keeping the it shipshape (e.g. good docs, no stale branches, PRs are reviewed).
+* And we have people assigned to issues and PRs, which signals the tasks that people are working on.
+* Having an identifiable person in charge makes it easier to identify ownership and for others to talk to the right person.
+
+:::
+
+## Task sorting
+
+:::: {.columns}
+
+::: {.column width='33%'}
+
+* [MoSCoW method](https://en.wikipedia.org/wiki/MoSCoW_method)
+* Release-aligned [milestones](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones)
+* Efficient triage
+
+:::
+
+::: {.column width='67%'}
+
+![](labels.png){width="100%" fig-alt="Examples of repository labels and their descriptions: 'bug', 'could', 'documentation'. Each has a colour to help identify it."}
+
+:::
+
+::::
+
+::: {.notes}
+
+* Organising repositories at a higher level doesn't preclude organisation at the repository level, which is foundational.
+* We typically include the labels Must, Should, Could, Won't (MoSCoW) to filter tasks and to help assess importance.
+* The issues associated with the current sprint are added to a milestone with the upcoming version number. This makes it easier to focus, but also release the code with auto-generated notes.
+* These approaches signal intent and help the team to more efficiently decide what to do next.
+
+:::
+
+## Pull requests (PRs)
+
+:::: {.columns}
+
+::: {.column width='40%'}
+
+* Talk!
+* Use [suggestions](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/incorporating-feedback-in-your-pull-request)
+* The assignee merges the PR
+
+:::
+
+::: {.column width='60%'}
+
+![](suggest.png){width="100%" fig-alt="Rhian has used the GitHub suggestions feature to fix a typo, which Matt can commit as part of his pull request. The fix removes a rogue letter 'e' from the end of the word mitigator. Matt suggests that 'mitigator' with an 'e' is probably Italian. What a joker."}
+
+:::
+
+::::
+
+::: {.notes}
+
+* Respect each others' time. 'Closes #10' isn't always enough.
+* GitHub comments don't replace talking. Discuss if unclear.
+* Suggestions are efficient and respect the submitter. 
+* The submitter owns the PR. They're responsible for closing it.
+
+:::
+
+# Surprise twist... {.inverse}
+
+## GitHub is a team member
+
+![](action.png){fig-alt="Confirmation that a GitHub Action workflow has completed successfully. In this case, it was to build and deploy a website."}
+
+* Automate with [Actions](https://docs.github.com/en/actions/learn-github-actions)
+* [Issue templates](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository)
+* [Repo templates](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-template-repository)
+
+::: {.notes}
+
+* Most of the team is human.
+GitHub itself has features that can automate away some boring things and help prevent accidents or forgetfulness.
+* GitHub Actions for continuous integration. R-CMD check at least for R projects. Start with r-lib examples as a basis.
+* We're looking towards things like templates at the issue and repo levels; again to remove drudgery.
+
+:::
+
+# Be a good sport {.inverse}
+
+## Are we [curling](https://en.wikipedia.org/wiki/Curling)? 🥌
+
+:::: {.columns}
+
+::: {.column width='45%'}
+
+We:
+
+* are a small team
+* assume specialist roles
+* work in sync
+
+:::
+
+::: {.column width='55%'}
+
+![](curling.png){fig-alt="Terrible puns in the comments of a pull request. Rhian says 'you're still pushing curling then' (emphasis on 'pushing'). Chris responds 'as analogies go, I think it's nice' (emphasis on 'ice'). Matt mentions 'sweeping' statements."}
+
+:::
+
+::::
+
+::: {.notes}
+
+* You have been wondering: if this is a 'team sport', what sport is it?
+* This is a terrible metaphor. _But think about it._
+
+:::
+
+## The bottom line, actually
+
+:::: {.columns}
+
+::: {.column width='70%'}
+
+![](curling.gif){width="100%" fig-alt="A curling stone heads rapidly across the ice towards some stationary stones. A ricochet knocks a competitor over onto the ice. Teammates rush in to help."}
+
+:::
+
+::: {.column width='30%'}
+
+1. Communicate
+2. Help each other
+3. Be kind
+
+:::
+
+::::
+
+::: {.notes}
+
+* The features of GitHub should help you do the things you should already be doing.
+* I am the guy falling over, the stones are tasks, my team mates are picking me up and dusting me off. 
+* What has your team been doing? What works for you?
+
+:::

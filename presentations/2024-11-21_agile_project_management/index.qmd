@@ -87,7 +87,7 @@ format:
   * It's hard to design software all at once
   * Continuous delivery keeps customers happy
 
-## Some edited highlights from [The agile manifesto](https://agilemanifesto.org/)
+## Some highlights from [The agile manifesto](https://agilemanifesto.org/)
 
 * "Welcome changing requirements, even late in development"
 * "At regular intervals, the team reflects on how to become more effective, then tunes and adjusts its behavior accordingly"
@@ -105,4 +105,41 @@ format:
 
 ## MLOps
 
+* Like DevOps, but for ML 🙂
+* Deploying, updating, and monitoring models in production
+* This isn't a very ML-y project but much of it still applies (not all though)
+* We have a set of customers using a model and we want to push updates to that model monthly
+* We also want to be able to rerun old models (for audit purposes)
 
+## Levels
+
+* Levels of MLOps- 0, 1, 2
+* Continuos integration and continuous delivery
+* There are various finicky differences in definition
+* I'll just talk about the bottom, top, and where we are
+
+## Level 0 MLOps
+
+* You process your data in a Jupyter notebook
+* You make a model on a Jupyter notebook
+* You give your code to the engineers who attempt to recreate your data and environment
+
+## Level 2 MLOps
+
+* Data is processed in a pipeline
+* Code is continously integrated and deployed to production
+* Development, staging, and production environments are configured identically
+
+## Where are we?
+
+* We're sort of level 1-ish
+* Data pipelines are definitely RAP! (and recently quicker)
+* We have a dev environment
+* Merge to main deploys to dev, GitHub release deploys to prod
+
+## QA, QA, QA
+
+* QA is super, super, super important
+* QA of data in particular- it's also time consuming (trying to RAP!)
+* QA is done at regular staging points
+* QA is done continuously

@@ -1,0 +1,157 @@
+---
+title: "Forged in fire"
+subtitle: "Project management lessons from the frontline"
+author: 
+  - "[Chris Beeley](mailto:chris.beeley1@nhs.net)"
+date: 2024-11-22
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, ../su_presentation.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
+    footer: |
+      Learn more about [The Strategy Unit](https://www.strategyunitwm.nhs.uk/)
+---
+
+## Intro
+
+* I got a new job two years ago
+* Learning ++
+* I want to tell the story
+* I've drawn from three wells:
+  * Agile/ Scrum
+  * MLOps
+  * The skills and experience of those around me
+* This talk will not properly define scrum or MLOps
+
+## The New Hospital Programme
+
+* January 2023: Development phase
+* April-ish: Thinking about deployment
+* October-ish: Model is on its way to full production and much remains to do
+
+## Operational mode
+
+* The team was growing in November
+* There were two priorities
+  * Increase bus factor for Tom (which I'll come back to)
+  * Deploy the first production ready version
+
+## The first deployed version
+
+* December-ish: Many needs that were not anticipated
+* This first release kicked off lots of other work
+* The second release kicked off lots of other work
+* It was very hard to do any long term planning
+* By March we were confused and tired (and it was all my fault)
+
+## Scrum
+
+* We are not doing "proper" scrum
+* Product owner, scrum master, everyone else
+* Five week sprints with a one week recovery run between each one
+* Sprint planning, sprint catchup, sprint retro
+
+## Sprint retro
+
+* What went well, what could have gone better, and what to improve next time
+* Looking at process, not blaming individuals
+* Requires maturity and trust to bring up issues, and to respond to them in a constructive way
+* Should agree at the end on one process improvement which goes in the next sprint
+* We've had some really, really good retros and I think it's a really important process for a team
+
+## What did scrum give the team?
+
+* Simultaneous releases of linked repos
+* The team works autonomously in the sprint
+* Better conversations about "no"
+* The planning and retro process improves the team's processes, not just the code
+
+## Product owner
+
+* My lessson- get out the way
+* A better connection between high level and low level planning
+* Clear release dates and responsibilities
+* Clear what I should be doing
+
+## Agility
+
+* This project was agile whether we liked it or not!
+* My 2022 agile definition:
+  * Customers can't make up their minds
+  * It's hard to design software all at once
+  * Continuous delivery keeps customers happy
+
+## Some highlights from [The agile manifesto](https://agilemanifesto.org/)
+
+* "Welcome changing requirements, even late in development"
+* "At regular intervals, the team reflects on how to become more effective, then tunes and adjusts its behavior accordingly"
+* "Continuous attention to technical excellence and good design enhances agility"
+* "Simplicity- the art of maximizing the amount of work not done- is essential"
+
+## How scrum helped
+
+* Those shaping the project wanted to be able to make quick changes- and see the long term plan
+* Agility is a mindset, a mode of practice
+* If anything we were actually **too** agile
+* Being agile is all about being able to review and make decisions frequently
+* But it isn't about changing what you're doing all the time
+* Good code and good teams are ready to change direction- whether they change or not
+
+## MLOps
+
+* Like DevOps, but for ML 🙂
+* Deploying, updating, and monitoring models in production
+* This isn't a very ML-y project but much of it still applies (not all though)
+* We have a set of customers using a model and we want to push updates to that model monthly
+* We also want to be able to rerun old models (for audit purposes)
+
+## Levels
+
+* Levels of MLOps- 0, 1, 2
+* Continuous integration and continuous delivery
+* There are various finicky differences in definition
+* I'll just talk about the bottom, top, and where we are
+
+## Level 0 MLOps
+
+* You process your data in a Jupyter notebook
+* You make a model on a Jupyter notebook
+* You give your code to the engineers who attempt to recreate your data and environment
+
+## Level 2 MLOps
+
+* Data is processed in a pipeline
+* Code is continously integrated and deployed to production
+* Development, staging, and production environments are configured identically
+
+## Where are we?
+
+* We're sort of level 1-ish
+* Data pipelines are definitely RAP! (and recently quicker)
+* We have a dev environment
+* Merge to main deploys to dev, GitHub release deploys to prod
+
+## QA, QA, QA
+
+* QA is super, super, super important
+* QA of data in particular- it's also time consuming (trying to RAP!)
+* QA is done at regular staging points
+* QA is done continuously
+
+## Other stuff I learned along the way
+
+* It doesn't matter who's right, it matters how people feel
+* Transparency isn't just good for robust code and analysis- it builds relationships
+* Bus factor, bus factor, bus factor
+* Documentation, documentation, documentation
+
+## The future
+
+* Open source
+* Mo' team members, mo' conscious work on "teaming" and collaboration

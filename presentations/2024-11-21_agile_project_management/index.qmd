@@ -3,7 +3,7 @@ title: "Forged in fire"
 subtitle: "Project management lessons from the frontline"
 author: 
   - "[Chris Beeley](mailto:chris.beeley1@nhs.net)"
-date: 2024-11-21
+date: 2024-11-22
 date-format: "D MMMM YYYY"
 format:
   revealjs:
@@ -114,7 +114,7 @@ format:
 ## Levels
 
 * Levels of MLOps- 0, 1, 2
-* Continuos integration and continuous delivery
+* Continuous integration and continuous delivery
 * There are various finicky differences in definition
 * I'll just talk about the bottom, top, and where we are
 
@@ -143,3 +143,15 @@ format:
 * QA of data in particular- it's also time consuming (trying to RAP!)
 * QA is done at regular staging points
 * QA is done continuously
+
+## Other stuff I learned along the way
+
+* It doesn't matter who's right, it matters how people feel
+* Transparency isn't just good for robust code and analysis- it builds relationships
+* Bus factor, bus factor, bus factor
+* Documentation, documentation, documentation
+
+## The future
+
+* Open source
+* Mo' team members, mo' conscious work on "teaming" and collaboration

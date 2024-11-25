@@ -45,5 +45,54 @@ format:
 * Also quite a safe application, and one we implemented for patient experience
 * The algorithm is just helping you to find things with a particular theme or sentiment
 * You bring the understanding
+* Many ways of achieving this, from easy to difficult
+  * Unsupervised and supervised
+  * Searching for strings vs semantic search
+
+## Generating summary statistics
+
+* This needs to be done with care
+* You can potentially lose a lot of nuance and meaning
+* Even the best model is probably only around 80% accurate
+* Useful for monitoring and making rough estimates about the size of things
+* Not suitable for anything that needs accuracy (e.g. safeguarding)
 
 ## "Free"
+
+* Unsupervised learning is "free"- no training
+* Arguably you may as well use it for everything, speculatively
+* However there are lots of models and parameterst to set
+* So "free" is not really "free"
+
+## What's going on?
+
+* Text models are only as sensible as their inputs
+* We call the algorithm that turns text to numbers a "vectoriser"
+
+## Bag of words vs TF-IDF
+
+* Bag of words just counts the number of times each word appears
+* Crude but effective
+* TF-IDF works similarly but makes rare words more important, which can help with topic modelling and classification
+
+## Word embeddings 
+
+![](vectors.png)
+
+From [Sutor et al.](https://ieeexplore.ieee.org/document/8695402), reproduced under fair use
+
+## Word embeddings cont.
+
+* There are some smallish ones (like Glove), and some huge ones (like BERT)
+* Vectors are the only way to encode meaning and context
+
+## The future
+
+* A number of different things suggest themselves
+* Used of topic models to explore and search
+* Training of a supervised model for a particular project
+
+## The dream
+
+* Zero shot model with human in the loop learning
+

@@ -59,7 +59,7 @@ format:
 
 ## "Free"
 
-* Unsupervised learning is "free"- no training
+* Unsupervised learning is "free"- no labelling necessary
 * Arguably you may as well use it for everything, speculatively
 * However there are lots of models and parameterst to set
 * So "free" is not really "free"

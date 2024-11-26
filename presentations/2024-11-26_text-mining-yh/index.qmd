@@ -1,0 +1,135 @@
+---
+title: "Text mining"
+subtitle: "Some practical examples"
+author: 
+  - "[YiWen Hon](mailto:yiwen.hon1@nhs.net)"
+date: 2024-11-26
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, ../su_presentation.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
+    scrollable: true
+    reference-location: document
+    footer: |
+      Learn more about [Data Science at The Strategy Unit](https://the-strategy-unit.github.io/data_science)
+---
+
+## Text vectorisation: Turning words into numbers
+
+* Computers cannot do statistics with words as raw text
+* The basic foundation of **all** Natural Language Processing!
+* Huge range in complexity
+
+## Bag of words: Each word is represented by 1 number
+
+- 'I love to run'
+- 'the cat does not eat fruit'
+- 'run to the cat'
+- 'I love to eat fruit. fruit fruit fruit fruit'
+
+![](bag-of-words.png){fig-alt="A table showing the counts of each of the words"}
+
+## Word embeddings (50-300 numbers per word)
+
+![](word2vec.png){fig-alt="A chart. Each word is represented by a dot on the chart. Words relating to fish are clustered on the right, words relating to food are clustered to the top."}^[[Openclassrooms.com](https://openclassrooms.com/en/courses/6532301-introduction-to-natural-language-processing/8082110-discover-the-power-of-word-embeddings)]
+
+## Attention mechanism: 768 * 3 numbers per word
+
+- Basis of Large Language Models! 
+- Attempts to capture the relationship between words
+- Huge computational power required
+
+![](query-key-value.png){fig-alt="A diagram with the words 'Sally loved reading'. Each of the words has three arrows pointing from it, pointing at the letters Q, K and V"}
+
+## Text classification
+
+- Supervised learning - we need examples that have already been labelled
+- Sentiment analysis - whether a review is positive or negative
+
+Over to the code!
+
+## How do we know how good a model is?
+
+:::: {.columns}
+::: {.column width="50%" .fragment}
+
+We use performance metrics like:
+
+- Accuracy
+- Precision
+- Recall
+:::
+
+::: {.column width="50%"}
+
+![](confusion-matrix.png)^[[Evidently AI](https://www.evidentlyai.com/classification-metrics/confusion-matrix)]
+
+:::
+::::
+
+## What's the accuracy for this model?
+
+:::: {.columns}
+::: {.column width="50%"}
+
+![](accuracy.png)
+
+![](accuracy_2.png)
+
+:::
+
+::: {.column width="50%" .fragment}
+
+The model's accuracy is 91%!
+
+But is there something wrong with this model?
+
+::: 
+::::
+
+## 🐟 Different metrics for different purposes^[[pxtextmining](https://the-strategy-unit.github.io/PatientExperience-QDC/pxtextmining/performance_metrics.html#single-label-performance-metrics)]
+
+:::: {.columns}
+::: {.column width="50%"}
+
+Recall
+
+- A model for cancer screening (positive = potential cancer)
+- Cost of false negative is higher than cost of false positive
+- 🥅 Fishing with a net (more fish, some rocks are ok)
+
+:::
+::: {.column width="50%"}
+
+Precision
+
+- A model for identifying safe seatbelts (positive = safe)
+- Cost of false positive is higher than cost of false negative
+- 🎣 Fishing with a spear (fewer fish, but fewer rocks too) 
+
+:::
+::::
+
+## Topic Modelling
+
+- Unsupervised learning - the model has no examples to learn from
+
+Over to the code!
+
+## Topic Modelling pros and cons
+
+- How do you evaluate the performance of a topic model?
+- Can work well sometimes
+- Black box
+
+## Conclusion
+
+- Our code examples today were very basic
+- Text mining is not magic
+- Fancier models = Fancier tasks!

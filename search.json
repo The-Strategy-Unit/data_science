@@ -2111,6 +2111,90 @@
     "text": "Note\nAll copyrighted material is reused under Fair Dealing"
   },
   {
+    "objectID": "presentations/2024-11-27_text-mining/index.html#intro",
+    "href": "presentations/2024-11-27_text-mining/index.html#intro",
+    "title": "Text mining",
+    "section": "Intro",
+    "text": "Intro\n\nRange of possible applications\nThere are a range of caveats depending on the use case\nSome of them are more relevant than others\nSome of them are “free”, and some aren’t"
+  },
+  {
+    "objectID": "presentations/2024-11-27_text-mining/index.html#what-is-text-mining",
+    "href": "presentations/2024-11-27_text-mining/index.html#what-is-text-mining",
+    "title": "Text mining",
+    "section": "What is text mining?",
+    "text": "What is text mining?\n\nA variety of supervised and unsupervised methods\nThe uses we’ll discuss today have no “understanding” of text (no “intelligence”)\nThey all have the potential, therefore, to be very inaccurate (e.g. negation)\nBut they can be a low cost way of gathering insight, properly applied"
+  },
+  {
+    "objectID": "presentations/2024-11-27_text-mining/index.html#i-just-want-a-bit-of-help-sorting",
+    "href": "presentations/2024-11-27_text-mining/index.html#i-just-want-a-bit-of-help-sorting",
+    "title": "Text mining",
+    "section": "“I just want a bit of help sorting”",
+    "text": "“I just want a bit of help sorting”\n\nThis is one of the safer things to do\nThere are a range of methods\nSome will give you some say of the “theme” of the piles, and some don’t\nGreat for: sifting, looking at relative size of piles, novel suggestions for themes for text\nBad for: accuracy, control over what’s in the piles"
+  },
+  {
+    "objectID": "presentations/2024-11-27_text-mining/index.html#i-just-want-to-find-useful-examples",
+    "href": "presentations/2024-11-27_text-mining/index.html#i-just-want-to-find-useful-examples",
+    "title": "Text mining",
+    "section": "“I just want to find useful examples”",
+    "text": "“I just want to find useful examples”\n\nAlso quite a safe application, and one we implemented for patient experience\nThe algorithm is just helping you to find things with a particular theme or sentiment\nYou bring the understanding\nMany ways of achieving this, from easy to difficult\n\nUnsupervised and supervised\nSearching for strings vs semantic search"
+  },
+  {
+    "objectID": "presentations/2024-11-27_text-mining/index.html#generating-summary-statistics",
+    "href": "presentations/2024-11-27_text-mining/index.html#generating-summary-statistics",
+    "title": "Text mining",
+    "section": "Generating summary statistics",
+    "text": "Generating summary statistics\n\nThis needs to be done with care\nYou can potentially lose a lot of nuance and meaning\nEven the best model is probably only around 80% accurate\nUseful for monitoring and making rough estimates about the size of things\nNot suitable for anything that needs accuracy (e.g. safeguarding)"
+  },
+  {
+    "objectID": "presentations/2024-11-27_text-mining/index.html#free",
+    "href": "presentations/2024-11-27_text-mining/index.html#free",
+    "title": "Text mining",
+    "section": "“Free”",
+    "text": "“Free”\n\nUnsupervised learning is “free”- no labelling necessary\nArguably you may as well use it for everything, speculatively\nHowever there are lots of models and parameters to set\nSo “free” is not really “free”"
+  },
+  {
+    "objectID": "presentations/2024-11-27_text-mining/index.html#whats-going-on",
+    "href": "presentations/2024-11-27_text-mining/index.html#whats-going-on",
+    "title": "Text mining",
+    "section": "What’s going on?",
+    "text": "What’s going on?\n\nText models are only as sensible as their inputs\nWe call the algorithm that turns text to numbers a “vectoriser”"
+  },
+  {
+    "objectID": "presentations/2024-11-27_text-mining/index.html#bag-of-words-vs-tf-idf",
+    "href": "presentations/2024-11-27_text-mining/index.html#bag-of-words-vs-tf-idf",
+    "title": "Text mining",
+    "section": "Bag of words vs TF-IDF",
+    "text": "Bag of words vs TF-IDF\n\nBag of words just counts the number of times each word appears\nCrude but effective\nTF-IDF works similarly but makes rare words more important, which can help with topic modelling and classification"
+  },
+  {
+    "objectID": "presentations/2024-11-27_text-mining/index.html#word-embeddings",
+    "href": "presentations/2024-11-27_text-mining/index.html#word-embeddings",
+    "title": "Text mining",
+    "section": "Word embeddings",
+    "text": "Word embeddings\n\nFrom Sutor et al., reproduced under fair use"
+  },
+  {
+    "objectID": "presentations/2024-11-27_text-mining/index.html#word-embeddings-cont.",
+    "href": "presentations/2024-11-27_text-mining/index.html#word-embeddings-cont.",
+    "title": "Text mining",
+    "section": "Word embeddings cont.",
+    "text": "Word embeddings cont.\n\nThere are some smallish ones (like Glove), and some huge ones (like BERT)\nVectors are the only way to encode meaning and context"
+  },
+  {
+    "objectID": "presentations/2024-11-27_text-mining/index.html#the-future",
+    "href": "presentations/2024-11-27_text-mining/index.html#the-future",
+    "title": "Text mining",
+    "section": "The future",
+    "text": "The future\n\nA number of different things suggest themselves\nUse of topic models to explore and search\nTraining of a supervised model for a particular project"
+  },
+  {
+    "objectID": "presentations/2024-11-27_text-mining/index.html#the-dream",
+    "href": "presentations/2024-11-27_text-mining/index.html#the-dream",
+    "title": "Text mining",
+    "section": "The dream",
+    "text": "The dream\n\nZero shot model with human in the loop learning"
+  },
+  {
     "objectID": "presentations/2023-05-23_data-science-for-good/index.html#patient-experience",
     "href": "presentations/2023-05-23_data-science-for-good/index.html#patient-experience",
     "title": "What good data science looks like",
@@ -2857,7 +2941,7 @@
     "href": "presentations/index.html",
     "title": "Presentations",
     "section": "",
-    "text": "Title\nAuthor\nDate\n\n\n\n\nText mining: Some practical examples\nYiWen Hon\n2024-11-26\n\n\nForged in fire: Project management lessons from the frontline\nChris Beeley\n2024-11-22\n\n\nGitHub as a team sport: NHS RPySOC 2024\nMatt Dray\n2024-11-22\n\n\nWhat is AI?\nData science team, Strategy Unit\n2024-10-10\n\n\nLarge Language Models (LLMs): Is this AI?\nData Science team, Strategy Unit\n2024-10-10\n\n\nComputer Vision: Is this AI?\nTom Jemmett\n2024-10-10\n\n\nIdentifying patients at risk: Is this AI?\nYiWen Hon\n2024-10-10\n\n\nRAP: A cautionary tale\nNA\n2024-10-09\n\n\nUsing R and Python to model future hospital activity: EARL Conference 2024\nYiWen Hon, Matt Dray, Tom Jemmett\n2024-09-05\n\n\nAgile and scrum working\nChris Beeley\n2024-08-22\n\n\nOpen source licensing: Or: how I learned to stop worrying and love openness\nChris Beeley\n2024-05-30\n\n\nGitHub as a team sport: DfT QA Month\nMatt Dray\n2024-05-23\n\n\nStore Data Safely: Coffee & Coding\nYiWen Hon, Matt Dray\n2024-05-16\n\n\nCoffee and Coding: Making my analytical workflow more reproducible with {targets}\nJacqueline Grout\n2024-01-25\n\n\nConference Check-in App: NHS-R/NHS.pycom 2023\nTom Jemmett\n2023-10-17\n\n\nSystem Dynamics in health and care: fitting square data into round models\nSally Thompson\n2023-10-09\n\n\nRepeating Yourself with Functions: Coffee and Coding\nSally Thompson\n2023-09-07\n\n\nCoffee and Coding: Working with Geospatial Data in R\nTom Jemmett\n2023-08-24\n\n\nUnit testing in R: NHS-R Community Webinar\nTom Jemmett\n2023-08-23\n\n\nEverything you ever wanted to know about data science: but were too afraid to ask\nChris Beeley\n2023-08-02\n\n\nTravels with R and Python: the power of data science in healthcare\nChris Beeley\n2023-08-02\n\n\nAn Introduction to the New Hospital Programme Demand Model: HACA 2023\nTom Jemmett\n2023-07-11\n\n\nWhat good data science looks like\nChris Beeley\n2023-05-23\n\n\nText mining of patient experience data\nChris Beeley\n2023-05-15\n\n\nCoffee and Coding: {targets}\nTom Jemmett\n2023-03-23\n\n\nCollaborative working\nChris Beeley\n2023-03-23\n\n\nCoffee and Coding: Good Coding Practices\nTom Jemmett\n2023-03-09\n\n\nRAP: what is it and how can my team start using it effectively?\nChris Beeley\n2023-03-09\n\n\nCoffee and coding: Intro session\nChris Beeley\n2023-02-23"
+    "text": "Title\nAuthor\nDate\n\n\n\n\nText mining: What it can and can't do, and what it could do\nChris Beeley\n2024-11-27\n\n\nText mining: Some practical examples\nYiWen Hon\n2024-11-26\n\n\nForged in fire: Project management lessons from the frontline\nChris Beeley\n2024-11-22\n\n\nGitHub as a team sport: NHS RPySOC 2024\nMatt Dray\n2024-11-22\n\n\nWhat is AI?\nData science team, Strategy Unit\n2024-10-10\n\n\nLarge Language Models (LLMs): Is this AI?\nData Science team, Strategy Unit\n2024-10-10\n\n\nComputer Vision: Is this AI?\nTom Jemmett\n2024-10-10\n\n\nIdentifying patients at risk: Is this AI?\nYiWen Hon\n2024-10-10\n\n\nRAP: A cautionary tale\nNA\n2024-10-09\n\n\nUsing R and Python to model future hospital activity: EARL Conference 2024\nYiWen Hon, Matt Dray, Tom Jemmett\n2024-09-05\n\n\nAgile and scrum working\nChris Beeley\n2024-08-22\n\n\nOpen source licensing: Or: how I learned to stop worrying and love openness\nChris Beeley\n2024-05-30\n\n\nGitHub as a team sport: DfT QA Month\nMatt Dray\n2024-05-23\n\n\nStore Data Safely: Coffee & Coding\nYiWen Hon, Matt Dray\n2024-05-16\n\n\nCoffee and Coding: Making my analytical workflow more reproducible with {targets}\nJacqueline Grout\n2024-01-25\n\n\nConference Check-in App: NHS-R/NHS.pycom 2023\nTom Jemmett\n2023-10-17\n\n\nSystem Dynamics in health and care: fitting square data into round models\nSally Thompson\n2023-10-09\n\n\nRepeating Yourself with Functions: Coffee and Coding\nSally Thompson\n2023-09-07\n\n\nCoffee and Coding: Working with Geospatial Data in R\nTom Jemmett\n2023-08-24\n\n\nUnit testing in R: NHS-R Community Webinar\nTom Jemmett\n2023-08-23\n\n\nEverything you ever wanted to know about data science: but were too afraid to ask\nChris Beeley\n2023-08-02\n\n\nTravels with R and Python: the power of data science in healthcare\nChris Beeley\n2023-08-02\n\n\nAn Introduction to the New Hospital Programme Demand Model: HACA 2023\nTom Jemmett\n2023-07-11\n\n\nWhat good data science looks like\nChris Beeley\n2023-05-23\n\n\nText mining of patient experience data\nChris Beeley\n2023-05-15\n\n\nCoffee and Coding: {targets}\nTom Jemmett\n2023-03-23\n\n\nCollaborative working\nChris Beeley\n2023-03-23\n\n\nCoffee and Coding: Good Coding Practices\nTom Jemmett\n2023-03-09\n\n\nRAP: what is it and how can my team start using it effectively?\nChris Beeley\n2023-03-09\n\n\nCoffee and coding: Intro session\nChris Beeley\n2023-02-23"
   },
   {
     "objectID": "presentations/2024-10-09-rap-cautionary-tales/index.html#many-moons-ago",

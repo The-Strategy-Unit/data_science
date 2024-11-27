@@ -61,7 +61,7 @@ format:
 
 * Unsupervised learning is "free"- no labelling necessary
 * Arguably you may as well use it for everything, speculatively
-* However there are lots of models and parameterst to set
+* However there are lots of models and parameters to set
 * So "free" is not really "free"
 
 ## What's going on?

@@ -89,7 +89,7 @@ From [Sutor et al.](https://ieeexplore.ieee.org/document/8695402), reproduced un
 ## The future
 
 * A number of different things suggest themselves
-* Used of topic models to explore and search
+* Use of topic models to explore and search
 * Training of a supervised model for a particular project
 
 ## The dream

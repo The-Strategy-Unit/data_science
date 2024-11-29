@@ -1,0 +1,79 @@
+---
+title: "Mapping my R journey so far: ten things that I have done along the way"
+format: html
+editor: visual
+---
+
+This blog post follows up from a recent talk I gave at coffee and coding a few months ago about my experiences of learning how to code in Rstudio. Since then, I've gone a bit further on my journey. Here are some reflections and advice to encourage others who are starting out their journey.
+
+1.  **I faced up to my fears**
+
+I have tried to learn R for many years, with mixed success. When I first tried learning R a few years ago, I learned a tiny bit each time and didn't have time to properly dedicate to it. The last time I tried, I was going through a crisis of confidence about my ability, and so when I was finding it difficult to learn R, I thought it was more 'proof' that I couldn't do it. I soon got swept up in the demands of everyday life, and gradually my work moved away from the world of quantitative data and from opportunities to use R in my day to day work. Still, in the back of my mind I had this strange push-pull feeling of both wanting to avoid learning R, but also wondering what it would have been like if I had persisted with learning it.
+
+When I started my job at the Strategy Unit, I heard about the NHS-R community, and it made me think about learning R again. I tried to join in with Advent of Code. But as soon as I hit some hurdles with getting set up with the software, those old feelings of inadequacy came back. This time round, I thought I'd try a different approach. I knew that because of the negative feelings, I probably needed to give myself some time to get used to using R and rewriting this association so it was less negative. One day during that lull between Boxing Day and New Year when time starts to lose all meaning, I came across the [aRtsy](https://cran.r-project.org/web/packages/aRtsy/readme/README.html) programme and when I went to the website, I was amazed by the beauty of what was being produced. But better still, all of the code was there for me to see how they made the beautiful images! I decided to try a couple of plots, first copying and pasting the code, and then making very small changes to the code to change the colours and aesthetics.
+
+![A nebula I created using the [aRtsy](https://cran.r-project.org/web/packages/aRtsy/readme/README.html) package](Nebula.jpg)
+
+I also discovered colour palettes such as those in the [wesanderson](https://github.com/karthik/wesanderson) package, and tried using them on some plots. I soon found that my fear of R was quickly being replaced by a geeky fascination with all of the beautiful plots I could make. It was low stakes, but also fun: all I needed to do was change some bits of code, and if they didn't work, nothing bad happened. This introduced me to the artistic side of the R community, and opened up a world of possibilities.
+
+2.  **I approached learning R like I would approach learning any other language** Quite early on, I realised that learning R was a bit like learning a language, so I approached it in the same way, by learning some words and phrases, getting exposure to the language by reading and listening and watching, and spending time with people who were using it, and speaking and writing the language, even when I didn't have a clue what was going on. It had an incremental effect and the more I absorbed, the more I....
+
+3.  **I set myself a goal and structured my learning to reach it**
+
+When I was serious about learning R, I had an idea of how I could do something in R to help illustrate one of the projects I was working on. Explained my idea and asked my colleague how realistic it was that a complete beginner like me could learn how to do it. Chris said that it was possible, but making a map was possibly one of the trickiest things to learn in R, and that I could do it but it was a bit tricky, and I would have to learn some other skills to help me get there, and he and colleagues in the data science team would be able to support me to do that.
+
+I was quite keen to make the maps to illustrate what I was writing in the report, so I set myself the goal of trying to learn how to make a map by the end of the year. I kept chipping away at it and celebrated my small wins, even the tiny ones, until I achieved the goals I set for myself.
+
+4.  **I figured out how I learn best** This involved listening to R tutorials on YouTube, working through books, trying out online coding courses, looking up how to do things on google, and asking my colleagues and mentors for advice about what resources I should look at, and what to avoid.
+
+One common thing I came across was that often tutorials were not written in a way that I could reproduce the code. I hope that this is something which will get better over time.
+
+I realised that chipping away at it, doing an hour here and there consistently, was the best approach for me specifically, with some bigger blocks of time (around 2-3 hours) where I could just let my brain 'off leash' and practice trying out different things until I could get the code to work properly. A combination of both of those things, over the best part of a year, have helped me to pick up lots of skills along the way. I also found that having structure was really helpful.
+
+5.  **I applied what I was learning to real data**
+
+I realised that I learned well when I could apply my learning to real data. I have practiced using the inbuilt datasets in r, the palmerpenguins dataset, and the datasets that are referred to in R4DS.
+
+Most recently, I have used the data that was most relevant to my work, from the UK Census. Figuring out the data and understanding it has been helpful for learning some of the more detailed skills.
+
+![My first attempt at creating a world map](My%20first%20Rplot%20world%20map.png)
+
+6.  **I found a supportive community**
+
+When I joined the communities, I felt like a baby asking very silly questions, but nobody has ever treated me like that and all the people I have met have been keen to help me learn. It has been very humbling to spend time with people who are extremely experienced at their job, and yet they are willing to spend time with you figuring out a problem together, even if it takes a few attempts.
+
+I learned to recognise the people who would celebrate the small wins, and be happy when they saw me making progress, and always made time to help me when I got stuck, and didn't act in a dismissive or condescending way.
+
+Some communities I have found along the way: Turing Way, NHS-R community, coffee and coding.
+
+7.  **I looked for inspiration to encourage me to keep going**
+
+One of my worries about trying to learn R was that I was finding that learning new things could take me longer as an adult, and I was several years older than I was last time I tried. But I was fairly confident that there must have been other people out there in the world who had successfully learned how to code when they were my age or older. This led to a fascinating rabbit hole of learning about the history of women in coding[^1], and people who had learned coding and built a career out of it in their later life. I bookmarked these so I could revisit them on the days where I was having a difficult time getting the code to work.
+
+[^1]: Historically, women were involved in coding, but their work was devalued. There is more information at XXX. If you are interested in watching a film about this topic, you may be interested in watching the movie Hidden Figures, based on the lives of astrophysicists Katherine Johnson, Dorothy Vaughan, and Mary Jackson.
+
+8.  **I embraced failure and started using it as a tool for learning**
+
+After learning that failure is part of the journey, I realised that I could be proactive in helping me to learn. If I could figure out what didn't work, that would give me information about what did work. After a few attempts at creating maps, Inspired by the [Terrible Maps](https://linktr.ee/terriblemaps) social media pages, I created a folder to save my really hilariously terrible maps. Sometimes I would be having a difficult time trying to figure out a problem, and the maps were so bad they would make me laugh so much that it would reset how I felt, and I would decide to either log off for the day or try again the next day, and now at least I knew what I needed to do next time to make it work properly.
+
+![This is an example of one of the Terrible Maps I accidentally made, where the choropleth map ended up so small it looked like a data point, the x axis was squished while the y axis got stretched to south of the equator, and one of the map markers, which was supposed to be somewhere in the North of England, ended up somewhere in the Atlantic Ocean. In another terrible map where I was learning about how to use geom points and geom labels, with a space between the point and the label, the map markers of venue locations ended up in the right place on a map of England, but the labels ended up separated from them, in the middle of the North Sea.](Terrible%20map_Gulf%20of%20Guinea.png)
+
+9.  **I *made it sew***[^2]
+
+[^2]: This is a play on words, based on the catchphrase 'Make it so' from Star Trek character Jean-Luc Picard.
+
+More recently, I have found that the artistic side of my brain has come in really helpful for learning some key concepts of the skills I have been trying to learn[^3]. A few months ago, my friend got me an embroidery kit, and as I learned how to make stitches and followed the embroidery pattern, I had a breakthrough about the problem I was trying to solve in my code earlier in the day at work. I realised that when specifying the aesthetics for the map, I needed to do this in [layers](https://ggplot2.tidyverse.org/reference/layer_geoms.html#:~:text=In%20ggplot2%2C%20a%20plot%20in,displayed%2C%20not%20what%20is%20displayed.). My choropleth map needed to have certain aesthetics specified in a way that made it possible to see both the population density and the underlying terrain. I approached the task like an artist[^4], to identify what I needed to do[^5].
+
+[^3]: This has also worked the other way around, as I've recently started learning about dressmaking and sewing clothes, and the learning journey is just as intimidating and complicated as it was for learning R, but now that I've done it, I know I will soon be able to sew. I've found that there's a community of people wanting to help teach others how to sew.
+
+[^4]: Throughout the journey I have realised that thinking about the problem like an artist has been very helpful, because it gives me a different perspective, and allows me to use a similar iterative approach, and to trust the process. For example, when I have been learning about map aesthetics, I have approached it by making small adjustments to the code and learning what it does to change the plot. This is similar to how I have been learning to take photographs by manually changing focus, exposure and shutter speed, and looking at the different outputs.
+
+[^5]: I used the [colorbrewer2](https://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3) tool to test out some different palettes and graduations, and changed the opacity and terrain to look at what kind of colours worked best to show the choropleth data but also the terrain underneath without confusing the two. The tool gave me the HEX codes for the colours. I took this to a digital painting/drawing app called Procreate, and then took a screenshot of some map tiles on openstreetmap, and overlaid the palettes over them using a digital art app that allowed me to layer images and change opacity. and changed the opacity until I found a setup that worked, Then I adjusted the aesthetics in my R code until it matched.
+
+10. **A year on: I've started learning about how to stay involved in the community**
+
+Early on in my learning journey, the kindness and helpfulness of the community was such a contrast to what I was expecting, that I was first overwhelmed, and then started feeling guilty. I soon realised that the feelings were getting in the way, but I could try and channel these feelings into learning as best I could, so that I could then become one of those people who actually want to help others to learn, and find this rewarding.
+
+As I write this, it has been almost a year since I started learning R properly. We have just finished the NHS-R conference 2024. I attended today and during the closing speech, I was reminded about the warm sense of community. To check out the NHS R conference recordings, see (link)
+
+My aim for the following year and beyond is to build on the skills I have learned so far, and learn how to use github and produce reproducible code, and then begin contributing to the community. Why not join us? - add links

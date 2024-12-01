@@ -61,6 +61,15 @@ format:
 * What do we do- where are we going
 * Culture > Strategy (#recruitforvalues)
 
+## Our values
+
+* Open source and sharing what we do
+* Innovative technology built to serve the customer, not for the sake of trying out new toys
+* A team that is strong, makes decisions together, and doesn't have individuals who are a single point of failure
+* Mistakes are OK- inevitable even. When we make mistakes, we fix the process, not the person
+* A learning environment- we all learn, all the time
+* Work that is valuable- and fun
+
 ## Line manager
 
 * The research says line managers are really important

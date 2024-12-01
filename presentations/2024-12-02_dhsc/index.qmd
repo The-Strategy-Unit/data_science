@@ -75,7 +75,6 @@ format:
   * Contribute to shared policy and practice documents
   * Give help to others
   * Blog
-  * This is all helpful for developing your skills and looks great on your CV! 😉
 
 ## Conclusion
 
@@ -83,6 +82,13 @@ format:
 * If you want to go far, go together
 
 African Proverb
+
+## The Strategy Unit
+
+* "Leading research, analysis and change from within the NHS"
+* 70+ person unit, data science being the newest addition
+* Specialist qualitative and quantitative analysis
+* The data science team works closely with the other teams
 
 ## Meet the team 
 
@@ -97,3 +103,66 @@ African Proverb
 
 * We have:
   * Psychology, Maths/ computing, Librarian-ing, Statistics, Entomology, Shiny, Horses, and Maternity data
+
+## Projects
+
+* New Hospital Programme
+* One project, lots of components
+
+## The model
+
+```{mermaid}
+%%| fig-responsive: false
+%%| fig-height: 5
+flowchart LR
+  classDef orange fill:#f9bf07,stroke:#2c2825,color:#2c2825;
+  classDef lightslate fill:#b2b7b9,stroke:#2c2825,color:#2c2825;
+
+  A[Data Extraction]
+  B[Inputs App]
+  C[Model]
+  D[Outputs App]
+
+
+  SB[(input app data)]
+  SC[(model data)]
+  SD[(results data)]
+
+  A ---> SB
+  A ---> SC
+  
+  SB ---> B
+  SC ---> C
+
+  B ---> C
+
+  C ---> SD
+  SD ---> D
+
+  B -.-> D
+
+  class A,B,C,D orange
+  class SB,SC,SD lightslate
+```
+
+## The model itself 
+
+* Probabilistic inputs and outputs
+* Monte carlo simulation
+* Accounts for:
+  * Demographic growth
+  * Non demographic growth
+  * "Mitigation"
+
+## The work
+
+* Rollout with NHP schemes
+* Updating the model and interface in place
+* Reporting on and analysing the model results and inputs
+
+## Our interests
+
+* Productionisation of models for healthcare
+* Data science approaches to evidence review
+* Data science approaches to text
+

@@ -1,0 +1,170 @@
+---
+title: "DHSC presentation"
+subtitle: "NHS-R and data science at the Strategy Unit"
+author: 
+  - "[Chris Beeley](mailto:chris.beeley1@nhs.net)"
+date: 2024-12-02
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, ../su_presentation.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
+    footer: |
+      Learn more about [The Strategy Unit](https://www.strategyunitwm.nhs.uk/)
+---
+
+## The history of NHS-R
+
+* Founded in 2018
+* First conference was pretty meagre but very exciting
+* NHS-R has gone from strength to strength, to...
+
+## Goldacre
+
+* Create and maintain a curated national open library of NHS analyst code
+* Ensure all training is open by default
+* Support an NHS analyst community
+* Oversee funding and delivery of training, both open online and one-to-one
+
+## Everything open, all the time
+
+* Everything NHS-R does is open
+  * (except Slack 🙁)
+* Everything NHS-R produces has an open licence
+* We teach the skills of open
+  * Git, GitHub, how to write reusable code
+* (our other value- we love beginners)
+
+## What does NHS-R do already?
+
+* Training
+* NHS-R academy
+* NHS-R solutions
+* Conference
+* Webinars
+* Slack
+* Blogs
+* GitHub and collaboration
+
+## How can NHS-R help you?
+
+* Training, and open training resources
+* Online, (often instant) help
+* Join the academy
+* Community and belonging
+* Hear about (and copy 😉) best practice
+* Permission and visibility
+
+## A couple of examples of NHS-R at its best
+
+* NHSRplotthedots- in production across the NHS
+* NHSRwaitinglists
+* Intro to R and intermediate R
+* Advent of code is a yearly event on the Slack- happening now 🎄
+
+## Ask not what NHS-R can do for you…
+
+* We need you!
+  * Train analysts (intro, reporting, Shiny...)
+  * Work on NHS-R solutions (like NHSRplotthedots)
+  * Host and run webinars
+  * Contribute to shared policy and practice documents
+  * Give help to others
+  * Blog
+
+## Conclusion
+
+* If you want to go fast, go alone
+* If you want to go far, go together
+
+African Proverb
+
+## The Strategy Unit
+
+* "Leading research, analysis and change from within the NHS"
+* 70+ person unit, data science being the newest addition
+* Specialist qualitative and quantitative analysis
+* The data science team works closely with the other teams
+
+## Meet the team 
+
+![](cb.jpg){width="11%" fig-alt="Profile photo of Chris."}
+![](tj.png){width="11%" fig-alt="Profile photo of Tom."}
+![](yh.jpg){width="11%" fig-alt="Profile photo of YiWen."}
+![](rd.jpg){width="11%" fig-alt="Profile photo of Rhian."}
+![](md.jpg){width="11%" fig-alt="Profile photo of Matt."}
+![](blue.png){width="11%" fig-alt="The helmet of the blue Power Ranger, which represents Ozayr."}
+![](red.png){width="11%" fig-alt="The helmet of the red Power Ranger, which represents a new team member."}
+![](yellow.png){width="11%" fig-alt="The helmet of the yellow Power Ranger, which represents a new team member."}
+
+* We have:
+  * Psychology, Maths/ computing, Librarian-ing, Statistics, Entomology, Shiny, Horses, and Maternity data
+
+## Projects
+
+* New Hospital Programme
+* One project, lots of components
+
+## The model
+
+```{mermaid}
+%%| fig-responsive: false
+%%| fig-height: 5
+flowchart LR
+  classDef orange fill:#f9bf07,stroke:#2c2825,color:#2c2825;
+  classDef lightslate fill:#b2b7b9,stroke:#2c2825,color:#2c2825;
+
+  A[Data Extraction]
+  B[Inputs App]
+  C[Model]
+  D[Outputs App]
+
+
+  SB[(input app data)]
+  SC[(model data)]
+  SD[(results data)]
+
+  A ---> SB
+  A ---> SC
+  
+  SB ---> B
+  SC ---> C
+
+  B ---> C
+
+  C ---> SD
+  SD ---> D
+
+  B -.-> D
+
+  class A,B,C,D orange
+  class SB,SC,SD lightslate
+```
+
+## The model itself 
+
+* Probabilistic inputs and outputs
+* Monte carlo simulation
+* Accounts for:
+  * Demographic growth
+  * Non demographic growth
+  * "Mitigation"
+
+## The work
+
+* Rollout with NHP schemes
+* Updating the model and interface in place
+* Reporting on and analysing the model results and inputs
+
+## Our interests
+
+* Productionisation of models for healthcare
+* Data science approaches to evidence review
+* Data science approaches to text
+* LLMs
+

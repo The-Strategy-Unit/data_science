@@ -38,6 +38,7 @@ format:
 * Everything NHS-R produces has an open licence
 * We teach the skills of open
   * Git, GitHub, how to write reusable code
+* (our other value- we love beginners)
 
 ## What does NHS-R do already?
 
@@ -165,4 +166,5 @@ flowchart LR
 * Productionisation of models for healthcare
 * Data science approaches to evidence review
 * Data science approaches to text
+* LLMs
 

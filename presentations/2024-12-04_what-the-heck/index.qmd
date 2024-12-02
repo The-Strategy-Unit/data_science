@@ -61,25 +61,24 @@ format:
 * What do we do- where are we going
 * Culture > Strategy (#recruitforvalues)
 
-## Our values
-
-* Open source and sharing what we do
-* Innovative technology built to serve the customer, not for the sake of trying out new toys
-* A team that is strong, makes decisions together, and doesn't have individuals who are a single point of failure
-* Mistakes are OK- inevitable even. When we make mistakes, we fix the process, not the person
-* A learning environment- we all learn, all the time
-* Work that is valuable- and fun
-
 ## Line manager
 
 * The research says line managers are really important
 * I ❤️❤️❤️ hearing about what my staff are doing and where they want to be in five years
-* I want to live in a world where they are in charge, because they're all awesome
+* I want to live in a world where they prosper, because they're all awesome
   * (remember #recruitforvalues)
 
 ## Member of the SU leadership group
 
+* Honestly I didn't think I would be all that bothered (finance reports!)
+* It turns out I am bothered
+* I love the Strategy Unit and I want to help it however I can
+
 ## Head of data science
+
+* A bit like team leader
+* But actually data science needs a voice in the Unit
+* I'm not the only voice but it's my job to lead
 
 ## Why I'm a terrible manager
 
@@ -95,12 +94,6 @@ format:
 * I have an opinion about everything and can't keep my mouth shut
 * I say what's on my mind; I can't help it
 
-## "Strategy"
-
-* Such a divisive word
-* Honestly I think a lot of analysts think it's a bit dumb
-* The strategisers are not talking the language of the strategisees
-
 ## The upside
 
 * Pinging around hearing about different stuff is fun
@@ -110,16 +103,8 @@ format:
   * Faffing around with budgets is miserable- growing the team is wonderful
   * Sitting typing emails all day is meh- connecting people and projects is wonderful
 
-## My learning to date
-
-* Share credit with the team and take the blame for yourself
-  * The team does everything is can reasonably do- and then it fails with pride
-* Be honest, always
-* Be positive
-* Be consistent
-* If you make a mistake, put it right
-
 ## It's a unique role
 
 * Every day I wake up and don't help the team with the code for the sprint
 * Every day I think about what I can bring to the team
+* Embrace the uniqueness and give it a try

@@ -1,0 +1,110 @@
+---
+title: "What the heck do I do all day?"
+subtitle: "Transitioning to management from a technical analytical role"
+author: 
+  - "[Chris Beeley](mailto:chris.beeley1@nhs.net)"
+date: 2024-12-04
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, ../su_presentation.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
+    footer: |
+      Learn more about [The Strategy Unit](https://www.strategyunitwm.nhs.uk/)
+---
+
+## Intro
+
+* For analysts, there is a culture of "I want to progress without being a manager"
+* Many analysts don't want to and wouldn't enjoy being a manager- and they should progress without being one
+* But many would, and I want to speak today to those who are thinking about being a manager, or already are
+
+## My story
+
+* The best lesson I ever learned
+* Spent 15 years being a nerd and letting others lead
+* I have never in my life had an analyst for a manager
+* I fell into being a manager because I wanted to effect change at my previous employer
+
+## The Downside
+
+* I don't always understand everything that's happening
+  * _Still_ don't know what databricks is 😂
+* Some of the things I do are honestly kind of boring
+* Some days I just ping between meetings all day and never catch myself up
+
+## What the heck _do_ I do all day
+
+* Product owner
+* Team leader
+* Line manager
+* Member of the SU leadership group
+* Head of data science
+* Number one learning- be different people at different times
+
+## Product owner
+
+* We do kind of scrum
+* I decide what's in and what's out
+* Number one learning- stay out of the way (a familiar lesson from others)
+* Love: clarity; building a product people actually want; giving the team purpose and shaping what we do
+* Hate: I'm on the outside- don't always understand stuff
+
+## Team leader
+
+* Recruitment
+* What do we do- where are we going
+* Culture > Strategy (#recruitforvalues)
+
+## Line manager
+
+* The research says line managers are really important
+* I ❤️❤️❤️ hearing about what my staff are doing and where they want to be in five years
+* I want to live in a world where they prosper, because they're all awesome
+  * (remember #recruitforvalues)
+
+## Member of the SU leadership group
+
+* Honestly I didn't think I would be all that bothered (finance reports!)
+* It turns out I am bothered
+* I love the Strategy Unit and I want to help it however I can
+
+## Head of data science
+
+* A bit like team leader
+* But actually data science needs a voice in the Unit
+* I'm not the only voice but it's my job to lead
+
+## Why I'm a terrible manager
+
+* I'm introverted
+* I'm disorganised
+* I have an opinion about everything and can't keep my mouth shut
+* I say what's on my mind; I can't help it
+
+## Why I'm a good manager
+
+* I'm introverted
+* I'm disorganised
+* I have an opinion about everything and can't keep my mouth shut
+* I say what's on my mind; I can't help it
+
+## The upside
+
+* Pinging around hearing about different stuff is fun
+* Shaping the team and its projects is fun
+* Mostly for me this job is about making a difference
+  * Recruiting is miserable- hiring great staff is wonderful
+  * Faffing around with budgets is miserable- growing the team is wonderful
+  * Sitting typing emails all day is meh- connecting people and projects is wonderful
+
+## It's a unique role
+
+* Every day I wake up and don't help the team with the code for the sprint
+* Every day I think about what I can bring to the team
+* Embrace the uniqueness and give it a try

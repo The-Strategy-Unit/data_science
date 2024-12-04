@@ -1,0 +1,51 @@
+# Team work
+
+## Weekly stand up
+
+Every Monday from 10:00 - 11:00 we have a team meeting. It starts with everyone answering the following questions:
+
+- ⭐ What went well last week
+- 🦉 What lessons did you learn
+- 🎯 Goal(s) for this week
+
+If you are going to be absent on a Monday morning, you might want to share your three-things on Slack in advance.
+
+We then discuss any items that team members have added to the [rolling agenda](https://docs.google.com/document/d/1WukwitMpDU9RexZaXHIvEf-vV6iGKLjCsdAVfKcIMPE/).
+
+## Line management
+
+Your line manager should arrange (1 : 1) meetings with you once a fortnight.
+
+## Communication
+
+We use MS Teams to communicate about project related work. 
+We have a private slack channel on NHS-R slack which we use for general team chat and more casually. (Slack has much better emojis 🤸🎮🦥)
+
+## Data Science Trophy 
+
+One of the ways we celebrate each other and the successes we have is by presenting each other with a “trophy” 🏆 in the slack channel. This is for good code, problem solving, helping someone anything that deserves a special mention.
+
+## Working Times 
+
+Core hours vary considerably between team members and there is a lot of flexibility. Team members may send messages out of hours, but that is purely because it works for them, and will not expect anything immediate in response. Flexibility is not only allowed but recommended if it benefits you. 
+
+## Working Location
+
+The team is primarily remote. The Strategy Unit has two all company gathering a year, in Birmingham. Currently the Data Science team don't have any in-person meetings, although we might start doing them occasionally when it's beneficial. Some of the London-based team coordinate when they work in the office.
+
+## Task management
+
+Most of the teams time is working on a large project which we manage in an agile-like manner. We use GitHub to capture issues, and a project board to manage the sprint. 
+
+Tasks outside this project can be managed how you like. If you want to use GitHub, there is a [Data Science project planner](https://github.com/orgs/The-Strategy-Unit/projects/12).
+
+## Coffee and Code
+
+We organise a fortnightly coffee and code for analysts in the Strategy Unit. This is planned in a [Coffee and Coding ☕🧑‍💻 GitHub project](https://github.com/orgs/The-Strategy-Unit/projects/14). Materials from previous sessions are shared here as [blogs](../blogs/) or [presentations](../presentations/).
+
+## Sickness
+
+It is an acceptable to communicate things like sickness or last-minute absences via the team slack channel. 
+
+
+

@@ -43,9 +43,6 @@ Tasks outside this project can be managed how you like. If you want to use GitHu
 
 We organise a fortnightly coffee and code for analysts in the Strategy Unit. This is planned in a [Coffee and Coding ☕🧑‍💻 GitHub project](https://github.com/orgs/The-Strategy-Unit/projects/14). Materials from previous sessions are shared here as [blogs](../blogs/) or [presentations](../presentations/).
 
-## Sickness
-
-It is an acceptable to communicate things like sickness or last-minute absences via the team slack channel. 
 
 
 

@@ -34,10 +34,11 @@ website:
       title: ""
       
     - id: style
-      title: "Style Guide"
+      title: "How we work"
       style: "docked"
       background: light
       contents:
+        - style/team.qmd
         - style/style_guide.qmd
         - style/git_and_github.qmd
         - style/project_structure.qmd

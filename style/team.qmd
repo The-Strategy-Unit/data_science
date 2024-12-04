@@ -35,7 +35,7 @@ The team is primarily remote. The Strategy Unit has two all company gathering a 
 
 ## Task management
 
-Most of the teams time is working on a large project which we manage in an agile-like manner. We use GitHub to capture issues, and a project board to manage the sprint. 
+Most of the team's time is working on a large project which we manage in an agile-like manner. We use GitHub to capture issues, and a project board to manage the sprint. 
 
 Tasks outside this project can be managed how you like. If you want to use GitHub, there is a [Data Science project planner](https://github.com/orgs/The-Strategy-Unit/projects/12).
 

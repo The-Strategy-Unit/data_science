@@ -8,6 +8,9 @@ jobs:
   rebuild-slides:
     name: rebuild-slides
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./.github/workflows
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 

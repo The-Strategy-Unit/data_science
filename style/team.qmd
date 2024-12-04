@@ -2,7 +2,7 @@
 
 ## Weekly stand up
 
-Every Monday from 10:00 - 11:00 we have a team meeting. It starts with everyone answering the following questions:
+Every Monday from 10:00 - 10:50 we have a team meeting. It starts with everyone answering the following questions:
 
 - ⭐ What went well last week
 - 🦉 What lessons did you learn
@@ -23,11 +23,11 @@ We have a private slack channel on NHS-R slack which we use for general team cha
 
 ## Data Science Trophy 
 
-One of the ways we celebrate each other and the successes we have is by presenting each other with a “trophy” 🏆 in the slack channel. This is for good code, problem solving, helping someone anything that deserves a special mention.
+One of the ways we celebrate each other and the successes we have is by presenting each other with a “trophy” 🏆 in the slack channel. This is for good code, problem solving, helping someone - anything that deserves a special mention.
 
 ## Working Times 
 
-Core hours vary considerably between team members and there is a lot of flexibility. Team members may send messages out of hours, but that is purely because it works for them, and will not expect anything immediate in response. Flexibility is not only allowed but recommended if it benefits you. 
+Core hours vary considerably between team members and there is a lot of flexibility. Team members may send messages out of hours, but that is purely because it works for them, and will not expect anything immediate in response. Flexibility is not only allowed but recommended if it benefits you. Please agree core hours with your line manager and where possible communicate any changes in your core hours to team members via out of office on your calendar and/or Slack (e.g. "I'm out all morning because my car is broken - working later on").
 
 ## Working Location
 

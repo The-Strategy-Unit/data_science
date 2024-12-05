@@ -106,7 +106,7 @@ When someone merges into main, the publish action is triggered, and sometimes in
 
 We were using the [standard Quarto publish action](https://github.com/quarto-dev/quarto-actions) which as far as I know, does not have an inbuilt configuration to exclude folders from the clean up process.
 
-Instead, I've replaced the Quarto action with another marketplace action, [github-pages-deploy-action](https://github.com/JamesIves/github-pages-deploy-action) by [JamesIves](https://github.com/JamesIves) which has an inbuilt way to exclude certain folders from the clean-up. Since it's not a specific Quarto publish action, we need to remember to add a Qaurto render step first.
+Instead, I've replaced the Quarto action with another marketplace action, [github-pages-deploy-action](https://github.com/JamesIves/github-pages-deploy-action) by [JamesIves](https://github.com/JamesIves) which has an inbuilt way to exclude certain folders from the clean-up. Since it's not a specific Quarto publish action, we need to remember to add a Quarto render step first.
 
 ```{yaml}
       - name: Publish to GitHub Pages (and render)

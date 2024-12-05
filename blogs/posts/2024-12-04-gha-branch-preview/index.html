@@ -289,7 +289,7 @@ on:
 <h2 class="anchored" data-anchor-id="adjusting-the-publish.yml">Adjusting the publish.yml</h2>
 <p>That’s all working and looking good! However, there is one last change we need to make. When someone merges into main, the publish action is triggered, and sometimes in that process the pr-previews can get wiped. This means that your preview link would no longer work if someone merges another branch to main whilst you’re working on your PR.</p>
 <p>We were using the <a href="https://github.com/quarto-dev/quarto-actions">standard Quarto publish action</a> which as far as I know, does not have an inbuilt configuration to exclude folders from the clean up process.</p>
-<p>Instead, I’ve replaced the Quarto action with another marketplace action, <a href="https://github.com/JamesIves/github-pages-deploy-action">github-pages-deploy-action</a> by <a href="https://github.com/JamesIves">JamesIves</a> which has an inbuilt way to exclude certain folders from the clean-up. Since it’s not a specific Quarto publish action, we need to remember to add a Qaurto render step first.</p>
+<p>Instead, I’ve replaced the Quarto action with another marketplace action, <a href="https://github.com/JamesIves/github-pages-deploy-action">github-pages-deploy-action</a> by <a href="https://github.com/JamesIves">JamesIves</a> which has an inbuilt way to exclude certain folders from the clean-up. Since it’s not a specific Quarto publish action, we need to remember to add a Quarto render step first.</p>
 <pre class="{yaml}"><code>      - name: Publish to GitHub Pages (and render)
         uses: quarto-dev/quarto-actions/publish@v2
         with:

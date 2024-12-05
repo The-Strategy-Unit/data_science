@@ -1,0 +1,50 @@
+name: Quarto Preview
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - closed
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    defaults:
+      run:
+        working-directory: ./.github/workflows
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Use cache
+        uses: actions/cache@v4
+        with:
+          key: freeze
+          path: _freeze
+
+      - name: Install System Dependencies
+        run:  bash install_system_deps.sh
+
+      - name: Set up R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+      
+      - name: Set up renv
+        uses: r-lib/actions/setup-renv@v2
+
+      - name: Setup Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Render
+        uses: quarto-dev/quarto-actions/render@v2
+
+      - name: Deploy PR Preview
+        uses: rossjrw/pr-preview-action@v1.4.8
+        with:
+          source-dir: ./_site/

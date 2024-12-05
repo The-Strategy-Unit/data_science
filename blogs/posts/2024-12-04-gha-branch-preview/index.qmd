@@ -1,0 +1,167 @@
+---
+title: "Deploy previews with GitHub pages"
+description: "Wouldn't it be nice if when a PR is created, you automatically got a deployed version of your changes to look at?"
+author: "Rhian Davies"
+date: "2024-12-04"
+categories: [GitHub, learning, deployment]
+---
+
+When reviewing a pull request (PR) for a Quarto website, it's good practice to check the rendered output, as well as the code. This is useful for ensuring that the changes look as expected, for example, ensuring that bullet points have rendered correctly, or that images are well sized.
+
+However, it's a pain for the reviewer to clone the repository and render the Quarto site locally just to check it looks correct. Wouldn't it be nice if when the PR was created, you automatically got a deployed version of your changes to look at?
+
+Other development platforms like [Netlify](https://docs.netlify.com/site-deploys/deploy-previews/) and [Vercel](https://vercel.com/docs/deployments/preview-deployments) have offered deploy previews for a while, and although these are free for individual users in public repos they aren't free for organisations.  
+
+There has been [discussion of GitHub deploy preview for a few years](https://github.com/orgs/community/discussions/7730), but there is currently no ETA for this feature. However, there is a popular GitHub marketplace action [deploy-pr-preview](https://github.com/marketplace/actions/deploy-pr-preview) by [rossjrw](https://github.com/rossjrw) which does just what we need.
+
+This features of this action are:
+
+- Creates and deploys previews of pull requests to your GitHub Pages site
+- Leaves a comment on the pull request with a link to the preview so that you and your team can collaborate on new features faster
+- Updates the deployment and the comment whenever new commits are pushed to the pull request
+- Cleans up after itself — removes deployed previews when the pull request is closed
+
+## How to use deploy-pr-preview
+
+We weren't doing any CI/CD on PRs initially, so first I need to define a new workflow. Workflows are defined in `.yaml` files in the `.github/workflows` folder. At the top of the workflow, I need to give it a name and tell it _when_ to trigger. In this case I want it to trigger on any PR.
+
+```{yaml}
+name: Quarto Preview
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - closed
+```
+
+Once I've defined _when_ it should run, I need to specify _what_ it should run. That tends to involve a number of steps such as 
+
+- Checking out the repository
+- Installing system dependencies
+- Installing packages (via {renv})
+- Rendering the Quarto site
+
+We already have a `publish.yml` workflow for main which has a number of relevant steps which I've borrowed.
+
+The file looks a bit like this:
+
+```{yaml}
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./.github/workflows
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Use cache
+        uses: actions/cache@v4
+        with:
+          key: freeze
+          path: _freeze
+
+      - name: Install System Dependencies
+        run:  bash install_system_deps.sh
+
+      - name: Set up R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+      
+      - name: Set up renv
+        uses: r-lib/actions/setup-renv@v2
+
+      - name: Setup Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Render
+        uses: quarto-dev/quarto-actions/render@v2
+```
+
+Once the site has rendered, we just need to add a step to deploy the PR.
+
+```{yaml}
+      - name: Deploy PR Preview
+        uses: rossjrw/pr-preview-action@v1.4.8
+        with:
+          source-dir: ./_site/
+```
+
+Now everytime a PR is created, or updated, the GitHub Action bot will spring into action.
+
+![A screenshot of a GitHub PR. Under the description, there is a comment from the GitHub actions bot with links to the deployed PR.](deploy-pr-preview.PNG)\
+
+## Adjusting the publish.yml
+
+That's all working and looking good! However, there is one last change we need to make. 
+When someone merges into main, the publish action is triggered, and sometimes in that process the pr-previews can get wiped. This means that your preview link would no longer work if someone merges another branch to main whilst you're working on your PR.
+
+We were using the [standard Quarto publish action](https://github.com/quarto-dev/quarto-actions) which as far as I know, does not have an inbuilt configuration to exclude folders from the clean up process.
+
+Instead, I've replaced the Quarto action with another marketplace action, [github-pages-deploy-action](https://github.com/JamesIves/github-pages-deploy-action) by [JamesIves](https://github.com/JamesIves) which has an inbuilt way to exclude certain folders from the clean-up. Since it's not a specific Quarto publish action, we need to remember to add a Qaurto render step first.
+
+```{yaml}
+      - name: Publish to GitHub Pages (and render)
+        uses: quarto-dev/quarto-actions/publish@v2
+        with:
+          target: gh-pages
+```
+
+```{yaml}
+      - name: Render Quarto
+        uses: quarto-dev/quarto-actions/render@v2
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: _site/
+          clean-exclude: pr-preview/
+          force: false
+```
+
+## Spring cleaning
+
+Now that we have a preview workflow (for branches) and a publish workflow (for main), we have a number of duplicated steps. As any good programmer knows, this is not ideal as it goes against the DRY prinicipal and makes code harder to maintain. 
+
+I couldn't find a quick way for two workflows to share steps^[If you know how to do this, do let me know, or make a [PR](https://github.com/The-Strategy-Unit/data_science/pulls).], so as a small improvement, I moved the lengthy system depencies call into it's own script. I then ran the script using the following snippet.
+and called it via the following step.
+
+```{yaml}
+      - name: Install System Dependencies
+        run:  bash install_system_deps.sh
+```
+
+which I think is a bit nicer to read than the original.
+
+```{yaml}
+ - name: Install System Dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y cmake
+          sudo apt install -y gdal-bin
+          sudo apt install -y git
+          sudo apt install -y libcurl4-openssl-dev
+          ...
+```
+
+In order for the actions to find the script, I also specified the path when I defined the job.
+
+```{yaml}
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./.github/workflows
+```
+
+Now we've got this working for GitHub pages 🎉 we'd also like to start using it for some of our deployments on Posit Connect. But that's for another day.
+

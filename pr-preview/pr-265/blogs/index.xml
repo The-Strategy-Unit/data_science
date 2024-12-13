@@ -2088,8 +2088,8 @@ font-style: italic;">### Subsection ----</span></span></code></pre></div>
 <p>This blog post is about the technical process of preparing record-level data for visualisation in a Sankey plot using <code>R</code> and customising it to enhance look and feel. Here is how the finished product will look:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="plotly html-widget html-fill-item" id="htmlwidget-be5e626992d99fd8446a" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-be5e626992d99fd8446a">{"x":{"visdat":{"74a468a063c8":["function () ","plotlyVisDat"]},"cur_data":"74a468a063c8","attrs":{"74a468a063c8":{"orientation":"h","arrangement":"snap","node":{"label":["Eligible population","Invitation 1 No response","Invitation 1 Declined","Invitation 1 Accepted","Invitation 2 No response","Invitation 2 Accepted","Invitation 2 Declined","Invitation 3 Accepted","Invitation 3 Declined","Invitation 3 No response","Declined","Accepted","No response"],"color":["#7f8fa6","#7f8fa6","#c23616","#44bd32","#7f8fa6","#44bd32","#c23616","#44bd32","#c23616","#7f8fa6","#c23616","#44bd32","#7f8fa6"],"x":[0.001,0.22575000000000001,0.22575000000000001,0.22575000000000001,0.45050000000000001,0.45050000000000001,0.45050000000000001,0.67525000000000002,0.67525000000000002,0.67525000000000002,0.90000000000000002,0.90000000000000002,0.90000000000000002],"y":[0.53326666666666667,0.53326666666666667,0.999,0.001,0.53326666666666667,0.13406666666666667,0.90585333333333329,0.22721333333333335,0.82601333333333338,0.63972000000000007,0.93246666666666667,0.001,0.53326666666666667],"customdata":[null,"77.0%","15.0%","8.0%","46.0%","12.0%","8.0%","9.0%","10.0%","14.0%","33.0%","29.0%","38.0%"],"hovertemplate":"%{label}<br /><b>%{value}<\/b> participants<br /><b>%{customdata}<\/b> of eligible population"},"link":{"source":[0,0,0,1,1,1,2,3,1,4,4,4,5,6,4,7,8,9],"target":[2,1,3,4,5,6,10,11,12,7,8,9,11,10,12,11,10,12],"value":[15,77,8,46,12,8,15,8,11,9,10,14,12,8,13,9,10,14],"label":["15","77","8","46","12","8","15","8","11","9","10","14","12","8","13","9","10","14"],"color":["#C236164C","#7F8FA64C","#44BD324C","#7F8FA64C","#44BD324C","#C236164C","#C236164C","#44BD324C","#7F8FA64C","#44BD324C","#C236164C","#7F8FA64C","#44BD324C","#C236164C","#7F8FA64C","#44BD324C","#C236164C","#7F8FA64C"],"customdata":["15.0%","77.0%","8.0%","46.0%","12.0%","8.0%","15.0%","8.0%","11.0%","9.0%","10.0%","14.0%","12.0%","8.0%","13.0%","9.0%","10.0%","14.0%"],"hovertemplate":"%{source.label} → %{target.label}<br /><b>%{value}<\/b> participants<br /><b>%{customdata}<\/b> of eligible population"},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"sankey"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"font":{"family":"Arial, Helvetica, sans-serif","size":12},"paper_bgcolor":"rgba(0,0,0,0)","hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"responsive":true},"data":[{"orientation":"h","arrangement":"snap","node":{"label":["Eligible population","Invitation 1 No response","Invitation 1 Declined","Invitation 1 Accepted","Invitation 2 No response","Invitation 2 Accepted","Invitation 2 Declined","Invitation 3 Accepted","Invitation 3 Declined","Invitation 3 No response","Declined","Accepted","No response"],"color":["#7f8fa6","#7f8fa6","#c23616","#44bd32","#7f8fa6","#44bd32","#c23616","#44bd32","#c23616","#7f8fa6","#c23616","#44bd32","#7f8fa6"],"x":[0.001,0.22575000000000001,0.22575000000000001,0.22575000000000001,0.45050000000000001,0.45050000000000001,0.45050000000000001,0.67525000000000002,0.67525000000000002,0.67525000000000002,0.90000000000000002,0.90000000000000002,0.90000000000000002],"y":[0.53326666666666667,0.53326666666666667,0.999,0.001,0.53326666666666667,0.13406666666666667,0.90585333333333329,0.22721333333333335,0.82601333333333338,0.63972000000000007,0.93246666666666667,0.001,0.53326666666666667],"customdata":[null,"77.0%","15.0%","8.0%","46.0%","12.0%","8.0%","9.0%","10.0%","14.0%","33.0%","29.0%","38.0%"],"hovertemplate":"%{label}<br /><b>%{value}<\/b> participants<br /><b>%{customdata}<\/b> of eligible population"},"link":{"source":[0,0,0,1,1,1,2,3,1,4,4,4,5,6,4,7,8,9],"target":[2,1,3,4,5,6,10,11,12,7,8,9,11,10,12,11,10,12],"value":[15,77,8,46,12,8,15,8,11,9,10,14,12,8,13,9,10,14],"label":["15","77","8","46","12","8","15","8","11","9","10","14","12","8","13","9","10","14"],"color":["#C236164C","#7F8FA64C","#44BD324C","#7F8FA64C","#44BD324C","#C236164C","#C236164C","#44BD324C","#7F8FA64C","#44BD324C","#C236164C","#7F8FA64C","#44BD324C","#C236164C","#7F8FA64C","#44BD324C","#C236164C","#7F8FA64C"],"customdata":["15.0%","77.0%","8.0%","46.0%","12.0%","8.0%","15.0%","8.0%","11.0%","9.0%","10.0%","14.0%","12.0%","8.0%","13.0%","9.0%","10.0%","14.0%"],"hovertemplate":"%{source.label} → %{target.label}<br /><b>%{value}<\/b> participants<br /><b>%{customdata}<\/b> of eligible population"},"type":"sankey","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-07d3fe3a9f8bfe697734" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-07d3fe3a9f8bfe697734">{"x":{"visdat":{"74a468a063c8":["function () ","plotlyVisDat"]},"cur_data":"74a468a063c8","attrs":{"74a468a063c8":{"orientation":"h","arrangement":"snap","node":{"label":["Eligible population","Invitation 1 No response","Invitation 1 Declined","Invitation 1 Accepted","Invitation 2 No response","Invitation 2 Accepted","Invitation 2 Declined","Invitation 3 Accepted","Invitation 3 Declined","Invitation 3 No response","Declined","Accepted","No response"],"color":["#7f8fa6","#7f8fa6","#c23616","#44bd32","#7f8fa6","#44bd32","#c23616","#44bd32","#c23616","#7f8fa6","#c23616","#44bd32","#7f8fa6"],"x":[0.001,0.22575000000000001,0.22575000000000001,0.22575000000000001,0.45050000000000001,0.45050000000000001,0.45050000000000001,0.67525000000000002,0.67525000000000002,0.67525000000000002,0.90000000000000002,0.90000000000000002,0.90000000000000002],"y":[0.53326666666666667,0.53326666666666667,0.999,0.001,0.53326666666666667,0.13406666666666667,0.90585333333333329,0.22721333333333335,0.82601333333333338,0.63972000000000007,0.93246666666666667,0.001,0.53326666666666667],"customdata":[null,"77.0%","15.0%","8.0%","46.0%","12.0%","8.0%","9.0%","10.0%","14.0%","33.0%","29.0%","38.0%"],"hovertemplate":"%{label}<br /><b>%{value}<\/b> participants<br /><b>%{customdata}<\/b> of eligible population"},"link":{"source":[0,0,0,1,1,1,2,3,1,4,4,4,5,6,4,7,8,9],"target":[2,1,3,4,5,6,10,11,12,7,8,9,11,10,12,11,10,12],"value":[15,77,8,46,12,8,15,8,11,9,10,14,12,8,13,9,10,14],"label":["15","77","8","46","12","8","15","8","11","9","10","14","12","8","13","9","10","14"],"color":["#C236164C","#7F8FA64C","#44BD324C","#7F8FA64C","#44BD324C","#C236164C","#C236164C","#44BD324C","#7F8FA64C","#44BD324C","#C236164C","#7F8FA64C","#44BD324C","#C236164C","#7F8FA64C","#44BD324C","#C236164C","#7F8FA64C"],"customdata":["15.0%","77.0%","8.0%","46.0%","12.0%","8.0%","15.0%","8.0%","11.0%","9.0%","10.0%","14.0%","12.0%","8.0%","13.0%","9.0%","10.0%","14.0%"],"hovertemplate":"%{source.label} → %{target.label}<br /><b>%{value}<\/b> participants<br /><b>%{customdata}<\/b> of eligible population"},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"sankey"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"font":{"family":"Arial, Helvetica, sans-serif","size":12},"paper_bgcolor":"rgba(0,0,0,0)","hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"responsive":true},"data":[{"orientation":"h","arrangement":"snap","node":{"label":["Eligible population","Invitation 1 No response","Invitation 1 Declined","Invitation 1 Accepted","Invitation 2 No response","Invitation 2 Accepted","Invitation 2 Declined","Invitation 3 Accepted","Invitation 3 Declined","Invitation 3 No response","Declined","Accepted","No response"],"color":["#7f8fa6","#7f8fa6","#c23616","#44bd32","#7f8fa6","#44bd32","#c23616","#44bd32","#c23616","#7f8fa6","#c23616","#44bd32","#7f8fa6"],"x":[0.001,0.22575000000000001,0.22575000000000001,0.22575000000000001,0.45050000000000001,0.45050000000000001,0.45050000000000001,0.67525000000000002,0.67525000000000002,0.67525000000000002,0.90000000000000002,0.90000000000000002,0.90000000000000002],"y":[0.53326666666666667,0.53326666666666667,0.999,0.001,0.53326666666666667,0.13406666666666667,0.90585333333333329,0.22721333333333335,0.82601333333333338,0.63972000000000007,0.93246666666666667,0.001,0.53326666666666667],"customdata":[null,"77.0%","15.0%","8.0%","46.0%","12.0%","8.0%","9.0%","10.0%","14.0%","33.0%","29.0%","38.0%"],"hovertemplate":"%{label}<br /><b>%{value}<\/b> participants<br /><b>%{customdata}<\/b> of eligible population"},"link":{"source":[0,0,0,1,1,1,2,3,1,4,4,4,5,6,4,7,8,9],"target":[2,1,3,4,5,6,10,11,12,7,8,9,11,10,12,11,10,12],"value":[15,77,8,46,12,8,15,8,11,9,10,14,12,8,13,9,10,14],"label":["15","77","8","46","12","8","15","8","11","9","10","14","12","8","13","9","10","14"],"color":["#C236164C","#7F8FA64C","#44BD324C","#7F8FA64C","#44BD324C","#C236164C","#C236164C","#44BD324C","#7F8FA64C","#44BD324C","#C236164C","#7F8FA64C","#44BD324C","#C236164C","#7F8FA64C","#44BD324C","#C236164C","#7F8FA64C"],"customdata":["15.0%","77.0%","8.0%","46.0%","12.0%","8.0%","15.0%","8.0%","11.0%","9.0%","10.0%","14.0%","12.0%","8.0%","13.0%","9.0%","10.0%","14.0%"],"hovertemplate":"%{source.label} → %{target.label}<br /><b>%{value}<\/b> participants<br /><b>%{customdata}<\/b> of eligible population"},"type":"sankey","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
@@ -2476,8 +2476,8 @@ background-color: null;
 font-style: inherit;">5</span>)</span></code></pre></div>
 </details>
 <div class="cell-output-display">
-<div class="reactable html-widget html-fill-item" id="htmlwidget-5fddb0bae7e88aa23e5b" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-5fddb0bae7e88aa23e5b">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"participant_id":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100],"invite_1_date":["2019-10-11","2019-04-11","2020-09-14","2020-10-06","2020-02-04","2019-04-08","2019-04-13","2020-12-26","2020-08-24","2019-11-22","2019-03-20","2019-09-27","2020-01-17","2019-07-03","2020-07-27","2019-01-04","2020-10-22","2020-07-05","2019-07-31","2019-07-14","2020-05-25","2020-04-23","2020-08-27","2020-09-25","2020-07-31","2020-05-24","2020-11-17","2020-02-28","2020-01-14","2019-04-18","2019-05-11","2019-12-09","2019-02-10","2020-09-18","2019-10-25","2019-09-15","2020-09-20","2019-03-20","2019-07-01","2019-11-01","2019-12-24","2020-11-26","2019-11-03","2019-11-01","2019-08-09","2020-07-14","2019-11-09","2019-05-16","2019-05-25","2019-05-03","2019-08-22","2020-08-30","2020-05-09","2020-06-17","2019-10-24","2019-07-27","2019-05-11","2020-07-22","2020-06-05","2019-09-05","2019-12-31","2020-10-26","2020-10-04","2020-08-17","2020-03-09","2019-08-06","2020-12-27","2020-05-22","2019-10-03","2019-06-18","2019-03-12","2020-07-26","2019-11-22","2020-04-29","2020-10-28","2020-04-04","2019-03-01","2020-03-24","2020-07-01","2019-01-19","2020-10-10","2020-09-29","2020-10-31","2019-11-15","2019-04-26","2019-05-25","2019-04-12","2019-08-02","2020-01-25","2020-08-19","2020-08-19","2019-06-09","2019-03-18","2020-06-12","2019-05-06","2019-09-19","2020-03-17","2020-10-03","2019-06-30","2019-06-12"],"invite_2_date":[null,"2019-04-26","2020-10-03",null,"2020-03-05",null,null,null,"2020-09-13","2019-12-14","2019-04-13","2019-10-10","2020-02-04","2019-07-27","2020-08-09",null,null,null,null,"2019-08-10","2020-06-17","2020-05-21","2020-09-10","2020-10-12","2020-08-23",null,"2020-12-16",null,"2020-02-12","2019-04-29","2019-05-26","2020-01-04","2019-03-10","2020-10-11",null,"2019-09-28","2020-09-30","2019-04-17",null,null,"2020-01-18",null,"2019-11-28","2019-11-14","2019-08-28","2020-08-10","2019-12-07","2019-05-26",null,"2019-05-29","2019-09-10","2020-09-23","2020-05-21",null,"2019-11-15",null,"2019-06-06","2020-08-07","2020-06-16","2019-09-29","2020-01-13",null,null,null,"2020-03-28","2019-09-05","2021-01-21",null,"2019-10-18","2019-07-10",null,null,"2019-12-18","2020-05-23","2020-11-24","2020-04-26","2019-03-11","2020-04-16","2020-07-22",null,"2020-11-09","2020-10-29","2020-11-28",null,null,null,"2019-05-04",null,"2020-02-12","2020-09-07","2020-09-11",null,null,"2020-07-06",null,null,null,"2020-10-20","2019-07-22","2019-07-01"],"invite_3_date":[null,"2019-05-24","2020-10-16",null,"2020-04-01",null,null,null,"2020-10-01","2020-01-13","2019-05-05",null,null,"2019-08-12",null,null,null,null,null,"2019-09-06","2020-07-04","2020-06-14","2020-09-22","2020-11-11","2020-09-18",null,null,null,null,null,null,null,null,null,null,null,null,"2019-05-02",null,null,null,null,"2019-12-09","2019-12-04","2019-09-22",null,null,null,null,null,"2019-09-23",null,null,null,"2019-12-09",null,"2019-06-30",null,"2020-07-16","2019-10-10",null,null,null,null,null,"2019-09-29",null,null,null,null,null,null,"2019-12-31",null,null,null,"2019-03-27","2020-05-12","2020-08-03",null,"2020-11-29",null,"2020-12-22",null,null,null,null,null,"2020-03-12",null,"2020-09-28",null,null,"2020-08-04",null,null,null,"2020-11-10",null,null],"invite_outcome":["Declined","Accepted","Declined","Declined","Declined","Accepted","No response","No response","Accepted","Declined","Declined","Accepted","Accepted","Accepted","Accepted","Declined","Declined","Declined","No response","Declined","Declined","No response","No response","No response","Accepted","Declined","Declined","No response","No response","No response","No response","Accepted","No response","No response","No response","Declined","Declined","No response","Declined","Accepted","Accepted","Accepted","No response","No response","No response","Accepted","Accepted","No response","Declined","No response","Accepted","Accepted","No response","Declined","Accepted","No response","No response","Declined","Declined","Declined","Accepted","Accepted","No response","Accepted","Accepted","Accepted","Accepted","No response","No response","Declined","Accepted","Declined","Declined","Declined","No response","Declined","No response","No response","No response","Declined","No response","No response","Accepted","No response","Accepted","No response","No response","Declined","No response","No response","Declined","Declined","No response","Accepted","Declined","Declined","Accepted","No response","Declined","Accepted"]},"columns":[{"id":"participant_id","name":"participant_id","type":"numeric"},{"id":"invite_1_date","name":"invite_1_date","type":"Date"},{"id":"invite_2_date","name":"invite_2_date","type":"Date"},{"id":"invite_3_date","name":"invite_3_date","type":"Date"},{"id":"invite_outcome","name":"invite_outcome","type":"character"}],"defaultPageSize":5,"dataKey":"812760e5c2269ef93c4668c581c72808"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div class="reactable html-widget html-fill-item" id="htmlwidget-821efd14d3e8c7967ea3" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-821efd14d3e8c7967ea3">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"participant_id":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100],"invite_1_date":["2019-10-11","2019-04-11","2020-09-14","2020-10-06","2020-02-04","2019-04-08","2019-04-13","2020-12-26","2020-08-24","2019-11-22","2019-03-20","2019-09-27","2020-01-17","2019-07-03","2020-07-27","2019-01-04","2020-10-22","2020-07-05","2019-07-31","2019-07-14","2020-05-25","2020-04-23","2020-08-27","2020-09-25","2020-07-31","2020-05-24","2020-11-17","2020-02-28","2020-01-14","2019-04-18","2019-05-11","2019-12-09","2019-02-10","2020-09-18","2019-10-25","2019-09-15","2020-09-20","2019-03-20","2019-07-01","2019-11-01","2019-12-24","2020-11-26","2019-11-03","2019-11-01","2019-08-09","2020-07-14","2019-11-09","2019-05-16","2019-05-25","2019-05-03","2019-08-22","2020-08-30","2020-05-09","2020-06-17","2019-10-24","2019-07-27","2019-05-11","2020-07-22","2020-06-05","2019-09-05","2019-12-31","2020-10-26","2020-10-04","2020-08-17","2020-03-09","2019-08-06","2020-12-27","2020-05-22","2019-10-03","2019-06-18","2019-03-12","2020-07-26","2019-11-22","2020-04-29","2020-10-28","2020-04-04","2019-03-01","2020-03-24","2020-07-01","2019-01-19","2020-10-10","2020-09-29","2020-10-31","2019-11-15","2019-04-26","2019-05-25","2019-04-12","2019-08-02","2020-01-25","2020-08-19","2020-08-19","2019-06-09","2019-03-18","2020-06-12","2019-05-06","2019-09-19","2020-03-17","2020-10-03","2019-06-30","2019-06-12"],"invite_2_date":[null,"2019-04-26","2020-10-03",null,"2020-03-05",null,null,null,"2020-09-13","2019-12-14","2019-04-13","2019-10-10","2020-02-04","2019-07-27","2020-08-09",null,null,null,null,"2019-08-10","2020-06-17","2020-05-21","2020-09-10","2020-10-12","2020-08-23",null,"2020-12-16",null,"2020-02-12","2019-04-29","2019-05-26","2020-01-04","2019-03-10","2020-10-11",null,"2019-09-28","2020-09-30","2019-04-17",null,null,"2020-01-18",null,"2019-11-28","2019-11-14","2019-08-28","2020-08-10","2019-12-07","2019-05-26",null,"2019-05-29","2019-09-10","2020-09-23","2020-05-21",null,"2019-11-15",null,"2019-06-06","2020-08-07","2020-06-16","2019-09-29","2020-01-13",null,null,null,"2020-03-28","2019-09-05","2021-01-21",null,"2019-10-18","2019-07-10",null,null,"2019-12-18","2020-05-23","2020-11-24","2020-04-26","2019-03-11","2020-04-16","2020-07-22",null,"2020-11-09","2020-10-29","2020-11-28",null,null,null,"2019-05-04",null,"2020-02-12","2020-09-07","2020-09-11",null,null,"2020-07-06",null,null,null,"2020-10-20","2019-07-22","2019-07-01"],"invite_3_date":[null,"2019-05-24","2020-10-16",null,"2020-04-01",null,null,null,"2020-10-01","2020-01-13","2019-05-05",null,null,"2019-08-12",null,null,null,null,null,"2019-09-06","2020-07-04","2020-06-14","2020-09-22","2020-11-11","2020-09-18",null,null,null,null,null,null,null,null,null,null,null,null,"2019-05-02",null,null,null,null,"2019-12-09","2019-12-04","2019-09-22",null,null,null,null,null,"2019-09-23",null,null,null,"2019-12-09",null,"2019-06-30",null,"2020-07-16","2019-10-10",null,null,null,null,null,"2019-09-29",null,null,null,null,null,null,"2019-12-31",null,null,null,"2019-03-27","2020-05-12","2020-08-03",null,"2020-11-29",null,"2020-12-22",null,null,null,null,null,"2020-03-12",null,"2020-09-28",null,null,"2020-08-04",null,null,null,"2020-11-10",null,null],"invite_outcome":["Declined","Accepted","Declined","Declined","Declined","Accepted","No response","No response","Accepted","Declined","Declined","Accepted","Accepted","Accepted","Accepted","Declined","Declined","Declined","No response","Declined","Declined","No response","No response","No response","Accepted","Declined","Declined","No response","No response","No response","No response","Accepted","No response","No response","No response","Declined","Declined","No response","Declined","Accepted","Accepted","Accepted","No response","No response","No response","Accepted","Accepted","No response","Declined","No response","Accepted","Accepted","No response","Declined","Accepted","No response","No response","Declined","Declined","Declined","Accepted","Accepted","No response","Accepted","Accepted","Accepted","Accepted","No response","No response","Declined","Accepted","Declined","Declined","Declined","No response","Declined","No response","No response","No response","Declined","No response","No response","Accepted","No response","Accepted","No response","No response","Declined","No response","No response","Declined","Declined","No response","Accepted","Declined","Declined","Accepted","No response","Declined","Accepted"]},"columns":[{"id":"participant_id","name":"participant_id","type":"numeric"},{"id":"invite_1_date","name":"invite_1_date","type":"Date"},{"id":"invite_2_date","name":"invite_2_date","type":"Date"},{"id":"invite_3_date","name":"invite_3_date","type":"Date"},{"id":"invite_outcome","name":"invite_outcome","type":"character"}],"defaultPageSize":5,"dataKey":"812760e5c2269ef93c4668c581c72808"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 <p>Generated invite table</p>
 </div>
 </div>
@@ -2664,8 +2664,8 @@ background-color: null;
 font-style: inherit;">5</span>)</span></code></pre></div>
 </details>
 <div class="cell-output-display">
-<div class="reactable html-widget html-fill-item" id="htmlwidget-0605f0b112f1dc0a159d" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-0605f0b112f1dc0a159d">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"participant_id":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100],"start_population":["Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population"],"invite_1_outcome":["Invitation 1 Declined","Invitation 1 No response","Invitation 1 No response","Invitation 1 Declined","Invitation 1 No response","Invitation 1 Accepted","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 Declined","Invitation 1 Declined","Invitation 1 Declined","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 Declined","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 Declined","Invitation 1 Accepted","Invitation 1 No response","Invitation 1 Accepted","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 Declined","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 Declined","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 Accepted","Invitation 1 No response","Invitation 1 Accepted","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 Accepted","Invitation 1 Declined","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 Declined","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 Accepted","Invitation 1 No response","Invitation 1 No response","Invitation 1 Declined","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 Declined","Invitation 1 No response","Invitation 1 No response","Invitation 1 Declined","Invitation 1 Declined","Invitation 1 Accepted","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response"],"invite_2_outcome":[null,"Invitation 2 No response","Invitation 2 No response",null,"Invitation 2 No response",null,null,null,"Invitation 2 No response","Invitation 2 No response","Invitation 2 No response","Invitation 2 Accepted","Invitation 2 Accepted","Invitation 2 No response","Invitation 2 Accepted",null,null,null,null,"Invitation 2 No response","Invitation 2 No response","Invitation 2 No response","Invitation 2 No response","Invitation 2 No response","Invitation 2 No response",null,"Invitation 2 Declined",null,"Invitation 2 No response","Invitation 2 No response","Invitation 2 No response","Invitation 2 Accepted","Invitation 2 No response","Invitation 2 No response",null,"Invitation 2 Declined","Invitation 2 Declined","Invitation 2 No response",null,null,"Invitation 2 Accepted",null,"Invitation 2 No response","Invitation 2 No response","Invitation 2 No response","Invitation 2 Accepted","Invitation 2 Accepted","Invitation 2 No response",null,"Invitation 2 No response","Invitation 2 No response","Invitation 2 Accepted","Invitation 2 No response",null,"Invitation 2 No response",null,"Invitation 2 No response","Invitation 2 Declined","Invitation 2 No response","Invitation 2 No response","Invitation 2 Accepted",null,null,null,"Invitation 2 Accepted","Invitation 2 No response","Invitation 2 Accepted",null,"Invitation 2 No response","Invitation 2 Declined",null,null,"Invitation 2 No response","Invitation 2 Declined","Invitation 2 No response","Invitation 2 Declined","Invitation 2 No response","Invitation 2 No response","Invitation 2 No response",null,"Invitation 2 No response","Invitation 2 No response","Invitation 2 No response",null,null,null,"Invitation 2 No response",null,"Invitation 2 No response","Invitation 2 No response","Invitation 2 No response",null,null,"Invitation 2 No response",null,null,null,"Invitation 2 No response","Invitation 2 Declined","Invitation 2 Accepted"],"invite_3_outcome":[null,"Invitation 3 Accepted","Invitation 3 Declined",null,"Invitation 3 Declined",null,null,null,"Invitation 3 Accepted","Invitation 3 Declined","Invitation 3 Declined",null,null,"Invitation 3 Accepted",null,null,null,null,null,"Invitation 3 Declined","Invitation 3 Declined","Invitation 3 No response","Invitation 3 No response","Invitation 3 No response","Invitation 3 Accepted",null,null,null,null,null,null,null,null,null,null,null,null,"Invitation 3 No response",null,null,null,null,"Invitation 3 No response","Invitation 3 No response","Invitation 3 No response",null,null,null,null,null,"Invitation 3 Accepted",null,null,null,"Invitation 3 Accepted",null,"Invitation 3 No response",null,"Invitation 3 Declined","Invitation 3 Declined",null,null,null,null,null,"Invitation 3 Accepted",null,null,null,null,null,null,"Invitation 3 Declined",null,null,null,"Invitation 3 No response","Invitation 3 No response","Invitation 3 No response",null,"Invitation 3 No response",null,"Invitation 3 Accepted",null,null,null,null,null,"Invitation 3 No response",null,"Invitation 3 Declined",null,null,"Invitation 3 Accepted",null,null,null,"Invitation 3 No response",null,null],"invite_outcome":["Declined","Accepted","Declined","Declined","Declined","Accepted","No response","No response","Accepted","Declined","Declined","Accepted","Accepted","Accepted","Accepted","Declined","Declined","Declined","No response","Declined","Declined","No response","No response","No response","Accepted","Declined","Declined","No response","No response","No response","No response","Accepted","No response","No response","No response","Declined","Declined","No response","Declined","Accepted","Accepted","Accepted","No response","No response","No response","Accepted","Accepted","No response","Declined","No response","Accepted","Accepted","No response","Declined","Accepted","No response","No response","Declined","Declined","Declined","Accepted","Accepted","No response","Accepted","Accepted","Accepted","Accepted","No response","No response","Declined","Accepted","Declined","Declined","Declined","No response","Declined","No response","No response","No response","Declined","No response","No response","Accepted","No response","Accepted","No response","No response","Declined","No response","No response","Declined","Declined","No response","Accepted","Declined","Declined","Accepted","No response","Declined","Accepted"]},"columns":[{"id":"participant_id","name":"participant_id","type":"numeric"},{"id":"start_population","name":"start_population","type":"character"},{"id":"invite_1_outcome","name":"invite_1_outcome","type":["glue","character"]},{"id":"invite_2_outcome","name":"invite_2_outcome","type":["glue","character"]},{"id":"invite_3_outcome","name":"invite_3_outcome","type":["glue","character"]},{"id":"invite_outcome","name":"invite_outcome","type":"character"}],"defaultPageSize":5,"dataKey":"a450da1debd7915b64a9b7311b7f1d33"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div class="reactable html-widget html-fill-item" id="htmlwidget-5c98a541402793ee20f0" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-5c98a541402793ee20f0">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"participant_id":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100],"start_population":["Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population","Eligible population"],"invite_1_outcome":["Invitation 1 Declined","Invitation 1 No response","Invitation 1 No response","Invitation 1 Declined","Invitation 1 No response","Invitation 1 Accepted","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 Declined","Invitation 1 Declined","Invitation 1 Declined","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 Declined","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 Declined","Invitation 1 Accepted","Invitation 1 No response","Invitation 1 Accepted","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 Declined","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 Declined","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 Accepted","Invitation 1 No response","Invitation 1 Accepted","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 Accepted","Invitation 1 Declined","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 Declined","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 Accepted","Invitation 1 No response","Invitation 1 No response","Invitation 1 Declined","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 Declined","Invitation 1 No response","Invitation 1 No response","Invitation 1 Declined","Invitation 1 Declined","Invitation 1 Accepted","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response"],"invite_2_outcome":[null,"Invitation 2 No response","Invitation 2 No response",null,"Invitation 2 No response",null,null,null,"Invitation 2 No response","Invitation 2 No response","Invitation 2 No response","Invitation 2 Accepted","Invitation 2 Accepted","Invitation 2 No response","Invitation 2 Accepted",null,null,null,null,"Invitation 2 No response","Invitation 2 No response","Invitation 2 No response","Invitation 2 No response","Invitation 2 No response","Invitation 2 No response",null,"Invitation 2 Declined",null,"Invitation 2 No response","Invitation 2 No response","Invitation 2 No response","Invitation 2 Accepted","Invitation 2 No response","Invitation 2 No response",null,"Invitation 2 Declined","Invitation 2 Declined","Invitation 2 No response",null,null,"Invitation 2 Accepted",null,"Invitation 2 No response","Invitation 2 No response","Invitation 2 No response","Invitation 2 Accepted","Invitation 2 Accepted","Invitation 2 No response",null,"Invitation 2 No response","Invitation 2 No response","Invitation 2 Accepted","Invitation 2 No response",null,"Invitation 2 No response",null,"Invitation 2 No response","Invitation 2 Declined","Invitation 2 No response","Invitation 2 No response","Invitation 2 Accepted",null,null,null,"Invitation 2 Accepted","Invitation 2 No response","Invitation 2 Accepted",null,"Invitation 2 No response","Invitation 2 Declined",null,null,"Invitation 2 No response","Invitation 2 Declined","Invitation 2 No response","Invitation 2 Declined","Invitation 2 No response","Invitation 2 No response","Invitation 2 No response",null,"Invitation 2 No response","Invitation 2 No response","Invitation 2 No response",null,null,null,"Invitation 2 No response",null,"Invitation 2 No response","Invitation 2 No response","Invitation 2 No response",null,null,"Invitation 2 No response",null,null,null,"Invitation 2 No response","Invitation 2 Declined","Invitation 2 Accepted"],"invite_3_outcome":[null,"Invitation 3 Accepted","Invitation 3 Declined",null,"Invitation 3 Declined",null,null,null,"Invitation 3 Accepted","Invitation 3 Declined","Invitation 3 Declined",null,null,"Invitation 3 Accepted",null,null,null,null,null,"Invitation 3 Declined","Invitation 3 Declined","Invitation 3 No response","Invitation 3 No response","Invitation 3 No response","Invitation 3 Accepted",null,null,null,null,null,null,null,null,null,null,null,null,"Invitation 3 No response",null,null,null,null,"Invitation 3 No response","Invitation 3 No response","Invitation 3 No response",null,null,null,null,null,"Invitation 3 Accepted",null,null,null,"Invitation 3 Accepted",null,"Invitation 3 No response",null,"Invitation 3 Declined","Invitation 3 Declined",null,null,null,null,null,"Invitation 3 Accepted",null,null,null,null,null,null,"Invitation 3 Declined",null,null,null,"Invitation 3 No response","Invitation 3 No response","Invitation 3 No response",null,"Invitation 3 No response",null,"Invitation 3 Accepted",null,null,null,null,null,"Invitation 3 No response",null,"Invitation 3 Declined",null,null,"Invitation 3 Accepted",null,null,null,"Invitation 3 No response",null,null],"invite_outcome":["Declined","Accepted","Declined","Declined","Declined","Accepted","No response","No response","Accepted","Declined","Declined","Accepted","Accepted","Accepted","Accepted","Declined","Declined","Declined","No response","Declined","Declined","No response","No response","No response","Accepted","Declined","Declined","No response","No response","No response","No response","Accepted","No response","No response","No response","Declined","Declined","No response","Declined","Accepted","Accepted","Accepted","No response","No response","No response","Accepted","Accepted","No response","Declined","No response","Accepted","Accepted","No response","Declined","Accepted","No response","No response","Declined","Declined","Declined","Accepted","Accepted","No response","Accepted","Accepted","Accepted","Accepted","No response","No response","Declined","Accepted","Declined","Declined","Declined","No response","Declined","No response","No response","No response","Declined","No response","No response","Accepted","No response","Accepted","No response","No response","Declined","No response","No response","Declined","Declined","No response","Accepted","Declined","Declined","Accepted","No response","Declined","Accepted"]},"columns":[{"id":"participant_id","name":"participant_id","type":"numeric"},{"id":"start_population","name":"start_population","type":"character"},{"id":"invite_1_outcome","name":"invite_1_outcome","type":["glue","character"]},{"id":"invite_2_outcome","name":"invite_2_outcome","type":["glue","character"]},{"id":"invite_3_outcome","name":"invite_3_outcome","type":["glue","character"]},{"id":"invite_outcome","name":"invite_outcome","type":"character"}],"defaultPageSize":5,"dataKey":"a450da1debd7915b64a9b7311b7f1d33"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 <p>Milestone-outcomes for participants</p>
 </div>
 </div>
@@ -2982,8 +2982,8 @@ background-color: null;
 font-style: inherit;">5</span>)</span></code></pre></div>
 </details>
 <div class="cell-output-display">
-<div class="reactable html-widget html-fill-item" id="htmlwidget-e384d37082ac2b4f0eca" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-e384d37082ac2b4f0eca">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"from":["Eligible population","Eligible population","Eligible population","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 Declined","Invitation 1 Accepted","Invitation 1 No response","Invitation 2 No response","Invitation 2 No response","Invitation 2 No response","Invitation 2 Accepted","Invitation 2 Declined","Invitation 2 No response","Invitation 3 Accepted","Invitation 3 Declined","Invitation 3 No response"],"to":["Invitation 1 Declined","Invitation 1 No response","Invitation 1 Accepted","Invitation 2 No response","Invitation 2 Accepted","Invitation 2 Declined","Declined","Accepted","No response","Invitation 3 Accepted","Invitation 3 Declined","Invitation 3 No response","Accepted","Declined","No response","Accepted","Declined","No response"],"flow":[15,77,8,46,12,8,15,8,11,9,10,14,12,8,13,9,10,14]},"columns":[{"id":"from","name":"from","type":["glue","character"]},{"id":"to","name":"to","type":["glue","character"]},{"id":"flow","name":"flow","type":"numeric"}],"defaultPageSize":5,"dataKey":"742d09c4727207338778e12e06444f4b"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div class="reactable html-widget html-fill-item" id="htmlwidget-0d7ad301bd0048ff5416" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-0d7ad301bd0048ff5416">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"from":["Eligible population","Eligible population","Eligible population","Invitation 1 No response","Invitation 1 No response","Invitation 1 No response","Invitation 1 Declined","Invitation 1 Accepted","Invitation 1 No response","Invitation 2 No response","Invitation 2 No response","Invitation 2 No response","Invitation 2 Accepted","Invitation 2 Declined","Invitation 2 No response","Invitation 3 Accepted","Invitation 3 Declined","Invitation 3 No response"],"to":["Invitation 1 Declined","Invitation 1 No response","Invitation 1 Accepted","Invitation 2 No response","Invitation 2 Accepted","Invitation 2 Declined","Declined","Accepted","No response","Invitation 3 Accepted","Invitation 3 Declined","Invitation 3 No response","Accepted","Declined","No response","Accepted","Declined","No response"],"flow":[15,77,8,46,12,8,15,8,11,9,10,14,12,8,13,9,10,14]},"columns":[{"id":"from","name":"from","type":["glue","character"]},{"id":"to","name":"to","type":["glue","character"]},{"id":"flow","name":"flow","type":"numeric"}],"defaultPageSize":5,"dataKey":"742d09c4727207338778e12e06444f4b"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 <p>Flows of participants between milestones</p>
 </div>
 </div>
@@ -3040,8 +3040,8 @@ font-style: inherit;">defaultPageSize =</span> <span class="dv" style="color: #A
 background-color: null;
 font-style: inherit;">5</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<div class="reactable html-widget html-fill-item" id="htmlwidget-4b7a5afc513ad906d827" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-4b7a5afc513ad906d827">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"name":["Eligible population","Invitation 1 No response","Invitation 1 Declined","Invitation 1 Accepted","Invitation 2 No response","Invitation 2 Accepted","Invitation 2 Declined","Invitation 3 Accepted","Invitation 3 Declined","Invitation 3 No response","Declined","Accepted","No response"]},"columns":[{"id":"name","name":"name","type":"character"}],"defaultPageSize":5,"dataKey":"c8916df8221f76b5b09469d3a29a7b47"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div class="reactable html-widget html-fill-item" id="htmlwidget-7a7744121563547b0caf" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-7a7744121563547b0caf">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"name":["Eligible population","Invitation 1 No response","Invitation 1 Declined","Invitation 1 Accepted","Invitation 2 No response","Invitation 2 Accepted","Invitation 2 Declined","Invitation 3 Accepted","Invitation 3 Declined","Invitation 3 No response","Declined","Accepted","No response"]},"columns":[{"id":"name","name":"name","type":"character"}],"defaultPageSize":5,"dataKey":"c8916df8221f76b5b09469d3a29a7b47"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>You can see each unique node name listed. The row numbers for these nodes are used as reference IDs in the edges object:</p>
@@ -3071,8 +3071,8 @@ font-style: inherit;">defaultPageSize =</span> <span class="dv" style="color: #A
 background-color: null;
 font-style: inherit;">5</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<div class="reactable html-widget html-fill-item" id="htmlwidget-64321af0e42d1f734374" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-64321af0e42d1f734374">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"from":[1,1,1,2,2,2,3,4,2,5,5,5,6,7,5,8,9,10],"to":[3,2,4,5,6,7,11,12,13,8,9,10,12,11,13,12,11,13],"flow":[15,77,8,46,12,8,15,8,11,9,10,14,12,8,13,9,10,14]},"columns":[{"id":"from","name":"from","type":"numeric"},{"id":"to","name":"to","type":"numeric"},{"id":"flow","name":"flow","type":"numeric"}],"defaultPageSize":5,"dataKey":"a889e9b644c7e0f45f526b0ebde36ebd"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div class="reactable html-widget html-fill-item" id="htmlwidget-fbbdb5e6d3afe35e589c" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-fbbdb5e6d3afe35e589c">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"from":[1,1,1,2,2,2,3,4,2,5,5,5,6,7,5,8,9,10],"to":[3,2,4,5,6,7,11,12,13,8,9,10,12,11,13,12,11,13],"flow":[15,77,8,46,12,8,15,8,11,9,10,14,12,8,13,9,10,14]},"columns":[{"id":"from","name":"from","type":"numeric"},{"id":"to","name":"to","type":"numeric"},{"id":"flow","name":"flow","type":"numeric"}],"defaultPageSize":5,"dataKey":"a889e9b644c7e0f45f526b0ebde36ebd"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>We now have enough information to generate our Sankey.</p>
@@ -3217,8 +3217,8 @@ font-style: inherit;">$</span>flow</span>
 <span id="cb8-36">)</span></code></pre></div>
 </details>
 <div class="cell-output-display">
-<div class="plotly html-widget html-fill-item" id="htmlwidget-f96f7e328672a16f0d1b" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-f96f7e328672a16f0d1b">{"x":{"visdat":{"237650c0b26e":["function () ","plotlyVisDat"]},"cur_data":"237650c0b26e","attrs":{"237650c0b26e":{"orientation":"h","arrangement":"snap","node":{"label":["Eligible population","Invitation 1 No response","Invitation 1 Declined","Invitation 1 Accepted","Invitation 2 No response","Invitation 2 Accepted","Invitation 2 Declined","Invitation 3 Accepted","Invitation 3 Declined","Invitation 3 No response","Declined","Accepted","No response"]},"link":{"source":[0,0,0,1,1,1,2,3,1,4,4,4,5,6,4,7,8,9],"target":[2,1,3,4,5,6,10,11,12,7,8,9,11,10,12,11,10,12],"value":[15,77,8,46,12,8,15,8,11,9,10,14,12,8,13,9,10,14]},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"sankey"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"orientation":"h","arrangement":"snap","node":{"label":["Eligible population","Invitation 1 No response","Invitation 1 Declined","Invitation 1 Accepted","Invitation 2 No response","Invitation 2 Accepted","Invitation 2 Declined","Invitation 3 Accepted","Invitation 3 Declined","Invitation 3 No response","Declined","Accepted","No response"]},"link":{"source":[0,0,0,1,1,1,2,3,1,4,4,4,5,6,4,7,8,9],"target":[2,1,3,4,5,6,10,11,12,7,8,9,11,10,12,11,10,12],"value":[15,77,8,46,12,8,15,8,11,9,10,14,12,8,13,9,10,14]},"type":"sankey","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-ff433b8401dcc3b66e47" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-ff433b8401dcc3b66e47">{"x":{"visdat":{"23e274b11819":["function () ","plotlyVisDat"]},"cur_data":"23e274b11819","attrs":{"23e274b11819":{"orientation":"h","arrangement":"snap","node":{"label":["Eligible population","Invitation 1 No response","Invitation 1 Declined","Invitation 1 Accepted","Invitation 2 No response","Invitation 2 Accepted","Invitation 2 Declined","Invitation 3 Accepted","Invitation 3 Declined","Invitation 3 No response","Declined","Accepted","No response"]},"link":{"source":[0,0,0,1,1,1,2,3,1,4,4,4,5,6,4,7,8,9],"target":[2,1,3,4,5,6,10,11,12,7,8,9,11,10,12,11,10,12],"value":[15,77,8,46,12,8,15,8,11,9,10,14,12,8,13,9,10,14]},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"sankey"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"orientation":"h","arrangement":"snap","node":{"label":["Eligible population","Invitation 1 No response","Invitation 1 Declined","Invitation 1 Accepted","Invitation 2 No response","Invitation 2 Accepted","Invitation 2 Declined","Invitation 3 Accepted","Invitation 3 Declined","Invitation 3 No response","Declined","Accepted","No response"]},"link":{"source":[0,0,0,1,1,1,2,3,1,4,4,4,5,6,4,7,8,9],"target":[2,1,3,4,5,6,10,11,12,7,8,9,11,10,12,11,10,12],"value":[15,77,8,46,12,8,15,8,11,9,10,14,12,8,13,9,10,14]},"type":"sankey","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 <p>Our first sankey</p>
 </div>
 </div>
@@ -3655,8 +3655,8 @@ background-color: null;
 font-style: inherit;">5</span>)</span></code></pre></div>
 </details>
 <div class="cell-output-display">
-<div class="reactable html-widget html-fill-item" id="htmlwidget-3ac426c0758d623d9e92" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-3ac426c0758d623d9e92">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"name":["Eligible population","Invitation 1 No response","Invitation 1 Declined","Invitation 1 Accepted","Invitation 2 No response","Invitation 2 Accepted","Invitation 2 Declined","Invitation 3 Accepted","Invitation 3 Declined","Invitation 3 No response","Declined","Accepted","No response"],"id":[0,1,2,3,4,5,6,7,8,9,10,11,12],"colour":["#7f8fa6","#7f8fa6","#c23616","#44bd32","#7f8fa6","#44bd32","#c23616","#44bd32","#c23616","#7f8fa6","#c23616","#44bd32","#7f8fa6"],"colour_fade":["#7F8FA64C","#7F8FA64C","#C236164C","#44BD324C","#7F8FA64C","#44BD324C","#C236164C","#44BD324C","#C236164C","#7F8FA64C","#C236164C","#44BD324C","#7F8FA64C"],"x":[0.001,0.22575,0.22575,0.22575,0.4505,0.4505,0.4505,0.67525,0.67525,0.67525,0.9,0.9,0.9],"y":[0.533266666666667,0.533266666666667,0.999,0.001,0.533266666666667,0.134066666666667,0.905853333333333,0.227213333333333,0.826013333333333,0.63972,0.932466666666667,0.001,0.533266666666667],"flow_perc":[null,"77.0%","15.0%","8.0%","46.0%","12.0%","8.0%","9.0%","10.0%","14.0%","33.0%","29.0%","38.0%"]},"columns":[{"id":"name","name":"name","type":["glue","character"]},{"id":"id","name":"id","type":"numeric"},{"id":"colour","name":"colour","type":"character"},{"id":"colour_fade","name":"colour_fade","type":"character"},{"id":"x","name":"x","type":"numeric"},{"id":"y","name":"y","type":"numeric"},{"id":"flow_perc","name":"flow_perc","type":"character"}],"defaultPageSize":5,"dataKey":"846bee5df8dbde8324fb073f5cfd1799"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div class="reactable html-widget html-fill-item" id="htmlwidget-b58835f166827cc82fac" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-b58835f166827cc82fac">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"name":["Eligible population","Invitation 1 No response","Invitation 1 Declined","Invitation 1 Accepted","Invitation 2 No response","Invitation 2 Accepted","Invitation 2 Declined","Invitation 3 Accepted","Invitation 3 Declined","Invitation 3 No response","Declined","Accepted","No response"],"id":[0,1,2,3,4,5,6,7,8,9,10,11,12],"colour":["#7f8fa6","#7f8fa6","#c23616","#44bd32","#7f8fa6","#44bd32","#c23616","#44bd32","#c23616","#7f8fa6","#c23616","#44bd32","#7f8fa6"],"colour_fade":["#7F8FA64C","#7F8FA64C","#C236164C","#44BD324C","#7F8FA64C","#44BD324C","#C236164C","#44BD324C","#C236164C","#7F8FA64C","#C236164C","#44BD324C","#7F8FA64C"],"x":[0.001,0.22575,0.22575,0.22575,0.4505,0.4505,0.4505,0.67525,0.67525,0.67525,0.9,0.9,0.9],"y":[0.533266666666667,0.533266666666667,0.999,0.001,0.533266666666667,0.134066666666667,0.905853333333333,0.227213333333333,0.826013333333333,0.63972,0.932466666666667,0.001,0.533266666666667],"flow_perc":[null,"77.0%","15.0%","8.0%","46.0%","12.0%","8.0%","9.0%","10.0%","14.0%","33.0%","29.0%","38.0%"]},"columns":[{"id":"name","name":"name","type":["glue","character"]},{"id":"id","name":"id","type":"numeric"},{"id":"colour","name":"colour","type":"character"},{"id":"colour_fade","name":"colour_fade","type":"character"},{"id":"x","name":"x","type":"numeric"},{"id":"y","name":"y","type":"numeric"},{"id":"flow_perc","name":"flow_perc","type":"character"}],"defaultPageSize":5,"dataKey":"846bee5df8dbde8324fb073f5cfd1799"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 <p>Styling the nodes dataframe</p>
 </div>
 </div>
@@ -3738,8 +3738,8 @@ background-color: null;
 font-style: inherit;">5</span>)</span></code></pre></div>
 </details>
 <div class="cell-output-display">
-<div class="reactable html-widget html-fill-item" id="htmlwidget-2012d8939764fcc0572d" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-2012d8939764fcc0572d">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"from":[0,0,0,1,1,1,2,3,1,4,4,4,5,6,4,7,8,9],"to":[2,1,3,4,5,6,10,11,12,7,8,9,11,10,12,11,10,12],"flow":[15,77,8,46,12,8,15,8,11,9,10,14,12,8,13,9,10,14],"label":["15","77","8","46","12","8","15","8","11","9","10","14","12","8","13","9","10","14"],"flow_perc":["15.0%","77.0%","8.0%","46.0%","12.0%","8.0%","15.0%","8.0%","11.0%","9.0%","10.0%","14.0%","12.0%","8.0%","13.0%","9.0%","10.0%","14.0%"],"colour_fade":["#C236164C","#7F8FA64C","#44BD324C","#7F8FA64C","#44BD324C","#C236164C","#C236164C","#44BD324C","#7F8FA64C","#44BD324C","#C236164C","#7F8FA64C","#44BD324C","#C236164C","#7F8FA64C","#44BD324C","#C236164C","#7F8FA64C"]},"columns":[{"id":"from","name":"from","type":"numeric"},{"id":"to","name":"to","type":"numeric"},{"id":"flow","name":"flow","type":"numeric"},{"id":"label","name":"label","type":"character"},{"id":"flow_perc","name":"flow_perc","type":"character"},{"id":"colour_fade","name":"colour_fade","type":"character"}],"defaultPageSize":5,"dataKey":"adb0410c463383f1a7998a47c33b6495"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div class="reactable html-widget html-fill-item" id="htmlwidget-9736e57fe9b9cd562f64" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-9736e57fe9b9cd562f64">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"from":[0,0,0,1,1,1,2,3,1,4,4,4,5,6,4,7,8,9],"to":[2,1,3,4,5,6,10,11,12,7,8,9,11,10,12,11,10,12],"flow":[15,77,8,46,12,8,15,8,11,9,10,14,12,8,13,9,10,14],"label":["15","77","8","46","12","8","15","8","11","9","10","14","12","8","13","9","10","14"],"flow_perc":["15.0%","77.0%","8.0%","46.0%","12.0%","8.0%","15.0%","8.0%","11.0%","9.0%","10.0%","14.0%","12.0%","8.0%","13.0%","9.0%","10.0%","14.0%"],"colour_fade":["#C236164C","#7F8FA64C","#44BD324C","#7F8FA64C","#44BD324C","#C236164C","#C236164C","#44BD324C","#7F8FA64C","#44BD324C","#C236164C","#7F8FA64C","#44BD324C","#C236164C","#7F8FA64C","#44BD324C","#C236164C","#7F8FA64C"]},"columns":[{"id":"from","name":"from","type":"numeric"},{"id":"to","name":"to","type":"numeric"},{"id":"flow","name":"flow","type":"numeric"},{"id":"label","name":"label","type":"character"},{"id":"flow_perc","name":"flow_perc","type":"character"},{"id":"colour_fade","name":"colour_fade","type":"character"}],"defaultPageSize":5,"dataKey":"adb0410c463383f1a7998a47c33b6495"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 <p>Styling the edges dataframe</p>
 </div>
 </div>
@@ -3896,8 +3896,8 @@ background-color: null;
 font-style: inherit;">responsive =</span> T)</span></code></pre></div>
 </details>
 <div class="cell-output-display">
-<div class="plotly html-widget html-fill-item" id="htmlwidget-a87f14985fdbde907488" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-a87f14985fdbde907488">{"x":{"visdat":{"237627ac23d0":["function () ","plotlyVisDat"]},"cur_data":"237627ac23d0","attrs":{"237627ac23d0":{"orientation":"h","arrangement":"snap","node":{"label":["Eligible population","Invitation 1 No response","Invitation 1 Declined","Invitation 1 Accepted","Invitation 2 No response","Invitation 2 Accepted","Invitation 2 Declined","Invitation 3 Accepted","Invitation 3 Declined","Invitation 3 No response","Declined","Accepted","No response"],"color":["#7f8fa6","#7f8fa6","#c23616","#44bd32","#7f8fa6","#44bd32","#c23616","#44bd32","#c23616","#7f8fa6","#c23616","#44bd32","#7f8fa6"],"x":[0.001,0.22575000000000001,0.22575000000000001,0.22575000000000001,0.45050000000000001,0.45050000000000001,0.45050000000000001,0.67525000000000002,0.67525000000000002,0.67525000000000002,0.90000000000000002,0.90000000000000002,0.90000000000000002],"y":[0.53326666666666667,0.53326666666666667,0.999,0.001,0.53326666666666667,0.13406666666666667,0.90585333333333329,0.22721333333333335,0.82601333333333338,0.63972000000000007,0.93246666666666667,0.001,0.53326666666666667],"customdata":[null,"77.0%","15.0%","8.0%","46.0%","12.0%","8.0%","9.0%","10.0%","14.0%","33.0%","29.0%","38.0%"],"hovertemplate":"%{label}<br /><b>%{value}<\/b> participants<br /><b>%{customdata}<\/b> of eligible population"},"link":{"source":[0,0,0,1,1,1,2,3,1,4,4,4,5,6,4,7,8,9],"target":[2,1,3,4,5,6,10,11,12,7,8,9,11,10,12,11,10,12],"value":[15,77,8,46,12,8,15,8,11,9,10,14,12,8,13,9,10,14],"label":["15","77","8","46","12","8","15","8","11","9","10","14","12","8","13","9","10","14"],"color":["#C236164C","#7F8FA64C","#44BD324C","#7F8FA64C","#44BD324C","#C236164C","#C236164C","#44BD324C","#7F8FA64C","#44BD324C","#C236164C","#7F8FA64C","#44BD324C","#C236164C","#7F8FA64C","#44BD324C","#C236164C","#7F8FA64C"],"customdata":["15.0%","77.0%","8.0%","46.0%","12.0%","8.0%","15.0%","8.0%","11.0%","9.0%","10.0%","14.0%","12.0%","8.0%","13.0%","9.0%","10.0%","14.0%"],"hovertemplate":"%{source.label} → %{target.label}<br /><b>%{value}<\/b> participants<br /><b>%{customdata}<\/b> of eligible population"},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"sankey"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"font":{"family":"Arial, Helvetica, sans-serif","size":12},"paper_bgcolor":"rgba(0,0,0,0)","hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"responsive":true},"data":[{"orientation":"h","arrangement":"snap","node":{"label":["Eligible population","Invitation 1 No response","Invitation 1 Declined","Invitation 1 Accepted","Invitation 2 No response","Invitation 2 Accepted","Invitation 2 Declined","Invitation 3 Accepted","Invitation 3 Declined","Invitation 3 No response","Declined","Accepted","No response"],"color":["#7f8fa6","#7f8fa6","#c23616","#44bd32","#7f8fa6","#44bd32","#c23616","#44bd32","#c23616","#7f8fa6","#c23616","#44bd32","#7f8fa6"],"x":[0.001,0.22575000000000001,0.22575000000000001,0.22575000000000001,0.45050000000000001,0.45050000000000001,0.45050000000000001,0.67525000000000002,0.67525000000000002,0.67525000000000002,0.90000000000000002,0.90000000000000002,0.90000000000000002],"y":[0.53326666666666667,0.53326666666666667,0.999,0.001,0.53326666666666667,0.13406666666666667,0.90585333333333329,0.22721333333333335,0.82601333333333338,0.63972000000000007,0.93246666666666667,0.001,0.53326666666666667],"customdata":[null,"77.0%","15.0%","8.0%","46.0%","12.0%","8.0%","9.0%","10.0%","14.0%","33.0%","29.0%","38.0%"],"hovertemplate":"%{label}<br /><b>%{value}<\/b> participants<br /><b>%{customdata}<\/b> of eligible population"},"link":{"source":[0,0,0,1,1,1,2,3,1,4,4,4,5,6,4,7,8,9],"target":[2,1,3,4,5,6,10,11,12,7,8,9,11,10,12,11,10,12],"value":[15,77,8,46,12,8,15,8,11,9,10,14,12,8,13,9,10,14],"label":["15","77","8","46","12","8","15","8","11","9","10","14","12","8","13","9","10","14"],"color":["#C236164C","#7F8FA64C","#44BD324C","#7F8FA64C","#44BD324C","#C236164C","#C236164C","#44BD324C","#7F8FA64C","#44BD324C","#C236164C","#7F8FA64C","#44BD324C","#C236164C","#7F8FA64C","#44BD324C","#C236164C","#7F8FA64C"],"customdata":["15.0%","77.0%","8.0%","46.0%","12.0%","8.0%","15.0%","8.0%","11.0%","9.0%","10.0%","14.0%","12.0%","8.0%","13.0%","9.0%","10.0%","14.0%"],"hovertemplate":"%{source.label} → %{target.label}<br /><b>%{value}<\/b> participants<br /><b>%{customdata}<\/b> of eligible population"},"type":"sankey","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-124210a823d0a90167ec" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-124210a823d0a90167ec">{"x":{"visdat":{"23e21cd31509":["function () ","plotlyVisDat"]},"cur_data":"23e21cd31509","attrs":{"23e21cd31509":{"orientation":"h","arrangement":"snap","node":{"label":["Eligible population","Invitation 1 No response","Invitation 1 Declined","Invitation 1 Accepted","Invitation 2 No response","Invitation 2 Accepted","Invitation 2 Declined","Invitation 3 Accepted","Invitation 3 Declined","Invitation 3 No response","Declined","Accepted","No response"],"color":["#7f8fa6","#7f8fa6","#c23616","#44bd32","#7f8fa6","#44bd32","#c23616","#44bd32","#c23616","#7f8fa6","#c23616","#44bd32","#7f8fa6"],"x":[0.001,0.22575000000000001,0.22575000000000001,0.22575000000000001,0.45050000000000001,0.45050000000000001,0.45050000000000001,0.67525000000000002,0.67525000000000002,0.67525000000000002,0.90000000000000002,0.90000000000000002,0.90000000000000002],"y":[0.53326666666666667,0.53326666666666667,0.999,0.001,0.53326666666666667,0.13406666666666667,0.90585333333333329,0.22721333333333335,0.82601333333333338,0.63972000000000007,0.93246666666666667,0.001,0.53326666666666667],"customdata":[null,"77.0%","15.0%","8.0%","46.0%","12.0%","8.0%","9.0%","10.0%","14.0%","33.0%","29.0%","38.0%"],"hovertemplate":"%{label}<br /><b>%{value}<\/b> participants<br /><b>%{customdata}<\/b> of eligible population"},"link":{"source":[0,0,0,1,1,1,2,3,1,4,4,4,5,6,4,7,8,9],"target":[2,1,3,4,5,6,10,11,12,7,8,9,11,10,12,11,10,12],"value":[15,77,8,46,12,8,15,8,11,9,10,14,12,8,13,9,10,14],"label":["15","77","8","46","12","8","15","8","11","9","10","14","12","8","13","9","10","14"],"color":["#C236164C","#7F8FA64C","#44BD324C","#7F8FA64C","#44BD324C","#C236164C","#C236164C","#44BD324C","#7F8FA64C","#44BD324C","#C236164C","#7F8FA64C","#44BD324C","#C236164C","#7F8FA64C","#44BD324C","#C236164C","#7F8FA64C"],"customdata":["15.0%","77.0%","8.0%","46.0%","12.0%","8.0%","15.0%","8.0%","11.0%","9.0%","10.0%","14.0%","12.0%","8.0%","13.0%","9.0%","10.0%","14.0%"],"hovertemplate":"%{source.label} → %{target.label}<br /><b>%{value}<\/b> participants<br /><b>%{customdata}<\/b> of eligible population"},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"sankey"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"font":{"family":"Arial, Helvetica, sans-serif","size":12},"paper_bgcolor":"rgba(0,0,0,0)","hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"responsive":true},"data":[{"orientation":"h","arrangement":"snap","node":{"label":["Eligible population","Invitation 1 No response","Invitation 1 Declined","Invitation 1 Accepted","Invitation 2 No response","Invitation 2 Accepted","Invitation 2 Declined","Invitation 3 Accepted","Invitation 3 Declined","Invitation 3 No response","Declined","Accepted","No response"],"color":["#7f8fa6","#7f8fa6","#c23616","#44bd32","#7f8fa6","#44bd32","#c23616","#44bd32","#c23616","#7f8fa6","#c23616","#44bd32","#7f8fa6"],"x":[0.001,0.22575000000000001,0.22575000000000001,0.22575000000000001,0.45050000000000001,0.45050000000000001,0.45050000000000001,0.67525000000000002,0.67525000000000002,0.67525000000000002,0.90000000000000002,0.90000000000000002,0.90000000000000002],"y":[0.53326666666666667,0.53326666666666667,0.999,0.001,0.53326666666666667,0.13406666666666667,0.90585333333333329,0.22721333333333335,0.82601333333333338,0.63972000000000007,0.93246666666666667,0.001,0.53326666666666667],"customdata":[null,"77.0%","15.0%","8.0%","46.0%","12.0%","8.0%","9.0%","10.0%","14.0%","33.0%","29.0%","38.0%"],"hovertemplate":"%{label}<br /><b>%{value}<\/b> participants<br /><b>%{customdata}<\/b> of eligible population"},"link":{"source":[0,0,0,1,1,1,2,3,1,4,4,4,5,6,4,7,8,9],"target":[2,1,3,4,5,6,10,11,12,7,8,9,11,10,12,11,10,12],"value":[15,77,8,46,12,8,15,8,11,9,10,14,12,8,13,9,10,14],"label":["15","77","8","46","12","8","15","8","11","9","10","14","12","8","13","9","10","14"],"color":["#C236164C","#7F8FA64C","#44BD324C","#7F8FA64C","#44BD324C","#C236164C","#C236164C","#44BD324C","#7F8FA64C","#44BD324C","#C236164C","#7F8FA64C","#44BD324C","#C236164C","#7F8FA64C","#44BD324C","#C236164C","#7F8FA64C"],"customdata":["15.0%","77.0%","8.0%","46.0%","12.0%","8.0%","15.0%","8.0%","11.0%","9.0%","10.0%","14.0%","12.0%","8.0%","13.0%","9.0%","10.0%","14.0%"],"hovertemplate":"%{source.label} → %{target.label}<br /><b>%{value}<\/b> participants<br /><b>%{customdata}<\/b> of eligible population"},"type":"sankey","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 <p>A stylish Sankey</p>
 </div>
 </div>
@@ -4188,23 +4188,23 @@ background-color: null;
 font-style: inherit;">gt</span>()</span></code></pre></div>
 </details>
 <div class="cell-output-display">
-<div id="ddrvngocab" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ddrvngocab table {
+<div id="zxpjhjntdl" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#zxpjhjntdl table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ddrvngocab thead, #ddrvngocab tbody, #ddrvngocab tfoot, #ddrvngocab tr, #ddrvngocab td, #ddrvngocab th {
+#zxpjhjntdl thead, #zxpjhjntdl tbody, #zxpjhjntdl tfoot, #zxpjhjntdl tr, #zxpjhjntdl td, #zxpjhjntdl th {
   border-style: none;
 }
 
-#ddrvngocab p {
+#zxpjhjntdl p {
   margin: 0;
   padding: 0;
 }
 
-#ddrvngocab .gt_table {
+#zxpjhjntdl .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -4230,12 +4230,12 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
   border-left-color: #D3D3D3;
 }
 
-#ddrvngocab .gt_caption {
+#zxpjhjntdl .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ddrvngocab .gt_title {
+#zxpjhjntdl .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -4247,7 +4247,7 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
   border-bottom-width: 0;
 }
 
-#ddrvngocab .gt_subtitle {
+#zxpjhjntdl .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -4259,7 +4259,7 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
   border-top-width: 0;
 }
 
-#ddrvngocab .gt_heading {
+#zxpjhjntdl .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -4271,13 +4271,13 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
   border-right-color: #D3D3D3;
 }
 
-#ddrvngocab .gt_bottom_border {
+#zxpjhjntdl .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ddrvngocab .gt_col_headings {
+#zxpjhjntdl .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4292,7 +4292,7 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
   border-right-color: #D3D3D3;
 }
 
-#ddrvngocab .gt_col_heading {
+#zxpjhjntdl .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4312,7 +4312,7 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
   overflow-x: hidden;
 }
 
-#ddrvngocab .gt_column_spanner_outer {
+#zxpjhjntdl .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4324,15 +4324,15 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
   padding-right: 4px;
 }
 
-#ddrvngocab .gt_column_spanner_outer:first-child {
+#zxpjhjntdl .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ddrvngocab .gt_column_spanner_outer:last-child {
+#zxpjhjntdl .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ddrvngocab .gt_column_spanner {
+#zxpjhjntdl .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -4344,11 +4344,11 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
   width: 100%;
 }
 
-#ddrvngocab .gt_spanner_row {
+#zxpjhjntdl .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ddrvngocab .gt_group_heading {
+#zxpjhjntdl .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4374,7 +4374,7 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
   text-align: left;
 }
 
-#ddrvngocab .gt_empty_group_heading {
+#zxpjhjntdl .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -4389,15 +4389,15 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
   vertical-align: middle;
 }
 
-#ddrvngocab .gt_from_md > :first-child {
+#zxpjhjntdl .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ddrvngocab .gt_from_md > :last-child {
+#zxpjhjntdl .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ddrvngocab .gt_row {
+#zxpjhjntdl .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4416,7 +4416,7 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
   overflow-x: hidden;
 }
 
-#ddrvngocab .gt_stub {
+#zxpjhjntdl .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4429,7 +4429,7 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
   padding-right: 5px;
 }
 
-#ddrvngocab .gt_stub_row_group {
+#zxpjhjntdl .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4443,15 +4443,15 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
   vertical-align: top;
 }
 
-#ddrvngocab .gt_row_group_first td {
+#zxpjhjntdl .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ddrvngocab .gt_row_group_first th {
+#zxpjhjntdl .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ddrvngocab .gt_summary_row {
+#zxpjhjntdl .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4461,16 +4461,16 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
   padding-right: 5px;
 }
 
-#ddrvngocab .gt_first_summary_row {
+#zxpjhjntdl .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ddrvngocab .gt_first_summary_row.thick {
+#zxpjhjntdl .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ddrvngocab .gt_last_summary_row {
+#zxpjhjntdl .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4480,7 +4480,7 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
   border-bottom-color: #D3D3D3;
 }
 
-#ddrvngocab .gt_grand_summary_row {
+#zxpjhjntdl .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4490,7 +4490,7 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
   padding-right: 5px;
 }
 
-#ddrvngocab .gt_first_grand_summary_row {
+#zxpjhjntdl .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4500,7 +4500,7 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
   border-top-color: #D3D3D3;
 }
 
-#ddrvngocab .gt_last_grand_summary_row_top {
+#zxpjhjntdl .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4510,11 +4510,11 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
   border-bottom-color: #D3D3D3;
 }
 
-#ddrvngocab .gt_striped {
+#zxpjhjntdl .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ddrvngocab .gt_table_body {
+#zxpjhjntdl .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4523,7 +4523,7 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
   border-bottom-color: #D3D3D3;
 }
 
-#ddrvngocab .gt_footnotes {
+#zxpjhjntdl .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4537,7 +4537,7 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
   border-right-color: #D3D3D3;
 }
 
-#ddrvngocab .gt_footnote {
+#zxpjhjntdl .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -4546,7 +4546,7 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
   padding-right: 5px;
 }
 
-#ddrvngocab .gt_sourcenotes {
+#zxpjhjntdl .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4560,7 +4560,7 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
   border-right-color: #D3D3D3;
 }
 
-#ddrvngocab .gt_sourcenote {
+#zxpjhjntdl .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -4568,72 +4568,72 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
   padding-right: 5px;
 }
 
-#ddrvngocab .gt_left {
+#zxpjhjntdl .gt_left {
   text-align: left;
 }
 
-#ddrvngocab .gt_center {
+#zxpjhjntdl .gt_center {
   text-align: center;
 }
 
-#ddrvngocab .gt_right {
+#zxpjhjntdl .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ddrvngocab .gt_font_normal {
+#zxpjhjntdl .gt_font_normal {
   font-weight: normal;
 }
 
-#ddrvngocab .gt_font_bold {
+#zxpjhjntdl .gt_font_bold {
   font-weight: bold;
 }
 
-#ddrvngocab .gt_font_italic {
+#zxpjhjntdl .gt_font_italic {
   font-style: italic;
 }
 
-#ddrvngocab .gt_super {
+#zxpjhjntdl .gt_super {
   font-size: 65%;
 }
 
-#ddrvngocab .gt_footnote_marks {
+#zxpjhjntdl .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ddrvngocab .gt_asterisk {
+#zxpjhjntdl .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ddrvngocab .gt_indent_1 {
+#zxpjhjntdl .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ddrvngocab .gt_indent_2 {
+#zxpjhjntdl .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ddrvngocab .gt_indent_3 {
+#zxpjhjntdl .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ddrvngocab .gt_indent_4 {
+#zxpjhjntdl .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ddrvngocab .gt_indent_5 {
+#zxpjhjntdl .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ddrvngocab .katex-display {
+#zxpjhjntdl .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ddrvngocab div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#zxpjhjntdl div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -4796,8 +4796,8 @@ background-color: null;
 font-style: inherit;">pal</span>(has_orig_need))</span></code></pre></div>
 </details>
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item" id="htmlwidget-b235e151bcdcadb19259" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-b235e151bcdcadb19259">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addCircleMarkers","args":[[52.41406623333333,52.4034199,52.519,52.42367,52.41989,52.4250186,52.43135,52.40582,52.4191685,52.54074,52.53723,52.51899,52.52682,52.44104],[-1.506722033333333,-1.51888,-1.46746,-1.52231,-1.52542,-1.498344825,-1.51787,-1.49105,-1.5069566,-1.52197,-1.5163199,-1.46927,-1.45822,-1.50832],10,null,null,{"interactive":true,"className":"","stroke":true,"color":["#440154","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#440154","#FDE725","#FDE725"],"weight":5,"opacity":0.5,"fill":true,"fillColor":["#440154","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#440154","#FDE725","#FDE725"],"fillOpacity":0.2},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[52.4034199,52.54074],"lng":[-1.52542,-1.45822]}},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-7a5b2ce5394aa224edd2" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-7a5b2ce5394aa224edd2">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addCircleMarkers","args":[[52.41406623333333,52.4034199,52.519,52.42367,52.41989,52.4250186,52.43135,52.40582,52.4191685,52.54074,52.53723,52.51899,52.52682,52.44104],[-1.506722033333333,-1.51888,-1.46746,-1.52231,-1.52542,-1.498344825,-1.51787,-1.49105,-1.5069566,-1.52197,-1.5163199,-1.46927,-1.45822,-1.50832],10,null,null,{"interactive":true,"className":"","stroke":true,"color":["#440154","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#440154","#FDE725","#FDE725"],"weight":5,"opacity":0.5,"fill":true,"fillColor":["#440154","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#440154","#FDE725","#FDE725"],"fillOpacity":0.2},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[52.4034199,52.54074],"lng":[-1.52542,-1.45822]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>The data was split into those with, and without, a value for need. Using <code>st_join</code> from the {sf} package to join those without, and those with, a value for need, using the geometry to find all those within 1500m (1.5km).</p>
@@ -4954,8 +4954,8 @@ background-color: null;
 font-style: inherit;">1500</span>)</span></code></pre></div>
 </details>
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item" id="htmlwidget-c712607ad782a1059cf0" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-c712607ad782a1059cf0">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addCircleMarkers","args":[[52.4034199,52.519,52.41989,52.4250186,52.40582,52.4191685,52.52682],[-1.51888,-1.46746,-1.52542,-1.498344825,-1.49105,-1.5069566,-1.45822],10,null,null,{"interactive":true,"className":"","stroke":true,"color":"purple","weight":5,"opacity":0.5,"fill":true,"fillColor":"purple","fillOpacity":0.2},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addMarkers","args":[52.4141089666667,-1.50686326666667,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Practice with no data",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addCircles","args":[52.4141089666667,-1.50686326666667,1500,null,null,{"interactive":true,"className":"","stroke":true,"color":"#03F","weight":5,"opacity":0.5,"fill":true,"fillColor":"#03F","fillOpacity":0.2},null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null,null]},{"method":"addMarkers","args":[52.51899,-1.46927,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Practice with no data",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addCircles","args":[52.51899,-1.46927,1500,null,null,{"interactive":true,"className":"","stroke":true,"color":"#03F","weight":5,"opacity":0.5,"fill":true,"fillColor":"#03F","fillOpacity":0.2},null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null,null]}],"limits":{"lat":[52.4034199,52.52682],"lng":[-1.52542,-1.45822]}},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-369fb8cda301666fa6aa" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-369fb8cda301666fa6aa">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addCircleMarkers","args":[[52.4034199,52.519,52.41989,52.4250186,52.40582,52.4191685,52.52682],[-1.51888,-1.46746,-1.52542,-1.498344825,-1.49105,-1.5069566,-1.45822],10,null,null,{"interactive":true,"className":"","stroke":true,"color":"purple","weight":5,"opacity":0.5,"fill":true,"fillColor":"purple","fillOpacity":0.2},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addMarkers","args":[52.4141089666667,-1.50686326666667,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Practice with no data",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addCircles","args":[52.4141089666667,-1.50686326666667,1500,null,null,{"interactive":true,"className":"","stroke":true,"color":"#03F","weight":5,"opacity":0.5,"fill":true,"fillColor":"#03F","fillOpacity":0.2},null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null,null]},{"method":"addMarkers","args":[52.51899,-1.46927,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Practice with no data",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addCircles","args":[52.51899,-1.46927,1500,null,null,{"interactive":true,"className":"","stroke":true,"color":"#03F","weight":5,"opacity":0.5,"fill":true,"fillColor":"#03F","fillOpacity":0.2},null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null,null]}],"limits":{"lat":[52.4034199,52.52682],"lng":[-1.52542,-1.45822]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>The data for the “neighbours” was grouped by the practice code of those without need data and a mean value was calculated for each practice to generate an estimated value.</p>
@@ -5027,23 +5027,23 @@ background-color: null;
 font-style: inherit;">gt</span>()</span></code></pre></div>
 </details>
 <div class="cell-output-display">
-<div id="svbrnrszhs" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#svbrnrszhs table {
+<div id="mfzkcenswy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mfzkcenswy table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#svbrnrszhs thead, #svbrnrszhs tbody, #svbrnrszhs tfoot, #svbrnrszhs tr, #svbrnrszhs td, #svbrnrszhs th {
+#mfzkcenswy thead, #mfzkcenswy tbody, #mfzkcenswy tfoot, #mfzkcenswy tr, #mfzkcenswy td, #mfzkcenswy th {
   border-style: none;
 }
 
-#svbrnrszhs p {
+#mfzkcenswy p {
   margin: 0;
   padding: 0;
 }
 
-#svbrnrszhs .gt_table {
+#mfzkcenswy .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -5069,12 +5069,12 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
   border-left-color: #D3D3D3;
 }
 
-#svbrnrszhs .gt_caption {
+#mfzkcenswy .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#svbrnrszhs .gt_title {
+#mfzkcenswy .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -5086,7 +5086,7 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
   border-bottom-width: 0;
 }
 
-#svbrnrszhs .gt_subtitle {
+#mfzkcenswy .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -5098,7 +5098,7 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
   border-top-width: 0;
 }
 
-#svbrnrszhs .gt_heading {
+#mfzkcenswy .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -5110,13 +5110,13 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
   border-right-color: #D3D3D3;
 }
 
-#svbrnrszhs .gt_bottom_border {
+#mfzkcenswy .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#svbrnrszhs .gt_col_headings {
+#mfzkcenswy .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -5131,7 +5131,7 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
   border-right-color: #D3D3D3;
 }
 
-#svbrnrszhs .gt_col_heading {
+#mfzkcenswy .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5151,7 +5151,7 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
   overflow-x: hidden;
 }
 
-#svbrnrszhs .gt_column_spanner_outer {
+#mfzkcenswy .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5163,15 +5163,15 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
   padding-right: 4px;
 }
 
-#svbrnrszhs .gt_column_spanner_outer:first-child {
+#mfzkcenswy .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#svbrnrszhs .gt_column_spanner_outer:last-child {
+#mfzkcenswy .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#svbrnrszhs .gt_column_spanner {
+#mfzkcenswy .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -5183,11 +5183,11 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
   width: 100%;
 }
 
-#svbrnrszhs .gt_spanner_row {
+#mfzkcenswy .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#svbrnrszhs .gt_group_heading {
+#mfzkcenswy .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5213,7 +5213,7 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
   text-align: left;
 }
 
-#svbrnrszhs .gt_empty_group_heading {
+#mfzkcenswy .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -5228,15 +5228,15 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
   vertical-align: middle;
 }
 
-#svbrnrszhs .gt_from_md > :first-child {
+#mfzkcenswy .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#svbrnrszhs .gt_from_md > :last-child {
+#mfzkcenswy .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#svbrnrszhs .gt_row {
+#mfzkcenswy .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5255,7 +5255,7 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
   overflow-x: hidden;
 }
 
-#svbrnrszhs .gt_stub {
+#mfzkcenswy .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5268,7 +5268,7 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
   padding-right: 5px;
 }
 
-#svbrnrszhs .gt_stub_row_group {
+#mfzkcenswy .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5282,15 +5282,15 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
   vertical-align: top;
 }
 
-#svbrnrszhs .gt_row_group_first td {
+#mfzkcenswy .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#svbrnrszhs .gt_row_group_first th {
+#mfzkcenswy .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#svbrnrszhs .gt_summary_row {
+#mfzkcenswy .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5300,16 +5300,16 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
   padding-right: 5px;
 }
 
-#svbrnrszhs .gt_first_summary_row {
+#mfzkcenswy .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#svbrnrszhs .gt_first_summary_row.thick {
+#mfzkcenswy .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#svbrnrszhs .gt_last_summary_row {
+#mfzkcenswy .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5319,7 +5319,7 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
   border-bottom-color: #D3D3D3;
 }
 
-#svbrnrszhs .gt_grand_summary_row {
+#mfzkcenswy .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5329,7 +5329,7 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
   padding-right: 5px;
 }
 
-#svbrnrszhs .gt_first_grand_summary_row {
+#mfzkcenswy .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5339,7 +5339,7 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
   border-top-color: #D3D3D3;
 }
 
-#svbrnrszhs .gt_last_grand_summary_row_top {
+#mfzkcenswy .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5349,11 +5349,11 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
   border-bottom-color: #D3D3D3;
 }
 
-#svbrnrszhs .gt_striped {
+#mfzkcenswy .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#svbrnrszhs .gt_table_body {
+#mfzkcenswy .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -5362,7 +5362,7 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
   border-bottom-color: #D3D3D3;
 }
 
-#svbrnrszhs .gt_footnotes {
+#mfzkcenswy .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -5376,7 +5376,7 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
   border-right-color: #D3D3D3;
 }
 
-#svbrnrszhs .gt_footnote {
+#mfzkcenswy .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -5385,7 +5385,7 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
   padding-right: 5px;
 }
 
-#svbrnrszhs .gt_sourcenotes {
+#mfzkcenswy .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -5399,7 +5399,7 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
   border-right-color: #D3D3D3;
 }
 
-#svbrnrszhs .gt_sourcenote {
+#mfzkcenswy .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -5407,72 +5407,72 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
   padding-right: 5px;
 }
 
-#svbrnrszhs .gt_left {
+#mfzkcenswy .gt_left {
   text-align: left;
 }
 
-#svbrnrszhs .gt_center {
+#mfzkcenswy .gt_center {
   text-align: center;
 }
 
-#svbrnrszhs .gt_right {
+#mfzkcenswy .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#svbrnrszhs .gt_font_normal {
+#mfzkcenswy .gt_font_normal {
   font-weight: normal;
 }
 
-#svbrnrszhs .gt_font_bold {
+#mfzkcenswy .gt_font_bold {
   font-weight: bold;
 }
 
-#svbrnrszhs .gt_font_italic {
+#mfzkcenswy .gt_font_italic {
   font-style: italic;
 }
 
-#svbrnrszhs .gt_super {
+#mfzkcenswy .gt_super {
   font-size: 65%;
 }
 
-#svbrnrszhs .gt_footnote_marks {
+#mfzkcenswy .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#svbrnrszhs .gt_asterisk {
+#mfzkcenswy .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#svbrnrszhs .gt_indent_1 {
+#mfzkcenswy .gt_indent_1 {
   text-indent: 5px;
 }
 
-#svbrnrszhs .gt_indent_2 {
+#mfzkcenswy .gt_indent_2 {
   text-indent: 10px;
 }
 
-#svbrnrszhs .gt_indent_3 {
+#mfzkcenswy .gt_indent_3 {
   text-indent: 15px;
 }
 
-#svbrnrszhs .gt_indent_4 {
+#mfzkcenswy .gt_indent_4 {
   text-indent: 20px;
 }
 
-#svbrnrszhs .gt_indent_5 {
+#mfzkcenswy .gt_indent_5 {
   text-indent: 25px;
 }
 
-#svbrnrszhs .katex-display {
+#mfzkcenswy .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#svbrnrszhs div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#mfzkcenswy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -5609,23 +5609,23 @@ font-style: inherit;">select</span>(practice_code, need_to_use)</span></code></p
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div id="axcbfqabcu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#axcbfqabcu table {
+<div id="ndbgpgkozp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ndbgpgkozp table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#axcbfqabcu thead, #axcbfqabcu tbody, #axcbfqabcu tfoot, #axcbfqabcu tr, #axcbfqabcu td, #axcbfqabcu th {
+#ndbgpgkozp thead, #ndbgpgkozp tbody, #ndbgpgkozp tfoot, #ndbgpgkozp tr, #ndbgpgkozp td, #ndbgpgkozp th {
   border-style: none;
 }
 
-#axcbfqabcu p {
+#ndbgpgkozp p {
   margin: 0;
   padding: 0;
 }
 
-#axcbfqabcu .gt_table {
+#ndbgpgkozp .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -5651,12 +5651,12 @@ font-style: inherit;">select</span>(practice_code, need_to_use)</span></code></p
   border-left-color: #D3D3D3;
 }
 
-#axcbfqabcu .gt_caption {
+#ndbgpgkozp .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#axcbfqabcu .gt_title {
+#ndbgpgkozp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -5668,7 +5668,7 @@ font-style: inherit;">select</span>(practice_code, need_to_use)</span></code></p
   border-bottom-width: 0;
 }
 
-#axcbfqabcu .gt_subtitle {
+#ndbgpgkozp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -5680,7 +5680,7 @@ font-style: inherit;">select</span>(practice_code, need_to_use)</span></code></p
   border-top-width: 0;
 }
 
-#axcbfqabcu .gt_heading {
+#ndbgpgkozp .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -5692,13 +5692,13 @@ font-style: inherit;">select</span>(practice_code, need_to_use)</span></code></p
   border-right-color: #D3D3D3;
 }
 
-#axcbfqabcu .gt_bottom_border {
+#ndbgpgkozp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#axcbfqabcu .gt_col_headings {
+#ndbgpgkozp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -5713,7 +5713,7 @@ font-style: inherit;">select</span>(practice_code, need_to_use)</span></code></p
   border-right-color: #D3D3D3;
 }
 
-#axcbfqabcu .gt_col_heading {
+#ndbgpgkozp .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5733,7 +5733,7 @@ font-style: inherit;">select</span>(practice_code, need_to_use)</span></code></p
   overflow-x: hidden;
 }
 
-#axcbfqabcu .gt_column_spanner_outer {
+#ndbgpgkozp .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5745,15 +5745,15 @@ font-style: inherit;">select</span>(practice_code, need_to_use)</span></code></p
   padding-right: 4px;
 }
 
-#axcbfqabcu .gt_column_spanner_outer:first-child {
+#ndbgpgkozp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#axcbfqabcu .gt_column_spanner_outer:last-child {
+#ndbgpgkozp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#axcbfqabcu .gt_column_spanner {
+#ndbgpgkozp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -5765,11 +5765,11 @@ font-style: inherit;">select</span>(practice_code, need_to_use)</span></code></p
   width: 100%;
 }
 
-#axcbfqabcu .gt_spanner_row {
+#ndbgpgkozp .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#axcbfqabcu .gt_group_heading {
+#ndbgpgkozp .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5795,7 +5795,7 @@ font-style: inherit;">select</span>(practice_code, need_to_use)</span></code></p
   text-align: left;
 }
 
-#axcbfqabcu .gt_empty_group_heading {
+#ndbgpgkozp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -5810,15 +5810,15 @@ font-style: inherit;">select</span>(practice_code, need_to_use)</span></code></p
   vertical-align: middle;
 }
 
-#axcbfqabcu .gt_from_md > :first-child {
+#ndbgpgkozp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#axcbfqabcu .gt_from_md > :last-child {
+#ndbgpgkozp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#axcbfqabcu .gt_row {
+#ndbgpgkozp .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5837,7 +5837,7 @@ font-style: inherit;">select</span>(practice_code, need_to_use)</span></code></p
   overflow-x: hidden;
 }
 
-#axcbfqabcu .gt_stub {
+#ndbgpgkozp .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5850,7 +5850,7 @@ font-style: inherit;">select</span>(practice_code, need_to_use)</span></code></p
   padding-right: 5px;
 }
 
-#axcbfqabcu .gt_stub_row_group {
+#ndbgpgkozp .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5864,15 +5864,15 @@ font-style: inherit;">select</span>(practice_code, need_to_use)</span></code></p
   vertical-align: top;
 }
 
-#axcbfqabcu .gt_row_group_first td {
+#ndbgpgkozp .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#axcbfqabcu .gt_row_group_first th {
+#ndbgpgkozp .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#axcbfqabcu .gt_summary_row {
+#ndbgpgkozp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5882,16 +5882,16 @@ font-style: inherit;">select</span>(practice_code, need_to_use)</span></code></p
   padding-right: 5px;
 }
 
-#axcbfqabcu .gt_first_summary_row {
+#ndbgpgkozp .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#axcbfqabcu .gt_first_summary_row.thick {
+#ndbgpgkozp .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#axcbfqabcu .gt_last_summary_row {
+#ndbgpgkozp .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5901,7 +5901,7 @@ font-style: inherit;">select</span>(practice_code, need_to_use)</span></code></p
   border-bottom-color: #D3D3D3;
 }
 
-#axcbfqabcu .gt_grand_summary_row {
+#ndbgpgkozp .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5911,7 +5911,7 @@ font-style: inherit;">select</span>(practice_code, need_to_use)</span></code></p
   padding-right: 5px;
 }
 
-#axcbfqabcu .gt_first_grand_summary_row {
+#ndbgpgkozp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5921,7 +5921,7 @@ font-style: inherit;">select</span>(practice_code, need_to_use)</span></code></p
   border-top-color: #D3D3D3;
 }
 
-#axcbfqabcu .gt_last_grand_summary_row_top {
+#ndbgpgkozp .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5931,11 +5931,11 @@ font-style: inherit;">select</span>(practice_code, need_to_use)</span></code></p
   border-bottom-color: #D3D3D3;
 }
 
-#axcbfqabcu .gt_striped {
+#ndbgpgkozp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#axcbfqabcu .gt_table_body {
+#ndbgpgkozp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -5944,7 +5944,7 @@ font-style: inherit;">select</span>(practice_code, need_to_use)</span></code></p
   border-bottom-color: #D3D3D3;
 }
 
-#axcbfqabcu .gt_footnotes {
+#ndbgpgkozp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -5958,7 +5958,7 @@ font-style: inherit;">select</span>(practice_code, need_to_use)</span></code></p
   border-right-color: #D3D3D3;
 }
 
-#axcbfqabcu .gt_footnote {
+#ndbgpgkozp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -5967,7 +5967,7 @@ font-style: inherit;">select</span>(practice_code, need_to_use)</span></code></p
   padding-right: 5px;
 }
 
-#axcbfqabcu .gt_sourcenotes {
+#ndbgpgkozp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -5981,7 +5981,7 @@ font-style: inherit;">select</span>(practice_code, need_to_use)</span></code></p
   border-right-color: #D3D3D3;
 }
 
-#axcbfqabcu .gt_sourcenote {
+#ndbgpgkozp .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -5989,72 +5989,72 @@ font-style: inherit;">select</span>(practice_code, need_to_use)</span></code></p
   padding-right: 5px;
 }
 
-#axcbfqabcu .gt_left {
+#ndbgpgkozp .gt_left {
   text-align: left;
 }
 
-#axcbfqabcu .gt_center {
+#ndbgpgkozp .gt_center {
   text-align: center;
 }
 
-#axcbfqabcu .gt_right {
+#ndbgpgkozp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#axcbfqabcu .gt_font_normal {
+#ndbgpgkozp .gt_font_normal {
   font-weight: normal;
 }
 
-#axcbfqabcu .gt_font_bold {
+#ndbgpgkozp .gt_font_bold {
   font-weight: bold;
 }
 
-#axcbfqabcu .gt_font_italic {
+#ndbgpgkozp .gt_font_italic {
   font-style: italic;
 }
 
-#axcbfqabcu .gt_super {
+#ndbgpgkozp .gt_super {
   font-size: 65%;
 }
 
-#axcbfqabcu .gt_footnote_marks {
+#ndbgpgkozp .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#axcbfqabcu .gt_asterisk {
+#ndbgpgkozp .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#axcbfqabcu .gt_indent_1 {
+#ndbgpgkozp .gt_indent_1 {
   text-indent: 5px;
 }
 
-#axcbfqabcu .gt_indent_2 {
+#ndbgpgkozp .gt_indent_2 {
   text-indent: 10px;
 }
 
-#axcbfqabcu .gt_indent_3 {
+#ndbgpgkozp .gt_indent_3 {
   text-indent: 15px;
 }
 
-#axcbfqabcu .gt_indent_4 {
+#ndbgpgkozp .gt_indent_4 {
   text-indent: 20px;
 }
 
-#axcbfqabcu .gt_indent_5 {
+#ndbgpgkozp .gt_indent_5 {
   text-indent: 25px;
 }
 
-#axcbfqabcu .katex-display {
+#ndbgpgkozp .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#axcbfqabcu div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ndbgpgkozp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>

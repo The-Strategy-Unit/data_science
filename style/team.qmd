@@ -16,7 +16,7 @@ Every Monday from 10:00 - 10:50 we have a team meeting.
 
 We start with a stand-up from two team members. These are randomly selected by a bot on Slack in advance of the meeting.
 
-If it's your week to talk, you have 5 minutes to chat about your work. You could expand on your Slack stand-up, perhaps sharing your wins or learnings in more detail. You might also choose to share a project you are working on in, showing code or a shiny application. Chat about your weekend is also totally fine!
+If it's your week to talk, you have 5 minutes to chat about anything that matters to you. You could expand on your Slack stand-up, perhaps sharing your wins or learnings in more detail. You might also choose to share a project you are working on in, showing code or a shiny application. Chat about your weekend or an update on how you're doing is also totally fine!
 
 We then discuss any items that team members have added to the [rolling agenda](https://docs.google.com/document/d/1WukwitMpDU9RexZaXHIvEf-vV6iGKLjCsdAVfKcIMPE/).
 

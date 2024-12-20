@@ -8,7 +8,7 @@ editor: visual
 
 [^1]: I made this abstract textile art piece to accompany the blog post. This is inspired by existing real and abstract maps. It uses various textiles and materials, many of them recycled or upcycled (thread, cord, twine, elastic, and fabric remnants). I created and outlined a basic map shape which I built on and embellished using embroidery, weaving and applique techniques. The messy or 'wrong' features of the artwork have been intentionally kept in, as it helps to symbolise the messiness of the R learning journey.
 
-[^2]: I made this abstract textile art piece to accompany the blog post. This is inspired by existing real and abstract maps. It uses various textiles and materials, many of them recycled or upcycled (thread, cord, twine, elastic, and fabric remnants). I created and outlined a basic map shape which I built on and embellished using embroidery, weaving and applique techniques. The messy or 'wrong' features of the artwork have been intentionally kept in, as it helps to symbolise the messiness of the R learning journey.
+
 
 This blog post follows up from a recent talk I gave at coffee and coding about my experiences of learning how to code using Rstudio. Here I build on that talk to share some more reflections and advice for others who are starting out on their R learning journey.
 

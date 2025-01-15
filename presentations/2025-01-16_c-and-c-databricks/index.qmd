@@ -1,0 +1,80 @@
+---
+title: "A gentle introduction to databricks"
+subtitle: "What the heck is databricks?"
+author: 
+  - "[Chris Beeley](mailto:chris.beeley1@nhs.net)"
+date: 2025-01-16
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, ../su_presentation.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
+    footer: |
+      Learn more about [The Strategy Unit](https://www.strategyunitwm.nhs.uk/)
+---
+
+## Intro
+
+* I insisted on having this slot in C&C
+* I think some people want to know what a thing _does_; others want to know what it _is_
+* This is the _is_ part of the session
+
+## What the heck is Spark?
+
+* Databricks is everything now, and confusingly so 
+* Let's look at the story of databricks- which starts with Spark
+* Spark was an attempt to improve on MapReduce (primarily Hadoop)
+
+## What the heck is MapReduce
+
+* MapReduce is a less analytically specific version of Split, apply, combine
+* What the heck is Split, apply, combine? (last layer of the onion I promise!)
+* Hadley Wickham wrote about [Split, apply, combine](https://www.jstatsoft.org/article/view/v040i01) in the intro to [{plyr}](https://cran.r-project.org/web/packages/plyr/index.html)
+  * (For the young people plyr is what we had in the olden days before dplyr- which is Dataframe plyr- dplyr)
+
+## What the heck is Split, apply, combine?
+
+* Very often in an analysis you want to do the same thing to different groups
+* Split: divide a dataset up by age group
+* Apply: find the mean number of A&E attendances for 2023/4 (e.g.) for each group
+* Combine: bring the results back together and put them in a table
+
+## What the heck was I talking about again?
+
+* MapReduce is essentially an algorithm that relies on massive parallelisation to get jobs done quickly
+* Spark was a proposed improvement that brought:
+  * In-memory processing- this is much faster, especially for certain data science applications
+  * More tools and toys- APIs, built in modules for SQL, ML, etc.
+  * Fault tolerance- maintains all the fault tolerance of Hadoop, but works in-memory
+  * Much greater flexibility on the way computation is done
+
+## The advent of databricks
+
+* Spark was open sourced in 2010 and moved to Apache Foundation in 2013 (Apache Spark)
+* Databricks was set up as the commercial version of Apache Spark (databricks still contributes to the open source version)
+* Databricks does all the enterprise-y stuff you'd expect (think Posit)
+  * Provides support to enterprises
+  * Curates, manages, and verifies the code in a commercial version of Spark 
+  * Provide a platform to deploy and manage Spark, which is not simple
+
+## The advent of Delta Lake
+
+* The other important thing to know about databricks is [Delta Lake](https://delta.io/)
+* Delta lake is open source and was developed by databricks to improve on existing data lakes
+
+## What the heck is a data lake?
+
+* Okay, one more
+* Like a data warehouse, but less structured
+* Widely used in data science and analytics
+  * As opposed to data warehouses which are more for BI
+* Not either/ or- often orgs have both
+
+## What does Delta lake bring?
+
+* ACID transactions

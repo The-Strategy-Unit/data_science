@@ -23,3 +23,4 @@ sudo apt install -y pandoc
 sudo apt install -y zlib1g-dev
 sudo python3 -m pip install jupyter
 sudo pip install --upgrade --ignore-installed jsonschema
+sudo pip install nbformat

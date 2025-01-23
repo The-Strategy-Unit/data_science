@@ -21,8 +21,9 @@ sudo apt install -y libxml2-dev
 sudo apt install -y make
 sudo apt install -y pandoc
 sudo apt install -y zlib1g-dev
-sudo python -m pip install --upgrade pip
-sudo python3 -m pip install jupyter
+sudo pip install --upgrade pip
+sudo pip install jupyter
 sudo pip install --upgrade --ignore-installed jsonschema
 sudo pip install nbformat
 sudo pip install nbclient
+sudo pip install yaml

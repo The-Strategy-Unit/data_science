@@ -12,6 +12,11 @@ knitr:
       bg: transparent
 ---
 
+```{r lockfile}
+#| include: FALSE
+renv::use(lockfile = "renv.lock")
+```
+
 I want to share a framework that I like using occasionally for data analysis. It's the nest-and-map and it's helped me countless times when I'm working with related datasets. By combining [{purrr}](https://purrr.tidyverse.org/) mapping with [{tidyr}](https://tidyr.tidyverse.org/) nesting, I can keep my analysis steps linked, allowing me to easily track from a summary or plot, back to the original data.
 
 The main funtions we'll need are 

@@ -4,6 +4,9 @@ description: "Wouldn't it be nice if when a PR is created, you automatically got
 author: "Rhian Davies"
 date: "2024-12-04"
 categories: [GitHub, learning, deployment]
+execute:
+  eval: false
+
 ---
 
 When reviewing a pull request (PR) for a Quarto website, it's good practice to check the rendered output, as well as the code. This is useful for ensuring that the changes look as expected, for example, ensuring that bullet points have rendered correctly, or that images are well sized.

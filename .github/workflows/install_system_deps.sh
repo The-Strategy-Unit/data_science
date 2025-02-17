@@ -26,4 +26,4 @@ sudo pip install jupyter
 sudo pip install --upgrade --ignore-installed jsonschema
 sudo pip install nbformat
 sudo pip install nbclient
-sudo pip install yaml
+sudo pip install pyyaml

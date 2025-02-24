@@ -46,6 +46,13 @@ format:
 * Speed- for the model and the reporting
 * Interpretation of complex output
 
+## Data sources
+
+* The usual rule is that 80% of the work is on data
+* Not a problem for us because we're using trusted, curated data (HES)
+* So a mere 80% of our work is on data
+* Wait, what?
+
 ## Data pipelines
 
 * RAP is obviously crucial
@@ -71,7 +78,7 @@ format:
 
 ## Overview
 
-![Diagram of NHP model architecture](NHP_diagram_public_v3-1.png){fig-alt="A diagram showing the connections between the various repositories"}
+![](NHP_diagram_public_v3-1.png){fig-alt="A diagram showing the connections between the various repositories"}
 
 ## Uses
 
@@ -98,7 +105,6 @@ format:
 * This first release kicked off lots of other work
 * The second release kicked off lots of other work
 * It was very hard to do any long term planning
-* By March we were confused and tired (and it was all my fault)
 
 ## Scrum
 
@@ -140,7 +146,7 @@ format:
 ## Some highlights from [The agile manifesto](https://agilemanifesto.org/)
 
 * "Welcome changing requirements, even late in development"
-* "At regular intervals, the team reflects on how to become more effective, then tunes and adjusts its behavior accordingly"
+* "At regular intervals, the team reflects on how to become more effective, then tunes and adjusts its behavior"
 * "Continuous attention to technical excellence and good design enhances agility"
 * "Simplicity- the art of maximizing the amount of work not done- is essential"
 

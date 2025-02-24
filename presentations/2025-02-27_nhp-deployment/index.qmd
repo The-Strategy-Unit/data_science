@@ -1,0 +1,166 @@
+---
+title: "Deployment of a probabilistic simulation model for predicting demand for acute healthcare in the NHS"
+author: 
+  - "[Chris Beeley](mailto:chris.beeley1@nhs.net)"
+date: 2025-02-27
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, ../su_presentation.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
+    footer: |
+      Learn more about [The Strategy Unit](https://www.strategyunitwm.nhs.uk/)
+---
+
+## Intro
+
+* Design of the application
+* Deployment and use
+* Update and maintenance
+* Some slides reused from [Tom Jemmett's HACA presentation](https://the-strategy-unit.github.io/data_science/presentations/2023-07-11_haca-nhp-demand-model)
+
+## Model Overview
+
+- The baseline data is a year worth of a provider's HES data
+- Each row in the baseline data is run through a series of steps
+- Each step creates a factor that says how many times (on average) to sample that row
+- The factors are multiplied together and used to create a random Poisson value
+- We resample the rows using this random values
+- Efficiencies are then applied, e.g. LoS reductions, type conversions
+
+## Monte Carlo Simulation
+
+- We run the model N times, varying the input parameters each time slightly to handle the uncertainty.
+- The results of the model are aggregated at the end of each model run
+- The aggregated results are combined at the end into a single file
+
+## Prequisites
+
+* Robust to updated model releases
+* Reproducibility- across multiple versions
+* Speed- for the model and the reporting
+* Interpretation of complex output
+
+## Data sources
+
+* The usual rule is that 80% of the work is on data
+* Not a problem for us because we're using trusted, curated data (HES)
+* So a mere 80% of our work is on data
+* Wait, what?
+
+## Data pipelines
+
+* RAP is obviously crucial
+  * Reproducibility is essential
+  * *Undocumented* mistakes severe (there are always bugs 🙂)
+  * Speed and sharing within the project team
+* The original data pipelines were SQL
+  * Updates took 4 days with frequent hangs and crashes
+* They now execute in 30 minutes on databricks
+
+## The model itself
+
+* Written in Python for speed
+* An API spins up a Docker instance to run the model on demand (~ 5 minutes)
+* Uses .parquet, also for speed
+* The model outputs row level data conceptually, if not actually
+
+## Outputs
+
+* "Final report" Word document, bespoke to current context
+* "Outputs dashboard" - containing high level summaries
+* Detailed model results - we offer a range of outputs but can always make more
+
+## Overview
+
+![](NHP_diagram_public_v3-1.png){fig-alt="A diagram showing the connections between the various repositories"}
+
+## Uses
+
+* Sizing hospitals
+* Sizing left shift
+* Predicting, comparing, and monitoring activity mitigation
+
+## The process
+
+* January 2023: Development phase
+* April-ish: Thinking about deployment
+* October-ish: Model is on its way to full production and much remains to do
+
+## Operational mode
+
+* The team was growing in November
+* There were two priorities
+  * Increase bus factor (which I'll come back to)
+  * Deploy the first production ready version
+
+## The first deployed version
+
+* December-ish: Many needs that were not anticipated
+* This first release kicked off lots of other work
+* The second release kicked off lots of other work
+* It was very hard to do any long term planning
+
+## Scrum
+
+* We are not doing "proper" scrum
+* Product owner, scrum master, everyone else
+* Five week sprints with a one week recovery run between each one
+* Sprint planning, sprint catchup, sprint retro
+
+## Sprint retro
+
+* What went well, what could have gone better, and what to improve next time
+* Looking at process, not blaming individuals
+* Requires maturity and trust to bring up issues, and to respond to them in a constructive way
+* Should agree at the end on one process improvement which goes in the next sprint
+* We've had some really, really good retros and I think it's a really important process for a team
+
+## What did scrum give the team?
+
+* Simultaneous releases of linked repos
+* The team works autonomously in the sprint
+* Better conversations about "no"
+* The planning and retro process improves the team's processes, not just the code
+
+## Product owner
+
+* My lessson- get out the way
+* A better connection between high level and low level planning
+* Clear release dates and responsibilities
+* Clear what I should be doing
+
+## Agility
+
+* This project was agile whether we liked it or not!
+* My 2022 agile definition:
+  * Customers can't make up their minds
+  * It's hard to design software all at once
+  * Continuous delivery keeps customers happy
+
+## Some highlights from [The agile manifesto](https://agilemanifesto.org/)
+
+* "Welcome changing requirements, even late in development"
+* "At regular intervals, the team reflects on how to become more effective, then tunes and adjusts its behavior"
+* "Continuous attention to technical excellence and good design enhances agility"
+* "Simplicity- the art of maximizing the amount of work not done- is essential"
+
+## How scrum helped
+
+* Those shaping the project wanted to be able to make quick changes- and see the long term plan
+* Agility is a mindset, a mode of practice
+* If anything we were actually **too** agile
+* Being agile is all about being able to review and make decisions frequently
+* But it isn't about changing what you're doing all the time
+* Good code and good teams are ready to change direction- whether they change or not
+
+## Current work and future
+
+* Work on a "population based" model
+* Providing support to elicit parameters for local and national use
+* More work understanding and building on the activity avoidance parameters

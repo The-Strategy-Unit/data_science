@@ -1,0 +1,61 @@
+---
+title: "When Quarto wasn't the right answer"
+subtitle: "Mail merge is back, baby!"
+author: 
+  - "[Jac Grout](mailto:jacqueline.grout@nhs.net)"
+  - "[Matt Dray](mailto:matt.dray@nhs.net)"
+date: 2025-02-27
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, ../su_presentation.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
+    footer: |
+      Find the repo at [The Strategy Unit/nhp_final_reports](https://github.com/The-Strategy-Unit/nhp_final_reports)
+---
+
+## Backstory 📖
+
+* NHP outputs reports: need automation/reproducibility
+* Quarto was the answer... until it wasn't!
+* Solution: meet users where they are
+
+## Implementation ✏️
+
+* Add metadata and store site selections on Azure
+* Read SharePoint template, insert content with {officer}
+* Write timestamped folder with doc, results, log
+
+::: {.notes}
+* How do we identify chosen runs? On Aure, with run_stage metadata on results files and a list of chosen sites.
+* How to confirm with model relationship managers? Expose tagged scenarios and sites via a scheduled Quarto-report.
+* Basic interface: supply a scheme code, at simplest level.
+* Underlying functions save figures and values independently.
+* Images inserted by moving the imaginary 'cursor' to a known string of text in the report.
+* Value-insertion is more complicated: insert 'field' codes into the report, insert the values to custom document properties, refresh to insert these into the fields.
+* The output is a timestamped directory with the report, standalone images and values, and a log.
+:::
+
+## 'Doing it right' 💯
+
+* Github: 'learn by doing', challenge and improve things
+* Documentation has saved us!
+* The repo is a springboard for parallel/future work
+
+## Reflections 🪞
+
+* Challenge your thinking, be adaptable to user needs
+* Embrace agility and acknowledge fragility
+* 'The power of friendship' keeps things working
+
+::: {.notes}
+* The default mode of 'make a Quarto doc' wasn't the right fit here, but we recognised that and pivoted quickly.
+* We know the solution isn't perfect, but it is good enough.
+* The process has some frailties, but we recognise them. For example, the report path being changed on SharePoint means we can't retrieve it!
+* Talking between us on the code side, but also with the user, is really important to handle changing needs and to keep the process and outputs fir for purpose.
+:::

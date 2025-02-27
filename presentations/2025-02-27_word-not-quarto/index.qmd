@@ -21,14 +21,14 @@ format:
 
 ## Backstory 📖
 
-* NHP outputs reports: need automation/reproducibility
-* Quarto was the answer... until it wasn't!
+* [NHP](https://connect.strategyunitwm.nhs.uk/nhp/project_information/) outputs reports: need automation/reproducibility
+* [Quarto](https://quarto.org/) was the answer... until it wasn't!
 * Solution: meet users where they are
 
 ## Implementation ✏️
 
 * Add metadata and store site selections on Azure
-* Read SharePoint template, insert content with {officer}
+* Read SharePoint template, insert content with [{officer}](https://davidgohel.github.io/officer/)
 * Write timestamped folder with doc, results, log
 
 ::: {.notes}
@@ -43,8 +43,8 @@ format:
 
 ## 'Doing it right' 💯
 
-* Github: 'learn by doing', challenge and improve things
-* Documentation has saved us!
+* [Github](https://github.com/The-Strategy-Unit/nhp_final_reports): 'learn by doing', challenge and improve things
+* Documentation/version history have [saved us](https://github.com/The-Strategy-Unit/nhp_final_reports/pull/123)!
 * The repo is a springboard for parallel/future work
 
 ## Reflections 🪞

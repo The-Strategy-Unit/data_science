@@ -7519,7 +7519,7 @@ git rebase main</code></pre>
 </item>
 <item>
   <title>Mapping my R journey so far: ten things that I have done along the way</title>
-  <link>https://the-strategy-unit.github.io/data_science/blogs/posts/2024-11-29-mapping-my-r-learning/Practice blog post- Mapping my R learning journey.html</link>
+  <link>https://the-strategy-unit.github.io/data_science/blogs/posts/2024-11-29-mapping-my-r-learning/</link>
   <description><![CDATA[ 
 
 
@@ -7603,8 +7603,8 @@ git rebase main</code></pre>
 <li id="fn4"><p>Throughout the journey I have realised that thinking about the problem like an artist has been very helpful, because it allows me to use a similarly iterative approach. I wanted my choropleth maps to show both the population density and the underlying terrain when superimposed. To do this, I used the [colorbrewer2](https://colorbrewer2.org/#type=sequential&amp;scheme=BuGn&amp;n=3) tool to test out different colour palettes, and changed the opacity and terrain to identify which colours would clearly to show the population data and the terrain underneath. The tool let me test this on an example map and showed me the hexadecimal colour codes for the colours in the palettes. Once I had found some combinations that would likely work for my particular map, I then iteratively adjusted the aesthetics in my R code until I found a combination that worked for my data. &nbsp;↩︎</p></li>
 </ol>
 </section></div> ]]></description>
-  <guid>https://the-strategy-unit.github.io/data_science/blogs/posts/2024-11-29-mapping-my-r-learning/Practice blog post- Mapping my R learning journey.html</guid>
-  <pubDate>Mon, 10 Mar 2025 15:45:18 GMT</pubDate>
+  <guid>https://the-strategy-unit.github.io/data_science/blogs/posts/2024-11-29-mapping-my-r-learning/</guid>
+  <pubDate>Mon, 10 Mar 2025 15:47:13 GMT</pubDate>
 </item>
 </channel>
 </rss>

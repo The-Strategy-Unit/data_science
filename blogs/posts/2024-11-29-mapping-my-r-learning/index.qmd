@@ -47,7 +47,7 @@ When I became more confident with trying out some packages and functions in R, I
 
 Over time I understood that failure is part of the learning journey, and a helpful tool for the learning process itself. If I could figure out what didn't work, that often gave me information about what had gone wrong. This was useful as it either pointed me towards what I needed to fix, or gave me the words and concepts I could look into to help me solve the problem. Sometimes the process of trying to learn different functions accidentally produced hilariously terrible results[^2]
 
-[^2]: This amused me greatly, as a fan of the \[Terrible Maps\] social media pages (https://www.instagram.com/terriblemap/p/DCh2NhfB2JX/).
+[^2]: This amused me greatly, as a fan of the \[Terrible Maps\](https://www.instagram.com/terriblemap/p/DCh2NhfB2JX/) social media pages.
 
 As well as providing some humour to contrast with the often frustrating process of learning to code, these failures also helped me to get unstuck. More often than not, they were a catalyst for problem-solving as they provided useful information about what specific aspect of the code had gone wrong, which would give me a clue about what I needed to look into to fix the problem.
 

@@ -1,7 +1,8 @@
 ---
 title: "Mapping my R journey so far: ten things that I have done along the way"
-format: html
-editor: visual
+author: "Sheila Ali"
+date: "2025-03-10"
+categories: [learning]
 ---
 
 This blog post follows up from a talk I gave last year at coffee and coding about my experiences of learning how to code using Rstudio. Here I build on that talk to share some more reflections and advice for others who are starting out on their R learning journey.

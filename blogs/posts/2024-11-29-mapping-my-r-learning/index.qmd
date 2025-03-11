@@ -19,7 +19,7 @@ It seemed important to try and change my approach, so that learning R didn't see
 
 I also discovered colour palettes such as those in the [wesanderson](https://github.com/karthik/wesanderson) package, and tried experimenting with those along with the generative art functions. I soon found that my fear of R was quickly replaced by a geeky fascination with all of the beautiful artwork that could be created with only a few lines of code. It felt like a low-stakes situation, because the worst that could happen was that the code wouldn't work. Suddenly, the process of coding felt less intimidating, and it had opened up a wealth of possibilities[^1].
 
-[^1]: If this topic is of interest, I would recommend getting involved in the Tidy Tuesday community activity: <https://github.com/rfordatascience/tidytuesday> and also having a look at Nicola Rennie's data visualisations: <https://nrennie.rbind.io/tidytuesday-shiny-app/>
+[^1]: If this topic is of interest, I would recommend getting involved in the [Tidy Tuesday community activity](https://github.com/rfordatascience/tidytuesday) and also having a look at [Nicola Rennie's data visualisations](https://nrennie.rbind.io/tidytuesday-shiny-app/).
 
 2.  **I found a supportive community**
 
@@ -47,7 +47,7 @@ When I became more confident with trying out some packages and functions in R, I
 
 Over time I understood that failure is part of the learning journey, and a helpful tool for the learning process itself. If I could figure out what didn't work, that often gave me information about what had gone wrong. This was useful as it either pointed me towards what I needed to fix, or gave me the words and concepts I could look into to help me solve the problem. Sometimes the process of trying to learn different functions accidentally produced hilariously terrible results[^2]
 
-[^2]: This amused me greatly, as a fan of the \[Terrible Maps\] social media pages (https://www.instagram.com/terriblemap/p/DCh2NhfB2JX/).
+[^2]: This amused me greatly, as a fan of the [Terrible Maps social media pages](https://www.instagram.com/terriblemap/p/DCh2NhfB2JX/).
 
 As well as providing some humour to contrast with the often frustrating process of learning to code, these failures also helped me to get unstuck. More often than not, they were a catalyst for problem-solving as they provided useful information about what specific aspect of the code had gone wrong, which would give me a clue about what I needed to look into to fix the problem.
 
@@ -65,7 +65,7 @@ Throughout my R learning journey, I have found that coding has been a useful con
 
 I realised this a few months ago when my friend got me a beginner's embroidery kit, and as I followed the pattern and learned how to create the different types of embroidery stitch, I reflected that just like with the embroidery pattern I was working on, I needed to structure the coding for the map in [layers](https://ggplot2.tidyverse.org/reference/layer_geoms.html#:~:text=In%20ggplot2%2C%20a%20plot%20in,displayed%2C%20not%20what%20is%20displayed.). This led me to approach the process like I would for an art project[^4] to identify what I needed to do to adequately visualise both types of data that I wanted to include in the map.
 
-[^4]: Throughout the journey I have realised that thinking about the problem like an artist has been very helpful, because it allows me to use a similarly iterative approach. I wanted my choropleth maps to show both the population density and the underlying terrain when superimposed. To do this, I used the \[colorbrewer2\](https://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3) tool to test out different colour palettes, and changed the opacity and terrain to identify which colours would clearly to show the population data and the terrain underneath. The tool let me test this on an example map and showed me the hexadecimal colour codes for the colours in the palettes. Once I had found some combinations that would likely work for my particular map, I then iteratively adjusted the aesthetics in my R code until I found a combination that worked for my data.  
+[^4]: Throughout the journey I have realised that thinking about the problem like an artist has been very helpful, because it allows me to use a similarly iterative approach. I wanted my choropleth maps to show both the population density and the underlying terrain when superimposed. To do this, I used the [colorbrewer2](https://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3) tool to test out different colour palettes, and changed the opacity and terrain to identify which colours would clearly to show the population data and the terrain underneath. The tool let me test this on an example map and showed me the hexadecimal colour codes for the colours in the palettes. Once I had found some combinations that would likely work for my particular map, I then iteratively adjusted the aesthetics in my R code until I found a combination that worked for my data.  
 
 ![An abstract textile art piece that I made to illustrate the blog post. This symbolises my non-linear R learning journey - with overlapping and convoluted pathways, dead ends, and roadblocks along the way.](R%20textile%20map.jpg){fig-alt="Textile art piece showing a map with the letter R - for decorative purposes only" fig-align="center" width="384"}
 

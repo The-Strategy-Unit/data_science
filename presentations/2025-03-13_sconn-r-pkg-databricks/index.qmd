@@ -1,0 +1,148 @@
+---
+title: Package tour of sconn
+subtitle: An R package to connect to databricks
+author: Fran Barton
+email: francis.barton@nhs.net
+date: 2025-03-13
+date-format: "MMM D, YYYY"
+format:
+  revealjs:
+    theme: [default, ../su_presentation.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
+    footer: |
+      view slides at [the-strategy-unit.github.io/data_science/presentations][ds_presentations]
+---
+
+
+## The problem
+
+
+:::: {.columns}
+
+::: {.column width="75%"}
+* Some of us are very precious and need our familiar keyboard shortcuts and UI
+* Working in a Databricks notebook is fine but for more advanced work in R it's easier to work in your local IDE.
+* Initial attempts to connect using `{sparklyr}` alone didn't work (for me)
+:::
+
+::: {.column width="25%"}
+![yum](scones.jpg)
+:::
+
+::::
+
+## How does {sconn} help?
+
+* Creates a convenience function to connect (and disconnect) from our databricks instance
+* Provides documentation for new users to get set up
+* Provides a place to track issues
+
+## Brief usage
+
+```r
+library(sconn)
+sc()
+
+sc_disconnect()
+```
+
+
+
+## Development history
+
+
+:::: {.columns}
+
+::: {.column width="75%"}
+* Similar package used to connect to SQL Server databases
+* Connection functions are lazily bound to a secret environment (and not run?)
+* The user-facing function `get`s the function and thus activates it
+:::
+
+::: {.column width="25%"}
+![environments, Hadley's version](bindings.png)
+:::
+
+::::
+
+## Under the hood 1
+
+:::: {.columns}
+
+::: {.column width="75%"}
+```r
+sc_conn <- function() {
+  check_vars()
+  sparklyr::spark_connect(
+    master = Sys.getenv("DATABRICKS_HOST"),
+    cluster_id = Sys.getenv("DATABRICKS_CLUSTER_ID"),
+    token = Sys.getenv("DATABRICKS_TOKEN"),
+    envname = Sys.getenv("DATABRICKS_VENV"),
+    app_name = "sconn_sparklyr",
+    method = "databricks_connect"
+  )
+}
+
+.onLoad <- function(...) {
+  .conns <<- rlang::new_environment()
+  rlang::env_bind_lazy(.conns, sc = sc_conn())
+}
+```
+:::
+
+::: {.column width="25%"}
+![empty env](empty.png)
+:::
+
+::::
+
+## Under the hood 2
+
+```r
+sc <- function(hide_output = TRUE) {
+  if (!rlang::env_has(.conns, "sc")) {
+    rlang::env_bind_lazy(.conns, sc = sc_conn())
+  }
+  sc <- rlang::env_get(.conns, "sc", default = NULL)
+  if (hide_output) invisible(sc) else sc
+}
+```
+
+
+
+## Lazy binding?
+
+:::: {.columns}
+
+::: {.column width="75%"}
+* On load (`library()`/`load_all()`) the package should lazily bind a connection function to the `.conns` environment
+* When the user calls `sc()`, this function is activated by `rlang::env_get()`
+:::
+
+::: {.column width="25%"}
+![Mr. Lazy](lazy.webp)
+<p style="font-size:12pt;"><a href="https://mrmen.fandom.com/wiki/Mr._Lazy">mrmen.fandom.com</a></p>
+:::
+
+::::
+
+## Remaining questions
+
+* Does `.onLoad` work the way I expect it to?
+* Does `env_get` always have to activate the connection?
+* (sparklyr's `spark_connection_is_open()` function triggers it)
+* Connection time-outs and reconnection? How best to handle?
+
+## Further resources
+
+* [brickster](https://databrickslabs.github.io/brickster/)
+* [sconn repo](https://github.com/The-Strategy-Unit/sconn)
+* [databricks docs](https://spark.posit.co/deployment/databricks-connect.html)
+* [unlocking databricks from R...](https://www.databricks.com/blog/r-you-ready-unlocking-databricks-r-users-2025)
+
+[ds_presentations]: https://the-strategy-unit.github.io/data_science/presentations/2025-03-13_sconn-r-pkg-databricks

@@ -2,7 +2,6 @@
 title: Package tour of sconn
 subtitle: An R package to connect to databricks
 author: Fran Barton
-email: francis.barton@nhs.net
 date: 2025-03-13
 date-format: "MMM D, YYYY"
 format:

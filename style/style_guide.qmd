@@ -28,6 +28,21 @@ starwars |>
   )
 ```
 
+## Line endings
+
+To avoid excessive whitespace cluttering up Git diffs, set your chosen IDE to use LF line endings.
+
+For RStudio, select Tools > Global Options > Code > Saving. Under Serialization, set the Line ending conversion to Posix (LF).
+
+![Screenshot showing how to set line endings correctly in RStudio](rstudio_eol.png)
+
+For VSCode, follow [the instructions here](https://stackoverflow.com/a/73985251).
+
+You should also change your git settings to checkout in LF by running this in your terminal: `git config --global core.autocrlf false`
+
+Per repository, you can run `git add --renormalize .` to fix line endings.
+
+
 ## Additional assorted notes on style 😎
 
 * Favour Quarto (`.qmd` files) over R Markdown (`.Rmd`) for document production.

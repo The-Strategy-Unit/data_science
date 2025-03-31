@@ -206,6 +206,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#style-guide" id="toc-style-guide" class="nav-link active" data-scroll-target="#style-guide">Style Guide</a>
   <ul class="collapse">
   <li><a href="#code-style" id="toc-code-style" class="nav-link" data-scroll-target="#code-style">Code style</a></li>
+  <li><a href="#line-endings" id="toc-line-endings" class="nav-link" data-scroll-target="#line-endings">Line endings</a></li>
   <li><a href="#additional-assorted-notes-on-style" id="toc-additional-assorted-notes-on-style" class="nav-link" data-scroll-target="#additional-assorted-notes-on-style">Additional assorted notes on style 😎</a></li>
   </ul></li>
   </ul>
@@ -242,6 +243,20 @@ starwars |&gt;
     height_cm = height,
     name_copy = name
   )</code></pre>
+</section>
+<section id="line-endings" class="level2">
+<h2 class="anchored" data-anchor-id="line-endings">Line endings</h2>
+<p>To avoid excessive whitespace cluttering up Git diffs, set your chosen IDE to use LF line endings.</p>
+<p>For RStudio, select Tools &gt; Global Options &gt; Code &gt; Saving. Under Serialization, set the Line ending conversion to Posix (LF).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="rstudio_eol.png" class="img-fluid figure-img"></p>
+<figcaption>Screenshot showing how to set line endings correctly in RStudio</figcaption>
+</figure>
+</div>
+<p>For VSCode, follow <a href="https://stackoverflow.com/a/73985251">the instructions here</a>.</p>
+<p>You should also change your git settings to checkout in LF by running this in your terminal: <code>git config --global core.autocrlf false</code></p>
+<p>Per repository, you can run <code>git add --renormalize .</code> to fix line endings.</p>
 </section>
 <section id="additional-assorted-notes-on-style" class="level2">
 <h2 class="anchored" data-anchor-id="additional-assorted-notes-on-style">Additional assorted notes on style 😎</h2>

@@ -33,7 +33,7 @@ It's also a useful area for input from other members of the team.
 ### Obtain the code
 
 To contribute to someone else's code, you will first need to clone a copy of their repository onto your computer.
-You can do this by first obtaining the URL of the repository of interest, by clicking the green 'Code' button on the top right of the repository home page
+You can do this by first obtaining the URL of the repository of interest, by clicking the green 'Code' button on the top right of the repository home page.
 
 ![](Code_button.jpg){fig-alt="Screenshot of GitHub with the green repository code button circled in red."}
 

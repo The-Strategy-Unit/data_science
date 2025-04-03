@@ -10,6 +10,8 @@ The Data Science team at the Strategy Unit comprises the following team members:
 - [Rhian Davies](https://github.com/statsRhian)
 - [Tom Jemmett](https://github.com/tomjemmett)
 - [YiWen Hon](https://github.com/yiwen-h)
+- [Claire Welsh](https://github.com/DCEW)
+- [Francis Barton](https://github.com/francisbarton)
 
 Current and previous projects of note include:
 

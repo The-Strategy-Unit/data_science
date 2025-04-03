@@ -39,7 +39,9 @@ You can do this by first obtaining the URL of the repository of interest, by cli
 Using the command line, Git Bash, the RStudio terminal or another shell script program,
 navigate to the location you'd like the files stored in, then run:
 
-`git clone https://github.com/<Org>/<path_to_repo.git`
+```
+git clone https://github.com/<user or org name>/<repository name>.git
+```
 
 You can then use file explorer (if on Windows) to navigate to the R project folder
 within the files you've cloned, and open it to begin working with the code.

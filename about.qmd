@@ -15,6 +15,6 @@ The Data Science team at the Strategy Unit comprises the following team members:
 
 Current and previous projects of note include:
 
-- Work supporting the New Hospitals Programme, including building [a model for predicting the demand and capacity requirements of hospitals in the future](https://connect.strategyunitwm.nhs.uk/nhp/project_information/), and a tool for mapping the evidence on this topic.
+- Work supporting the New Hospitals Programme, including building [a model for predicting the demand and capacity requirements of hospitals in the future](https://connect.strategyunitwm.nhs.uk/nhp/project_information/), and [a tool for mapping the evidence on this topic](https://github.com/The-Strategy-Unit/nhp_evidence_maps).
 - The [Patient Experience Qualitative Data Categorisation project](https://the-strategy-unit.github.io/PatientExperience-QDC/) 
 - Work supporting the wider analytical community, through events/communities such as [NHS-R](https://nhsrcommunity.com/) and [HACA](https://haca-conference.nhs.uk/).

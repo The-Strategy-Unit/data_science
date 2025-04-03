@@ -5,13 +5,13 @@ title: "About"
 The Data Science team at the Strategy Unit comprises the following team members:
 
 - [Chris Beeley](https://github.com/ChrisBeeley)
+- [Claire Welsh](https://github.com/DCEW)
+- [Francis Barton](https://github.com/francisbarton)
 - [Matt Dray](https://github.com/matt-dray)
 - [Ozayr Mohammed](https://github.com/O-Mohammed)
 - [Rhian Davies](https://github.com/statsRhian)
 - [Tom Jemmett](https://github.com/tomjemmett)
 - [YiWen Hon](https://github.com/yiwen-h)
-- [Claire Welsh](https://github.com/DCEW)
-- [Francis Barton](https://github.com/francisbarton)
 
 Current and previous projects of note include:
 

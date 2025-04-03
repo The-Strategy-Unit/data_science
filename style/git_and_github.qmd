@@ -144,9 +144,7 @@ The deputy should perform these duties in the absence of the owner and provide u
 
 ### Template repository
 
-The Data Science team at The Strategy Unit maintain a template repository that contains the minimum set of files and basic structure needed to ensure organisational consistency in repository management. You are welcome to view, clone, copy or reuse the template as they see fit:
-
-[template_repository](https://github.com/The-Strategy-Unit/template-repository.git)
+The Data Science team at The Strategy Unit maintain [a template repository](https://github.com/The-Strategy-Unit/template-repository) that contains the minimum set of files and basic structure needed to ensure organisational consistency in repository management. You are welcome to view, clone, copy or reuse the template as you see fit.
 
 ## Further reading
 

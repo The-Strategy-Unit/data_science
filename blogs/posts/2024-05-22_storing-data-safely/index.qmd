@@ -3,12 +3,12 @@ title: "Storing data safely"
 author: 
   - "[YiWen Hon](mailto:yiwen.hon1@nhs.net)"
   - "[Matt Dray](mailto:matt.dray@nhs.net)"
+  - "[Claire Welsh](mailto:claire.welsh8@nhs.net)"
 date: "2024-05-22"
 categories: [learning, R, Python]
 notebook-view:
   - notebook: azure_python.ipynb
     title: "Interacting with Azure Storage with Python"
-
 ---
 
 ```{r lockfile}
@@ -16,6 +16,9 @@ notebook-view:
 renv::use(lockfile = "renv.lock")
 ```
 
+::: callout-note
+**UPDATED**: Please see the Addendum to this blog, added 2025-04-03 regarding accessing data from SharePoint
+:::
 
 ## Coffee & Coding
 
@@ -24,7 +27,6 @@ In a recent Coffee & Coding session we chatted about storing data safely for use
 In order to avoid duplication, this blog post will not cover the pros and cons of each approach, and will instead focus on documenting the code that was used in our live demonstrations. I would recommend that you look through the slides before using the code in this blogpost and have them alongside, as they provide lots of useful context!
 
 ## Posit Connect Pins
-
 
 ```{r}
 #| eval: false
@@ -151,8 +153,7 @@ You will need an .Renviron file with the four environment variables listed below
 
 Below is a sample .Renviron file
 
-
-```
+```         
 AZ_STORAGE_EP=https://STORAGEACCOUNT.blob.core.windows.net/
 AZ_STORAGE_CONTAINER=container-name
 AZ_TENANT_ID=long-sequence-of-numbers-and-letters
@@ -225,10 +226,49 @@ for (blobfile in blob_list$name) {
 
 ## Azure Storage in Python
 
-This will use the same environment variables as the R version, just stored in a .env file instead. 
+This will use the same environment variables as the R version, just stored in a .env file instead.
 
 We didn't cover this in the presentation, so it's not in the slides, but the code should be self-explanatory.
 
-{{< embed azure_python.ipynb echo=true   >}}
+{{< embed azure_python.ipynb echo=true >}}
 
+## ADDENDUM: Accessing data from SharePoint
 
+SharePoint is a Microsoft product, which is a content/knowledge management tool. Many teams across the NHS use SharePoint for all sorts of file types that need to be preserved or shared within and between teams, but also need to be kept secure.
+
+Accessing SharePoint requires user authentication, which also needs to happen when reading data into R from SharePoint. Before you can access SharePoint content from a site, you first need to 'follow' that site.
+
+To access data on SharePoint,follow these steps:
+
+1.  Navigate to the SharePoint page that has the file of interest in it, using your browser.
+
+2.  Click the small star in the top right corner of the window, labelled 'Follow'
+
+![](Follow.jpg)
+
+3.  Open your environment file, which you can do by running `r file.edit("~/.Renviron")` within the RStudio console area.
+
+4.  Save two new environment variables; one is the name of the site (i.e. the name at the top of the browser screen), and the other is the full file path from below the 'Documents' folder to the file itself, including the file type extension. Save and close the .Renviron file then restart your R session (CTRL \> Shift \> F10 on Windows machines)
+
+5.  Use the code below to read in an Excel file (xlsx) into R memory.
+
+```{r}
+#| eval: false
+#| echo: true
+
+# Read in the securely saved path and site variables
+sharepoint_site <- Sys.getenv("SITE_NAME")
+
+template_path <- Sys.getenv("PATH_TO_FILE.xlsx")
+
+# access the dataset and save it into a temporary file
+site <- Microsoft365R::get_sharepoint_site(sharepoint_site)
+drv <- site$get_drive()
+tmp_file <- tempfile(fileext = ".xlsx")
+drv$download_file(template_path, dest = tmp_file)
+
+data <- readxl::read_xlsx(tmp_file)
+
+#tidy up
+unlink(tmp_file)
+```

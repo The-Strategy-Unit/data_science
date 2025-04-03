@@ -78,7 +78,7 @@ When you think that your changes are ready to be merged, it's time to create a P
 When you create a PR, you must do two things:
 
 1.  Immediately make someone an assignee - this is the person who will merge the PR. Typically, this should be the person creating the PR (you)
-2.  Select a person (or people) to review the PR
+2.  Select a person (or people) to review the PR (if the repository is open and has a CODEOWNERS file, then the users named in that file will be automatically assigned as reviewers)
 
 If your code is not yet ready to be merged then you should use a draft PR.
 

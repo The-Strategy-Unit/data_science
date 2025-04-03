@@ -23,6 +23,7 @@ You should ensure that the issue is as detailed as possible as it may need to be
 Even if only you intend to work on the issue, over time it can be easy to forget things if there isn't enough information.
 They can also help you to remember what changes you have made to your code, and why you had to make these changes, which can be useful if you need to provide change logs when you release your code.
 You could even attach screenshots or other images that help explain the problem and anything you've tried in the past that hasn't worked out.
+If you can, try to provide a reproducible example ('reprex'), perhaps by using [the {reprex} R package](https://reprex.tidyverse.org/).
 
 ::: aside
 Issues are a good record to explain what a PR is for.

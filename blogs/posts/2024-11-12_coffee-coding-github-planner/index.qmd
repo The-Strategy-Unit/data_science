@@ -5,6 +5,12 @@ date: "2024-11-12"
 categories: [GitHub, learning]
 ---
 
+```{r lockfile}
+#| include: FALSE
+renv::use(lockfile = "renv.lock")
+```
+
+
 ## Coffee & Coding
 
 Coffee & Coding is a fortnightly hour-long session organised by the Data Science team, open to all members of the Strategy Unit with an interest in coding. It's been [well received](../2024-05-13_one-year-coffee-code/index.qmd) and is a valued source of professional development and general geekery in the team.

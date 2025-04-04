@@ -9,6 +9,12 @@ execute:
 engine: markdown
 ---
 
+```{r lockfile}
+#| include: FALSE
+renv::use(lockfile = "renv.lock")
+```
+
+
 When reviewing a pull request (PR) for a Quarto website, it's good practice to check the rendered output, as well as the code. This is useful for ensuring that the changes look as expected, for example, ensuring that bullet points have rendered correctly, or that images are well sized.
 
 However, it's a pain for the reviewer to clone the repository and render the Quarto site locally just to check it looks correct. Wouldn't it be nice if when the PR was created, you automatically got a deployed version of your changes to look at?

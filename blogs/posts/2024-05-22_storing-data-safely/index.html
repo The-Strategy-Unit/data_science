@@ -2,12 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.42">
+<meta name="generator" content="quarto-1.6.43">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="YiWen Hon">
 <meta name="author" content="Matt Dray">
+<meta name="author" content="Claire Welsh">
 <meta name="dcterms.date" content="2024-05-22">
 
 <title>Storing data safely – Data Science @ The Strategy Unit</title>
@@ -72,8 +73,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-4379b0ccadffce622b03caf4c46266b3.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../../site_libs/bootstrap/bootstrap-5fd802cc48c43936479da48aac14709e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -200,6 +201,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#posit-connect-pins" id="toc-posit-connect-pins" class="nav-link" data-scroll-target="#posit-connect-pins">Posit Connect Pins</a></li>
   <li><a href="#azure-storage-in-r" id="toc-azure-storage-in-r" class="nav-link" data-scroll-target="#azure-storage-in-r">Azure Storage in R</a></li>
   <li><a href="#azure-storage-in-python" id="toc-azure-storage-in-python" class="nav-link" data-scroll-target="#azure-storage-in-python">Azure Storage in Python</a></li>
+  <li><a href="#addendum-accessing-data-from-sharepoint" id="toc-addendum-accessing-data-from-sharepoint" class="nav-link" data-scroll-target="#addendum-accessing-data-from-sharepoint">ADDENDUM: Accessing data from SharePoint</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/the-strategy-unit/data_science/edit/main/blogs/posts/2024-05-22_storing-data-safely/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/the-strategy-unit/data_science/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="azure_python-preview.html"><i class="bi bi-journal-code"></i>Interacting with Azure Storage with Python</a></li></ul></div></nav>
     </div>
@@ -225,6 +227,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="quarto-title-meta-contents">
              <p><a href="mailto:yiwen.hon1@nhs.net" target="_blank">YiWen Hon</a> </p>
              <p><a href="mailto:matt.dray@nhs.net" target="_blank">Matt Dray</a> </p>
+             <p><a href="mailto:claire.welsh8@nhs.net" target="_blank">Claire Welsh</a> </p>
           </div>
   </div>
     
@@ -243,6 +246,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>UPDATED</strong>: Please see the Addendum to this blog, added 2025-04-03 regarding accessing data from SharePoint</p>
+</div>
+</div>
 <section id="coffee-coding" class="level2">
 <h2 class="anchored" data-anchor-id="coffee-coding">Coffee &amp; Coding</h2>
 <p>In a recent Coffee &amp; Coding session we chatted about storing data safely for use in Reproducible Analytical Pipelines (RAP), and <a href="https://the-strategy-unit.github.io/data_science/presentations/2024-05-16_store-data-safely/">the slides from the presentation are now available</a>. We discussed the use of <a href="https://docs.posit.co/connect/user/pins/">Posit Connect Pins</a> and <a href="https://azure.microsoft.com/en-gb/products/storage/blobs/">Azure Storage</a>.</p>
@@ -630,6 +646,43 @@ newdir/ronald.jpeg</code></pre>
 newdir/ronald.jpeg</code></pre>
 </div>
 </div>
+</div>
+</section>
+<section id="addendum-accessing-data-from-sharepoint" class="level2">
+<h2 class="anchored" data-anchor-id="addendum-accessing-data-from-sharepoint">ADDENDUM: Accessing data from SharePoint</h2>
+<p>SharePoint is a Microsoft product, which is a content/knowledge management tool. Many teams across the NHS use SharePoint for all sorts of file types that need to be preserved or shared within and between teams, but also need to be kept secure.</p>
+<p>Accessing SharePoint requires user authentication, which you’ll be prompted for in the browser when you try to access SharePoint from R. Note that you must ‘follow’ a SharePoint site before you can fetch its content.</p>
+<p>To access data on SharePoint, follow these steps:</p>
+<ol type="1">
+<li><p>Navigate to the SharePoint page that has the file of interest in it, using your browser.</p></li>
+<li><p>Click the small star in the top right corner of the window, labelled ‘Follow’.</p></li>
+</ol>
+<p><img src="Follow.jpg" class="img-fluid" alt="A screenshot of the upper-right corner of a SharePoint site in a web browser, highlighting a star-shaped toggle labelled 'follow'."></p>
+<ol start="3" type="1">
+<li><p>Open (or create) your project’s <code>.Renviron</code> file, used for <a href="https://docs.posit.co/ide/user/ide/guide/environments/r/managing-r.html#renviron">storing environmental variables</a>. You can do this by running <code>usethis::edit_r_environ()</code> from the R console.</p></li>
+<li><p>Save two new environment variables to the <code>.Renviron</code> file:</p>
+<ol type="a">
+<li><code>SP_SITE_NAME</code>: the name of the site (i.e.&nbsp;the name at the top of the browser screen)</li>
+<li><code>SP_FILE_PATH</code>: the full file path from below the <code>Documents/</code> folder to the file itself, including the file type extension.</li>
+</ol></li>
+<li><p>Save and close the <code>.Renviron</code> file then either restart your R session (CTRL + Shift + F10 on Windows machines) or run <code>readRenviron(".Renviron")</code> to make the new variables available in your session.</p></li>
+<li><p>Use the code below to read in an Excel file (xlsx) into R memory, or adapt it to read other file types.</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in the securely saved path and site variables</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>sharepoint_site <span class="ot">&lt;-</span> <span class="fu">Sys.getenv</span>(<span class="st">"SP_SITE_NAME"</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>template_path <span class="ot">&lt;-</span> <span class="fu">Sys.getenv</span>(<span class="st">"SP_FILE_PATH"</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co"># access the dataset and save it into a temporary file</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>site <span class="ot">&lt;-</span> Microsoft365R<span class="sc">::</span><span class="fu">get_sharepoint_site</span>(sharepoint_site)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>drv <span class="ot">&lt;-</span> site<span class="sc">$</span><span class="fu">get_drive</span>()</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>tmp_file <span class="ot">&lt;-</span> <span class="fu">tempfile</span>(<span class="at">fileext =</span> <span class="st">".xlsx"</span>)</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>drv<span class="sc">$</span><span class="fu">download_file</span>(template_path, <span class="at">dest =</span> tmp_file)</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(tmp_file)</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="co">#tidy up</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="fu">unlink</span>(tmp_file)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 

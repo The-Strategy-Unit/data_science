@@ -95,14 +95,14 @@
     "href": "blogs/posts/2024-05-22_storing-data-safely/index.html",
     "title": "Storing data safely",
     "section": "",
-    "text": "In a recent Coffee & Coding session we chatted about storing data safely for use in Reproducible Analytical Pipelines (RAP), and the slides from the presentation are now available. We discussed the use of Posit Connect Pins and Azure Storage.\nIn order to avoid duplication, this blog post will not cover the pros and cons of each approach, and will instead focus on documenting the code that was used in our live demonstrations. I would recommend that you look through the slides before using the code in this blogpost and have them alongside, as they provide lots of useful context!"
+    "text": "Note\n\n\n\nUPDATED: Please see the Addendum to this blog, added 2025-04-03 regarding accessing data from SharePoint"
   },
   {
     "objectID": "blogs/posts/2024-05-22_storing-data-safely/index.html#coffee-coding",
     "href": "blogs/posts/2024-05-22_storing-data-safely/index.html#coffee-coding",
     "title": "Storing data safely",
-    "section": "",
-    "text": "In a recent Coffee & Coding session we chatted about storing data safely for use in Reproducible Analytical Pipelines (RAP), and the slides from the presentation are now available. We discussed the use of Posit Connect Pins and Azure Storage.\nIn order to avoid duplication, this blog post will not cover the pros and cons of each approach, and will instead focus on documenting the code that was used in our live demonstrations. I would recommend that you look through the slides before using the code in this blogpost and have them alongside, as they provide lots of useful context!"
+    "section": "Coffee & Coding",
+    "text": "Coffee & Coding\nIn a recent Coffee & Coding session we chatted about storing data safely for use in Reproducible Analytical Pipelines (RAP), and the slides from the presentation are now available. We discussed the use of Posit Connect Pins and Azure Storage.\nIn order to avoid duplication, this blog post will not cover the pros and cons of each approach, and will instead focus on documenting the code that was used in our live demonstrations. I would recommend that you look through the slides before using the code in this blogpost and have them alongside, as they provide lots of useful context!"
   },
   {
     "objectID": "blogs/posts/2024-05-22_storing-data-safely/index.html#posit-connect-pins",
@@ -124,6 +124,13 @@
     "title": "Storing data safely",
     "section": "Azure Storage in Python",
     "text": "Azure Storage in Python\nThis will use the same environment variables as the R version, just stored in a .env file instead.\nWe didn’t cover this in the presentation, so it’s not in the slides, but the code should be self-explanatory.\n\n\nimport os\nimport io\nimport pandas as pd\nfrom dotenv import load_dotenv\nfrom azure.identity import DefaultAzureCredential\nfrom azure.storage.blob import ContainerClient\n\n\n# Load all environment variables\nload_dotenv()\naccount_url = os.getenv('AZ_STORAGE_EP')\ncontainer_name = os.getenv('AZ_STORAGE_CONTAINER')\n\n\n# Authenticate\ndefault_credential = DefaultAzureCredential()\n\nFor the first time, you might need to authenticate via the Azure CLI\nDownload it from https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli\nInstall then run az login in your terminal. Once you have logged in with your browser try the DefaultAzureCredential() again!\n\n# Connect to container\ncontainer_client = ContainerClient(account_url, container_name, default_credential)\n\n\n# List files in container - should be empty\nblob_list = container_client.list_blob_names()\nfor blob in blob_list:\n    if blob.startswith('newdir'):\n        print(blob)\n\nnewdir/cats.parquet\nnewdir/ronald.jpeg\n\n\n\n# Upload file to container\nwith open(file='data/cats.csv', mode=\"rb\") as data:\n    blob_client = container_client.upload_blob(name='newdir/cats.csv', \n                                               data=data, \n                                               overwrite=True)\n\n\n# # Check files have uploaded - List files in container again\nblob_list = container_client.list_blobs()\nfor blob in blob_list:\n    if blob['name'].startswith('newdir'):\n        print(blob['name'])\n\nnewdir/cats.csv\nnewdir/cats.parquet\nnewdir/ronald.jpeg\n\n\n\n# Download file from Azure container to temporary filepath\n\n# Connect to blob\nblob_client = container_client.get_blob_client('newdir/cats.csv')\n\n# Write to local file from blob\ntemp_filepath = os.path.join('temp_data', 'cats.csv')\nwith open(file=temp_filepath, mode=\"wb\") as sample_blob:\n    download_stream = blob_client.download_blob()\n    sample_blob.write(download_stream.readall())\ncat_data = pd.read_csv(temp_filepath)\ncat_data.head()\n\n\n\n\n\n\n\n\nName\nPhysical_characteristics\nBehaviour\n\n\n\n\n0\nRonald\nWhite and ginger\nLazy and greedy but undoubtedly cutest and best\n\n\n1\nKaspie\nSmall calico\nSweet and very shy but adventurous\n\n\n2\nHennimore\nPale orange\nUnhinged and always in a state of panic\n\n\n3\nThug cat\nBlack and white - very large\nLocal bully\n\n\n4\nSon of Stripey\nGrey tabby\nVery vocal\n\n\n\n\n\n\n\n\n# Load directly from Azure - no local copy\n\ndownload_stream = blob_client.download_blob()\nstream_object = io.BytesIO(download_stream.readall())\ncat_data = pd.read_csv(stream_object)\ncat_data\n\n\n\n\n\n\n\n\nName\nPhysical_characteristics\nBehaviour\n\n\n\n\n0\nRonald\nWhite and ginger\nLazy and greedy but undoubtedly cutest and best\n\n\n1\nKaspie\nSmall calico\nSweet and very shy but adventurous\n\n\n2\nHennimore\nPale orange\nUnhinged and always in a state of panic\n\n\n3\nThug cat\nBlack and white - very large\nLocal bully\n\n\n4\nSon of Stripey\nGrey tabby\nVery vocal\n\n\n\n\n\n\n\n\n# !!!!!!!!! Delete from Azure container !!!!!!!!!\nblob_client = container_client.get_blob_client('newdir/cats.csv')\nblob_client.delete_blob()\n\n\nblob_list = container_client.list_blobs()\nfor blob in blob_list:\n    if blob['name'].startswith('newdir'):\n        print(blob['name'])\n\nnewdir/cats.parquet\nnewdir/ronald.jpeg"
+  },
+  {
+    "objectID": "blogs/posts/2024-05-22_storing-data-safely/index.html#addendum-accessing-data-from-sharepoint",
+    "href": "blogs/posts/2024-05-22_storing-data-safely/index.html#addendum-accessing-data-from-sharepoint",
+    "title": "Storing data safely",
+    "section": "ADDENDUM: Accessing data from SharePoint",
+    "text": "ADDENDUM: Accessing data from SharePoint\nSharePoint is a Microsoft product, which is a content/knowledge management tool. Many teams across the NHS use SharePoint for all sorts of file types that need to be preserved or shared within and between teams, but also need to be kept secure.\nAccessing SharePoint requires user authentication, which you’ll be prompted for in the browser when you try to access SharePoint from R. Note that you must ‘follow’ a SharePoint site before you can fetch its content.\nTo access data on SharePoint, follow these steps:\n\nNavigate to the SharePoint page that has the file of interest in it, using your browser.\nClick the small star in the top right corner of the window, labelled ‘Follow’.\n\n\n\nOpen (or create) your project’s .Renviron file, used for storing environmental variables. You can do this by running usethis::edit_r_environ() from the R console.\nSave two new environment variables to the .Renviron file:\n\nSP_SITE_NAME: the name of the site (i.e. the name at the top of the browser screen)\nSP_FILE_PATH: the full file path from below the Documents/ folder to the file itself, including the file type extension.\n\nSave and close the .Renviron file then either restart your R session (CTRL + Shift + F10 on Windows machines) or run readRenviron(\".Renviron\") to make the new variables available in your session.\nUse the code below to read in an Excel file (xlsx) into R memory, or adapt it to read other file types.\n\n\n# Read in the securely saved path and site variables\nsharepoint_site &lt;- Sys.getenv(\"SP_SITE_NAME\")\ntemplate_path &lt;- Sys.getenv(\"SP_FILE_PATH\")\n\n# access the dataset and save it into a temporary file\nsite &lt;- Microsoft365R::get_sharepoint_site(sharepoint_site)\ndrv &lt;- site$get_drive()\ntmp_file &lt;- tempfile(fileext = \".xlsx\")\ndrv$download_file(template_path, dest = tmp_file)\n\ndata &lt;- readxl::read_xlsx(tmp_file)\n\n#tidy up\nunlink(tmp_file)"
   },
   {
     "objectID": "blogs/posts/2023-03-24_hotfix-with-git/index.html",
@@ -2013,7 +2020,7 @@
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r---flows",
     "title": "System Dynamics in health and care",
     "section": "in R - flows",
-    "text": "in R - flows\nEasy to do with count, or group_by and summarise\n\n\n  admit_d &lt;- spell_dates |&gt; \n  group_by(date_admit) |&gt;\n  count(date_admit)\n\nhead(admit_d)\n\n\n# A tibble: 6 × 2\n# Groups:   date_admit [6]\n  date_admit     n\n  &lt;date&gt;     &lt;int&gt;\n1 2022-01-01    25\n2 2022-01-02    26\n3 2022-01-03    26\n4 2022-01-04    26\n5 2022-01-05    29\n6 2022-01-06    21"
+    "text": "in R - flows\nEasy to do with count, or group_by and summarise\n\n\n  admit_d &lt;- spell_dates |&gt; \n  group_by(date_admit) |&gt;\n  count(date_admit)\n\nhead(admit_d)\n\n\n# A tibble: 6 × 2\n# Groups:   date_admit [6]\n  date_admit     n\n  &lt;date&gt;     &lt;int&gt;\n1 2022-01-01    27\n2 2022-01-02    32\n3 2022-01-03    28\n4 2022-01-04    31\n5 2022-01-05    33\n6 2022-01-06    33"
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r---occupancy",
@@ -2034,7 +2041,7 @@
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods---flows",
     "title": "System Dynamics in health and care",
     "section": "Longer Time Periods - flows",
-    "text": "Longer Time Periods - flows\nUse lubridate::floor_date to generate the date at start of week/month\n\nadmit_wk &lt;- spell_dates |&gt; \n  mutate(week_start = floor_date(\n    date_admit, unit = \"week\", week_start = 1   # start week on Monday\n  )) |&gt; \n  count(week_start)     # could add other parameters such as provider code, TFC etc\n\nhead(admit_wk)\n\n\n\n# A tibble: 6 × 2\n  week_start     n\n  &lt;date&gt;     &lt;int&gt;\n1 2021-12-27    51\n2 2022-01-03   178\n3 2022-01-10   197\n4 2022-01-17   231\n5 2022-01-24   190\n6 2022-01-31   178\n\n\n\nMight run SD model in weeks or months - e.g. months for care homes Use lubridate to create new variable with start date of week/month/year etc"
+    "text": "Longer Time Periods - flows\nUse lubridate::floor_date to generate the date at start of week/month\n\nadmit_wk &lt;- spell_dates |&gt; \n  mutate(week_start = floor_date(\n    date_admit, unit = \"week\", week_start = 1   # start week on Monday\n  )) |&gt; \n  count(week_start)     # could add other parameters such as provider code, TFC etc\n\nhead(admit_wk)\n\n\n\n# A tibble: 6 × 2\n  week_start     n\n  &lt;date&gt;     &lt;int&gt;\n1 2021-12-27    59\n2 2022-01-03   206\n3 2022-01-10   188\n4 2022-01-17   192\n5 2022-01-24   215\n6 2022-01-31   178\n\n\n\nMight run SD model in weeks or months - e.g. months for care homes Use lubridate to create new variable with start date of week/month/year etc"
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods---occupancy",
@@ -2188,14 +2195,14 @@
     "href": "presentations/2023-08-23_nhs-r_unit-testing/index.html#and-create-our-first-test-5",
     "title": "Unit testing in R",
     "section": "… and create our first test",
-    "text": "… and create our first test\n\ntest_that(\"my_function correctly divides values\", {\n  expect_equal(\n    my_function(4, 2),\n    2\n  )\n  expect_equal(\n    my_function(1, 4),\n    0.25\n  )\n  expect_equal(\n    my_function(c(4, 1), c(2, 4)),\n    c(2, 0.25)\n  )\n})\n\nTest passed 🎊"
+    "text": "… and create our first test\n\ntest_that(\"my_function correctly divides values\", {\n  expect_equal(\n    my_function(4, 2),\n    2\n  )\n  expect_equal(\n    my_function(1, 4),\n    0.25\n  )\n  expect_equal(\n    my_function(c(4, 1), c(2, 4)),\n    c(2, 0.25)\n  )\n})\n\nTest passed 😸"
   },
   {
     "objectID": "presentations/2023-08-23_nhs-r_unit-testing/index.html#other-expect_-functions",
     "href": "presentations/2023-08-23_nhs-r_unit-testing/index.html#other-expect_-functions",
     "title": "Unit testing in R",
     "section": "other expect_*() functions…",
-    "text": "other expect_*() functions…\n\ntest_that(\"my_function correctly divides values\", {\n  expect_lt(\n    my_function(4, 2),\n    10\n  )\n  expect_gt(\n    my_function(1, 4),\n    0.2\n  )\n  expect_length(\n    my_function(c(4, 1), c(2, 4)),\n    2\n  )\n})\n\nTest passed 🥳\n\n\n\n{testthat} documentation"
+    "text": "other expect_*() functions…\n\ntest_that(\"my_function correctly divides values\", {\n  expect_lt(\n    my_function(4, 2),\n    10\n  )\n  expect_gt(\n    my_function(1, 4),\n    0.2\n  )\n  expect_length(\n    my_function(c(4, 1), c(2, 4)),\n    2\n  )\n})\n\nTest passed 🌈\n\n\n\n{testthat} documentation"
   },
   {
     "objectID": "presentations/2023-08-23_nhs-r_unit-testing/index.html#arrange-act-assert",
@@ -2237,14 +2244,14 @@
     "href": "presentations/2023-08-23_nhs-r_unit-testing/index.html#tolerance-to-the-rescue",
     "title": "Unit testing in R",
     "section": "Tolerance to the rescue 🙂",
-    "text": "Tolerance to the rescue 🙂\n\ntest_that(\"my_function works\", {\n  # arrange\n  x &lt;- 5\n  y &lt;- 7\n  expected &lt;- 0.714285\n\n  # act\n  actual &lt;- my_function(x, y)\n\n  # assert\n  expect_equal(actual, expected, tolerance = 1e-6)\n})\n\nTest passed 🎉\n\n\n\n(this is a slightly artificial example, usually the default tolerance is good enough)"
+    "text": "Tolerance to the rescue 🙂\n\ntest_that(\"my_function works\", {\n  # arrange\n  x &lt;- 5\n  y &lt;- 7\n  expected &lt;- 0.714285\n\n  # act\n  actual &lt;- my_function(x, y)\n\n  # assert\n  expect_equal(actual, expected, tolerance = 1e-6)\n})\n\nTest passed 🌈\n\n\n\n(this is a slightly artificial example, usually the default tolerance is good enough)"
   },
   {
     "objectID": "presentations/2023-08-23_nhs-r_unit-testing/index.html#testing-edge-cases",
     "href": "presentations/2023-08-23_nhs-r_unit-testing/index.html#testing-edge-cases",
     "title": "Unit testing in R",
     "section": "Testing edge cases",
-    "text": "Testing edge cases\n\n\nRemember the validation steps we built into our function to handle edge cases?\n\nLet’s write tests for these edge cases:\nwe expect errors\n\n\ntest_that(\"my_function works\", {\n  expect_error(my_function(5, 0))\n  expect_error(my_function(\"a\", 3))\n  expect_error(my_function(3, \"a\"))\n  expect_error(my_function(1:2, 4))\n})\n\nTest passed 😀"
+    "text": "Testing edge cases\n\n\nRemember the validation steps we built into our function to handle edge cases?\n\nLet’s write tests for these edge cases:\nwe expect errors\n\n\ntest_that(\"my_function works\", {\n  expect_error(my_function(5, 0))\n  expect_error(my_function(\"a\", 3))\n  expect_error(my_function(3, \"a\"))\n  expect_error(my_function(1:2, 4))\n})\n\nTest passed 🌈"
   },
   {
     "objectID": "presentations/2023-08-23_nhs-r_unit-testing/index.html#another-simple-example",
@@ -2258,7 +2265,7 @@
     "href": "presentations/2023-08-23_nhs-r_unit-testing/index.html#another-simple-example-1",
     "title": "Unit testing in R",
     "section": "Another (simple) example",
-    "text": "Another (simple) example\n\nmy_new_function &lt;- function(x, y) {\n  if (x &gt; y) {\n    \"x\"\n  } else {\n    \"y\"\n  }\n}\n\n\n\ntest_that(\"it returns 'x' if x is bigger than y\", {\n  expect_equal(my_new_function(4, 3), \"x\")\n})\n\nTest passed 😀\n\ntest_that(\"it returns 'y' if y is bigger than x\", {\n  expect_equal(my_new_function(3, 4), \"y\")\n  expect_equal(my_new_function(3, 3), \"y\")\n})\n\nTest passed 😸"
+    "text": "Another (simple) example\n\nmy_new_function &lt;- function(x, y) {\n  if (x &gt; y) {\n    \"x\"\n  } else {\n    \"y\"\n  }\n}\n\n\n\ntest_that(\"it returns 'x' if x is bigger than y\", {\n  expect_equal(my_new_function(4, 3), \"x\")\n})\n\nTest passed 🎉\n\ntest_that(\"it returns 'y' if y is bigger than x\", {\n  expect_equal(my_new_function(3, 4), \"y\")\n  expect_equal(my_new_function(3, 3), \"y\")\n})\n\nTest passed 🥳"
   },
   {
     "objectID": "presentations/2023-08-23_nhs-r_unit-testing/index.html#how-to-design-good-tests",

@@ -253,7 +253,7 @@ To access data on SharePoint, follow these steps:
     b. `SP_FILE_PATH`: the full file path from below the `Documents/` folder to the file itself, including the file type extension. 
 5. Save and close the `.Renviron` file then either restart your R session (CTRL + Shift + F10 on Windows machines) or run `r readRenviron(".Renviron")` to make the new variables available in your session.
 
-5.  Use the code below to read in an Excel file (xlsx) into R memory.
+5. Use the code below to read in an Excel file (xlsx) into R memory, or adapt it to read other file types.
 
 ```{r}
 #| eval: false

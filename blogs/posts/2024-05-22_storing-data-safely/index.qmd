@@ -248,7 +248,10 @@ To access data on SharePoint, follow these steps:
 
 3.  Open your environment file, which you can do by running `r file.edit("~/.Renviron")` within the RStudio console area.
 
-4.  Save two new environment variables; one is the name of the site (i.e. the name at the top of the browser screen), and the other is the full file path from below the 'Documents' folder to the file itself, including the file type extension. Save and close the .Renviron file then restart your R session (CTRL \> Shift \> F10 on Windows machines)
+4. Save two new environment variables to the `.Renviron` file:
+    a. `SP_SITE_NAME`: the name of the site (i.e. the name at the top of the browser screen)
+    b. `SP_FILE_PATH`: the full file path from below the `Documents/` folder to the file itself, including the file type extension. 
+5. Save and close the `.Renviron` file then either restart your R session (CTRL + Shift + F10 on Windows machines) or run `r readRenviron(".Renviron")` to make the new variables available in your session.
 
 5.  Use the code below to read in an Excel file (xlsx) into R memory.
 

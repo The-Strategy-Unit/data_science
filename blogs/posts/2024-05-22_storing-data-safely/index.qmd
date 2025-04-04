@@ -246,12 +246,12 @@ To access data on SharePoint, follow these steps:
 
 ![](Follow.jpg){fig-alt="A screenshot of the upper-right corner of a SharePoint site in a web browser, highlighting a star-shaped toggle labelled 'follow'."}
 
-3. Open (or create) your project's `.Renviron` file, used for [storing environmental variables](https://docs.posit.co/ide/user/ide/guide/environments/r/managing-r.html#renviron). You can do this by running `r usethis::edit_r_environ()` from the R console.
+3. Open (or create) your project's `.Renviron` file, used for [storing environmental variables](https://docs.posit.co/ide/user/ide/guide/environments/r/managing-r.html#renviron). You can do this by running `usethis::edit_r_environ()` from the R console.
 
 4. Save two new environment variables to the `.Renviron` file:
     a. `SP_SITE_NAME`: the name of the site (i.e. the name at the top of the browser screen)
     b. `SP_FILE_PATH`: the full file path from below the `Documents/` folder to the file itself, including the file type extension. 
-5. Save and close the `.Renviron` file then either restart your R session (CTRL + Shift + F10 on Windows machines) or run `r readRenviron(".Renviron")` to make the new variables available in your session.
+5. Save and close the `.Renviron` file then either restart your R session (CTRL + Shift + F10 on Windows machines) or run `readRenviron(".Renviron")` to make the new variables available in your session.
 
 5. Use the code below to read in an Excel file (xlsx) into R memory, or adapt it to read other file types.
 

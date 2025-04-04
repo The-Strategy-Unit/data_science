@@ -244,7 +244,7 @@ To access data on SharePoint, follow these steps:
 
 2. Click the small star in the top right corner of the window, labelled 'Follow'.
 
-![](Follow.jpg)
+![](Follow.jpg){fig-alt="A screenshot of the upper-right corner of a SharePoint site in a web browser, highlighting a star-shaped toggle labelled 'follow'."}
 
 3.  Open your environment file, which you can do by running `r file.edit("~/.Renviron")` within the RStudio console area.
 

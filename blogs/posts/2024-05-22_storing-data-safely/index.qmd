@@ -236,7 +236,7 @@ We didn't cover this in the presentation, so it's not in the slides, but the cod
 
 SharePoint is a Microsoft product, which is a content/knowledge management tool. Many teams across the NHS use SharePoint for all sorts of file types that need to be preserved or shared within and between teams, but also need to be kept secure.
 
-Accessing SharePoint requires user authentication, which also needs to happen when reading data into R from SharePoint. Before you can access SharePoint content from a site, you first need to 'follow' that site.
+Accessing SharePoint requires user authentication, which you'll be prompted for in the browser when you try to access SharePoint from R. Note that you must 'follow' a SharePoint site before you can fetch its content.
 
 To access data on SharePoint,follow these steps:
 

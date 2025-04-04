@@ -1,11 +1,18 @@
+---
+editor: 
+  markdown: 
+    wrap: sentence
+---
+
 # Using Git and GitHub
 
 ::: {.callout-important appearance="default" icon="true"}
 **Never** push to the `main` branch!
-Code must always be reviewed first. 
+Code must always be reviewed first.
 :::
 
 ## Workflow with Git and GitHub
+
 
 ### Create an issue
 
@@ -15,11 +22,30 @@ Issues help to keep track of both the work to be done, and the work that has bee
 You should ensure that the issue is as detailed as possible as it may need to be picked up by someone else.
 Even if only you intend to work on the issue, over time it can be easy to forget things if there isn't enough information.
 They can also help you to remember what changes you have made to your code, and why you had to make these changes, which can be useful if you need to provide change logs when you release your code.
+You could even attach screenshots or other images that help explain the problem and anything you've tried in the past that hasn't worked out.
+If you can, try to provide a reproducible example ('reprex'), perhaps by using [the {reprex} R package](https://reprex.tidyverse.org/).
 
 ::: aside
 Issues are a good record to explain what a PR is for.
 It's also a useful area for input from other members of the team.
 :::
+
+### Obtain the code
+
+To contribute to someone else's code, you will first need to clone a copy of their repository onto your computer.
+You can do this by first obtaining the URL of the repository of interest, by clicking the green 'Code' button on the top right of the repository home page.
+
+![](Code_button.jpg){fig-alt="Screenshot of GitHub with the green repository code button circled in red."}
+
+Using the command line, Git Bash, the RStudio terminal or another shell script program,
+navigate to the location you'd like the files stored in, then run:
+
+```
+git clone https://github.com/<user or org name>/<repository name>.git
+```
+
+You can then use file explorer (if on Windows) to navigate to the R project folder
+within the files you've cloned, and open it to begin working with the code.
 
 ### Create a branch
 
@@ -51,9 +77,8 @@ When you think that your changes are ready to be merged, it's time to create a P
 
 When you create a PR, you must do two things:
 
-1.  Immediately make someone an assignee - this is the person who will merge the PR.
-    Typically, this should be the person creating the PR (you)
-2.  Select a person (or people) to review the PR
+1.  Immediately make someone an assignee - this is the person who will merge the PR. Typically, this should be the person creating the PR (you)
+2.  Select a person (or people) to review the PR (if the repository is open and has a CODEOWNERS file, then the users named in that file will be automatically assigned as reviewers)
 
 If your code is not yet ready to be merged then you should use a draft PR.
 
@@ -107,15 +132,19 @@ Each of the team's repositories should have two assigned roles: owner and deputy
 The owner is likely to be the person who created the repository and/or has good knowledge of its content.
 The responsibility of the owner is to:
 
-* have overall responsibility for quality
-* triage issues, label them (especially 'bug' and 'must') and put into milestones
-* tag and release the code and, if relevant, deploy it
-* bring important issues to sprint by adding to backlog
-* define how PRs are reviewed (e.g. issue/PR templates, CI Actions) and that they are reviewed
-* ensure adequate testing is in place 
-* add and maintain the [CODEOWNERS file](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners)
+-   have overall responsibility for quality
+-   triage issues, label them (especially 'bug' and 'must') and put into milestones
+-   tag and release the code and, if relevant, deploy it
+-   bring important issues to sprint by adding to backlog
+-   define how PRs are reviewed (e.g. issue/PR templates, CI Actions) and that they are reviewed
+-   ensure adequate testing is in place
+-   add and maintain the [CODEOWNERS file](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners)
 
 The deputy should perform these duties in the absence of the owner and provide updates to the owner on their return.
+
+### Template repository
+
+The Data Science team at The Strategy Unit maintain [a template repository](https://github.com/The-Strategy-Unit/template-repository) that contains the minimum set of files and basic structure needed to ensure organisational consistency in repository management. You are welcome to view, clone, copy or reuse the template as you see fit.
 
 ## Further reading
 

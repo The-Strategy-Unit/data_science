@@ -73,7 +73,7 @@ All of your commits should be in branches, the only changes that are made to the
 
 When you think that your changes are ready to be merged, it's time to create a PR and request a code review.
 
-## Reviewing a PR
+## Creating and reviewing PRs
 
 When you create a PR, you must do two things:
 

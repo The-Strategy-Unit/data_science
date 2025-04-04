@@ -260,9 +260,8 @@ To access data on SharePoint, follow these steps:
 #| echo: true
 
 # Read in the securely saved path and site variables
-sharepoint_site <- Sys.getenv("SITE_NAME")
-
-template_path <- Sys.getenv("PATH_TO_FILE.xlsx")
+sharepoint_site <- Sys.getenv("SP_SITE_NAME")
+template_path <- Sys.getenv("SP_FILE_PATH")
 
 # access the dataset and save it into a temporary file
 site <- Microsoft365R::get_sharepoint_site(sharepoint_site)

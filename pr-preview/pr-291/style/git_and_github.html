@@ -208,6 +208,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#workflow-with-git-and-github" id="toc-workflow-with-git-and-github" class="nav-link" data-scroll-target="#workflow-with-git-and-github">Workflow with Git and GitHub</a>
   <ul class="collapse">
   <li><a href="#create-an-issue" id="toc-create-an-issue" class="nav-link" data-scroll-target="#create-an-issue">Create an issue</a></li>
+  <li><a href="#obtain-the-code" id="toc-obtain-the-code" class="nav-link" data-scroll-target="#obtain-the-code">Obtain the code</a></li>
   <li><a href="#create-a-branch" id="toc-create-a-branch" class="nav-link" data-scroll-target="#create-a-branch">Create a branch</a></li>
   </ul></li>
   <li><a href="#reviewing-a-pr" id="toc-reviewing-a-pr" class="nav-link" data-scroll-target="#reviewing-a-pr">Reviewing a PR</a>
@@ -215,7 +216,10 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#reviewing-methodology" id="toc-reviewing-methodology" class="nav-link" data-scroll-target="#reviewing-methodology">Reviewing methodology</a></li>
   </ul></li>
   <li><a href="#preparing-a-package-release-of-your-code" id="toc-preparing-a-package-release-of-your-code" class="nav-link" data-scroll-target="#preparing-a-package-release-of-your-code">Preparing a package release of your code</a></li>
-  <li><a href="#repository-organisation" id="toc-repository-organisation" class="nav-link" data-scroll-target="#repository-organisation">Repository organisation</a></li>
+  <li><a href="#repository-organisation" id="toc-repository-organisation" class="nav-link" data-scroll-target="#repository-organisation">Repository organisation</a>
+  <ul class="collapse">
+  <li><a href="#template-repository" id="toc-template-repository" class="nav-link" data-scroll-target="#template-repository">Template repository</a></li>
+  </ul></li>
   <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further reading</a></li>
   </ul></li>
   </ul>
@@ -247,11 +251,19 @@ Important
 <section id="create-an-issue" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="create-an-issue">Create an issue</h3>
 <p>If you haven’t already, file an issue that describes what you are doing - whether it be fixing a bug, adding a feature, or something else. Issues help to keep track of both the work to be done, and the work that has been done.</p>
-<p>You should ensure that the issue is as detailed as possible as it may need to be picked up by someone else. Even if only you intend to work on the issue, over time it can be easy to forget things if there isn’t enough information. They can also help you to remember what changes you have made to your code, and why you had to make these changes, which can be useful if you need to provide change logs when you release your code.</p>
+<p>You should ensure that the issue is as detailed as possible as it may need to be picked up by someone else. Even if only you intend to work on the issue, over time it can be easy to forget things if there isn’t enough information. They can also help you to remember what changes you have made to your code, and why you had to make these changes, which can be useful if you need to provide change logs when you release your code. You could even attach screenshots or other images that help explain the problem and anything you’ve tried in the past that hasn’t worked out. If you can, try to provide a reproducible example (‘reprex’), perhaps by using <a href="https://reprex.tidyverse.org/">the {reprex} R package</a>.</p>
 
 <div class="no-row-height column-margin column-container"><div class="margin-aside">
 <p>Issues are a good record to explain what a PR is for. It’s also a useful area for input from other members of the team.</p>
 </div></div></section>
+<section id="obtain-the-code" class="level3">
+<h3 class="anchored" data-anchor-id="obtain-the-code">Obtain the code</h3>
+<p>To contribute to someone else’s code, you will first need to clone a copy of their repository onto your computer. You can do this by first obtaining the URL of the repository of interest, by clicking the green ‘Code’ button on the top right of the repository home page.</p>
+<p><img src="Code_button.jpg" class="img-fluid" alt="Screenshot of GitHub with the green repository code button circled in red."></p>
+<p>Using the command line, Git Bash, the RStudio terminal or another shell script program, navigate to the location you’d like the files stored in, then run:</p>
+<pre><code>git clone https://github.com/&lt;user or org name&gt;/&lt;repository name&gt;.git</code></pre>
+<p>You can then use file explorer (if on Windows) to navigate to the R project folder within the files you’ve cloned, and open it to begin working with the code.</p>
+</section>
 <section id="create-a-branch" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="create-a-branch">Create a branch</h3>
 <p>Once the issue is created and you have decided that you are going to work on it, first assign yourself to the issue in GitHub. This is an indication to others and helps to prevent multiple people from independently working on the same issue.</p>
@@ -282,7 +294,7 @@ Important
 <p>When you create a PR, you must do two things:</p>
 <ol type="1">
 <li>Immediately make someone an assignee - this is the person who will merge the PR. Typically, this should be the person creating the PR (you)</li>
-<li>Select a person (or people) to review the PR</li>
+<li>Select a person (or people) to review the PR (if the repository is open and has a CODEOWNERS file, then the users named in that file will be automatically assigned as reviewers)</li>
 </ol>
 <p>If your code is not yet ready to be merged then you should use a draft PR.</p>
 
@@ -338,6 +350,10 @@ Important
 <li>add and maintain the <a href="https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners">CODEOWNERS file</a></li>
 </ul>
 <p>The deputy should perform these duties in the absence of the owner and provide updates to the owner on their return.</p>
+<section id="template-repository" class="level3">
+<h3 class="anchored" data-anchor-id="template-repository">Template repository</h3>
+<p>The Data Science team at The Strategy Unit maintain <a href="https://github.com/The-Strategy-Unit/template-repository">a template repository</a> that contains the minimum set of files and basic structure needed to ensure organisational consistency in repository management. You are welcome to view, clone, copy or reuse the template as you see fit.</p>
+</section>
 </section>
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further reading</h2>

@@ -238,7 +238,7 @@ SharePoint is a Microsoft product, which is a content/knowledge management tool.
 
 Accessing SharePoint requires user authentication, which you'll be prompted for in the browser when you try to access SharePoint from R. Note that you must 'follow' a SharePoint site before you can fetch its content.
 
-To access data on SharePoint,follow these steps:
+To access data on SharePoint, follow these steps:
 
 1.  Navigate to the SharePoint page that has the file of interest in it, using your browser.
 

@@ -240,7 +240,7 @@ Accessing SharePoint requires user authentication, which you'll be prompted for 
 
 To access data on SharePoint, follow these steps:
 
-1.  Navigate to the SharePoint page that has the file of interest in it, using your browser.
+1. Navigate to the SharePoint page that has the file of interest in it, using your browser.
 
 2. Click the small star in the top right corner of the window, labelled 'Follow'.
 

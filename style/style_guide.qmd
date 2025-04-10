@@ -21,8 +21,8 @@ starwars |>
 
 EXAMPLE B:
 ```
-starwars |>
-  mutate(
+dplyr::starwars |>
+  dplyr::mutate(
     height_cm = height,
     name_copy = name
   )

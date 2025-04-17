@@ -5,7 +5,9 @@ organisation.
 
 [su_gh]: https://github.com/the-strategy-unit.
 
-Ideally, any data that is used within the project should be part of a targets pipeline.
+Ideally, any data that is used within the project should be part of a pipeline, whether in {targets} or on Databricks.
+
+See the [Storing Data Safely blog post](../blogs/posts/2024-05-22_storing-data-safely/index.qmd) for details of how to use Azure and Sharepoint for data storage.
 
 There are a number of considerations about whether to add the data to version control or not. At a high level:
 

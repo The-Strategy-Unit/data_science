@@ -45,6 +45,7 @@ Per repository, you can run `git add --renormalize .` to fix line endings.
 
 ## Additional assorted notes on style 😎
 
+* Our preferred date format is [ISO](https://www.iso.org/iso-8601-date-and-time-format.html): YYYY-MM-DD
 * Favour Quarto (`.qmd` files) over R Markdown (`.Rmd`) for document production.
 * Use Git for *all* projects and GitHub as the remote home for of all of the project code.
 * Use the Reproducible Analytical Pipelines (RAP) approach wherever possible.

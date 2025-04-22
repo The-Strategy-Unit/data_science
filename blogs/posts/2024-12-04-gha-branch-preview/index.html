@@ -209,6 +209,8 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<pre class="{r lockfile}"><code>#| include: FALSE
+renv::use(lockfile = "renv.lock")</code></pre>
 <p>When reviewing a pull request (PR) for a Quarto website, it’s good practice to check the rendered output, as well as the code. This is useful for ensuring that the changes look as expected, for example, ensuring that bullet points have rendered correctly, or that images are well sized.</p>
 <p>However, it’s a pain for the reviewer to clone the repository and render the Quarto site locally just to check it looks correct. Wouldn’t it be nice if when the PR was created, you automatically got a deployed version of your changes to look at?</p>
 <p>Other development platforms like <a href="https://docs.netlify.com/site-deploys/deploy-previews/">Netlify</a> and <a href="https://vercel.com/docs/deployments/preview-deployments">Vercel</a> have offered deploy previews for a while, and although these are free for individual users in public repos they aren’t free for organisations.</p>

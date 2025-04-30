@@ -78,9 +78,10 @@ First, we need to create a [JSON Web Token (JWT)][jwt] issued by our app (using 
 
 #' Get GitHub JWT for an Application
 #'
-#' @param key Path to the private key file or a string containing the private key. Defaults to
-#'   the environment variable `GITHUB_APP_PRIVATE_KEY`.
-#' @param app_id GitHub App ID. Defaults to the environment variable `GITHUB_APP_ID`.
+#' @param key Path to the private key file or a string containing the private
+#'     key. Defaults to the environment variable `GITHUB_APP_PRIVATE_KEY`.
+#' @param app_id GitHub App ID. Defaults to the environment variable
+#'     `GITHUB_APP_ID`.
 #' @param expiry_time Expiry time for the JWT in seconds. Defaults to 30s.
 #'
 #' @return A JSON Web Token (JWT) for the GitHub App.
@@ -114,9 +115,12 @@ Instead, we’ll use the API and our JWT to fetch it. Since we created the app a
 
 #' Get GitHub PAT from Installation Access Token
 #'
-#' @param jwt JSON Web Token (JWT) for the GitHub App. Defaults to the output of `get_github_jwt()`.
-#' @param installation_id GitHub Installation ID. Defaults to the environment variable
-#' @param github_api_ep The base URL for the GitHub API. Defaults to "https://api.github.com/".
+#' @param jwt JSON Web Token (JWT) for the GitHub App. Defaults to the output of
+#'     `get_github_jwt()`.
+#' @param installation_id GitHub Installation ID. Defaults to the environment
+#'     variable
+#' @param github_api_ep The base URL for the GitHub API. Defaults to
+#'     "https://api.github.com/".
 #'
 #' @return A personal access token (PAT) with permissions granted to the app.
 get_github_app_installation_id <- function(
@@ -150,9 +154,12 @@ We're now ready to generate the token we'll use for API requests.
 
 #' Get GitHub PAT from Installation Access Token
 #'
-#' @param jwt JSON Web Token (JWT) for the GitHub App. Defaults to the output of `get_github_jwt()`.
-#' @param installation_id GitHub Installation ID. Defaults to the output of `get_github_app_installation_id()`.
-#' @param github_api_ep The base URL for the GitHub API. Defaults to "https://api.github.com/".
+#' @param jwt JSON Web Token (JWT) for the GitHub App. Defaults to the output of
+#'     `get_github_jwt()`.
+#' @param installation_id GitHub Installation ID. Defaults to the output of
+#'     get_github_app_installation_id()`.
+#' @param github_api_ep The base URL for the GitHub API. Defaults to
+#'     "https://api.github.com/".
 #'
 #' @return A personal access token (PAT) with permissions granted to the app.
 get_github_iat_pat <- function(
@@ -193,9 +200,10 @@ We need to keep in mind that the API returns a maximum of 100 items per page. Fo
 #' Get GitHub Repositories for an organisation
 #'
 #' @param org The name of the GitHub organisation.
-#' @param pat Personal Access Token (PAT) for authentication. Defaults to the output of
-#'   `get_github_iat_pat()`.
-#' @param github_api_ep The base URL for the GitHub API. Defaults to "https://api.github.com/".
+#' @param pat Personal Access Token (PAT) for authentication. Defaults to the
+#'     output of `get_github_iat_pat()`.
+#' @param github_api_ep The base URL for the GitHub API. Defaults to
+#'     "https://api.github.com/".
 get_repos <- function(
     org,
     pat = get_github_iat_pat(),
@@ -223,9 +231,10 @@ get_repos <- function(
       sort = "created"
     )
 
-  # because the API will only return a maximum of 100 items at a time, we need to query multiple times for each page
-  # of results. httr2 makes this super easy, as the GitHub api returns page links in the Link header as per RFC8288
-  #  https://datatracker.ietf.org/doc/html/rfc8288
+  # because the API will only return a maximum of 100 items at a time, we need
+  # to query multiple times for each page of results.
+  # {httr2} makes this super easy, as the GitHub api returns page links in the
+  # Link header as per RFC8288  (https://datatracker.ietf.org/doc/html/rfc8288)
   resps <- httr2::req_perform_iterative(
     req,
     next_req = httr2::iterate_with_link_url(rel = "next")
@@ -234,7 +243,8 @@ get_repos <- function(
   # ensure that we got a non-error response for each request
   purrr::walk(resps, httr2::resp_check_status)
 
-  # get the data from each response, iterate over them and just extract the "name" field that is returned for each item
+  # get the data from each response, iterate over them and just extract the
+  # "name" field that is returned for each item
   resps |>
     httr2::resps_data(httr2::resp_body_json) |>
     purrr::map_chr("name")

@@ -13,14 +13,13 @@ execute:
   enabled: false
 ---
 
-Recently, we have been looking to build an internal dashboard to monitor the repositories in our GitHub organiation.
-The intention is to perform various check, like each repo has a [CODEOWNERS][codeowners] file.
+Recently, we've been working on building an internal dashboard to monitor the repositories in our GitHub organisation.
+The intention is to perform various checks, such as ensuring each repo has a [CODEOWNERS][codeowners] file.
 
-GitHub has a [REST API][github_api] that can do all of the stuff we intend to do, but we hit a bit of a snag early on.
-What we want is for this to be a dashboard that updates itself on our [Posit Connect][connect] server, but
-authenticating with the GitHub API requires a [Personal Access Token (PAT)][pat].
+GitHub has a [REST API][github_api] that can do all of the things we need, but we hit a bit of a snag early on.
+We want this dashboard to update itself on our [Posit Connect][connect] server—but authenticating with the GitHub API requires a [Personal Access Token (PAT)][pat].
 
-PATs are great, but these are managed by a user, not an organisation, and ideally should be short lived and expire.
+PATs are useful, but they're managed by a user (not an organisation), and ideally should be short-lived and expire regularly.
 
 What we really need is a more robust way of authenticating with GitHub.
 
@@ -38,45 +37,40 @@ What we really need is a more robust way of authenticating with GitHub.
 
 [About GitHub Apps][github_app].
 
-This sounds ideal, right? And it turns out it's pretty easy to create your own app too! Well, there's a few steps, and
-there's a bit of boiler plate code to write, but I'll get to that later.
+Sounds ideal, right? And it turns out it’s pretty easy to create your own app too!
+Well, there are a few steps, and a bit of boilerplate code to write, but I'll get to that later.
 
-If you poke around on that link you will find all of the details that you need in order to create your own, but I will
-quickly note the steps I took below.
+If you explore that link, you’ll find all the details needed to create your own app—but I'll quickly note the steps I took below.
 
-### Creating the app
+### Creating the App
 
-1. go to the settings page of your organisation on GitHub
-2. at the bottom of the left hand navigation, find "Developer settings" and choose "GitHub Apps"
-3. Click the "New GitHub App" button
-4. Give it a name (I named it after our project, Strategy Unit GitHub Dashboard)
-5. For the Homepage URL I set it to where we are going to deploy our app
-6. Skip down to Webhook, and uncheck the "Active" checkbox
-7. Give the app the minimum amount of permissions you need. In my case, I gave repository metadata read access and that
-   was it. We can always grant more access later as needed.
-8. Leave the "Where can this GitHub App be Installed?" as "Only on this account".
-9. Click "Create GitHub App".
-10. On the newly created app, you should havee a small menu to the left, with "Install App" near the botttom. Use that
-    to install the app into your organisation
-11. Back on the apps setttings page, you should see the "App ID" near the top. Make note of this
-12. At the bottom of the apps settings page, you should see a button to "Generate a private key". Press this and it will
-    download the private key for use later
+1. Go to your organisation's **Settings** page on GitHub.
+2. At the bottom of the left-hand navigation, find **Developer settings** and choose **GitHub Apps**.
+3. Click the **New GitHub App** button.
+4. Give it a name (I named ours "Strategy Unit GitHub Dashboard").
+5. For the Homepage URL, set it to where the app will be deployed.
+6. Skip down to **Webhook** and uncheck the **Active** checkbox.
+7. Grant the app only the minimum permissions required. In my case, I gave **repository metadata** read access—additional permissions can be granted later if needed.
+8. Leave **Where can this GitHub App be Installed?** set to **Only on this account**.
+9. Click **Create GitHub App**.
+10. On the newly created app page, a small menu should appear on the left with **Install App** near the bottom. Use that to install the app into your organisation.
+11. Back on the app’s settings page, note the **App ID** near the top.
+12. At the bottom of the settings page, click **Generate a private key**—this will download a private key for later use.
 
-### Using the app
+### Using the App
 
-We are now in a position to use the app to authenticate with the GitHub API, but in order to perform requests to get a
-lits of the repositories (for example) we still need a PAT.
+We can now use the app to authenticate with the GitHub API. But to perform requests—like listing repositories—we still need a token.
 
 *Wait, I thought we were trying to avoid using PATs?*
 
-Well... yes, we will use the created app to generate a PAT for us to use though! I'll outline the workflow and show how
-you can create the PAT using R and the `{httr2}` package.
+Well… yes. But we'll use the GitHub App to generate a PAT for us!  
+Let me outline the workflow and show how to generate the token using R and the `{httr2}` package.
 
-If you haven't yet used `{httr2}`, the final code example includes more comments to explain whats going on.
+If you haven't used `{httr2}` before, the final code example includes extra comments explaining what's going on.
 
 #### 1. Generate a JWT
 
-First, we need to create a [JSON Web Token (JWT)][jwt] issued by our app (using the app id and private key from above).
+First, we need to create a [JSON Web Token (JWT)][jwt] issued by our app (using the App ID and private key from earlier):
 
 ```{r}
 #| code-fold: true
@@ -109,15 +103,10 @@ get_github_jwt <- function(
 
 #### 2. Get the Installation ID for the App
 
-You need to find the applications intallation ID.
+Next, we need the App's installation ID.
 
-You can do this by clicking around in your organisations settings page and looking at the installed apps, finding the
-app we just created. Clicking on that will take you to the page for your apps installation, the installation id is the
-number displayed at the end of that pages URL.
-
-That's a bit cumbersome, so we can instead use the API and the JWT to find this id instead. We make an assumption: as we
-created the app, and locked it down so it can only be installed in our organisation, there will only ever be one
-installation.
+You could find it manually via your organisation’s settings page under Installed Apps, but that’s cumbersome.
+Instead, we’ll use the API and our JWT to fetch it. Since we created the app and restricted installation to our org only, we can assume there’s just one installation.
 
 ```{r}
 #| code-fold: true
@@ -153,7 +142,7 @@ get_github_app_installation_id <- function(
 
 #### 3. Generate a PAT
 
-We are now in a position to generate the PAT we need.
+We're now ready to generate the token we'll use for API requests.
 
 ```{r}
 #| code-fold: true
@@ -193,10 +182,9 @@ get_github_iat_pat <- function(
 
 ## Putting it all together
 
-Now that we are able to get a PAT using our app, we can create a function which will query the list of repositories.
+Now that we can generate a token using our app, we can write a function to query the list of repositories.
 
-We need to be mindful that the API will only ever return up to 100 items at a time. Fortunately, the `{httr2}` package
-has some helper functions that make it super easy to query ever page of results.
+We need to keep in mind that the API returns a maximum of 100 items per page. Fortunately, `{httr2}` makes it easy to iterate through paginated responses.
 
 ```{r}
 #| code-fold: true
@@ -253,7 +241,7 @@ get_repos <- function(
 }
 ```
 
-All that remains would be to run the function.
+Finally, run the function like this:
 
 ```{r}
 #| code-fold: false

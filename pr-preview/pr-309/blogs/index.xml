@@ -21,9 +21,9 @@
 
 
 
-<p>Recently, we have been looking to build an internal dashboard to monitor the repositories in our GitHub organiation. The intention is to perform various check, like each repo has a <a href="https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners">CODEOWNERS</a> file.</p>
-<p>GitHub has a <a href="https://docs.github.com/en/rest">REST API</a> that can do all of the stuff we intend to do, but we hit a bit of a snag early on. What we want is for this to be a dashboard that updates itself on our <a href="https://posit.co/products/enterprise/connect/">Posit Connect</a> server, but authenticating with the GitHub API requires a <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens">Personal Access Token (PAT)</a>.</p>
-<p>PATs are great, but these are managed by a user, not an organisation, and ideally should be short lived and expire.</p>
+<p>Recently, we’ve been working on building an internal dashboard to monitor the repositories in our GitHub organisation. The intention is to perform various checks, such as ensuring each repo has a <a href="https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners">CODEOWNERS</a> file.</p>
+<p>GitHub has a <a href="https://docs.github.com/en/rest">REST API</a> that can do all of the things we need, but we hit a bit of a snag early on. We want this dashboard to update itself on our <a href="https://posit.co/products/enterprise/connect/">Posit Connect</a> server—but authenticating with the GitHub API requires a <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens">Personal Access Token (PAT)</a>.</p>
+<p>PATs are useful, but they’re managed by a user (not an organisation), and ideally should be short-lived and expire regularly.</p>
 <p>What we really need is a more robust way of authenticating with GitHub.</p>
 <section id="github-apps" class="level2">
 <h2 class="anchored" data-anchor-id="github-apps">GitHub Apps</h2>
@@ -36,34 +36,35 @@
 <p>…</p>
 </blockquote>
 <p><a href="https://docs.github.com/en/apps/creating-github-apps/about-creating-github-apps/about-creating-github-apps">About GitHub Apps</a>.</p>
-<p>This sounds ideal, right? And it turns out it’s pretty easy to create your own app too! Well, there’s a few steps, and there’s a bit of boiler plate code to write, but I’ll get to that later.</p>
-<p>If you poke around on that link you will find all of the details that you need in order to create your own, but I will quickly note the steps I took below.</p>
+<p>Sounds ideal, right? And it turns out it’s pretty easy to create your own app too! Well, there are a few steps, and a bit of boilerplate code to write, but I’ll get to that later.</p>
+<p>If you explore that link, you’ll find all the details needed to create your own app—but I’ll quickly note the steps I took below.</p>
 <section id="creating-the-app" class="level3">
-<h3 class="anchored" data-anchor-id="creating-the-app">Creating the app</h3>
+<h3 class="anchored" data-anchor-id="creating-the-app">Creating the App</h3>
 <ol type="1">
-<li>go to the settings page of your organisation on GitHub</li>
-<li>at the bottom of the left hand navigation, find “Developer settings” and choose “GitHub Apps”</li>
-<li>Click the “New GitHub App” button</li>
-<li>Give it a name (I named it after our project, Strategy Unit GitHub Dashboard)</li>
-<li>For the Homepage URL I set it to where we are going to deploy our app</li>
-<li>Skip down to Webhook, and uncheck the “Active” checkbox</li>
-<li>Give the app the minimum amount of permissions you need. In my case, I gave repository metadata read access and that was it. We can always grant more access later as needed.</li>
-<li>Leave the “Where can this GitHub App be Installed?” as “Only on this account”.</li>
-<li>Click “Create GitHub App”.</li>
-<li>On the newly created app, you should havee a small menu to the left, with “Install App” near the botttom. Use that to install the app into your organisation</li>
-<li>Back on the apps setttings page, you should see the “App ID” near the top. Make note of this</li>
-<li>At the bottom of the apps settings page, you should see a button to “Generate a private key”. Press this and it will download the private key for use later</li>
+<li>Go to your organisation’s <strong>Settings</strong> page on GitHub.</li>
+<li>At the bottom of the left-hand navigation, find <strong>Developer settings</strong> and choose <strong>GitHub Apps</strong>.</li>
+<li>Click the <strong>New GitHub App</strong> button.</li>
+<li>Give it a name (I named ours “Strategy Unit GitHub Dashboard”).</li>
+<li>For the Homepage URL, set it to where the app will be deployed.</li>
+<li>Skip down to <strong>Webhook</strong> and uncheck the <strong>Active</strong> checkbox.</li>
+<li>Grant the app only the minimum permissions required. In my case, I gave <strong>repository metadata</strong> read access—additional permissions can be granted later if needed.</li>
+<li>Leave <strong>Where can this GitHub App be Installed?</strong> set to <strong>Only on this account</strong>.</li>
+<li>Click <strong>Create GitHub App</strong>.</li>
+<li>On the newly created app page, a small menu should appear on the left with <strong>Install App</strong> near the bottom. Use that to install the app into your organisation.</li>
+<li>Back on the app’s settings page, note the <strong>App ID</strong> near the top.</li>
+<li>At the bottom of the settings page, click <strong>Generate a private key</strong>—this will download a private key for later use.</li>
 </ol>
 </section>
 <section id="using-the-app" class="level3">
-<h3 class="anchored" data-anchor-id="using-the-app">Using the app</h3>
-<p>We are now in a position to use the app to authenticate with the GitHub API, but in order to perform requests to get a lits of the repositories (for example) we still need a PAT.</p>
+<h3 class="anchored" data-anchor-id="using-the-app">Using the App</h3>
+<p>We can now use the app to authenticate with the GitHub API. But to perform requests—like listing repositories—we still need a token.</p>
 <p><em>Wait, I thought we were trying to avoid using PATs?</em></p>
-<p>Well… yes, we will use the created app to generate a PAT for us to use though! I’ll outline the workflow and show how you can create the PAT using R and the <code>{httr2}</code> package.</p>
-<p>If you haven’t yet used <code>{httr2}</code>, the final code example includes more comments to explain whats going on.</p>
+<p>Well… yes. But we’ll use the GitHub App to generate a PAT for us!<br>
+Let me outline the workflow and show how to generate the token using R and the <code>{httr2}</code> package.</p>
+<p>If you haven’t used <code>{httr2}</code> before, the final code example includes extra comments explaining what’s going on.</p>
 <section id="generate-a-jwt" class="level4">
 <h4 class="anchored" data-anchor-id="generate-a-jwt">1. Generate a JWT</h4>
-<p>First, we need to create a <a href="https://jwt.io/">JSON Web Token (JWT)</a> issued by our app (using the app id and private key from above).</p>
+<p>First, we need to create a <a href="https://jwt.io/">JSON Web Token (JWT)</a> issued by our app (using the App ID and private key from earlier):</p>
 <div class="cell">
 <details class="code-fold">
 <summary>show code for get_github_jwt()</summary>
@@ -164,9 +165,8 @@ font-style: inherit;">key =</span> private_key)</span>
 </section>
 <section id="get-the-installation-id-for-the-app" class="level4">
 <h4 class="anchored" data-anchor-id="get-the-installation-id-for-the-app">2. Get the Installation ID for the App</h4>
-<p>You need to find the applications intallation ID.</p>
-<p>You can do this by clicking around in your organisations settings page and looking at the installed apps, finding the app we just created. Clicking on that will take you to the page for your apps installation, the installation id is the number displayed at the end of that pages URL.</p>
-<p>That’s a bit cumbersome, so we can instead use the API and the JWT to find this id instead. We make an assumption: as we created the app, and locked it down so it can only be installed in our organisation, there will only ever be one installation.</p>
+<p>Next, we need the App’s installation ID.</p>
+<p>You could find it manually via your organisation’s settings page under Installed Apps, but that’s cumbersome. Instead, we’ll use the API and our JWT to fetch it. Since we created the app and restricted installation to our org only, we can assume there’s just one installation.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>show code for get_github_app_installation_id()</summary>
@@ -288,7 +288,7 @@ font-style: inherit;">"id"</span>]]</span>
 </section>
 <section id="generate-a-pat" class="level4">
 <h4 class="anchored" data-anchor-id="generate-a-pat">3. Generate a PAT</h4>
-<p>We are now in a position to generate the PAT we need.</p>
+<p>We’re now ready to generate the token we’ll use for API requests.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>show code for get_github_iat_pat()</summary>
@@ -424,8 +424,8 @@ font-style: inherit;">"token"</span>)</span>
 </section>
 <section id="putting-it-all-together" class="level2">
 <h2 class="anchored" data-anchor-id="putting-it-all-together">Putting it all together</h2>
-<p>Now that we are able to get a PAT using our app, we can create a function which will query the list of repositories.</p>
-<p>We need to be mindful that the API will only ever return up to 100 items at a time. Fortunately, the <code>{httr2}</code> package has some helper functions that make it super easy to query ever page of results.</p>
+<p>Now that we can generate a token using our app, we can write a function to query the list of repositories.</p>
+<p>We need to keep in mind that the API returns a maximum of 100 items per page. Fortunately, <code>{httr2}</code> makes it easy to iterate through paginated responses.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>show code for get_repos()</summary>
@@ -623,7 +623,7 @@ font-style: inherit;">"name"</span>)</span>
 <span id="cb4-49">}</span></code></pre></div>
 </details>
 </div>
-<p>All that remains would be to run the function.</p>
+<p>Finally, run the function like this:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
 background-color: null;

@@ -1,0 +1,276 @@
+---
+title: "Using GitHub Apps for Authentication"
+author:
+  - name: Thomas Jemmett
+    orcid: 0000-0002-6943-2990
+    email: thomas.jemmett@nhs.net
+    affiliation:
+      - name: The Strategy Unit, NHS MLCSU
+        url: https://strategyunitwm.nhs.uk/
+date: "2025-04-30"
+categories: [GitHub, learning, deployment]
+execute: 
+  enabled: false
+---
+
+Recently, we have been looking to build an internal dashboard to monitor the repositories in our GitHub organiation.
+The intention is to perform various check, like each repo has a [CODEOWNERS][codeowners] file.
+
+GitHub has a [REST API][github_api] that can do all of the stuff we intend to do, but we hit a bit of a snag early on.
+What we want is for this to be a dashboard that updates itself on our [Posit Connect][connect] server, but
+authenticating with the GitHub API requires a [Personal Access Token (PAT)][pat].
+
+PATs are great, but these are managed by a user, not an organisation, and ideally should be short lived and expire.
+
+What we really need is a more robust way of authenticating with GitHub.
+
+## GitHub Apps
+
+> A GitHub App is a type of integration that you can build to interact with and extend the functionality of GitHub.
+> You can build a GitHub App to provide flexibility and reduce friction in your processes, without needing to sign in a
+> user or create a service account.
+>
+> Common use cases for GitHub Apps include:
+>
+> * Automating tasks or background processes
+>
+> ...
+
+[About GitHub Apps][github_app].
+
+This sounds ideal, right? And it turns out it's pretty easy to create your own app too! Well, there's a few steps, and
+there's a bit of boiler plate code to write, but I'll get to that later.
+
+If you poke around on that link you will find all of the details that you need in order to create your own, but I will
+quickly note the steps I took below.
+
+### Creating the app
+
+1. go to the settings page of your organisation on GitHub
+2. at the bottom of the left hand navigation, find "Developer settings" and choose "GitHub Apps"
+3. Click the "New GitHub App" button
+4. Give it a name (I named it after our project, Strategy Unit GitHub Dashboard)
+5. For the Homepage URL I set it to where we are going to deploy our app
+6. Skip down to Webhook, and uncheck the "Active" checkbox
+7. Give the app the minimum amount of permissions you need. In my case, I gave repository metadata read access and that
+   was it. We can always grant more access later as needed.
+8. Leave the "Where can this GitHub App be Installed?" as "Only on this account".
+9. Click "Create GitHub App".
+10. On the newly created app, you should havee a small menu to the left, with "Install App" near the botttom. Use that
+    to install the app into your organisation
+11. Back on the apps setttings page, you should see the "App ID" near the top. Make note of this
+12. At the bottom of the apps settings page, you should see a button to "Generate a private key". Press this and it will
+    download the private key for use later
+
+### Using the app
+
+We are now in a position to use the app to authenticate with the GitHub API, but in order to perform requests to get a
+lits of the repositories (for example) we still need a PAT.
+
+*Wait, I thought we were trying to avoid using PATs?*
+
+Well... yes, we will use the created app to generate a PAT for us to use though! I'll outline the workflow and show how
+you can create the PAT using R and the `{httr2}` package.
+
+If you haven't yet used `{httr2}`, the final code example includes more comments to explain whats going on.
+
+#### 1. Generate a JWT
+
+First, we need to create a [JSON Web Token (JWT)][jwt] issued by our app (using the app id and private key from above).
+
+```{r}
+#| code-fold: true
+#| code-summary: show code for get_github_jwt()
+
+#' Get GitHub JWT for an Application
+#'
+#' @param key Path to the private key file or a string containing the private key. Defaults to
+#'   the environment variable `GITHUB_APP_PRIVATE_KEY`.
+#' @param app_id GitHub App ID. Defaults to the environment variable `GITHUB_APP_ID`.
+#' @param expiry_time Expiry time for the JWT in seconds. Defaults to 30s.
+#'
+#' @return A JSON Web Token (JWT) for the GitHub App.
+get_github_jwt <- function(
+    key = Sys.getenv("GITHUB_APP_PRIVATE_KEY"),
+    app_id = Sys.getenv("GITHUB_APP_ID"),
+    expiry_time = 30) {
+  private_key <- openssl::read_key(key)
+
+  now <- as.numeric(Sys.time())
+  claim <- httr2::jwt_claim(
+    iat = now,
+    exp = now + expiry_time,
+    iss = app_id
+  )
+
+  httr2::jwt_encode_sig(claim, key = private_key)
+}
+```
+
+#### 2. Get the Installation ID for the App
+
+You need to find the applications intallation ID.
+
+You can do this by clicking around in your organisations settings page and looking at the installed apps, finding the
+app we just created. Clicking on that will take you to the page for your apps installation, the installation id is the
+number displayed at the end of that pages URL.
+
+That's a bit cumbersome, so we can instead use the API and the JWT to find this id instead. We make an assumption: as we
+created the app, and locked it down so it can only be installed in our organisation, there will only ever be one
+installation.
+
+```{r}
+#| code-fold: true
+#| code-summary: show code for get_github_app_installation_id()
+
+#' Get GitHub PAT from Installation Access Token
+#'
+#' @param jwt JSON Web Token (JWT) for the GitHub App. Defaults to the output of `get_github_jwt()`.
+#' @param installation_id GitHub Installation ID. Defaults to the environment variable
+#' @param github_api_ep The base URL for the GitHub API. Defaults to "https://api.github.com/".
+#'
+#' @return A personal access token (PAT) with permissions granted to the app.
+get_github_app_installation_id <- function(
+    jwt = get_github_jwt(),
+    github_api_ep = "https://api.github.com/") {
+  resp <- httr2::request(github_api_ep) |>
+    httr2::req_url_path_append(
+      "app",
+      "installations"
+    ) |>
+    httr2::req_method("GET") |>
+    httr2::req_auth_bearer_token(get_github_jwt()) |>
+    httr2::req_headers(
+      Accept = "application/vnd.github+json"
+    ) |>
+    httr2::req_perform()
+
+  httr2::resp_check_status(resp)
+
+  httr2::resp_body_json(resp)[[1]][["id"]]
+}
+```
+
+#### 3. Generate a PAT
+
+We are now in a position to generate the PAT we need.
+
+```{r}
+#| code-fold: true
+#| code-summary: show code for get_github_iat_pat()
+
+#' Get GitHub PAT from Installation Access Token
+#'
+#' @param jwt JSON Web Token (JWT) for the GitHub App. Defaults to the output of `get_github_jwt()`.
+#' @param installation_id GitHub Installation ID. Defaults to the output of `get_github_app_installation_id()`.
+#' @param github_api_ep The base URL for the GitHub API. Defaults to "https://api.github.com/".
+#'
+#' @return A personal access token (PAT) with permissions granted to the app.
+get_github_iat_pat <- function(
+    jwt = get_github_jwt(),
+    installation_id = get_github_app_installation_id(),
+    github_api_ep = "https://api.github.com/") {
+  resp <- httr2::request(github_api_ep) |>
+    httr2::req_url_path_append(
+      "app",
+      "installations",
+      installation_id,
+      "access_tokens"
+    ) |>
+    httr2::req_auth_bearer_token(jwt) |>
+    httr2::req_headers(
+      Accept = "application/vnd.github+json"
+    ) |>
+    httr2::req_method("POST") |>
+    httr2::req_perform()
+
+  httr2::resp_check_status(resp)
+
+  httr2::resp_body_json(resp) |>
+    purrr::pluck("token")
+}
+```
+
+## Putting it all together
+
+Now that we are able to get a PAT using our app, we can create a function which will query the list of repositories.
+
+We need to be mindful that the API will only ever return up to 100 items at a time. Fortunately, the `{httr2}` package
+has some helper functions that make it super easy to query ever page of results.
+
+```{r}
+#| code-fold: true
+#| code-summary: show code for get_repos()
+
+#' Get GitHub Repositories for an organisation
+#'
+#' @param org The name of the GitHub organisation.
+#' @param pat Personal Access Token (PAT) for authentication. Defaults to the output of
+#'   `get_github_iat_pat()`.
+#' @param github_api_ep The base URL for the GitHub API. Defaults to "https://api.github.com/".
+get_repos <- function(
+    org,
+    pat = get_github_iat_pat(),
+    github_api_ep = "https://api.github.com/") {
+  req <- httr2::request(github_api_ep) |>
+    # build the url up, this should create something like
+    # https://api.github.com/orgs/YOUR_ORG/repos
+    httr2::req_url_path_append(
+      "orgs",
+      org,
+      "repos"
+    ) |>
+    # add the correct requeste header for authentication using our PAT
+    httr2::req_auth_bearer_token(pat) |>
+    # additional headers GitHub expects to be passed to their API
+    httr2::req_headers(
+      Accept = "application/vnd.github+json",
+      "X-GitHub-Api-Version" = "2022-11-28"
+    ) |>
+    # append url query parameters, this should look something like
+    # https://api.github.com/orgs/YOUR_ORG/repos?per_page=100&page=1&sort=created
+    httr2::req_url_query(
+      per_page = 100, # anything between 1 and 100 max, as per the docs
+      page = 1,
+      sort = "created"
+    )
+
+  # because the API will only return a maximum of 100 items at a time, we need to query multiple times for each page
+  # of results. httr2 makes this super easy, as the GitHub api returns page links in the Link header as per RFC8288
+  #  https://datatracker.ietf.org/doc/html/rfc8288
+  resps <- httr2::req_perform_iterative(
+    req,
+    next_req = httr2::iterate_with_link_url(rel = "next")
+  )
+
+  # ensure that we got a non-error response for each request
+  purrr::walk(resps, httr2::resp_check_status)
+
+  # get the data from each response, iterate over them and just extract the "name" field that is returned for each item
+  resps |>
+    httr2::resps_data(httr2::resp_body_json) |>
+    purrr::map_chr("name")
+}
+```
+
+All that remains would be to run the function.
+
+```{r}
+#| code-fold: false
+
+# replace the below as required
+Sys.setenv("GITHUB_APP_ID" = "[app_id]")
+Sys.setenv("GITHUB_APP_PRIVATE_KEY" = "path-to-your.private-key.pem")
+
+get_repos("Your Organisation")
+```
+
+
+
+
+[codeowners]: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+[github_api]: https://docs.github.com/en/rest
+[connect]: https://posit.co/products/enterprise/connect/
+[pat]: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens
+[github_app]: https://docs.github.com/en/apps/creating-github-apps/about-creating-github-apps/about-creating-github-apps
+[jwt]: https://jwt.io/

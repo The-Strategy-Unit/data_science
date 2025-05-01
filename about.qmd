@@ -13,6 +13,8 @@ The Data Science team at the Strategy Unit comprises the following team members:
 - [Tom Jemmett](https://github.com/tomjemmett)
 - [YiWen Hon](https://github.com/yiwen-h)
 
+The team has a wealth of experience in deploying models and other products to the cloud for use by a wide range of users across health and care. This is particularly demonstrated in our work with the New Hospital Programme, where we built and deployed a sophisticated probabilistic demand and capacity model and supported the use of its outputs across the decision-making stages that lead to the construction of a new hospital. The data science team possesses expertise across the breadth of data science activity — for example, statistics, machine learning, natural language processing, and real-time evidence mapping. We also have significant experience in sharing our methods and code as open-source, as well as in training others to use these tools and understand foundational data science concepts and practices. Our experience in developing scalable data science solutions, and open-sourcing them for the benefit of users across health and care, enables us to contribute meaningfully at every stage of a project’s life cycle — from design through to deployment and adoption.
+
 Current and previous projects of note include:
 
 - Work supporting the New Hospitals Programme, including building [a model for predicting the demand and capacity requirements of hospitals in the future](https://connect.strategyunitwm.nhs.uk/nhp/project_information/), and [a tool for mapping the evidence on this topic](https://github.com/The-Strategy-Unit/nhp_evidence_maps).

@@ -1,0 +1,46 @@
+---
+title: "Taking a Hackathon approach to exploring new methods in NLP"
+author:
+  - name: YiWen Hon
+    orcid: 0000-0002-6105-1309
+    email: yiwen.hon1@nhs.net
+    affiliation:
+      - name: The Strategy Unit, NHS MLCSU
+        url: https://strategyunitwm.nhs.uk/
+date: "2025-05-06"
+categories: [learning, NLP, AI]
+execute: 
+  enabled: false
+---
+
+At the Strategy Unit, we're lucky to have an awesome Evaluation team who often process and categorise large amounts of free text in [the work that they do](https://www.strategyunitwm.nhs.uk/sites/default/files/2025-01/Strategy%20Unit%20Interactive%20Evaluation%20Guide.pdf). This can be a time-consuming, labour-intensive process, and presents a good opportunity for AI/machine learning to help reduce some of this burden using Natural Language Processing (NLP). We want to use technology to help augment the existing skills and expertise of our qualitative analysts.
+
+The Data Science team has intended for some time to explore ways of helping to automate some Evaluation tasks. However, we lacked the opportunity to do so effectively, given competing demands on our time and capacity. We finally decided to take a Hackathon-like approach which worked really well for us. We're sharing our methods and findings here, in case they're helpful to others.
+
+## Setup: Defining the problem
+
+The key to success when you don't have much time is to define your problem and objectives well. This helps keep your session focused and realistic. I had a good preparatory meeting with Andriana, our collaborator in the Evaluation team, who provided some examples of the free text data generated from Evaluation studies and their intended uses. We decided to use some data from a recent survey, which needed to be categorised into one or more of six different categories - a multilabel classification problem.
+
+## The Hackathon format
+
+We set aside one working day for our Hackathon. Having the event in our calendars was useful - we were able to focus uninterrupted on one problem all day, without other meetings and obligations. We kept our schedule pretty loose, but ended up with three meetings; one in the morning, one at lunchtime, and one at the end of the day. We opted to work separately, although we discussed the option of pair programming all day as well.
+
+The meeting in the morning was mostly spent talking through the problem, and discussing the approaches we were going to take. This was so that we could avoid duplicating our efforts, and explore different potential solutions.
+
+Our afternoon meeting was just a quick status update; I hadn't done much coding by lunchtime because I'd spent hours trying to sort out my virtual environment! There's quite a lot of setup required for some of these more state-of-the-art packages, and Windows isn't the most ideal operating system...
+
+We reconvened in the evening to discuss what we'd achieved. It was great having quite a tight deadline - it made me really focus on the task at hand.
+
+As an aside, I used ChatGPT to scaffold a lot of my code, and to help with debugging - it saved me so much time! I was able to use my time thinking through the problem and working out my approach, instead of trawling through Stackoverflow to figure out why my code wasn't working. For me, the Hackathon would have been much less successful without it.
+
+## Sharing our findings
+
+We opted for 2.5 different approaches to the problem: zero-shot prompting and zero-shot classification. We put together a quick presentation to share our findings, which can be viewed here.
+
+ADD CODE HERE
+The code we used is available here, here, and here. Note that it is very rudimentary!
+
+## Next steps
+
+Having built these simple proofs of concept on our local machines, we now need to think about how we would productionise these approaches in the real world. The newest member of our team, Eirini, has experience deploying Large Language Models (LLMs) and we hope to do this for the Strategy Unit in the near future.
+

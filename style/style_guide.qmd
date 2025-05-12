@@ -9,18 +9,16 @@
 * Use {styler} and {lintr} (or Python equivalents such as `black`) to tidy your code.
 * Insert linebreaks in your code at or before column 80.
 * Prefer the 'source' rather than the 'visual' editor for Quarto documents in RStudio (see the [instructions for switching](https://docs.posit.co/ide/user/ide/guide/documents/visual-editor.html#switching-modes) and remove the `editor: visual` key-value pair in the YAML header).
-* When using {dplyr}, favour one mutate over many. For example, between the two examples below, example B is preferred:
+* When using {dplyr}, favour one mutate over many if [`.by` grouping](https://dplyr.tidyverse.org/reference/dplyr_by.html) isn't being used. For example, between the two examples below, example B is preferred:
 
-EXAMPLE A:
+Example A:
 ```
-library(dplyr)
-
-starwars |>
-  mutate(height_cm = height) |>
-  mutate(name_copy = name)
+dplyr::starwars |>
+  dplyr::mutate(height_cm = height) |>
+  dplyr::mutate(name_copy = name)
 ```
 
-EXAMPLE B:
+Example B:
 ```
 dplyr::starwars |>
   dplyr::mutate(

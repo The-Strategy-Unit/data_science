@@ -1,0 +1,777 @@
+---
+title: "NHP Demand and Capacity (D&C) Model"
+subtitle: "A Technical Deep Dive for Data Scientists"
+author: 
+  - "[Claire Welsh](mailto:claire.welsh8@nhs.net)"
+date: 2025-05-07
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, su_presentation.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
+    footer: |
+      Learn more about [The Strategy Unit](https://www.strategyunitwm.nhs.uk/)
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+## The New Hospital Programme (NHP) Demand Model
+
+![Diagram of model
+process](Model process.png){fig-alt="Diagram showing the processes of the model"}
+
+<aside class="notes">
+
+A quick reminder of how the model works. 
+
+This is an updated image of the modelling process, showing the elements currently supported. 
+
+The NHP Demand model is A probabilistic Monte Carlo simulation that:
+
+1.  Takes hospital activity from a baseline year, using NHS England's
+    Hospital Episode Statistics (HES) data
+
+2.  Applies variables that:
+
+    -   are outside of our control (e.g. population changes, using ONS
+        projections),
+        -   A choice of projections
+        -   Non-demographic growth estimates Nationally, both of which
+            will swell the baseline
+    -   Then we apply elements that can reduce hospital activity
+        (mitigators, e.g. virtual wards or teleappointments). So these
+        components, given to us from your inputting your P10 and P90
+        confidence limits, can either remove some future activity,
+        modify it or reduce length of stay.
+
+3.  Forecasts future demand based on these variables, outputting
+    probabilistic predictive intervals.
+
+    The data needed include HES baseline, ONS populations, national NDG,
+    COVID adjustement (no longer for 23/24), HSA, reference lookups.
+
+    We need the model to be able to preserve selections, results,
+    version control the data and model Needs to be fast and reactive to
+    user inputs.
+
+    Added difficulties are that
+
+1.  Hospitals are actively using the model while it is still in
+        development, which can be tricky
+
+2.  Dataset is massive for each hospital - hundreds and thousands of
+    rows - all activity for a hospital trust in one year
+
+3.  Model can accommodate hundreds of different variables, and more are
+    added over time.
+
+4.  We need the model to be backwards compatible, so that we can rerun
+    any historic runs.
+
+    </aside>
+
+## 
+
+![](NHP_diagram_public_v3-2.png){fig-alt="Diagram showing the model infrastructure layout"
+width="20in" fig-align="center"}
+
+<aside class="notes">
+
+- Here's an overview of the setup for the infrastructure. 
+- This is quite an old diagram, there are more code repositories now, but the basics are
+the same Will explain more of some elements in a minute 
+
+1.  We start with the HES data, which is processed using Databricks and stored on Azure, accessed with
+PySpark. 
+The ONS data also lives here, and both are combined and
+wrangled by the python code in the nhp_data repo to produce the
+model-ready data version which lives in Azure. 
+2.  The inputs data is pulled in to the inputs app, which lives on Posit Connect and which you
+should all be familiar with. 
+This enables users to see historic trends
+for mitigator activity in their scheme, look at summary counts etc. 
+3.  Every time to move a slider or make a selecion on the inputs app, those
+data are captured by a reactive JSON file that preserves all the
+metadata for your model run. This is also kept on Connect. 
+4.  When you click Run, the JSON is sent via the API to the model, whose code lives
+in the nhp_model repo and is written in python. 
+
+- The model spins up a new Docker image on the Azure Container Registry in which to run the model
+as I described previously. 
+- The output is the results parquet file, which is saved onto the Azure storage. 
+- Finally, the outputs app, also on Connect, picks up this results file and uses it to display all the
+charts and summaries you're used to, as well as allowing you to download
+the results. 
+
+All these datasets, the inputs, results and JSON files are
+preserved for the future.
+</aside>
+
+## 
+
+![](architecture-mermaid-transparent.png){fig-alt="A diagram showing the architecture of the model and apps. Data is processed from the database by the targets package and stored in an Azure storage account. the model and inputs and outputs apps collected data from there. Selections in the inputs app feed into the model."}
+
+<aside class="notes">
+Here's a simplified, zoomed-in version. 
+
+HES data from the database is used to make
+the inputs data, which is pulled in to the inputs app. 
+
+That sends information to the model, which creates results that are sent back to
+storage, and from which the ourputs app does its thing. 
+
+By why did we choose this setup? It seems complicated and busy.
+  </aside>
+
+## Principles
+
+-   Deploy alongside develop
+-   Reproducible analytical pipelines
+-   Transparent
+-   Open (FOSS where possible)
+-   Team skills and work management
+
+<aside class="notes">
+
+-   Some of these choices stem from original familiarity of staff with
+    those languages, for example, or from institutional restrictions
+
+-   But as a general rule, we will choose the best tool for the job,
+    being open to upskilling across the board and sharing our
+    learning.
+
+-   We operate in a fast-paced environment where the model is in active
+    use Nationally and we must maintain that status while developing new
+    functionality to provide a seamless improvement arc for users
+
+-   We operate based on the principles of RAP and have opened the code
+    base
+
+-   Which improves transparency for users, developers and the public,
+    since its all paid for with public funds.
+
+-   Free and open source software is always used where we can, and we
+    try to keep up with the latest advances
+
+-   The happiness, satisfaction and development of our team is the
+    cornerstone of everything
+
+-   We foster a culture of continuous learning, sharing, openness and
+    lack of blame.
+
+    </aside>
+
+## Tools and platforms
+
+-   Data pipelines: {{< fa brands python >}}, parquet, CSV
+-   Model: Python {{< fa brands python >}}, Docker {{< fa brands docker >}}
+-   Apps: {shiny} and {golem} {{< fa brands r-project >}}, Posit Connect {{< fa layer-group >}}
+-   Infrastructure and storage: Azure {{< fa brands microsoft >}}
+-   Documentation: Quarto {{< fa feather >}}
+-   Version control and collaboration: Git {{< fa brands git-alt >}},
+    GitHub {{< fa brands github >}}
+
+<aside class="notes">
+
+-   Our data pipelines leverage the speed of pyspark and Databricks.
+
+-   The model is built in Python and involves a lot of *pandas*
+    DataFrame manipulations.
+
+-   We use Azure for storage of model input data and JSON files of
+    parameters and parquet for results.
+
+-   Users input model paramters in one Shiny app and view results in
+    another. This uses modules and {golem} for its package focus, as
+    well as {bs4Dash}. We have development and production environments.
+
+-   We have a deployed Quarto website that contains the documentation
+    for the whole project.
+
+    </aside>
+
+## Data for NHP
+
+::::: columns
+::: {.column width="70%"}
+-   HES data stored on Azure
+-   Databricks and PySpark
+-   CSVs and TSVs for reference data
+-   parameters derived and stored in JSON
+
+![](Apache_Parquet_logo.svg.png)
+:::
+
+::: {.column width="30%"}
+![](json.png)
+:::
+:::::
+
+<aside class="notes">
+
+We use a Data lake on Azure using Databricks and parquet files.
+Apache Parquet = columnar data file format that is super fast and efficient
+Free and open source, contains metadata. 
+
+Its also just as simple to
+wrangle as CSVs or other more familiar filetypes so swapping from, for
+example Rds files to parquet, as we did when the files started getting
+too large, was easy. 
+
+We used store results data in JSON (JavaScript
+Object Notation) but they got too big so moved to parquet But we
+maintain the parameters files in JSON format, a snapshot of which you
+can see here. 
+Its a nice readable dictionary-type file format that is
+great for handling lots of key:value pairs as we do here.
+  </aside>
+
+## Generating inputs data
+
+![](databricks-flowchart.png)
+
+<aside class="notes">
+This is a diagram of the Databricks workflows used to create the inputs data (which is a subset of the model data).
+
+- If an upstream step fails, all downstream ones will. We used to handle this with {targets} so we'd only rerun the parts we needed, but now in DataBricks and using Parquet, the process is so fast this is moot. Targets didn't play nicely with pyspark which is why we changed over.
+  </aside>
+
+## Model running
+
+Parameters JSON passed to model via API
+
+-   Docker image stored on Azure Container Registry
+-   Runs in Azure Container Instance
+-   Built-in paralellisation features of Python language
+
+![](docker-logo-blue.png){width="4in"}
+
+![](Microsoft_Azure_Logo.svg.png)
+
+<aside class="notes">
+
+Docker is for safety - need to run compute on protected data Also for
+environment handling. Again, Docker is FOSS.
+  </aside>
+
+## Interfaces
+
+::::: columns
+::: {.column width="70%"}
+Coded in R - [Shiny](https://shiny.posit.co/) Open repos:
+[nhp_inputs](https://github.com/The-Strategy-Unit/nhp_inputs) and
+[nhp_outputs](https://github.com/The-Strategy-Unit/nhp_outputs)
+
+Modular design
+
+-   Each function is in its own .R
+-   Each module is separate
+-   UIs and servers are separate
+-   Packaged using {golem} to use R CMD check(), devtools::document()
+    etc
+:::
+
+::: {.column width="30%"}
+![](Shiny_hex_logo.svg.png)
+:::
+:::::
+
+<aside class="notes">
+
+-  In theory we could take in all the user's required model run settings via a big spreadsheet, but the number of variables needed doesn't have to get too big before this becomes problematic. Using apps is a visually appealing way of gathering that info while forcing users to provide inputs in the formats needed by the model.
+
+- Shiny is better than any spreadsheet thanks to this input verification, and it empowers users to understand their own data and choices.
+- Our apps are coded in Shiny, because its a great tool for creating production-grade apps, and we have the in-house expertise to do so.
+  
+- The repositories that contain the code for the apps are open so you can go on our GitHub and see it all.
+
+- We follow good practice convention on structure, where by each element of logic is kept in a separate .R file, and UI and server code are separate. This helps with debugging, human-readability and makes extending the functionality easier.
+
+- Golem is another R package that helps create Shiny apps as a package - meaning that we can leverage the benefits of CMD check and documentation to help QA our processes during the build.
+
+
+  </aside>
+  
+## 
+
+![](inputs.png)
+<aside class="notes">
+- Taking the inputs app you'll be familiar with as an example, here we see the landing page for the selection app. This app, stored on Connect, interacts with the Azure storage where those JSON parameters files are kept, so that it can pick up one of your previous models if you ask it to.
+
+- Once you've made those decisions, you are taken to the inputs app - which is actually a separate app hosted on Connect.
+
+  </aside>
+  
+## 
+
+![](inputs_selection.png)
+
+<aside class="notes">
+- Here is the front page of the inputs app that you will have interacted with if you managed to run a model yourself.
+
+- We have the metadata centrally, showing the choices you have made on the previous screen. These data are stored in the JSON file and be retrievable in future.
+
+- On the left you can see various modules like the
+baseline adjustment, and the COVID adjustment (no longer needed in the 23/24 baseline). 
+
+- All parts of this app are coded in separate modules, two modules for each 'part'.
+
+- Lets see how this looks in the code, stored on GitHub
+    </aside>
+
+## 
+
+![](modular.png)
+
+<aside class="notes">
+
+- This is the open code repository for the inputs app on GitHub within the Strategy Unit organisation. We've clicked into the folder called simply 'R' here, as that's conventionally where all the code logic that powers the functionality is held. 
+
+- You can see that in this nhp_inputs repo, within the R
+folder, we have separate R files for each function (prefix "fct") and two
+per module - one server and one UI, like for the baseline adjustment
+module. 
+
+- This file structure should be familiar to those of you who have
+built or interacted with the bones of an R package, where the R folder
+is where the active code is stored in a modular format.
+
+** Open GitHub
+
+- Because this app is built with {golem} the rest of the package structure is also followed, including having NAMESPACE, DESCRIPTION, LICENSE and README files, and separate folders for data, documentation and what to do on installation etc. As I said, because this app is structured like a package, and functions held in R files are documented with Roxygen skeletons etc, we can use the powerful package building tools like devtools::document() to ensure that any changes are picked up, giving a faster, smoother, cleaner build experience.
+
+- We also have some extras that are not mandatory, like a CODEOWNERS file, which I'll come on to discuss later in this session.
+
+- The app can be run locally provided you give it the keys needed to access the data storage, which can be held in an Renviron file.  Being able to run the app locally assists with debugging and development tasks.
+
+    </aside>
+
+## Hosting
+
+Posit Connect
+
+::: incremental
+-   Manage user access <i class="fa-solid fa-users"></i>
+-   RStudio, VSCode integration ({{< fa brands python >}} and
+    {{< fa brands r-project >}})
+-   Can handle secrets <i class="fa-solid fa-key"></i>
+-   No limits on views <i class="fa-solid fa-binoculars"></i>
+-   We deploy a separate app per model version
+    -   Unambiguous
+    -   Backwards compatability
+:::
+
+<aside class="notes">
+- There are various options for where to host Shiny apps so that they are available to end users through the browser. shinyapps.io for example. They vary a lot. We had a number of specific requirements for the hosting of the NHP model, including
+
+
+- User access
+- being compatible with different languages and GUIs that we use in the team
+- Elegantly and safely handling secrets
+- No limits on views
+    </aside>
+    
+    
+## Outputs
+
+Many formats:
+
+-   [ ] CSV
+-   [ ] JSON
+-   [ ] MS Word (using
+    {[officeR](https://davidgohel.github.io/officer/)})
+-   [ ] [Outputs
+    app](https://connect.strategyunitwm.nhs.uk/nhp/v3-1/outputs/?%2BQAjkHBl%2BCKbvWFP6tv2v9Z1Nwt0eMs37GWGRshs2qNLvhbkJUzBsJOIvxNG6UtLnTSziKj5CNZgT95laTdBbhNfzEUb%2BDZUuY%2FerNLYAx8%3D)
+- [ ] [Project information](https://github.com/The-Strategy-Unit/nhp_project_information) Quarto website
+
+We use a [_brand.yml](https://github.com/The-Strategy-Unit/su-brand-yml) to help easily maintain style format of outputs (Quarto and Shiny).
+
+<aside class="notes">
+- The main way information flows out of the NHP model is via the outputs app, which also provides the functionality to download results into a spreadsheet software of your choice through CSV files.
+
+- The JSON files we've discussed are also produced and stored and users can ask us for them if useful
+
+- We produce templated reports in Microsoft Word for schemes, allowing them the comfort and accessibility of familiar software without greatly sacrificing the programmatic and RAP-compliant nature of our work.
+
+- And our Quarto website holding the project information is a key tool for dissemination of info. Its repo is open, so you can go and look at all the code used to create it.
+
+- In essence we will aim to provide outputs that best meet the needs of our model users, to maximise the impact of the modelling and communicate the uncertainty around estimates as clearly as we can.
+
+- We also make use of 'brand.yml' to be consistent in the appearance of our NHP outputs. You can see this yaml file on our github, with an informative README that contains useful links to guidance around branding and usage.
+
+    </aside>
+    
+## Reproducible Analytical Pipeline (RAP) principles
+
+### Data versioning
+
+Data and model follow the same semantic versioning[^1].
+
+[^1]: [Model
+    Updates](https://connect.strategyunitwm.nhs.uk/nhp/project_information/project_plan_and_summary/model_updates.html)
+
+![](model_updates.png){width="7.5in"}
+
+<aside class="notes">
+- Now we're moving into ever-mode nerdy territory. You'll all be familiar with RAP, what it means and why it matters.
+- We as a team are fully on board with those principles of transparency, quality, sharing and continuous improvement.
+
+- One way we do this is through version control - not only of the code, but of the data too.
+
+- We keep a public log of all changes to the model, viewable at the link below on our project information site, which is a Quarto website whose deployment is handled by GitHub Actions.
+
+- The code is versioned semantically, like usual software is, following the major-minor-patch naming convention. We are currently on version 3.4 of the model
+
+    </aside>
+## 
+
+![](data_log.png)
+
+[Data
+Log](https://connect.strategyunitwm.nhs.uk/nhp/project_information/data_extraction/data_log.html)
+
+<aside class="notes">
+- On another page of the Quarto website, we have a data log. As you can see, the data are named the same as the model versions, and we have history here going right back to the begining of the model lifespan.
+
+- Release notes are linked to and held on the nhp_data repository, which is also open source.  Lets follow one of these release notes links to see the kinds of information stored.
+    </aside>
+## 
+
+![](github.png)
+
+[The Strategy Unit
+GitHub](https://github.com/The-Strategy-Unit?view_as=public)
+
+<aside class="notes">
+- Here in GitHub you can see the release notes for the current version of the model, v3.4.0.  These notes are partly auto-generated by GitHub through collating the pull request comments on the elements merged to create this release, but we also might overwrite or simplify some things.
+
+- For instance we can see that Tom merged PR number 89 that replace the AEC mitigators with the new SDEC ones. I can click on this link to go to that merged PR and see all the details, timeline and conversations around it.
+
+- The full changelog also contains all the commits relevant to this new model version.
+    </aside>
+    
+## RAP
+
+::: {.incremental}
+
+-   Modularised code
+-   Styling and Linting
+-   OPEN source code
+-   Version control
+-   Environment management: 
+  + [Docker](https://www.docker.com/)
+  + [{renv}](https://rstudio.github.io/renv/)
+  + [conda](https://anaconda.org/anaconda/conda)
+  
+:::
+
+<aside class="notes">
+- There's endless approaches and tooling you can use to adhere to RAP principles. 
+
+- The selections we use are not static, we consciously improve and adapt over time
+
+- Modularising code we've spoken about, we try to take this approach wherever it makes sense (almost everywhere)
+
+- We use stylers like Air, which can be set to run every time you submit a PR to ensure that you are conforming to internally consistent style rules
+
+- Similarly with linting, this helps us be consistent in our code syntax and semantics.
+
+- As you've seen a lot already today, we code in the open. This can be scary to start with, but if your team follow advice around keeping secrets secret etc, and feel supported, its not too difficult to do.
+
+- Version control we've talked a lot about- handled using Git.
+
+- Reproducibility requires environment management. With the model this means using Docker to spin up a fully-resourced environment every time
+
+- We were using {renv} for some repos, but having shifted to building these as packages we no longer need to, and instead rely on the DESCRIPTION file.
+
+- with everything else we use conda to manage package dependencies.
+    </aside>
+    
+## RAP continued
+
+-   Documentation
+    -   [Project
+        Information](https://connect.strategyunitwm.nhs.uk/nhp/project_information/)
+    -   READMEs on
+        [GitHub](https://github.com/The-Strategy-Unit?view_as=public)
+    -   Docstrings, packaged apps
+        ([golem](https://thinkr-open.github.io/golem/))
+-   JSON schema [**{✔❌}**]{style="color:blue;"} for validating the
+    parameters passed to the model
+
+<aside class="notes">
+-  Keeping clear, concise, up to date documentation is essential.
+
+- All the information about NHP is on our project information website.
+
+- We adhere to guidelines around having comprehensive README files
+
+- Our apps, built as packages, have documentation kept up to date, which is easily done using devtools::document() function as you would when building a package. This means that all functions whose logic has been extrapolated out to separate R files should be automatically documented by picking up the Roxygen comments.
+
+- Another RAP element that we've very recently added is JSON schema - a way of validating the content of a JSON file before it is run through the model - this was deemed a good idea as on some test runs we had mistakenly put nonsensical values in the JSON, which didn't throw an error when run through the model, but caused silly results.  Having a check against a schema prevents this.
+    </aside>
+    
+## Deployment (CI/CD)
+
+How do we maintain [clean]{style="color:blue;"},
+[safe]{style="color:green;"}, [working]{style="color:red;"} code,
+centrally, when we have open repositories and up to <u>10 people</u>
+collaborating on maintaining that code alongside its active deployment?
+
+:::: {.columns}
+
+::: {.column width="50%"}
+***Continuous Integration***
+
+Automated checks, tests when merging code into main
+
+-   On pull request submission
+-   On merge to main
+
+:::
+
+::: {.column width="50%"}
+:::: {style="background-color: #D3D3D3"}
+
+***Continuous Deployment***
+
+Automated checks and tests when deploying (to dev or to prod)
+
+-   On merge to main
+-   On release
+::::
+
+:::
+
+::::
+## GitHub Actions
+
+Actions like:
+
+-   Formatting
+    ({[Air](https://www.tidyverse.org/blog/2025/02/air/#:~:text=How%20does%20Air%20decide%20how,we%20occasionally%20deviate%20from%20these.)})
+    to pick up stylistic inconsistencies
+-   Linting - for logical, syntactic and stylistic issues
+-   Rendering the README.Rmd
+-   Package checks (benefits of creating a Shiny app as a package)
+-   Deploys to a 'preview' site
+-   Assess code coverage ({[codecov](https://about.codecov.io/)})
+
+<aside class="notes">
+    </aside>
+    
+## 
+
+![](Actions.png)
+
+<aside class="notes">
+    </aside>
+
+## Break time! <i class="fa-solid fa-mug-saucer"></i>
+
+::: {layout-nrow=2}
+![Chris Beeley](CB.jpg){height=2in}
+
+![Claire Welsh](CW.jpg){height=2in}
+
+![Natasha Stephenson](NS.png){height=2in}
+
+![Tom Jemmett](TJ.png){height=2in}
+
+![Matt Dray](MD.jpg){height=2in}
+
+![YiWen Hon](YH.jpg){height=2in}
+
+![Ozayr Mohammed](OM.png){height=2in}
+
+![Rhian Davies](RD.jpg){height=2in}
+
+:::
+
+## How we work
+
+We are
+[**A**]{style="color:red;"}[**G**]{style="color:orange;"}[**I**]{style="color:green;"}[**L**]{style="color:blue;"}[**E**]{style="color:purple;"},
+and use [Scrum](https://www.scrum.org/resources/what-scrum-module)
+(light)
+
+::: {.incremental}
+-   3 week sprints with 1 week fallow
+-   Weekly sprint catch-up meetings
+-   Kickoff and retro
+-   Promote T-shape expertise while reducing 'bus-factor'
+-   Transparent prioritisation processes
+-   Distinct team roles
+
+:::
+
+<aside class="notes">
+
+- Scrum is a software development project management approach. We pick and
+choose the elements of these approaches as we see fit.
+
+- The reason for using it is to help us coordinate our activities across all these codebases and through all this complexity.  It also helps us to push back on work if needed.
+
+- We have recently shortened the length of our sprints to release code more frequently and prevent large, tricky pieces of work becoming blocked for too long. We're being agile about trying this out!
+
+- At the start of each sprint we hold a meeting to go through all the work elements to be delivered in that sprint, decide who is doing what, and ensure that all issues are clear and complete enough to avoid ambiguity. We need to have sub-issues that accurately reflect the quantity and distribution of work coming down the line to help us prioritise.
+
+- Every week on Monday we catch-up around the sprint and talk about whether we are on course, what needs to happen next and ensure we are sticking to deadlines.
+
+- At the end of every sprint we have an open discussion about what went well or otherwise. 
+
+- The team needs to have deep expertise, but each person's expertise covers different areas. The 'T-shape' indicates a broad understanding/skillset that enables work sharing and reduces bus-factor, and the downwards element shows that depth of expertise that we call upon - things like data engineering, statistics, documentation, app building, project management.
+
+- How we decide what we work on when is an evolving area. We aim to have logical, transparent tools for prioritising our work plan, which is sufficiently disseminated that stakeholders feel 'in-the-loop' and our staff do not burn out.
+
+- We also use Scrum principles around nominated roles within the team, I'll go through the main ones now.
+
+    </aside>
+
+
+## 
+
+- **Scrum master** : *keeping the sprint on track*
+- **Product owner** : *steer work towards the goals*
+- **Head of DS** : *leadership and prioritisation*
+- **Development board** : *define the goals and priorities*
+- **QA** : *oversee quality*
+
+::: callout-tip
+Roles have enough specificity to provide clarity, but are also shared.
+Flat management structure.
+:::
+
+<aside class="notes">
+
+- These roles are fundamental to being able to operate across all
+the different elements discussed, while continuously upskilling and making sure
+everyone is happy and healthy.
+
+- Being agile means - We welcome input at any stage and can act on it
+because of the attitude and setup we have - We are not thrown off course
+by even late-stage changes (although these should be rare if our
+prioritisation frameworks are working as planned) - We collaborate with
+anyone that it makes sense to do so, drawing on expertise that benefits
+the product - Continuous improvement in both the work output and the
+team's skills are emphasised.
+
+Lets look at some of the actual processes we use to achieve all this.
+
+</aside>
+
+## Agile and Scrum in GitHub
+
+Leverage a LOT of GitHub's excellent tooling
+
+::::: columns
+::: {.column width="50%"}
+-   Projects
+-   Issues with bespoke labelling
+-   Branch protection rules
+-   [CODEOWNERS]{style="color:red;"}
+-   Clear and consistent collaboration guidance
+:::
+
+-   Checklists (for anything that can't be automated)
+
+::: {.column width="50%"}
+![](labels.png)
+:::
+:::::
+
+<aside class="notes">
+Bespoke labelling is a very active area for development for us working on NHP.
+
+We have a LOT of opinions, sets of priorities and dependencies to incorporate, organise and understand
+
+- Creating, modifying and revising labelling strategies is key to team understanding and clarity.
+- They avoid clashing of scheduled priorities and help resolve conflicts
+- We create label sets to denote things like
+  - Our priorities within DS
+  - Our dev board's priorities
+  - Stages of production for new elements
+  - Sign-off status
+  - Whether we could/should/must/won't
+  - To get an idea of the scope of any issue
+  - Urgency versus importance
+  </aside>
+  
+## CODEOWNERS
+
+A simple but powerful idea!
+
+![](codeowners.png)
+
+<aside class="notes">
+- The more code and repos you have, the more likely you are to miss things, for issues to go stale, and for best practice to fall by the wayside.
+
+- To avoid this, each repo has two nominated CODEOWNERS, whose responsibility it is to know about the content, understand its purpose, be able to debug it when necessary, and to keep on top of issues related to it - prioritising these as makes sense and delegating that work if necessary.
+
+- These people are automatically chosen as reviewers for any PR seeking to merge to main.
+
+- Although you can nominate a team to be a CODEOWNER, we've opted not to do this to avoid everybody getting 'spammed' with emails whenever a PR is submitted to one of our repos - our inboxes are full enough!
+
+  </aside>
+
+## Product Team
+
+'The model' is a [product]{.underline} - it has current and potential
+use cases and user groups.
+
+We need a team responsible for understanding the software business
+<i class="fa-solid fa-briefcase"></i> as well as the software product
+🚀.
+
+
+
+_"What should we build next and why?"_
+
+
+## Product Team Members
+
+- Product Owner
+- Product Manager
+- Customer Engagement
+- Project Director
+
+::: {layout-nrow=1}
+![](NS.png){width=2in}
+![](CW.jpg){width=2in}
+![](JC.jpg){width=2in}
+![](CB.jpg){width=2in}
+:::
+
+## Information management
+
+🗣 Info IN
+
+Inbox, user feedback forms, button on apps, videoed interviews,
+roundtable, ad hoc. 
+
+📣 Info OUT
+
+Project information site, GitHub, how-to videos,
+conference and meeting presentations, blogs.
+
+To ensure that:
+- User needs guide what we build
+s- We help (current and future) users know what we have built and are building
+
+# Thank you {.inverse}
+
+:::: {.columns}
+
+::: {.column width='60%'}
+
+NHP Demand and Capacity (D&C) Model: A Technical Deep Dive for Data Scientists
+
+- [Claire Welsh](mailto:claire.welsh8@nhs.net)
+- [The Strategy Unit](https://www.strategyunitwm.nhs.uk/), [NHS ML](https://www.midlandsandlancashirecsu.nhs.uk/)
+

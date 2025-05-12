@@ -677,13 +677,15 @@ Leverage a LOT of GitHub's excellent tooling
 -   Branch protection rules
 -   [CODEOWNERS]{style="color:red;"}
 -   Clear and consistent collaboration guidance
+-   Checklists 
 :::
 
--   Checklists (for anything that can't be automated)
+
 
 ::: {.column width="50%"}
 ![](labels.png)
 :::
+
 :::::
 
 <aside class="notes">
@@ -761,14 +763,11 @@ Project information site, GitHub, how-to videos,
 conference and meeting presentations, blogs.
 
 To ensure that:
+
 - User needs guide what we build
-s- We help (current and future) users know what we have built and are building
+- We help (current and future) users know what we have built and are building
 
 # Thank you {.inverse}
-
-:::: {.columns}
-
-::: {.column width='60%'}
 
 NHP Demand and Capacity (D&C) Model: A Technical Deep Dive for Data Scientists
 

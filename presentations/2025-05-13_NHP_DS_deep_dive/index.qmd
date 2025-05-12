@@ -639,7 +639,7 @@ choose the elements of these approaches as we see fit.
 
 - **Scrum master** : *keeping the sprint on track*
 - **Product owner** : *steer work towards the goals*
-- **Head of DS** : *leadership and prioritisation*
+- **Project director** : *overall responsibility for delivery*
 - **Development board** : *define the goals and priorities*
 - **QA** : *oversee quality*
 

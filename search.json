@@ -186,7 +186,7 @@
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r---flows",
     "title": "System Dynamics in health and care",
     "section": "in R - flows",
-    "text": "in R - flows\nEasy to do with count, or group_by and summarise\n\n\nadmit_d &lt;- spell_dates |&gt;\n  group_by(date_admit) |&gt;\n  count(date_admit)\n\nhead(admit_d)\n\n\n# A tibble: 6 × 2\n# Groups:   date_admit [6]\n  date_admit     n\n  &lt;date&gt;     &lt;int&gt;\n1 2022-01-01    26\n2 2022-01-02    27\n3 2022-01-03    19\n4 2022-01-04    24\n5 2022-01-05    38\n6 2022-01-06    30"
+    "text": "in R - flows\nEasy to do with count, or group_by and summarise\n\n\nadmit_d &lt;- spell_dates |&gt;\n  group_by(date_admit) |&gt;\n  count(date_admit)\n\nhead(admit_d)\n\n\n# A tibble: 6 × 2\n# Groups:   date_admit [6]\n  date_admit     n\n  &lt;date&gt;     &lt;int&gt;\n1 2022-01-01    24\n2 2022-01-02    27\n3 2022-01-03    27\n4 2022-01-04    23\n5 2022-01-05    31\n6 2022-01-06    21"
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r---occupancy",
@@ -207,7 +207,7 @@
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods---flows",
     "title": "System Dynamics in health and care",
     "section": "Longer Time Periods - flows",
-    "text": "Longer Time Periods - flows\nUse lubridate::floor_date to generate the date at start of week/month\n\nadmit_wk &lt;- spell_dates |&gt;\n  mutate(\n    week_start = floor_date(\n      date_admit,\n      unit = \"week\",\n      week_start = 1 # start week on Monday\n    )\n  ) |&gt;\n  count(week_start) # could add other parameters such as provider code, TFC etc\n\nhead(admit_wk)\n\n\n\n# A tibble: 6 × 2\n  week_start     n\n  &lt;date&gt;     &lt;int&gt;\n1 2021-12-27    53\n2 2022-01-03   180\n3 2022-01-10   174\n4 2022-01-17   181\n5 2022-01-24   184\n6 2022-01-31   191\n\n\n\nMight run SD model in weeks or months - e.g. months for care homes Use lubridate to create new variable with start date of week/month/year etc"
+    "text": "Longer Time Periods - flows\nUse lubridate::floor_date to generate the date at start of week/month\n\nadmit_wk &lt;- spell_dates |&gt;\n  mutate(\n    week_start = floor_date(\n      date_admit,\n      unit = \"week\",\n      week_start = 1 # start week on Monday\n    )\n  ) |&gt;\n  count(week_start) # could add other parameters such as provider code, TFC etc\n\nhead(admit_wk)\n\n\n\n# A tibble: 6 × 2\n  week_start     n\n  &lt;date&gt;     &lt;int&gt;\n1 2021-12-27    51\n2 2022-01-03   201\n3 2022-01-10   190\n4 2022-01-17   196\n5 2022-01-24   213\n6 2022-01-31   203\n\n\n\nMight run SD model in weeks or months - e.g. months for care homes Use lubridate to create new variable with start date of week/month/year etc"
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods---occupancy",
@@ -1278,7 +1278,7 @@
     "href": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#section-8",
     "title": "NHP Demand and Capacity (D&C) Model",
     "section": "",
-    "text": "Scrum master : keeping the sprint on track\nProduct owner : steer work towards the goals\nHead of DS : leadership and prioritisation\nDevelopment board : define the goals and priorities\nQA : oversee quality\n\n\n\n\n\n\n\nTip\n\n\nRoles have enough specificity to provide clarity, but are also shared. Flat management structure.\n\n\n\n\n\nThese roles are fundamental to being able to operate across all the different elements discussed, while continuously upskilling and making sure everyone is happy and healthy.\nBeing agile means - We welcome input at any stage and can act on it because of the attitude and setup we have - We are not thrown off course by even late-stage changes (although these should be rare if our prioritisation frameworks are working as planned) - We collaborate with anyone that it makes sense to do so, drawing on expertise that benefits the product - Continuous improvement in both the work output and the team’s skills are emphasised.\n\nLets look at some of the actual processes we use to achieve all this."
+    "text": "Scrum master : keeping the sprint on track\nProduct owner : steer work towards the goals\nProject director : overall responsibility for delivery\nDevelopment board : define the goals and priorities\nQA : oversee quality\n\n\n\n\n\n\n\nTip\n\n\nRoles have enough specificity to provide clarity, but are also shared. Flat management structure.\n\n\n\n\n\nThese roles are fundamental to being able to operate across all the different elements discussed, while continuously upskilling and making sure everyone is happy and healthy.\nBeing agile means - We welcome input at any stage and can act on it because of the attitude and setup we have - We are not thrown off course by even late-stage changes (although these should be rare if our prioritisation frameworks are working as planned) - We collaborate with anyone that it makes sense to do so, drawing on expertise that benefits the product - Continuous improvement in both the work output and the team’s skills are emphasised.\n\nLets look at some of the actual processes we use to achieve all this."
   },
   {
     "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#agile-and-scrum-in-github",

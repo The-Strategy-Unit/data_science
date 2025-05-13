@@ -13,34 +13,81 @@ execute:
   enabled: false
 ---
 
-At the Strategy Unit, we're lucky to have an awesome Evaluation team who often process and categorise large amounts of free text in [the work that they do](https://www.strategyunitwm.nhs.uk/sites/default/files/2025-01/Strategy%20Unit%20Interactive%20Evaluation%20Guide.pdf). This can be a time-consuming, labour-intensive process, and presents a good opportunity for AI/machine learning to help reduce some of this burden using Natural Language Processing (NLP). We want to use technology to help augment the existing skills and expertise of our qualitative analysts.
+At the Strategy Unit, we're lucky to have an awesome Evaluation team who often process and categorise large amounts of free text in [the work that they do](https://www.strategyunitwm.nhs.uk/sites/default/files/2025-01/Strategy%20Unit%20Interactive%20Evaluation%20Guide.pdf).
+This can be a time-consuming, labour-intensive process, and presents a good opportunity for AI/machine learning to help reduce some of this burden using Natural Language Processing (NLP). 
+We want to use technology to help augment the existing skills and expertise of our qualitative analysts.
 
-The Data Science team has intended for some time to explore ways of helping to automate some Evaluation tasks. However, we lacked the opportunity to do so effectively, given competing demands on our time and capacity. We finally decided to take a Hackathon-like approach which worked really well for us. We're sharing our methods and findings here, in case they're helpful to others.
+The Data Science team has intended for some time to explore ways of helping to automate some Evaluation tasks. 
+However, we lacked the opportunity to do so effectively, given competing demands on our time and capacity.
+We finally decided to take a Hackathon-like approach which worked really well for us. 
+We're sharing our methods and findings here, in case they're helpful to others.
 
 ## Setup: Defining the problem
 
-The key to success when you don't have much time is to define your problem and objectives well. This helps keep your session focused and realistic. I had a good preparatory meeting with Andriana, our collaborator in the Evaluation team, who provided some examples of the free text data generated from Evaluation studies and their intended uses. We decided to use some data from a recent survey, which needed to be categorised into one or more of six different categories - a multilabel classification problem.
+The key to success when you don't have much time is to define your problem and objectives well. 
+This helps keep your session focused and realistic. 
+I had a good preparatory meeting with Andriana, our collaborator in the Evaluation team, who provided some examples of the free text data generated from Evaluation studies and their intended uses. 
+We decided to use some data from a recent survey, which needed to be categorised into one or more of six different categories - a multilabel classification problem, with a small dataset of only 460 rows.
+
+Our mission was to develop a model to help the Evaluation team categorise responses quickly, with a reasonable degree of performance.
+
+![Mission impossible](mission_impossible.jpg)
 
 ## The Hackathon format
 
-We set aside one working day for our Hackathon. Having the event in our calendars was useful - we were able to focus uninterrupted on one problem all day, without other meetings and obligations. We kept our schedule pretty loose, but ended up with three meetings; one in the morning, one at lunchtime, and one at the end of the day. We opted to work separately, although we discussed the option of pair programming all day as well.
+We set aside one working day for our Hackathon. 
+Having the event in our calendars was useful - we were able to focus uninterrupted on one problem all day, without other meetings and obligations. 
+We kept our schedule pretty loose, but ended up with three meetings; one in the morning, one at lunchtime, and one at the end of the day. 
+We opted to work separately, although we discussed the option of pair programming all day as well.
 
-The meeting in the morning was mostly spent talking through the problem, and discussing the approaches we were going to take. This was so that we could avoid duplicating our efforts, and explore different potential solutions.
+The meeting in the morning was mostly spent talking through the problem, and discussing the approaches we were going to take. 
+This was so that we could avoid duplicating our efforts, and explore different potential solutions.
 
-Our afternoon meeting was just a quick status update; I hadn't done much coding by lunchtime because I'd spent hours trying to sort out my virtual environment! There's quite a lot of setup required for some of these more state-of-the-art packages, and Windows isn't the most ideal operating system...
+Our afternoon meeting was just a quick status update; I hadn't done much coding by lunchtime because I'd spent hours trying to sort out my virtual environment! 
+There's quite a lot of setup required for some of these more state-of-the-art packages, and Windows isn't the ideal operating system...
 
 We reconvened in the evening to discuss what we'd achieved. It was great having quite a tight deadline - it made me really focus on the task at hand.
 
-As an aside, I used ChatGPT to scaffold a lot of my code, and to help with debugging - it saved me so much time! I was able to use my time thinking through the problem and working out my approach, instead of trawling through Stackoverflow to figure out why my code wasn't working. For me, the Hackathon would have been much less successful without it.
+As an aside, I used ChatGPT to scaffold a lot of my code, and to help with debugging - it saved me so much time! 
+I was able to use my time thinking through the problem and working out my approach, instead of trawling through Stackoverflow to figure out why my code wasn't working. 
+For me, the Hackathon would have been much less successful without it.
 
-## Sharing our findings
+Between the three of us, we tried two different methods out.
 
-We opted for 2.5 different approaches to the problem: zero-shot prompting and zero-shot classification. We put together a quick presentation to share our findings, which can be viewed here.
+## Zero shot classification with fine-tuning
 
-ADD CODE HERE
-The code we used is available here, here, and here. Note that it is very rudimentary!
+This method is more like traditional machine learning. 
+It is relatively quick and requires less computing power than the zero shot prompting method. 
+We used the huggingface [facebook/bart-large-mnli model](https://huggingface.co/facebook/bart-large-mnli) model, which could be finetuned as part of a human-in-the-loop training cycle. 
+However, this method is quite slow, taking about 20 minutes to retrain the model even with such a small dataset.
+
+```{mermaid}
+flowchart TB
+    A("Model labels data") --> B("Humans check and correct data")
+    B --> n3("Model retrains")
+    n3 --> A
+    nn("Give model labels and data") --> A
+
+    style A stroke:#000000,fill:#276DC2,color:#fff
+    style nn stroke: #000000,fill:#ffde57
+    style B stroke: #000000,fill:#ffde57
+    style n3 stroke: #000000,fill:#276DC2,color:#fff
+```
+
+## Zero shot prompting
+
+This method utilises [Ollama](https://ollama.com/) to run complex Large Language Models (LLMs) locally. 
+This method relies on good prompt engineering, meaning that we had to test several different ways of asking the model to complete the task. 
+No retraining was required. 
+We just used our own machines to do this, and a computer with decent hardware can generate just over 80 tokens per second - meaning that it's reasonably quick. 
+Performance was slightly better, I would say, and it would even be possible to [evaluate results automatically](https://github.com/langchain-ai/openevals), with human oversight, using a method called "LLM eval".
 
 ## Next steps
 
-Having built these simple proofs of concept on our local machines, we now need to think about how we would productionise these approaches in the real world. The newest member of our team, Eirini, has experience deploying Large Language Models (LLMs) and we hope to do this for the Strategy Unit in the near future.
+Both methods performed reasonably well, and Andriana could see how they would be able to help the Evaluation team in the future. 
+We also spotted some opportunities for quick wins with better cleaning of the data.
+Having built these simple proofs of concept on our local machines, we now need to think about how we would productionise these approaches in the real world. 
+I also want to spend time thinking about how the Data Science team and the Evaluation team can work more closely together in the future.
+
+Overall, I would say that the Hackathon format was a great way to explore new methods in a collaborative way, without too much disruption of regular day to day responsibilities.
 

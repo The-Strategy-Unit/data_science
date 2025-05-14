@@ -43,9 +43,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-7edbbfa3da53a3b0cb121e056a084c4f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-dark-1b499ce917d2f7d999e328e2fbdf6495.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../../site_libs/bootstrap/bootstrap-7edbbfa3da53a3b0cb121e056a084c4f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-f4b3f3134df3b53da4d81f2dd888929f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-37e02ac2c63016031902a165d5560e5e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-f4b3f3134df3b53da4d81f2dd888929f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -384,7 +384,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>At the Strategy Unit, we’re lucky to have an awesome Evaluation team who often process and categorise large amounts of free text in <a href="https://www.strategyunitwm.nhs.uk/sites/default/files/2025-01/Strategy%20Unit%20Interactive%20Evaluation%20Guide.pdf">the work that they do</a>. This can be a time-consuming, labour-intensive process, and presents a good opportunity for AI/machine learning to help reduce some of this burden using Natural Language Processing (NLP). We want to use technology to help augment the existing skills and expertise of our qualitative analysts.</p>
-<p>The Data Science team has intended for some time to explore ways of helping to automate some Evaluation tasks. However, we lacked the opportunity to do so effectively, given competing demands on our time and capacity. We finally decided to take a Hackathon-like approach which worked really well for us. We’re sharing our methods and findings here, in case they’re helpful to others.</p>
+<p>The Data Science team has intended for some time to explore ways of helping to automate some Evaluation tasks. However, we lacked the opportunity to do so effectively, given competing demands on our time and capacity. We finally decided to take a Hackathon-like approach which worked really well for us. We’re sharing our methods and findings here, in case they’re helpful to others. You can find our code on <a href="https://github.com/ai-mindset/TagSurvey">this GitHub repo</a>. We approached the problem from a few different angles, each of which lives in a separate branch.</p>
 <section id="setup-defining-the-problem" class="level2">
 <h2 class="anchored" data-anchor-id="setup-defining-the-problem">Setup: Defining the problem</h2>
 <p>The key to success when you don’t have much time is to define your problem and objectives well. This helps keep your session focused and realistic. I had a good preparatory meeting with Andriana, our collaborator in the Evaluation team, who provided some examples of the free text data generated from Evaluation studies and their intended uses. We decided to use some data from a recent survey, which needed to be categorised into one or more of six different categories - a multilabel classification problem, with a small dataset of only 460 rows.</p>

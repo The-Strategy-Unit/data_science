@@ -20,7 +20,7 @@ We want to use technology to help augment the existing skills and expertise of o
 The Data Science team has intended for some time to explore ways of helping to automate some Evaluation tasks. 
 However, we lacked the opportunity to do so effectively, given competing demands on our time and capacity.
 We finally decided to take a Hackathon-like approach which worked really well for us. 
-We're sharing our methods and findings here, in case they're helpful to others.
+We're sharing our methods and findings here, in case they're helpful to others. You can find our code on [this GitHub repo](https://github.com/ai-mindset/TagSurvey). We approached the problem from a few different angles, each of which lives in a separate branch.   
 
 ## Setup: Defining the problem
 

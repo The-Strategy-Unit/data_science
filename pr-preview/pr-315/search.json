@@ -4,7 +4,7 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "The Data Science team at the Strategy Unit comprises the following team members:\n\nChris Beeley\nClaire Welsh\nFrancis Barton\nMatt Dray\nOzayr Mohammed\nRhian Davies\nTom Jemmett\nYiWen Hon\n\nThe team has a wealth of experience in deploying models and other products to the cloud for use by a wide range of users across health and care. This is particularly demonstrated in our work with the New Hospital Programme, where we built and deployed a sophisticated probabilistic demand and capacity model and supported the use of its outputs across the decision-making stages that lead to the construction of a new hospital. The data science team possesses expertise across the breadth of data science activity — for example, statistics, machine learning, natural language processing, and real-time evidence mapping. We also have significant experience in sharing our methods and code as open-source, as well as in training others to use these tools and understand foundational data science concepts and practices. Our experience in developing scalable data science solutions, and open-sourcing them for the benefit of users across health and care, enables us to contribute meaningfully at every stage of a project’s life cycle — from design through to deployment and adoption.\nCurrent and previous projects of note include:\n\nWork supporting the New Hospitals Programme, including building a model for predicting the demand and capacity requirements of hospitals in the future, and a tool for mapping the evidence on this topic.\nThe Patient Experience Qualitative Data Categorisation project\nWork supporting the wider analytical community, through events/communities such as NHS-R and HACA."
+    "text": "The Data Science team at the Strategy Unit comprises the following team members:\n\nChris Beeley\nClaire Welsh\nFrancis Barton\nMatt Dray\nOzayr Mohammed\nRhian Davies\nTom Jemmett\nYiWen Hon\nEirini Komninou\n\nThe team has a wealth of experience in deploying models and other products to the cloud for use by a wide range of users across health and care. This is particularly demonstrated in our work with the New Hospital Programme, where we built and deployed a sophisticated probabilistic demand and capacity model and supported the use of its outputs across the decision-making stages that lead to the construction of a new hospital. The data science team possesses expertise across the breadth of data science activity — for example, statistics, machine learning, natural language processing, and real-time evidence mapping. We also have significant experience in sharing our methods and code as open-source, as well as in training others to use these tools and understand foundational data science concepts and practices. Our experience in developing scalable data science solutions, and open-sourcing them for the benefit of users across health and care, enables us to contribute meaningfully at every stage of a project’s life cycle — from design through to deployment and adoption.\nCurrent and previous projects of note include:\n\nWork supporting the New Hospitals Programme, including building a model for predicting the demand and capacity requirements of hospitals in the future, and a tool for mapping the evidence on this topic.\nThe Patient Experience Qualitative Data Categorisation project\nWork supporting the wider analytical community, through events/communities such as NHS-R and HACA."
   },
   {
     "objectID": "blogs/index.html",
@@ -3102,193 +3102,193 @@
     "text": "Useful {targets} links\n\nTom’s previous coffee and coding presentation\nMatt’s previous presentations\nThe {targets} documentation is detailed and easy to follow.\nA demo repository demonstrated in last weeks NHSE C&C\nSoftware Carpentry are developing a course here Pre-alpha targets course\nLive project demonstrated in this presentation using {targets}"
   },
   {
-    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#the-new-hospital-programme-nhp-demand-model",
-    "href": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#the-new-hospital-programme-nhp-demand-model",
+    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#the-new-hospital-programme-nhp-demand-model",
+    "href": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#the-new-hospital-programme-nhp-demand-model",
     "title": "NHP Demand and Capacity (D&C) Model",
     "section": "The New Hospital Programme (NHP) Demand Model",
     "text": "The New Hospital Programme (NHP) Demand Model\n\nDiagram of model process\nA quick reminder of how the model works.\nThis is an updated image of the modelling process, showing the elements currently supported.\nThe NHP Demand model is A probabilistic Monte Carlo simulation that:\n\nTakes hospital activity from a baseline year, using NHS England’s Hospital Episode Statistics (HES) data\nApplies variables that:\n\nare outside of our control (e.g. population changes, using ONS projections),\n\nA choice of projections\nNon-demographic growth estimates Nationally, both of which will swell the baseline\n\nThen we apply elements that can reduce hospital activity (mitigators, e.g. virtual wards or teleappointments). So these components, given to us from your inputting your P10 and P90 confidence limits, can either remove some future activity, modify it or reduce length of stay.\n\nForecasts future demand based on these variables, outputting probabilistic predictive intervals.\nThe data needed include HES baseline, ONS populations, national NDG, COVID adjustement (no longer for 23/24), HSA, reference lookups.\nWe need the model to be able to preserve selections, results, version control the data and model Needs to be fast and reactive to user inputs.\nAdded difficulties are that\nHospitals are actively using the model while it is still in development, which can be tricky\nDataset is massive for each hospital - hundreds and thousands of rows - all activity for a hospital trust in one year\nModel can accommodate hundreds of different variables, and more are added over time.\nWe need the model to be backwards compatible, so that we can rerun any historic runs."
   },
   {
-    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#section",
-    "href": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#section",
+    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#section",
+    "href": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#section",
     "title": "NHP Demand and Capacity (D&C) Model",
     "section": "",
     "text": "Here’s an overview of the setup for the infrastructure.\nThis is quite an old diagram, there are more code repositories now, but the basics are the same Will explain more of some elements in a minute\n\n\nWe start with the HES data, which is processed using Databricks and stored on Azure, accessed with PySpark. The ONS data also lives here, and both are combined and wrangled by the python code in the nhp_data repo to produce the model-ready data version which lives in Azure.\nThe inputs data is pulled in to the inputs app, which lives on Posit Connect and which you should all be familiar with. This enables users to see historic trends for mitigator activity in their scheme, look at summary counts etc.\nEvery time to move a slider or make a selecion on the inputs app, those data are captured by a reactive JSON file that preserves all the metadata for your model run. This is also kept on Connect.\nWhen you click Run, the JSON is sent via the API to the model, whose code lives in the nhp_model repo and is written in python.\n\n\nThe model spins up a new Docker image on the Azure Container Registry in which to run the model as I described previously.\nThe output is the results parquet file, which is saved onto the Azure storage.\nFinally, the outputs app, also on Connect, picks up this results file and uses it to display all the charts and summaries you’re used to, as well as allowing you to download the results.\n\nAll these datasets, the inputs, results and JSON files are preserved for the future."
   },
   {
-    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#section-1",
-    "href": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#section-1",
+    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#section-1",
+    "href": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#section-1",
     "title": "NHP Demand and Capacity (D&C) Model",
     "section": "",
     "text": "Here’s a simplified, zoomed-in version.\nHES data from the database is used to make the inputs data, which is pulled in to the inputs app.\nThat sends information to the model, which creates results that are sent back to storage, and from which the ourputs app does its thing.\nBy why did we choose this setup? It seems complicated and busy."
   },
   {
-    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#principles",
-    "href": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#principles",
+    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#principles",
+    "href": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#principles",
     "title": "NHP Demand and Capacity (D&C) Model",
     "section": "Principles",
     "text": "Principles\n\nDeploy alongside develop\nReproducible analytical pipelines\nTransparent\nOpen (FOSS where possible)\nTeam skills and work management\n\n\n\nSome of these choices stem from original familiarity of staff with those languages, for example, or from institutional restrictions\nBut as a general rule, we will choose the best tool for the job, being open to upskilling across the board and sharing our learning.\nWe operate in a fast-paced environment where the model is in active use Nationally and we must maintain that status while developing new functionality to provide a seamless improvement arc for users\nWe operate based on the principles of RAP and have opened the code base\nWhich improves transparency for users, developers and the public, since its all paid for with public funds.\nFree and open source software is always used where we can, and we try to keep up with the latest advances\nThe happiness, satisfaction and development of our team is the cornerstone of everything\nWe foster a culture of continuous learning, sharing, openness and lack of blame."
   },
   {
-    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#tools-and-platforms",
-    "href": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#tools-and-platforms",
+    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#tools-and-platforms",
+    "href": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#tools-and-platforms",
     "title": "NHP Demand and Capacity (D&C) Model",
     "section": "Tools and platforms",
     "text": "Tools and platforms\n\nData pipelines: , parquet, CSV\nModel: Python , Docker \nApps: {shiny} and {golem} , Posit Connect \nInfrastructure and storage: Azure \nDocumentation: Quarto \nVersion control and collaboration: Git , GitHub \n\n\n\nOur data pipelines leverage the speed of pyspark and Databricks.\nThe model is built in Python and involves a lot of pandas DataFrame manipulations.\nWe use Azure for storage of model input data and JSON files of parameters and parquet for results.\nUsers input model paramters in one Shiny app and view results in another. This uses modules and {golem} for its package focus, as well as {bs4Dash}. We have development and production environments.\nWe have a deployed Quarto website that contains the documentation for the whole project."
   },
   {
-    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#data-for-nhp",
-    "href": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#data-for-nhp",
+    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#data-for-nhp",
+    "href": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#data-for-nhp",
     "title": "NHP Demand and Capacity (D&C) Model",
     "section": "Data for NHP",
     "text": "Data for NHP\n\n\n\nHES data stored on Azure\nDatabricks and PySpark\nCSVs and TSVs for reference data\nparameters derived and stored in JSON\n\n\n\n\n\n\nWe use a Data lake on Azure using Databricks and parquet files. Apache Parquet = columnar data file format that is super fast and efficient Free and open source, contains metadata.\nIts also just as simple to wrangle as CSVs or other more familiar filetypes so swapping from, for example Rds files to parquet, as we did when the files started getting too large, was easy.\nWe used store results data in JSON (JavaScript Object Notation) but they got too big so moved to parquet But we maintain the parameters files in JSON format, a snapshot of which you can see here. Its a nice readable dictionary-type file format that is great for handling lots of key:value pairs as we do here."
   },
   {
-    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#generating-inputs-data",
-    "href": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#generating-inputs-data",
+    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#generating-inputs-data",
+    "href": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#generating-inputs-data",
     "title": "NHP Demand and Capacity (D&C) Model",
     "section": "Generating inputs data",
     "text": "Generating inputs data\n\n\nThis is a diagram of the Databricks workflows used to create the inputs data (which is a subset of the model data).\n\nIf an upstream step fails, all downstream ones will. We used to handle this with {targets} so we’d only rerun the parts we needed, but now in DataBricks and using Parquet, the process is so fast this is moot. Targets didn’t play nicely with pyspark which is why we changed over."
   },
   {
-    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#model-running",
-    "href": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#model-running",
+    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#model-running",
+    "href": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#model-running",
     "title": "NHP Demand and Capacity (D&C) Model",
     "section": "Model running",
     "text": "Model running\nParameters JSON passed to model via API\n\nDocker image stored on Azure Container Registry\nRuns in Azure Container Instance\nBuilt-in paralellisation features of Python language\n\n\n\n\nDocker is for safety - need to run compute on protected data Also for environment handling. Again, Docker is FOSS."
   },
   {
-    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#interfaces",
-    "href": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#interfaces",
+    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#interfaces",
+    "href": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#interfaces",
     "title": "NHP Demand and Capacity (D&C) Model",
     "section": "Interfaces",
     "text": "Interfaces\n\n\nCoded in R - Shiny Open repos: nhp_inputs and nhp_outputs\nModular design\n\nEach function is in its own .R\nEach module is separate\nUIs and servers are separate\nPackaged using {golem} to use R CMD check(), devtools::document() etc\n\n\n\n\n\n\nIn theory we could take in all the user’s required model run settings via a big spreadsheet, but the number of variables needed doesn’t have to get too big before this becomes problematic. Using apps is a visually appealing way of gathering that info while forcing users to provide inputs in the formats needed by the model.\nShiny is better than any spreadsheet thanks to this input verification, and it empowers users to understand their own data and choices.\nOur apps are coded in Shiny, because its a great tool for creating production-grade apps, and we have the in-house expertise to do so.\nThe repositories that contain the code for the apps are open so you can go on our GitHub and see it all.\nWe follow good practice convention on structure, where by each element of logic is kept in a separate .R file, and UI and server code are separate. This helps with debugging, human-readability and makes extending the functionality easier.\nGolem is another R package that helps create Shiny apps as a package - meaning that we can leverage the benefits of CMD check and documentation to help QA our processes during the build."
   },
   {
-    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#section-2",
-    "href": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#section-2",
+    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#section-2",
+    "href": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#section-2",
     "title": "NHP Demand and Capacity (D&C) Model",
     "section": "",
     "text": "Taking the inputs app you’ll be familiar with as an example, here we see the landing page for the selection app. This app, stored on Connect, interacts with the Azure storage where those JSON parameters files are kept, so that it can pick up one of your previous models if you ask it to.\nOnce you’ve made those decisions, you are taken to the inputs app - which is actually a separate app hosted on Connect."
   },
   {
-    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#section-3",
-    "href": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#section-3",
+    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#section-3",
+    "href": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#section-3",
     "title": "NHP Demand and Capacity (D&C) Model",
     "section": "",
     "text": "Here is the front page of the inputs app that you will have interacted with if you managed to run a model yourself.\nWe have the metadata centrally, showing the choices you have made on the previous screen. These data are stored in the JSON file and be retrievable in future.\nOn the left you can see various modules like the baseline adjustment, and the COVID adjustment (no longer needed in the 23/24 baseline).\nAll parts of this app are coded in separate modules, two modules for each ‘part’.\nLets see how this looks in the code, stored on GitHub"
   },
   {
-    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#section-4",
-    "href": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#section-4",
+    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#section-4",
+    "href": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#section-4",
     "title": "NHP Demand and Capacity (D&C) Model",
     "section": "",
     "text": "This is the open code repository for the inputs app on GitHub within the Strategy Unit organisation. We’ve clicked into the folder called simply ‘R’ here, as that’s conventionally where all the code logic that powers the functionality is held.\nYou can see that in this nhp_inputs repo, within the R folder, we have separate R files for each function (prefix “fct”) and two per module - one server and one UI, like for the baseline adjustment module.\nThis file structure should be familiar to those of you who have built or interacted with the bones of an R package, where the R folder is where the active code is stored in a modular format.\n\n** Open GitHub\n\nBecause this app is built with {golem} the rest of the package structure is also followed, including having NAMESPACE, DESCRIPTION, LICENSE and README files, and separate folders for data, documentation and what to do on installation etc. As I said, because this app is structured like a package, and functions held in R files are documented with Roxygen skeletons etc, we can use the powerful package building tools like devtools::document() to ensure that any changes are picked up, giving a faster, smoother, cleaner build experience.\nWe also have some extras that are not mandatory, like a CODEOWNERS file, which I’ll come on to discuss later in this session.\nThe app can be run locally provided you give it the keys needed to access the data storage, which can be held in an Renviron file. Being able to run the app locally assists with debugging and development tasks."
   },
   {
-    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#hosting",
-    "href": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#hosting",
+    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#hosting",
+    "href": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#hosting",
     "title": "NHP Demand and Capacity (D&C) Model",
     "section": "Hosting",
     "text": "Hosting\nPosit Connect\n\nManage user access \nRStudio, VSCode integration ( and )\nCan handle secrets \nNo limits on views \nWe deploy a separate app per model version\n\nUnambiguous\nBackwards compatability\n\n\n\n\nThere are various options for where to host Shiny apps so that they are available to end users through the browser. shinyapps.io for example. They vary a lot. We had a number of specific requirements for the hosting of the NHP model, including\nUser access\nbeing compatible with different languages and GUIs that we use in the team\nElegantly and safely handling secrets\nNo limits on views"
   },
   {
-    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#outputs",
-    "href": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#outputs",
+    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#outputs",
+    "href": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#outputs",
     "title": "NHP Demand and Capacity (D&C) Model",
     "section": "Outputs",
     "text": "Outputs\nMany formats:\n\nCSV\nJSON\nMS Word (using {officeR})\nOutputs app\nProject information Quarto website\n\nWe use a _brand.yml to help easily maintain style format of outputs (Quarto and Shiny).\n\n\nThe main way information flows out of the NHP model is via the outputs app, which also provides the functionality to download results into a spreadsheet software of your choice through CSV files.\nThe JSON files we’ve discussed are also produced and stored and users can ask us for them if useful\nWe produce templated reports in Microsoft Word for schemes, allowing them the comfort and accessibility of familiar software without greatly sacrificing the programmatic and RAP-compliant nature of our work.\nAnd our Quarto website holding the project information is a key tool for dissemination of info. Its repo is open, so you can go and look at all the code used to create it.\nIn essence we will aim to provide outputs that best meet the needs of our model users, to maximise the impact of the modelling and communicate the uncertainty around estimates as clearly as we can.\nWe also make use of ‘brand.yml’ to be consistent in the appearance of our NHP outputs. You can see this yaml file on our github, with an informative README that contains useful links to guidance around branding and usage."
   },
   {
-    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#reproducible-analytical-pipeline-rap-principles",
-    "href": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#reproducible-analytical-pipeline-rap-principles",
+    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#reproducible-analytical-pipeline-rap-principles",
+    "href": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#reproducible-analytical-pipeline-rap-principles",
     "title": "NHP Demand and Capacity (D&C) Model",
     "section": "Reproducible Analytical Pipeline (RAP) principles",
     "text": "Reproducible Analytical Pipeline (RAP) principles\nData versioning\nData and model follow the same semantic versioning1.\n\n\n\nNow we’re moving into ever-mode nerdy territory. You’ll all be familiar with RAP, what it means and why it matters.\nWe as a team are fully on board with those principles of transparency, quality, sharing and continuous improvement.\nOne way we do this is through version control - not only of the code, but of the data too.\nWe keep a public log of all changes to the model, viewable at the link below on our project information site, which is a Quarto website whose deployment is handled by GitHub Actions.\nThe code is versioned semantically, like usual software is, following the major-minor-patch naming convention. We are currently on version 3.4 of the model\n\n\n\n\nData Log\n\n\nOn another page of the Quarto website, we have a data log. As you can see, the data are named the same as the model versions, and we have history here going right back to the begining of the model lifespan.\nRelease notes are linked to and held on the nhp_data repository, which is also open source. Lets follow one of these release notes links to see the kinds of information stored.\n\n\n\n\nThe Strategy Unit GitHub\n\n\nHere in GitHub you can see the release notes for the current version of the model, v3.4.0. These notes are partly auto-generated by GitHub through collating the pull request comments on the elements merged to create this release, but we also might overwrite or simplify some things.\nFor instance we can see that Tom merged PR number 89 that replace the AEC mitigators with the new SDEC ones. I can click on this link to go to that merged PR and see all the details, timeline and conversations around it.\nThe full changelog also contains all the commits relevant to this new model version.\n\n\nModel Updates"
   },
   {
-    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#rap",
-    "href": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#rap",
+    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#rap",
+    "href": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#rap",
     "title": "NHP Demand and Capacity (D&C) Model",
     "section": "RAP",
     "text": "RAP\n\nModularised code\nStyling and Linting\nOPEN source code\nVersion control\nEnvironment management:\nDocker\n{renv}\nconda\n\n\n\nThere’s endless approaches and tooling you can use to adhere to RAP principles.\nThe selections we use are not static, we consciously improve and adapt over time\nModularising code we’ve spoken about, we try to take this approach wherever it makes sense (almost everywhere)\nWe use stylers like Air, which can be set to run every time you submit a PR to ensure that you are conforming to internally consistent style rules\nSimilarly with linting, this helps us be consistent in our code syntax and semantics.\nAs you’ve seen a lot already today, we code in the open. This can be scary to start with, but if your team follow advice around keeping secrets secret etc, and feel supported, its not too difficult to do.\nVersion control we’ve talked a lot about- handled using Git.\nReproducibility requires environment management. With the model this means using Docker to spin up a fully-resourced environment every time\nWe were using {renv} for some repos, but having shifted to building these as packages we no longer need to, and instead rely on the DESCRIPTION file.\nwith everything else we use conda to manage package dependencies."
   },
   {
-    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#rap-continued",
-    "href": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#rap-continued",
+    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#rap-continued",
+    "href": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#rap-continued",
     "title": "NHP Demand and Capacity (D&C) Model",
     "section": "RAP continued",
     "text": "RAP continued\n\nDocumentation\n\nProject Information\nREADMEs on GitHub\nDocstrings, packaged apps (golem)\n\nJSON schema {✔❌} for validating the parameters passed to the model\n\n\n\nKeeping clear, concise, up to date documentation is essential.\nAll the information about NHP is on our project information website.\nWe adhere to guidelines around having comprehensive README files\nOur apps, built as packages, have documentation kept up to date, which is easily done using devtools::document() function as you would when building a package. This means that all functions whose logic has been extrapolated out to separate R files should be automatically documented by picking up the Roxygen comments.\nAnother RAP element that we’ve very recently added is JSON schema - a way of validating the content of a JSON file before it is run through the model - this was deemed a good idea as on some test runs we had mistakenly put nonsensical values in the JSON, which didn’t throw an error when run through the model, but caused silly results. Having a check against a schema prevents this."
   },
   {
-    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#deployment-cicd",
-    "href": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#deployment-cicd",
+    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#deployment-cicd",
+    "href": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#deployment-cicd",
     "title": "NHP Demand and Capacity (D&C) Model",
     "section": "Deployment (CI/CD)",
     "text": "Deployment (CI/CD)\nHow do we maintain clean, safe, working code, centrally, when we have open repositories and up to 10 people collaborating on maintaining that code alongside its active deployment?\n\n\nContinuous Integration\nAutomated checks, tests when merging code into main\n\nOn pull request submission\nOn merge to main\n\n\n\nContinuous Deployment\nAutomated checks and tests when deploying (to dev or to prod)\n\nOn merge to main\nOn release"
   },
   {
-    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#github-actions",
-    "href": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#github-actions",
+    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#github-actions",
+    "href": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#github-actions",
     "title": "NHP Demand and Capacity (D&C) Model",
     "section": "GitHub Actions",
     "text": "GitHub Actions\nActions like:\n\nFormatting ({Air}) to pick up stylistic inconsistencies\nLinting - for logical, syntactic and stylistic issues\nRendering the README.Rmd\nPackage checks (benefits of creating a Shiny app as a package)\nDeploys to a ‘preview’ site\nAssess code coverage ({codecov})"
   },
   {
-    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#break-time",
-    "href": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#break-time",
+    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#break-time",
+    "href": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#break-time",
     "title": "NHP Demand and Capacity (D&C) Model",
     "section": "Break time! ",
     "text": "Break time! \n\n\n\n\n\n\nChris Beeley\n\n\n\n\n\n\n\nClaire Welsh\n\n\n\n\n\n\n\nNatasha Stephenson\n\n\n\n\n\n\n\nTom Jemmett\n\n\n\n\n\n\n\n\n\nMatt Dray\n\n\n\n\n\n\n\nYiWen Hon\n\n\n\n\n\n\n\nOzayr Mohammed\n\n\n\n\n\n\n\nRhian Davies"
   },
   {
-    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#how-we-work",
-    "href": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#how-we-work",
+    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#how-we-work",
+    "href": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#how-we-work",
     "title": "NHP Demand and Capacity (D&C) Model",
     "section": "How we work",
     "text": "How we work\nWe are AGILE, and use Scrum (light)\n\n3 week sprints with 1 week fallow\nWeekly sprint catch-up meetings\nKickoff and retro\nPromote T-shape expertise while reducing ‘bus-factor’\nTransparent prioritisation processes\nDistinct team roles\n\n\n\nScrum is a software development project management approach. We pick and choose the elements of these approaches as we see fit.\nThe reason for using it is to help us coordinate our activities across all these codebases and through all this complexity. It also helps us to push back on work if needed.\nWe have recently shortened the length of our sprints to release code more frequently and prevent large, tricky pieces of work becoming blocked for too long. We’re being agile about trying this out!\nAt the start of each sprint we hold a meeting to go through all the work elements to be delivered in that sprint, decide who is doing what, and ensure that all issues are clear and complete enough to avoid ambiguity. We need to have sub-issues that accurately reflect the quantity and distribution of work coming down the line to help us prioritise.\nEvery week on Monday we catch-up around the sprint and talk about whether we are on course, what needs to happen next and ensure we are sticking to deadlines.\nAt the end of every sprint we have an open discussion about what went well or otherwise.\nThe team needs to have deep expertise, but each person’s expertise covers different areas. The ‘T-shape’ indicates a broad understanding/skillset that enables work sharing and reduces bus-factor, and the downwards element shows that depth of expertise that we call upon - things like data engineering, statistics, documentation, app building, project management.\nHow we decide what we work on when is an evolving area. We aim to have logical, transparent tools for prioritising our work plan, which is sufficiently disseminated that stakeholders feel ‘in-the-loop’ and our staff do not burn out.\nWe also use Scrum principles around nominated roles within the team, I’ll go through the main ones now."
   },
   {
-    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#section-8",
-    "href": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#section-8",
+    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#section-8",
+    "href": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#section-8",
     "title": "NHP Demand and Capacity (D&C) Model",
     "section": "",
-    "text": "Scrum master : keeping the sprint on track\nProduct owner : steer work towards the goals\nHead of DS : leadership and prioritisation\nDevelopment board : define the goals and priorities\nQA : oversee quality\n\n\n\n\n\n\n\nTip\n\n\nRoles have enough specificity to provide clarity, but are also shared. Flat management structure.\n\n\n\n\n\nThese roles are fundamental to being able to operate across all the different elements discussed, while continuously upskilling and making sure everyone is happy and healthy.\nBeing agile means - We welcome input at any stage and can act on it because of the attitude and setup we have - We are not thrown off course by even late-stage changes (although these should be rare if our prioritisation frameworks are working as planned) - We collaborate with anyone that it makes sense to do so, drawing on expertise that benefits the product - Continuous improvement in both the work output and the team’s skills are emphasised.\n\nLets look at some of the actual processes we use to achieve all this."
+    "text": "Scrum master : keeping the sprint on track\nProduct owner : steer work towards the goals\nProject director : overall responsibility for delivery\nDevelopment board : define the goals and priorities\nQA : oversee quality\n\n\n\n\n\n\n\nTip\n\n\nRoles have enough specificity to provide clarity, but are also shared. Flat management structure.\n\n\n\n\n\nThese roles are fundamental to being able to operate across all the different elements discussed, while continuously upskilling and making sure everyone is happy and healthy.\nBeing agile means - We welcome input at any stage and can act on it because of the attitude and setup we have - We are not thrown off course by even late-stage changes (although these should be rare if our prioritisation frameworks are working as planned) - We collaborate with anyone that it makes sense to do so, drawing on expertise that benefits the product - Continuous improvement in both the work output and the team’s skills are emphasised.\n\nLets look at some of the actual processes we use to achieve all this."
   },
   {
-    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#agile-and-scrum-in-github",
-    "href": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#agile-and-scrum-in-github",
+    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#agile-and-scrum-in-github",
+    "href": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#agile-and-scrum-in-github",
     "title": "NHP Demand and Capacity (D&C) Model",
     "section": "Agile and Scrum in GitHub",
-    "text": "Agile and Scrum in GitHub\nLeverage a LOT of GitHub’s excellent tooling\n\n\n\nProjects\nIssues with bespoke labelling\nBranch protection rules\nCODEOWNERS\nClear and consistent collaboration guidance\n\n\nChecklists (for anything that can’t be automated)\n\n\n\n\nBespoke labelling is a very active area for development for us working on NHP.\nWe have a LOT of opinions, sets of priorities and dependencies to incorporate, organise and understand\n\nCreating, modifying and revising labelling strategies is key to team understanding and clarity.\nThey avoid clashing of scheduled priorities and help resolve conflicts\nWe create label sets to denote things like\n\nOur priorities within DS\nOur dev board’s priorities\nStages of production for new elements\nSign-off status\nWhether we could/should/must/won’t\nTo get an idea of the scope of any issue\nUrgency versus importance"
+    "text": "Agile and Scrum in GitHub\nLeverage a LOT of GitHub’s excellent tooling\n\n\n\nProjects\nIssues with bespoke labelling\nBranch protection rules\nCODEOWNERS\nClear and consistent collaboration guidance\nChecklists\n\n\n\n\n\nBespoke labelling is a very active area for development for us working on NHP.\nWe have a LOT of opinions, sets of priorities and dependencies to incorporate, organise and understand\n\nCreating, modifying and revising labelling strategies is key to team understanding and clarity.\nThey avoid clashing of scheduled priorities and help resolve conflicts\nWe create label sets to denote things like\n\nOur priorities within DS\nOur dev board’s priorities\nStages of production for new elements\nSign-off status\nWhether we could/should/must/won’t\nTo get an idea of the scope of any issue\nUrgency versus importance"
   },
   {
-    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#codeowners",
-    "href": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#codeowners",
+    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#codeowners",
+    "href": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#codeowners",
     "title": "NHP Demand and Capacity (D&C) Model",
     "section": "CODEOWNERS",
     "text": "CODEOWNERS\nA simple but powerful idea!\n\n\n\nThe more code and repos you have, the more likely you are to miss things, for issues to go stale, and for best practice to fall by the wayside.\nTo avoid this, each repo has two nominated CODEOWNERS, whose responsibility it is to know about the content, understand its purpose, be able to debug it when necessary, and to keep on top of issues related to it - prioritising these as makes sense and delegating that work if necessary.\nThese people are automatically chosen as reviewers for any PR seeking to merge to main.\nAlthough you can nominate a team to be a CODEOWNER, we’ve opted not to do this to avoid everybody getting ‘spammed’ with emails whenever a PR is submitted to one of our repos - our inboxes are full enough!"
   },
   {
-    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#product-team",
-    "href": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#product-team",
+    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#product-team",
+    "href": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#product-team",
     "title": "NHP Demand and Capacity (D&C) Model",
     "section": "Product Team",
     "text": "Product Team\n‘The model’ is a product - it has current and potential use cases and user groups.\nWe need a team responsible for understanding the software business  as well as the software product 🚀.\n“What should we build next and why?”"
   },
   {
-    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#product-team-members",
-    "href": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#product-team-members",
+    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#product-team-members",
+    "href": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#product-team-members",
     "title": "NHP Demand and Capacity (D&C) Model",
     "section": "Product Team Members",
     "text": "Product Team Members\n\nProduct Owner\nProduct Manager\nCustomer Engagement\nProject Director"
   },
   {
-    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#information-management",
-    "href": "presentations/2025-05-13_NHP_DS_deep_dive/NHP_DS_deep_dive.html#information-management",
+    "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#information-management",
+    "href": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#information-management",
     "title": "NHP Demand and Capacity (D&C) Model",
     "section": "Information management",
-    "text": "Information management\n🗣 Info IN\nInbox, user feedback forms, button on apps, videoed interviews, roundtable, ad hoc.\n📣 Info OUT\nProject information site, GitHub, how-to videos, conference and meeting presentations, blogs.\nTo ensure that: - User needs guide what we build s- We help (current and future) users know what we have built and are building"
+    "text": "Information management\n🗣 Info IN\nInbox, user feedback forms, button on apps, videoed interviews, roundtable, ad hoc.\n📣 Info OUT\nProject information site, GitHub, how-to videos, conference and meeting presentations, blogs.\nTo ensure that:\n\nUser needs guide what we build\nWe help (current and future) users know what we have built and are building"
   },
   {
     "objectID": "presentations/2024-10-10_what-is-ai-chris/index.html#what-is-ai",
@@ -3428,7 +3428,7 @@
     "href": "presentations/index.html",
     "title": "Presentations",
     "section": "",
-    "text": "Title\nAuthor\nDate\n\n\n\n\nPackage tour of sconn: An R package to connect to databricks\nFran Barton\n2025-03-13\n\n\nDeployment of a probabilistic simulation model for predicting demand for acute healthcare in the NHS\nChris Beeley\n2025-02-27\n\n\nWhen Quarto wasn't the right answer: Mail merge is back, baby!\nJac Grout, Matt Dray\n2025-02-27\n\n\nA gentle introduction to databricks: What the heck is databricks?\nChris Beeley\n2025-01-16\n\n\nWhat the heck do I do all day?: Transitioning to management from a technical analytical role\nChris Beeley\n2024-12-04\n\n\nDHSC presentation: NHS-R and data science at the Strategy Unit\nChris Beeley\n2024-12-02\n\n\nText mining: What it can and can't do, and what it could do\nChris Beeley\n2024-11-27\n\n\nText mining: Some practical examples\nYiWen Hon\n2024-11-26\n\n\nForged in fire: Project management lessons from the frontline\nChris Beeley\n2024-11-22\n\n\nGitHub as a team sport: NHS RPySOC 2024\nMatt Dray\n2024-11-22\n\n\nWhat is AI?\nData science team, Strategy Unit\n2024-10-10\n\n\nLarge Language Models (LLMs): Is this AI?\nData Science team, Strategy Unit\n2024-10-10\n\n\nComputer Vision: Is this AI?\nTom Jemmett\n2024-10-10\n\n\nIdentifying patients at risk: Is this AI?\nYiWen Hon\n2024-10-10\n\n\nRAP: A cautionary tale\nNA\n2024-10-09\n\n\nUsing R and Python to model future hospital activity: EARL Conference 2024\nYiWen Hon, Matt Dray, Tom Jemmett\n2024-09-05\n\n\nAgile and scrum working\nChris Beeley\n2024-08-22\n\n\nOpen source licensing: Or: how I learned to stop worrying and love openness\nChris Beeley\n2024-05-30\n\n\nGitHub as a team sport: DfT QA Month\nMatt Dray\n2024-05-23\n\n\nStore Data Safely: Coffee & Coding\nYiWen Hon, Matt Dray\n2024-05-16\n\n\nCoffee and Coding: Making my analytical workflow more reproducible with {targets}\nJacqueline Grout\n2024-01-25\n\n\nConference Check-in App: NHS-R/NHS.pycom 2023\nTom Jemmett\n2023-10-17\n\n\nSystem Dynamics in health and care: fitting square data into round models\nSally Thompson\n2023-10-09\n\n\nRepeating Yourself with Functions: Coffee and Coding\nSally Thompson\n2023-09-07\n\n\nCoffee and Coding: Working with Geospatial Data in R\nTom Jemmett\n2023-08-24\n\n\nUnit testing in R: NHS-R Community Webinar\nTom Jemmett\n2023-08-23\n\n\nEverything you ever wanted to know about data science: but were too afraid to ask\nChris Beeley\n2023-08-02\n\n\nTravels with R and Python: the power of data science in healthcare\nChris Beeley\n2023-08-02\n\n\nAn Introduction to the New Hospital Programme Demand Model: HACA 2023\nTom Jemmett\n2023-07-11\n\n\nWhat good data science looks like\nChris Beeley\n2023-05-23\n\n\nText mining of patient experience data\nChris Beeley\n2023-05-15\n\n\nCoffee and Coding: {targets}\nTom Jemmett\n2023-03-23\n\n\nCollaborative working\nChris Beeley\n2023-03-23\n\n\nCoffee and Coding: Good Coding Practices\nTom Jemmett\n2023-03-09\n\n\nRAP: what is it and how can my team start using it effectively?\nChris Beeley\n2023-03-09\n\n\nCoffee and coding: Intro session\nChris Beeley\n2023-02-23"
+    "text": "Title\nAuthor\nDate\n\n\n\n\nNHP Demand and Capacity (D&C) Model: A Technical Deep Dive for Data Scientists\nClaire Welsh\n2025-05-07\n\n\nPackage tour of sconn: An R package to connect to databricks\nFran Barton\n2025-03-13\n\n\nDeployment of a probabilistic simulation model for predicting demand for acute healthcare in the NHS\nChris Beeley\n2025-02-27\n\n\nWhen Quarto wasn't the right answer: Mail merge is back, baby!\nJac Grout, Matt Dray\n2025-02-27\n\n\nA gentle introduction to databricks: What the heck is databricks?\nChris Beeley\n2025-01-16\n\n\nWhat the heck do I do all day?: Transitioning to management from a technical analytical role\nChris Beeley\n2024-12-04\n\n\nDHSC presentation: NHS-R and data science at the Strategy Unit\nChris Beeley\n2024-12-02\n\n\nText mining: What it can and can't do, and what it could do\nChris Beeley\n2024-11-27\n\n\nText mining: Some practical examples\nYiWen Hon\n2024-11-26\n\n\nForged in fire: Project management lessons from the frontline\nChris Beeley\n2024-11-22\n\n\nGitHub as a team sport: NHS RPySOC 2024\nMatt Dray\n2024-11-22\n\n\nWhat is AI?\nData science team, Strategy Unit\n2024-10-10\n\n\nLarge Language Models (LLMs): Is this AI?\nData Science team, Strategy Unit\n2024-10-10\n\n\nComputer Vision: Is this AI?\nTom Jemmett\n2024-10-10\n\n\nIdentifying patients at risk: Is this AI?\nYiWen Hon\n2024-10-10\n\n\nRAP: A cautionary tale\nNA\n2024-10-09\n\n\nUsing R and Python to model future hospital activity: EARL Conference 2024\nYiWen Hon, Matt Dray, Tom Jemmett\n2024-09-05\n\n\nAgile and scrum working\nChris Beeley\n2024-08-22\n\n\nOpen source licensing: Or: how I learned to stop worrying and love openness\nChris Beeley\n2024-05-30\n\n\nGitHub as a team sport: DfT QA Month\nMatt Dray\n2024-05-23\n\n\nStore Data Safely: Coffee & Coding\nYiWen Hon, Matt Dray\n2024-05-16\n\n\nCoffee and Coding: Making my analytical workflow more reproducible with {targets}\nJacqueline Grout\n2024-01-25\n\n\nConference Check-in App: NHS-R/NHS.pycom 2023\nTom Jemmett\n2023-10-17\n\n\nSystem Dynamics in health and care: fitting square data into round models\nSally Thompson\n2023-10-09\n\n\nRepeating Yourself with Functions: Coffee and Coding\nSally Thompson\n2023-09-07\n\n\nCoffee and Coding: Working with Geospatial Data in R\nTom Jemmett\n2023-08-24\n\n\nUnit testing in R: NHS-R Community Webinar\nTom Jemmett\n2023-08-23\n\n\nEverything you ever wanted to know about data science: but were too afraid to ask\nChris Beeley\n2023-08-02\n\n\nTravels with R and Python: the power of data science in healthcare\nChris Beeley\n2023-08-02\n\n\nAn Introduction to the New Hospital Programme Demand Model: HACA 2023\nTom Jemmett\n2023-07-11\n\n\nWhat good data science looks like\nChris Beeley\n2023-05-23\n\n\nText mining of patient experience data\nChris Beeley\n2023-05-15\n\n\nCoffee and Coding: {targets}\nTom Jemmett\n2023-03-23\n\n\nCollaborative working\nChris Beeley\n2023-03-23\n\n\nCoffee and Coding: Good Coding Practices\nTom Jemmett\n2023-03-09\n\n\nRAP: what is it and how can my team start using it effectively?\nChris Beeley\n2023-03-09\n\n\nCoffee and coding: Intro session\nChris Beeley\n2023-02-23"
   },
   {
     "objectID": "presentations/2025-02-27_nhp-deployment/index.html#intro",
@@ -4205,7 +4205,7 @@
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r---flows",
     "title": "System Dynamics in health and care",
     "section": "in R - flows",
-    "text": "in R - flows\nEasy to do with count, or group_by and summarise\n\n\nadmit_d &lt;- spell_dates |&gt;\n  group_by(date_admit) |&gt;\n  count(date_admit)\n\nhead(admit_d)\n\n\n# A tibble: 6 × 2\n# Groups:   date_admit [6]\n  date_admit     n\n  &lt;date&gt;     &lt;int&gt;\n1 2022-01-01    22\n2 2022-01-02    21\n3 2022-01-03    32\n4 2022-01-04    21\n5 2022-01-05    33\n6 2022-01-06    27"
+    "text": "in R - flows\nEasy to do with count, or group_by and summarise\n\n\nadmit_d &lt;- spell_dates |&gt;\n  group_by(date_admit) |&gt;\n  count(date_admit)\n\nhead(admit_d)\n\n\n# A tibble: 6 × 2\n# Groups:   date_admit [6]\n  date_admit     n\n  &lt;date&gt;     &lt;int&gt;\n1 2022-01-01    31\n2 2022-01-02    28\n3 2022-01-03    30\n4 2022-01-04    29\n5 2022-01-05    27\n6 2022-01-06    31"
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r---occupancy",
@@ -4226,7 +4226,7 @@
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods---flows",
     "title": "System Dynamics in health and care",
     "section": "Longer Time Periods - flows",
-    "text": "Longer Time Periods - flows\nUse lubridate::floor_date to generate the date at start of week/month\n\nadmit_wk &lt;- spell_dates |&gt;\n  mutate(\n    week_start = floor_date(\n      date_admit,\n      unit = \"week\",\n      week_start = 1 # start week on Monday\n    )\n  ) |&gt;\n  count(week_start) # could add other parameters such as provider code, TFC etc\n\nhead(admit_wk)\n\n\n\n# A tibble: 6 × 2\n  week_start     n\n  &lt;date&gt;     &lt;int&gt;\n1 2021-12-27    43\n2 2022-01-03   192\n3 2022-01-10   177\n4 2022-01-17   172\n5 2022-01-24   194\n6 2022-01-31   222\n\n\n\nMight run SD model in weeks or months - e.g. months for care homes Use lubridate to create new variable with start date of week/month/year etc"
+    "text": "Longer Time Periods - flows\nUse lubridate::floor_date to generate the date at start of week/month\n\nadmit_wk &lt;- spell_dates |&gt;\n  mutate(\n    week_start = floor_date(\n      date_admit,\n      unit = \"week\",\n      week_start = 1 # start week on Monday\n    )\n  ) |&gt;\n  count(week_start) # could add other parameters such as provider code, TFC etc\n\nhead(admit_wk)\n\n\n\n# A tibble: 6 × 2\n  week_start     n\n  &lt;date&gt;     &lt;int&gt;\n1 2021-12-27    59\n2 2022-01-03   196\n3 2022-01-10   176\n4 2022-01-17   200\n5 2022-01-24   201\n6 2022-01-31   196\n\n\n\nMight run SD model in weeks or months - e.g. months for care homes Use lubridate to create new variable with start date of week/month/year etc"
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods---occupancy",
@@ -4303,7 +4303,7 @@
     "href": "blogs/posts/2025-05-06_NLP-hackathon/index.html#next-steps",
     "title": "Taking a Hackathon approach to exploring new methods in NLP",
     "section": "Next steps",
-    "text": "Next steps\nBoth methods performed reasonably well, and Andriana could see how they would be able to help the Evaluation team in the future. We also spotted some opportunities for quick wins with better cleaning of the data. Having built these simple proofs of concept on our local machines, we now need to think about how we would productionise these approaches in the real world. I also want to spend time thinking about how the Data Science team and the Evaluation team can work more closely together in the future.\nOverall, I would say that the Hackathon format was a great way to explore new methods in a collaborative way, without too much disruption of regular day to day responsibilities."
+    "text": "Next steps\nBoth methods performed reasonably well, and Andriana could see how they would be able to help the Evaluation team in the future. The Evaluation team would need explore how exactly these models might fit into the qualitative analysis process and which types of projects they would be relevant for, as these methods are likely more applicable to projects with ‘simpler’ data. We also spotted some opportunities for quick wins with better cleaning of the data. Having built these simple proofs of concept on our local machines, we now need to think about how we would productionise these approaches in the real world. I also want to spend time thinking about how the Data Science team and the Evaluation team can work more closely together in the future.\nOverall, I would say that the Hackathon format was a great way to explore new methods in a collaborative way, without too much disruption of regular day to day responsibilities."
   },
   {
     "objectID": "blogs/posts/2024-01-10_advent-of-code-and-test-driven-development/index.html",

@@ -4,7 +4,7 @@ subtitle: "Bringing together analysts, data scientists, and customers to better 
 author:
   - name: Claire Welsh
     orcid: 0000-0001-9477-0775
-    email: claire.welsh8t@nhs.net
+    email: claire.welsh8@nhs.net
     affiliation:
       - name: The Strategy Unit, NHS MLCSU
         url: https://strategyunitwm.nhs.uk/

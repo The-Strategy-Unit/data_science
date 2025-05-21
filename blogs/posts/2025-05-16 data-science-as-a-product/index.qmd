@@ -14,6 +14,8 @@ execute:
   enabled: false
 ---
 
+![Data Science](StockCake-Healthcare Data Analysis_1747409640.jpg)
+
 Data science in healthcare is booming. 
 Every day new advances emerge that promise to deepen understanding, improve screening or optimise treatments. 
 But as this panoply of models grows, so does the scrapheap of potentially useful ones that have never helped a single patient. 

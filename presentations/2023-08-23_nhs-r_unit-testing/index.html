@@ -1,0 +1,1511 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.340">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Tom Jemmett">
+
+<title>Data Science @ The Strategy Unit - Unit testing in R</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Data Science @ The Strategy Unit</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blogs/index.html" rel="" target="">
+ <span class="menu-text">Blogs</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../presentations/index.html" rel="" target="">
+ <span class="menu-text">Presentations</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-how-we-work" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">How we work</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-how-we-work">    
+        <li>
+    <a class="dropdown-item" href="../../style/team.html" rel="" target="">
+ <span class="dropdown-text">Team work</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../style/style_guide.html" rel="" target="">
+ <span class="dropdown-text">Style Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../style/git_and_github.html" rel="" target="">
+ <span class="dropdown-text">Using Git and GitHub</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../style/project_structure.html" rel="" target="">
+ <span class="dropdown-text">Project Structure</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../style/data_storage.html" rel="" target="">
+ <span class="dropdown-text">Data Storage</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../blogs/index.xml" rel="" target=""><i class="bi bi-rss" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#what-is-testing" id="toc-what-is-testing" class="nav-link active" data-scroll-target="#what-is-testing">What is testing?</a></li>
+  <li><a href="#how-can-we-test-our-code" id="toc-how-can-we-test-our-code" class="nav-link" data-scroll-target="#how-can-we-test-our-code">How can we test our code?</a></li>
+  <li><a href="#how-can-we-test-our-code-1" id="toc-how-can-we-test-our-code-1" class="nav-link" data-scroll-target="#how-can-we-test-our-code-1">How can we test our code?</a></li>
+  <li><a href="#different-types-of-functional-tests" id="toc-different-types-of-functional-tests" class="nav-link" data-scroll-target="#different-types-of-functional-tests">Different types of functional tests</a></li>
+  <li><a href="#different-types-of-functional-tests-1" id="toc-different-types-of-functional-tests-1" class="nav-link" data-scroll-target="#different-types-of-functional-tests-1">Different types of functional tests</a></li>
+  <li><a href="#different-types-of-functional-tests-2" id="toc-different-types-of-functional-tests-2" class="nav-link" data-scroll-target="#different-types-of-functional-tests-2">Different types of functional tests</a></li>
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
+  <li><a href="#testing-pyramid" id="toc-testing-pyramid" class="nav-link" data-scroll-target="#testing-pyramid">Testing Pyramid</a></li>
+  <li><a href="#unit-testing" id="toc-unit-testing" class="nav-link" data-scroll-target="#unit-testing">Unit <span class="yellow">Testing</span></a>
+  <ul class="collapse">
+  <li><a href="#lets-create-a-simple-function" id="toc-lets-create-a-simple-function" class="nav-link" data-scroll-target="#lets-create-a-simple-function">Let’s create a simple function…</a></li>
+  <li><a href="#lets-create-a-simple-function-1" id="toc-lets-create-a-simple-function-1" class="nav-link" data-scroll-target="#lets-create-a-simple-function-1">Let’s create a simple function…</a></li>
+  <li><a href="#lets-create-a-simple-function-2" id="toc-lets-create-a-simple-function-2" class="nav-link" data-scroll-target="#lets-create-a-simple-function-2">Let’s create a simple function…</a></li>
+  <li><a href="#and-create-our-first-test" id="toc-and-create-our-first-test" class="nav-link" data-scroll-target="#and-create-our-first-test">… and create our first test</a></li>
+  <li><a href="#and-create-our-first-test-1" id="toc-and-create-our-first-test-1" class="nav-link" data-scroll-target="#and-create-our-first-test-1">… and create our first test</a></li>
+  <li><a href="#and-create-our-first-test-2" id="toc-and-create-our-first-test-2" class="nav-link" data-scroll-target="#and-create-our-first-test-2">… and create our first test</a></li>
+  <li><a href="#and-create-our-first-test-3" id="toc-and-create-our-first-test-3" class="nav-link" data-scroll-target="#and-create-our-first-test-3">… and create our first test</a></li>
+  <li><a href="#and-create-our-first-test-4" id="toc-and-create-our-first-test-4" class="nav-link" data-scroll-target="#and-create-our-first-test-4">… and create our first test</a></li>
+  <li><a href="#and-create-our-first-test-5" id="toc-and-create-our-first-test-5" class="nav-link" data-scroll-target="#and-create-our-first-test-5">… and create our first test</a></li>
+  <li><a href="#other-expect_-functions" id="toc-other-expect_-functions" class="nav-link" data-scroll-target="#other-expect_-functions">other <code>expect_*()</code> functions…</a></li>
+  <li><a href="#arrange-act-assert" id="toc-arrange-act-assert" class="nav-link" data-scroll-target="#arrange-act-assert">Arrange, Act, Assert</a></li>
+  <li><a href="#arrange-act-assert-1" id="toc-arrange-act-assert-1" class="nav-link" data-scroll-target="#arrange-act-assert-1">Arrange, Act, Assert</a></li>
+  <li><a href="#arrange-act-assert-2" id="toc-arrange-act-assert-2" class="nav-link" data-scroll-target="#arrange-act-assert-2">Arrange, Act, Assert</a></li>
+  <li><a href="#arrange-act-assert-3" id="toc-arrange-act-assert-3" class="nav-link" data-scroll-target="#arrange-act-assert-3">Arrange, Act, Assert</a></li>
+  <li><a href="#our-test-failed" id="toc-our-test-failed" class="nav-link" data-scroll-target="#our-test-failed">Our test failed!?! 😢</a></li>
+  <li><a href="#tolerance-to-the-rescue" id="toc-tolerance-to-the-rescue" class="nav-link" data-scroll-target="#tolerance-to-the-rescue">Tolerance to the rescue 🙂</a></li>
+  <li><a href="#testing-edge-cases" id="toc-testing-edge-cases" class="nav-link" data-scroll-target="#testing-edge-cases">Testing edge cases</a></li>
+  <li><a href="#another-simple-example" id="toc-another-simple-example" class="nav-link" data-scroll-target="#another-simple-example">Another (simple) example</a></li>
+  <li><a href="#another-simple-example-1" id="toc-another-simple-example-1" class="nav-link" data-scroll-target="#another-simple-example-1">Another (simple) example</a></li>
+  <li><a href="#how-to-design-good-tests" id="toc-how-to-design-good-tests" class="nav-link" data-scroll-target="#how-to-design-good-tests">How to design good tests</a></li>
+  <li><a href="#but-why-create-tests" id="toc-but-why-create-tests" class="nav-link" data-scroll-target="#but-why-create-tests">But, why create tests?</a></li>
+  <li><a href="#testing-complex-functions" id="toc-testing-complex-functions" class="nav-link" data-scroll-target="#testing-complex-functions">Testing complex functions</a></li>
+  <li><a href="#split-the-logic-into-smaller-functions" id="toc-split-the-logic-into-smaller-functions" class="nav-link" data-scroll-target="#split-the-logic-into-smaller-functions">Split the logic into smaller functions</a></li>
+  <li><a href="#split-the-logic-into-smaller-functions-1" id="toc-split-the-logic-into-smaller-functions-1" class="nav-link" data-scroll-target="#split-the-logic-into-smaller-functions-1">Split the logic into smaller functions</a></li>
+  <li><a href="#split-the-logic-into-smaller-functions-2" id="toc-split-the-logic-into-smaller-functions-2" class="nav-link" data-scroll-target="#split-the-logic-into-smaller-functions-2">Split the logic into smaller functions</a></li>
+  <li><a href="#split-the-logic-into-smaller-functions-3" id="toc-split-the-logic-into-smaller-functions-3" class="nav-link" data-scroll-target="#split-the-logic-into-smaller-functions-3">Split the logic into smaller functions</a></li>
+  <li><a href="#split-the-logic-into-smaller-functions-4" id="toc-split-the-logic-into-smaller-functions-4" class="nav-link" data-scroll-target="#split-the-logic-into-smaller-functions-4">Split the logic into smaller functions</a></li>
+  <li><a href="#lets-test-summarise_data" id="toc-lets-test-summarise_data" class="nav-link" data-scroll-target="#lets-test-summarise_data">Let’s test <code>summarise_data</code></a></li>
+  <li><a href="#lets-test-summarise_data-1" id="toc-lets-test-summarise_data-1" class="nav-link" data-scroll-target="#lets-test-summarise_data-1">Let’s test <code>summarise_data</code></a></li>
+  <li><a href="#lets-test-summarise_data-2" id="toc-lets-test-summarise_data-2" class="nav-link" data-scroll-target="#lets-test-summarise_data-2">Let’s test <code>summarise_data</code></a></li>
+  <li><a href="#lets-test-summarise_data-3" id="toc-lets-test-summarise_data-3" class="nav-link" data-scroll-target="#lets-test-summarise_data-3">Let’s test <code>summarise_data</code></a></li>
+  <li><a href="#lets-test-summarise_data-4" id="toc-lets-test-summarise_data-4" class="nav-link" data-scroll-target="#lets-test-summarise_data-4">Let’s test <code>summarise_data</code></a></li>
+  <li><a href="#lets-test-summarise_data-5" id="toc-lets-test-summarise_data-5" class="nav-link" data-scroll-target="#lets-test-summarise_data-5">Let’s test <code>summarise_data</code></a></li>
+  <li><a href="#lets-test-summarise_data-6" id="toc-lets-test-summarise_data-6" class="nav-link" data-scroll-target="#lets-test-summarise_data-6">Let’s test <code>summarise_data</code></a></li>
+  <li><a href="#lets-test-summarise_data-7" id="toc-lets-test-summarise_data-7" class="nav-link" data-scroll-target="#lets-test-summarise_data-7">Let’s test <code>summarise_data</code></a></li>
+  <li><a href="#next-steps" id="toc-next-steps" class="nav-link" data-scroll-target="#next-steps">Next steps</a></li>
+  <li><a href="#next-steps-1" id="toc-next-steps-1" class="nav-link" data-scroll-target="#next-steps-1">Next steps</a></li>
+  </ul></li>
+  <li><a href="#thanks" id="toc-thanks" class="nav-link" data-scroll-target="#thanks">Thanks!</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/the-strategy-unit/data_science/edit/main/presentations/2023-08-23_nhs-r_unit-testing/index.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/the-strategy-unit/data_science/issues/new" class="toc-action">Report an issue</a></p></div></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="index.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Unit testing in R</h1>
+<p class="subtitle lead">NHS-R Community Webinar</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p><a href="tom.jemmett@gmail.com" target="_blank">Tom Jemmett</a> </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">Aug 23, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="what-is-testing" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-testing">What is testing?</h2>
+<blockquote class="blockquote">
+<p>Software testing is the act of examining the artifacts and the behavior of the software under test by validation and verification. Software testing can also provide an objective, independent view of the software to allow the business to appreciate and understand the risks of software implementation</p>
+<p><a href="https://en.wikipedia.org/wiki/Software_testing">wikipedia</a></p>
+</blockquote>
+</section>
+<section id="how-can-we-test-our-code" class="level2">
+<h2 class="anchored" data-anchor-id="how-can-we-test-our-code">How can we test our code?</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<section id="statically" class="level4">
+<h4 class="anchored" data-anchor-id="statically">Statically</h4>
+<div class="incremental">
+<ul class="incremental">
+<li>(without executing the code)</li>
+<li>happens constantly, as we are writing code</li>
+<li>via code reviews</li>
+<li>compilers/interpreters/linters statically analyse the code for syntax errors</li>
+</ul>
+</div>
+</section>
+</div><div class="column" style="width:10%;">
+
+</div><div class="column" style="width:45%;">
+<section id="dynamically" class="level4">
+<h4 class="anchored" data-anchor-id="dynamically">Dynamically</h4>
+</section>
+</div>
+</div>
+</section>
+<section id="how-can-we-test-our-code-1" class="level2">
+<h2 class="anchored" data-anchor-id="how-can-we-test-our-code-1">How can we test our code?</h2>
+<div class="columns">
+<div class="column very-light-charcoal" style="width:45%;">
+<section id="statically-1" class="level4">
+<h4 class="anchored" data-anchor-id="statically-1">Statically</h4>
+<ul>
+<li>(without executing the code)</li>
+<li>happens constantly, as we are writing code</li>
+<li>via code reviews</li>
+<li>compilers/interpreters/linters statically analyse the code for syntax errors</li>
+</ul>
+</section>
+</div><div class="column" style="width:10%;">
+
+</div><div class="column" style="width:45%;">
+<section id="dynamically-1" class="level4">
+<h4 class="anchored" data-anchor-id="dynamically-1">Dynamically</h4>
+<div class="incremental">
+<ul class="incremental">
+<li>(by executing the code)</li>
+<li>split into functional and non-functional testing</li>
+<li>testing can be manual, or automated</li>
+</ul>
+</div>
+</section>
+</div>
+</div>
+<div class="notes">
+<ul>
+<li>non-functional testing covers things like performance, security, and usability testing</li>
+</ul>
+</div>
+</section>
+<section id="different-types-of-functional-tests" class="level2">
+<h2 class="anchored" data-anchor-id="different-types-of-functional-tests">Different types of functional tests</h2>
+<p><span class="yellow"><strong>Unit Testing</strong></span> checks each component (or unit) for accuracy independently of one another.</p>
+<p>. . .</p>
+<p><span class="yellow"><strong>Integration Testing</strong></span> integrates units to ensure that the code works together.</p>
+<p>. . .</p>
+<p><span class="yellow"><strong>End-to-End Testing</strong></span> (e2e) makes sure that the entire system functions correctly.</p>
+<p>. . .</p>
+<p><span class="yellow"><strong>User Acceptance Testing</strong></span> (UAT) ensures that the product meets the real user’s requirements.</p>
+</section>
+<section id="different-types-of-functional-tests-1" class="level2">
+<h2 class="anchored" data-anchor-id="different-types-of-functional-tests-1">Different types of functional tests</h2>
+<p><span class="yellow"><strong>Unit Testing</strong></span> checks each component (or unit) for accuracy independently of one another.</p>
+<p><span class="yellow"><strong>Integration Testing</strong></span> integrates units to ensure that the code works together.</p>
+<p><span class="yellow"><strong>End-to-End Testing</strong></span> (e2e) makes sure that the entire system functions correctly.</p>
+<div class="very-light-charcoal">
+<p><strong>User Acceptance Testing</strong> (UAT) ensures that the product meets the real user’s requirements.</p>
+</div>
+<div class="notes">
+<p>Unit, Integration, and E2E testing are all things we can automate in code, whereas UAT testing is going to be manual</p>
+</div>
+</section>
+<section id="different-types-of-functional-tests-2" class="level2">
+<h2 class="anchored" data-anchor-id="different-types-of-functional-tests-2">Different types of functional tests</h2>
+<p><span class="yellow"><strong>Unit Testing</strong></span> checks each component (or unit) for accuracy independently of one another.</p>
+<div class="very-light-charcoal">
+<p><strong>Integration Testing</strong> integrates units to ensure that the code works together.</p>
+<p><strong>End-to-End Testing</strong> (e2e) makes sure that the entire system functions correctly.</p>
+<p><strong>User Acceptance Testing</strong> (UAT) ensures that the product meets the real user’s requirements.</p>
+</div>
+<div class="notes">
+<p>Only focussing on unit testing in this talk, but the techniques/packages could be extended to integration testing. Often other tools (potentially specific tools) are needed for E2E testing.</p>
+</div>
+</section>
+<section id="example" class="level2">
+<h2 class="anchored" data-anchor-id="example">Example</h2>
+<p>We have a <code>{shiny}</code> app which grabs some data from a database, manipulates the data, and generates a plot.</p>
+<div class="incremental">
+<ul class="incremental">
+<li>we would write <strong>unit tests</strong> to check the data manipulation and plot functions work correctly (with pre-created sample/simple datasets)</li>
+<li>we would write <strong>integration tests</strong> to check that the data manipulation function works with the plot function (with similar data to what we used for the <strong>unit tests</strong>)</li>
+<li>we would write <strong>e2e</strong> tests to ensure that from start to finish the app grabs the data and produces a plot as required</li>
+</ul>
+</div>
+<div class="notes">
+<p>simple (unit tests) to complex (e2e tests)</p>
+</div>
+</section>
+<section id="testing-pyramid" class="level2">
+<h2 class="anchored" data-anchor-id="testing-pyramid">Testing Pyramid</h2>
+<p><img src="https://global-uploads.webflow.com/619e15d781b21202de206fb5/6316d9f844c1d214873c6c9b_the-software-testing-pyramid.webp" class="img-fluid"></p>
+<div class="footer">
+<p><span class="light-charcoal">Image source:</span> The Testing Pyramid: Simplified for One and All <a href="https://www.headspin.io/blog/the-testing-pyramid-simplified-for-one-and-all">headspin.io</a></p>
+</div>
+</section>
+<section id="unit-testing" class="level1 inverse center">
+<h1 class="inverse center">Unit <span class="yellow">Testing</span></h1>
+<p>. . .</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"testthat"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(testthat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="lets-create-a-simple-function" class="level2">
+<h2 class="anchored" data-anchor-id="lets-create-a-simple-function">Let’s create a simple function…</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>my_function <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stopifnot</span>(</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"x must be numeric"</span> <span class="ot">=</span> <span class="fu">is.numeric</span>(x),</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"y must be numeric"</span> <span class="ot">=</span> <span class="fu">is.numeric</span>(y),</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"x must be same length as y"</span> <span class="ot">=</span> <span class="fu">length</span>(x) <span class="sc">==</span> <span class="fu">length</span>(y),</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"cannot divide by zero!"</span> <span class="ot">=</span> y <span class="sc">!=</span> <span class="dv">0</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">/</span> y</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="lets-create-a-simple-function-1" class="level2">
+<h2 class="anchored" data-anchor-id="lets-create-a-simple-function-1">Let’s create a simple function…</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>my_function <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb3-2"><a href="#cb3-2"></a>  </span>
+<span id="cb3-3"><a href="#cb3-3"></a>  <span class="fu">stopifnot</span>(</span>
+<span id="cb3-4"><a href="#cb3-4"></a>    <span class="st">"x must be numeric"</span> <span class="ot">=</span> <span class="fu">is.numeric</span>(x),</span>
+<span id="cb3-5"><a href="#cb3-5"></a>    <span class="st">"y must be numeric"</span> <span class="ot">=</span> <span class="fu">is.numeric</span>(y),</span>
+<span id="cb3-6"><a href="#cb3-6"></a>    <span class="st">"x must be same length as y"</span> <span class="ot">=</span> <span class="fu">length</span>(x) <span class="sc">==</span> <span class="fu">length</span>(y),</span>
+<span id="cb3-7"><a href="#cb3-7"></a>    <span class="st">"cannot divide by zero!"</span> <span class="ot">=</span> y <span class="sc">!=</span> <span class="dv">0</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a>  )</span>
+<span id="cb3-9"><a href="#cb3-9"></a></span>
+<span id="cb3-10"><a href="#cb3-10"></a>  x <span class="sc">/</span> y</span>
+<span id="cb3-11"><a href="#cb3-11"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="lets-create-a-simple-function-2" class="level2">
+<h2 class="anchored" data-anchor-id="lets-create-a-simple-function-2">Let’s create a simple function…</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>my_function <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb4-2"><a href="#cb4-2"></a>  </span>
+<span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">stopifnot</span>(</span>
+<span id="cb4-4"><a href="#cb4-4"></a>    <span class="st">"x must be numeric"</span> <span class="ot">=</span> <span class="fu">is.numeric</span>(x),</span>
+<span id="cb4-5"><a href="#cb4-5"></a>    <span class="st">"y must be numeric"</span> <span class="ot">=</span> <span class="fu">is.numeric</span>(y),</span>
+<span id="cb4-6"><a href="#cb4-6"></a>    <span class="st">"x must be same length as y"</span> <span class="ot">=</span> <span class="fu">length</span>(x) <span class="sc">==</span> <span class="fu">length</span>(y),</span>
+<span id="cb4-7"><a href="#cb4-7"></a>    <span class="st">"cannot divide by zero!"</span> <span class="ot">=</span> y <span class="sc">!=</span> <span class="dv">0</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a>  )</span>
+<span id="cb4-9"><a href="#cb4-9"></a></span>
+<span id="cb4-10"><a href="#cb4-10"></a>  x <span class="sc">/</span> y</span>
+<span id="cb4-11"><a href="#cb4-11"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="footer">
+<p><a href="https://www.r-bloggers.com/2018/07/the-ten-rules-of-defensive-programming-in-r/">The Ten Rules of Defensive Programming in R</a></p>
+</div>
+</section>
+<section id="and-create-our-first-test" class="level2">
+<h2 class="anchored" data-anchor-id="and-create-our-first-test">… and create our first test</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">"my_function correctly divides values"</span>, {</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">my_function</span>(<span class="dv">4</span>, <span class="dv">2</span>),</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">my_function</span>(<span class="dv">1</span>, <span class="dv">4</span>),</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="fl">0.25</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">my_function</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)),</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="dv">2</span>, <span class="fl">0.25</span>)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="and-create-our-first-test-1" class="level2">
+<h2 class="anchored" data-anchor-id="and-create-our-first-test-1">… and create our first test</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">test_that</span>(<span class="st">"my_function correctly divides values"</span>, {</span>
+<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">expect_equal</span>(</span>
+<span id="cb6-3"><a href="#cb6-3"></a>    <span class="fu">my_function</span>(<span class="dv">4</span>, <span class="dv">2</span>),</span>
+<span id="cb6-4"><a href="#cb6-4"></a>    <span class="dv">2</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a>  )</span>
+<span id="cb6-6"><a href="#cb6-6"></a>  <span class="fu">expect_equal</span>(</span>
+<span id="cb6-7"><a href="#cb6-7"></a>    <span class="fu">my_function</span>(<span class="dv">1</span>, <span class="dv">4</span>),</span>
+<span id="cb6-8"><a href="#cb6-8"></a>    <span class="fl">0.25</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a>  )</span>
+<span id="cb6-10"><a href="#cb6-10"></a>  <span class="fu">expect_equal</span>(</span>
+<span id="cb6-11"><a href="#cb6-11"></a>    <span class="fu">my_function</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)),</span>
+<span id="cb6-12"><a href="#cb6-12"></a>    <span class="fu">c</span>(<span class="dv">2</span>, <span class="fl">0.25</span>)</span>
+<span id="cb6-13"><a href="#cb6-13"></a>  )</span>
+<span id="cb6-14"><a href="#cb6-14"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="and-create-our-first-test-2" class="level2">
+<h2 class="anchored" data-anchor-id="and-create-our-first-test-2">… and create our first test</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">test_that</span>(<span class="st">"my_function correctly divides values"</span>, {</span>
+<span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">expect_equal</span>(</span>
+<span id="cb7-3"><a href="#cb7-3"></a>    <span class="fu">my_function</span>(<span class="dv">4</span>, <span class="dv">2</span>),</span>
+<span id="cb7-4"><a href="#cb7-4"></a>    <span class="dv">2</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a>  )</span>
+<span id="cb7-6"><a href="#cb7-6"></a>  <span class="fu">expect_equal</span>(</span>
+<span id="cb7-7"><a href="#cb7-7"></a>    <span class="fu">my_function</span>(<span class="dv">1</span>, <span class="dv">4</span>),</span>
+<span id="cb7-8"><a href="#cb7-8"></a>    <span class="fl">0.25</span></span>
+<span id="cb7-9"><a href="#cb7-9"></a>  )</span>
+<span id="cb7-10"><a href="#cb7-10"></a>  <span class="fu">expect_equal</span>(</span>
+<span id="cb7-11"><a href="#cb7-11"></a>    <span class="fu">my_function</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)),</span>
+<span id="cb7-12"><a href="#cb7-12"></a>    <span class="fu">c</span>(<span class="dv">2</span>, <span class="fl">0.25</span>)</span>
+<span id="cb7-13"><a href="#cb7-13"></a>  )</span>
+<span id="cb7-14"><a href="#cb7-14"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="and-create-our-first-test-3" class="level2">
+<h2 class="anchored" data-anchor-id="and-create-our-first-test-3">… and create our first test</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">test_that</span>(<span class="st">"my_function correctly divides values"</span>, {</span>
+<span id="cb8-2"><a href="#cb8-2"></a>  <span class="fu">expect_equal</span>(</span>
+<span id="cb8-3"><a href="#cb8-3"></a>    <span class="fu">my_function</span>(<span class="dv">4</span>, <span class="dv">2</span>),</span>
+<span id="cb8-4"><a href="#cb8-4"></a>    <span class="dv">2</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a>  )</span>
+<span id="cb8-6"><a href="#cb8-6"></a>  <span class="fu">expect_equal</span>(</span>
+<span id="cb8-7"><a href="#cb8-7"></a>    <span class="fu">my_function</span>(<span class="dv">1</span>, <span class="dv">4</span>),</span>
+<span id="cb8-8"><a href="#cb8-8"></a>    <span class="fl">0.25</span></span>
+<span id="cb8-9"><a href="#cb8-9"></a>  )</span>
+<span id="cb8-10"><a href="#cb8-10"></a>  <span class="fu">expect_equal</span>(</span>
+<span id="cb8-11"><a href="#cb8-11"></a>    <span class="fu">my_function</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)),</span>
+<span id="cb8-12"><a href="#cb8-12"></a>    <span class="fu">c</span>(<span class="dv">2</span>, <span class="fl">0.25</span>)</span>
+<span id="cb8-13"><a href="#cb8-13"></a>  )</span>
+<span id="cb8-14"><a href="#cb8-14"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="and-create-our-first-test-4" class="level2">
+<h2 class="anchored" data-anchor-id="and-create-our-first-test-4">… and create our first test</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">test_that</span>(<span class="st">"my_function correctly divides values"</span>, {</span>
+<span id="cb9-2"><a href="#cb9-2"></a>  <span class="fu">expect_equal</span>(</span>
+<span id="cb9-3"><a href="#cb9-3"></a>    <span class="fu">my_function</span>(<span class="dv">4</span>, <span class="dv">2</span>),</span>
+<span id="cb9-4"><a href="#cb9-4"></a>    <span class="dv">2</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a>  )</span>
+<span id="cb9-6"><a href="#cb9-6"></a>  <span class="fu">expect_equal</span>(</span>
+<span id="cb9-7"><a href="#cb9-7"></a>    <span class="fu">my_function</span>(<span class="dv">1</span>, <span class="dv">4</span>),</span>
+<span id="cb9-8"><a href="#cb9-8"></a>    <span class="fl">0.25</span></span>
+<span id="cb9-9"><a href="#cb9-9"></a>  )</span>
+<span id="cb9-10"><a href="#cb9-10"></a>  <span class="fu">expect_equal</span>(</span>
+<span id="cb9-11"><a href="#cb9-11"></a>    <span class="fu">my_function</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)),</span>
+<span id="cb9-12"><a href="#cb9-12"></a>    <span class="fu">c</span>(<span class="dv">2</span>, <span class="fl">0.25</span>)</span>
+<span id="cb9-13"><a href="#cb9-13"></a>  )</span>
+<span id="cb9-14"><a href="#cb9-14"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="and-create-our-first-test-5" class="level2">
+<h2 class="anchored" data-anchor-id="and-create-our-first-test-5">… and create our first test</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">"my_function correctly divides values"</span>, {</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">my_function</span>(<span class="dv">4</span>, <span class="dv">2</span>),</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">my_function</span>(<span class="dv">1</span>, <span class="dv">4</span>),</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="fl">0.25</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">my_function</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)),</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="dv">2</span>, <span class="fl">0.25</span>)</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Test passed 😸</code></pre>
+</div>
+</div>
+</section>
+<section id="other-expect_-functions" class="level2">
+<h2 class="anchored" data-anchor-id="other-expect_-functions">other <code>expect_*()</code> functions…</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">"my_function correctly divides values"</span>, {</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_lt</span>(</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">my_function</span>(<span class="dv">4</span>, <span class="dv">2</span>),</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="dv">10</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_gt</span>(</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">my_function</span>(<span class="dv">1</span>, <span class="dv">4</span>),</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="fl">0.2</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_length</span>(</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">my_function</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)),</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Test passed 😀</code></pre>
+</div>
+</div>
+<div class="footer">
+<p><a href="https://testthat.r-lib.org/reference/index.html">{testthat} documentation</a></p>
+</div>
+</section>
+<section id="arrange-act-assert" class="level2">
+<h2 class="anchored" data-anchor-id="arrange-act-assert">Arrange, Act, Assert</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">"my_function works"</span>, {</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># arrange</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#  </span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># act</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># assert</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="arrange-act-assert-1" class="level2">
+<h2 class="anchored" data-anchor-id="arrange-act-assert-1">Arrange, Act, Assert</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>we <span class="yellow"><strong>arrange</strong></span> the environment, before running the function</p>
+<div class="incremental">
+<ul class="incremental">
+<li>to create sample values</li>
+<li>create fake/temporary files</li>
+<li>set random seed</li>
+<li>set R options/environment variables</li>
+</ul>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">test_that</span>(<span class="st">"my_function works"</span>, {</span>
+<span id="cb15-2"><a href="#cb15-2"></a>  <span class="co"># arrange</span></span>
+<span id="cb15-3"><a href="#cb15-3"></a>  x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb15-4"><a href="#cb15-4"></a>  y <span class="ot">&lt;-</span> <span class="dv">7</span></span>
+<span id="cb15-5"><a href="#cb15-5"></a>  expected <span class="ot">&lt;-</span> <span class="fl">0.714285</span></span>
+<span id="cb15-6"><a href="#cb15-6"></a></span>
+<span id="cb15-7"><a href="#cb15-7"></a>  <span class="co"># act</span></span>
+<span id="cb15-8"><a href="#cb15-8"></a>  <span class="co">#</span></span>
+<span id="cb15-9"><a href="#cb15-9"></a></span>
+<span id="cb15-10"><a href="#cb15-10"></a>  <span class="co"># assert</span></span>
+<span id="cb15-11"><a href="#cb15-11"></a>  <span class="co">#</span></span>
+<span id="cb15-12"><a href="#cb15-12"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="arrange-act-assert-2" class="level2">
+<h2 class="anchored" data-anchor-id="arrange-act-assert-2">Arrange, Act, Assert</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><span class="very-light-charcoal">we <strong>arrange</strong> the environment, before running the function</span></p>
+<p>we <span class="yellow"><strong>act</strong></span> by calling the function</p>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">test_that</span>(<span class="st">"my_function works"</span>, {</span>
+<span id="cb16-2"><a href="#cb16-2"></a>  <span class="co"># arrange</span></span>
+<span id="cb16-3"><a href="#cb16-3"></a>  x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb16-4"><a href="#cb16-4"></a>  y <span class="ot">&lt;-</span> <span class="dv">7</span></span>
+<span id="cb16-5"><a href="#cb16-5"></a>  expected <span class="ot">&lt;-</span> <span class="fl">0.714285</span></span>
+<span id="cb16-6"><a href="#cb16-6"></a></span>
+<span id="cb16-7"><a href="#cb16-7"></a>  <span class="co"># act</span></span>
+<span id="cb16-8"><a href="#cb16-8"></a>  actual <span class="ot">&lt;-</span> <span class="fu">my_function</span>(x, y)</span>
+<span id="cb16-9"><a href="#cb16-9"></a></span>
+<span id="cb16-10"><a href="#cb16-10"></a>  <span class="co"># assert</span></span>
+<span id="cb16-11"><a href="#cb16-11"></a>  <span class="co">#</span></span>
+<span id="cb16-12"><a href="#cb16-12"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="arrange-act-assert-3" class="level2">
+<h2 class="anchored" data-anchor-id="arrange-act-assert-3">Arrange, Act, Assert</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><span class="very-light-charcoal">we <strong>arrange</strong> the environment, before running the function</span></p>
+<p><span class="very-light-charcoal">we <strong>act</strong> by calling the function</span></p>
+<p>we <span class="yellow"><strong>assert</strong></span> that the <strong>actual</strong> results match our <strong>expected</strong> results</p>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">test_that</span>(<span class="st">"my_function works"</span>, {</span>
+<span id="cb17-2"><a href="#cb17-2"></a>  <span class="co"># arrange</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a>  x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb17-4"><a href="#cb17-4"></a>  y <span class="ot">&lt;-</span> <span class="dv">7</span></span>
+<span id="cb17-5"><a href="#cb17-5"></a>  expected <span class="ot">&lt;-</span> <span class="fl">0.714285</span></span>
+<span id="cb17-6"><a href="#cb17-6"></a></span>
+<span id="cb17-7"><a href="#cb17-7"></a>  <span class="co"># act</span></span>
+<span id="cb17-8"><a href="#cb17-8"></a>  actual <span class="ot">&lt;-</span> <span class="fu">my_function</span>(x, y)</span>
+<span id="cb17-9"><a href="#cb17-9"></a></span>
+<span id="cb17-10"><a href="#cb17-10"></a>  <span class="co"># assert</span></span>
+<span id="cb17-11"><a href="#cb17-11"></a>  <span class="fu">expect_equal</span>(actual, expected)</span>
+<span id="cb17-12"><a href="#cb17-12"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="our-test-failed" class="level2">
+<h2 class="anchored" data-anchor-id="our-test-failed">Our test failed!?! 😢</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">"my_function works"</span>, {</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># arrange</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="dv">7</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  expected <span class="ot">&lt;-</span> <span class="fl">0.714285</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># act</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  actual <span class="ot">&lt;-</span> <span class="fu">my_function</span>(x, y)</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># assert</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(actual, expected)</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>── Failure: my_function works ──────────────────────────────────────────────────
+`actual` not equal to `expected`.
+1/1 mismatches
+[1] 0.714 - 0.714 == 7.14e-07</code></pre>
+</div>
+<div class="cell-output cell-output-error">
+<pre><code>Error:
+! Test failed</code></pre>
+</div>
+</div>
+</section>
+<section id="tolerance-to-the-rescue" class="level2">
+<h2 class="anchored" data-anchor-id="tolerance-to-the-rescue">Tolerance to the rescue 🙂</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">"my_function works"</span>, {</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># arrange</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="dv">7</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  expected <span class="ot">&lt;-</span> <span class="fl">0.714285</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># act</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  actual <span class="ot">&lt;-</span> <span class="fu">my_function</span>(x, y)</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># assert</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(actual, expected, <span class="at">tolerance =</span> <span class="fl">1e-6</span>)</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Test passed 😀</code></pre>
+</div>
+</div>
+<p>. . .</p>
+<p><span class="small">(<em>this is a slightly artificial example, usually the default tolerance is good enough</em>)</span></p>
+</section>
+<section id="testing-edge-cases" class="level2">
+<h2 class="anchored" data-anchor-id="testing-edge-cases">Testing edge cases</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p>Remember the validation steps we built into our function to handle edge cases?</p>
+<p><br></p>
+<p>Let’s write tests for these edge cases:</p>
+<p><span class="yellow">we expect errors</span></p>
+</div><div class="column" style="width:60%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">"my_function works"</span>, {</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_error</span>(<span class="fu">my_function</span>(<span class="dv">5</span>, <span class="dv">0</span>))</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_error</span>(<span class="fu">my_function</span>(<span class="st">"a"</span>, <span class="dv">3</span>))</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_error</span>(<span class="fu">my_function</span>(<span class="dv">3</span>, <span class="st">"a"</span>))</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_error</span>(<span class="fu">my_function</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">4</span>))</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Test passed 😀</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="another-simple-example" class="level2">
+<h2 class="anchored" data-anchor-id="another-simple-example">Another (simple) example</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>my_new_function <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (x <span class="sc">&gt;</span> y) {</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"x"</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"y"</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:40%;">
+<p>Consider this function - there is <span class="yellow">branched logic</span>, so we need to carefully design tests to validate the logic works as intended.</p>
+</div>
+</div>
+</section>
+<section id="another-simple-example-1" class="level2">
+<h2 class="anchored" data-anchor-id="another-simple-example-1">Another (simple) example</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>my_new_function <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (x <span class="sc">&gt;</span> y) {</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"x"</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"y"</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">"it returns 'x' if x is bigger than y"</span>, {</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(<span class="fu">my_new_function</span>(<span class="dv">4</span>, <span class="dv">3</span>), <span class="st">"x"</span>)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Test passed 🥳</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">"it returns 'y' if y is bigger than x"</span>, {</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(<span class="fu">my_new_function</span>(<span class="dv">3</span>, <span class="dv">4</span>), <span class="st">"y"</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(<span class="fu">my_new_function</span>(<span class="dv">3</span>, <span class="dv">3</span>), <span class="st">"y"</span>)</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Test passed 😀</code></pre>
+</div>
+</div>
+</section>
+<section id="how-to-design-good-tests" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-design-good-tests">How to design good tests</h2>
+<p><span class="small"><em>a non-exhaustive list</em></span></p>
+<ul>
+<li>consider all the functions arguments,</li>
+<li>what are the <span class="yellow">expected</span> values for these arguments?</li>
+<li>what are <span class="yellow">unexpected</span> values, and are they handled?</li>
+<li>are there <span class="yellow">edge cases</span> that need to be handled?</li>
+<li>have you covered all of the <span class="yellow">different paths</span> in your code?</li>
+<li>have you managed to create tests that check the <span class="yellow">range of results</span> you expect?</li>
+</ul>
+</section>
+<section id="but-why-create-tests" class="level2">
+<h2 class="anchored" data-anchor-id="but-why-create-tests">But, why create tests?</h2>
+<p><span class="small"><em>another non-exhaustive list</em></span></p>
+<ul>
+<li>good tests will help you uncover existing issues in your code</li>
+<li>will defend you from future changes that break existing functionality</li>
+<li>will alert you to changes in dependencies that may have changed the functionality of your code</li>
+<li>can act as documentation for other developers</li>
+</ul>
+</section>
+<section id="testing-complex-functions" class="level2">
+<h2 class="anchored" data-anchor-id="testing-complex-functions">Testing complex functions</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>my_big_function <span class="ot">&lt;-</span> <span class="cf">function</span>(type) {</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="st">"data.db"</span>)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">tbl</span>(con, <span class="st">"data_table"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">collect</span>() <span class="sc">|&gt;</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="fu">across</span>(date, lubridate<span class="sc">::</span>ymd))</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>  conditions <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"conditions.csv"</span>, <span class="at">col_types =</span> <span class="st">"cc"</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(condition_type <span class="sc">==</span> type)</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>  df <span class="sc">|&gt;</span></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">semi_join</span>(conditions, <span class="at">by =</span> <span class="st">"condition"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(date) <span class="sc">|&gt;</span></span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(date, n)) <span class="sc">+</span></span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:30%;">
+<p>Where do you even begin to start writing tests for something so complex?</p>
+<p><br></p>
+<div class="small">
+<p><em>Note: to get the code on the left to fit on one page, I skipped including a few library calls</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="split-the-logic-into-smaller-functions" class="level2">
+<h2 class="anchored" data-anchor-id="split-the-logic-into-smaller-functions">Split the logic into smaller functions</h2>
+<p>Function to get the data from the database</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>get_data_from_sql <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="st">"data.db"</span>)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl</span>(con, <span class="st">"data_table"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">collect</span>() <span class="sc">|&gt;</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="fu">across</span>(date, lubridate<span class="sc">::</span>ymd))</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="split-the-logic-into-smaller-functions-1" class="level2">
+<h2 class="anchored" data-anchor-id="split-the-logic-into-smaller-functions-1">Split the logic into smaller functions</h2>
+<p>Function to get the relevant conditions</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>get_conditions <span class="ot">&lt;-</span> <span class="cf">function</span>(type) {</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_csv</span>(</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"conditions.csv"</span>, <span class="at">col_types =</span> <span class="st">"cc"</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(condition_type <span class="sc">==</span> type)</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="split-the-logic-into-smaller-functions-2" class="level2">
+<h2 class="anchored" data-anchor-id="split-the-logic-into-smaller-functions-2">Split the logic into smaller functions</h2>
+<p>Function to combine the data and create a count by date</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>summarise_data <span class="ot">&lt;-</span> <span class="cf">function</span>(df, conditions) {</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  df <span class="sc">|&gt;</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">semi_join</span>(conditions, <span class="at">by =</span> <span class="st">"condition"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(date)</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="split-the-logic-into-smaller-functions-3" class="level2">
+<h2 class="anchored" data-anchor-id="split-the-logic-into-smaller-functions-3">Split the logic into smaller functions</h2>
+<p>Function to generate a plot from the summarised data</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>create_plot <span class="ot">&lt;-</span> <span class="cf">function</span>(df) {</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  df <span class="sc">|&gt;</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(date, n)) <span class="sc">+</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="split-the-logic-into-smaller-functions-4" class="level2">
+<h2 class="anchored" data-anchor-id="split-the-logic-into-smaller-functions-4">Split the logic into smaller functions</h2>
+<p>The original function refactored to use the new functions</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>my_big_function <span class="ot">&lt;-</span> <span class="cf">function</span>(type) {</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  conditions <span class="ot">&lt;-</span> <span class="fu">get_conditions</span>(type)</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">get_data_from_sql</span>() <span class="sc">|&gt;</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise_data</span>(conditions) <span class="sc">|&gt;</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">create_plot</span>()</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>. . .</p>
+<p>This is going to be significantly easier to test, because we now can verify that the individual components work correctly, rather than having to consider all of the possibilities at once.</p>
+</section>
+<section id="lets-test-summarise_data" class="level2">
+<h2 class="anchored" data-anchor-id="lets-test-summarise_data">Let’s test <code>summarise_data</code></h2>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>summarise_data <span class="ot">&lt;-</span> <span class="cf">function</span>(df, conditions) {</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  df <span class="sc">|&gt;</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">semi_join</span>(conditions, <span class="at">by =</span> <span class="st">"condition"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(date)</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="lets-test-summarise_data-1" class="level2">
+<h2 class="anchored" data-anchor-id="lets-test-summarise_data-1">Let’s test <code>summarise_data</code></h2>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">"it summarises the data"</span>, {</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># arrange</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># act</span></span>
+<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># assert</span></span>
+<span id="cb39-16"><a href="#cb39-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb39-17"><a href="#cb39-17" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="lets-test-summarise_data-2" class="level2">
+<h2 class="anchored" data-anchor-id="lets-test-summarise_data-2">Let’s test <code>summarise_data</code></h2>
+<div class="columns">
+<div class="column" style="width:75%;">
+<div class="sourceCode" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">"it summarises the data"</span>, {</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># arrange</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">date =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">300</span>, <span class="cn">TRUE</span>),</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">condition =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>), <span class="dv">300</span>, <span class="cn">TRUE</span>)</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># act</span></span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># assert</span></span>
+<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column small" style="width:25%;">
+<p>Generate some random data to build a reasonably sized data frame.</p>
+<p>You could also create a table manually, but part of the trick of writing good tests for this function is to make it so the dates don’t all have the same count.</p>
+<p>The reason for this is it’s harder to know for sure that the count worked if every row returns the same value.</p>
+<p>We don’t need the values to be exactly like they are in the real data, just close enough. Instead of dates, we can use numbers, and instead of actual conditions, we can use letters.</p>
+</div>
+</div>
+</section>
+<section id="lets-test-summarise_data-3" class="level2">
+<h2 class="anchored" data-anchor-id="lets-test-summarise_data-3">Let’s test <code>summarise_data</code></h2>
+<div class="columns">
+<div class="column" style="width:75%;">
+<div class="sourceCode" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">"it summarises the data"</span>, {</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># arrange</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">date =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">300</span>, <span class="cn">TRUE</span>),</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">condition =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>), <span class="dv">300</span>, <span class="cn">TRUE</span>)</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># act</span></span>
+<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># assert</span></span>
+<span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb41-17"><a href="#cb41-17" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column small" style="width:25%;">
+<p>Tests need to be reproducible, and generating our table at random will give us unpredictable results.</p>
+<p>So, we need to set the random seed; now every time this test runs we will generate the same data.</p>
+</div>
+</div>
+</section>
+<section id="lets-test-summarise_data-4" class="level2">
+<h2 class="anchored" data-anchor-id="lets-test-summarise_data-4">Let’s test <code>summarise_data</code></h2>
+<div class="columns">
+<div class="column" style="width:75%;">
+<div class="sourceCode" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">"it summarises the data"</span>, {</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># arrange</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">date =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">300</span>, <span class="cn">TRUE</span>),</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">condition =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>), <span class="dv">300</span>, <span class="cn">TRUE</span>)</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>  conditions <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">condition =</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>))    </span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># act</span></span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># assert</span></span>
+<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb42-17"><a href="#cb42-17" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column small" style="width:25%;">
+<p>Create the conditions table. We don’t need all of the columns that are present in the real csv, just the ones that will make our code work.</p>
+<p>We also need to test that the filtering join (<code>semi_join</code>) is working, so we want to use a subset of the conditions that were used in <code>df</code>.</p>
+</div>
+</div>
+</section>
+<section id="lets-test-summarise_data-5" class="level2">
+<h2 class="anchored" data-anchor-id="lets-test-summarise_data-5">Let’s test <code>summarise_data</code></h2>
+<div class="columns">
+<div class="column" style="width:75%;">
+<div class="sourceCode" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">"it summarises the data"</span>, {</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># arrange</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">date =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">300</span>, <span class="cn">TRUE</span>),</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">condition =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>), <span class="dv">300</span>, <span class="cn">TRUE</span>)</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>  conditions <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">condition =</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>))    </span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># act</span></span>
+<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a>  actual <span class="ot">&lt;-</span> <span class="fu">summarise_data</span>(df, conditions)</span>
+<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># assert</span></span>
+<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column small" style="width:25%;">
+<p>Because we are generating <code>df</code> randomly, to figure out what our “expected” results are, I simply ran the code inside of the test to generate the “actual” results.</p>
+<p>Generally, this isn’t a good idea. You are creating the results of your test from the code; ideally, you want to be thinking about what the results of your function should be.</p>
+<p>Imagine your function doesn’t work as intended, there is some subtle bug that you are not yet aware of. By writing tests “backwards” you may write test cases that confirm the results, but not expose the bug. This is why it’s good to think about edge cases.</p>
+</div>
+</div>
+</section>
+<section id="lets-test-summarise_data-6" class="level2">
+<h2 class="anchored" data-anchor-id="lets-test-summarise_data-6">Let’s test <code>summarise_data</code></h2>
+<div class="columns">
+<div class="column" style="width:75%;">
+<div class="sourceCode" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">"it summarises the data"</span>, {</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># arrange</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">date =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">300</span>, <span class="cn">TRUE</span>),</span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">condition =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>), <span class="dv">300</span>, <span class="cn">TRUE</span>)</span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>  conditions <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">condition =</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>))    </span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>  expected <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">date =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">c</span>(<span class="dv">19</span>, <span class="dv">18</span>, <span class="dv">12</span>, <span class="dv">14</span>, <span class="dv">17</span>, <span class="dv">18</span>, <span class="dv">24</span>, <span class="dv">18</span>, <span class="dv">31</span>, <span class="dv">21</span>)</span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>  )  </span>
+<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># act</span></span>
+<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a>  actual <span class="ot">&lt;-</span> <span class="fu">summarise_data</span>(df, conditions)</span>
+<span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># assert</span></span>
+<span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb44-17"><a href="#cb44-17" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column small" style="width:25%;">
+<p>That said, in cases where we can be confident (say by static analysis of our code) that it is correct, building tests in this way will give us the confidence going forwards that future changes do not break existing functionality.</p>
+<p>In this case, I have created the expected data frame using the results from running the function.</p>
+</div>
+</div>
+</section>
+<section id="lets-test-summarise_data-7" class="level2">
+<h2 class="anchored" data-anchor-id="lets-test-summarise_data-7">Let’s test <code>summarise_data</code></h2>
+<div class="columns">
+<div class="column" style="width:75%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">"it summarises the data"</span>, {</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># arrange</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">date =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">300</span>, <span class="cn">TRUE</span>),</span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">condition =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>), <span class="dv">300</span>, <span class="cn">TRUE</span>)</span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>  conditions <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">condition =</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>))</span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>  expected <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">date =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
+<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">c</span>(<span class="dv">19</span>, <span class="dv">18</span>, <span class="dv">12</span>, <span class="dv">14</span>, <span class="dv">17</span>, <span class="dv">18</span>, <span class="dv">24</span>, <span class="dv">18</span>, <span class="dv">31</span>, <span class="dv">21</span>)</span>
+<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># act</span></span>
+<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a>  actual <span class="ot">&lt;-</span> <span class="fu">summarise_data</span>(df, conditions)</span>
+<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># assert</span></span>
+<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(actual, expected)</span>
+<span id="cb45-17"><a href="#cb45-17" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Test passed 😸</code></pre>
+</div>
+</div>
+</div><div class="column small" style="width:25%;">
+<p>The test works!</p>
+</div>
+</div>
+</section>
+<section id="next-steps" class="level2">
+<h2 class="anchored" data-anchor-id="next-steps">Next steps</h2>
+<ul>
+<li>You can add tests to any R project (to test functions),</li>
+<li>But <code>{testthat}</code> works best with Packages</li>
+<li>The R Packages book has 3 chapters on <a href="https://r-pkgs.org/testing-basics.html">testing</a></li>
+<li>There are two useful helper functions in <code>{usethis}</code>
+<ul>
+<li><code>use_testthat()</code> will set up the folders for test scripts</li>
+<li><code>use_test()</code> will create a test file for the currently open script</li>
+</ul></li>
+</ul>
+</section>
+<section id="next-steps-1" class="level2">
+<h2 class="anchored" data-anchor-id="next-steps-1">Next steps</h2>
+<ul>
+<li>If your test needs to temporarily create a file, or change some R-options, the <a href="https://withr.r-lib.org/"><code>{withr}</code> package</a> has a lot of useful functions that will automatically clean things up when the test finishes</li>
+<li>If you are writing tests that involve calling out to a database, or you want to test <code>my_big_function</code> (from before) without calling the intermediate functions, then you should look at the <a href="https://github.com/r-lib/mockery"><code>{mockery}</code> package</a></li>
+</ul>
+</section>
+</section>
+<section id="thanks" class="level1 inverse">
+<h1 class="inverse">Thanks!</h1>
+<p>Questions?</p>
+<p><a href="mailto:thomas.jemmett@nhs.net" target="_blank">thomas.jemmett@nhs.net</a> / DM me on slack</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

@@ -1,0 +1,1912 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.340">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Tom Jemmett">
+
+<title>Data Science @ The Strategy Unit - An Introduction to the New Hospital Programme Demand Model</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Data Science @ The Strategy Unit</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blogs/index.html" rel="" target="">
+ <span class="menu-text">Blogs</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../presentations/index.html" rel="" target="">
+ <span class="menu-text">Presentations</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-how-we-work" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">How we work</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-how-we-work">    
+        <li>
+    <a class="dropdown-item" href="../../style/team.html" rel="" target="">
+ <span class="dropdown-text">Team work</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../style/style_guide.html" rel="" target="">
+ <span class="dropdown-text">Style Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../style/git_and_github.html" rel="" target="">
+ <span class="dropdown-text">Using Git and GitHub</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../style/project_structure.html" rel="" target="">
+ <span class="dropdown-text">Project Structure</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../style/data_storage.html" rel="" target="">
+ <span class="dropdown-text">Data Storage</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../blogs/index.xml" rel="" target=""><i class="bi bi-rss" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#the-team" id="toc-the-team" class="nav-link active" data-scroll-target="#the-team">The team</a></li>
+  <li><a href="#a-hospital-is-a-place-where-you-can-find-people" id="toc-a-hospital-is-a-place-where-you-can-find-people" class="nav-link" data-scroll-target="#a-hospital-is-a-place-where-you-can-find-people">A hospital is a place where you can find people…</a></li>
+  <li><a href="#planning-is-hard" id="toc-planning-is-hard" class="nav-link" data-scroll-target="#planning-is-hard">Planning is hard</a></li>
+  <li><a href="#review-of-existing-models" id="toc-review-of-existing-models" class="nav-link" data-scroll-target="#review-of-existing-models">Review of existing models</a></li>
+  <li><a href="#review-of-existing-models-1" id="toc-review-of-existing-models-1" class="nav-link" data-scroll-target="#review-of-existing-models-1">Review of existing models</a></li>
+  <li><a href="#common-issues" id="toc-common-issues" class="nav-link" data-scroll-target="#common-issues">Common issues</a></li>
+  <li><a href="#how-much-and-what-types-of-activity-might-a-hospital-need-to-accommodate-in-the-future" id="toc-how-much-and-what-types-of-activity-might-a-hospital-need-to-accommodate-in-the-future" class="nav-link" data-scroll-target="#how-much-and-what-types-of-activity-might-a-hospital-need-to-accommodate-in-the-future">“How much, and what types of activity might a hospital need to accommodate in the future?”</a>
+  <ul class="collapse">
+  <li><a href="#our-model" id="toc-our-model" class="nav-link" data-scroll-target="#our-model">Our model</a></li>
+  <li><a href="#project-structure" id="toc-project-structure" class="nav-link" data-scroll-target="#project-structure">Project Structure</a></li>
+  <li><a href="#model-overview" id="toc-model-overview" class="nav-link" data-scroll-target="#model-overview">Model Overview</a></li>
+  <li><a href="#model-diagram" id="toc-model-diagram" class="nav-link" data-scroll-target="#model-diagram">Model Diagram</a></li>
+  <li><a href="#model-diagram-1" id="toc-model-diagram-1" class="nav-link" data-scroll-target="#model-diagram-1">Model Diagram</a></li>
+  <li><a href="#monte-carlo-simulation" id="toc-monte-carlo-simulation" class="nav-link" data-scroll-target="#monte-carlo-simulation">Monte Carlo Simulation</a></li>
+  <li><a href="#model-parameters" id="toc-model-parameters" class="nav-link" data-scroll-target="#model-parameters">Model Parameters</a></li>
+  <li><a href="#model-parameters-1" id="toc-model-parameters-1" class="nav-link" data-scroll-target="#model-parameters-1">Model Parameters</a></li>
+  <li><a href="#model-parameters-2" id="toc-model-parameters-2" class="nav-link" data-scroll-target="#model-parameters-2">Model Parameters</a></li>
+  <li><a href="#model-parameters-3" id="toc-model-parameters-3" class="nav-link" data-scroll-target="#model-parameters-3">Model Parameters</a></li>
+  <li><a href="#model-run-example-1" id="toc-model-run-example-1" class="nav-link" data-scroll-target="#model-run-example-1">Model Run Example (1)</a></li>
+  <li><a href="#model-run-example-2" id="toc-model-run-example-2" class="nav-link" data-scroll-target="#model-run-example-2">Model Run Example (2)</a></li>
+  <li><a href="#model-run-example-3" id="toc-model-run-example-3" class="nav-link" data-scroll-target="#model-run-example-3">Model Run Example (3)</a></li>
+  <li><a href="#model-run-example-4" id="toc-model-run-example-4" class="nav-link" data-scroll-target="#model-run-example-4">Model Run Example (4)</a></li>
+  <li><a href="#model-run-example-5" id="toc-model-run-example-5" class="nav-link" data-scroll-target="#model-run-example-5">Model Run Example (5)</a></li>
+  <li><a href="#how-the-model-is-built" id="toc-how-the-model-is-built" class="nav-link" data-scroll-target="#how-the-model-is-built">How the model is built</a></li>
+  <li><a href="#how-the-model-is-built-1" id="toc-how-the-model-is-built-1" class="nav-link" data-scroll-target="#how-the-model-is-built-1">How the model is built</a></li>
+  <li><a href="#how-the-model-is-deployed" id="toc-how-the-model-is-deployed" class="nav-link" data-scroll-target="#how-the-model-is-deployed">How the model is deployed</a></li>
+  <li><a href="#data-extraction" id="toc-data-extraction" class="nav-link" data-scroll-target="#data-extraction">Data Extraction</a></li>
+  <li><a href="#inputs-app" id="toc-inputs-app" class="nav-link" data-scroll-target="#inputs-app">Inputs App</a></li>
+  <li><a href="#inputs-app-1" id="toc-inputs-app-1" class="nav-link" data-scroll-target="#inputs-app-1">Inputs App</a></li>
+  <li><a href="#outputs-app" id="toc-outputs-app" class="nav-link" data-scroll-target="#outputs-app">Outputs App</a></li>
+  <li><a href="#outputs-app-1" id="toc-outputs-app-1" class="nav-link" data-scroll-target="#outputs-app-1">Outputs App</a></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions?</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/the-strategy-unit/data_science/edit/main/presentations/2023-07-11_haca-nhp-demand-model/index.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/the-strategy-unit/data_science/issues/new" class="toc-action">Report an issue</a></p></div></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="index.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">An Introduction to the New Hospital Programme Demand Model</h1>
+<p class="subtitle lead">HACA 2023</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p><a href="mailto:thomas.jemmett@nhs.net" target="_blank">Tom Jemmett</a> </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">Jul 11, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="the-team" class="level2">
+<h2 class="anchored" data-anchor-id="the-team">The team</h2>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img src="https://www.strategyunitwm.nhs.uk/sites/default/files/styles/large/public/Screenshot%202023-04-12%20at%2013.09.41.png?itok=BE3fvKxo" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img src="https://www.strategyunitwm.nhs.uk/sites/default/files/styles/crop_square_image/public/Chris%20Beeley011.jpg?itok=em9LBwxS" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img src="https://www.strategyunitwm.nhs.uk/sites/default/files/styles/crop_square_image/public/Screenshot%202023-04-12%20at%2013.20.01.png?itok=RLv4lbeG" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img src="https://www.strategyunitwm.nhs.uk/sites/default/files/styles/crop_square_image/public/Screenshot%202023-04-12%20at%2013.30.13.png?itok=YCi_1JHq" class="img-fluid"></p>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img src="https://www.strategyunitwm.nhs.uk/sites/default/files/styles/crop_square_image/public/Screenshot%202023-04-12%20at%2013.34.07.png?itok=uzTRFP8D" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img src="https://www.strategyunitwm.nhs.uk/sites/default/files/styles/crop_square_image/public/Screenshot%202023-04-12%20at%2013.40.01.png?itok=FZZFb4H4" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img src="https://www.strategyunitwm.nhs.uk/sites/default/files/styles/crop_square_image/public/Paul_Seamer.jpg?itok=nkbJVKZL" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img src="https://www.strategyunitwm.nhs.uk/sites/default/files/styles/crop_square_image/public/Screenshot%202023-04-12%20at%2013.28.53.png?itok=HiOTdX_O" class="img-fluid"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="a-hospital-is-a-place-where-you-can-find-people" class="level2">
+<h2 class="anchored" data-anchor-id="a-hospital-is-a-place-where-you-can-find-people">A hospital is a place where you can find people…</h2>
+<div class="incremental">
+<ul class="incremental">
+<li>having the best day of their life,</li>
+<li>the worst day of their life,</li>
+<li>the first day of their life,</li>
+<li>and the last day of their life.</li>
+</ul>
+</div>
+</section>
+<section id="planning-is-hard" class="level2">
+<h2 class="anchored" data-anchor-id="planning-is-hard">Planning is hard</h2>
+<div class="columns">
+<div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://www.bbc.co.uk/news/uk-scotland-glasgow-west-65644082"><img src="small_school.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div><div class="column">
+<ul>
+<li>built with enough capacity to replace the existing school</li>
+<li>failed to take into account a new housing estate</li>
+<li>likely needs double the number of spaces within the next decade</li>
+</ul>
+<p><a href="https://www.bbc.co.uk/news/uk-scotland-glasgow-west-65644082">BBC article</a></p>
+</div>
+</div>
+</section>
+<section id="review-of-existing-models" class="level2">
+<h2 class="anchored" data-anchor-id="review-of-existing-models">Review of existing models</h2>
+<div class="quarto-video"><iframe data-external="1" src="https://www.youtube.com/embed/RfiuBGD5IeU?start=7175" width="640" height="360" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p><a href="https://www.youtube.com/watch?v=RfiuBGD5IeU&amp;list=PLXCrMzQaI6c3kFGGOuR432J8tUJq_VhWp&amp;index=17">Steven Wyatt - NHS-R 2022</a></p>
+</section>
+<section id="review-of-existing-models-1" class="level2">
+<h2 class="anchored" data-anchor-id="review-of-existing-models-1">Review of existing models</h2>
+<ul>
+<li>lots of models</li>
+<li>lots of external consultancies</li>
+<li>lots of similarities</li>
+</ul>
+<p>. . .</p>
+<ul>
+<li>lots of repetition/duplication</li>
+<li>sufficiently different that comparing results is difficult</li>
+<li>methodological progress slow</li>
+<li>no base to build from</li>
+</ul>
+<div class="notes">
+<ul>
+<li>consultancies don’t tend to offer products, but services</li>
+<li>difficult to compare different models to understand if differences are methodological or due to assumptions</li>
+<li>same issues seen 20/30 years ago</li>
+<li>learning and expertise gathered tends to be trapped within trusts, or kept secret by consultancies</li>
+</ul>
+</div>
+</section>
+<section id="common-issues" class="level2">
+<h2 class="anchored" data-anchor-id="common-issues">Common issues</h2>
+<ul>
+<li>handling uncertainty</li>
+<li>unnecessary/early aggregation</li>
+<li>poor coverage of some changes</li>
+<li>lack of ownership &amp; auditability of assumptions</li>
+<li>conflating demand forecasting with affordability</li>
+</ul>
+<div class="notes">
+<ul>
+<li>most models handle changes like demographic changes and the impact of changes in occupancy rates</li>
+<li>but few try to handle addressing inequities, health status adjustment</li>
+</ul>
+</div>
+</section>
+<section id="how-much-and-what-types-of-activity-might-a-hospital-need-to-accommodate-in-the-future" class="level1 inverse">
+<h1 class="inverse">“How much, and what types of activity might a hospital need to accommodate in the future?”</h1>
+<div class="notes">
+<ul>
+<li>difficult problem</li>
+<li>a question that is routinely asked outside of new hospital planning</li>
+<li>a planning problem, not a forecasting problem, health systems want to influence the types and quantities of activity they deliver in future</li>
+<li>difficult to get a handle in confidence, the results should recognise the inherent uncertainty</li>
+</ul>
+</div>
+<section id="our-model" class="level2">
+<h2 class="anchored" data-anchor-id="our-model">Our model</h2>
+<ul>
+<li><del>open source</del> (not quite yet…)</li>
+<li>uses standard, well-known datasets (e.g.&nbsp;HES, ONS population projections)</li>
+<li>currently handles Inpatient admissions, Outpatient attendances, and A&amp;E arrivals</li>
+<li>extensible and adaptable</li>
+<li>covering all of the change factors</li>
+<li>stochastic Monte-Carlo model to handle uncertainty</li>
+</ul>
+</section>
+<section id="project-structure" class="level2">
+<h2 class="anchored" data-anchor-id="project-structure">Project Structure</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<ul>
+<li>Data Extraction (R + <code>{targets}</code> &amp; Sql)</li>
+<li>Inputs App (R + <code>{shiny}</code>)</li>
+<li>Outputs App (R + <code>{shiny}</code>)</li>
+<li>Model Engine (Python &amp; Docker)</li>
+<li>Azure Infrastructure (VM/ACR/ACI/Storage Accounts)</li>
+<li>All of the code is stored on GitHub (currently, private repos 😔)</li>
+</ul>
+</div><div class="column" style="width:30%;">
+<div class="cell" data-fig-responsive="false" data-fig-height="5">
+<div class="cell-output-display">
+<div>
+<div>
+<pre class="mermaid mermaid-js">flowchart TB
+  classDef orange fill:#f9bf07,stroke:#2c2825,color:#2c2825;
+  classDef lightslate fill:#b2b7b9,stroke:#2c2825,color:#2c2825;
+
+  A[Data Extraction]
+  B[Inputs App]
+  C[Model]
+  D[Outputs App]
+
+
+  SB[(input app data)]
+  SC[(model data)]
+  SD[(results data)]
+
+  A ---&gt; SB
+  A ---&gt; SC
+  
+  SB ---&gt; B
+  SC ---&gt; C
+
+  B ---&gt; C
+
+  C ---&gt; SD
+  SD ---&gt; D
+
+  B -.-&gt; D
+
+  class A,B,C,D orange
+  class SB,SC,SD lightslate
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="model-overview" class="level2">
+<h2 class="anchored" data-anchor-id="model-overview">Model Overview</h2>
+<div class="incremental">
+<ul class="incremental">
+<li>the baseline data is a year worth of a provider’s HES data</li>
+<li>each row in the baseline data is run through a series of steps</li>
+<li>each step creates a factor that says how many times (on average) to sample that row</li>
+<li>the factors are multiplied together and used to create a random Poisson value</li>
+<li>we resample the rows using this random values</li>
+<li>efficiencies are then applied, e.g.&nbsp;LoS reductions, type conversions</li>
+</ul>
+</div>
+<div class="notes">
+<ul>
+<li>IP/OP/A&amp;E data</li>
+<li>complex, but not complicated</li>
+</ul>
+</div>
+</section>
+<section id="model-diagram" class="level2">
+<h2 class="anchored" data-anchor-id="model-diagram">Model Diagram</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<div>
+<pre class="mermaid mermaid-js">flowchart TB
+    classDef blue fill:#5881c1,stroke:#2c2825,color:#2c2825;
+    classDef orange fill:#f9bf07,stroke:#2c2825,color:#2c2825;
+    classDef red fill:#ec6555,stroke:#2c2825,color:#2c2825;
+    classDef lightslate fill:#b2b7b9,stroke:#2c2825,color:#2c2825;
+    classDef slate fill:#e0e2e3,stroke:#2c2825,color:#2c2825;
+
+    S[Baseline Activity]
+    T[Future Activity]
+
+    class S,T red
+
+    subgraph rr[Row Resampling]
+        direction LR
+
+        subgraph pop[Population Changes]
+            direction TB
+            pop_p[Population Growth]
+            pop_a[Age/Sex Structure]
+            pop_h[Population Specific Health Status]
+
+            class pop_p,pop_a,pop_h orange
+
+            pop_p --- pop_a --- pop_h
+        end
+
+        subgraph dsi[Demand Supply Imbalances]
+            direction TB
+            dsi_w[Waiting List Adjustment]
+            dsi_r[Repatriation/Expatriation]
+            dsi_p[Private Healthcare Dynamics]
+
+            class dsi_w,dsi_r,dsi_p orange
+
+            dsi_w --- dsi_r --- dsi_p
+        end
+
+        subgraph nsi[Need Supply Imbalances]
+            direction TB
+            nsi_g[Gaps in Care]
+            nsi_i[Inequalities]
+            nsi_t[Threshold Imbalances]
+
+            class nsi_g,nsi_i,nsi_t orange
+
+            nsi_g --- nsi_i --- nsi_t
+        end
+
+        subgraph nda [Non-Demographic Adjustment]
+            direction TB
+            nda_m[Medical Interventions]
+            nda_c[Changes to National Standards]
+            nda_p[Patient Expectations]
+
+            class nda_m,nda_c,nda_p orange
+
+            nda_m --- nda_c --- nda_p
+        end
+
+        subgraph mit[Activity Mitigators]
+            direction TB
+            mit_a[Activity Avoidance]
+            mit_t[Type Conversion]
+            mit_e[Efficiencies]
+            
+            class mit_a,mit_t,mit_e orange
+
+            mit_a --- mit_t --- mit_e
+        end
+
+        pop --- dsi --- nsi --- nda --- mit
+
+        class dsi,nsi,pop,nda,mit lightslate
+    end
+
+    class rr slate
+    
+    S --&gt; rr --&gt; T
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="notes">
+<ul>
+<li>uses either patient-level data, or minimal aggregation</li>
+<li>row resampling grouped into 5 broad groups
+<ul>
+<li>population changes address the changes to the structure of the population and health status over the medium term</li>
+<li>demand supply imbalances: hospitals are currently struggling to keep pace with demand, so we correct for this to not carry forwards these into the future</li>
+<li>need supply imbalance: addressing gaps in care that currently exist</li>
+<li>non-demographic: such as the development of new medical technologies</li>
+<li>activity mitigators: strategies trusts adopt for reducing activity, or delivering activity more efficiently</li>
+</ul></li>
+<li>some assumptions set nationally, such as population growth via ONS population projections</li>
+<li>other assumptions set locally, with support from a Shiny app</li>
+</ul>
+</div>
+</section>
+<section id="model-diagram-1" class="level2">
+<h2 class="anchored" data-anchor-id="model-diagram-1">Model Diagram</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<div>
+<pre class="mermaid mermaid-js">flowchart TB
+    classDef blue fill:#5881c1,stroke:#2c2825,color:#2c2825;
+    classDef orange fill:#f9bf07,stroke:#2c2825,color:#2c2825;
+    classDef red fill:#ec6555,stroke:#2c2825,color:#2c2825;
+    classDef lightslate fill:#b2b7b9,stroke:#2c2825,color:#2c2825;
+    classDef slate fill:#e0e2e3,stroke:#2c2825,color:#2c2825;
+
+    S[Baseline Activity]
+    T[Future Activity]
+
+    ORANGE[Implemented]
+    BLUE[Not yet implemented]
+
+    class ORANGE orange
+    class BLUE blue
+
+    class S,T red
+
+    subgraph rr[Row Resampling]
+        direction LR
+
+        subgraph pop[Population Changes]
+            direction TB
+            pop_p[Population Growth]
+            pop_a[Age/Sex Structure]
+            pop_h[Population Specific Health Status]
+
+            class pop_p,pop_a,pop_h orange
+
+            pop_p --- pop_a --- pop_h
+        end
+
+        subgraph dsi[Demand Supply Imbalances]
+            direction TB
+            dsi_w[Waiting List Adjustment]
+            dsi_r[Repatriation/Expatriation]
+            dsi_p[Private Healthcare Dynamics]
+
+            class dsi_w,dsi_r orange
+            class dsi_p blue
+
+            dsi_w --- dsi_r --- dsi_p
+        end
+
+        subgraph nsi[Need Supply Imbalances]
+            direction TB
+            nsi_g[Gaps in Care]
+            nsi_i[Inequalities]
+            nsi_t[Threshold Imbalances]
+
+            class nsi_g,nsi_i,nsi_t blue
+
+            nsi_g --- nsi_i --- nsi_t
+        end
+
+        subgraph nda [Non-Demographic Adjustment]
+            direction TB
+            nda_m[Medical Interventions]
+            nda_c[Changes to National Standards]
+            nda_p[Patient Expectations]
+
+            class nda_m,nda_c,nda_p blue
+
+            nda_m --- nda_c --- nda_p
+        end
+
+        subgraph mit[Activity Mitigators]
+            direction TB
+            mit_a[Activity Avoidance]
+            mit_t[Type Conversion]
+            mit_e[Efficiencies]
+            
+            class mit_a,mit_t,mit_e orange
+
+            mit_a --- mit_t --- mit_e
+        end
+
+        pop --- dsi --- nsi --- nda --- mit
+
+        class dsi,nsi,pop,nda,mit lightslate
+    end
+
+    class rr slate
+    
+    S --&gt; rr --&gt; T
+</pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="monte-carlo-simulation" class="level2">
+<h2 class="anchored" data-anchor-id="monte-carlo-simulation">Monte Carlo Simulation</h2>
+<div class="columns">
+<div class="column">
+<ul>
+<li>We run the model N times, varying the input parameters each time slightly to handle the uncertainty.</li>
+<li>The results of the model are aggregated at the end of each model run</li>
+<li>The aggregated results are combined at the end into a single file</li>
+</ul>
+</div><div class="column">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+  classDef orange fill:#f9bf07,stroke:#2c2825,color:#2c2825;
+  classDef red fill:#ec6555,stroke:#2c2825,color:#2c2825;
+  
+  A[Baseline Activity]
+  Ba[Model Run 0]
+  Bb[Model Run 1]
+  Bc[Model Run 2]
+  Bd[Model Run 3]
+  Bn[Model Run n]
+  C[Results]
+
+  A ---&gt; Ba ---&gt; C
+  A ---&gt; Bb ---&gt; C
+  A ---&gt; Bc ---&gt; C
+  A ---&gt; Bd ---&gt; C
+  A ---&gt; Bn ---&gt; C
+  
+  class A,C red
+  class Ba,Bb,Bc,Bd,Bn orange
+  
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="small">
+<p>Inspired by</p>
+<ul>
+<li><a href="https://static.googleusercontent.com/media/research.google.com/en//archive/mapreduce-osdi04.pdf">MapReduce (Google, 2004)</a></li>
+<li><a href="https://www.jstatsoft.org/article/download/v040i01/468">Split, Apply, Combine (H. Wickham, 2011)</a></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="model-parameters" class="level2">
+<h2 class="anchored" data-anchor-id="model-parameters">Model Parameters</h2>
+<ul>
+<li>We ask users to provide parameters in the form of 90% confidence intervals</li>
+<li>We can then convert these confidence intervals into distributions</li>
+<li>During the model we sample values from these distributions for each model parameter</li>
+<li>All of the parameters represent the average rate to sample a row of data from the baseline</li>
+</ul>
+</section>
+<section id="model-parameters-1" class="level2">
+<h2 class="anchored" data-anchor-id="model-parameters-1">Model Parameters</h2>
+<blockquote class="blockquote">
+<p>“We expect in the future to see between a 25% reduction and a 25% increase in this activity”</p>
+</blockquote>
+<div class="columns">
+<div class="column">
+<ul>
+<li>grey highlighted section: 90% confidence intervals</li>
+<li>black line: confidence intervals into distributions</li>
+<li>yellow points: sampled parameter for a model run</li>
+</ul>
+</div><div class="column">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>param_plot <span class="ot">&lt;-</span> <span class="cf">function</span>(m, s, points, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">2</span>)) {</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  d <span class="ot">&lt;-</span> \(.x) <span class="fu">dnorm</span>(.x, m, s)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">2</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(x)) <span class="sc">+</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_function</span>(</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">xlim =</span> <span class="fu">qnorm</span>(<span class="fu">c</span>(<span class="fl">0.05</span>, <span class="fl">0.95</span>), m, s),</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">fun =</span> d,</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">geom =</span> <span class="st">"area"</span>,</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">fill =</span> <span class="st">"#b2b7b9"</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_function</span>(</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">fun =</span> d,</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">xlim =</span> xlim,</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">geom =</span> <span class="st">"line"</span>,</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">linewidth =</span> <span class="dv">3</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">annotate</span>(</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>      <span class="st">"point"</span>,</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> points,</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> <span class="fu">d</span>(points),</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>      <span class="at">colour =</span> <span class="st">"#f9bf07"</span>,</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">12</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">expand_limits</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">2</span>)) <span class="sc">+</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>())</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">param_plot</span>(<span class="dv">1</span>, .<span class="dv">15</span>, <span class="fu">c</span>(<span class="fl">0.85</span>, <span class="fl">0.9</span>, <span class="fl">1.05</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="model-parameters-2" class="level2">
+<h2 class="anchored" data-anchor-id="model-parameters-2">Model Parameters</h2>
+<blockquote class="blockquote">
+<p>“We expect in the future to see between a 20% reduction and a 90% reduction in this activity”</p>
+</blockquote>
+<div class="columns">
+<div class="column">
+<ul>
+<li>grey highlighted section: 90% confidence intervals</li>
+<li>black line: confidence intervals into distributions</li>
+<li>yellow points: sampled parameter for a model run</li>
+</ul>
+</div><div class="column">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">param_plot</span>(<span class="fl">0.4</span>, .<span class="dv">2</span>, <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.7</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="model-parameters-3" class="level2">
+<h2 class="anchored" data-anchor-id="model-parameters-3">Model Parameters</h2>
+<blockquote class="blockquote">
+<p>“We expect in the future to see between a 2% reduction and an 18% reduction in this activity”</p>
+</blockquote>
+<div class="columns">
+<div class="column">
+<ul>
+<li>grey highlighted section: 90% confidence intervals</li>
+<li>black line: confidence intervals into distributions</li>
+<li>yellow points: sampled parameter for a model run</li>
+</ul>
+</div><div class="column">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">param_plot</span>(<span class="fl">0.9</span>, .<span class="dv">05</span>, <span class="fu">c</span>(<span class="fl">0.8</span>, <span class="fl">0.89</span>, <span class="dv">1</span>), <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="model-run-example-1" class="level2">
+<h2 class="anchored" data-anchor-id="model-run-example-1">Model Run Example (1)</h2>
+<div class="columns small-table">
+<div class="column" style="width:50%;">
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">id</th>
+<th style="text-align: right;">age</th>
+<th style="text-align: center;">sex</th>
+<th style="text-align: center;">specialty</th>
+<th style="text-align: right;">los</th>
+<th style="text-align: right;">f</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: center;">m</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">1.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: center;">m</td>
+<td style="text-align: center;">110</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">51</td>
+<td style="text-align: center;">m</td>
+<td style="text-align: center;">120</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">1.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: center;">f</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: center;">f</td>
+<td style="text-align: center;">110</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">52</td>
+<td style="text-align: center;">f</td>
+<td style="text-align: center;">120</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+</tr>
+</tbody>
+</table>
+</div><div class="column" style="width:25%;">
+
+</div><div class="column" style="width:25%;">
+
+</div>
+</div>
+<div class="absolute" data-bottom="10">
+<p>Start with baseline data - we are going to sample each row exactly once (column <code>f</code>).</p>
+</div>
+</section>
+<section id="model-run-example-2" class="level2">
+<h2 class="anchored" data-anchor-id="model-run-example-2">Model Run Example (2)</h2>
+<div class="columns small-table">
+<div class="column" style="width:50%;">
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">id</th>
+<th style="text-align: right;">age</th>
+<th style="text-align: center;">sex</th>
+<th style="text-align: center;">specialty</th>
+<th style="text-align: right;">los</th>
+<th style="text-align: right;">f</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: center;">m</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">1.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: center;">m</td>
+<td style="text-align: center;">110</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">51</td>
+<td style="text-align: center;">m</td>
+<td style="text-align: center;">120</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">1.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: center;">f</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: center;">f</td>
+<td style="text-align: center;">110</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">52</td>
+<td style="text-align: center;">f</td>
+<td style="text-align: center;">120</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+</tr>
+</tbody>
+</table>
+</div><div class="column" style="width:25%;">
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">age</th>
+<th style="text-align: center;">sex</th>
+<th style="text-align: right;">f</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">50</td>
+<td style="text-align: center;">m</td>
+<td style="text-align: right;">0.90</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">51</td>
+<td style="text-align: center;">m</td>
+<td style="text-align: right;">1.10</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">52</td>
+<td style="text-align: center;">m</td>
+<td style="text-align: right;">1.20</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">50</td>
+<td style="text-align: center;">f</td>
+<td style="text-align: right;">0.80</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">51</td>
+<td style="text-align: center;">f</td>
+<td style="text-align: right;">0.70</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">52</td>
+<td style="text-align: center;">f</td>
+<td style="text-align: right;">1.30</td>
+</tr>
+</tbody>
+</table>
+</div><div class="column" style="width:25%;">
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">f</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1.00 × 0.90 = 0.90</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.00 × 0.90 = 0.90</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1.00 × 1.10 = 1.10</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.00 × 0.80 = 0.80</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1.00 × 0.80 = 0.80</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.00 × 1.30 = 1.30</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="absolute" data-bottom="10">
+<p>We perform a step where we join based on age and sex, then update the <code>f</code> column.</p>
+</div>
+</section>
+<section id="model-run-example-3" class="level2">
+<h2 class="anchored" data-anchor-id="model-run-example-3">Model Run Example (3)</h2>
+<div class="columns small-table">
+<div class="column" style="width:50%;">
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">id</th>
+<th style="text-align: right;">age</th>
+<th style="text-align: center;">sex</th>
+<th style="text-align: center;">specialty</th>
+<th style="text-align: right;">los</th>
+<th style="text-align: right;">f</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: center;">m</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0.90</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: center;">m</td>
+<td style="text-align: center;">110</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.90</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">51</td>
+<td style="text-align: center;">m</td>
+<td style="text-align: center;">120</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">1.10</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: center;">f</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.80</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: center;">f</td>
+<td style="text-align: center;">110</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.80</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">52</td>
+<td style="text-align: center;">f</td>
+<td style="text-align: center;">120</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.30</td>
+</tr>
+</tbody>
+</table>
+</div><div class="column" style="width:25%;">
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">specialty</th>
+<th style="text-align: right;">f</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">100</td>
+<td style="text-align: right;">0.90</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">110</td>
+<td style="text-align: right;">1.10</td>
+</tr>
+</tbody>
+</table>
+</div><div class="column" style="width:25%;">
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">f</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0.90 × 0.90 = 0.81</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.90 × 1.10 = 0.99</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1.10 × 1.00 = 1.10</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.80 × 0.90 = 0.72</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.80 × 1.10 = 0.88</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.30 × 1.00 = 1.30</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="absolute" data-bottom="10">
+<p>The next step joins on the specialty column, again updating <code>f</code>. Note, if there is no value to join on, then we multiply by 1.</p>
+</div>
+</section>
+<section id="model-run-example-4" class="level2">
+<h2 class="anchored" data-anchor-id="model-run-example-4">Model Run Example (4)</h2>
+<div class="columns small-table">
+<div class="column" style="width:50%;">
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">id</th>
+<th style="text-align: right;">age</th>
+<th style="text-align: center;">sex</th>
+<th style="text-align: center;">specialty</th>
+<th style="text-align: right;">los</th>
+<th style="text-align: right;">f</th>
+<th style="text-align: right;">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: center;">m</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0.90</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: center;">m</td>
+<td style="text-align: center;">110</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.90</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">51</td>
+<td style="text-align: center;">m</td>
+<td style="text-align: center;">120</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">1.10</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: center;">f</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.80</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: center;">f</td>
+<td style="text-align: center;">110</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.80</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">52</td>
+<td style="text-align: center;">f</td>
+<td style="text-align: center;">120</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.30</td>
+<td style="text-align: right;">3</td>
+</tr>
+</tbody>
+</table>
+</div><div class="column" style="width:50%;">
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">id</th>
+<th style="text-align: right;">age</th>
+<th style="text-align: center;">sex</th>
+<th style="text-align: center;">specialty</th>
+<th style="text-align: right;">los</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: center;">m</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">51</td>
+<td style="text-align: center;">m</td>
+<td style="text-align: center;">120</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">51</td>
+<td style="text-align: center;">m</td>
+<td style="text-align: center;">120</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: center;">f</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">52</td>
+<td style="text-align: center;">f</td>
+<td style="text-align: center;">120</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">52</td>
+<td style="text-align: center;">f</td>
+<td style="text-align: center;">120</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">52</td>
+<td style="text-align: center;">f</td>
+<td style="text-align: center;">120</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="absolute" data-bottom="10">
+<p>Once all of the steps are performed, sample a random value <code>n</code> from a Poisson distribution with <code>λ=f</code>, then we select each row <code>n</code> times.</p>
+</div>
+</section>
+<section id="model-run-example-5" class="level2">
+<h2 class="anchored" data-anchor-id="model-run-example-5">Model Run Example (5)</h2>
+<div class="columns small-table">
+<div class="column" style="width:50%;">
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">id</th>
+<th style="text-align: right;">age</th>
+<th style="text-align: center;">sex</th>
+<th style="text-align: center;">specialty</th>
+<th style="text-align: right;">los</th>
+<th style="text-align: right;">g</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: center;">m</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0.75</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">51</td>
+<td style="text-align: center;">m</td>
+<td style="text-align: center;">120</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0.50</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">51</td>
+<td style="text-align: center;">m</td>
+<td style="text-align: center;">120</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">1.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: center;">f</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.90</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">52</td>
+<td style="text-align: center;">f</td>
+<td style="text-align: center;">120</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.80</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">52</td>
+<td style="text-align: center;">f</td>
+<td style="text-align: center;">120</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.80</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">52</td>
+<td style="text-align: center;">f</td>
+<td style="text-align: center;">120</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.80</td>
+</tr>
+</tbody>
+</table>
+</div><div class="column" style="width:50%;">
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">id</th>
+<th style="text-align: right;">age</th>
+<th style="text-align: center;">sex</th>
+<th style="text-align: center;">specialty</th>
+<th style="text-align: right;">los</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: center;">m</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">51</td>
+<td style="text-align: center;">m</td>
+<td style="text-align: center;">120</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">51</td>
+<td style="text-align: center;">m</td>
+<td style="text-align: center;">120</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: center;">f</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">52</td>
+<td style="text-align: center;">f</td>
+<td style="text-align: center;">120</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">52</td>
+<td style="text-align: center;">f</td>
+<td style="text-align: center;">120</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">52</td>
+<td style="text-align: center;">f</td>
+<td style="text-align: center;">120</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="absolute" data-bottom="10">
+<p>After resampling, we apply efficiency steps. E.g., similar joins are used to create column <code>g</code>, which is then used to sample a new LOS from a binomial distribution.</p>
+</div>
+</section>
+<section id="how-the-model-is-built" class="level2">
+<h2 class="anchored" data-anchor-id="how-the-model-is-built">How the model is built</h2>
+<ul>
+<li>The model is built in Python and can be run on any machine you can install Python on</li>
+<li>Uses various packages, such as <code>numpy</code> and <code>pandas</code></li>
+<li>Reads data in <code>.parquet</code> format for efficiency</li>
+<li>Returns aggregated results as a <code>.json</code> file</li>
+<li>Could also output full row level results if needed</li>
+</ul>
+</section>
+<section id="how-the-model-is-built-1" class="level2">
+<h2 class="anchored" data-anchor-id="how-the-model-is-built-1">How the model is built</h2>
+<ul>
+<li>Code is built in a modular approach</li>
+<li>Each activity type (Inpatients/Outpatients/A&amp;E) has its own model code</li>
+<li>Code is reused where possible (e.g.&nbsp;all three models share the code for demographic adjustment)</li>
+</ul>
+</section>
+<section id="how-the-model-is-deployed" class="level2">
+<h2 class="anchored" data-anchor-id="how-the-model-is-deployed">How the model is deployed</h2>
+<ul>
+<li>Deployed as a Docker Container</li>
+<li>Runs in Azure Container Instances</li>
+<li>Each model run creates a new container, and the container is destroyed when the model run completes</li>
+</ul>
+</section>
+<section id="data-extraction" class="level2">
+<h2 class="anchored" data-anchor-id="data-extraction">Data Extraction</h2>
+<ul>
+<li>Uses principles of <a href="https://analysisfunction.civilservice.gov.uk/support/reproducible-analytical-pipelines/">RAP</a>, using R + <code>{targets}</code> and Sql</li>
+<li>All of the data required to run the model</li>
+<li>Data is extracted from various sources
+<ul>
+<li>Sql Datawarehouse (HES data)</li>
+<li>ONS population projections + life expectancy tables</li>
+<li>Central returns, e.g.&nbsp;KH03</li>
+<li>ODS data (organisation names, successors)</li>
+</ul></li>
+<li>Extracted data is uploaded to Azure storage containers</li>
+</ul>
+</section>
+<section id="inputs-app" class="level2">
+<h2 class="anchored" data-anchor-id="inputs-app">Inputs App</h2>
+<p>A <code>{shiny}</code> app that allows the user to set parameters, and submit as a job to run the model with those values.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="inputs_app-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+</figure>
+</div>
+</section>
+<section id="inputs-app-1" class="level2">
+<h2 class="anchored" data-anchor-id="inputs-app-1">Inputs App</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="inputs_app-2.png" class="img-fluid figure-img" style="width:85.0%"></p>
+</figure>
+</div>
+</section>
+<section id="outputs-app" class="level2">
+<h2 class="anchored" data-anchor-id="outputs-app">Outputs App</h2>
+<p>A <code>{shiny}</code> app that allows the user to view the results of model runs.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="outputs_app-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+</figure>
+</div>
+</section>
+<section id="outputs-app-1" class="level2">
+<h2 class="anchored" data-anchor-id="outputs-app-1">Outputs App</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="outputs_app-2.png" class="img-fluid figure-img" style="width:85.0%"></p>
+</figure>
+</div>
+</section>
+<section id="questions" class="level2">
+<h2 class="anchored" data-anchor-id="questions">Questions?</h2>
+<p><br><br></p>
+<section id="contact-the-strategy-unit" class="level4">
+<h4 class="anchored" data-anchor-id="contact-the-strategy-unit">Contact The Strategy Unit</h4>
+<div class="no-bullets">
+<ul>
+<li><i class="fa-solid fa-envelope" aria-label="envelope"></i> <a href="mailto:strategy.unit@nhs.net" target="_blank">strategy.unit@nhs.net</a></li>
+<li><i class="fa-brands fa-github fa-1x" aria-label="github"></i> <a href="https://github.com/The-Strategy-Unit">The-Strategy-Unit</a></li>
+</ul>
+</div>
+</section>
+<section id="contact-me" class="level4">
+<h4 class="anchored" data-anchor-id="contact-me">Contact Me</h4>
+<div class="no-bullets">
+<ul>
+<li><i class="fa-solid fa-envelope" aria-label="envelope"></i> <a href="mailto:thomas.jemmett@nhs.net" target="_blank">thomas.jemmett@nhs.net</a></li>
+<li><i class="fa-brands fa-github fa-1x" aria-label="github"></i> <a href="https://github.com/tomjemmett">tomjemmett</a></li>
+</ul>
+</div>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

@@ -1,0 +1,440 @@
+---
+title: "Data science in the UK NHS"
+subtitle: "Building a model and building a community"
+author: 
+  - "[Chris Beeley](mailto:chris.beeley1@nhs.net)"
+  - "[Claire Welsh](mailto:claire.welsh8@nhs.net)"
+date: 2025-06-06
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, su_presentation.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
+    footer: |
+      Learn more about [The Strategy Unit](https://www.strategyunitwm.nhs.uk/)
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+## The New Hospital Programme (NHP) Demand Model
+
+![Diagram of model
+process](Model process.png){fig-alt="Diagram showing the processes of the model"}
+
+## 
+
+![](NHP_diagram_public_v3-2.png){fig-alt="Diagram showing the model infrastructure layout"
+width="20in" fig-align="center"}
+
+## 
+
+![](architecture-mermaid-transparent.png){fig-alt="A diagram showing the architecture of the model and apps. Data is processed from the database by the targets package and stored in an Azure storage account. the model and inputs and outputs apps collected data from there. Selections in the inputs app feed into the model."}
+
+<aside class="notes">
+Here's a simplified, zoomed-in version. 
+
+HES data from the database is used to make
+the inputs data, which is pulled in to the inputs app. 
+
+That sends information to the model, which creates results that are sent back to
+storage, and from which the ourputs app does its thing. 
+
+By why did we choose this setup? It seems complicated and busy.
+  </aside>
+
+## Principles
+
+-   Deploy alongside develop
+-   Reproducible analytical pipelines
+-   Transparent
+-   Open (FOSS where possible)
+-   Team skills and work management
+
+## Tools and platforms
+
+-   Data pipelines: {{< fa brands python >}}, parquet, CSV
+-   Model: Python {{< fa brands python >}}, Docker {{< fa brands docker >}}
+-   Apps: {shiny} and {golem} {{< fa brands r-project >}}, Posit Connect {{< fa layer-group >}}
+-   Infrastructure and storage: Azure {{< fa brands microsoft >}}
+-   Documentation: Quarto {{< fa feather >}}
+-   Version control and collaboration: Git {{< fa brands git-alt >}},
+    GitHub {{< fa brands github >}}
+
+## Data for NHP
+
+::::: columns
+::: {.column width="70%"}
+-   HES data stored on Azure
+-   Databricks and PySpark
+-   CSVs and TSVs for reference data
+-   parameters derived and stored in JSON
+
+![](Apache_Parquet_logo.svg.png)
+:::
+
+::: {.column width="30%"}
+![](json.png)
+:::
+:::::
+
+## Model running
+
+Parameters JSON passed to model via API
+
+-   Docker image stored on Azure Container Registry
+-   Runs in Azure Container Instance
+-   Built-in paralellisation features of Python language
+
+![](docker-logo-blue.png){width="4in"}
+
+![](Microsoft_Azure_Logo.svg.png)
+
+## Interfaces
+
+::::: columns
+::: {.column width="70%"}
+Coded in R - [Shiny](https://shiny.posit.co/) Open repos:
+[nhp_inputs](https://github.com/The-Strategy-Unit/nhp_inputs) and
+[nhp_outputs](https://github.com/The-Strategy-Unit/nhp_outputs)
+
+Modular design
+
+-   Each function is in its own .R
+-   Each module is separate
+-   UIs and servers are separate
+-   Packaged using {golem} to use R CMD check(), devtools::document()
+    etc
+:::
+
+::: {.column width="30%"}
+![](Shiny_hex_logo.svg.png)
+:::
+:::::
+
+## 
+
+![](inputs.png)
+  
+## 
+
+![](inputs_selection.png)
+
+## 
+
+![](modular.png)
+
+ 
+## Outputs
+
+Many formats:
+
+-   [ ] CSV
+-   [ ] JSON
+-   [ ] MS Word (using
+    {[officeR](https://davidgohel.github.io/officer/)})
+-   [ ] [Outputs
+    app](https://connect.strategyunitwm.nhs.uk/nhp/v3-1/outputs/?%2BQAjkHBl%2BCKbvWFP6tv2v9Z1Nwt0eMs37GWGRshs2qNLvhbkJUzBsJOIvxNG6UtLnTSziKj5CNZgT95laTdBbhNfzEUb%2BDZUuY%2FerNLYAx8%3D)
+- [ ] [Project information](https://github.com/The-Strategy-Unit/nhp_project_information) Quarto website
+
+We use a [_brand.yml](https://github.com/The-Strategy-Unit/su-brand-yml) to help easily maintain style format of outputs (Quarto and Shiny).
+
+<aside class="notes">
+- The main way information flows out of the NHP model is via the outputs app, which also provides the functionality to download results into a spreadsheet software of your choice through CSV files.
+
+- The JSON files we've discussed are also produced and stored and users can ask us for them if useful
+
+- We produce templated reports in Microsoft Word for schemes, allowing them the comfort and accessibility of familiar software without greatly sacrificing the programmatic and RAP-compliant nature of our work.
+
+- And our Quarto website holding the project information is a key tool for dissemination of info. Its repo is open, so you can go and look at all the code used to create it.
+
+- In essence we will aim to provide outputs that best meet the needs of our model users, to maximise the impact of the modelling and communicate the uncertainty around estimates as clearly as we can.
+
+- We also make use of 'brand.yml' to be consistent in the appearance of our NHP outputs. You can see this yaml file on our github, with an informative README that contains useful links to guidance around branding and usage.
+
+    </aside>
+    
+## Reproducible Analytical Pipeline (RAP) principles
+
+### Data versioning
+
+Data and model follow the same semantic versioning[^1].
+
+[^1]: [Model
+    Updates](https://connect.strategyunitwm.nhs.uk/nhp/project_information/project_plan_and_summary/model_updates.html)
+
+![](model_updates.png){width="7.5in"}
+
+<aside class="notes">
+- Now we're moving into ever-mode nerdy territory. You'll all be familiar with RAP, what it means and why it matters.
+- We as a team are fully on board with those principles of transparency, quality, sharing and continuous improvement.
+
+- One way we do this is through version control - not only of the code, but of the data too.
+
+- We keep a public log of all changes to the model, viewable at the link below on our project information site, which is a Quarto website whose deployment is handled by GitHub Actions.
+
+- The code is versioned semantically, like usual software is, following the major-minor-patch naming convention. We are currently on version 3.4 of the model
+
+    </aside>
+## 
+
+![](data_log.png)
+
+[Data
+Log](https://connect.strategyunitwm.nhs.uk/nhp/project_information/data_extraction/data_log.html)
+
+<aside class="notes">
+- On another page of the Quarto website, we have a data log. As you can see, the data are named the same as the model versions, and we have history here going right back to the begining of the model lifespan.
+
+- Release notes are linked to and held on the nhp_data repository, which is also open source.  Lets follow one of these release notes links to see the kinds of information stored.
+    </aside>
+## 
+
+![](github.png)
+
+[The Strategy Unit
+GitHub](https://github.com/The-Strategy-Unit?view_as=public)
+
+<aside class="notes">
+- Here in GitHub you can see the release notes for the current version of the model, v3.4.0.  These notes are partly auto-generated by GitHub through collating the pull request comments on the elements merged to create this release, but we also might overwrite or simplify some things.
+
+- For instance we can see that Tom merged PR number 89 that replace the AEC mitigators with the new SDEC ones. I can click on this link to go to that merged PR and see all the details, timeline and conversations around it.
+
+- The full changelog also contains all the commits relevant to this new model version.
+    </aside>
+    
+## RAP
+
+-   Modularised code
+-   Styling and Linting
+-   OPEN source code
+-   Version control
+-   Environment management: 
+  + [Docker](https://www.docker.com/)
+  + [{renv}](https://rstudio.github.io/renv/)
+  + [conda](https://anaconda.org/anaconda/conda)
+  
+## RAP continued
+
+-   Documentation
+    -   [Project
+        Information](https://connect.strategyunitwm.nhs.uk/nhp/project_information/)
+    -   READMEs on
+        [GitHub](https://github.com/The-Strategy-Unit?view_as=public)
+    -   Docstrings, packaged apps
+        ([golem](https://thinkr-open.github.io/golem/))
+-   JSON schema [**{✔❌}**]{style="color:blue;"} for validating the
+    parameters passed to the model
+
+## Deployment (CI/CD)
+
+How do we maintain [clean]{style="color:blue;"},
+[safe]{style="color:green;"}, [working]{style="color:red;"} code,
+centrally, when we have open repositories and up to <u>10 people</u>
+collaborating on maintaining that code alongside its active deployment?
+
+:::: {.columns}
+
+::: {.column width="50%"}
+***Continuous Integration***
+
+Automated checks, tests when merging code into main
+
+-   On pull request submission
+-   On merge to main
+
+:::
+
+::: {.column width="50%"}
+:::: {style="background-color: #D3D3D3"}
+
+***Continuous Deployment***
+
+Automated checks and tests when deploying (to dev or to prod)
+
+-   On merge to main
+-   On release
+::::
+
+:::
+
+::::
+## GitHub Actions
+
+Actions like:
+
+-   Formatting
+    ({[Air](https://www.tidyverse.org/blog/2025/02/air/#:~:text=How%20does%20Air%20decide%20how,we%20occasionally%20deviate%20from%20these.)})
+    to pick up stylistic inconsistencies
+-   Linting - for logical, syntactic and stylistic issues
+-   Rendering the README.Rmd
+-   Package checks (benefits of creating a Shiny app as a package)
+-   Deploys to a 'preview' site
+-   Assess code coverage ({[codecov](https://about.codecov.io/)})
+
+<aside class="notes">
+    </aside>
+    
+## 
+
+![](Actions.png)
+
+<aside class="notes">
+    </aside>
+
+## How we work
+
+We are
+[**A**]{style="color:red;"}[**G**]{style="color:orange;"}[**I**]{style="color:green;"}[**L**]{style="color:blue;"}[**E**]{style="color:purple;"},
+and use [Scrum](https://www.scrum.org/resources/what-scrum-module)
+(light)
+
+-   3 week sprints with 1 week fallow
+-   Weekly sprint catch-up meetings
+-   Kickoff and retro
+-   Promote T-shape expertise while reducing 'bus-factor'
+-   Transparent prioritisation processes
+-   Distinct team roles
+
+## 
+
+- **Scrum master** : *keeping the sprint on track*
+- **Product owner** : *steer work towards the goals*
+- **Project director** : *overall responsibility for delivery*
+- **Development board** : *define the goals and priorities*
+- **QA** : *oversee quality*
+
+::: callout-tip
+Roles have enough specificity to provide clarity, but are also shared.
+Flat management structure.
+:::
+
+## Agile and Scrum in GitHub
+
+Leverage a LOT of GitHub's excellent tooling
+
+::::: columns
+::: {.column width="50%"}
+-   Projects
+-   Issues with bespoke labelling
+-   Branch protection rules
+-   [CODEOWNERS]{style="color:red;"}
+-   Clear and consistent collaboration guidance
+-   Checklists 
+:::
+
+
+
+::: {.column width="50%"}
+![](labels.png)
+:::
+
+:::::
+
+## CODEOWNERS
+
+A simple but powerful idea!
+
+![](codeowners.png)
+
+## Product Team
+
+'The model' is a [product]{.underline} - it has current and potential
+use cases and user groups.
+
+We need a team responsible for understanding the software business
+<i class="fa-solid fa-briefcase"></i> as well as the software product
+🚀.
+
+_"What should we build next and why?"_
+
+## NHS-R
+
+* I learned R in 2009 in the bad old days
+* I swore that I’d make sure that others didn’t suffer like I did
+* NHS-R is the fulfilment of this promise, created in 2018
+
+## Core values of open source
+
+* Transparency
+* Collaboration
+* Release early and often
+* Inclusive meritocracy
+* Community
+* Work across organisational boundaries (obviously)
+
+## Core values
+
+* Flat hierarchy
+* Sharing
+* Cooperate across organisational boundaries
+* We cooperate across international boundaries
+* We love beginners
+* We make mistakes and learn together
+
+## What is NHS-R?
+
+* Culture > Strategy
+* Doing > Talking
+* NHS-R is your permission to work your way
+* Nobody ever asks us to do our best work
+    * NHSRplotthedots
+* We know what to build, we know what to learn
+* “Computer (department) says no”
+
+## Open source
+
+* We believe in open source
+* All NHS R solutions are open source
+* We teach git and GitHub and encourage organisations to share their code
+* We build stuff together because we believe in the value of the community
+
+\includegraphics[width=0.6\textwidth]{2022-02-09_why-is-nhsr-so-awesome/git_repos.png}
+\includegraphics[width=0.35\textwidth]{2022-02-09_why-is-nhsr-so-awesome/git_contributors.png}
+
+## No such thing as a free lunch
+
+* We believe in R, we believe in the NHS-R community, and we believe in each other
+* NHS-R is not a LinkedIn certification
+* It cannot be bought, sold, or exchanged
+* You can't buy a community
+* But you can and must buy the glue that binds them together
+
+## Force multiplier
+
+* Code is a force multiplier
+* Wickham, 2014 https://bit.ly/3jQ5SuJ
+* So is a community
+* NHS-R is absurdly cheap and its ROI is absurdly high
+* NHS-R is making people happy and productive
+* NHS-R is changing the lives of its members and improving healthcare for everyone in the UK
+
+## What's the connection between the NHP model and NHS-R?
+
+* We're not perfect but we've done the right thing
+    * Open code
+    * Open technologies
+    * Standard datasets
+    * Documentation
+    * Modularity
+
+## "Free as in piano"
+
+* There are huge obstacles for other teams in using and contributing to the code
+* Some are inherent- e.g. access to data
+* But across the system people lack access to:
+    * Skills
+    * Software installs (just Python!)
+    * "Kit" - cloud compute, Posit Connect, etc.
+
+## How can NHS-R help?
+
+* NHS-R showcases the benefits of RAP
+* NHS-R demystifies the "risks" to IT departments who refuse to install R/ Python
+* NHS-R gives people the training and the community to learn things together
+* NHS-R loves beginners but NHS-R also shows off the best data science going on in the NHS

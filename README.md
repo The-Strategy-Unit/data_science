@@ -15,12 +15,13 @@ This repo features:
 
 ## Contributing to this repo
 
-1. Request access from a member of [the Data Science team](https://the-strategy-unit.github.io/data_science/about.html), they need to add you as a contributor. Alternatively, you can [fork the repository](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) to your own GitHub account.
-2. Create an issue for the thing you want to add on GitHub
-3. Clone the repository (in RStudio, File > New Project > Checkout a project from a version controlled repository). Paste in the URL of this repository, or the forked repository if you have forked it.
-4. Check out the main branch and check it's up to date in the RStudio Terminal  (type `git checkout main && git pull` in terminal)
-5. Check out a new branch  (`git checkout -b issue-number` in terminal)
-6. Follow instructions in the {renv} section.
+All members of the Strategy Unit organisation on Github should be able to contribute to this repository.
+
+1. Create an issue for the thing you want to add on GitHub
+2. Clone the repository (in RStudio, File > New Project > Checkout a project from a version controlled repository). Paste in the URL of this repository.
+3. Check out the main branch and check it's up to date in the RStudio Terminal  (type `git checkout main && git pull` in terminal)
+4. Check out a new branch  (`git checkout -b issue-number` in terminal)
+5. Follow instructions in the {renv} section.
 
 ### {renv}
 

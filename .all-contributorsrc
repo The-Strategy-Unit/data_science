@@ -95,6 +95,16 @@
       "contributions": [
         "talk"
       ]
+    },
+    {
+      "login": "DCEW",
+      "name": "Dr Claire Welsh",
+      "avatar_url": "https://avatars.githubusercontent.com/u/112561799?v=4",
+      "profile": "https://github.com/DCEW",
+      "contributions": [
+        "talk",
+        "blog"
+      ]
     }
   ],
   "contributorsPerLine": 7,

@@ -1,0 +1,24 @@
+[
+  {
+    "listing": "/blogs/index.html",
+    "items": [
+      "/blogs/posts/2025-05-16 data-science-as-a-product/index.html",
+      "/blogs/posts/2025-05-06_NLP-hackathon/index.html",
+      "/blogs/posts/2025-04-30_using-github-apps-for-authentication/index.html",
+      "/blogs/posts/2024-11-29-mapping-my-r-learning/index.html",
+      "/blogs/posts/2025-01-03_text-vectorization/NLP - text vectorisation.html",
+      "/blogs/posts/2024-12-04-gha-branch-preview/index.html",
+      "/blogs/posts/2024-11-12_coffee-coding-github-planner/index.html",
+      "/blogs/posts/2024-08-08_map-and-nest/index.html",
+      "/blogs/posts/2024-05-22_storing-data-safely/index.html",
+      "/blogs/posts/2024-05-13_one-year-coffee-code/index.html",
+      "/blogs/posts/2024-03-21_rstudio-tips/index.html",
+      "/blogs/posts/2024-02-28_sankey_plot/index.html",
+      "/blogs/posts/2024-01-17_nearest_neighbour/index.html",
+      "/blogs/posts/2024-01-10_advent-of-code-and-test-driven-development/index.html",
+      "/blogs/posts/2023-04-26_reinstalling-r-packages/index.html",
+      "/blogs/posts/2023-04-26_alternative_remotes/index.html",
+      "/blogs/posts/2023-03-24_hotfix-with-git/index.html"
+    ]
+  }
+]

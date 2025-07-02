@@ -1,5 +1,5 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-10-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 
@@ -104,6 +104,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://philosopher-analyst.netlify.app/"><img src="https://avatars.githubusercontent.com/u/39963221?v=4?s=100" width="100px;" alt="Zoë Turner"/><br /><sub><b>Zoë Turner</b></sub></a><br /><a href="https://github.com/The-Strategy-Unit/data_science/commits?author=Lextuga007" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/sallyt-nhs"><img src="https://avatars.githubusercontent.com/u/105062662?v=4?s=100" width="100px;" alt="sallyt-nhs"/><br /><sub><b>sallyt-nhs</b></sub></a><br /><a href="#talk-sallyt-nhs" title="Talks">📢</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/sheilamomo"><img src="https://avatars.githubusercontent.com/u/152722438?v=4?s=100" width="100px;" alt="sheilamomo"/><br /><sub><b>sheilamomo</b></sub></a><br /><a href="#blog-sheilamomo" title="Blogposts">📝</a></td>
     </tr>
   </tbody>
 </table>

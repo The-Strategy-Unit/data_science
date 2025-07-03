@@ -1,0 +1,45 @@
+---
+title: "What does a scrummaster do, anyway?"
+subtitle: "How we manage sprints at the Strategy Unit Data Science team"
+authors:
+  - name: YiWen Hon
+    orcid: 0000-0002-6105-1309
+    email: yiwen.hon1@nhs.net
+    affiliation:
+      - name: The Strategy Unit, NHS MLCSU
+        url: https://strategyunitwm.nhs.uk/
+  - name: Matt Dray
+    email: matt.dray@nhs.net
+    affiliation:
+      - name: The Strategy Unit, NHS MLCSU
+        url: https://strategyunitwm.nhs.uk/
+date: "2025-06-20"
+categories: [GitHub, Scrum, Agile]
+execute: 
+  enabled: false
+---
+
+We use sprints to manage our workload developing [the open source NHP Model](https://connect.strategyunitwm.nhs.uk/nhp/project_information/), which my colleagues have explored about from different perspectives; [Claire as a Product Owner](https://the-strategy-unit.github.io/data_science/blogs/posts/2025-05-16%20data-science-as-a-product/), and [Chris as Team Leader](https://the-strategy-unit.github.io/data_science/presentations/2024-11-21_agile_project_management/). This blogpost attempts to distil what it is that a scrummaster does, both as a form of internal documentation and as a way of sharing our learning with others.
+
+## Practical tasks
+
+### Organising meetings
+
+On a practical level, a scrummaster organises all the meetings that are a regular part of the sprint. These include the meetings below. We have created a GitHub template which acts as a checklist to help us with sorting these, including suggested agendas and useful links.
+
+- Sprint planning with Product Owner before sprint starts
+- Sprint kickoff (2.5 hours) at start of sprint, with all team members
+- Sprint catchups (1 hour) weekly during sprint duration, with all team members
+- Sprint retro (2 hours) at end of sprint, with all sprint members
+
+### Managing meetings and tasks
+
+The scrummaster leads all meetings during the sprint, taking team members through the agenda. They help people working on the sprint to work out what they are going to do and how they are going to do it. If there are any blockers, the scrummaster helps scrum participants with unblocking them.
+
+The scrummaster works with the Product Owner to work out the priority order of the tasks in the sprint. If there are any unexpected development requests during the sprint, the scrummaster helps to work out what can and can't move, and helps to distribute tasks equally amongst the team and manage workloads. 
+
+## Knowledge and skills required
+
+### Knowledge of the project as a whole (how things fit together, roughly)
+
+### Understanding of how complex tasks might be? (some coding knowledge)

@@ -10,7 +10,73 @@
 <atom:link href="https://the-strategy-unit.github.io/data_science/blogs/index.xml" rel="self" type="application/rss+xml"/>
 <description>Blogs from the Data Science Team at The Strategy Unit</description>
 <generator>quarto-1.7.32</generator>
-<lastBuildDate>Fri, 16 May 2025 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Fri, 20 Jun 2025 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>What does a scrummaster do, anyway?</title>
+  <link>https://the-strategy-unit.github.io/data_science/blogs/posts/2025-06-20-how-we-sprint/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>We use sprints to manage our workload developing <a href="https://connect.strategyunitwm.nhs.uk/nhp/project_information/">the open source NHP Model</a> and several adjacent products. We’ve written before about sprint roles: <a href="https://the-strategy-unit.github.io/data_science/blogs/posts/2025-05-16%20data-science-as-a-product/">Claire as Product Owner</a> and <a href="https://the-strategy-unit.github.io/data_science/presentations/2024-11-21_agile_project_management/">Chris as Team Leader</a>. This blogpost attempts to distil what it is that a <em>scrummaster</em> does, both as a form of internal documentation and as a way of sharing our learning with others.</p>
+<section id="practical-tasks" class="level2">
+<h2 class="anchored" data-anchor-id="practical-tasks">Practical tasks</h2>
+<section id="organising-meetings" class="level3">
+<h3 class="anchored" data-anchor-id="organising-meetings">Organising meetings</h3>
+<p>On a practical level, a scrummaster organises and conducts all the meetings that are a regular part of the sprint. These are:</p>
+<ul>
+<li>Sprint planning (1 hour) with Product Owner before sprint starts</li>
+<li>Sprint kickoff (2.5 hours) at start of sprint, with all team members</li>
+<li>Sprint catchups (1 hour) weekly during sprint duration, with all team members</li>
+<li>Sprint retro (2 hours) at end of sprint, with all team members</li>
+</ul>
+<p>We have created a GitHub template which acts as a checklist to help us with sorting these, including suggested agendas and useful links. We currently work in 3-week sprints, with 2 weeks for coding and 1 week for Quality Assurance (QA). We then work on other projects between sprints (a “fallow week”), effectively working in 4 week cycles.</p>
+</section>
+<section id="managing-meetings-and-tasks" class="level3">
+<h3 class="anchored" data-anchor-id="managing-meetings-and-tasks">Managing meetings and tasks</h3>
+<p>The scrummaster leads all meetings during the sprint, taking team members through the agenda. They help people working on the sprint to work out what they are going to do and how they are going to do it. If there are any blockers, the scrummaster helps scrum participants with unblocking them. The scrummaster is responsible for helping members of the sprint keep to deadlines by regularly checking in on progress.</p>
+<p>The scrummaster works with the Product Owner to work out the priority order of the tasks in the sprint. If there are any unexpected development requests or changes in priority during the sprint, the scrummaster helps to work out what can and can’t move, and helps to distribute tasks equally amongst the team and manage workloads.</p>
+<p>We manage our sprints using <a href="https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects">GitHub Projects</a>, and the scrummaster is responsible for helping keep this tidy - for example, by ensuring that any uncompleted issues at the end of a sprint are either closed, or assigned to a new sprint.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2025-06-20-how-we-sprint/wallace-and-gromit-train.gif" class="img-fluid figure-img" alt="Gromit laying train tracks down before a fast moving train."></p>
+<figcaption>Scrummaster in action</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="knowledge-and-skills-required" class="level2">
+<h2 class="anchored" data-anchor-id="knowledge-and-skills-required">Knowledge and skills required</h2>
+<section id="seeing-the-big-picture-knowledge-of-the-project-as-a-whole" class="level3">
+<h3 class="anchored" data-anchor-id="seeing-the-big-picture-knowledge-of-the-project-as-a-whole">Seeing the big picture: Knowledge of the project as a whole</h3>
+<p>The scrummaster should have an understanding of the project as a whole, including an awareness of who the key stakeholders are, and what their priorities might be. The project that we’re working on has lots of <a href="https://connect.strategyunitwm.nhs.uk/nhp/project_information/project_plan_and_summary/components-overview.html">interconnected parts</a>, and there are often external time-sensitive pressures impacting our work as well. Having this broad overview enables the scrummaster to spot potential blockers and issues, and ensure that the product develops in a way that meets the needs of all stakeholders.</p>
+</section>
+<section id="an-eye-for-detail-technical-understanding" class="level3">
+<h3 class="anchored" data-anchor-id="an-eye-for-detail-technical-understanding">An eye for detail: Technical understanding</h3>
+<p>The scrummaster does not necessarily have to be actively involved in the sprint in terms of contributing code, but they should have enough technical knowledge to be able to understand (in broad terms) what the requirements are for each piece of work forming part of the sprint. They should also be able to signpost sprint participants to relevant resources and help them with decision making, where required.</p>
+</section>
+<section id="communication-skills" class="level3">
+<h3 class="anchored" data-anchor-id="communication-skills">Communication skills</h3>
+<p>The scrummaster coordinates communication between team members working on interconnected elements of tasks, and between the sprint team and key stakeholders. They ensure that development team members have all the information they need to accomplish their sprint goals.</p>
+<p>In our team, the scrummaster is responsible for writing up the user-facing “model updates”, which provide a broad overview of the developments at the end of each sprint. This often involves translation of complex technical details into human readable terms.</p>
+</section>
+</section>
+<section id="sharing-the-load" class="level2">
+<h2 class="anchored" data-anchor-id="sharing-the-load">Sharing the load</h2>
+<p>While there are benefits to maintaining the same person as scrummaster, we’ve switched recently to rotating the role among team members. This will provide respite for everyone and also improve big-picture knowledge across the team. In turn, this will reduce bus factor so that we won’t depend on any one individual to keep all the scrummaster knowledge in their brain.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>GitHub</category>
+  <category>Scrum</category>
+  <category>Agile</category>
+  <guid>https://the-strategy-unit.github.io/data_science/blogs/posts/2025-06-20-how-we-sprint/</guid>
+  <pubDate>Fri, 20 Jun 2025 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Data science as a product</title>
   <dc:creator>Claire Welsh</dc:creator>

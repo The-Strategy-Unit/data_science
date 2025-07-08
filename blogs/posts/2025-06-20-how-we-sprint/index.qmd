@@ -19,27 +19,59 @@ execute:
   enabled: false
 ---
 
-We use sprints to manage our workload developing [the open source NHP Model](https://connect.strategyunitwm.nhs.uk/nhp/project_information/), which my colleagues have explored about from different perspectives; [Claire as a Product Owner](https://the-strategy-unit.github.io/data_science/blogs/posts/2025-05-16%20data-science-as-a-product/), and [Chris as Team Leader](https://the-strategy-unit.github.io/data_science/presentations/2024-11-21_agile_project_management/). This blogpost attempts to distil what it is that a scrummaster does, both as a form of internal documentation and as a way of sharing our learning with others.
+We use sprints to manage our workload developing [the open source NHP Model](https://connect.strategyunitwm.nhs.uk/nhp/project_information/), which my colleagues have explored about from different perspectives; [Claire as a Product Owner](https://the-strategy-unit.github.io/data_science/blogs/posts/2025-05-16%20data-science-as-a-product/), and [Chris as Team Leader](https://the-strategy-unit.github.io/data_science/presentations/2024-11-21_agile_project_management/). 
+This blogpost attempts to distil what it is that a scrummaster does, both as a form of internal documentation and as a way of sharing our learning with others.
 
 ## Practical tasks
 
 ### Organising meetings
 
-On a practical level, a scrummaster organises all the meetings that are a regular part of the sprint. These include the meetings below. We have created a GitHub template which acts as a checklist to help us with sorting these, including suggested agendas and useful links.
+On a practical level, a scrummaster organises all the meetings that are a regular part of the sprint.
+These include the meetings below. 
+We have created a GitHub template which acts as a checklist to help us with sorting these, including suggested agendas and useful links. 
+We currently work in 3 week sprints, with 2 weeks for coding and 1 week for Quality Assurance (QA). 
+We then take a week off between sprints (a "fallow week"), effectively working in 4 week cycles. 
 
-- Sprint planning with Product Owner before sprint starts
+- Sprint planning (1 hour) with Product Owner before sprint starts
 - Sprint kickoff (2.5 hours) at start of sprint, with all team members
 - Sprint catchups (1 hour) weekly during sprint duration, with all team members
-- Sprint retro (2 hours) at end of sprint, with all sprint members
+- Sprint retro (2 hours) at end of sprint, with all team members
 
 ### Managing meetings and tasks
 
-The scrummaster leads all meetings during the sprint, taking team members through the agenda. They help people working on the sprint to work out what they are going to do and how they are going to do it. If there are any blockers, the scrummaster helps scrum participants with unblocking them.
+The scrummaster leads all meetings during the sprint, taking team members through the agenda. 
+They help people working on the sprint to work out what they are going to do and how they are going to do it. 
+If there are any blockers, the scrummaster helps scrum participants with unblocking them.
+The scrummaster is responsible for helping members of the sprint keep to deadlines by regularly checking in on progress.
 
-The scrummaster works with the Product Owner to work out the priority order of the tasks in the sprint. If there are any unexpected development requests during the sprint, the scrummaster helps to work out what can and can't move, and helps to distribute tasks equally amongst the team and manage workloads. 
+The scrummaster works with the Product Owner to work out the priority order of the tasks in the sprint. 
+If there are any unexpected development requests or changes in priority during the sprint, the scrummaster helps to work out what can and can't move, and helps to distribute tasks equally amongst the team and manage workloads. 
+
+We manage our sprints using GitHub Planner, and the scrummaster is responsible for helping keep this tidy - for example, by ensuring that any uncompleted issues at the end of a sprint are either closed, or assigned to a new sprint.
+
+![Scrum master in action](wallace-and-gromit-train.gif){fig-alt="Gromit laying train tracks down before a fast moving train"}
 
 ## Knowledge and skills required
 
-### Knowledge of the project as a whole (how things fit together, roughly)
+### Seeing the big picture: Knowledge of the project as a whole
 
-### Understanding of how complex tasks might be? (some coding knowledge)
+The scrummaster should have an understanding of the project as a whole, including an awareness of who the key stakeholders are, and what their priorities might be.
+The project that we're working on has lots of [interconnected parts](https://connect.strategyunitwm.nhs.uk/nhp/project_information/project_plan_and_summary/components-overview.html), and there are often external time-sensitive pressures impacting our work as well.
+Having this broad overview enables the scrummaster to spot potential blockers and issues, and ensure that the product develops in a way that meets the needs of all stakeholders.
+
+### An eye for detail: Technical understanding
+
+The scrummaster does not necessarily have to be actively involved in the sprint in terms of contributing code, but they should have enough technical knowledge to be able to understand (in broad terms) what the requirements are for each piece of work forming part of the sprint. 
+They should also be able to signpost sprint participants to relevant resources and help them with decision making, where required.
+
+### Communication skills
+
+The scrummaster coordinates communication between team members working on interconnected elements of tasks, and between the sprint team and key stakeholders.
+They ensure that development team members have all the information they need to accomplish their sprint goals.
+
+In our team, the scrummaster is responsible for writing up the user-facing "model updates", which provide a broad overview of the developments at the end of each sprint.
+This often involves translation of complex technical details into human readable terms.
+
+
+
+

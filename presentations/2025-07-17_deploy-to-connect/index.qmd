@@ -24,7 +24,7 @@ format:
 
 ## Note
 
-Press <kbd>s</kbd> to see more context in speaker notes.
+Press 'S' key to see more context in speaker notes.
 
 ## What?
 
@@ -57,13 +57,14 @@ Press <kbd>s</kbd> to see more context in speaker notes.
 * You can read more about {pins} in a previous [presentation](https://the-strategy-unit.github.io/data_science/presentations/2024-05-16_store-data-safely/#/title-slide) and [blog](https://the-strategy-unit.github.io/data_science/blogs/posts/2024-05-22_storing-data-safely/).
 :::
 
-## Process
+## Process overview
 
-* Get a user account for [our Posit Connect server](https://connect.strategyunitwm.nhs.uk)
-* Write your code (push to GitHub ideally).
-* Send files to the server
-* The server generates the content
-* Update your code and redeploy
+1. Get a user account for [our Posit Connect server](https://connect.strategyunitwm.nhs.uk).
+1. Write your code (push to GitHub ideally).
+1. Send file 'bundle' to the server.
+1. The server generates the content.
+1. Adjust content settings in the web interface (optional).
+1. Update your code and redeploy.
 
 ::: {.notes}
 * This is the basic high-level steps to put content onto the server.
@@ -78,15 +79,19 @@ Press <kbd>s</kbd> to see more context in speaker notes.
 Simplified first-time approach (preferred):
 
 1. [Authorise in RStudio](https://docs.posit.co/ide/user/ide/guide/publish/connecting.html#connecting-your-account): Tools > Global options > Publishing.
-1. Add `deploy.R` with {rsconnect}'s `deployDoc()` and `deployApp()`.
-1. Run `deploy.R` after updating your code.
+1. Add `deploy.R` with `rsconnect::deploy*()` call.
+1. Run `deploy.R` without `appId` argument.
+1. Add deployed content ID as `appId` in `deploy.R`.
+1. Update code, re-run `deploy.R`.
+
+Go to [the source repo](https://github.com/matt-dray/coffee-test-app) for this demo.
 
 ::: {.notes}
 * What's the actual process of getting content onto the server using R?
 * Note that there's a few ways to do this, but this is our preferred suggestion within the SU.
 * First: authorise with Connect in RStudio through settings.
-* If not in RStudio, use environment variables `CONNECT_SERVER` and `CONNECT_API_KEY`.
-* Our preferred method: create a `deploy.R` script in your directory that contains a call to `deploy*()` that specifies information about your app. This file allows your colleagues to more easily/consistently deploy your content.
+* If not in RStudio, set credentials with `connect::setAccountInfo()`.
+* Our preferred method: create a `deploy.R` script in your directory that contains a call to `deploy*()` (`deployDoc()`, `deployApp()` are most likely) that specifies information about your app. This file allows your colleagues to more easily/consistently deploy your content.
 * First time: run the deploy function once without `appId`.
 * The ID will be generated and shown in the deployed app under ⚙️ Settings > Info > Content ID'.
 * Add the content ID as the `appID` into the deploy function in `deploy.R`.
@@ -94,7 +99,7 @@ Simplified first-time approach (preferred):
 
 ## R demo
 
-`deploy.R` for a Shiny app:
+Example `deploy.R` for a Shiny app:
 
 ```{r}
 #| label: deployapp
@@ -104,9 +109,9 @@ Simplified first-time approach (preferred):
 rsconnect::deployApp(
   appName = "coffee-test-app",
   appTitle = "Test app: Coffee and Coding",
-  appFiles = c("R/", "inst/", "app.R"),
+  appFiles = c("R/", "ui.R", "server.R"),
   server = "connect.strategyunitwm.nhs.uk",
-  # appId = <your app's content ID>,
+  # appId = <your deployed app's content ID>,
   lint = FALSE,
   forceUpdate = TRUE
 )
@@ -121,7 +126,7 @@ Find `appID` in ⚙️ Settings > Info > Content ID after it's deployed for the 
 
 ## R demo
 
-`deploy.R` for a Quarto doc:
+Example `deploy.R` for a Quarto doc:
 
 ```{r}
 #| label: deploydoc
@@ -132,7 +137,7 @@ rsconnect::deployDoc(
   appName = "coffee-test-doc",
   appTitle = "Test doc: Coffee and Coding",
   server = "connect.strategyunitwm.nhs.uk",
-  # appId = <your app's content ID>,
+  # appId = <your deployed app's content ID>,
   lint = FALSE,
   forceUpdate = TRUE
 )
@@ -154,21 +159,22 @@ Or `deployApp()` to specify undetected `appFiles`.
 
 ## Web interface
 
-![](connect-admin.png){fig-alt="Screenshot of a Shiny app with admin panels on display abvoe and to the right of the app itself. A cog icon has been selected from the top panel, exposing the settings in the right panel. Within the right panel, the 'access' section is selected, showing that anyone can access the app without a login."}
-
-## Web interface
-
-![](connect-logs.png){fig-alt="Screenshot of a Shiny app with an admin panel open at the top of the app. The logs button is selected, showing timestamped output from Posit Connect's attempt to build the app. A warning message is shown, indicating that a function from a certain package is deprecated."}
-
-## Web interface
-
-Settings panels:
+Panels under 'settings' button:
 
 * Info: adjust name, get app (content) ID
 * Access: protect with login, set vanity URL
 * Schedule: set automated re-run schedule
 * Vars: set environmental variables
-* App (content) ID
+
+Plus 'open solo', 'logs' and 'more options' buttons
+
+## Web interface
+
+![](connect-admin.png){fig-alt="Screenshot of a Shiny app with admin panels on display abvoe and to the right of the app itself. A cog icon has been selected from the top panel, exposing the settings in the right panel. Within the right panel, the 'access' section is selected, showing that anyone can access the app without a login."}
+
+## Web interface
+
+![](connect-logs.png){fig-alt="Screenshot of a Shiny app with an admin panel open at the top of the app. The logs button is selected, showing timestamped output from Posit Connect's attempt to build the app. A warning message is shown, indicating that a function from a certain package is deprecated."}
 
 ::: {.notes}
 * Once on Posit Connect, you can login and adjust settings through the app.
@@ -181,6 +187,9 @@ Settings panels:
 
 * Deploy via [GitHub Action](https://solutions.posit.co/operations/deploy-methods/ci-cd/github-actions/)
 * Deploy by [button-press](https://docs.posit.co/ide/user/ide/guide/publish/publishing.html#push-button-deployment) in RStudio
+* Your stories, questions, gripes
 
 ::: {.notes}
+* You can use a GitHub Action to deploy when releasing your code, for example. We do this for NHP Inputs app, for example, which has workflows to release to our development environment on merge, to our production environment on release, or to deploy to either location manually.
+* There is a button in the GUI of RStudio that you can click to deploy. We're suggesting you use the `deploy.R` method for consistency. The push-button method relies on an `rsconnect/` folder that gets autogenerated on your local machine, which is not obvious to other potential deployers of your app.
 :::

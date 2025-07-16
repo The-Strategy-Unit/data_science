@@ -488,7 +488,7 @@
     "href": "presentations/2025-07-17_deploy-to-connect/index.html#note",
     "title": "Deploy to Posit Connect",
     "section": "Note",
-    "text": "Note\nPress s to see more context in speaker notes."
+    "text": "Note\nPress ‘S’ key to see more context in speaker notes."
   },
   {
     "objectID": "presentations/2025-07-17_deploy-to-connect/index.html#what",
@@ -505,32 +505,32 @@
     "text": "SU examples\n\nNHP model project information (Quarto site)\nNHP tagged-runs table (scheduled Rmd) 🔒\nRenal evidence map (Shiny app)\nEvidence map data (Pin) 🔒\nRandomised coffee trials (API)\n\n🔒 Login required.\n\n\nHere’s some examples of the wide-ranging content already on the SU’s Posit Connect server.\nIt hosts static sites and documents, apps, pins and APIs.\nWe’re using it for important work, like the New Hospital Programme.\nYou can read more about {pins} in a previous presentation and blog."
   },
   {
-    "objectID": "presentations/2025-07-17_deploy-to-connect/index.html#process",
-    "href": "presentations/2025-07-17_deploy-to-connect/index.html#process",
+    "objectID": "presentations/2025-07-17_deploy-to-connect/index.html#process-overview",
+    "href": "presentations/2025-07-17_deploy-to-connect/index.html#process-overview",
     "title": "Deploy to Posit Connect",
-    "section": "Process",
-    "text": "Process\n\nGet a user account for our Posit Connect server\nWrite your code (push to GitHub ideally).\nSend files to the server\nThe server generates the content\nUpdate your code and redeploy\n\n\n\nThis is the basic high-level steps to put content onto the server.\nFirst, you need a Posit Connect account (let us know if you don’t have one).\nYou send to the server all the files needed to generate your output (e.g. to create your static HTML report, you need to include your Quarto file, R scripts and possibly data, although you can also send the rendered HTML).\nThe server will take those files and generate the output (or just display the rendered file).\nYou can then change your code and redeploy to the server."
+    "section": "Process overview",
+    "text": "Process overview\n\nGet a user account for our Posit Connect server.\nWrite your code (push to GitHub ideally).\nSend file ‘bundle’ to the server.\nThe server generates the content.\nAdjust content settings in the web interface (optional).\nUpdate your code and redeploy.\n\n\n\nThis is the basic high-level steps to put content onto the server.\nFirst, you need a Posit Connect account (let us know if you don’t have one).\nYou send to the server all the files needed to generate your output (e.g. to create your static HTML report, you need to include your Quarto file, R scripts and possibly data, although you can also send the rendered HTML).\nThe server will take those files and generate the output (or just display the rendered file).\nYou can then change your code and redeploy to the server."
   },
   {
     "objectID": "presentations/2025-07-17_deploy-to-connect/index.html#r-demo",
     "href": "presentations/2025-07-17_deploy-to-connect/index.html#r-demo",
     "title": "Deploy to Posit Connect",
     "section": "R demo",
-    "text": "R demo\nSimplified first-time approach (preferred):\n\nAuthorise in RStudio: Tools &gt; Global options &gt; Publishing.\nAdd deploy.R with {rsconnect}’s deployDoc() and deployApp().\nRun deploy.R after updating your code.\n\n\n\nWhat’s the actual process of getting content onto the server using R?\nNote that there’s a few ways to do this, but this is our preferred suggestion within the SU.\nFirst: authorise with Connect in RStudio through settings.\nIf not in RStudio, use environment variables CONNECT_SERVER and CONNECT_API_KEY.\nOur preferred method: create a deploy.R script in your directory that contains a call to deploy*() that specifies information about your app. This file allows your colleagues to more easily/consistently deploy your content.\nFirst time: run the deploy function once without appId.\nThe ID will be generated and shown in the deployed app under ⚙️ Settings &gt; Info &gt; Content ID’.\nAdd the content ID as the appID into the deploy function in deploy.R."
+    "text": "R demo\nSimplified first-time approach (preferred):\n\nAuthorise in RStudio: Tools &gt; Global options &gt; Publishing.\nAdd deploy.R with rsconnect::deploy*() call.\nRun deploy.R without appId argument.\nAdd deployed content ID as appId in deploy.R.\nUpdate code, re-run deploy.R.\n\nGo to the source repo for this demo.\n\n\nWhat’s the actual process of getting content onto the server using R?\nNote that there’s a few ways to do this, but this is our preferred suggestion within the SU.\nFirst: authorise with Connect in RStudio through settings.\nIf not in RStudio, set credentials with connect::setAccountInfo().\nOur preferred method: create a deploy.R script in your directory that contains a call to deploy*() (deployDoc(), deployApp() are most likely) that specifies information about your app. This file allows your colleagues to more easily/consistently deploy your content.\nFirst time: run the deploy function once without appId.\nThe ID will be generated and shown in the deployed app under ⚙️ Settings &gt; Info &gt; Content ID’.\nAdd the content ID as the appID into the deploy function in deploy.R."
   },
   {
     "objectID": "presentations/2025-07-17_deploy-to-connect/index.html#r-demo-1",
     "href": "presentations/2025-07-17_deploy-to-connect/index.html#r-demo-1",
     "title": "Deploy to Posit Connect",
     "section": "R demo",
-    "text": "R demo\ndeploy.R for a Shiny app:\n\nrsconnect::deployApp(\n  appName = \"coffee-test-app\",\n  appTitle = \"Test app: Coffee and Coding\",\n  appFiles = c(\"R/\", \"inst/\", \"app.R\"),\n  server = \"connect.strategyunitwm.nhs.uk\",\n  # appId = &lt;your app's content ID&gt;,\n  lint = FALSE,\n  forceUpdate = TRUE\n)\n\nFind appID in ⚙️ Settings &gt; Info &gt; Content ID after it’s deployed for the first time.\n\n\nThis is an example of the content to put in deploy.R if you’re deployng a Shiny app.\nNote appFiles to specify the minimal set of files needed for the server to render your app."
+    "text": "R demo\nExample deploy.R for a Shiny app:\n\nrsconnect::deployApp(\n  appName = \"coffee-test-app\",\n  appTitle = \"Test app: Coffee and Coding\",\n  appFiles = c(\"R/\", \"ui.R\", \"server.R\"),\n  server = \"connect.strategyunitwm.nhs.uk\",\n  # appId = &lt;your deployed app's content ID&gt;,\n  lint = FALSE,\n  forceUpdate = TRUE\n)\n\nFind appID in ⚙️ Settings &gt; Info &gt; Content ID after it’s deployed for the first time.\n\n\nThis is an example of the content to put in deploy.R if you’re deployng a Shiny app.\nNote appFiles to specify the minimal set of files needed for the server to render your app."
   },
   {
     "objectID": "presentations/2025-07-17_deploy-to-connect/index.html#r-demo-2",
     "href": "presentations/2025-07-17_deploy-to-connect/index.html#r-demo-2",
     "title": "Deploy to Posit Connect",
     "section": "R demo",
-    "text": "R demo\ndeploy.R for a Quarto doc:\n\nrsconnect::deployDoc(\n  appName = \"coffee-test-doc\",\n  appTitle = \"Test doc: Coffee and Coding\",\n  server = \"connect.strategyunitwm.nhs.uk\",\n  # appId = &lt;your app's content ID&gt;,\n  lint = FALSE,\n  forceUpdate = TRUE\n)\n\nOr deployApp() to specify undetected appFiles.\n\n\nThis is an example of the content to put in deploy.R if you’re deployng a Shiny app.\nNote appFiles to specify the minimal set of files needed for the server to render your app.\ndeployDoc() detects the required files, so the appFiles argument isn’t needed.\nHowever, sometimes files can be missed. You can instead use deployApp() with appFiles. Alternatively, you can specify resources in the YAML: header of your Quarto file with the resource_files key."
+    "text": "R demo\nExample deploy.R for a Quarto doc:\n\nrsconnect::deployDoc(\n  appName = \"coffee-test-doc\",\n  appTitle = \"Test doc: Coffee and Coding\",\n  server = \"connect.strategyunitwm.nhs.uk\",\n  # appId = &lt;your deployed app's content ID&gt;,\n  lint = FALSE,\n  forceUpdate = TRUE\n)\n\nOr deployApp() to specify undetected appFiles.\n\n\nThis is an example of the content to put in deploy.R if you’re deployng a Shiny app.\nNote appFiles to specify the minimal set of files needed for the server to render your app.\ndeployDoc() detects the required files, so the appFiles argument isn’t needed.\nHowever, sometimes files can be missed. You can instead use deployApp() with appFiles. Alternatively, you can specify resources in the YAML: header of your Quarto file with the resource_files key."
   },
   {
     "objectID": "presentations/2025-07-17_deploy-to-connect/index.html#python-demo",
@@ -544,7 +544,7 @@
     "href": "presentations/2025-07-17_deploy-to-connect/index.html#web-interface",
     "title": "Deploy to Posit Connect",
     "section": "Web interface",
-    "text": "Web interface"
+    "text": "Web interface\nPanels under ‘settings’ button:\n\nInfo: adjust name, get app (content) ID\nAccess: protect with login, set vanity URL\nSchedule: set automated re-run schedule\nVars: set environmental variables\n\nPlus ‘open solo’, ‘logs’ and ‘more options’ buttons"
   },
   {
     "objectID": "presentations/2025-07-17_deploy-to-connect/index.html#web-interface-1",
@@ -558,14 +558,14 @@
     "href": "presentations/2025-07-17_deploy-to-connect/index.html#web-interface-2",
     "title": "Deploy to Posit Connect",
     "section": "Web interface",
-    "text": "Web interface\nSettings panels:\n\nInfo: adjust name, get app (content) ID\nAccess: protect with login, set vanity URL\nSchedule: set automated re-run schedule\nVars: set environmental variables\nApp (content) ID\n\n\n\nOnce on Posit Connect, you can login and adjust settings through the app.\nThe vanity URL means you can put your URL in the form ‘https://connect.strategyunitwm.nhs.uk/’.\nConnect can re-render your document at specified times, which can be useful if your datasets continually update and you don’t want to keep having to manually deploy.\nIf accessing your content through Posit Connect, you’ll get some ‘admin panels’ around the content. This is so that you as a developer can adjust settings. When sharing with users, do not share the URL to this view! Instead, share the direct content URL (Access &gt; Content URL) or click the ‘open solo’ button (icon is the four corners of a square) the top-right to open without the admin panels."
+    "text": "Web interface\n\n\n\nOnce on Posit Connect, you can login and adjust settings through the app.\nThe vanity URL means you can put your URL in the form ‘https://connect.strategyunitwm.nhs.uk/’.\nConnect can re-render your document at specified times, which can be useful if your datasets continually update and you don’t want to keep having to manually deploy.\nIf accessing your content through Posit Connect, you’ll get some ‘admin panels’ around the content. This is so that you as a developer can adjust settings. When sharing with users, do not share the URL to this view! Instead, share the direct content URL (Access &gt; Content URL) or click the ‘open solo’ button (icon is the four corners of a square) the top-right to open without the admin panels."
   },
   {
     "objectID": "presentations/2025-07-17_deploy-to-connect/index.html#bonus-round",
     "href": "presentations/2025-07-17_deploy-to-connect/index.html#bonus-round",
     "title": "Deploy to Posit Connect",
     "section": "Bonus round",
-    "text": "Bonus round\n\nDeploy via GitHub Action\nDeploy by button-press in RStudio"
+    "text": "Bonus round\n\nDeploy via GitHub Action\nDeploy by button-press in RStudio\nYour stories, questions, gripes\n\n\n\nYou can use a GitHub Action to deploy when releasing your code, for example. We do this for NHP Inputs app, for example, which has workflows to release to our development environment on merge, to our production environment on release, or to deploy to either location manually.\nThere is a button in the GUI of RStudio that you can click to deploy. We’re suggesting you use the deploy.R method for consistency. The push-button method relies on an rsconnect/ folder that gets autogenerated on your local machine, which is not obvious to other potential deployers of your app."
   },
   {
     "objectID": "presentations/2024-05-30_open-source-licensing/index.html#a-note-on-richard-stallman",
@@ -2728,7 +2728,7 @@
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r---flows",
     "title": "System Dynamics in health and care",
     "section": "in R - flows",
-    "text": "in R - flows\nEasy to do with count, or group_by and summarise\n\n\nadmit_d &lt;- spell_dates |&gt;\n  group_by(date_admit) |&gt;\n  count(date_admit)\n\nhead(admit_d)\n\n\n# A tibble: 6 × 2\n# Groups:   date_admit [6]\n  date_admit     n\n  &lt;date&gt;     &lt;int&gt;\n1 2022-01-01    24\n2 2022-01-02    20\n3 2022-01-03    18\n4 2022-01-04    28\n5 2022-01-05    28\n6 2022-01-06    25"
+    "text": "in R - flows\nEasy to do with count, or group_by and summarise\n\n\nadmit_d &lt;- spell_dates |&gt;\n  group_by(date_admit) |&gt;\n  count(date_admit)\n\nhead(admit_d)\n\n\n# A tibble: 6 × 2\n# Groups:   date_admit [6]\n  date_admit     n\n  &lt;date&gt;     &lt;int&gt;\n1 2022-01-01    31\n2 2022-01-02    26\n3 2022-01-03    22\n4 2022-01-04    24\n5 2022-01-05    25\n6 2022-01-06    31"
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r---occupancy",
@@ -2749,7 +2749,7 @@
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods---flows",
     "title": "System Dynamics in health and care",
     "section": "Longer Time Periods - flows",
-    "text": "Longer Time Periods - flows\nUse lubridate::floor_date to generate the date at start of week/month\n\nadmit_wk &lt;- spell_dates |&gt;\n  mutate(\n    week_start = floor_date(\n      date_admit,\n      unit = \"week\",\n      week_start = 1 # start week on Monday\n    )\n  ) |&gt;\n  count(week_start) # could add other parameters such as provider code, TFC etc\n\nhead(admit_wk)\n\n\n\n# A tibble: 6 × 2\n  week_start     n\n  &lt;date&gt;     &lt;int&gt;\n1 2021-12-27    44\n2 2022-01-03   198\n3 2022-01-10   188\n4 2022-01-17   181\n5 2022-01-24   189\n6 2022-01-31   197\n\n\n\nMight run SD model in weeks or months - e.g. months for care homes Use lubridate to create new variable with start date of week/month/year etc"
+    "text": "Longer Time Periods - flows\nUse lubridate::floor_date to generate the date at start of week/month\n\nadmit_wk &lt;- spell_dates |&gt;\n  mutate(\n    week_start = floor_date(\n      date_admit,\n      unit = \"week\",\n      week_start = 1 # start week on Monday\n    )\n  ) |&gt;\n  count(week_start) # could add other parameters such as provider code, TFC etc\n\nhead(admit_wk)\n\n\n\n# A tibble: 6 × 2\n  week_start     n\n  &lt;date&gt;     &lt;int&gt;\n1 2021-12-27    57\n2 2022-01-03   184\n3 2022-01-10   183\n4 2022-01-17   198\n5 2022-01-24   186\n6 2022-01-31   180\n\n\n\nMight run SD model in weeks or months - e.g. months for care homes Use lubridate to create new variable with start date of week/month/year etc"
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods---occupancy",

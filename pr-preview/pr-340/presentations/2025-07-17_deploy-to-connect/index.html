@@ -221,7 +221,7 @@ YiWen Hon <a href="https://orcid.org/0000-0002-6105-1309" class="quarto-title-au
 </section>
 <section id="note" class="slide level2">
 <h2>Note</h2>
-<p>Press <kbd>s</kbd> to see more context in speaker notes.</p>
+<p>Press ‘S’ key to see more context in speaker notes.</p>
 </section>
 <section id="what" class="slide level2">
 <h2>What?</h2>
@@ -279,15 +279,16 @@ YiWen Hon <a href="https://orcid.org/0000-0002-6105-1309" class="quarto-title-au
           display:block!important;
       }</style></aside>
 </section>
-<section id="process" class="slide level2">
-<h2>Process</h2>
-<ul>
-<li>Get a user account for <a href="https://connect.strategyunitwm.nhs.uk">our Posit Connect server</a></li>
+<section id="process-overview" class="slide level2">
+<h2>Process overview</h2>
+<ol type="1">
+<li>Get a user account for <a href="https://connect.strategyunitwm.nhs.uk">our Posit Connect server</a>.</li>
 <li>Write your code (push to GitHub ideally).</li>
-<li>Send files to the server</li>
-<li>The server generates the content</li>
-<li>Update your code and redeploy</li>
-</ul>
+<li>Send file ‘bundle’ to the server.</li>
+<li>The server generates the content.</li>
+<li>Adjust content settings in the web interface (optional).</li>
+<li>Update your code and redeploy.</li>
+</ol>
 <aside class="notes">
 <ul>
 <li>This is the basic high-level steps to put content onto the server.</li>
@@ -313,16 +314,19 @@ YiWen Hon <a href="https://orcid.org/0000-0002-6105-1309" class="quarto-title-au
 <p>Simplified first-time approach (preferred):</p>
 <ol type="1">
 <li><a href="https://docs.posit.co/ide/user/ide/guide/publish/connecting.html#connecting-your-account">Authorise in RStudio</a>: Tools &gt; Global options &gt; Publishing.</li>
-<li>Add <code>deploy.R</code> with {rsconnect}’s <code>deployDoc()</code> and <code>deployApp()</code>.</li>
-<li>Run <code>deploy.R</code> after updating your code.</li>
+<li>Add <code>deploy.R</code> with <code>rsconnect::deploy*()</code> call.</li>
+<li>Run <code>deploy.R</code> without <code>appId</code> argument.</li>
+<li>Add deployed content ID as <code>appId</code> in <code>deploy.R</code>.</li>
+<li>Update code, re-run <code>deploy.R</code>.</li>
 </ol>
+<p>Go to <a href="https://github.com/matt-dray/coffee-test-app">the source repo</a> for this demo.</p>
 <aside class="notes">
 <ul>
 <li>What’s the actual process of getting content onto the server using R?</li>
 <li>Note that there’s a few ways to do this, but this is our preferred suggestion within the SU.</li>
 <li>First: authorise with Connect in RStudio through settings.</li>
-<li>If not in RStudio, use environment variables <code>CONNECT_SERVER</code> and <code>CONNECT_API_KEY</code>.</li>
-<li>Our preferred method: create a <code>deploy.R</code> script in your directory that contains a call to <code>deploy*()</code> that specifies information about your app. This file allows your colleagues to more easily/consistently deploy your content.</li>
+<li>If not in RStudio, set credentials with <code>connect::setAccountInfo()</code>.</li>
+<li>Our preferred method: create a <code>deploy.R</code> script in your directory that contains a call to <code>deploy*()</code> (<code>deployDoc()</code>, <code>deployApp()</code> are most likely) that specifies information about your app. This file allows your colleagues to more easily/consistently deploy your content.</li>
 <li>First time: run the deploy function once without <code>appId</code>.</li>
 <li>The ID will be generated and shown in the deployed app under ⚙️ Settings &gt; Info &gt; Content ID’.</li>
 <li>Add the content ID as the <code>appID</code> into the deploy function in <code>deploy.R</code>.</li>
@@ -341,14 +345,14 @@ YiWen Hon <a href="https://orcid.org/0000-0002-6105-1309" class="quarto-title-au
 </section>
 <section id="r-demo-1" class="slide level2">
 <h2>R demo</h2>
-<p><code>deploy.R</code> for a Shiny app:</p>
+<p>Example <code>deploy.R</code> for a Shiny app:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>rsconnect<span class="sc">::</span><span class="fu">deployApp</span>(</span>
 <span id="cb1-2"><a></a>  <span class="at">appName =</span> <span class="st">"coffee-test-app"</span>,</span>
 <span id="cb1-3"><a></a>  <span class="at">appTitle =</span> <span class="st">"Test app: Coffee and Coding"</span>,</span>
-<span id="cb1-4"><a></a>  <span class="at">appFiles =</span> <span class="fu">c</span>(<span class="st">"R/"</span>, <span class="st">"inst/"</span>, <span class="st">"app.R"</span>),</span>
+<span id="cb1-4"><a></a>  <span class="at">appFiles =</span> <span class="fu">c</span>(<span class="st">"R/"</span>, <span class="st">"ui.R"</span>, <span class="st">"server.R"</span>),</span>
 <span id="cb1-5"><a></a>  <span class="at">server =</span> <span class="st">"connect.strategyunitwm.nhs.uk"</span>,</span>
-<span id="cb1-6"><a></a>  <span class="co"># appId = &lt;your app's content ID&gt;,</span></span>
+<span id="cb1-6"><a></a>  <span class="co"># appId = &lt;your deployed app's content ID&gt;,</span></span>
 <span id="cb1-7"><a></a>  <span class="at">lint =</span> <span class="cn">FALSE</span>,</span>
 <span id="cb1-8"><a></a>  <span class="at">forceUpdate =</span> <span class="cn">TRUE</span></span>
 <span id="cb1-9"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -373,13 +377,13 @@ YiWen Hon <a href="https://orcid.org/0000-0002-6105-1309" class="quarto-title-au
 </section>
 <section id="r-demo-2" class="slide level2">
 <h2>R demo</h2>
-<p><code>deploy.R</code> for a Quarto doc:</p>
+<p>Example <code>deploy.R</code> for a Quarto doc:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>rsconnect<span class="sc">::</span><span class="fu">deployDoc</span>(</span>
 <span id="cb2-2"><a></a>  <span class="at">appName =</span> <span class="st">"coffee-test-doc"</span>,</span>
 <span id="cb2-3"><a></a>  <span class="at">appTitle =</span> <span class="st">"Test doc: Coffee and Coding"</span>,</span>
 <span id="cb2-4"><a></a>  <span class="at">server =</span> <span class="st">"connect.strategyunitwm.nhs.uk"</span>,</span>
-<span id="cb2-5"><a></a>  <span class="co"># appId = &lt;your app's content ID&gt;,</span></span>
+<span id="cb2-5"><a></a>  <span class="co"># appId = &lt;your deployed app's content ID&gt;,</span></span>
 <span id="cb2-6"><a></a>  <span class="at">lint =</span> <span class="cn">FALSE</span>,</span>
 <span id="cb2-7"><a></a>  <span class="at">forceUpdate =</span> <span class="cn">TRUE</span></span>
 <span id="cb2-8"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -422,23 +426,23 @@ YiWen Hon <a href="https://orcid.org/0000-0002-6105-1309" class="quarto-title-au
 </section>
 <section id="web-interface" class="slide level2">
 <h2>Web interface</h2>
-
-<img data-src="connect-admin.png" alt="Screenshot of a Shiny app with admin panels on display abvoe and to the right of the app itself. A cog icon has been selected from the top panel, exposing the settings in the right panel. Within the right panel, the 'access' section is selected, showing that anyone can access the app without a login." class="r-stretch"></section>
-<section id="web-interface-1" class="slide level2">
-<h2>Web interface</h2>
-
-<img data-src="connect-logs.png" alt="Screenshot of a Shiny app with an admin panel open at the top of the app. The logs button is selected, showing timestamped output from Posit Connect's attempt to build the app. A warning message is shown, indicating that a function from a certain package is deprecated." class="r-stretch"></section>
-<section id="web-interface-2" class="slide level2">
-<h2>Web interface</h2>
-<p>Settings panels:</p>
+<p>Panels under ‘settings’ button:</p>
 <ul>
 <li>Info: adjust name, get app (content) ID</li>
 <li>Access: protect with login, set vanity URL</li>
 <li>Schedule: set automated re-run schedule</li>
 <li>Vars: set environmental variables</li>
-<li>App (content) ID</li>
 </ul>
-<aside class="notes">
+<p>Plus ‘open solo’, ‘logs’ and ‘more options’ buttons</p>
+</section>
+<section id="web-interface-1" class="slide level2">
+<h2>Web interface</h2>
+
+<img data-src="connect-admin.png" alt="Screenshot of a Shiny app with admin panels on display abvoe and to the right of the app itself. A cog icon has been selected from the top panel, exposing the settings in the right panel. Within the right panel, the 'access' section is selected, showing that anyone can access the app without a login." class="r-stretch"></section>
+<section id="web-interface-2" class="slide level2">
+<h2>Web interface</h2>
+
+<img data-src="connect-logs.png" alt="Screenshot of a Shiny app with an admin panel open at the top of the app. The logs button is selected, showing timestamped output from Posit Connect's attempt to build the app. A warning message is shown, indicating that a function from a certain package is deprecated." class="r-stretch"><aside class="notes">
 <ul>
 <li>Once on Posit Connect, you can login and adjust settings through the app.</li>
 <li>The vanity URL means you can put your URL in the form ‘https://connect.strategyunitwm.nhs.uk/<your text="" here="">’.</your></li>
@@ -462,9 +466,13 @@ YiWen Hon <a href="https://orcid.org/0000-0002-6105-1309" class="quarto-title-au
 <ul>
 <li>Deploy via <a href="https://solutions.posit.co/operations/deploy-methods/ci-cd/github-actions/">GitHub Action</a></li>
 <li>Deploy by <a href="https://docs.posit.co/ide/user/ide/guide/publish/publishing.html#push-button-deployment">button-press</a> in RStudio</li>
+<li>Your stories, questions, gripes</li>
 </ul>
 <aside class="notes">
-
+<ul>
+<li>You can use a GitHub Action to deploy when releasing your code, for example. We do this for NHP Inputs app, for example, which has workflows to release to our development environment on merge, to our production environment on release, or to deploy to either location manually.</li>
+<li>There is a button in the GUI of RStudio that you can click to deploy. We’re suggesting you use the <code>deploy.R</code> method for consistency. The push-button method relies on an <code>rsconnect/</code> folder that gets autogenerated on your local machine, which is not obvious to other potential deployers of your app.</li>
+</ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;

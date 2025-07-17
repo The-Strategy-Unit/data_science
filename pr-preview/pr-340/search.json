@@ -484,18 +484,18 @@
     "text": "The Data Science team at the Strategy Unit comprises the following team members:\n\nChris Beeley\nClaire Welsh\nFrancis Barton\nMatt Dray\nOzayr Mohammed\nRhian Davies\nTom Jemmett\nYiWen Hon\nEirini Komninou\nAshionye Aninze\n\nThe team has a wealth of experience in deploying models and other products to the cloud for use by a wide range of users across health and care. This is particularly demonstrated in our work with the New Hospital Programme, where we built and deployed a sophisticated probabilistic demand and capacity model and supported the use of its outputs across the decision-making stages that lead to the construction of a new hospital. The data science team possesses expertise across the breadth of data science activity — for example, statistics, machine learning, natural language processing, and real-time evidence mapping. We also have significant experience in sharing our methods and code as open-source, as well as in training others to use these tools and understand foundational data science concepts and practices. Our experience in developing scalable data science solutions, and open-sourcing them for the benefit of users across health and care, enables us to contribute meaningfully at every stage of a project’s life cycle — from design through to deployment and adoption.\nCurrent and previous projects of note include:\n\nWork supporting the New Hospitals Programme, including building a model for predicting the demand and capacity requirements of hospitals in the future, and a tool for mapping the evidence on this topic.\nThe Patient Experience Qualitative Data Categorisation project\nWork supporting the wider analytical community, through events/communities such as NHS-R and HACA."
   },
   {
-    "objectID": "presentations/2025-07-17_deploy-to-connect/index.html#note",
-    "href": "presentations/2025-07-17_deploy-to-connect/index.html#note",
+    "objectID": "presentations/2025-07-17_deploy-to-connect/index.html#notes",
+    "href": "presentations/2025-07-17_deploy-to-connect/index.html#notes",
     "title": "Deploy to Posit Connect",
-    "section": "Note",
-    "text": "Note\nPress ‘S’ key to see more context in speaker notes."
+    "section": "Notes",
+    "text": "Notes\n\nThis is a brief overview\nLearn more in Posit Connect docs\nPress the ‘S’ key to see speaker notes"
   },
   {
-    "objectID": "presentations/2025-07-17_deploy-to-connect/index.html#what",
-    "href": "presentations/2025-07-17_deploy-to-connect/index.html#what",
+    "objectID": "presentations/2025-07-17_deploy-to-connect/index.html#what-and-why",
+    "href": "presentations/2025-07-17_deploy-to-connect/index.html#what-and-why",
     "title": "Deploy to Posit Connect",
-    "section": "What?",
-    "text": "What?\n\nHost ‘content’ on ‘someone else’s computer’\nDocs, apps, data, APIs, notebooks\nControl access, run on schedule\nLearn more in Posit Connect docs\n\n\n\nWhen you generate some ‘product’, where can you put it so others can see it?\nAt the SU we have a Posit Connect server to host materials.\nEveryone can look at the same version and there’s no need to email files around.\nYou can put your work on the web, with admin features like access control and scheduled re-runs."
+    "section": "What and why?",
+    "text": "What and why?\n\nHost ‘content’ on ‘someone else’s computer’\nServer address: https://connect.strategyunitwm.nhs.uk\nDocs, apps, data, APIs, notebooks\nControl access, run on schedule\nAll users see the same up-to-date content\n\n\n\nWhen you generate some ‘product’, where can you put it so others can see it?\nAt the SU we have a Posit Connect server to host materials.\nYou can put your work on the web, with admin features like access control and scheduled re-runs.\nEveryone can look at the same version and there’s no need to email files around."
   },
   {
     "objectID": "presentations/2025-07-17_deploy-to-connect/index.html#su-examples",
@@ -551,7 +551,7 @@
     "href": "presentations/2025-07-17_deploy-to-connect/index.html#web-interface",
     "title": "Deploy to Posit Connect",
     "section": "Web interface",
-    "text": "Web interface\nPanels under ‘settings’ button:\n\nInfo: adjust name, get app (content) ID\nAccess: protect with login, set vanity URL\nSchedule: set automated re-run schedule\nVars: set environmental variables\n\nPlus ‘open solo’, ‘logs’ and ‘more options’ buttons"
+    "text": "Web interface\nThere’s ‘open solo’, ‘logs’ and ‘more options’ buttons.\nPanels under the ‘settings’ button are:\n\nInfo: e.g. adjust name, get content (app) ID\nAccess: protect with login, set vanity URL\nSchedule: set automated re-run schedule\nVars: set environmental variables\n\n⚠️ Share the direct URL, not the ‘admin view’ URL!"
   },
   {
     "objectID": "presentations/2025-07-17_deploy-to-connect/index.html#web-interface-1",
@@ -572,7 +572,7 @@
     "href": "presentations/2025-07-17_deploy-to-connect/index.html#bonus-round",
     "title": "Deploy to Posit Connect",
     "section": "Bonus round",
-    "text": "Bonus round\n\nDeploy via GitHub Action\nDeploy by button-press in RStudio\nYour stories, questions, gripes\n\n\n\nYou can use a GitHub Action to deploy when releasing your code, for example. We do this for NHP Inputs app, for example, which has workflows to release to our development environment on merge, to our production environment on release, or to deploy to either location manually.\nThere is a button in the GUI of RStudio that you can click to deploy. We’re suggesting you use the deploy.R method for consistency. The push-button method relies on an rsconnect/ folder that gets autogenerated on your local machine, which is not obvious to other potential deployers of your app."
+    "text": "Bonus round\n\nDeploy via GitHub Action\nDeploy by button-press in RStudio\nOur recent server switch\nYour stories, questions, gripes\n\n\n\nYou can use a GitHub Action to deploy when releasing your code, for example. We do this for NHP Inputs app, for example, which has workflows to release to our development environment on merge, to our production environment on release, or to deploy to either location manually.\nThere is a button in the GUI of RStudio that you can click to deploy. We’re suggesting you use the deploy.R method for consistency. The push-button method relies on an rsconnect/ folder that gets autogenerated on your local machine, which is not obvious to other potential deployers of your app.\nRecently we changed from one server to another. The new server has taken the same address as the old one so that all of our URLs stay consistent from the users’ perspectives. We spent some time deploying apps to both servers, but only need to deploy now to https://connect.strategyunitwm.nhs.uk."
   },
   {
     "objectID": "presentations/2024-05-30_open-source-licensing/index.html#a-note-on-richard-stallman",
@@ -2735,7 +2735,7 @@
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r---flows",
     "title": "System Dynamics in health and care",
     "section": "in R - flows",
-    "text": "in R - flows\nEasy to do with count, or group_by and summarise\n\n\nadmit_d &lt;- spell_dates |&gt;\n  group_by(date_admit) |&gt;\n  count(date_admit)\n\nhead(admit_d)\n\n\n# A tibble: 6 × 2\n# Groups:   date_admit [6]\n  date_admit     n\n  &lt;date&gt;     &lt;int&gt;\n1 2022-01-01    25\n2 2022-01-02    36\n3 2022-01-03    25\n4 2022-01-04    25\n5 2022-01-05    33\n6 2022-01-06    30"
+    "text": "in R - flows\nEasy to do with count, or group_by and summarise\n\n\nadmit_d &lt;- spell_dates |&gt;\n  group_by(date_admit) |&gt;\n  count(date_admit)\n\nhead(admit_d)\n\n\n# A tibble: 6 × 2\n# Groups:   date_admit [6]\n  date_admit     n\n  &lt;date&gt;     &lt;int&gt;\n1 2022-01-01    29\n2 2022-01-02    24\n3 2022-01-03    29\n4 2022-01-04    24\n5 2022-01-05    29\n6 2022-01-06    23"
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r---occupancy",
@@ -2756,7 +2756,7 @@
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods---flows",
     "title": "System Dynamics in health and care",
     "section": "Longer Time Periods - flows",
-    "text": "Longer Time Periods - flows\nUse lubridate::floor_date to generate the date at start of week/month\n\nadmit_wk &lt;- spell_dates |&gt;\n  mutate(\n    week_start = floor_date(\n      date_admit,\n      unit = \"week\",\n      week_start = 1 # start week on Monday\n    )\n  ) |&gt;\n  count(week_start) # could add other parameters such as provider code, TFC etc\n\nhead(admit_wk)\n\n\n\n# A tibble: 6 × 2\n  week_start     n\n  &lt;date&gt;     &lt;int&gt;\n1 2021-12-27    61\n2 2022-01-03   188\n3 2022-01-10   160\n4 2022-01-17   181\n5 2022-01-24   204\n6 2022-01-31   202\n\n\n\nMight run SD model in weeks or months - e.g. months for care homes Use lubridate to create new variable with start date of week/month/year etc"
+    "text": "Longer Time Periods - flows\nUse lubridate::floor_date to generate the date at start of week/month\n\nadmit_wk &lt;- spell_dates |&gt;\n  mutate(\n    week_start = floor_date(\n      date_admit,\n      unit = \"week\",\n      week_start = 1 # start week on Monday\n    )\n  ) |&gt;\n  count(week_start) # could add other parameters such as provider code, TFC etc\n\nhead(admit_wk)\n\n\n\n# A tibble: 6 × 2\n  week_start     n\n  &lt;date&gt;     &lt;int&gt;\n1 2021-12-27    53\n2 2022-01-03   198\n3 2022-01-10   203\n4 2022-01-17   183\n5 2022-01-24   202\n6 2022-01-31   177\n\n\n\nMight run SD model in weeks or months - e.g. months for care homes Use lubridate to create new variable with start date of week/month/year etc"
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods---occupancy",

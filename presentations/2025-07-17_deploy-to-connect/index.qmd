@@ -1,7 +1,7 @@
 ---
 title: "Deploy to Posit Connect"
 subtitle: "Coffee and Coding"
-authors:
+author:
   - name: Matt Dray
     email: matt.dray@nhs.net
     affiliation:
@@ -11,6 +11,7 @@ authors:
 date: "2025-07-17"
 format:
   revealjs:
+    scrollable: true
     theme: [default, ../su_presentation.scss]
     transition: none
     chalkboard:

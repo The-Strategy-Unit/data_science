@@ -150,13 +150,30 @@ Or `deployApp()` to specify undetected `appFiles`.
 * Note `appFiles` to specify the minimal set of files needed for the server to render your app.
 * `deployDoc()` detects the required files, so the `appFiles` argument isn't needed.
 * However, sometimes files can be missed. You can instead use `deployApp()` with `appFiles`. Alternatively, you can specify resources in the YAML: header of your Quarto file with the `resource_files` key.
-:::
 
+:::
 ## Python demo
+
+1. Install [rsconnect-python](https://github.com/posit-dev/rsconnect-python) package
+1. Login to Connect server with `rsconnect-python` in your terminal with `rsconnect add --server https://connect.strategyunitwm.nhs.uk --api-key YOUR-CONNECT-API-KEY --name SU`
+1. Deploy your app, following [Posit Connect documentation](https://docs.posit.co/connect/user/publishing-cli-apps/).
 
 ::: {.notes}
 :::
+## Python demo (2)
+`rsconnect deploy streamlit --name SU --entrypoint app.py data/`
 
+- `streamlit`: Type of app I am deploying - there are other options
+- `--name`: Nickname that you gave the server when you logged in with the Connect server. You can check with `rsconnect list` in your terminal
+- `--entrypoint`: Name of the file containing your app. Slightly more complicated with the APIs
+
+Optional arguments:
+
+- `data/`: I need to include the files in the `data/` directory when deploying to Connect, otherwise the app will not run
+- `--app-id`: App ID on the Connect server, if you want to overwrite an existing deployment
+
+::: {.notes}
+:::
 ## Web interface
 
 Panels under 'settings' button:

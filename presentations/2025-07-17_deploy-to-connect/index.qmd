@@ -1,16 +1,13 @@
 ---
 title: "Deploy to Posit Connect"
 subtitle: "Coffee and Coding"
-authors:
-  - name: Matt Dray
-    email: matt.dray@nhs.net
-    affiliation:
-  - name: YiWen Hon
-    orcid: 0000-0002-6105-1309
-    email: yiwen.hon1@nhs.net
+author:
+  - "[Matt Dray](mailto:matt.dray@nhs.net)"
+  - "[YiWen Hon](mailto:yiwen.hon1@nhs.net)"
 date: "2025-07-17"
 format:
   revealjs:
+    scrollable: true
     theme: [default, ../su_presentation.scss]
     transition: none
     chalkboard:

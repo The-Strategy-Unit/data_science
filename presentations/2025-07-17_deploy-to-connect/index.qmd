@@ -161,19 +161,21 @@ Or `deployApp()` to specify undetected `appFiles`.
 1. Login to Connect server with `rsconnect-python` in your terminal with `rsconnect add --server https://connect.strategyunitwm.nhs.uk --api-key YOUR-CONNECT-API-KEY --name SU`
 1. Deploy your app, following [Posit Connect documentation](https://docs.posit.co/connect/user/publishing-cli-apps/).
 
+You will want a `requirements.txt` in the root of your folder capturing the package requirements - rsconnect gets annoyed if you don't have one.
+
 ::: {.notes}
 :::
 ## Python demo (2)
-`rsconnect deploy streamlit --name SU --entrypoint app.py data/`
+`rsconnect deploy streamlit --name SU --entrypoint app.py .`
 
 - `streamlit`: Type of app I am deploying - there are other options
 - `--name`: Nickname that you gave the server when you logged in with the Connect server. You can check with `rsconnect list` in your terminal
 - `--entrypoint`: Name of the file containing your app. Slightly more complicated with the APIs
+- `.`  : Files to include. I'm including all the files in my repo, otherwise the app will not run
 
 Optional arguments:
 
-- `data/`: I need to include the files in the `data/` directory when deploying to Connect, otherwise the app will not run
-- `--app-id`: App ID on the Connect server, if you want to overwrite an existing deployment
+- `--app-id`: App ID on the Connect server, if you want to overwrite an existing deployment. `--new` if a fresh one
 
 ::: {.notes}
 :::

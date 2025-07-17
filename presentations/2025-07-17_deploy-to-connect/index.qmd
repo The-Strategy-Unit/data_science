@@ -1,0 +1,221 @@
+---
+title: "Deploy to Posit Connect"
+subtitle: "Coffee and Coding"
+authors:
+  - name: Matt Dray
+    email: matt.dray@nhs.net
+    affiliation:
+  - name: YiWen Hon
+    orcid: 0000-0002-6105-1309
+    email: yiwen.hon1@nhs.net
+date: "2025-07-17"
+format:
+  revealjs:
+    theme: [default, ../su_presentation.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
+    footer: |
+      Learn more about [The Strategy Unit](https://www.strategyunitwm.nhs.uk/)
+---
+
+## Notes
+
+* This is a brief overview
+* Learn more in [Posit Connect docs](https://docs.posit.co/connect/)
+* Press the 'S' key to see speaker notes
+
+## What and why?
+
+* Host 'content' on 'someone else's computer'
+* Server address: [https://connect.strategyunitwm.nhs.uk](https://connect.strategyunitwm.nhs.uk)
+* Docs, apps, data, APIs, notebooks
+* Control access, run on schedule
+* All users see the same up-to-date content
+
+::: {.notes}
+* When you generate some 'product', where can you put it so others can see it?
+* At the SU we have a Posit Connect server to host materials.
+* You can put your work on the web, with admin features like access control and scheduled re-runs.
+* Everyone can look at the same version and there's no need to email files around.
+:::
+
+## SU examples
+
+* [NHP model project information](https://connect.strategyunitwm.nhs.uk/nhp/project_information/) (Quarto site)
+* [NHP tagged-runs table](https://connect.strategyunitwm.nhs.uk/nhp/tagged_runs/) (scheduled Rmd) 🔒
+* [Renal evidence map](https://connect.strategyunitwm.nhs.uk/renal_evidence_map/) (Shiny app)
+* [Evidence map data](https://connect.strategyunitwm.nhs.uk/content/8f8e2086-5286-4f92-9f69-dcbcc6a3fd7e) (Pin) 🔒
+* [Randomised coffee trials](https://connect.strategyunitwm.nhs.uk/rct_api/) (API)
+
+🔒 Login required.
+
+::: {.notes}
+* Here's some examples of the wide-ranging content already on the SU's Posit Connect server.
+* It hosts static sites and documents, apps, pins and APIs.
+* We're using it for important work, like the New Hospital Programme.
+* You can read more about {pins} in a previous [presentation](https://the-strategy-unit.github.io/data_science/presentations/2024-05-16_store-data-safely/#/title-slide) and [blog](https://the-strategy-unit.github.io/data_science/blogs/posts/2024-05-22_storing-data-safely/).
+:::
+
+## Process overview
+
+1. Get a user account for [our Posit Connect server](https://connect.strategyunitwm.nhs.uk).
+1. Write your code (push to GitHub ideally).
+1. Send file 'bundle' to the server.
+1. The server generates the content.
+1. Adjust content settings in the web interface (optional).
+1. Update your code and redeploy.
+
+::: {.notes}
+* This is the basic high-level steps to put content onto the server.
+* First, you need a Posit Connect account (let us know if you don't have one).
+* You send to the server all the files needed to generate your output (e.g. to create your static HTML report, you need to include your Quarto file, R scripts and possibly data, although you can also send the rendered HTML).
+* The server will take those files and generate the output (or just display the rendered file).
+* You can then change your code and redeploy to the server.
+:::
+
+## R demo
+
+Simplified first-time approach (preferred):
+
+1. [Authorise in RStudio](https://docs.posit.co/ide/user/ide/guide/publish/connecting.html#connecting-your-account): Tools > Global options > Publishing.
+1. Add `deploy.R` with `rsconnect::deploy*()` call.
+1. Run `deploy.R` without `appId` argument.
+1. Add deployed content ID as `appId` in `deploy.R`.
+1. Update code, re-run `deploy.R`.
+
+Go to [the source repo](https://github.com/matt-dray/coffee-test-app) for this demo.
+
+::: {.notes}
+* What's the actual process of getting content onto the server using R?
+* Note that there's a few ways to do this, but this is our preferred suggestion within the SU.
+* First: authorise with Connect in RStudio through settings.
+* If not in RStudio, set credentials with `connect::setAccountInfo()`.
+* Our preferred method: create a `deploy.R` script in your directory that contains a call to `deploy*()` (`deployDoc()`, `deployApp()` are most likely) that specifies information about your app. This file allows your colleagues to more easily/consistently deploy your content.
+* First time: run the deploy function once without `appId`.
+* The ID will be generated and shown in the deployed app under ⚙️ Settings > Info > Content ID'.
+* Add the content ID as the `appID` into the deploy function in `deploy.R`.
+:::
+
+## R demo
+
+Example `deploy.R` for a Shiny app:
+
+```{r}
+#| label: deployapp
+#| echo: true
+#| eval: false
+
+rsconnect::deployApp(
+  appName = "coffee-test-app",
+  appTitle = "Test app: Coffee and Coding",
+  appFiles = c("R/", "ui.R", "server.R"),
+  server = "connect.strategyunitwm.nhs.uk",
+  # appId = <your deployed app's content ID>,
+  lint = FALSE,
+  forceUpdate = TRUE
+)
+```
+
+Find `appID` in ⚙️ Settings > Info > Content ID after it's deployed for the first time.
+
+::: {.notes}
+* This is an example of the content to put in `deploy.R` if you're deployng a Shiny app.
+* Note `appFiles` to specify the minimal set of files needed for the server to render your app.
+:::
+
+## R demo
+
+Example `deploy.R` for a Quarto doc:
+
+```{r}
+#| label: deploydoc
+#| echo: true
+#| eval: false
+
+rsconnect::deployDoc(
+  appName = "coffee-test-doc",
+  appTitle = "Test doc: Coffee and Coding",
+  server = "connect.strategyunitwm.nhs.uk",
+  # appId = <your deployed app's content ID>,
+  lint = FALSE,
+  forceUpdate = TRUE
+)
+```
+
+Or `deployApp()` to specify undetected `appFiles`.
+
+::: {.notes}
+* This is an example of the content to put in `deploy.R` if you're deployng a Shiny app.
+* Note `appFiles` to specify the minimal set of files needed for the server to render your app.
+* `deployDoc()` detects the required files, so the `appFiles` argument isn't needed.
+* However, sometimes files can be missed. You can instead use `deployApp()` with `appFiles`. Alternatively, you can specify resources in the YAML: header of your Quarto file with the `resource_files` key.
+
+:::
+## Python demo
+
+1. Install [rsconnect-python](https://github.com/posit-dev/rsconnect-python) package
+1. Login to Connect server with `rsconnect-python` in your terminal with `rsconnect add --server https://connect.strategyunitwm.nhs.uk --api-key YOUR-CONNECT-API-KEY --name SU`
+1. Deploy your app, following [Posit Connect documentation](https://docs.posit.co/connect/user/publishing-cli-apps/).
+
+You will want a `requirements.txt` in the root of your folder capturing the package requirements - rsconnect gets annoyed if you don't have one.
+
+::: {.notes}
+:::
+## Python demo (2)
+`rsconnect deploy streamlit --name SU --entrypoint app.py .`
+
+- `streamlit`: Type of app I am deploying - there are other options
+- `--name`: Nickname that you gave the server when you logged in with the Connect server. You can check with `rsconnect list` in your terminal
+- `--entrypoint`: Name of the file containing your app. Slightly more complicated with the APIs
+- `.`  : Files to include. I'm including all the files in my repo, otherwise the app will not run
+
+Optional arguments:
+
+- `--app-id`: App ID on the Connect server, if you want to overwrite an existing deployment. `--new` if a fresh one
+
+::: {.notes}
+:::
+## Web interface
+
+There's 'open solo', 'logs' and 'more options' buttons.
+
+Panels under the 'settings' button are:
+
+* Info: e.g. adjust name, get content (app) ID
+* Access: protect with login, set vanity URL
+* Schedule: set automated re-run schedule
+* Vars: set environmental variables
+
+⚠️ Share the direct URL, not the 'admin view' URL!
+
+## Web interface
+
+![](connect-admin.png){fig-alt="Screenshot of a Shiny app with admin panels on display abvoe and to the right of the app itself. A cog icon has been selected from the top panel, exposing the settings in the right panel. Within the right panel, the 'access' section is selected, showing that anyone can access the app without a login."}
+
+## Web interface
+
+![](connect-logs.png){fig-alt="Screenshot of a Shiny app with an admin panel open at the top of the app. The logs button is selected, showing timestamped output from Posit Connect's attempt to build the app. A warning message is shown, indicating that a function from a certain package is deprecated."}
+
+::: {.notes}
+* Once on Posit Connect, you can login and adjust settings through the app.
+* The vanity URL means you can put your URL in the form 'https://connect.strategyunitwm.nhs.uk/<your text here>'.
+* Connect can re-render your document at specified times, which can be useful if your datasets continually update and you don't want to keep having to manually deploy.
+* If accessing your content through Posit Connect, you'll get some 'admin panels' around the content. This is so that you as a developer can adjust settings. When sharing with users, do not share the URL to this view! Instead, share the direct content URL (Access > Content URL) or click the 'open solo' button (icon is the four corners of a square) the top-right to open without the admin panels.
+:::
+
+## Bonus round
+
+* Deploy via [GitHub Action](https://solutions.posit.co/operations/deploy-methods/ci-cd/github-actions/)
+* Deploy by [button-press](https://docs.posit.co/ide/user/ide/guide/publish/publishing.html#push-button-deployment) in RStudio
+* Our recent server switch
+* Your stories, questions, gripes
+
+::: {.notes}
+* You can use a GitHub Action to deploy when releasing your code, for example. We do this for NHP Inputs app, for example, which has workflows to release to our development environment on merge, to our production environment on release, or to deploy to either location manually.
+* There is a button in the GUI of RStudio that you can click to deploy. We're suggesting you use the `deploy.R` method for consistency. The push-button method relies on an `rsconnect/` folder that gets autogenerated on your local machine, which is not obvious to other potential deployers of your app.
+* Recently we changed from one server to another. The new server has taken the same address as the old one so that all of our URLs stay consistent from the users' perspectives. We spent some time deploying apps to both servers, but only need to deploy now to https://connect.strategyunitwm.nhs.uk.
+:::

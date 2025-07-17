@@ -410,6 +410,38 @@ YiWen Hon <a href="https://orcid.org/0000-0002-6105-1309" class="quarto-title-au
 </section>
 <section id="python-demo" class="slide level2">
 <h2>Python demo</h2>
+<ol type="1">
+<li>Install <a href="https://github.com/posit-dev/rsconnect-python">rsconnect-python</a> package</li>
+<li>Login to Connect server with <code>rsconnect-python</code> in your terminal with <code>rsconnect add --server https://connect.strategyunitwm.nhs.uk --api-key YOUR-CONNECT-API-KEY --name SU</code></li>
+<li>Deploy your app, following <a href="https://docs.posit.co/connect/user/publishing-cli-apps/">Posit Connect documentation</a>.</li>
+</ol>
+<aside class="notes">
+
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="python-demo-2" class="slide level2">
+<h2>Python demo (2)</h2>
+<p><code>rsconnect deploy streamlit --name SU --entrypoint app.py data/</code></p>
+<ul>
+<li><code>streamlit</code>: Type of app I am deploying - there are other options</li>
+<li><code>--name</code>: Nickname that you gave the server when you logged in with the Connect server. You can check with <code>rsconnect list</code> in your terminal</li>
+<li><code>--entrypoint</code>: Name of the file containing your app. Slightly more complicated with the APIs</li>
+</ul>
+<p>Optional arguments:</p>
+<ul>
+<li><code>data/</code>: I need to include the files in the <code>data/</code> directory when deploying to Connect, otherwise the app will not run</li>
+<li><code>--app-id</code>: App ID on the Connect server, if you want to overwrite an existing deployment</li>
+</ul>
 <aside class="notes">
 
 <style type="text/css">

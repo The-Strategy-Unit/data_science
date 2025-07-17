@@ -537,14 +537,14 @@
     "href": "presentations/2025-07-17_deploy-to-connect/index.html#python-demo",
     "title": "Deploy to Posit Connect",
     "section": "Python demo",
-    "text": "Python demo\n\nInstall rsconnect-python package\nLogin to Connect server with rsconnect-python in your terminal with rsconnect add --server https://connect.strategyunitwm.nhs.uk --api-key YOUR-CONNECT-API-KEY --name SU\nDeploy your app, following Posit Connect documentation."
+    "text": "Python demo\n\nInstall rsconnect-python package\nLogin to Connect server with rsconnect-python in your terminal with rsconnect add --server https://connect.strategyunitwm.nhs.uk --api-key YOUR-CONNECT-API-KEY --name SU\nDeploy your app, following Posit Connect documentation.\n\nYou will want a requirements.txt in the root of your folder capturing the package requirements - rsconnect gets annoyed if you don’t have one."
   },
   {
     "objectID": "presentations/2025-07-17_deploy-to-connect/index.html#python-demo-2",
     "href": "presentations/2025-07-17_deploy-to-connect/index.html#python-demo-2",
     "title": "Deploy to Posit Connect",
     "section": "Python demo (2)",
-    "text": "Python demo (2)\nrsconnect deploy streamlit --name SU --entrypoint app.py data/\n\nstreamlit: Type of app I am deploying - there are other options\n--name: Nickname that you gave the server when you logged in with the Connect server. You can check with rsconnect list in your terminal\n--entrypoint: Name of the file containing your app. Slightly more complicated with the APIs\n\nOptional arguments:\n\ndata/: I need to include the files in the data/ directory when deploying to Connect, otherwise the app will not run\n--app-id: App ID on the Connect server, if you want to overwrite an existing deployment"
+    "text": "Python demo (2)\nrsconnect deploy streamlit --name SU --entrypoint app.py .\n\nstreamlit: Type of app I am deploying - there are other options\n--name: Nickname that you gave the server when you logged in with the Connect server. You can check with rsconnect list in your terminal\n--entrypoint: Name of the file containing your app. Slightly more complicated with the APIs\n. : Files to include. I’m including all the files in my repo, otherwise the app will not run\n\nOptional arguments:\n\n--app-id: App ID on the Connect server, if you want to overwrite an existing deployment. --new if a fresh one"
   },
   {
     "objectID": "presentations/2025-07-17_deploy-to-connect/index.html#web-interface",
@@ -2735,7 +2735,7 @@
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r---flows",
     "title": "System Dynamics in health and care",
     "section": "in R - flows",
-    "text": "in R - flows\nEasy to do with count, or group_by and summarise\n\n\nadmit_d &lt;- spell_dates |&gt;\n  group_by(date_admit) |&gt;\n  count(date_admit)\n\nhead(admit_d)\n\n\n# A tibble: 6 × 2\n# Groups:   date_admit [6]\n  date_admit     n\n  &lt;date&gt;     &lt;int&gt;\n1 2022-01-01    29\n2 2022-01-02    24\n3 2022-01-03    29\n4 2022-01-04    24\n5 2022-01-05    29\n6 2022-01-06    23"
+    "text": "in R - flows\nEasy to do with count, or group_by and summarise\n\n\nadmit_d &lt;- spell_dates |&gt;\n  group_by(date_admit) |&gt;\n  count(date_admit)\n\nhead(admit_d)\n\n\n# A tibble: 6 × 2\n# Groups:   date_admit [6]\n  date_admit     n\n  &lt;date&gt;     &lt;int&gt;\n1 2022-01-01    23\n2 2022-01-02    29\n3 2022-01-03    23\n4 2022-01-04    19\n5 2022-01-05    24\n6 2022-01-06    33"
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r---occupancy",
@@ -2756,7 +2756,7 @@
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods---flows",
     "title": "System Dynamics in health and care",
     "section": "Longer Time Periods - flows",
-    "text": "Longer Time Periods - flows\nUse lubridate::floor_date to generate the date at start of week/month\n\nadmit_wk &lt;- spell_dates |&gt;\n  mutate(\n    week_start = floor_date(\n      date_admit,\n      unit = \"week\",\n      week_start = 1 # start week on Monday\n    )\n  ) |&gt;\n  count(week_start) # could add other parameters such as provider code, TFC etc\n\nhead(admit_wk)\n\n\n\n# A tibble: 6 × 2\n  week_start     n\n  &lt;date&gt;     &lt;int&gt;\n1 2021-12-27    53\n2 2022-01-03   198\n3 2022-01-10   203\n4 2022-01-17   183\n5 2022-01-24   202\n6 2022-01-31   177\n\n\n\nMight run SD model in weeks or months - e.g. months for care homes Use lubridate to create new variable with start date of week/month/year etc"
+    "text": "Longer Time Periods - flows\nUse lubridate::floor_date to generate the date at start of week/month\n\nadmit_wk &lt;- spell_dates |&gt;\n  mutate(\n    week_start = floor_date(\n      date_admit,\n      unit = \"week\",\n      week_start = 1 # start week on Monday\n    )\n  ) |&gt;\n  count(week_start) # could add other parameters such as provider code, TFC etc\n\nhead(admit_wk)\n\n\n\n# A tibble: 6 × 2\n  week_start     n\n  &lt;date&gt;     &lt;int&gt;\n1 2021-12-27    52\n2 2022-01-03   177\n3 2022-01-10   204\n4 2022-01-17   193\n5 2022-01-24   182\n6 2022-01-31   202\n\n\n\nMight run SD model in weeks or months - e.g. months for care homes Use lubridate to create new variable with start date of week/month/year etc"
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods---occupancy",

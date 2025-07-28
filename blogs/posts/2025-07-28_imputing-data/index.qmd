@@ -21,7 +21,8 @@ format:
 ---
 
 ```{r setup}
-knitr::opts_chunk$set(message = FALSE)
+#| include: false
+
 renv::use(
   "dplyr",
   "gt",

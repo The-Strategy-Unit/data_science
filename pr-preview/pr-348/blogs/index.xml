@@ -23,83 +23,94 @@
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1">renv<span class="sc" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1">knitr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span>opts_chunk<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">set</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">message =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>)</span>
+<span id="cb1-2">renv<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">use</span>(</span>
-<span id="cb1-2">  <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"dplyr"</span>,</span>
 <span id="cb1-3">  <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"gt"</span>,</span>
+font-style: inherit;">"dplyr"</span>,</span>
 <span id="cb1-4">  <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"tibble"</span>,</span>
+font-style: inherit;">"gt"</span>,</span>
 <span id="cb1-5">  <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"ggplot2"</span>,</span>
+font-style: inherit;">"tibble"</span>,</span>
 <span id="cb1-6">  <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"glue"</span>,</span>
+font-style: inherit;">"ggplot2"</span>,</span>
 <span id="cb1-7">  <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"patchwork"</span>,</span>
+font-style: inherit;">"glue"</span>,</span>
 <span id="cb1-8">  <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"scales"</span>,</span>
+font-style: inherit;">"patchwork"</span>,</span>
 <span id="cb1-9">  <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"mice"</span>,</span>
+font-style: inherit;">"scales"</span>,</span>
 <span id="cb1-10">  <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"purrr"</span>,</span>
+font-style: inherit;">"mice"</span>,</span>
 <span id="cb1-11">  <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"tidyr"</span>,</span>
+font-style: inherit;">"purrr"</span>,</span>
 <span id="cb1-12">  <span class="st" style="color: #20794D;
 background-color: null;
+font-style: inherit;">"tidyr"</span>,</span>
+<span id="cb1-13">  <span class="st" style="color: #20794D;
+background-color: null;
 font-style: inherit;">"rmarkdown"</span></span>
-<span id="cb1-13">)</span></code></pre></div>
+<span id="cb1-14">)</span></code></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># Downloading packages -------------------------------------------------------
-- Downloading cli from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [1.3 Mb in 0.31s]
-- Downloading generics from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [78.5 Kb in 0.24s]
-- Downloading rlang from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [1.5 Mb in 0.29s]
-- Downloading pillar from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [644.9 Kb in 0.26s]
-- Downloading utf8 from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [148.2 Kb in 0.28s]
-- Downloading tibble from CRAN ...              OK [664.4 Kb in 0.3s]
-- Downloading gt from CRAN ...                  OK [5.8 Mb in 0.37s]
-- Downloading commonmark from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [144.6 Kb in 0.22s]
-- Downloading fs from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [302.8 Kb in 0.25s]
-- Downloading evaluate from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [99.9 Kb in 0.21s]
-- Downloading mime from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [43.5 Kb in 0.25s]
-- Downloading sass from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [2.3 Mb in 0.37s]
-- Downloading tinytex from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [140.3 Kb in 0.3s]
-- Downloading V8 from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [10.4 Mb in 0.39s]
-- Downloading Rcpp from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [2.1 Mb in 0.28s]
-- Downloading curl from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [770.8 Kb in 0.25s]
-- Downloading litedown from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [362.4 Kb in 0.26s]
-- Downloading scales from CRAN ...              OK [821.6 Kb in 0.32s]
-- Downloading ggplot2 from CRAN ...             OK [4.8 Mb in 0.31s]
-- Downloading patchwork from CRAN ...           OK [3.2 Mb in 0.28s]
-- Downloading mice from CRAN ...                OK [1.4 Mb in 0.47s]
-- Downloading purrr from CRAN ...               OK [541.6 Kb in 0.21s]
-- Downloading glmnet from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [1.9 Mb in 0.28s]
-- Downloading foreach from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [136.4 Kb in 0.26s]
-- Downloading iterators from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [338.4 Kb in 0.26s]
-- Downloading shape from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [732.4 Kb in 0.25s]
-- Downloading mitml from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [518.8 Kb in 0.25s]
-- Downloading pan from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [538.1 Kb in 0.43s]
-- Downloading jomo from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [2 Mb in 0.27s]
-- Downloading reformulas from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [131.7 Kb in 0.25s]
-- Downloading Rdpack from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [622.9 Kb in 0.24s]
-- Downloading ordinal from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [1.2 Mb in 0.51s]
-- Downloading ucminf from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [34.2 Kb in 0.28s]
-- Downloading haven from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [384.1 Kb in 0.25s]
-Successfully downloaded 34 packages in 16 seconds.
+- Downloading cli from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [1.3 Mb in 0.58s]
+- Downloading generics from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [78.5 Kb in 0.39s]
+- Downloading rlang from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [1.5 Mb in 0.43s]
+- Downloading pillar from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [644.9 Kb in 0.4s]
+- Downloading utf8 from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [148.2 Kb in 0.42s]
+- Downloading tibble from CRAN ...              OK [664.4 Kb in 0.41s]
+- Downloading gt from CRAN ...                  OK [5.8 Mb in 0.49s]
+- Downloading commonmark from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [144.6 Kb in 0.51s]
+- Downloading fs from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [302.8 Kb in 0.42s]
+- Downloading evaluate from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [99.9 Kb in 0.33s]
+- Downloading mime from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [43.5 Kb in 0.34s]
+- Downloading sass from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [2.3 Mb in 0.8s]
+- Downloading tinytex from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [140.3 Kb in 0.35s]
+- Downloading V8 from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [10.4 Mb in 0.57s]
+- Downloading Rcpp from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [2.1 Mb in 0.35s]
+- Downloading curl from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [770.8 Kb in 0.36s]
+- Downloading litedown from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [362.4 Kb in 0.33s]
+- Downloading scales from CRAN ...              OK [821.6 Kb in 0.37s]
+- Downloading ggplot2 from CRAN ...             OK [4.8 Mb in 0.45s]
+- Downloading patchwork from CRAN ...           OK [3.2 Mb in 0.35s]
+- Downloading mice from CRAN ...                OK [1.4 Mb in 0.37s]
+- Downloading purrr from CRAN ...               OK [541.6 Kb in 0.35s]
+- Downloading glmnet from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [1.9 Mb in 0.39s]
+- Downloading foreach from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [136.4 Kb in 0.36s]
+- Downloading iterators from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [338.4 Kb in 0.4s]
+- Downloading shape from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [732.4 Kb in 0.36s]
+- Downloading mitml from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [518.8 Kb in 0.66s]
+- Downloading pan from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [538.1 Kb in 0.36s]
+- Downloading jomo from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [2 Mb in 1.6s]
+- Downloading reformulas from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [131.7 Kb in 0.35s]
+- Downloading Rdpack from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [622.9 Kb in 0.36s]
+- Downloading ordinal from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [1.2 Mb in 0.35s]
+- Downloading ucminf from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [34.2 Kb in 0.36s]
+- Downloading haven from https://packagemanager.posit.co/cran/__linux__/noble/latest ... OK [384.1 Kb in 0.35s]
+Successfully downloaded 34 packages in 23 seconds.
 
 The following package(s) will be installed:
 - backports    [1.5.0]
@@ -198,7 +209,7 @@ The following package(s) will be installed:
 - xfun         [0.52]
 - xml2         [1.3.8]
 - yaml         [2.3.10]
-These packages will be installed into "/tmp/Rtmp7qjgvU/renv-use-libpath-36e87236fa3a".
+These packages will be installed into "/tmp/Rtmp3lg3Gj/renv-use-libpath-37118cea5af".
 
 The following required system packages are not installed:
 - cmake       [required by nloptr]
@@ -209,31 +220,31 @@ An administrator can install these packages with:
 - sudo apt install cmake libx11-dev
 
 # Installing packages --------------------------------------------------------
-- Installing cli ...                            OK [installed binary and cached in 0.28s]
-- Installing generics ...                       OK [installed binary and cached in 0.2s]
+- Installing cli ...                            OK [installed binary and cached in 0.3s]
+- Installing generics ...                       OK [installed binary and cached in 0.21s]
 - Installing glue ...                           OK [linked from cache]
-- Installing rlang ...                          OK [installed binary and cached in 0.32s]
+- Installing rlang ...                          OK [installed binary and cached in 0.35s]
 - Installing lifecycle ...                      OK [linked from cache]
 - Installing magrittr ...                       OK [linked from cache]
-- Installing utf8 ...                           OK [installed binary and cached in 0.2s]
+- Installing utf8 ...                           OK [installed binary and cached in 0.22s]
 - Installing vctrs ...                          OK [linked from cache]
-- Installing pillar ...                         OK [installed binary and cached in 0.41s]
+- Installing pillar ...                         OK [installed binary and cached in 0.44s]
 - Installing R6 ...                             OK [linked from cache]
 - Installing pkgconfig ...                      OK [linked from cache]
-- Installing tibble ...                         OK [installed binary and cached in 0.45s]
+- Installing tibble ...                         OK [installed binary and cached in 0.48s]
 - Installing withr ...                          OK [linked from cache]
 - Installing tidyselect ...                     OK [linked from cache]
 - Installing dplyr ...                          OK [linked from cache]
 - Installing base64enc ...                      OK [linked from cache]
 - Installing bigD ...                           OK [linked from cache]
 - Installing bitops ...                         OK [linked from cache]
-- Installing commonmark ...                     OK [installed binary and cached in 0.2s]
-- Installing fs ...                             OK [installed binary and cached in 0.24s]
+- Installing commonmark ...                     OK [installed binary and cached in 0.22s]
+- Installing fs ...                             OK [installed binary and cached in 0.26s]
 - Installing digest ...                         OK [linked from cache]
 - Installing fastmap ...                        OK [linked from cache]
 - Installing htmltools ...                      OK [linked from cache]
 - Installing jsonlite ...                       OK [linked from cache]
-- Installing evaluate ...                       OK [installed binary and cached in 0.2s]
+- Installing evaluate ...                       OK [installed binary and cached in 0.21s]
 - Installing xfun ...                           OK [linked from cache]
 - Installing highr ...                          OK [linked from cache]
 - Installing yaml ...                           OK [linked from cache]
@@ -241,19 +252,19 @@ An administrator can install these packages with:
 - Installing cachem ...                         OK [linked from cache]
 - Installing jquerylib ...                      OK [linked from cache]
 - Installing memoise ...                        OK [linked from cache]
-- Installing mime ...                           OK [installed binary and cached in 0.2s]
+- Installing mime ...                           OK [installed binary and cached in 0.21s]
 - Installing rappdirs ...                       OK [linked from cache]
-- Installing sass ...                           OK [installed binary and cached in 0.39s]
+- Installing sass ...                           OK [installed binary and cached in 0.41s]
 - Installing bslib ...                          OK [linked from cache]
 - Installing fontawesome ...                    OK [linked from cache]
-- Installing tinytex ...                        OK [installed binary and cached in 0.22s]
+- Installing tinytex ...                        OK [installed binary and cached in 0.23s]
 - Installing rmarkdown ...                      OK [linked from cache]
 - Installing htmlwidgets ...                    OK [linked from cache]
-- Installing Rcpp ...                           OK [installed binary and cached in 0.37s]
-- Installing curl ...                           OK [installed binary and cached in 0.23s]
-- Installing V8 ...                             OK [installed binary and cached in 0.73s]
+- Installing Rcpp ...                           OK [installed binary and cached in 0.39s]
+- Installing curl ...                           OK [installed binary and cached in 0.25s]
+- Installing V8 ...                             OK [installed binary and cached in 0.76s]
 - Installing juicyjuice ...                     OK [linked from cache]
-- Installing litedown ...                       OK [installed binary and cached in 0.23s]
+- Installing litedown ...                       OK [installed binary and cached in 0.24s]
 - Installing markdown ...                       OK [linked from cache]
 - Installing reactR ...                         OK [linked from cache]
 - Installing reactable ...                      OK [linked from cache]
@@ -261,36 +272,36 @@ An administrator can install these packages with:
 - Installing labeling ...                       OK [linked from cache]
 - Installing RColorBrewer ...                   OK [linked from cache]
 - Installing viridisLite ...                    OK [linked from cache]
-- Installing scales ...                         OK [installed binary and cached in 0.43s]
+- Installing scales ...                         OK [installed binary and cached in 0.46s]
 - Installing xml2 ...                           OK [linked from cache]
-- Installing gt ...                             OK [installed binary and cached in 0.59s]
+- Installing gt ...                             OK [installed binary and cached in 0.63s]
 - Installing gtable ...                         OK [linked from cache]
 - Installing isoband ...                        OK [linked from cache]
-- Installing ggplot2 ...                        OK [installed binary and cached in 0.74s]
-- Installing patchwork ...                      OK [installed binary and cached in 0.74s]
+- Installing ggplot2 ...                        OK [installed binary and cached in 0.83s]
+- Installing patchwork ...                      OK [installed binary and cached in 0.83s]
 - Installing backports ...                      OK [linked from cache]
-- Installing purrr ...                          OK [installed binary and cached in 0.33s]
+- Installing purrr ...                          OK [installed binary and cached in 0.36s]
 - Installing stringi ...                        OK [linked from cache]
 - Installing stringr ...                        OK [linked from cache]
 - Installing cpp11 ...                          OK [linked from cache]
 - Installing tidyr ...                          OK [linked from cache]
 - Installing broom ...                          OK [linked from cache]
-- Installing iterators ...                      OK [installed binary and cached in 0.2s]
-- Installing foreach ...                        OK [installed binary and cached in 0.21s]
-- Installing shape ...                          OK [installed binary and cached in 0.21s]
+- Installing iterators ...                      OK [installed binary and cached in 0.22s]
+- Installing foreach ...                        OK [installed binary and cached in 0.22s]
+- Installing shape ...                          OK [installed binary and cached in 0.22s]
 - Installing RcppEigen ...                      OK [linked from cache]
-- Installing glmnet ...                         OK [installed binary and cached in 0.98s]
-- Installing pan ...                            OK [installed binary and cached in 0.21s]
+- Installing glmnet ...                         OK [installed binary and cached in 1.1s]
+- Installing pan ...                            OK [installed binary and cached in 0.22s]
 - Installing minqa ...                          OK [linked from cache]
 - Installing nloptr ...                         OK [linked from cache]
 - Installing rbibutils ...                      OK [linked from cache]
-- Installing Rdpack ...                         OK [installed binary and cached in 0.23s]
-- Installing reformulas ...                     OK [installed binary and cached in 0.86s]
+- Installing Rdpack ...                         OK [installed binary and cached in 0.24s]
+- Installing reformulas ...                     OK [installed binary and cached in 0.97s]
 - Installing lme4 ...                           OK [linked from cache]
-- Installing ucminf ...                         OK [installed binary and cached in 0.2s]
+- Installing ucminf ...                         OK [installed binary and cached in 0.21s]
 - Installing numDeriv ...                       OK [linked from cache]
-- Installing ordinal ...                        OK [installed binary and cached in 0.89s]
-- Installing jomo ...                           OK [installed binary and cached in 1.4s]
+- Installing ordinal ...                        OK [installed binary and cached in 1.0s]
+- Installing jomo ...                           OK [installed binary and cached in 1.5s]
 - Installing forcats ...                        OK [linked from cache]
 - Installing hms ...                            OK [linked from cache]
 - Installing clipr ...                          OK [linked from cache]
@@ -302,10 +313,10 @@ An administrator can install these packages with:
 - Installing progress ...                       OK [linked from cache]
 - Installing vroom ...                          OK [linked from cache]
 - Installing readr ...                          OK [linked from cache]
-- Installing haven ...                          OK [installed binary and cached in 0.45s]
-- Installing mitml ...                          OK [installed binary and cached in 1.4s]
-- Installing mice ...                           OK [installed binary and cached in 1.5s]
-Successfully installed 96 packages in 18 seconds.
+- Installing haven ...                          OK [installed binary and cached in 0.49s]
+- Installing mitml ...                          OK [installed binary and cached in 1.5s]
+- Installing mice ...                           OK [installed binary and cached in 1.6s]
+Successfully installed 96 packages in 19 seconds.
 
 The following loaded package(s) have been updated:
 - cli

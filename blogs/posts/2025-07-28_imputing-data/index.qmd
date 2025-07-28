@@ -20,6 +20,22 @@ format:
     code-fold: true
 ---
 
+```{r setup}
+renv::use(
+  "dplyr",
+  "gt",
+  "tibble",
+  "ggplot2",
+  "glue",
+  "patchwork",
+  "scales",
+  "mice",
+  "purrr",
+  "tidyr",
+  "rmarkdown"
+)
+```
+
 In the world of data analysis, missing values can feel like puzzle pieces that just won't fit, leaving analysts frustrated and insights incomplete.
 But what if I told you that imputing these missing values could be the key to unlocking a treasure trove of insights?
 By skilfully filling in the gaps, we can enhance the integrity of our datasets *and* elevate the quality of our analyses.

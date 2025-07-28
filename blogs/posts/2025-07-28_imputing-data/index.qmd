@@ -11,10 +11,13 @@ authors:
 date: "2025-07-28"
 categories: [R, Imputation, Learning, MICE]
 execute: 
-  enabled: false
+  enabled: true
 editor: 
   markdown: 
     wrap: sentence
+format:
+  html:
+    code-fold: true
 ---
 
 In the world of data analysis, missing values can feel like puzzle pieces that just won't fit, leaving analysts frustrated and insights incomplete.

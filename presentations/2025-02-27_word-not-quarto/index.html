@@ -12,7 +12,7 @@
   <meta name="author" content="Jac Grout">
   <meta name="author" content="Matt Dray">
   <meta name="dcterms.date" content="2025-02-27">
-  <title>Data Science @ The Strategy Unit – When Quarto wasn’t the right answer</title>
+  <title>Data Science @ The Strategy Unit – Word is better than Quarto?</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -30,6 +30,72 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-09c34abcecefe638f33e6d3c2293a836.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -131,7 +197,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">When Quarto wasn’t the right answer</h1>
+  <h1 class="title">Word is better than Quarto?</h1>
   <p class="subtitle">Mail merge is back, baby!</p>
 
 <div class="quarto-title-authors">
@@ -154,16 +220,60 @@
 <ul>
 <li><a href="https://connect.strategyunitwm.nhs.uk/nhp/project_information/">NHP</a> outputs reports: need automation/reproducibility</li>
 <li><a href="https://quarto.org/">Quarto</a> was the answer… until it wasn’t!</li>
-<li>Solution: meet users where they are</li>
+<li>Solution: meet users where they are (Microsoft Word)</li>
+<li>Problem: how?</li>
 </ul>
-</section>
-<section id="implementation" class="slide level2">
-<h2>Implementation ✏️</h2>
+<aside class="notes">
 <ul>
-<li>Add metadata and store site selections on Azure</li>
-<li>Read SharePoint template, insert content with <a href="https://davidgohel.github.io/officer/">{officer}</a></li>
-<li>Write timestamped folder with doc, results, log</li>
+<li>We had what sounded like an obvious Reproducible Analytical Pipeline (RAP).</li>
+<li>Ideal solution: create a Quarto document and populate it for a named organisation with images and calculations derived from data read from Azure.</li>
+<li>However, the customer’s pre-existing Word template was complicated and was frequently being changed.</li>
+<li>It turned out to be easier to use the Word template as an input and insert our figures and values into it instead.</li>
 </ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="the-word-template" class="slide level2">
+<h2>The Word template 📄</h2>
+
+<img data-src="template.png" style="width:100.0%" alt="A zoomed out view of pages of a complicated-looking Word document with many chunks of text, tables and page orientations. Much of the text is highlighted in green, yellow and blue." class="r-stretch"><aside class="notes">
+<ul>
+<li>This zoomed-out view of part of the Word document template highlights the complexity.</li>
+<li>The document uses a pre-existing theme; contains many specifically-formatted text chunks, tables and page orientations; and uses colour-coded highlighting to indicate who needs to edit which parts of the document.</li>
+<li>The document was being changed and updated quite a lot. The customers were used to amending Word documents quickly, as and when required.</li>
+<li>A more ‘static’ Quarto document wasn’t going to cut the mustard here.</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="process" class="slide level2">
+<h2>Process ✏️</h2>
+<ol type="1">
+<li>Record a request with a <a href="https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository">GitHub issue template</a>.</li>
+<li>Tag model-run JSONs on Azure, update site-selections file.</li>
+<li>Read SharePoint template with <a href="https://github.com/Azure/Microsoft365R">{Microsoft365R}</a>.</li>
+<li>Insert content with <a href="https://davidgohel.github.io/officer/">{officer}</a>.</li>
+<li>Write timestamped folder with doc, results, log.</li>
+<li>Check output, return to recipient.</li>
+</ol>
 <aside class="notes">
 <ul>
 <li>How do we identify chosen runs? On Aure, with run_stage metadata on results files and a list of chosen sites.</li>
@@ -173,6 +283,74 @@
 <li>Images inserted by moving the imaginary ‘cursor’ to a known string of text in the report.</li>
 <li>Value-insertion is more complicated: insert ‘field’ codes into the report, insert the values to custom document properties, refresh to insert these into the fields.</li>
 <li>The output is a timestamped directory with the report, standalone images and values, and a log.</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="generate-a-report" class="slide level2">
+<h2>Generate a report 🖨️</h2>
+<p>In R:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">populate_template</span>(</span>
+<span id="cb1-2"><a></a>  <span class="at">scheme_code =</span> <span class="st">"XYZ"</span>,                  <span class="co"># create a report for this scheme</span></span>
+<span id="cb1-3"><a></a>  <span class="at">result_sets =</span> <span class="fu">get_nhp_result_sets</span>(),  <span class="co"># fetch results metadata from Azure</span></span>
+<span id="cb1-4"><a></a>  <span class="at">run_stages =</span> <span class="fu">list</span>(                    <span class="co"># list the tagged model runs</span></span>
+<span id="cb1-5"><a></a>    <span class="at">primary =</span> <span class="st">"final_report_ndg2"</span>,      <span class="co"># main data source for the report</span></span>
+<span id="cb1-6"><a></a>    <span class="at">secondary =</span> <span class="st">"final_report_ndg1"</span>     <span class="co"># used as a comparator</span></span>
+<span id="cb1-7"><a></a>  )</span>
+<span id="cb1-8"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Output file structure:</p>
+<pre><code>YYYY-MM-DD-HHMMSS_scheme/
+ ├──YYYY-MM-DD-HHMMSS_scheme.log                        # log of printed metadata
+ ├──YYYY-MM-DD-HHMMSS_scheme_outputs-report_draft.docx  # populated report
+ ├──figures/                                            # standalone PNG files
+ └──values/                                             # CSVs of calculated values
+    </code></pre>
+<aside class="notes">
+<ul>
+<li>The interface for us is quite simple: a single function where we set the scheme code and identify the metadata ‘tag’ for the results that will form the main basis of the report and a secondary set used for comparative purposes.</li>
+<li>A bunch of sub-functions then read the data, calculate values, generate figures, read the Word template from SharePoint and then insert the content.</li>
+<li>The output is a timestamped folder that contains the populated Word doc, a subfolder of the charts and calculated values, and a log file that contains information printed to the console (details thigns like the scheme name and site selections for the run, as well as warning and error messages if present).</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="insert-content-with-officer" class="slide level2">
+<h2>Insert content with <a href="https://davidgohel.github.io/officer/">{officer}</a> 👮</h2>
+<p>For calculated values:</p>
+<ol type="1">
+<li>Add doc-property fields, e.g.&nbsp;{ DOCPROPERTY item_01 }.</li>
+<li>Add values to <a href="https://davidgohel.github.io/officer/reference/set_doc_properties.html">custom doc properties</a>.</li>
+<li>Update fields with corresponding property values.</li>
+</ol>
+<p>For generated figures:</p>
+<ol type="1">
+<li>Add unique target strings, e.g.&nbsp;‘[Insert Figure 8.2]’.</li>
+<li><a href="https://davidgohel.github.io/officer/reference/cursor.html">Find</a>/<a href="https://davidgohel.github.io/officer/reference/body_add_img.html">replace</a> with corresponding PNG.</li>
+</ol>
+<aside class="notes">
+<ul>
+<li>The {officer} package is crucial for inserting our content into the template.</li>
+<li>We use different methods to insert values and images.</li>
+<li>For calculated values, first add document-property fields to the Word doc (ctrl+F9); then write your calculated values to the custom document properties with <code>officer::set_doc_properties()</code>; then open and refresh the document (F9) to replace the fields with the corresponding value for the named property.</li>
+<li>To insert images, programmatically find unique target strings with {officer}’s <code>cursor_reach()</code> and then overwrite with images using <code>body_add_img()</code>; we use and a custom <code>insert_figure_on_cursor()</code> to do this.</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {

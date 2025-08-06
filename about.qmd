@@ -9,7 +9,7 @@ The Data Science team at the Strategy Unit comprises the following team members:
 - [Francis Barton](https://github.com/francisbarton)
 - [Matt Dray](https://github.com/matt-dray)
 - [Ozayr Mohammed](https://github.com/O-Mohammed)
-- [Rhian Davies](https://github.com/statsRhian)
+- [Rhian Natalie Davies](https://github.com/statsRhian)
 - [Tom Jemmett](https://github.com/tomjemmett)
 - [YiWen Hon](https://github.com/yiwen-h)
 - [Eirini Komninou](https://github.com/ai-mindset)

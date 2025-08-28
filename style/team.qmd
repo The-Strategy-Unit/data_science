@@ -2,7 +2,7 @@
 
 ## Slack check-ins
 
-In advanced of the weekly stand-up, all team members share a short summary, in Slack, answering the following questions:
+In advance of the weekly stand-up, all team members share a short summary, in Slack, answering the following questions:
 
 - ⭐ What went well last week
 - 🦉 What lessons did you learn

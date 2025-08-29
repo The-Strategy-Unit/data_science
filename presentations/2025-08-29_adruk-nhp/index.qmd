@@ -1,0 +1,106 @@
+---
+title: "Building a model by the NHS, for the NHS"
+subtitle: "Forecasting future hospital activity and the left shift of care"
+author:
+  - "[YiWen Hon](mailto:yiwen.hon1@nhs.net)"
+date: "2025-08-29"
+execute:
+  echo: false
+  eval: false
+format:
+  revealjs:
+    scrollable: true
+    theme: [default, ../su_presentation.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
+    footer: |
+      Learn more about [The Strategy Unit](https://www.strategyunitwm.nhs.uk/)
+---
+
+## The New Hospital Programme (NHP) Demand Model
+
+- An award-winning, fully _**open source**_ model for estimating future hospital activity^[https://www.strategyunitwm.nhs.uk/new-hospital-programme-demand-model]
+- Used for local hospital planning and to inform national policy
+
+## The model in a nutshell
+
+![](NHP_ADRUK.png){width=120%, fig-alt="Flow chart of the NHP model"}
+
+```{mermaid}
+%% Image used in slide is a screengrab from mermaid v11.10.1; the version in Quarto is v9.1. Including code here for posterity
+---
+config:
+      theme: redux
+---
+flowchart LR
+    %% Styling
+    classDef grey fill:#959595,color:white;
+    classDef black fill:#2c2825,color:white;
+    classDef blue fill:#5881c1,color:white;
+    classDef yellow fill:#f9bd07,color:black;
+    classDef red fill:#ed6555,color:white;
+
+    %% Nodes
+
+        data(["`NHS England Hospital Episode Statistics (HES) data`"])
+        data --> growth["`**Change factors**
+        - Demographic growth
+        - Non-demographic growth
+        - Demand-supply imbalances
+        - Unmet needs`"]:::leftAligned
+        growth --> mitigators["`**Activity mitigators**
+        - Prevention and public health
+        - Redirection of activity
+        - De-adoption of activities
+        - Efficiencies
+        `"]:::leftAligned
+        ons(["ONS data"]) --> growth
+        mitigators --> results(["`Modelled activity 
+        in horizon year`"])
+
+    %% Class assignments
+    class data,ons,results,expert blue;
+    classDef leftAligned text-align:left;
+
+```
+
+
+
+Probabilistic Monte Carlo simulation model, providing hundreds of possible futures and an average forecast
+
+
+## HES: a powerful dataset
+
+* Model data: 500 million anonymised patient records
+* Significant data wrangling and infrastructure changes required to process data on this scale
+* All code for data processing is openly available - this ensures we're all using the same definitions^[https://github.com/The-Strategy-Unit/nhp_data]
+
+## Categories of potentially mitigable activity
+
+92 evidence-based ways in which hospital activity can be reduced in future. Divided into four categories:
+
+- Prevention and public health, e.g. Smoking Related Admissions
+- Redirection of activity, e.g. A&E Frequent Attenders
+- De-adoption of activities, e.g. Interventions with Limited Evidence
+- Efficiencies, e.g. Outpatient Convert to Tele-Attendance
+
+## Creation of new datasets
+
+* Expert elicitation to help model users with estimates of what they think is possible in the future
+* Model users' inputs are a helpful insight into what providers think is possible in the future
+* Counts of activity that is potentially mitigable at a local/regional/national level^[https://connect.strategyunitwm.nhs.uk/nhp/community_mitigators/]
+* Inequalities in planned hospital procedures^[https://www.strategyunitwm.nhs.uk/publications/strategies-reduce-inequalities-access-planned-hospital-procedures]
+
+## New datasets in use 
+
+![](planned_ambitious_future.png){fig-alt="Three graphs side by side; the title is Projected beddays compared to baseline of 55 million in 2022/23. the ambitious graph shows a decrease in activity to 46.6 million. The steady graph shows an increase in activity to 76.8 million. The Planned graph shows an increase in activity to 63.5 million."}
+
+## Future ambitions
+
+* Sharing our datasets
+* Interactive apps to help users explore and understand supporting datasets
+

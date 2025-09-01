@@ -15,6 +15,7 @@ format:
     chalkboard:
       buttons: false
     preview-links: auto
+    reference-location: document
     slide-number: false
     auto-animate: true
     footer: |
@@ -79,6 +80,10 @@ Probabilistic Monte Carlo simulation model, providing hundreds of possible futur
 * Significant data wrangling and infrastructure changes required to process data on this scale
 * All code for data processing is openly available - this ensures we're all using the same definitions^[https://github.com/The-Strategy-Unit/nhp_data]
 
+::: {.notes}
+* What are the pros and cons of working with NHS data
+:::
+
 ## 92 Categories of potentially mitigable activity
 
 | Category | Example |
@@ -95,7 +100,7 @@ Probabilistic Monte Carlo simulation model, providing hundreds of possible futur
 
 ## Creation of new datasets
 
-* Expert elicitation to help model users with estimates of what they think is possible in the future
+* Elicitation exercise showing what activity mitigation experts think might be possible in the future^[https://bmjopen.bmj.com/content/14/10/e084632]
 * Model users' inputs are a helpful insight into what providers think is possible in the future
 * Counts of activity that is potentially mitigable at a local/regional/national level^[https://connect.strategyunitwm.nhs.uk/nhp/community_mitigators/]
 * Inequalities in planned hospital procedures^[https://www.strategyunitwm.nhs.uk/publications/strategies-reduce-inequalities-access-planned-hospital-procedures]

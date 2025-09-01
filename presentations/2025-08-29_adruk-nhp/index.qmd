@@ -1,6 +1,6 @@
 ---
 title: "Building a model by the NHS, for the NHS"
-subtitle: "Forecasting future hospital activity and the left shift of care"
+subtitle: "Forecasting future hospital activity and the left shift of care \n ADRUK 2025"
 author:
   - "[YiWen Hon](mailto:yiwen.hon1@nhs.net)"
 date: "2025-08-29"
@@ -79,14 +79,19 @@ Probabilistic Monte Carlo simulation model, providing hundreds of possible futur
 * Significant data wrangling and infrastructure changes required to process data on this scale
 * All code for data processing is openly available - this ensures we're all using the same definitions^[https://github.com/The-Strategy-Unit/nhp_data]
 
-## Categories of potentially mitigable activity
+## 92 Categories of potentially mitigable activity
 
-92 evidence-based ways in which hospital activity can be reduced in future. Divided into four categories:
+| Category | Example |
+|----------|----------|
+| Prevention and public health | Smoking Related Admissions |
+| Redirection of activity |A&E Frequent Attenders |
+| De-adoption of activities | Interventions with Limited Evidence |
+| Efficiencies | Outpatient Convert to Tele-Attendance |
 
-- Prevention and public health, e.g. Smoking Related Admissions
-- Redirection of activity, e.g. A&E Frequent Attenders
-- De-adoption of activities, e.g. Interventions with Limited Evidence
-- Efficiencies, e.g. Outpatient Convert to Tele-Attendance
+
+::: {.notes}
+* Note that some of these are only possible because we have a national picture of activity, e.g. with A&E frequent attenders 
+:::
 
 ## Creation of new datasets
 
@@ -101,6 +106,7 @@ Probabilistic Monte Carlo simulation model, providing hundreds of possible futur
 
 ## Future ambitions
 
-* Sharing our datasets
-* Interactive apps to help users explore and understand supporting datasets
+* 🔓 Sharing our datasets
+* 🗺️ Interactive apps to help users explore and understand our datasets
+* 🔭 Continuing to support local hospital planning and national policy
 

@@ -1,0 +1,108 @@
+---
+title: "Transforming Hospital Planning with an Open-Source Demand Model"
+author: 
+  - "[Chris Beeley](mailto:chris.beeley1@nhs.net)"
+date: 2025-09-04
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, ../su_presentation.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
+    footer: |
+      Learn more about [The Strategy Unit](https://www.strategyunitwm.nhs.uk/)
+---
+
+## Prologue
+
+* There is much to say
+
+<img src="much_to_say.gif" alt="Gif of a cat saying 'I can talk. I have so much to say'" height="500">
+
+## Intro
+
+*	Why the model was built? 
+*	What it does at a high level
+*	How it was created
+*	Lessons learnt from the development process
+*	The potential of the model
+
+## Why?
+
+* New Hospital Programme came to the Strategy Unit c.2020
+* Predict demand for the future of the hospitals c.2041
+* We built on existing work and knowledge in the SU as well as the literature
+* I was not here!
+
+## The landscape
+
+* Lots of models
+* Lots of consultancy support
+* Lots of repetition / duplication
+* BUT no consistency about definitions
+* Methodological progress is slow
+* Proprietary models means progress is not shared
+
+## Common issues with models
+
+* Handling uncertainty
+* Unnecessary aggregation
+* Poor coverage of some changes
+* Systematic bias in model assumptions
+* Lack of ownership and auditability of assumptions
+
+## The principles
+
+* Probabilistic
+* Transparent and open source
+* Collaborative
+* Reproducible
+* By the NHS, for the NHS
+
+## So what does it do?
+
+<img src="homer.gif" alt="'Gif of Homer Simpson pressing a button and saying 'do something cool'" height="500">
+
+## The big picture
+
+* Demographic change
+* Non-demographic change
+* Categories of potentially mitigable activity
+* More to come
+
+## Demographic change
+
+* Population size
+* Population age profile
+* Age specific health status
+
+## Non-demographic change
+
+* Medical interventions
+* Clinical standards
+* Patient expectations
+
+## Categories of potentially mitigable activity
+
+* Admission avoidance
+* Length of stay reduction
+* Conversion to day procedure/ tele
+* Ninety two and counting
+
+## The products
+
+* [The model](https://github.com/The-Strategy-Unit/nhp_model)! 
+* [Parameter setting and model run interface](https://github.com/The-Strategy-Unit/nhp_inputs)
+* [Interactive results explorer](https://github.com/The-Strategy-Unit/nhp_outputs)
+* [Documentation](https://connect.strategyunitwm.nhs.uk/nhp/project_information/)
+* Categories of potentially mitigable activity (CPMA- no link but more on this later)
+* A set of people who have successfully used the model in a business case
+* The ability to run the model at regional/ national level
+
+## The future
+
+* SUS

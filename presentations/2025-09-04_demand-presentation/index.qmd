@@ -26,7 +26,7 @@ format:
 
 ## Intro
 
-*	**Why** did we build this model
+*	**Why** did we build this [model](https://www.strategyunitwm.nhs.uk/new-hospital-programme-demand-model)
 *	**What** does it do
 *	**How** was it created
 *	What did we learn **when** we were building it
@@ -114,7 +114,14 @@ format:
 
 ## The national elicitation exercise
 
-<img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGJsbmsweGgxbmkybnJ2OGRicmJrdTdla2FrdnRkc3FvYzNtdHVqZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/z6qMVL8tjB0y31cAAr/giphy.gif" alt="Gif of Chuck Norris saying 'I swear I never do this'" height="400">
+<img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGJsbmsweGgxbmkybnJ2OGRicmJrdTdla2FrdnRkc3FvYzNtdHVqZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/z6qMVL8tjB0y31cAAr/giphy.gif" alt="Gif of Chuck Norris saying 'What do you think'" height="400">
+
+## It's a whole separate talk...
+
+* We asked experts to predict likely levels of mitigation in the future, in a structured way
+* We also made some whizzy data science tools to do it with- which ended up being really important and useful
+* It's not my area so I won't say any more- this was Prof Mohammed and team
+* We show these values to trusts to help them make better guesses about the future
 
 ## Inputs
 
@@ -200,6 +207,13 @@ format:
 ## Product!
 
 <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExc250ZGQ3dGFvbWVhcndnYWMzdzducW80dnBycWZxYzJlbWFrZ2x6byZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/QPWtttnOYgoyA/giphy.gif" alt="Gif from the movie 'Taken' with the main character saying 'I don't know who you are, I don't know what you want'" height="500">
+
+## What do we want? Prioritised roadmap with appropriate stakeholder engagement!...
+
+* (Fairly) early days
+* We need to have structured and useful conversations with our users
+* We also need to imagine other users for the products we already have and for the products we might make in the future
+* We need to think of what we do not as a set of analytical tools or products but as a service, something that help people in the real world do their real job
 
 ## The future
 

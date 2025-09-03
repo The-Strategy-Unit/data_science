@@ -220,3 +220,4 @@ format:
 * National and regional model runs
 * Bring your own data (FDP?)
 * Understanding more about categories of potentially mitigable activity, who thinks what's possible, and why it matters
+* Increasing understanding of the shift from hospital to the community

@@ -1607,7 +1607,7 @@
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r---flows",
     "title": "System Dynamics in health and care",
     "section": "in R - flows",
-    "text": "in R - flows\nEasy to do with count, or group_by and summarise\n\n\nadmit_d &lt;- spell_dates |&gt;\n  group_by(date_admit) |&gt;\n  count(date_admit)\n\nhead(admit_d)\n\n\n# A tibble: 6 × 2\n# Groups:   date_admit [6]\n  date_admit     n\n  &lt;date&gt;     &lt;int&gt;\n1 2022-01-01    22\n2 2022-01-02    22\n3 2022-01-03    31\n4 2022-01-04    26\n5 2022-01-05    27\n6 2022-01-06    23"
+    "text": "in R - flows\nEasy to do with count, or group_by and summarise\n\n\nadmit_d &lt;- spell_dates |&gt;\n  group_by(date_admit) |&gt;\n  count(date_admit)\n\nhead(admit_d)\n\n\n# A tibble: 6 × 2\n# Groups:   date_admit [6]\n  date_admit     n\n  &lt;date&gt;     &lt;int&gt;\n1 2022-01-01    30\n2 2022-01-02    26\n3 2022-01-03    22\n4 2022-01-04    29\n5 2022-01-05    17\n6 2022-01-06    22"
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r---occupancy",
@@ -1628,7 +1628,7 @@
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods---flows",
     "title": "System Dynamics in health and care",
     "section": "Longer Time Periods - flows",
-    "text": "Longer Time Periods - flows\nUse lubridate::floor_date to generate the date at start of week/month\n\nadmit_wk &lt;- spell_dates |&gt;\n  mutate(\n    week_start = floor_date(\n      date_admit,\n      unit = \"week\",\n      week_start = 1 # start week on Monday\n    )\n  ) |&gt;\n  count(week_start) # could add other parameters such as provider code, TFC etc\n\nhead(admit_wk)\n\n\n\n# A tibble: 6 × 2\n  week_start     n\n  &lt;date&gt;     &lt;int&gt;\n1 2021-12-27    44\n2 2022-01-03   184\n3 2022-01-10   190\n4 2022-01-17   187\n5 2022-01-24   201\n6 2022-01-31   193\n\n\n\nMight run SD model in weeks or months - e.g. months for care homes Use lubridate to create new variable with start date of week/month/year etc"
+    "text": "Longer Time Periods - flows\nUse lubridate::floor_date to generate the date at start of week/month\n\nadmit_wk &lt;- spell_dates |&gt;\n  mutate(\n    week_start = floor_date(\n      date_admit,\n      unit = \"week\",\n      week_start = 1 # start week on Monday\n    )\n  ) |&gt;\n  count(week_start) # could add other parameters such as provider code, TFC etc\n\nhead(admit_wk)\n\n\n\n# A tibble: 6 × 2\n  week_start     n\n  &lt;date&gt;     &lt;int&gt;\n1 2021-12-27    56\n2 2022-01-03   175\n3 2022-01-10   188\n4 2022-01-17   197\n5 2022-01-24   233\n6 2022-01-31   194\n\n\n\nMight run SD model in weeks or months - e.g. months for care homes Use lubridate to create new variable with start date of week/month/year etc"
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods---occupancy",
@@ -4292,6 +4292,13 @@
     "text": "The national elicitation exercise"
   },
   {
+    "objectID": "presentations/2025-09-04_demand-presentation/index.html#its-a-whole-separate-talk",
+    "href": "presentations/2025-09-04_demand-presentation/index.html#its-a-whole-separate-talk",
+    "title": "Transforming Hospital Planning with an Open-Source Demand Model",
+    "section": "It’s a whole separate talk…",
+    "text": "It’s a whole separate talk…\n\nWe asked experts to predict likely levels of mitigation in the future, in a structured way\nWe also made some whizzy data science tools to do it with- which ended up being really important and useful\nIt’s not my area so I won’t say any more- this was Prof Mohammed and team\nWe show these values to trusts to help them make better guesses about the future"
+  },
+  {
     "objectID": "presentations/2025-09-04_demand-presentation/index.html#inputs",
     "href": "presentations/2025-09-04_demand-presentation/index.html#inputs",
     "title": "Transforming Hospital Planning with an Open-Source Demand Model",
@@ -4383,11 +4390,18 @@
     "text": "Product!"
   },
   {
+    "objectID": "presentations/2025-09-04_demand-presentation/index.html#what-do-we-want-prioritised-roadmap-with-appropriate-stakeholder-engagement",
+    "href": "presentations/2025-09-04_demand-presentation/index.html#what-do-we-want-prioritised-roadmap-with-appropriate-stakeholder-engagement",
+    "title": "Transforming Hospital Planning with an Open-Source Demand Model",
+    "section": "What do we want? Prioritised roadmap with appropriate stakeholder engagement!…",
+    "text": "What do we want? Prioritised roadmap with appropriate stakeholder engagement!…\n\n(Fairly) early days\nWe need to have structured and useful conversations with our users\nWe also need to imagine other users for the products we already have and for the products we might make in the future\nWe need to think of what we do not as a set of analytical tools or products but as a service, something that help people in the real world do their real job"
+  },
+  {
     "objectID": "presentations/2025-09-04_demand-presentation/index.html#the-future",
     "href": "presentations/2025-09-04_demand-presentation/index.html#the-future",
     "title": "Transforming Hospital Planning with an Open-Source Demand Model",
     "section": "The future",
-    "text": "The future\n\nNational and regional model runs\nBring your own data (FDP?)\nUnderstanding more about categories of potentially mitigable activity, who thinks what’s possible, and why it matters"
+    "text": "The future\n\nNational and regional model runs\nBring your own data (FDP?)\nUnderstanding more about categories of potentially mitigable activity, who thinks what’s possible, and why it matters\nIncreasing understanding of the shift from hospital to the community"
   },
   {
     "objectID": "presentations/index.html",

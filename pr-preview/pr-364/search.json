@@ -1607,7 +1607,7 @@
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r---flows",
     "title": "System Dynamics in health and care",
     "section": "in R - flows",
-    "text": "in R - flows\nEasy to do with count, or group_by and summarise\n\n\nadmit_d &lt;- spell_dates |&gt;\n  group_by(date_admit) |&gt;\n  count(date_admit)\n\nhead(admit_d)\n\n\n# A tibble: 6 × 2\n# Groups:   date_admit [6]\n  date_admit     n\n  &lt;date&gt;     &lt;int&gt;\n1 2022-01-01    30\n2 2022-01-02    26\n3 2022-01-03    22\n4 2022-01-04    29\n5 2022-01-05    17\n6 2022-01-06    22"
+    "text": "in R - flows\nEasy to do with count, or group_by and summarise\n\n\nadmit_d &lt;- spell_dates |&gt;\n  group_by(date_admit) |&gt;\n  count(date_admit)\n\nhead(admit_d)\n\n\n# A tibble: 6 × 2\n# Groups:   date_admit [6]\n  date_admit     n\n  &lt;date&gt;     &lt;int&gt;\n1 2022-01-01    27\n2 2022-01-02    25\n3 2022-01-03    33\n4 2022-01-04    20\n5 2022-01-05    28\n6 2022-01-06    22"
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r---occupancy",
@@ -1628,7 +1628,7 @@
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods---flows",
     "title": "System Dynamics in health and care",
     "section": "Longer Time Periods - flows",
-    "text": "Longer Time Periods - flows\nUse lubridate::floor_date to generate the date at start of week/month\n\nadmit_wk &lt;- spell_dates |&gt;\n  mutate(\n    week_start = floor_date(\n      date_admit,\n      unit = \"week\",\n      week_start = 1 # start week on Monday\n    )\n  ) |&gt;\n  count(week_start) # could add other parameters such as provider code, TFC etc\n\nhead(admit_wk)\n\n\n\n# A tibble: 6 × 2\n  week_start     n\n  &lt;date&gt;     &lt;int&gt;\n1 2021-12-27    56\n2 2022-01-03   175\n3 2022-01-10   188\n4 2022-01-17   197\n5 2022-01-24   233\n6 2022-01-31   194\n\n\n\nMight run SD model in weeks or months - e.g. months for care homes Use lubridate to create new variable with start date of week/month/year etc"
+    "text": "Longer Time Periods - flows\nUse lubridate::floor_date to generate the date at start of week/month\n\nadmit_wk &lt;- spell_dates |&gt;\n  mutate(\n    week_start = floor_date(\n      date_admit,\n      unit = \"week\",\n      week_start = 1 # start week on Monday\n    )\n  ) |&gt;\n  count(week_start) # could add other parameters such as provider code, TFC etc\n\nhead(admit_wk)\n\n\n\n# A tibble: 6 × 2\n  week_start     n\n  &lt;date&gt;     &lt;int&gt;\n1 2021-12-27    52\n2 2022-01-03   189\n3 2022-01-10   178\n4 2022-01-17   191\n5 2022-01-24   188\n6 2022-01-31   183\n\n\n\nMight run SD model in weeks or months - e.g. months for care homes Use lubridate to create new variable with start date of week/month/year etc"
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods---occupancy",
@@ -4401,7 +4401,7 @@
     "href": "presentations/2025-09-04_demand-presentation/index.html#the-future",
     "title": "Transforming Hospital Planning with an Open-Source Demand Model",
     "section": "The future",
-    "text": "The future\n\nNational and regional model runs\nBring your own data (FDP?)\nUnderstanding more about categories of potentially mitigable activity, who thinks what’s possible, and why it matters\nIncreasing understanding of the shift from hospital to the community"
+    "text": "The future\n\nNational and regional model runs\nBring your own data (FDP?)\nUnderstanding more about categories of potentially mitigable activity, who thinks what’s possible, and why it matters"
   },
   {
     "objectID": "presentations/index.html",

@@ -1,5 +1,6 @@
 ---
 title: "Transforming Hospital Planning with an Open-Source Demand Model"
+subtitle: "Thanks to Steven Wyatt, Jake Parsons, Tom Jemmett and others too numerous to name for materials/ inspiration"
 author: 
   - "[Chris Beeley](mailto:chris.beeley1@nhs.net)"
 date: 2025-09-04
@@ -21,15 +22,16 @@ format:
 
 * There is much to say
 
-<img src="much_to_say.gif" alt="Gif of a cat saying 'I can talk. I have so much to say'" height="500">
+<img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExeG96cmx4ejl3aHhwcml1ZzZjOXlyNGxxcHM1YjZkY3c2ODM2bWpqMiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/WbLKaRtrGnqLeR7K9T/giphy.gif" alt="Gif of a cat saying 'I can talk. I have so much to say'" height="400">
 
 ## Intro
 
-*	Why the model was built? 
-*	What it does at a high level
-*	How it was created
-*	Lessons learnt from the development process
-*	The potential of the model
+*	**Why** did we build this model
+*	**What** does it do
+*	**How** was it created
+*	What did we learn **when** we were building it
+*	**Who** else might use the model in the future
+* (Sorry for the last two I saw a pattern and dug in)
 
 ## Why?
 
@@ -65,7 +67,7 @@ format:
 
 ## So what does it do?
 
-<img src="homer.gif" alt="'Gif of Homer Simpson pressing a button and saying 'do something cool'" height="500">
+<img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMTc3dXMyanF0cjJoem16bjhieDZ5djRqZ2RoNDd2eG43aDg3aXkweSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l2JdSlA1a1zKVAyze/giphy.gif" alt="'Gif of Homer Simpson pressing a button and saying 'do something cool'" height="500">
 
 ## The big picture
 
@@ -91,7 +93,7 @@ format:
 * Admission avoidance
 * Length of stay reduction
 * Conversion to day procedure/ tele
-* Ninety two and counting
+* Ninety two and counting (will have a look later)
 
 ## The products
 
@@ -102,6 +104,37 @@ format:
 * Categories of potentially mitigable activity (CPMA- no link but more on this later)
 * A set of people who have successfully used the model in a business case
 * The ability to run the model at regional/ national level
+
+## The model
+
+* Sample the parameters (assume normal)
+* Calculate demand at IP, OP, A&E level
+* Do this 256 times and plot the distribution
+* The results are conceptually at row level, but not in practice
+
+## Inputs
+
+* Let's break a rule
+
+<img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZHQ1OXBkZXE4ODJjdjg2cG43emdjbzU0aXA2N3hlb2xmbTA4Z2tsMCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/nbAVlpT77G6ax8cV1D/giphy.gif" alt="Gif of a man saying 'I swear I never do this'" height="400">
+
+## Outputs
+
+* We've come this far, let's break the rule again
+* Note to self- if the vibe seems right kick off an "Analysis versus dashboards" bunfight
+
+## Now for the (data) science
+
+<img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExMjVkNTFoMXNrb3kya3c1aHMzc3VwNGtmbmNkOWJmeHhhemE3NG8wbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oKIPnAiaMCws8nOsE/giphy.gif" alt="Gif of a cat sitting on a keyboard with code on the screen" height="500">
+
+## Big list of technical sounding words coming up...
+
+* SQL -> databricks
+* Azure compute (Docker)
+* Azure BLOB storage
+* Python for the model
+* R for reporting/ dashboards
+* Quarto for documentation
 
 ## The future
 

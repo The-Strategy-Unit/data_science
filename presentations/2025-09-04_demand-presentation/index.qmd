@@ -112,6 +112,10 @@ format:
 * Do this 256 times and plot the distribution
 * The results are conceptually at row level, but not in practice
 
+## The national elicitation exercise
+
+<img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGJsbmsweGgxbmkybnJ2OGRicmJrdTdla2FrdnRkc3FvYzNtdHVqZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/z6qMVL8tjB0y31cAAr/giphy.gif" alt="Gif of Chuck Norris saying 'I swear I never do this'" height="400">
+
 ## Inputs
 
 * Let's break a rule
@@ -136,6 +140,69 @@ format:
 * R for reporting/ dashboards
 * Quarto for documentation
 
+## That's what we did- how did we do it?
+
+<img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExeW5rdmN5c3g3d2ZjdnBsZ2dqaHN3cm5zcm83Yml0MDN5NTV1cW90YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Tjq0NVePKbXUDqFHxC/giphy.gif" alt="Gif of a cartoon character saying 'Guys, we need a plan'" height="500">
+
+## Agile!
+
+* We are not doing "proper" scrum
+* Product owner, scrum master, everyone else
+* Five week sprints with a one week recovery run between each one
+* Sprint planning, sprint catchup, sprint retro
+
+## Sprint retro
+
+* What went well, what could have gone better, and what to improve next time
+* Looking at process, not blaming individuals
+* Requires maturity and trust to bring up issues, and to respond to them in a constructive way
+* Should agree at the end on one process improvement which goes in the next sprint
+* We've had some really, really good retros and I think it's a really important process for a team
+
+## What did scrum give the team?
+
+* Simultaneous releases of linked repos
+* The team works autonomously in the sprint
+* Better conversations about "no"
+* The planning and retro process improves the team's processes, not just the code
+
+## Product owner
+
+* My lessson- get out the way
+* A better connection between high level and low level planning
+* Clear release dates and responsibilities
+* Clear what I should be doing
+
+## Agility
+
+* This project was agile whether we liked it or not!
+* My 2022 agile definition:
+  * Customers can't make up their minds
+  * It's hard to design software all at once
+  * Continuous delivery keeps customers happy
+
+## Some highlights from [The agile manifesto](https://agilemanifesto.org/)
+
+* "Welcome changing requirements, even late in development"
+* "At regular intervals, the team reflects on how to become more effective, then tunes and adjusts its behavior accordingly"
+* "Continuous attention to technical excellence and good design enhances agility"
+* "Simplicity- the art of maximizing the amount of work not done- is essential"
+
+## How scrum helped
+
+* Those shaping the project wanted to be able to make quick changes- and see the long term plan
+* Agility is a mindset, a mode of practice
+* If anything we were actually **too** agile
+* Being agile is all about being able to review and make decisions frequently
+* But it isn't about changing what you're doing all the time
+* Good code and good teams are ready to change direction- whether they change or not
+
+## Product!
+
+<img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExc250ZGQ3dGFvbWVhcndnYWMzdzducW80dnBycWZxYzJlbWFrZ2x6byZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/QPWtttnOYgoyA/giphy.gif" alt="Gif from the movie 'Taken' with the main character saying 'I don't know who you are, I don't know what you want'" height="500">
+
 ## The future
 
-* SUS
+* National and regional model runs
+* Bring your own data (FDP?)
+* Understanding more about categories of potentially mitigable activity, who thinks what's possible, and why it matters

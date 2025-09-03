@@ -1607,7 +1607,7 @@
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r---flows",
     "title": "System Dynamics in health and care",
     "section": "in R - flows",
-    "text": "in R - flows\nEasy to do with count, or group_by and summarise\n\n\nadmit_d &lt;- spell_dates |&gt;\n  group_by(date_admit) |&gt;\n  count(date_admit)\n\nhead(admit_d)\n\n\n# A tibble: 6 × 2\n# Groups:   date_admit [6]\n  date_admit     n\n  &lt;date&gt;     &lt;int&gt;\n1 2022-01-01    31\n2 2022-01-02    23\n3 2022-01-03    25\n4 2022-01-04    22\n5 2022-01-05    23\n6 2022-01-06    31"
+    "text": "in R - flows\nEasy to do with count, or group_by and summarise\n\n\nadmit_d &lt;- spell_dates |&gt;\n  group_by(date_admit) |&gt;\n  count(date_admit)\n\nhead(admit_d)\n\n\n# A tibble: 6 × 2\n# Groups:   date_admit [6]\n  date_admit     n\n  &lt;date&gt;     &lt;int&gt;\n1 2022-01-01    22\n2 2022-01-02    22\n3 2022-01-03    31\n4 2022-01-04    26\n5 2022-01-05    27\n6 2022-01-06    23"
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r---occupancy",
@@ -1628,7 +1628,7 @@
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods---flows",
     "title": "System Dynamics in health and care",
     "section": "Longer Time Periods - flows",
-    "text": "Longer Time Periods - flows\nUse lubridate::floor_date to generate the date at start of week/month\n\nadmit_wk &lt;- spell_dates |&gt;\n  mutate(\n    week_start = floor_date(\n      date_admit,\n      unit = \"week\",\n      week_start = 1 # start week on Monday\n    )\n  ) |&gt;\n  count(week_start) # could add other parameters such as provider code, TFC etc\n\nhead(admit_wk)\n\n\n\n# A tibble: 6 × 2\n  week_start     n\n  &lt;date&gt;     &lt;int&gt;\n1 2021-12-27    54\n2 2022-01-03   181\n3 2022-01-10   189\n4 2022-01-17   193\n5 2022-01-24   219\n6 2022-01-31   207\n\n\n\nMight run SD model in weeks or months - e.g. months for care homes Use lubridate to create new variable with start date of week/month/year etc"
+    "text": "Longer Time Periods - flows\nUse lubridate::floor_date to generate the date at start of week/month\n\nadmit_wk &lt;- spell_dates |&gt;\n  mutate(\n    week_start = floor_date(\n      date_admit,\n      unit = \"week\",\n      week_start = 1 # start week on Monday\n    )\n  ) |&gt;\n  count(week_start) # could add other parameters such as provider code, TFC etc\n\nhead(admit_wk)\n\n\n\n# A tibble: 6 × 2\n  week_start     n\n  &lt;date&gt;     &lt;int&gt;\n1 2021-12-27    44\n2 2022-01-03   184\n3 2022-01-10   190\n4 2022-01-17   187\n5 2022-01-24   201\n6 2022-01-31   193\n\n\n\nMight run SD model in weeks or months - e.g. months for care homes Use lubridate to create new variable with start date of week/month/year etc"
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods---occupancy",
@@ -4285,6 +4285,13 @@
     "text": "The model\n\nSample the parameters (assume normal)\nCalculate demand at IP, OP, A&E level\nDo this 256 times and plot the distribution\nThe results are conceptually at row level, but not in practice"
   },
   {
+    "objectID": "presentations/2025-09-04_demand-presentation/index.html#the-national-elicitation-exercise",
+    "href": "presentations/2025-09-04_demand-presentation/index.html#the-national-elicitation-exercise",
+    "title": "Transforming Hospital Planning with an Open-Source Demand Model",
+    "section": "The national elicitation exercise",
+    "text": "The national elicitation exercise"
+  },
+  {
     "objectID": "presentations/2025-09-04_demand-presentation/index.html#inputs",
     "href": "presentations/2025-09-04_demand-presentation/index.html#inputs",
     "title": "Transforming Hospital Planning with an Open-Source Demand Model",
@@ -4313,11 +4320,74 @@
     "text": "Big list of technical sounding words coming up…\n\nSQL -&gt; databricks\nAzure compute (Docker)\nAzure BLOB storage\nPython for the model\nR for reporting/ dashboards\nQuarto for documentation"
   },
   {
+    "objectID": "presentations/2025-09-04_demand-presentation/index.html#thats-what-we-did--how-did-we-do-it",
+    "href": "presentations/2025-09-04_demand-presentation/index.html#thats-what-we-did--how-did-we-do-it",
+    "title": "Transforming Hospital Planning with an Open-Source Demand Model",
+    "section": "That’s what we did- how did we do it?",
+    "text": "That’s what we did- how did we do it?"
+  },
+  {
+    "objectID": "presentations/2025-09-04_demand-presentation/index.html#agile",
+    "href": "presentations/2025-09-04_demand-presentation/index.html#agile",
+    "title": "Transforming Hospital Planning with an Open-Source Demand Model",
+    "section": "Agile!",
+    "text": "Agile!\n\nWe are not doing “proper” scrum\nProduct owner, scrum master, everyone else\nFive week sprints with a one week recovery run between each one\nSprint planning, sprint catchup, sprint retro"
+  },
+  {
+    "objectID": "presentations/2025-09-04_demand-presentation/index.html#sprint-retro",
+    "href": "presentations/2025-09-04_demand-presentation/index.html#sprint-retro",
+    "title": "Transforming Hospital Planning with an Open-Source Demand Model",
+    "section": "Sprint retro",
+    "text": "Sprint retro\n\nWhat went well, what could have gone better, and what to improve next time\nLooking at process, not blaming individuals\nRequires maturity and trust to bring up issues, and to respond to them in a constructive way\nShould agree at the end on one process improvement which goes in the next sprint\nWe’ve had some really, really good retros and I think it’s a really important process for a team"
+  },
+  {
+    "objectID": "presentations/2025-09-04_demand-presentation/index.html#what-did-scrum-give-the-team",
+    "href": "presentations/2025-09-04_demand-presentation/index.html#what-did-scrum-give-the-team",
+    "title": "Transforming Hospital Planning with an Open-Source Demand Model",
+    "section": "What did scrum give the team?",
+    "text": "What did scrum give the team?\n\nSimultaneous releases of linked repos\nThe team works autonomously in the sprint\nBetter conversations about “no”\nThe planning and retro process improves the team’s processes, not just the code"
+  },
+  {
+    "objectID": "presentations/2025-09-04_demand-presentation/index.html#product-owner",
+    "href": "presentations/2025-09-04_demand-presentation/index.html#product-owner",
+    "title": "Transforming Hospital Planning with an Open-Source Demand Model",
+    "section": "Product owner",
+    "text": "Product owner\n\nMy lessson- get out the way\nA better connection between high level and low level planning\nClear release dates and responsibilities\nClear what I should be doing"
+  },
+  {
+    "objectID": "presentations/2025-09-04_demand-presentation/index.html#agility",
+    "href": "presentations/2025-09-04_demand-presentation/index.html#agility",
+    "title": "Transforming Hospital Planning with an Open-Source Demand Model",
+    "section": "Agility",
+    "text": "Agility\n\nThis project was agile whether we liked it or not!\nMy 2022 agile definition:\n\nCustomers can’t make up their minds\nIt’s hard to design software all at once\nContinuous delivery keeps customers happy"
+  },
+  {
+    "objectID": "presentations/2025-09-04_demand-presentation/index.html#some-highlights-from-the-agile-manifesto",
+    "href": "presentations/2025-09-04_demand-presentation/index.html#some-highlights-from-the-agile-manifesto",
+    "title": "Transforming Hospital Planning with an Open-Source Demand Model",
+    "section": "Some highlights from The agile manifesto",
+    "text": "Some highlights from The agile manifesto\n\n“Welcome changing requirements, even late in development”\n“At regular intervals, the team reflects on how to become more effective, then tunes and adjusts its behavior accordingly”\n“Continuous attention to technical excellence and good design enhances agility”\n“Simplicity- the art of maximizing the amount of work not done- is essential”"
+  },
+  {
+    "objectID": "presentations/2025-09-04_demand-presentation/index.html#how-scrum-helped",
+    "href": "presentations/2025-09-04_demand-presentation/index.html#how-scrum-helped",
+    "title": "Transforming Hospital Planning with an Open-Source Demand Model",
+    "section": "How scrum helped",
+    "text": "How scrum helped\n\nThose shaping the project wanted to be able to make quick changes- and see the long term plan\nAgility is a mindset, a mode of practice\nIf anything we were actually too agile\nBeing agile is all about being able to review and make decisions frequently\nBut it isn’t about changing what you’re doing all the time\nGood code and good teams are ready to change direction- whether they change or not"
+  },
+  {
+    "objectID": "presentations/2025-09-04_demand-presentation/index.html#product",
+    "href": "presentations/2025-09-04_demand-presentation/index.html#product",
+    "title": "Transforming Hospital Planning with an Open-Source Demand Model",
+    "section": "Product!",
+    "text": "Product!"
+  },
+  {
     "objectID": "presentations/2025-09-04_demand-presentation/index.html#the-future",
     "href": "presentations/2025-09-04_demand-presentation/index.html#the-future",
     "title": "Transforming Hospital Planning with an Open-Source Demand Model",
     "section": "The future",
-    "text": "The future\n\nSUS"
+    "text": "The future\n\nNational and regional model runs\nBring your own data (FDP?)\nUnderstanding more about categories of potentially mitigable activity, who thinks what’s possible, and why it matters"
   },
   {
     "objectID": "presentations/index.html",

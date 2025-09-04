@@ -1,0 +1,224 @@
+---
+title: "Transforming Hospital Planning with an Open-Source Demand Model"
+author: 
+  - "[Chris Beeley](mailto:chris.beeley1@nhs.net)"
+date: 2025-09-04
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, ../su_presentation.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
+    footer: |
+      Learn more about [The Strategy Unit](https://www.strategyunitwm.nhs.uk/)
+---
+
+## Prologue
+
+* There is much to say
+
+<img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExeG96cmx4ejl3aHhwcml1ZzZjOXlyNGxxcHM1YjZkY3c2ODM2bWpqMiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/WbLKaRtrGnqLeR7K9T/giphy.gif" alt="Gif of a cat saying 'I can talk. I have so much to say'" height="400">
+
+## Intro
+
+*	**Why** did we build this [model](https://www.strategyunitwm.nhs.uk/new-hospital-programme-demand-model)
+*	**What** does it do
+*	**How** was it created
+*	What did we learn **when** we were building it
+*	**Who** else might use the model in the future
+* (Sorry for the last two I saw a pattern and dug in)
+
+## Why?
+
+* New Hospital Programme came to the Strategy Unit c.2020
+* Predict demand for the future of the hospitals c.2041
+* We built on existing work and knowledge in the SU as well as the literature
+* I was not here!
+
+## The landscape
+
+* Lots of models
+* Lots of consultancy support
+* Lots of repetition / duplication
+* BUT no consistency about definitions
+* Methodological progress is slow
+* Proprietary models means progress is not shared
+
+## Common issues with models
+
+* Handling uncertainty
+* Unnecessary aggregation
+* Poor coverage of some changes
+* Systematic bias in model assumptions
+* Lack of ownership and auditability of assumptions
+
+## The principles
+
+* Probabilistic
+* [Transparent and open source](https://www.strategyunitwm.nhs.uk/news/transforming-hospital-planning-open-source-demand-and-capacity-model)
+* Collaborative
+* Reproducible
+* By the NHS, for the NHS
+* [(And now award winning)](https://www.strategyunitwm.nhs.uk/news/strategy-unit-demand-model-wins-prestigious-florence-nightingale-award)
+
+## So what does it do?
+
+<img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMTc3dXMyanF0cjJoem16bjhieDZ5djRqZ2RoNDd2eG43aDg3aXkweSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l2JdSlA1a1zKVAyze/giphy.gif" alt="'Gif of Homer Simpson pressing a button and saying 'do something cool'" height="500">
+
+## The big picture
+
+* Demographic change
+* Non-demographic change
+* Categories of potentially mitigable activity
+* More to come
+
+## Demographic change
+
+* Population size
+* Population age profile
+* Age specific health status
+
+## Non-demographic change
+
+* Medical interventions
+* Clinical standards
+* Patient expectations
+
+## Categories of potentially mitigable activity
+
+* Admission avoidance
+* Length of stay reduction
+* Conversion to day procedure/ tele
+* Ninety two and counting (will have a look later)
+
+## The products
+
+* [The model](https://github.com/The-Strategy-Unit/nhp_model)! 
+* [Parameter setting and model run interface](https://github.com/The-Strategy-Unit/nhp_inputs)
+* [Interactive results explorer](https://github.com/The-Strategy-Unit/nhp_outputs)
+* [Documentation](https://connect.strategyunitwm.nhs.uk/nhp/project_information/)
+* Categories of potentially mitigable activity (CPMA- no link but more on this later)
+* A set of people who have successfully used the model in a business case
+* The ability to run the model at regional/ national level
+
+## The model
+
+* Sample the parameters (assume normal)
+* Calculate demand at IP, OP, A&E level
+* Do this 256 times and plot the distribution
+* The results are conceptually at row level, but not in practice
+
+## The national elicitation exercise
+
+<img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGJsbmsweGgxbmkybnJ2OGRicmJrdTdla2FrdnRkc3FvYzNtdHVqZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/z6qMVL8tjB0y31cAAr/giphy.gif" alt="Gif of Chuck Norris saying 'What do you think'" height="400">
+
+## It's a whole separate talk...
+
+* We asked experts to predict likely levels of mitigation in the future, in a structured way
+* We also made some whizzy data science tools to do it with- which ended up being really important and useful
+* It's not my area so I won't say any more- this was Prof Mohammed and team
+* We show these values to trusts to help them make better guesses about the future
+
+## Inputs
+
+* Let's break a rule
+
+<img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZHQ1OXBkZXE4ODJjdjg2cG43emdjbzU0aXA2N3hlb2xmbTA4Z2tsMCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/nbAVlpT77G6ax8cV1D/giphy.gif" alt="Gif of a man saying 'I swear I never do this'" height="400">
+
+## Outputs
+
+* We've come this far, let's break the rule again
+* Note to self- if the vibe seems right kick off an "Analysis versus dashboards" bunfight
+
+## Now for the (data) science
+
+<img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExMjVkNTFoMXNrb3kya3c1aHMzc3VwNGtmbmNkOWJmeHhhemE3NG8wbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oKIPnAiaMCws8nOsE/giphy.gif" alt="Gif of a cat sitting on a keyboard with code on the screen" height="500">
+
+## Big list of technical sounding words coming up...
+
+* SQL -> databricks
+* Azure compute (Docker)
+* Azure BLOB storage
+* Python for the model
+* R for reporting/ dashboards
+* Quarto for documentation
+
+## That's what we did- how did we do it?
+
+<img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExeW5rdmN5c3g3d2ZjdnBsZ2dqaHN3cm5zcm83Yml0MDN5NTV1cW90YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Tjq0NVePKbXUDqFHxC/giphy.gif" alt="Gif of a cartoon character saying 'Guys, we need a plan'" height="500">
+
+## Agile!
+
+* We are not doing "proper" scrum
+* Product owner, scrum master, everyone else
+* Five week sprints with a one week recovery run between each one
+* Sprint planning, sprint catchup, sprint retro
+
+## Sprint retro
+
+* What went well, what could have gone better, and what to improve next time
+* Looking at process, not blaming individuals
+* Requires maturity and trust to bring up issues, and to respond to them in a constructive way
+* Should agree at the end on one process improvement which goes in the next sprint
+* We've had some really, really good retros and I think it's a really important process for a team
+
+## What did scrum give the team?
+
+* Simultaneous releases of linked repos
+* The team works autonomously in the sprint
+* Better conversations about "no"
+* The planning and retro process improves the team's processes, not just the code
+
+## Product owner
+
+* My lessson- get out the way
+* A better connection between high level and low level planning
+* Clear release dates and responsibilities
+* Clear what I should be doing
+
+## Agility
+
+* This project was agile whether we liked it or not!
+* My 2022 agile definition:
+  * Customers can't make up their minds
+  * It's hard to design software all at once
+  * Continuous delivery keeps customers happy
+
+## [Agile manifesto](https://agilemanifesto.org/) highlights
+
+* "Welcome changing requirements, even late in development"
+* "At regular intervals, the team reflects on how to become more effective, then tunes and adjusts its behavior accordingly"
+* "Continuous attention to technical excellence and good design enhances agility"
+* "Simplicity- the art of maximizing the amount of work not done- is essential"
+
+## How scrum helped
+
+* Those shaping the project wanted to be able to make quick changes- and see the long term plan
+* Agility is a mindset, a mode of practice
+* If anything we were actually **too** agile
+* Being agile is all about being able to review and make decisions frequently
+* But it isn't about changing what you're doing all the time
+* Good code and good teams are ready to change direction- whether they change or not
+
+## Product!
+
+<img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExc250ZGQ3dGFvbWVhcndnYWMzdzducW80dnBycWZxYzJlbWFrZ2x6byZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/QPWtttnOYgoyA/giphy.gif" alt="Gif from the movie 'Taken' with the main character saying 'I don't know who you are, I don't know what you want'" height="500">
+
+## What do we want? 
+
+* Prioritised roadmap with appropriate stakeholder engagement!...
+* (Fairly) early days
+* We need to have structured and useful conversations with our users
+* We need to imagine other users for the products we already have and for the products we might make
+* We need to think of what we do not as a set of analytical tools or products but as a service, something that help people in the real world do their real job
+
+## The future
+
+* National and regional model runs
+* Bring your own data (FDP?)
+* Understanding more about categories of potentially mitigable activity, who thinks what's possible, and why it matters
+* Increasing understanding of the shift from hospital to the community

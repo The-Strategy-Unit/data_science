@@ -188,7 +188,7 @@ format:
   * It's hard to design software all at once
   * Continuous delivery keeps customers happy
 
-## Some highlights from [The agile manifesto](https://agilemanifesto.org/)
+## [Agile manifesto](https://agilemanifesto.org/) highlights
 
 * "Welcome changing requirements, even late in development"
 * "At regular intervals, the team reflects on how to become more effective, then tunes and adjusts its behavior accordingly"

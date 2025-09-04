@@ -1,6 +1,5 @@
 ---
 title: "Transforming Hospital Planning with an Open-Source Demand Model"
-subtitle: "Thanks to Steven Wyatt, Jake Parsons, Tom Jemmett and others too numerous to name for materials/ inspiration"
 author: 
   - "[Chris Beeley](mailto:chris.beeley1@nhs.net)"
 date: 2025-09-04
@@ -60,10 +59,11 @@ format:
 ## The principles
 
 * Probabilistic
-* Transparent and open source
+* [Transparent and open source](https://www.strategyunitwm.nhs.uk/news/transforming-hospital-planning-open-source-demand-and-capacity-model)
 * Collaborative
 * Reproducible
 * By the NHS, for the NHS
+* [(And now award winning)](https://www.strategyunitwm.nhs.uk/news/strategy-unit-demand-model-wins-prestigious-florence-nightingale-award)
 
 ## So what does it do?
 

@@ -213,7 +213,7 @@ format:
 * Prioritised roadmap with appropriate stakeholder engagement!...
 * (Fairly) early days
 * We need to have structured and useful conversations with our users
-* We also need to imagine other users for the products we already have and for the products we might make in the future
+* We need to imagine other users for the products we already have and for the products we might make
 * We need to think of what we do not as a set of analytical tools or products but as a service, something that help people in the real world do their real job
 
 ## The future

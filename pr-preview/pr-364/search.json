@@ -1607,7 +1607,7 @@
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r---flows",
     "title": "System Dynamics in health and care",
     "section": "in R - flows",
-    "text": "in R - flows\nEasy to do with count, or group_by and summarise\n\n\nadmit_d &lt;- spell_dates |&gt;\n  group_by(date_admit) |&gt;\n  count(date_admit)\n\nhead(admit_d)\n\n\n# A tibble: 6 × 2\n# Groups:   date_admit [6]\n  date_admit     n\n  &lt;date&gt;     &lt;int&gt;\n1 2022-01-01    21\n2 2022-01-02    28\n3 2022-01-03    22\n4 2022-01-04    24\n5 2022-01-05    24\n6 2022-01-06    25"
+    "text": "in R - flows\nEasy to do with count, or group_by and summarise\n\n\nadmit_d &lt;- spell_dates |&gt;\n  group_by(date_admit) |&gt;\n  count(date_admit)\n\nhead(admit_d)\n\n\n# A tibble: 6 × 2\n# Groups:   date_admit [6]\n  date_admit     n\n  &lt;date&gt;     &lt;int&gt;\n1 2022-01-01    22\n2 2022-01-02    24\n3 2022-01-03    27\n4 2022-01-04    24\n5 2022-01-05    25\n6 2022-01-06    32"
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r---occupancy",
@@ -1628,7 +1628,7 @@
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods---flows",
     "title": "System Dynamics in health and care",
     "section": "Longer Time Periods - flows",
-    "text": "Longer Time Periods - flows\nUse lubridate::floor_date to generate the date at start of week/month\n\nadmit_wk &lt;- spell_dates |&gt;\n  mutate(\n    week_start = floor_date(\n      date_admit,\n      unit = \"week\",\n      week_start = 1 # start week on Monday\n    )\n  ) |&gt;\n  count(week_start) # could add other parameters such as provider code, TFC etc\n\nhead(admit_wk)\n\n\n\n# A tibble: 6 × 2\n  week_start     n\n  &lt;date&gt;     &lt;int&gt;\n1 2021-12-27    49\n2 2022-01-03   178\n3 2022-01-10   188\n4 2022-01-17   187\n5 2022-01-24   207\n6 2022-01-31   183\n\n\n\nMight run SD model in weeks or months - e.g. months for care homes Use lubridate to create new variable with start date of week/month/year etc"
+    "text": "Longer Time Periods - flows\nUse lubridate::floor_date to generate the date at start of week/month\n\nadmit_wk &lt;- spell_dates |&gt;\n  mutate(\n    week_start = floor_date(\n      date_admit,\n      unit = \"week\",\n      week_start = 1 # start week on Monday\n    )\n  ) |&gt;\n  count(week_start) # could add other parameters such as provider code, TFC etc\n\nhead(admit_wk)\n\n\n\n# A tibble: 6 × 2\n  week_start     n\n  &lt;date&gt;     &lt;int&gt;\n1 2021-12-27    46\n2 2022-01-03   187\n3 2022-01-10   186\n4 2022-01-17   210\n5 2022-01-24   176\n6 2022-01-31   203\n\n\n\nMight run SD model in weeks or months - e.g. months for care homes Use lubridate to create new variable with start date of week/month/year etc"
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods---occupancy",
@@ -4369,11 +4369,11 @@
     "text": "Agility\n\nThis project was agile whether we liked it or not!\nMy 2022 agile definition:\n\nCustomers can’t make up their minds\nIt’s hard to design software all at once\nContinuous delivery keeps customers happy"
   },
   {
-    "objectID": "presentations/2025-09-04_demand-presentation/index.html#some-highlights-from-the-agile-manifesto",
-    "href": "presentations/2025-09-04_demand-presentation/index.html#some-highlights-from-the-agile-manifesto",
+    "objectID": "presentations/2025-09-04_demand-presentation/index.html#agile-manifesto-highlights",
+    "href": "presentations/2025-09-04_demand-presentation/index.html#agile-manifesto-highlights",
     "title": "Transforming Hospital Planning with an Open-Source Demand Model",
-    "section": "Some highlights from The agile manifesto",
-    "text": "Some highlights from The agile manifesto\n\n“Welcome changing requirements, even late in development”\n“At regular intervals, the team reflects on how to become more effective, then tunes and adjusts its behavior accordingly”\n“Continuous attention to technical excellence and good design enhances agility”\n“Simplicity- the art of maximizing the amount of work not done- is essential”"
+    "section": "Agile manifesto highlights",
+    "text": "Agile manifesto highlights\n\n“Welcome changing requirements, even late in development”\n“At regular intervals, the team reflects on how to become more effective, then tunes and adjusts its behavior accordingly”\n“Continuous attention to technical excellence and good design enhances agility”\n“Simplicity- the art of maximizing the amount of work not done- is essential”"
   },
   {
     "objectID": "presentations/2025-09-04_demand-presentation/index.html#how-scrum-helped",

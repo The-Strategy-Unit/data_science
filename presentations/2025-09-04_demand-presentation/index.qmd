@@ -208,8 +208,9 @@ format:
 
 <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExc250ZGQ3dGFvbWVhcndnYWMzdzducW80dnBycWZxYzJlbWFrZ2x6byZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/QPWtttnOYgoyA/giphy.gif" alt="Gif from the movie 'Taken' with the main character saying 'I don't know who you are, I don't know what you want'" height="500">
 
-## What do we want? Prioritised roadmap with appropriate stakeholder engagement!...
+## What do we want? 
 
+* Prioritised roadmap with appropriate stakeholder engagement!...
 * (Fairly) early days
 * We need to have structured and useful conversations with our users
 * We also need to imagine other users for the products we already have and for the products we might make in the future

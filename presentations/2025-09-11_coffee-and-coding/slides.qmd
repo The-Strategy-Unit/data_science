@@ -4,11 +4,14 @@ subtitle: "Principles and Practices for Performant Code"
 author: "Eirini & Rhian, DS @ SU"
 format:
   revealjs:
+    #theme: [default, ../su_presentation.scss]
     theme: dark
     code-fold: true
     code-overflow: wrap
     font-size: 0.7em
-jupyter: python3
+execute: 
+  eval: false
+  engine: jupyter
 ---
 
 ## Agenda
@@ -19,9 +22,15 @@ jupyter: python3
 - **Optimising Loops**: When you should use them
 - **Beyond Basics**: Tools for further optimisation
 
-## Measuring Performance
+# Measuring Performance
 
-## Measuring Performance: Timing
+## Timing
+
+- How long does it take?
+- Can compare approaches?
+- When will your code finish running when you scale it up?
+ 
+## 🐍 Timing
 
 ```{python}
 #| echo: true
@@ -44,7 +53,34 @@ execution_time = timeit('sum_of_squares()',
 print(f"Average execution time: {execution_time/1000:.6f}s")
 ```
 
-## Measuring Performance: Profiling (1)
+
+## 🦜 Timing 
+
+- `system.time()` for quick one-off timing
+- {benchmark} for parameterised comparisons
+
+```{r}
+base = function(n) 0:n
+seq1 = function(n) seq(0, n)
+seq2 = function(n) seq(0, n, by = 1)
+
+df = bench::press(
+n = c(1e5, 1e6, 1e7),
+bench::mark(base(n), seq1(n), seq2(n))
+)
+
+ggplot2::autoplot(df)
+```
+
+
+## Profiling
+
+> *"We should forget about small efficiencies, say about 97% of the time: premature optimization is the root of all evil."*
+ - Donald Knuth
+ 
+- Identify the slowest functions
+
+## 🐍 Profiling
 
 ```{python}
 #| echo: true
@@ -67,67 +103,22 @@ ps.print_stats(5)
 print(s.getvalue())
 ```
 
-## Measuring Performance: Profiling (2)
+## 🦜 Profiling
 
-**Understanding the output:**
+- Use [{profvis}](https://profvis.r-lib.org/)
+- [Examples](https://profvis.r-lib.org/articles/examples.html)
+- [Visualising profiles in R](https://adv-r.hadley.nz/perf-measure.html#visualising-profiles)
 
-- `ncalls`: No. of times the function was called directly
-- `tottime`: sum_of_squares consumed 0.000 seconds in its own code
-- `cumtime`: Total time including nested calls
-- `percall`: The bottleneck(s) i.e. `{built-in method builtins.sum}` and the generator expression (`i * i for i in range(n)`)
+![Screenshot of a profvis session](https://adv-r.hadley.nz/screenshots/performance/flamegraph.png)
 
-## Performance Tweaks
+# Performance Tweaks
 
-## Performance Tweak: String Concatenation
+## Object growth
 
-```{python}
-#| echo: true
-#| code-fold: show
-from timeit import timeit  # Import timing functionality
+RD to introduce general
 
-size = 100_000
 
-def join_method(): # Fast - O(n) complexity with clear intent
-    return "".join("Hello World! " for _ in range(size))  # Single operation
-
-def concat_method(): # Slow - O(n²) complexity
-    result = ""
-    for _ in range(size):
-        result += "Hello World! "  # Creates new string each time
-    return result
-
-t1 = timeit(join_method, number=100)  # Time the fast method
-t2 = timeit(concat_method, number=100)  # Time the slow method
-print(f"join: {t1:.6f}s\n+=: {t2:.6f}s")
-print(f"Speedup: {t2/t1:.1f}x faster")
-```
-
-## Performance Tweak: Appropriate Data Structures
-
-```{python}
-#| echo: true
-#| code-fold: show
-from timeit import timeit  # For timing the operations
-import random  # To select a random lookup value
-
-size = 100_000
-
-# Setup test data
-data = list(range(size))  # A list with 100,000 items
-lookup_val = random.choice(data)  # Random value to find
-lookup_set = set(data)  # Same data as a set for O(1) lookup
-
-# Time list lookup (O(n) - must check each element)
-t1 = timeit(lambda: lookup_val in data, number=100)
-
-# Time set lookup (O(1) - constant time hash table)
-t2 = timeit(lambda: lookup_val in lookup_set, number=100)
-
-print(f"List lookup: {t1:.6f}s\nSet lookup: {t2:.6f}s")
-print(f"Speedup: {t1/t2:.1f}x faster")
-```
-
-## Performance Tweak: Pre-allocating Arrays
+## 🐍 Pre-allocating Arrays
 
 ```{python}
 #| echo: true
@@ -154,6 +145,69 @@ t2 = timeit(preallocated_array, number=100)
 print(f"Growing list: {t1:.6f}s\nPre-allocated: {t2:.6f}s")
 print(f"Speedup: {t2/t1:.1f}x faster")
 ```
+
+## 🦜 Pre-allocating Arrays
+
+- Show example of benchmark with pre-allocation compared to none
+
+## Appropriate Data Structures
+
+- Numpy array faster than a python list
+- Set is _much_ faster than list* but only keeps _unique elements_
+- Just doing numeric calculations? Can you use a matrix?
+
+## 🐍 Appropriate Data Structures
+
+```{python}
+#| echo: true
+#| code-fold: show
+from timeit import timeit  # For timing the operations
+import random  # To select a random lookup value
+
+size = 100_000
+
+# Setup test data
+data = list(range(size))  # A list with 100,000 items
+lookup_val = random.choice(data)  # Random value to find
+lookup_set = set(data)  # Same data as a set for O(1) lookup
+
+# Time list lookup (O(n) - must check each element)
+t1 = timeit(lambda: lookup_val in data, number=100)
+
+# Time set lookup (O(1) - constant time hash table)
+t2 = timeit(lambda: lookup_val in lookup_set, number=100)
+
+print(f"List lookup: {t1:.6f}s\nSet lookup: {t2:.6f}s")
+print(f"Speedup: {t1/t2:.1f}x faster")
+```
+
+## 🦜 Appropriate Data Structures
+
+## 🐍 String Concatenation
+
+```{python}
+#| echo: true
+#| code-fold: show
+from timeit import timeit
+
+size = 100_000
+
+def join_method(): # Fast - O(n) complexity with clear intent
+    return "".join("Hello World! " for _ in range(size))  # Single operation
+
+def concat_method(): # Slow - O(n²) complexity
+    result = ""
+    for _ in range(size):
+        result += "Hello World! "  # Creates new string each time
+    return result
+
+t1 = timeit(join_method, number=100)
+t2 = timeit(concat_method, number=100) 
+print(f"join: {t1:.6f}s\n+=: {t2:.6f}s")
+print(f"Speedup: {t2/t1:.1f}x faster")
+```
+
+# Loops vs. Vectorisation vs. Functional
 
 ## Loops vs. Vectorisation vs. Functional
 
@@ -280,7 +334,18 @@ for number in count_up_to(5):
 - **Loops**: Complex logic, small datasets, or when readability matters
 - **Generators**: Process large datasets, that shouldn't be loaded entirely into memory
 
-## Loop Optimisation Techniques
+# Loop Optimisation
+
+## Optimisation Techniques
+
+- Define anything you can _outside_ the loop
+- Consider locally assigning common functions
+- I/O slows loops
+- Look out for `print` or `plot` 
+- Use argument for "chatty / "quiet"
+- Proper logging instead of printing
+
+## 🐍 Optimisation Techniques
 
 ```{python}
 #| echo: true
@@ -315,19 +380,21 @@ print(f"Regular: {t1:.6f}s\nOptimised: {t2:.6f}s")
 print(f"Speedup: {t1/t2:.1f}x faster")
 ```
 
-## Best Practices Summary
+## 🦜 Optimisation Techniques
 
-1. **Measure first** - profile before optimising
-2. **Use appropriate data structures** for the task
-3. **Vectorise numerical operations** when possible
-4. **Avoid premature optimisation** - readable code first
-5. **Know when to use loops, comprehensions, or functional styles**
 
-[Effective Python, The Book: Third Edition, Brett Slatkin](https://effectivepython.com/)
+# Beyond Basics
 
-# Appendix: Beyond Basics
+## Rewrite in C++
 
-## Appendix: Just-in-Time Compilation (1)
+- If you've got a function which is a real bottleneck consider rewriting it in C++
+
+- 🐍 [Cython](https://cython.org/) to connect C++ and python
+
+- 🦜 [{rcpp}](https://adv-r.hadley.nz/rcpp.html) to connect C++ and R
+
+
+## Just-in-Time Compilation (1)
 
 ```{python}
 #| echo: true
@@ -356,7 +423,7 @@ print(f"Python: {t1:.6f}s\nNumba: {t2:.6f}s")
 print(f"Speedup: {t1/t2:.1f}x faster")
 ```
 
-## Appendix: Just-In-Time Compilation (2)
+## Just-In-Time Compilation (2)
 
 **What is JIT?**
 
@@ -366,6 +433,51 @@ print(f"Speedup: {t1/t2:.1f}x faster")
 - Can provide 10-100x speed-ups for numerical code
 - Works especially well with NumPy operations
 - Requires minimal code changes (just add decorators)
+
+
+## Parallel processing
+
+:::: {.columns}
+::: {.column}
+### Pros
+
+- Larger datasets
+
+- Speed
+
+- It's easy to set up
+:::
+::: {.column}
+
+### Cons
+
+- Debugging is harder
+
+- Can be OS specific
+
+- Many statistical techniques are fundamentally serial
+
+- Can be slower than serial execution due to overheads
+:::
+::::
+
+
+## Best Practices Summary
+
+1. **Measure first** - profile before optimising
+2. **Use appropriate data structures** for the task
+3. **Vectorise numerical operations** when possible
+4. **Avoid premature optimisation** - readable code first
+5. **Know when to use loops, comprehensions, or functional styles**
+
+
+## 📚 Resources
+
+- [Efficient R](https://csgillespie.github.io/efficientR/)
+- [Effective Python, The Book: Third Edition, Brett Slatkin](https://effectivepython.com/)
+- [Advanced R](https://adv-r.hadley.nz/index.html)
+
+# Appendix
 
 ## Appendix: Cython (Basics)
 
@@ -449,3 +561,5 @@ cython -a fast.pyx  # Generates fast.c and HTML report
 gcc -shared -fPIC -o fast.so fast.c \
     $(python3-config --includes) $(python3-config --ldflags)
 ```
+
+

@@ -53,7 +53,7 @@ print(f"Average execution time: {execution_time/1000:.6f}s")
 ## 🦜 Timing
 
 - `system.time()` for quick one-off timing
-- {benchmark} for parameterised comparisons
+- {bench} for parameterised comparisons
 
 ```{r}
 base = function(n) 0:n
@@ -102,18 +102,35 @@ profiler.print()
 
 ## 🦜 Profiling
 
+:::: {.columns}
+
+::: {.column }
+
 - Use [{profvis}](https://profvis.r-lib.org/)
 - [Examples](https://profvis.r-lib.org/articles/examples.html)
 - [Visualising profiles in R](https://adv-r.hadley.nz/perf-measure.html#visualising-profiles)
 
-![Screenshot of a profvis session](https://adv-r.hadley.nz/screenshots/performance/flamegraph.png)
+
+:::
+
+
+::: {.column}
+![](https://adv-r.hadley.nz/screenshots/performance/flamegraph.png){fig-alt="Screenshot of a profvis session"}
+:::
+
+::::
+
 
 # Performance Tweaks
 
 ## Object growth
 
-RD to introduce general
+::: incremental
+It starts small... 🥎 
 
+- ![](garage.jpg){fig-alt="A garage full of bikes and sports equipment .fragment width="70%}
+:::
+ 
 
 ## 🐍 Pre-allocating Arrays
 
@@ -145,7 +162,40 @@ print(f"Speedup: {t2/t1:.1f}x faster")
 
 ## 🦜 Pre-allocating Arrays
 
-- Show example of benchmark with pre-allocation compared to none
+
+:::: {.columns}
+
+::: {.column width=70%}
+
+```{r}
+n = 100000
+
+myvec = NULL
+for (i in 1:n) {
+myvec = c(myvec, i)
+}
+
+myvec = numeric(n)
+for (i in 1:n) {
+myvec[i] = i
+}
+
+bench::mark(method1(n), method2(n))
+```
+
+:::
+
+
+::: {.column width=30%}
+| n    | 1     | 2     |
+|------|-------|-------|
+| 10^5 | 0.208 | 0.024 |
+| 10^6 | 25.50 | 0.220 |
+| 10^7 | 3827  | 2.212 |
+:::
+
+::::
+
 
 ## Appropriate Data Structures
 
@@ -165,7 +215,7 @@ print(f"Speedup: {t2/t1:.1f}x faster")
 
 # Loops vs. Vectorisation vs. ...
 
-## Loops
+## 🐍 Loops
 
 ```{python}
 #| echo: true
@@ -190,7 +240,7 @@ print(f"Standard loop: {t1:.6f}s\nList comprehension: {t2:.6f}s")
 print(f"Speedup: {t1/t2:.1f}x faster")
 ```
 
-## Vectorisation with NumPy
+## 🐍 Vectorisation with NumPy
 
 ```{python}
 #| echo: true
@@ -213,7 +263,7 @@ print(f"Python: {t1:.6f}s\nNumPy: {t2:.6f}s")
 print(f"Speedup: {t1/t2:.1f}x faster")
 ```
 
-## Vectorisation with Pandas
+## 🐍 Vectorisation with Pandas
 
 ```{python}
 #| echo: true
@@ -238,7 +288,40 @@ print(f"apply: {t1:.6f}s\nvectorised: {t2:.6f}s")
 print(f"Speedup: {t1/t2:.1f}x faster")
 ```
 
-## Functional Programming
+## 🦜 Vectorisation
+
+:::: {.columns}
+
+::: {.column .fragment}
+
+```{r}
+hits = 0
+for (i in 1:n) {
+u1 = runif(1)
+u2 = runif(1)
+if (u1^2 > u2)
+hits = hits + 1
+}
+return(hits / n)
+```
+
+:::
+
+
+::: {.column .fragment}
+
+```{r}
+hits = sum(runif(n) ^ 2 > runif(n))
+return(hits / n)
+```
+
+:::
+
+::::
+
+
+
+## 🐍 Functional Programming
 
 ```{python}
 #| echo: true
@@ -254,7 +337,7 @@ print(f"map: {t1:.6f}s\ncomprehension: {t2:.6f}s")
 print(f"Speedup: {t1/t2:.1f}x faster")
 ```
 
-## Generators
+## 🐍 Generators
 
 ```{python}
 #| echo: true
@@ -330,6 +413,47 @@ print(f"Speedup: {t1/t2:.1f}x faster")
 ## 🦜 Optimisation Techniques
 
 
+:::: {.columns}
+
+::: {.column .fragment}
+
+```{r}
+# Distances per day for 3 runners
+km <- matrix(
+  c(5, 7, 10, 6, 8, 12, 7.5, 9, 11,
+    5, 10, 8, 3, 10, 6), 
+  nrow = 5, byrow = TRUE
+)
+
+miles <- matrix(NA, nrow = nrow(km),
+                     ncol = ncol(km))
+
+# loop over days
+for (i in seq_len(nrow(km))) {
+  km_to_miles <- 0.621371                     
+  miles[i, ] <- km[i, ] * km_to_miles
+}
+
+```
+
+:::
+
+
+::: {.column .fragment}
+
+```{r}
+km_to_miles <- 0.621371    
+
+# loop over runners
+for (j in seq_len(ncol(km))) {           
+  miles[, j] <- km[, j] * km_to_miles
+}
+```
+
+:::
+
+::::
+
 # Beyond the Basics
 
 ## Rewrite in C++
@@ -341,7 +465,7 @@ print(f"Speedup: {t1/t2:.1f}x faster")
 - 🦜 [{rcpp}](https://adv-r.hadley.nz/rcpp.html) to connect C++ and R
 
 
-## Just-in-Time Compilation (1)
+## 🐍 Just-In-Time Compilation (1)
 
 ```{python}
 #| echo: true
@@ -370,7 +494,7 @@ print(f"Python: {t1:.6f}s\nNumba: {t2:.6f}s")
 print(f"Speedup: {t1/t2:.1f}x faster")
 ```
 
-## Just-In-Time Compilation (2)
+## 🐍 Just-In-Time Compilation (2)
 
 **What is JIT?**
 

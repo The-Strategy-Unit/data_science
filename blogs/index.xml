@@ -9,8 +9,64 @@
 <link>https://the-strategy-unit.github.io/data_science/blogs/</link>
 <atom:link href="https://the-strategy-unit.github.io/data_science/blogs/index.xml" rel="self" type="application/rss+xml"/>
 <description>Blogs from the Data Science Team at The Strategy Unit</description>
-<generator>quarto-1.7.34</generator>
-<lastBuildDate>Mon, 28 Jul 2025 00:00:00 GMT</lastBuildDate>
+<generator>quarto-1.8.24</generator>
+<lastBuildDate>Tue, 09 Sep 2025 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Positron for Product Owners</title>
+  <link>https://the-strategy-unit.github.io/data_science/blogs/posts/2025-09-09_positron_for_product/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2025-09-09_positron_for_product/PST-Blog-PositronforProductOwners-A.jpg" class="img-fluid" alt="A data scientist working and an inset of the Positron IDE"></p>
+<p>The clever cookies at Posit (creators of RStudio) recently released Positron, their new ‘next generation’ integrated development environment (IDE), after 2+ years of development. This software is multilingual, and will look familiar to those who have used VSCode in the past. It has been created to build upon the successes of RStudio for statistical computing and graphics, to create a seamless workflow for the development of data science projects. It’s a lovely piece of software that I’ve recently started working with and is providing me with some useful features to help in my role as a product owner. I wanted to give a little round-up of what I’ve found useful with it so far, for someone whose daily tasks differ from standard data science or analysis (but includes elements of both).</p>
+<p>Firstly, what do I mean by a ‘product owner’? I’ll keep this brief since there is already so much out there that eloquently <a href="https://www.scrum.org/resources/what-is-a-product-owner">describes this role</a> and its relationship with others in the <a href="https://agilealliance.org/agile101/">Agile</a> universe. Essentially, my job is to ensure our data science team is building the right thing, at the right time, for our customers.<br>
+The data science team’s time is spent marshalling their wizardry (as it seems to me) to write code, create packages, and curate workflows to meet the requirements for the tasks at hand. My job is to make sure those tasks are the right ones for meeting customer needs. This involves a lot of thinking about stakeholder requirements, translating them to a prioritised list of tools or functionality elements that will truly answer their questions, gathering and assessing user feedback, improving the user experience, and trying to find the sweet spot where the time, money and effort spent on development is appropriate for the value of the new thing for the customer.</p>
+<p>I’m a data scientist myself, with a background in R and Python. I love writing code and building R packages and have done so in RStudio for some time now. A product owner’s working week is more focused on planning, prioritising, prioritising again, thinking about processes, documenting decisions and so forth.<br>
+But to contribute to our team’s work I also write little bits of code, write documentation, create diagrams and infographics, undertake some QA, review PRs and so forth. Positron has made many of these elements easy and smooth. Here’s a round-up of the ways Positron is helping me with the day job:</p>
+<section id="curating-the-product-backlog" class="level2">
+<h2 class="anchored" data-anchor-id="curating-the-product-backlog">Curating the product backlog</h2>
+<p>This is probably my favourite thing about Positron. The GitHub interface in RStudio was ok, but I still found myself using the command line, which felt like it interrupted my flow of work to a degree. Positron provides for the ability to never have to leave the IDE. Once you have authenticated your GitHub account in Positron, you can click the GitHub icon in the activity panel to see all the pull requests and issues for that repo. You can create PRs from that menu too – it’s all self-explanatory and works really well. Clicking on one of your repo issues will also open it as an additional tab in the editor pane, and you can interact with it there just as you would at github.com! No need to have browsers and shells open, it’s all just there. This helps my workflow massively, allowing me to keep my train of thought going.</p>
+<p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2025-09-09_positron_for_product/image1-391x1024.png" class="img-fluid" alt="Screenshot of the Positron IDE Source Control panel" width="300"></p>
+</section>
+<section id="writing-plans-and-processes-and-sharing-them" class="level2">
+<h2 class="anchored" data-anchor-id="writing-plans-and-processes-and-sharing-them">Writing plans and processes and sharing them</h2>
+<p>Quarto, which is already bilingual, is the tool I use to write meeting notes, lists and plans, all within a locally version-controlled Quarto book. The whole book is searchable, so it’s easy to find the notes I’m looking for, and Positron makes working with Quarto very easy. Positron comes with a bootstrapped Quarto extension and the CLI is bundled with Positron, so no extra setup is needed. I can create my planning documents, with nice mermaid flow diagrams and such, and I can publish them easily from Positron to share with my team. I’ve written a package that I can use within the IDE to automatically append notes to any of the .qmd pages of my notes book. I can even create diagrams and charts in the IDE, and save them into my notes. If the diagram is complex, I can append the code chunks and output to my book too, since that’s what Quarto is great at.</p>
+<p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2025-09-09_positron_for_product/image2.png" class="img-fluid" alt="Screenshot of the Positron IDE showing a Quarto document"></p>
+<p>I love Positron’s feature that allows scrolling back through the iterations of a plot too, which makes rolling the code back to a preferred solution nice and simple.</p>
+<p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2025-09-09_positron_for_product/image3.png" class="img-fluid" alt="Screenshot of the Positron IDE plotting pane"></p>
+</section>
+<section id="testing-new-functionality-and-ux" class="level2">
+<h2 class="anchored" data-anchor-id="testing-new-functionality-and-ux">Testing new functionality and UX</h2>
+<p>I need to understand how our products are experienced by our users, so it helps me to run our apps in development locally. Using Positron allows me to use a very similar workflow to my familiar RStudio one, including using {devtools} for documenting and running package checks and using devtools::load_all() to test out new functionality locally. In addition to this, Positron makes working with tests really simple (which is saying something coming from me!). The ‘testing’ icon in the activity pane opens a dedicated interface sidebar, which neatly displays your tests and their results (provided you are in a package folder). It lets you easily rerun failing tests, see their error messages, and rerun batches of tests or all tests at once. This is a really great addition to the IDE.</p>
+<p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2025-09-09_positron_for_product/image4.png" class="img-fluid" alt="Screenshot of the Positron IDE testing pane" width="300"></p>
+</section>
+<section id="juggling-many-projects" class="level2">
+<h2 class="anchored" data-anchor-id="juggling-many-projects">Juggling many projects</h2>
+<p>I flit between projects often. Double-clicking the R Project file allows you to start a new RStudio session with the project already loaded. But there is no direct equivalent of the .Rproj file for Positron.<br>
+This is a little jarring at first, but opening a folder to begin working in a project is a familiar workflow with VSCode.<br>
+I wanted a quick and easy way to switch between projects, and have found the Project Manager Extension useful for this. It creates a new multi-folder icon in the activity pane, which when clicked gives a neat overview of saved projects (folders), which I can tag easily to bundle together related projects. Lovely!</p>
+<p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2025-09-09_positron_for_product/image5.jpg" class="img-fluid" alt="Screenshot of the Positron IDE Extension Marketplace" width="300"></p>
+</section>
+<section id="helpers-for-doing-good-data-science" class="level2">
+<h2 class="anchored" data-anchor-id="helpers-for-doing-good-data-science">Helpers for doing good data science</h2>
+<p>I don’t want to lose my skills as a data scientist; I like to dabble and make useful tools for myself, and very occasionally I get my hands dirty writing code with the team. Positron is helping me write better code, quickly, which helps me look like a data scientist (I hope!). My favourite features so far are having my code formatted automatically when I save an R or Quarto file by the excellent Air formatter (shipped as standard with Positron), using <a href="https://positron.posit.co/migrate-rstudio-code.html#r-snippets">code snippets</a> to get the syntax of common functions right first time, and the cool multi-cursor for editing in multiple places at once!</p>
+<p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2025-09-09_positron_for_product/image6.png" class="img-fluid" alt="Screenshot of the Positron settings.json file"></p>
+<p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2025-09-09_positron_for_product/Untitled-design.gif" class="img-fluid" alt="Animation showing the use of multicursor functionality" width="300"></p>
+<p>Overall, Positron feels like a nice place to be. I’m finding it to be an IDE that helps with so many aspects of being a product owner, and that can only help us to keep building the right thing at the right time.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>R</category>
+  <category>Positron</category>
+  <category>Git</category>
+  <guid>https://the-strategy-unit.github.io/data_science/blogs/posts/2025-09-09_positron_for_product/</guid>
+  <pubDate>Tue, 09 Sep 2025 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Imputing missing data</title>
   <link>https://the-strategy-unit.github.io/data_science/blogs/posts/2025-07-28_imputing-data/</link>
@@ -106,7 +162,7 @@
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># decide the number of rows to create</span></span>
 <span id="cb1-2">rows <span class="ot" style="color: #003B4F;
@@ -395,7 +451,7 @@ font-style: inherit;">5</span>, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">add_row_striping =</span> <span class="cn" style="color: #8f5902;
 background-color: null;
-font-style: inherit;">FALSE</span>)</span></code></pre></div>
+font-style: inherit;">FALSE</span>)</span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div id="fgmozmnhcz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
@@ -848,7 +904,7 @@ font-style: inherit;">FALSE</span>)</span></code></pre></div>
 }
 </style>
 
-<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
 <thead>
 <tr class="gt_col_headings header">
 <th id="age" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">age</th>
@@ -918,7 +974,7 @@ font-style: inherit;">FALSE</span>)</span></code></pre></div>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#' Function to create a density plot</span></span>
 <span id="cb2-2"><span class="co" style="color: #5E5E5E;
@@ -1540,18 +1596,18 @@ font-style: inherit;"># return the plots</span></span>
 background-color: null;
 font-style: inherit;">return</span>(plots)</span>
 <span id="cb2-163">  </span>
-<span id="cb2-164">}</span></code></pre></div>
+<span id="cb2-164">}</span></code></pre></div></div>
 </details>
 </div>
 <p>We’ll see examples comparing datasets later, but for now lets examine how <code>age</code> and <code>salary</code> are distributed among our pristine <code>complete</code> dataset.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">compare_distributions</span>(<span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">df_complete =</span> df_complete)</span></code></pre></div>
+font-style: inherit;">df_complete =</span> df_complete)</span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -1578,7 +1634,7 @@ font-style: inherit;">df_complete =</span> df_complete)</span></code></pre></div
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># take a copy of the complete data</span></span>
 <span id="cb4-2">df_missing <span class="ot" style="color: #003B4F;
@@ -1819,7 +1875,7 @@ background-color: null;
 font-style: inherit;">rows =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">is.na</span>(salary))</span>
-<span id="cb4-44">  )</span></code></pre></div>
+<span id="cb4-44">  )</span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div id="xlizkwkczz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
@@ -2272,7 +2328,7 @@ font-style: inherit;">is.na</span>(salary))</span>
 }
 </style>
 
-<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
 <thead>
 <tr class="gt_col_headings header">
 <th id="age" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">age</th>
@@ -2346,7 +2402,7 @@ font-style: inherit;">is.na</span>(salary))</span>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># remove records containing missing values</span></span>
 <span id="cb5-2">df_removal <span class="ot" style="color: #003B4F;
@@ -2368,7 +2424,7 @@ font-style: inherit;">compare_distributions</span>(<span class="at" style="color
 background-color: null;
 font-style: inherit;">df_complete =</span> df_complete, <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">df =</span> df_removal)</span></code></pre></div>
+font-style: inherit;">df =</span> df_removal)</span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -2387,7 +2443,7 @@ font-style: inherit;">df =</span> df_removal)</span></code></pre></div>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">df_average <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">df_average <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> </span>
 <span id="cb6-2">  df_missing <span class="sc" style="color: #5E5E5E;
@@ -2474,7 +2530,7 @@ font-style: inherit;">compare_distributions</span>(<span class="at" style="color
 background-color: null;
 font-style: inherit;">df_complete =</span> df_complete, <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">df =</span> df_average)</span></code></pre></div>
+font-style: inherit;">df =</span> df_average)</span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -2492,7 +2548,7 @@ font-style: inherit;">df =</span> df_average)</span></code></pre></div>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># model age and salary</span></span>
 <span id="cb7-2">model_age <span class="ot" style="color: #003B4F;
@@ -2661,7 +2717,7 @@ font-style: inherit;">compare_distributions</span>(<span class="at" style="color
 background-color: null;
 font-style: inherit;">df_complete =</span> df_complete, <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">df =</span> df_regression)</span></code></pre></div>
+font-style: inherit;">df =</span> df_regression)</span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -2679,7 +2735,7 @@ font-style: inherit;">df =</span> df_regression)</span></code></pre></div>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># let {mice} suggest an imputation method for each variable</span></span>
 <span id="cb8-2">init <span class="ot" style="color: #003B4F;
@@ -2766,7 +2822,7 @@ font-style: inherit;">compare_distributions</span>(<span class="at" style="color
 background-color: null;
 font-style: inherit;">df_complete =</span> df_complete, <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">df =</span> df_mice)</span></code></pre></div>
+font-style: inherit;">df =</span> df_mice)</span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -2790,7 +2846,7 @@ font-style: inherit;">df =</span> df_mice)</span></code></pre></div>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># list the data showing different imputation approaches</span></span>
 <span id="cb9-2">data <span class="ot" style="color: #003B4F;
@@ -3347,7 +3403,7 @@ font-style: inherit;">df =</span> df_summary_test, <span class="at" style="color
 background-color: null;
 font-style: inherit;">.measure =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"age"</span>)</span></code></pre></div>
+font-style: inherit;">"age"</span>)</span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div id="zucvoulpeb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
@@ -3866,7 +3922,7 @@ font-style: inherit;">"age"</span>)</span></code></pre></div>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># summarise the approaches for 'salary'</span></span>
 <span id="cb10-2"><span class="fu" style="color: #4758AB;
@@ -3877,7 +3933,7 @@ font-style: inherit;">df =</span> df_summary_test, <span class="at" style="color
 background-color: null;
 font-style: inherit;">.measure =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"salary"</span>)</span></code></pre></div>
+font-style: inherit;">"salary"</span>)</span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div id="mpyixsehej" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
@@ -4667,7 +4723,7 @@ Let me outline the workflow and show how to generate the token using R and the <
 <div class="cell">
 <details class="code-fold">
 <summary>show code for get_github_jwt()</summary>
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#' Get GitHub JWT for an Application</span></span>
 <span id="cb1-2"><span class="co" style="color: #5E5E5E;
@@ -4761,7 +4817,7 @@ background-color: null;
 font-style: inherit;">jwt_encode_sig</span>(claim, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">key =</span> private_key)</span>
-<span id="cb1-24">}</span></code></pre></div>
+<span id="cb1-24">}</span></code></pre></div></div>
 </details>
 </div>
 </section>
@@ -4772,7 +4828,7 @@ font-style: inherit;">key =</span> private_key)</span>
 <div class="cell">
 <details class="code-fold">
 <summary>show code for get_github_app_installation_id()</summary>
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#' Get GitHub PAT from Installation Access Token</span></span>
 <span id="cb2-2"><span class="co" style="color: #5E5E5E;
@@ -4893,7 +4949,7 @@ background-color: null;
 font-style: inherit;">1</span>]][[<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"id"</span>]]</span>
-<span id="cb2-29">}</span></code></pre></div>
+<span id="cb2-29">}</span></code></pre></div></div>
 </details>
 </div>
 </section>
@@ -4903,7 +4959,7 @@ font-style: inherit;">"id"</span>]]</span>
 <div class="cell">
 <details class="code-fold">
 <summary>show code for get_github_iat_pat()</summary>
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#' Get GitHub PAT from Installation Access Token</span></span>
 <span id="cb3-2"><span class="co" style="color: #5E5E5E;
@@ -5036,7 +5092,7 @@ background-color: null;
 font-style: inherit;">pluck</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"token"</span>)</span>
-<span id="cb3-33">}</span></code></pre></div>
+<span id="cb3-33">}</span></code></pre></div></div>
 </details>
 </div>
 </section>
@@ -5049,7 +5105,7 @@ font-style: inherit;">"token"</span>)</span>
 <div class="cell">
 <details class="code-fold">
 <summary>show code for get_repos()</summary>
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#' Get GitHub Repositories for an organisation</span></span>
 <span id="cb4-2"><span class="co" style="color: #5E5E5E;
@@ -5249,12 +5305,12 @@ background-color: null;
 font-style: inherit;">map_chr</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"name"</span>)</span>
-<span id="cb4-52">}</span></code></pre></div>
+<span id="cb4-52">}</span></code></pre></div></div>
 </details>
 </div>
 <p>Finally, run the function like this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># replace the below as required</span></span>
 <span id="cb5-2"><span class="fu" style="color: #4758AB;
@@ -5280,7 +5336,7 @@ font-style: inherit;">"path-to-your.private-key.pem"</span>)</span>
 background-color: null;
 font-style: inherit;">get_repos</span>(<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"Your Organisation"</span>)</span></code></pre></div>
+font-style: inherit;">"Your Organisation"</span>)</span></code></pre></div></div>
 </div>
 
 
@@ -5400,7 +5456,7 @@ font-style: inherit;">"Your Organisation"</span>)</span></code></pre></div>
 <p>This post is comprised of the Jupyter notebook that was used during a Coffee &amp; Coding session providing an overview of text vectorization, a key concept in Natural Language Processing.</p>
 <p>Let’s take as our first example a dataset of reviews from IMDB. The aim is to try and classify if the review had a positive or negative score, based on the words in the text.</p>
 <div id="8f91e146-7a4f-410a-8922-61d65baa8c6d" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> pandas <span class="im" style="color: #00769E;
 background-color: null;
@@ -5418,12 +5474,12 @@ background-color: null;
 font-style: inherit;">=</span> pd.read_csv(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'IMDB Dataset.csv'</span>)</span>
-<span id="cb1-5">data</span></code></pre></div>
+<span id="cb1-5">data</span></code></pre></div></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -5433,57 +5489,57 @@ font-style: inherit;">'IMDB Dataset.csv'</span>)</span>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>One of the other reviewers has mentioned that after watching just 1 Oz episode you'll be hooked. They are right, as this is exactly what happened with me.&lt;br /&gt;&lt;br /&gt;The first thing that struck me about Oz was its brutality and unflinching scenes of violence, which set in right from the word GO. Trust me, this is not a show for the faint hearted or timid. This show pulls no punches with regard...</td>
 <td>positive</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<th data-quarto-table-cell-role="th">1</th>
 <td>A wonderful little production. &lt;br /&gt;&lt;br /&gt;The filming technique is very unassuming- very old-time-BBC fashion and gives a comforting, and sometimes discomforting, sense of realism to the entire piece. &lt;br /&gt;&lt;br /&gt;The actors are extremely well chosen- Michael Sheen not only "has got all the polari" but he has all the voices down pat too! You can truly see the seamless editing guided by the ref...</td>
 <td>positive</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>I thought this was a wonderful way to spend time on a too hot summer weekend, sitting in the air conditioned theater and watching a light-hearted comedy. The plot is simplistic, but the dialogue is witty and the characters are likable (even the well bread suspected serial killer). While some may be disappointed when they realize this is not Match Point 2: Risk Addiction, I thought it was proof...</td>
 <td>positive</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
+<th data-quarto-table-cell-role="th">3</th>
 <td>Basically there's a family where a little boy (Jake) thinks there's a zombie in his closet &amp; his parents are fighting all the time.&lt;br /&gt;&lt;br /&gt;This movie is slower than a soap opera... and suddenly, Jake decides to become Rambo and kill the zombie.&lt;br /&gt;&lt;br /&gt;OK, first of all when you're going to make a film you must Decide if its a thriller or a drama! As a drama the movie is watchable. Paren...</td>
 <td>negative</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
+<th data-quarto-table-cell-role="th">4</th>
 <td>Petter Mattei's "Love in the Time of Money" is a visually stunning film to watch. Mr. Mattei offers us a vivid portrait about human relations. This is a movie that seems to be telling us what money, power and success do to people in the different situations we encounter. &lt;br /&gt;&lt;br /&gt;This being a variation on the Arthur Schnitzler's play about the same theme, the director transfers the action t...</td>
 <td>positive</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
+<th data-quarto-table-cell-role="th">...</th>
 <td>...</td>
 <td>...</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">49995</td>
+<th data-quarto-table-cell-role="th">49995</th>
 <td>I thought this movie did a down right good job. It wasn't as creative or original as the first, but who was expecting it to be. It was a whole lotta fun. the more i think about it the more i like it, and when it comes out on DVD I'm going to pay the money for it very proudly, every last cent. Sharon Stone is great, she always is, even if her movie is horrible(Catwoman), but this movie isn't, t...</td>
 <td>positive</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">49996</td>
+<th data-quarto-table-cell-role="th">49996</th>
 <td>Bad plot, bad dialogue, bad acting, idiotic directing, the annoying porn groove soundtrack that ran continually over the overacted script, and a crappy copy of the VHS cannot be redeemed by consuming liquor. Trust me, because I stuck this turkey out to the end. It was so pathetically bad all over that I had to figure it was a fourth-rate spoof of Springtime for Hitler.&lt;br /&gt;&lt;br /&gt;The girl who ...</td>
 <td>negative</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">49997</td>
+<th data-quarto-table-cell-role="th">49997</th>
 <td>I am a Catholic taught in parochial elementary schools by nuns, taught by Jesuit priests in high school &amp; college. I am still a practicing Catholic but would not be considered a "good Catholic" in the church's eyes because I don't believe certain things or act certain ways just because the church tells me to.&lt;br /&gt;&lt;br /&gt;So back to the movie...its bad because two people are killed by this nun w...</td>
 <td>negative</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">49998</td>
+<th data-quarto-table-cell-role="th">49998</th>
 <td>I'm going to have to disagree with the previous comment and side with Maltin on this one. This is a second rate, excessively vicious Western that creaks and groans trying to put across its central theme of the Wild West being tamed and kicked aside by the steady march of time. It would like to be in the tradition of "Butch Cassidy and the Sundance Kid", but lacks that film's poignancy and char...</td>
 <td>negative</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">49999</td>
+<th data-quarto-table-cell-role="th">49999</th>
 <td>No one expects the Star Trek movies to be high art, but the fans do expect a movie that is as good as some of the best episodes. Unfortunately, this movie had a muddled, implausible plot that just left me cringing - this is by far the worst of the nine (so far) movies. Even the chance to watch the well known characters interact in another movie can't save this movie - including the goofy scene...</td>
 <td>negative</td>
 </tr>
@@ -5495,12 +5551,12 @@ font-style: inherit;">'IMDB Dataset.csv'</span>)</span>
 </div>
 </div>
 <div id="9e1d193b-d805-427f-a1d8-6cf58c6add58" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Our dataset is quite balanced, with an equal number of positive and negative reviews.</span></span>
 <span id="cb2-2">data[<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">'sentiment'</span>].value_counts()</span></code></pre></div>
+font-style: inherit;">'sentiment'</span>].value_counts()</span></code></pre></div></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>sentiment
 positive    25000
@@ -5509,7 +5565,7 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 <div id="f71b0820-4727-4c42-9624-68fbda534108" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># In this cell, we are trying to use a very basic machine learning model (Multinomial Naive Bayes) </span></span>
 <span id="cb4-2"><span class="co" style="color: #5E5E5E;
@@ -5561,7 +5617,7 @@ background-color: null;
 font-style: inherit;"># ⚠️ Uh oh!! we're getting an error... let's decode it together</span></span>
 <span id="cb4-21"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># ValueError: could not convert string to float (it doesn't like the text being as a string!)</span></span></code></pre></div>
+font-style: inherit;"># ValueError: could not convert string to float (it doesn't like the text being as a string!)</span></span></code></pre></div></div>
 <div class="cell-output cell-output-error">
 <div class="ansi-escaped-output">
 <pre><span class="ansi-red-fg ansi-bold">---------------------------------------------------------------------------</span>
@@ -5714,7 +5770,7 @@ ValueError: could not convert string to float: "One of the other reviewers has m
 <h2 class="anchored" data-anchor-id="tokenization">Tokenization</h2>
 <p>Breaking up texts into their individual components, or tokens</p>
 <div id="15d31329-25e9-48b6-8bdf-0febd73ab855" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="im" style="color: #00769E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> nltk.tokenize <span class="im" style="color: #00769E;
 background-color: null;
@@ -5731,13 +5787,13 @@ background-color: null;
 font-style: inherit;"># Document before tokenization</span></span>
 <span id="cb5-6"><span class="bu" style="color: null;
 background-color: null;
-font-style: inherit;">print</span>(text)</span></code></pre></div>
+font-style: inherit;">print</span>(text)</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Had a slight weapons malfunction but, uh everything's perfectly all right now. We're fine. We're all fine here now. Thank you. How are you?</code></pre>
 </div>
 </div>
 <div id="8b24b8c6-70f7-43b7-9bd7-abc24051e093" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1">word_tokens <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1">word_tokens <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> word_tokenize(text)</span>
 <span id="cb7-2"></span>
@@ -5746,7 +5802,7 @@ background-color: null;
 font-style: inherit;"># Document after tokenization - each word is separated out. Compound words like "everything's" are now two words: "everything" and "'s"</span></span>
 <span id="cb7-4"><span class="bu" style="color: null;
 background-color: null;
-font-style: inherit;">print</span>(word_tokens)</span></code></pre></div>
+font-style: inherit;">print</span>(word_tokens)</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>['Had', 'a', 'slight', 'weapons', 'malfunction', 'but', ',', 'uh', 'everything', "'s", 'perfectly', 'all', 'right', 'now', '.', 'We', "'re", 'fine', '.', 'We', "'re", 'all', 'fine', 'here', 'now', '.', 'Thank', 'you', '.', 'How', 'are', 'you', '?']</code></pre>
 </div>
@@ -5763,7 +5819,7 @@ font-style: inherit;">print</span>(word_tokens)</span></code></pre></div>
 <section id="bag-of-words" class="level2">
 <h2 class="anchored" data-anchor-id="bag-of-words">Bag of words</h2>
 <div id="38809574-719a-4831-bcd6-04573dbca33d" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1">texts <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1">texts <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> [</span>
 <span id="cb9-2">    <span class="st" style="color: #20794D;
@@ -5778,10 +5834,10 @@ font-style: inherit;">'run to the cat'</span>,</span>
 <span id="cb9-5">    <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'I love to eat fruit. fruit fruit fruit fruit'</span></span>
-<span id="cb9-6">]</span></code></pre></div>
+<span id="cb9-6">]</span></code></pre></div></div>
 </div>
 <div id="bba90d4b-d321-4433-ad3d-15bba9896669" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><span class="im" style="color: #00769E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> sklearn.feature_extraction.text <span class="im" style="color: #00769E;
 background-color: null;
@@ -5793,7 +5849,7 @@ font-style: inherit;">=</span> CountVectorizer()</span>
 <span id="cb10-4">X <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> count_vectorizer.fit_transform(texts)</span>
-<span id="cb10-5">X.toarray()</span></code></pre></div>
+<span id="cb10-5">X.toarray()</span></code></pre></div></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>array([[0, 0, 0, 0, 1, 0, 1, 0, 1],
        [1, 1, 1, 1, 0, 1, 0, 1, 0],
@@ -5805,7 +5861,7 @@ font-style: inherit;">=</span> count_vectorizer.fit_transform(texts)</span>
 <p>🤔 Can you guess which column represents which word?</p>
 <p>It’s column 4: the word “fruit” appears 5 times in the last sentence.</p>
 <div id="2aba1c56-6c07-4ea0-9ade-2751de503a65" class="cell" data-scrolled="true" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Visualising what the vectorizer has done</span></span>
 <span id="cb12-2"></span>
@@ -5821,12 +5877,12 @@ background-color: null;
 font-style: inherit;">=</span> texts</span>
 <span id="cb12-7">)</span>
 <span id="cb12-8"></span>
-<span id="cb12-9">vectorized_texts</span></code></pre></div>
+<span id="cb12-9">vectorized_texts</span></code></pre></div></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -5843,7 +5899,7 @@ font-style: inherit;">=</span> texts</span>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">I love to run</td>
+<th data-quarto-table-cell-role="th">I love to run</th>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -5855,7 +5911,7 @@ font-style: inherit;">=</span> texts</span>
 <td>1</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">the cat does not eat fruit</td>
+<th data-quarto-table-cell-role="th">the cat does not eat fruit</th>
 <td>1</td>
 <td>1</td>
 <td>1</td>
@@ -5867,7 +5923,7 @@ font-style: inherit;">=</span> texts</span>
 <td>0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">run to the cat</td>
+<th data-quarto-table-cell-role="th">run to the cat</th>
 <td>1</td>
 <td>0</td>
 <td>0</td>
@@ -5879,7 +5935,7 @@ font-style: inherit;">=</span> texts</span>
 <td>1</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">I love to eat fruit. fruit fruit fruit fruit</td>
+<th data-quarto-table-cell-role="th">I love to eat fruit. fruit fruit fruit fruit</th>
 <td>0</td>
 <td>0</td>
 <td>1</td>
@@ -5898,7 +5954,7 @@ font-style: inherit;">=</span> texts</span>
 </div>
 <p>We will try the same code from above - this time on the <em>vectorised</em> text instead of the raw text! This time we shouldn’t get any errors.</p>
 <div id="9986c995-e6c3-4218-a81c-563aa2b534d8" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1">naivebayes <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1">naivebayes <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> MultinomialNB()</span>
 <span id="cb13-2">count_vectorizer <span class="op" style="color: #5E5E5E;
@@ -5928,7 +5984,7 @@ font-style: inherit;">round</span>(cv_nb[<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'test_score'</span>].mean(),<span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">2</span>)</span></code></pre></div>
+font-style: inherit;">2</span>)</span></code></pre></div></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>0.85</code></pre>
 </div>
@@ -5954,7 +6010,7 @@ font-style: inherit;">2</span>)</span></code></pre></div>
 </figure>
 </div>
 <div id="fee59c74-01e9-4abc-8b77-de687fa5ae11" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1">texts <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1">texts <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> [</span>
 <span id="cb15-2">    <span class="st" style="color: #20794D;
@@ -5969,10 +6025,10 @@ font-style: inherit;">'run to the cat'</span>,</span>
 <span id="cb15-5">    <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'I love to eat the fruit. fruit fruit fruit fruit'</span></span>
-<span id="cb15-6">]</span></code></pre></div>
+<span id="cb15-6">]</span></code></pre></div></div>
 </div>
 <div id="a2f947df-e050-40f7-b30e-69fbfe1d19fa" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># In document 4, the Term Frequency (TF) of the word FRUIT is?</span></span>
 <span id="cb16-2"><span class="co" style="color: #5E5E5E;
@@ -5988,7 +6044,7 @@ font-style: inherit;">5</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">/</span><span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">10</span></span></code></pre></div>
+font-style: inherit;">10</span></span></code></pre></div></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>0.5</code></pre>
 </div>
@@ -6006,7 +6062,7 @@ font-style: inherit;">10</span></span></code></pre></div>
 <p>if the word “football” appears in all the articles it is not very useful for helping us identify between two articles, but if only a few documents contain words like “concussion” or “wellbeing”, (e.g.&nbsp;they appear in 2/100 articles) it will be much more useful in determining the topic of that article (they are probably specifically about player wellfare).</p>
 <p>💡 Thus the intuition of the term frequency - inverse document frequency approach is to give a high weight to any term which appears frequently in a single document, but not in too many documents of the corpus.</p>
 <div id="a04a9f13-c46a-4940-ae5c-9bbb5f72e990" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">## ?? Which words appear frequently in our small corpus </span></span>
 <span id="cb18-2"><span class="co" style="color: #5E5E5E;
@@ -6035,7 +6091,7 @@ background-color: null;
 font-style: inherit;"># the</span></span>
 <span id="cb18-12"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># to</span></span></code></pre></div>
+font-style: inherit;"># to</span></span></code></pre></div></div>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -6044,7 +6100,7 @@ font-style: inherit;"># to</span></span></code></pre></div>
 </figure>
 </div>
 <div id="3e24743e-0d06-47df-bf35-2c06fc345488" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><span class="im" style="color: #00769E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> sklearn.feature_extraction.text <span class="im" style="color: #00769E;
 background-color: null;
@@ -6070,12 +6126,12 @@ font-style: inherit;">=</span> tf_idf_vectorizer.get_feature_names_out(),</span>
 background-color: null;
 font-style: inherit;">=</span> texts)</span>
 <span id="cb19-10"></span>
-<span id="cb19-11">weighted_words</span></code></pre></div>
+<span id="cb19-11">weighted_words</span></code></pre></div></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -6092,7 +6148,7 @@ font-style: inherit;">=</span> texts)</span>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">I love to run</td>
+<th data-quarto-table-cell-role="th">I love to run</th>
 <td>0.000000</td>
 <td>0.000000</td>
 <td>0.000000</td>
@@ -6104,7 +6160,7 @@ font-style: inherit;">=</span> texts)</span>
 <td>0.496816</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">the cat does not eat the fruit</td>
+<th data-quarto-table-cell-role="th">the cat does not eat the fruit</th>
 <td>0.336350</td>
 <td>0.426618</td>
 <td>0.336350</td>
@@ -6116,7 +6172,7 @@ font-style: inherit;">=</span> texts)</span>
 <td>0.000000</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">run to the cat</td>
+<th data-quarto-table-cell-role="th">run to the cat</th>
 <td>0.549578</td>
 <td>0.000000</td>
 <td>0.000000</td>
@@ -6128,7 +6184,7 @@ font-style: inherit;">=</span> texts)</span>
 <td>0.444931</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">I love to eat the fruit. fruit fruit fruit fruit</td>
+<th data-quarto-table-cell-role="th">I love to eat the fruit. fruit fruit fruit fruit</th>
 <td>0.000000</td>
 <td>0.000000</td>
 <td>0.187942</td>
@@ -6154,7 +6210,7 @@ font-style: inherit;">=</span> texts)</span>
 <section id="n-grams" class="level2">
 <h2 class="anchored" data-anchor-id="n-grams">n-grams</h2>
 <div id="1eaffc72-4839-499b-8157-cd8d1d5f95ba" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># The two following sentences have the exact same representation in bag of words/ TFIDF approaches</span></span>
 <span id="cb20-2"><span class="co" style="color: #5E5E5E;
@@ -6170,10 +6226,10 @@ font-style: inherit;">"I like cats but not dogs"</span>,</span>
 <span id="cb20-6">    <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"I like dogs but not cats"</span></span>
-<span id="cb20-7">]</span></code></pre></div>
+<span id="cb20-7">]</span></code></pre></div></div>
 </div>
 <div id="89d9f7b6-db18-4b1f-a58d-21aa0d147190" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Vectorize the sentences</span></span>
 <span id="cb21-2">count_vectorizer <span class="op" style="color: #5E5E5E;
@@ -6201,12 +6257,12 @@ font-style: inherit;">=</span> sentences</span>
 <span id="cb21-12"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Show the vectorized words</span></span>
-<span id="cb21-13">sentences_vectorized</span></code></pre></div>
+<span id="cb21-13">sentences_vectorized</span></code></pre></div></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -6219,7 +6275,7 @@ font-style: inherit;"># Show the vectorized words</span></span>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">I like cats but not dogs</td>
+<th data-quarto-table-cell-role="th">I like cats but not dogs</th>
 <td>1</td>
 <td>1</td>
 <td>1</td>
@@ -6227,7 +6283,7 @@ font-style: inherit;"># Show the vectorized words</span></span>
 <td>1</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">I like dogs but not cats</td>
+<th data-quarto-table-cell-role="th">I like dogs but not cats</th>
 <td>1</td>
 <td>1</td>
 <td>1</td>
@@ -6248,12 +6304,12 @@ font-style: inherit;"># Show the vectorized words</span></span>
 <p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2025-01-03_text-vectorization/NLP - text vectorisation_files/figure-html/38e1eb15-abc8-4d63-ad85-3fe790f862b4-1-dd4e9a1c-ffed-482a-95f7-15b60b19c7d7.png" class="img-fluid" alt="image.png"> 4)</p>
 <p>😥 With a unigram vectorization, we couldn’t distinguish two sentences with the same words, despite their meaning being quite different</p>
 <div id="d36bce7a-55c2-4044-8d10-a1b9c4101d69" class="cell" data-scrolled="true" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1">sentences_vectorized</span></code></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1">sentences_vectorized</span></code></pre></div></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -6266,7 +6322,7 @@ font-style: inherit;"># Show the vectorized words</span></span>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">I like cats but not dogs</td>
+<th data-quarto-table-cell-role="th">I like cats but not dogs</th>
 <td>1</td>
 <td>1</td>
 <td>1</td>
@@ -6274,7 +6330,7 @@ font-style: inherit;"># Show the vectorized words</span></span>
 <td>1</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">I like dogs but not cats</td>
+<th data-quarto-table-cell-role="th">I like dogs but not cats</th>
 <td>1</td>
 <td>1</td>
 <td>1</td>
@@ -6289,7 +6345,7 @@ font-style: inherit;"># Show the vectorized words</span></span>
 </div>
 <p>👩🏻‍🔬 What about a bigram vectorization?</p>
 <div id="ccab66a1-f168-4669-87f2-36f75b8317d8" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Vectorize the sentences</span></span>
 <span id="cb23-2">count_vectorizer_n_gram <span class="op" style="color: #5E5E5E;
@@ -6325,12 +6381,12 @@ font-style: inherit;">=</span> sentences</span>
 <span id="cb23-12"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Show the vectorized movies with bigrams (pairs of words)</span></span>
-<span id="cb23-13">sentences_vectorized_n_gram</span></code></pre></div>
+<span id="cb23-13">sentences_vectorized_n_gram</span></code></pre></div></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -6350,7 +6406,7 @@ font-style: inherit;"># Show the vectorized movies with bigrams (pairs of words)
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">I like cats but not dogs</td>
+<th data-quarto-table-cell-role="th">I like cats but not dogs</th>
 <td>1</td>
 <td>1</td>
 <td>1</td>
@@ -6365,7 +6421,7 @@ font-style: inherit;"># Show the vectorized movies with bigrams (pairs of words)
 <td>1</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">I like dogs but not cats</td>
+<th data-quarto-table-cell-role="th">I like dogs but not cats</th>
 <td>1</td>
 <td>1</td>
 <td>1</td>
@@ -6414,7 +6470,7 @@ font-style: inherit;"># Show the vectorized movies with bigrams (pairs of words)
 </figure>
 </div>
 <div id="bd2d7f0d-404e-42e7-bcac-996527cc0ca0" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><span class="im" style="color: #00769E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> gensim.downloader</span>
 <span id="cb24-2"></span>
@@ -6427,23 +6483,23 @@ font-style: inherit;">print</span>(<span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">list</span>(gensim.downloader.info()[<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">'models'</span>].keys()))</span></code></pre></div>
+font-style: inherit;">'models'</span>].keys()))</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>['fasttext-wiki-news-subwords-300', 'conceptnet-numberbatch-17-06-300', 'word2vec-ruscorpora-300', 'word2vec-google-news-300', 'glove-wiki-gigaword-50', 'glove-wiki-gigaword-100', 'glove-wiki-gigaword-200', 'glove-wiki-gigaword-300', 'glove-twitter-25', 'glove-twitter-50', 'glove-twitter-100', 'glove-twitter-200', '__testing_word2vec-matrix-synopsis']</code></pre>
 </div>
 </div>
 <div id="60389a85" class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># We will use a vectoriser trained on Wikipedia today</span></span>
 <span id="cb26-2">model_wiki <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> gensim.downloader.load(<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">'glove-wiki-gigaword-50'</span>)</span></code></pre></div>
+font-style: inherit;">'glove-wiki-gigaword-50'</span>)</span></code></pre></div></div>
 </div>
 <div id="1266afa0-fa31-4011-b396-bf61a868871a" class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Vectors based on 2B tweets, 27B tokens, 1.2M vocab!</span></span>
 <span id="cb27-2"><span class="co" style="color: #5E5E5E;
@@ -6455,7 +6511,7 @@ font-style: inherit;"># N.B. Words not in glove-wiki-gigaword-50 will not have v
 <span id="cb27-4"></span>
 <span id="cb27-5">model_wiki[<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"cat"</span>]</span></code></pre></div>
+font-style: inherit;">"cat"</span>]</span></code></pre></div></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
 <pre><code>array([ 0.45281 , -0.50108 , -0.53714 , -0.015697,  0.22191 ,  0.54602 ,
        -0.67301 , -0.6891  ,  0.63493 , -0.19726 ,  0.33685 ,  0.7735  ,
@@ -6469,7 +6525,7 @@ font-style: inherit;">"cat"</span>]</span></code></pre></div>
 </div>
 </div>
 <div id="9a98fe73-b161-4c46-b581-1bfef59af25d" class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb29" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># King is to Queen as Man is to ...</span></span>
 <span id="cb29-2"></span>
@@ -6488,19 +6544,19 @@ background-color: null;
 font-style: inherit;">"man"</span>]</span>
 <span id="cb29-4">model_wiki.most_similar(example_1)[<span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">0</span>]</span></code></pre></div>
+font-style: inherit;">0</span>]</span></code></pre></div></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <pre><code>('woman', 0.8903914093971252)</code></pre>
 </div>
 </div>
 <div id="46a673f2-7cc3-4f4e-a537-d4b9e470b91d" class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb31" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Similar words to cat</span></span>
 <span id="cb31-2"></span>
 <span id="cb31-3">model_wiki.most_similar(model_wiki[<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"cat"</span>])</span></code></pre></div>
+font-style: inherit;">"cat"</span>])</span></code></pre></div></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <pre><code>[('cat', 1.0),
  ('dog', 0.9218006134033203),
@@ -6515,7 +6571,7 @@ font-style: inherit;">"cat"</span>])</span></code></pre></div>
 </div>
 </div>
 <div id="337cbcfb-2722-4db6-aaf0-437433d84348" class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb33" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Opposite of cold...?</span></span>
 <span id="cb33-2"></span>
@@ -6534,7 +6590,7 @@ background-color: null;
 font-style: inherit;">"cold"</span>]</span>
 <span id="cb33-4">model_wiki.most_similar(example_2)[<span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">0</span>]</span></code></pre></div>
+font-style: inherit;">0</span>]</span></code></pre></div></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>('warm', 0.7870427966117859)</code></pre>
 </div>
@@ -6816,7 +6872,7 @@ on:
 <h2 class="anchored" data-anchor-id="example-on-nhs-workforce-statistics">Example on NHS workforce statistics</h2>
 <p>The <a href="https://digital.nhs.uk/data-and-information/publications/statistical/nhs-workforce-statistics">NHS workforce statistics</a> are official statistics published monthly for England.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1">staff_group <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1">staff_group <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -6824,12 +6880,12 @@ font-style: inherit;">readRDS</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">file =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"workforce_staff_group.rds"</span>)</span></code></pre></div>
+font-style: inherit;">"workforce_staff_group.rds"</span>)</span></code></pre></div></div>
 </div>
 <p>I want to perform an analysis for each of the 42 integrated care systems (ICS). The {tidyr} <code>nest()</code> function creates a list-column, where each cell contains a mini dataframe for each grouping.</p>
 <p>Let’s group by ICS, and call the nested data column <code>raw_data</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">group_by_ics <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">group_by_ics <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> staff_group <span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -6842,16 +6898,16 @@ font-style: inherit;">nest</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">raw_data =</span> <span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">-</span>ics_name)</span></code></pre></div>
+font-style: inherit;">-</span>ics_name)</span></code></pre></div></div>
 </div>
 <p>The new column is a list-column, with each cell containing an entire tibble of data relating to that individual ICS.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#' echo: false</span></span>
 <span id="cb3-2"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">head</span>(group_by_ics)</span></code></pre></div>
+font-style: inherit;">head</span>(group_by_ics)</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 2
   ics_name             raw_data         
@@ -6866,11 +6922,11 @@ font-style: inherit;">head</span>(group_by_ics)</span></code></pre></div>
 </div>
 <p>We can grab these mini datasets in the usual way and explore them interactively.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">group_by_ics<span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">group_by_ics<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">$</span>raw_data[[<span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">1</span>]]</span></code></pre></div>
+font-style: inherit;">1</span>]]</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 8 × 6
   organisation_name           total hchs_doctors nurses_health_visitors midwives
@@ -6893,7 +6949,7 @@ font-style: inherit;">1</span>]]</span></code></pre></div>
 See function definition for <code>convert_percent()</code>
 </summary>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#' Convert percent</span></span>
 <span id="cb7-2"><span class="co" style="color: #5E5E5E;
@@ -6965,11 +7021,11 @@ background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"midwives"</span>)</span>
-<span id="cb7-12">}</span></code></pre></div>
+<span id="cb7-12">}</span></code></pre></div></div>
 </div>
 </details>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1">processed_staff <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1">processed_staff <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span></span>
 <span id="cb8-2">group_by_ics <span class="sc" style="color: #5E5E5E;
@@ -6987,7 +7043,7 @@ background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">map</span>(raw_data, convert_percent)</span>
-<span id="cb8-5">    )</span></code></pre></div>
+<span id="cb8-5">    )</span></code></pre></div></div>
 </div>
 <p>Where I think this map-and-nest process really comes into its own is creating plots. Often, I find myself wanting to create a couple of different plots for each grouping, and then optionally save the plots with sensible names. Particularly in the analysis stage, I like having these plots in the same row as the raw data, so I can quickly compare and validate.</p>
 <p>I’ve created two functions, <code>plot_barchart()</code> and <code>plot_waffle()</code> which take the data and create charts.</p>
@@ -6996,7 +7052,7 @@ font-style: inherit;">map</span>(raw_data, convert_percent)</span>
 See definition for <code>plot_barchart()</code> &amp; <code>plot_waffle()</code>
 </summary>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#' Plot barchart</span></span>
 <span id="cb9-2"><span class="co" style="color: #5E5E5E;
@@ -7289,12 +7345,12 @@ background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggtitle</span>(title)</span>
-<span id="cb9-36">}</span></code></pre></div>
+<span id="cb9-36">}</span></code></pre></div></div>
 </div>
 </details>
 <p>Again, using <code>mutate()</code> I can create a new column called <code>barchart</code> and I can <code>map()</code> the function <code>plot_barchart()</code>, applying it to each row at a time.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">graphs <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">graphs <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span></span>
 <span id="cb10-2">processed_staff <span class="sc" style="color: #5E5E5E;
@@ -7312,12 +7368,12 @@ background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">map</span>(staff_percent, plot_barchart)</span>
-<span id="cb10-5">    ) </span></code></pre></div>
+<span id="cb10-5">    ) </span></code></pre></div></div>
 </div>
 <p>The resulting column <code>barchart</code> is again a list-column, but this time instead of containing a tibble, it holds a ggplot object. A whole ggplot in a single cell. <sup>2</sup></p>
 <p>If we want to pass two arguments to our function, we can replace <code>map()</code> with <code>map2()</code>. Here we’re using <code>map2()</code> to pass the <code>ics_name</code> column to use as a title in our waffle plot. <sup>3</sup></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1">graphs <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1">graphs <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span></span>
 <span id="cb11-2">processed_staff <span class="sc" style="color: #5E5E5E;
@@ -7339,7 +7395,7 @@ font-style: inherit;">map2</span>(raw_data, ics_name, </span>
 background-color: null;
 font-style: inherit;">plot_waffle</span>(data, title)</span>
 <span id="cb11-6">        )</span>
-<span id="cb11-7">    ) </span></code></pre></div>
+<span id="cb11-7">    ) </span></code></pre></div></div>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -7352,7 +7408,7 @@ font-style: inherit;">plot_waffle</span>(data, title)</span>
 <h2 class="anchored" data-anchor-id="putting-it-all-together">Putting it all together</h2>
 <p>All of these <code>mutate()</code> steps can actually be called in one step. Here’s the full workflow again in full after a little refactor. I’ve also used <code>pivot_longer()</code> to move the two plotting columns into a single plot column. This will make it easier for me to generate nice filenames, and save the plots.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1">results <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1">results <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span></span>
 <span id="cb12-2">staff_group <span class="sc" style="color: #5E5E5E;
@@ -7431,12 +7487,12 @@ font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">glue</span>(<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"{snakecase::to_snake_case(ics_name)}_{plot_type}.png"</span>))</span></code></pre></div>
+font-style: inherit;">"{snakecase::to_snake_case(ics_name)}_{plot_type}.png"</span>))</span></code></pre></div></div>
 </div>
 <p>The <code>walk()</code> family of functions in {purrr} are used when the function you’re applying does not return an object, but is being used for it’s side-effect, for example reading or writing files.</p>
 <p>Here we call <code>walk2()</code>, passing in both the filename column and the plots column are arguments to save all the plots.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1">purrr<span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1">purrr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -7464,7 +7520,7 @@ background-color: null;
 font-style: inherit;">height =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">6</span>)</span>
-<span id="cb13-5">)</span></code></pre></div>
+<span id="cb13-5">)</span></code></pre></div></div>
 </div>
 <p>By keeping everything together in one nested structure, I personally find it much easier to keep track of my analyses. If you’re doing a more complex or permenant analysis, you might want to consider setting up a more formal data processing pipeline, and following RAP principals.</p>
 
@@ -7519,7 +7575,7 @@ Note
 <section id="posit-connect-pins" class="level2">
 <h2 class="anchored" data-anchor-id="posit-connect-pins">Posit Connect Pins</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># A brief intro to using {pins} to store, version, share and protect a dataset</span></span>
 <span id="cb1-2"><span class="co" style="color: #5E5E5E;
@@ -7856,7 +7912,7 @@ font-style: inherit;">pin_delete</span>(pin_name)</span>
 background-color: null;
 font-style: inherit;">|&gt;</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">pin_exists</span>(pin_name)</span></code></pre></div>
+font-style: inherit;">pin_exists</span>(pin_name)</span></code></pre></div></div>
 </div>
 </section>
 <section id="azure-storage-in-r" class="level2">
@@ -7868,7 +7924,7 @@ AZ_STORAGE_CONTAINER=container-name
 AZ_TENANT_ID=long-sequence-of-numbers-and-letters
 AZ_APP_ID=another-long-sequence-of-numbers-and-letters</code></pre>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">install.packages</span>(<span class="fu" style="color: #4758AB;
 background-color: null;
@@ -8098,7 +8154,7 @@ background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">delete_storage_file</span>(container, blobfile)</span>
-<span id="cb3-59">}</span></code></pre></div>
+<span id="cb3-59">}</span></code></pre></div></div>
 </div>
 </section>
 <section id="azure-storage-in-python" class="level2">
@@ -8107,7 +8163,7 @@ font-style: inherit;">delete_storage_file</span>(container, blobfile)</span>
 <p>We didn’t cover this in the presentation, so it’s not in the slides, but the code should be self-explanatory.</p>
 <div class="quarto-embed-nb-cell">
 <div id="cell-0" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="im" style="color: #00769E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> os</span>
 <span id="cb4-2"><span class="im" style="color: #00769E;
@@ -8132,10 +8188,10 @@ font-style: inherit;">import</span> DefaultAzureCredential</span>
 background-color: null;
 font-style: inherit;">from</span> azure.storage.blob <span class="im" style="color: #00769E;
 background-color: null;
-font-style: inherit;">import</span> ContainerClient</span></code></pre></div>
+font-style: inherit;">import</span> ContainerClient</span></code></pre></div></div>
 </div>
 <div id="cell-1" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Load all environment variables</span></span>
 <span id="cb5-2">load_dotenv()</span>
@@ -8148,29 +8204,29 @@ font-style: inherit;">'AZ_STORAGE_EP'</span>)</span>
 background-color: null;
 font-style: inherit;">=</span> os.getenv(<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">'AZ_STORAGE_CONTAINER'</span>)</span></code></pre></div>
+font-style: inherit;">'AZ_STORAGE_CONTAINER'</span>)</span></code></pre></div></div>
 </div>
 <div id="cell-2" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Authenticate</span></span>
 <span id="cb6-2">default_credential <span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">=</span> DefaultAzureCredential()</span></code></pre></div>
+font-style: inherit;">=</span> DefaultAzureCredential()</span></code></pre></div></div>
 </div>
 <p>For the first time, you might need to authenticate via the Azure CLI</p>
 <p>Download it from https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli</p>
 <p>Install then run <code>az login</code> in your terminal. Once you have logged in with your browser try the <code>DefaultAzureCredential()</code> again!</p>
 <div id="cell-4" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Connect to container</span></span>
 <span id="cb7-2">container_client <span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">=</span> ContainerClient(account_url, container_name, default_credential)</span></code></pre></div>
+font-style: inherit;">=</span> ContainerClient(account_url, container_name, default_credential)</span></code></pre></div></div>
 </div>
 <div id="cell-5" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># List files in container - should be empty</span></span>
 <span id="cb8-2">blob_list <span class="op" style="color: #5E5E5E;
@@ -8191,14 +8247,14 @@ background-color: null;
 font-style: inherit;">'newdir'</span>):</span>
 <span id="cb8-5">        <span class="bu" style="color: null;
 background-color: null;
-font-style: inherit;">print</span>(blob)</span></code></pre></div>
+font-style: inherit;">print</span>(blob)</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>newdir/cats.parquet
 newdir/ronald.jpeg</code></pre>
 </div>
 </div>
 <div id="cell-6" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Upload file to container</span></span>
 <span id="cb10-2"><span class="cf" style="color: #003B4F;
@@ -8233,10 +8289,10 @@ font-style: inherit;">=</span>data, </span>
 background-color: null;
 font-style: inherit;">=</span><span class="va" style="color: #111111;
 background-color: null;
-font-style: inherit;">True</span>)</span></code></pre></div>
+font-style: inherit;">True</span>)</span></code></pre></div></div>
 </div>
 <div id="cell-7" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># # Check files have uploaded - List files in container again</span></span>
 <span id="cb11-2">blob_list <span class="op" style="color: #5E5E5E;
@@ -8261,7 +8317,7 @@ font-style: inherit;">'newdir'</span>):</span>
 background-color: null;
 font-style: inherit;">print</span>(blob[<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">'name'</span>])</span></code></pre></div>
+font-style: inherit;">'name'</span>])</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>newdir/cats.csv
 newdir/cats.parquet
@@ -8269,7 +8325,7 @@ newdir/ronald.jpeg</code></pre>
 </div>
 </div>
 <div id="cell-8" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Download file from Azure container to temporary filepath</span></span>
 <span id="cb13-2"></span>
@@ -8315,12 +8371,12 @@ font-style: inherit;">=</span> blob_client.download_blob()</span>
 <span id="cb13-11">cat_data <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> pd.read_csv(temp_filepath)</span>
-<span id="cb13-12">cat_data.head()</span></code></pre></div>
+<span id="cb13-12">cat_data.head()</span></code></pre></div></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -8331,31 +8387,31 @@ font-style: inherit;">=</span> pd.read_csv(temp_filepath)</span>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>Ronald</td>
 <td>White and ginger</td>
 <td>Lazy and greedy but undoubtedly cutest and best</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<th data-quarto-table-cell-role="th">1</th>
 <td>Kaspie</td>
 <td>Small calico</td>
 <td>Sweet and very shy but adventurous</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>Hennimore</td>
 <td>Pale orange</td>
 <td>Unhinged and always in a state of panic</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
+<th data-quarto-table-cell-role="th">3</th>
 <td>Thug cat</td>
 <td>Black and white - very large</td>
 <td>Local bully</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
+<th data-quarto-table-cell-role="th">4</th>
 <td>Son of Stripey</td>
 <td>Grey tabby</td>
 <td>Very vocal</td>
@@ -8367,7 +8423,7 @@ font-style: inherit;">=</span> pd.read_csv(temp_filepath)</span>
 </div>
 </div>
 <div id="cell-9" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Load directly from Azure - no local copy</span></span>
 <span id="cb14-2"></span>
@@ -8380,12 +8436,12 @@ font-style: inherit;">=</span> io.BytesIO(download_stream.readall())</span>
 <span id="cb14-5">cat_data <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> pd.read_csv(stream_object)</span>
-<span id="cb14-6">cat_data</span></code></pre></div>
+<span id="cb14-6">cat_data</span></code></pre></div></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -8396,31 +8452,31 @@ font-style: inherit;">=</span> pd.read_csv(stream_object)</span>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>Ronald</td>
 <td>White and ginger</td>
 <td>Lazy and greedy but undoubtedly cutest and best</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<th data-quarto-table-cell-role="th">1</th>
 <td>Kaspie</td>
 <td>Small calico</td>
 <td>Sweet and very shy but adventurous</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>Hennimore</td>
 <td>Pale orange</td>
 <td>Unhinged and always in a state of panic</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
+<th data-quarto-table-cell-role="th">3</th>
 <td>Thug cat</td>
 <td>Black and white - very large</td>
 <td>Local bully</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
+<th data-quarto-table-cell-role="th">4</th>
 <td>Son of Stripey</td>
 <td>Grey tabby</td>
 <td>Very vocal</td>
@@ -8432,7 +8488,7 @@ font-style: inherit;">=</span> pd.read_csv(stream_object)</span>
 </div>
 </div>
 <div id="cell-10" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># !!!!!!!!! Delete from Azure container !!!!!!!!!</span></span>
 <span id="cb15-2">blob_client <span class="op" style="color: #5E5E5E;
@@ -8440,10 +8496,10 @@ background-color: null;
 font-style: inherit;">=</span> container_client.get_blob_client(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'newdir/cats.csv'</span>)</span>
-<span id="cb15-3">blob_client.delete_blob()</span></code></pre></div>
+<span id="cb15-3">blob_client.delete_blob()</span></code></pre></div></div>
 </div>
 <div id="cell-11" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1">blob_list <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1">blob_list <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> container_client.list_blobs()</span>
 <span id="cb16-2"><span class="cf" style="color: #003B4F;
@@ -8465,7 +8521,7 @@ font-style: inherit;">'newdir'</span>):</span>
 background-color: null;
 font-style: inherit;">print</span>(blob[<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">'name'</span>])</span></code></pre></div>
+font-style: inherit;">'name'</span>])</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>newdir/cats.parquet
 newdir/ronald.jpeg</code></pre>
@@ -8494,7 +8550,7 @@ newdir/ronald.jpeg</code></pre>
 <li><p>Use the code below to read in an Excel file (xlsx) into R memory, or adapt it to read other file types.</p></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Read in the securely saved path and site variables</span></span>
 <span id="cb18-2">sharepoint_site <span class="ot" style="color: #003B4F;
@@ -8559,7 +8615,7 @@ background-color: null;
 font-style: inherit;">#tidy up</span></span>
 <span id="cb18-14"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">unlink</span>(tmp_file)</span></code></pre></div>
+font-style: inherit;">unlink</span>(tmp_file)</span></code></pre></div></div>
 </div>
 
 
@@ -8688,7 +8744,7 @@ font-style: inherit;">unlink</span>(tmp_file)</span></code></pre></div>
 <p>The script pane in particular has a nice feature for navigating through sections of your script or Quarto/R Markdown files. Click the ‘Show Document Outline’ button or use the keyboard shortcut <kbd>Control</kbd> + <kbd>Shift</kbd> + <kbd>O</kbd> to slide open a tray that provides a nice indented list of all the sections and function defintions in your file.</p>
 <p>Section headers are auto-detected in a Quarto or R Markdown document wherever the Markdown header markup has been used: one hashmark (<code>#</code>) for a level 1 header, two for level 2, and so on. To add section headers to an R Script, add at least four hyphens after a commented line that starts with <code>#</code>. Use two or more hashes at the start of the comment to increase the nestedness of that section.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Header ------------------------------------------------------------------</span></span>
 <span id="cb1-2"></span>
@@ -8698,7 +8754,7 @@ font-style: italic;">## Section ----</span></span>
 <span id="cb1-4"></span>
 <span id="cb1-5"><span class="do" style="color: #5E5E5E;
 background-color: null;
-font-style: italic;">### Subsection ----</span></span></code></pre></div>
+font-style: italic;">### Subsection ----</span></span></code></pre></div></div>
 </div>
 <p>Note that <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd> will open a dialog box for you to input the name of a section header, which will be inserted and automatically padded to 75 characters to provide a strong visual cue between sections.</p>
 <p>As well as the document outline, there’s also a reminder in the lower-left of the script pane that gives the name of the section that your cursor is currently in. A symbol is also shown: a hashmark means it’s a headed section and an ‘f’ means it’s a function definition. You can click this to jump to other sections.</p>
@@ -8782,7 +8838,7 @@ font-style: italic;">### Subsection ----</span></span></code></pre></div>
 <h1>Data wrangling</h1>
 <p>First we’ll attach some packages. I’ll be using <a href="https://plotly.com/r/sankey-diagram/">plotly</a> for the visualisation of the Sankey chart, <a href="https://tidygraph.data-imaginist.com/">tidygraph</a> for graph manipulation and <a href="https://scales.r-lib.org/">scales</a> to handle colour transformation and rescaling values. We will also be using the <a href="https://www.tidyverse.org/">tidyverse</a> and <a href="https://glue.tidyverse.org/">glue</a> packages for general data wrangling and <a href="https://glin.github.io/reactable/index.html">reactable</a> to preview our data as we go along.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># libraries</span></span>
 <span id="cb1-2"><span class="fu" style="color: #4758AB;
@@ -8814,7 +8870,7 @@ font-style: inherit;"># api for graph / network manipulation</span></span>
 background-color: null;
 font-style: inherit;">library</span>(scales) <span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># used for colour transformation</span></span></code></pre></div>
+font-style: inherit;"># used for colour transformation</span></span></code></pre></div></div>
 </div>
 <section id="get-the-data" class="level2">
 <h2 class="anchored" data-anchor-id="get-the-data">Get the data</h2>
@@ -8876,7 +8932,7 @@ font-style: inherit;"># used for colour transformation</span></span></code></pre
 <div class="cell fig-cap-location-top">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2" data-cap-location="top" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" data-cap-location="top" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># set a randomisation seed for reproducibility</span></span>
 <span id="cb2-2"><span class="fu" style="color: #4758AB;
@@ -9158,7 +9214,7 @@ font-style: inherit;">reactable</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">defaultPageSize =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">5</span>)</span></code></pre></div>
+font-style: inherit;">5</span>)</span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div class="reactable html-widget html-fill-item" id="htmlwidget-58b100ebed7fb947b986" style="width:auto;height:auto;"></div>
@@ -9184,7 +9240,7 @@ font-style: inherit;">5</span>)</span></code></pre></div>
 <div class="cell fig-cap-location-top">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3" data-cap-location="top" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">df_milestones <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" data-cap-location="top" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">df_milestones <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> df_invites <span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -9346,7 +9402,7 @@ font-style: inherit;">reactable</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">defaultPageSize =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">5</span>)</span></code></pre></div>
+font-style: inherit;">5</span>)</span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div class="reactable html-widget html-fill-item" id="htmlwidget-286350ed2b9015d71ef1" style="width:auto;height:auto;"></div>
@@ -9367,7 +9423,7 @@ font-style: inherit;">5</span>)</span></code></pre></div>
 <div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;If you are thinking there is a lot of repetition here, you’re right. In practice I abstracted both steps to a function and passed in the parameters for the <code>from</code> and <code>to</code> variables and simplified my workflow a little, however, I’m showing it in plain form here for simplification.</p></div></div><div class="cell fig-cap-location-top">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4" data-cap-location="top" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">df_flows <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" data-cap-location="top" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">df_flows <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -9664,7 +9720,7 @@ font-style: inherit;">reactable</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">defaultPageSize =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">5</span>)</span></code></pre></div>
+font-style: inherit;">5</span>)</span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div class="reactable html-widget html-fill-item" id="htmlwidget-71d01034894540eb0211" style="width:auto;height:auto;"></div>
@@ -9686,7 +9742,7 @@ font-style: inherit;">5</span>)</span></code></pre></div>
 </ol>
 <p>It is possible to extract this data by hand but I found using the <a href="https://tidygraph.data-imaginist.com">tidygraph</a> package was much easier and more convenient.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">df_sankey <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">df_sankey <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> df_flows <span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -9696,11 +9752,11 @@ background-color: null;
 font-style: inherit;"># convert our flows data to a tidy graph object</span></span>
 <span id="cb5-3">  <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">as_tbl_graph</span>()</span></code></pre></div>
+font-style: inherit;">as_tbl_graph</span>()</span></code></pre></div></div>
 </div>
 <p>The tidygraph package splits our data into nodes and edges. We can selectively work on each by ‘activating’ them - here is the nodes list:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">df_sankey <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">df_sankey <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
 <span id="cb6-2">  <span class="fu" style="color: #4758AB;
@@ -9723,7 +9779,7 @@ font-style: inherit;">reactable</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">defaultPageSize =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">5</span>)</span></code></pre></div>
+font-style: inherit;">5</span>)</span></code></pre></div></div>
 <div class="cell-output-display">
 <div class="reactable html-widget html-fill-item" id="htmlwidget-c88b684aa59b7053a197" style="width:auto;height:auto;"></div>
 <script type="application/json" data-for="htmlwidget-c88b684aa59b7053a197">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"name":["Eligible population","Invitation 1 No response","Invitation 1 Declined","Invitation 1 Accepted","Invitation 2 No response","Invitation 2 Accepted","Invitation 2 Declined","Invitation 3 Accepted","Invitation 3 Declined","Invitation 3 No response","Declined","Accepted","No response"]},"columns":[{"id":"name","name":"name","type":"character"}],"defaultPageSize":5,"dataKey":"c8916df8221f76b5b09469d3a29a7b47"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
@@ -9731,7 +9787,7 @@ font-style: inherit;">5</span>)</span></code></pre></div>
 </div>
 <p>You can see each unique node name listed. The row numbers for these nodes are used as reference IDs in the edges object:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">df_sankey <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">df_sankey <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
 <span id="cb7-2">  <span class="fu" style="color: #4758AB;
@@ -9754,7 +9810,7 @@ font-style: inherit;">reactable</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">defaultPageSize =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">5</span>)</span></code></pre></div>
+font-style: inherit;">5</span>)</span></code></pre></div></div>
 <div class="cell-output-display">
 <div class="reactable html-widget html-fill-item" id="htmlwidget-61d01eb1917d40cdfca7" style="width:auto;height:auto;"></div>
 <script type="application/json" data-for="htmlwidget-61d01eb1917d40cdfca7">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"from":[1,1,1,2,2,2,3,4,2,5,5,5,6,7,5,8,9,10],"to":[3,2,4,5,6,7,11,12,13,8,9,10,12,11,13,12,11,13],"flow":[15,77,8,46,12,8,15,8,11,9,10,14,12,8,13,9,10,14]},"columns":[{"id":"from","name":"from","type":"numeric"},{"id":"to","name":"to","type":"numeric"},{"id":"flow","name":"flow","type":"numeric"}],"defaultPageSize":5,"dataKey":"a889e9b644c7e0f45f526b0ebde36ebd"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
@@ -9766,7 +9822,7 @@ font-style: inherit;">5</span>)</span></code></pre></div>
 <div class="cell fig-cap-location-top">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8" data-cap-location="top" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" data-cap-location="top" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># extract the nodes to a dataframe</span></span>
 <span id="cb8-2">nodes <span class="ot" style="color: #003B4F;
@@ -9899,7 +9955,7 @@ font-style: inherit;">value =</span> edges<span class="sc" style="color: #5E5E5E
 background-color: null;
 font-style: inherit;">$</span>flow</span>
 <span id="cb8-35">  )</span>
-<span id="cb8-36">)</span></code></pre></div>
+<span id="cb8-36">)</span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div class="plotly html-widget html-fill-item" id="htmlwidget-81df00dabeaef98ceac6" style="width:672px;height:480px;"></div>
@@ -9926,7 +9982,7 @@ font-style: inherit;">$</span>flow</span>
 <div class="cell fig-cap-location-top">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9" data-cap-location="top" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" data-cap-location="top" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># get the eligible population as a single value</span></span>
 <span id="cb9-2"><span class="co" style="color: #5E5E5E;
@@ -10337,7 +10393,7 @@ font-style: inherit;">reactable</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">defaultPageSize =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">5</span>)</span></code></pre></div>
+font-style: inherit;">5</span>)</span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div class="reactable html-widget html-fill-item" id="htmlwidget-f7768febd5ad0e1a4493" style="width:auto;height:auto;"></div>
@@ -10349,7 +10405,7 @@ font-style: inherit;">5</span>)</span></code></pre></div>
 <div class="cell fig-cap-location-top">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10" data-cap-location="top" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">edges <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" data-cap-location="top" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">edges <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> edges <span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -10420,7 +10476,7 @@ font-style: inherit;">reactable</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">defaultPageSize =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">5</span>)</span></code></pre></div>
+font-style: inherit;">5</span>)</span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div class="reactable html-widget html-fill-item" id="htmlwidget-c34880ede9aa21e663fa" style="width:auto;height:auto;"></div>
@@ -10432,7 +10488,7 @@ font-style: inherit;">5</span>)</span></code></pre></div>
 <div class="cell fig-cap-location-top">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11" data-cap-location="top" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" data-cap-location="top" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># plot our stylised sankey</span></span>
 <span id="cb11-2"><span class="fu" style="color: #4758AB;
@@ -10578,7 +10634,7 @@ font-style: inherit;">|&gt;</span></span>
 background-color: null;
 font-style: inherit;">config</span>(<span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">responsive =</span> T)</span></code></pre></div>
+font-style: inherit;">responsive =</span> T)</span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div class="plotly html-widget html-fill-item" id="htmlwidget-5915d3e9ad0239c93ab1" style="width:672px;height:480px;"></div>
@@ -10625,7 +10681,7 @@ font-style: inherit;">responsive =</span> T)</span></code></pre></div>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Packages</span></span>
 <span id="cb1-2"><span class="fu" style="color: #4758AB;
@@ -10821,12 +10877,12 @@ font-style: inherit;">viridis</span>(<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">2</span>), <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">domain =</span> domain)</span></code></pre></div>
+font-style: inherit;">domain =</span> domain)</span></code></pre></div></div>
 </details>
 </div>
 <p>To provide a suitable estimate of need for the newer practices without values, all the practices in the dataset were geocoded<sup>2</sup> using the <code>geocode</code> function from the {tidygeocoder} package.</p>
 <div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;Geocoding is the process of converting addresses (often the postcode) into geographic coordinates (such as latitude and longitude) that can be plotted on a map.</p></div></div><div class="cell">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">practices <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">practices <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> practices <span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -10861,17 +10917,17 @@ font-style: inherit;">"lat"</span>), <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">crs =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">4326</span>)</span></code></pre></div>
+font-style: inherit;">4326</span>)</span></code></pre></div></div>
 </div>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">practices <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">practices <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
 <span id="cb3-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">gt</span>()</span></code></pre></div>
+font-style: inherit;">gt</span>()</span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div id="slddrbfmwz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
@@ -11324,7 +11380,7 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
 }
 </style>
 
-<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
 <thead>
 <tr class="gt_col_headings header">
 <th id="practice_code" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">practice_code</th>
@@ -11458,7 +11514,7 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># make map to display practices</span></span>
 <span id="cb4-2"><span class="fu" style="color: #4758AB;
@@ -11479,7 +11535,7 @@ font-style: inherit;">color =</span> <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">~</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">pal</span>(has_orig_need))</span></code></pre></div>
+font-style: inherit;">pal</span>(has_orig_need))</span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div class="leaflet html-widget html-fill-item" id="htmlwidget-3f87eed0d4201a3dc2d8" style="width:672px;height:480px;"></div>
@@ -11488,7 +11544,7 @@ font-style: inherit;">pal</span>(has_orig_need))</span></code></pre></div>
 </div>
 <p>The data was split into those with, and without, a value for need. Using <code>st_join</code> from the {sf} package to join those without, and those with, a value for need, using the geometry to find all those within 1500m (1.5km).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">no_need <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">no_need <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> practices <span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -11556,12 +11612,12 @@ font-style: inherit;">by =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">join_by</span>(<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"id"</span>))</span></code></pre></div>
+font-style: inherit;">"id"</span>))</span></code></pre></div></div>
 </div>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">leaflet</span>(neighbours) <span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -11637,7 +11693,7 @@ font-style: inherit;">52.51899</span>, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">radius =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">1500</span>)</span></code></pre></div>
+font-style: inherit;">1500</span>)</span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div class="leaflet html-widget html-fill-item" id="htmlwidget-f13f8eb74f3d4edabaad" style="width:672px;height:480px;"></div>
@@ -11646,7 +11702,7 @@ font-style: inherit;">1500</span>)</span></code></pre></div>
 </div>
 <p>The data for the “neighbours” was grouped by the practice code of those without need data and a mean value was calculated for each practice to generate an estimated value.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">neighbours_estimate <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">neighbours_estimate <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> neighbours <span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -11669,11 +11725,11 @@ font-style: inherit;">|&gt;</span></span>
 background-color: null;
 font-style: inherit;">st_drop_geometry</span>(<span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">select</span>(no_need_prac_code, need_est))</span></code></pre></div>
+font-style: inherit;">select</span>(no_need_prac_code, need_est))</span></code></pre></div></div>
 </div>
 <p>The original data was joined back to the “neighbours”.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1">practices_with_neighbours_estimate <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1">practices_with_neighbours_estimate <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> practices <span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -11691,12 +11747,12 @@ font-style: inherit;">|&gt;</span></span>
 background-color: null;
 font-style: inherit;">st_drop_geometry</span>(<span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">select</span>(practice_code, need_est))</span></code></pre></div>
+font-style: inherit;">select</span>(practice_code, need_est))</span></code></pre></div></div>
 </div>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">practices_with_neighbours_estimate <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">practices_with_neighbours_estimate <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
 <span id="cb9-2">  <span class="fu" style="color: #4758AB;
@@ -11710,7 +11766,7 @@ background-color: null;
 font-style: inherit;">|&gt;</span></span>
 <span id="cb9-3">  <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">gt</span>()</span></code></pre></div>
+font-style: inherit;">gt</span>()</span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div id="hoquacyrox" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
@@ -12163,7 +12219,7 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
 }
 </style>
 
-<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
 <thead>
 <tr class="gt_col_headings header">
 <th id="practice_code" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">practice_code</th>
@@ -12265,7 +12321,7 @@ font-style: inherit;">gt</span>()</span></code></pre></div>
 </div>
 <p>Finally, an updated data frame was created of the need data using the actual need for the practice where available, otherwise using estimated need.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">practices_with_neighbours_estimate <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">practices_with_neighbours_estimate <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> practices_with_neighbours_estimate <span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -12291,7 +12347,7 @@ background-color: null;
 font-style: inherit;">|&gt;</span></span>
 <span id="cb10-5">  <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">select</span>(practice_code, need_to_use)</span></code></pre></div>
+font-style: inherit;">select</span>(practice_code, need_to_use)</span></code></pre></div></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -12745,7 +12801,7 @@ font-style: inherit;">select</span>(practice_code, need_to_use)</span></code></p
 }
 </style>
 
-<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
 <thead>
 <tr class="gt_col_headings header">
 <th id="practice_code" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">practice_code</th>
@@ -12864,11 +12920,11 @@ font-style: inherit;">select</span>(practice_code, need_to_use)</span></code></p
 <p>Another approach would be to export the list of packages in R before updating and then using that list after you have updated R. This can cause issues though if you install from places other than CRAN, e.g.&nbsp;bioconductor, or from GitHub.</p>
 <p>Some of these approaches are discussed on the <a href="https://community.rstudio.com/t/reinstalling-packages-on-new-version-of-r/7670/4">RStudio Community Forum</a>. But I prefer an approach of having a “spring clean”, instead only installing the packages that I know that I need.</p>
 <p>I maintain a <a href="https://gist.github.com/tomjemmett/c105d3e0fbea7558088f68c65e68e1ed/">list of the packages that I used</a> as a gist. Using this, I can then simply run this script on any new R install. In fact, if you click the “raw” button on the gist, and copy that url, you can simply run</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">source</span>(<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"https://gist.githubusercontent.com/tomjemmett/c105d3e0fbea7558088f68c65e68e1ed/raw/a1db4b5fa0d24562d16d3f57fe8c25fb0d8aa53e/setup.R"</span>)</span></code></pre></div>
+font-style: inherit;">"https://gist.githubusercontent.com/tomjemmett/c105d3e0fbea7558088f68c65e68e1ed/raw/a1db4b5fa0d24562d16d3f57fe8c25fb0d8aa53e/setup.R"</span>)</span></code></pre></div></div>
 <p>Generally, sourcing a url is a bad idea - the reason for this is if it’s not a link that you control, then someone could update the contents and run arbritary code on your machine. In this case, I’m happy to run this as it’s my own gist, but you should be mindful if running it yourself!</p>
 <p>If you look at the script I first install a number of packages from CRAN, then I install packages that only exist on GitHub.</p>
 

@@ -6,8 +6,8 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.34">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.24">
 
   <meta name="author" content="Tom Jemmett">
   <title>Data Science @ The Strategy Unit – Coffee and Coding</title>
@@ -95,7 +95,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-09c34abcecefe638f33e6d3c2293a836.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-2079033eeb7d97b2e2953c0f909ee90b.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -223,7 +223,7 @@
 <section id="packages-we-are-using-today" class="slide level2">
 <h2>Packages we are using today</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a></a></span>
 <span id="cb1-3"><a></a><span class="fu">library</span>(sf)</span>
 <span id="cb1-4"><a></a></span>
@@ -232,7 +232,7 @@
 <span id="cb1-7"><a></a></span>
 <span id="cb1-8"><a></a><span class="fu">library</span>(osrm)</span>
 <span id="cb1-9"><a></a></span>
-<span id="cb1-10"><a></a><span class="fu">library</span>(leaflet)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-10"><a></a><span class="fu">library</span>(leaflet)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="getting-boundary-data" class="slide level2">
@@ -241,7 +241,7 @@
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>icb_url <span class="ot">&lt;-</span> <span class="fu">paste0</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>icb_url <span class="ot">&lt;-</span> <span class="fu">paste0</span>(</span>
 <span id="cb2-2"><a></a>  <span class="st">"https://services1.arcgis.com"</span>,</span>
 <span id="cb2-3"><a></a>  <span class="st">"/ESMARspQHYMw9BZ9/arcgis"</span>,</span>
 <span id="cb2-4"><a></a>  <span class="st">"/rest/services"</span>,</span>
@@ -254,7 +254,7 @@
 <span id="cb2-11"><a></a>icb_boundaries <span class="sc">|&gt;</span></span>
 <span id="cb2-12"><a></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb2-13"><a></a>  <span class="fu">geom_sf</span>() <span class="sc">+</span></span>
-<span id="cb2-14"><a></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-14"><a></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
@@ -271,8 +271,8 @@
 <section id="what-is-the-icb_boundaries-data" class="slide level2">
 <h2>What is the <code>icb_boundaries</code> data?</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>icb_boundaries <span class="sc">|&gt;</span></span>
-<span id="cb3-2"><a></a>  <span class="fu">select</span>(ICB23CD, ICB23NM)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>icb_boundaries <span class="sc">|&gt;</span></span>
+<span id="cb3-2"><a></a>  <span class="fu">select</span>(ICB23CD, ICB23NM)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Simple feature collection with 42 features and 2 fields
 Geometry type: MULTIPOLYGON
@@ -302,7 +302,7 @@ Geodetic CRS:  WGS 84
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>icb_metrics <span class="ot">&lt;-</span> icb_boundaries <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>icb_metrics <span class="ot">&lt;-</span> icb_boundaries <span class="sc">|&gt;</span></span>
 <span id="cb5-2"><a></a>  <span class="fu">st_drop_geometry</span>() <span class="sc">|&gt;</span></span>
 <span id="cb5-3"><a></a>  <span class="fu">select</span>(ICB23CD) <span class="sc">|&gt;</span></span>
 <span id="cb5-4"><a></a>  <span class="fu">mutate</span>(<span class="at">admissions =</span> <span class="fu">rpois</span>(<span class="fu">n</span>(), <span class="dv">1000000</span>))</span>
@@ -312,7 +312,7 @@ Geodetic CRS:  WGS 84
 <span id="cb5-8"><a></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb5-9"><a></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> admissions)) <span class="sc">+</span></span>
 <span id="cb5-10"><a></a>  <span class="fu">scale_fill_viridis_c</span>() <span class="sc">+</span></span>
-<span id="cb5-11"><a></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-11"><a></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
@@ -332,13 +332,13 @@ Geodetic CRS:  WGS 84
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>london_icbs <span class="ot">&lt;-</span> icb_boundaries <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>london_icbs <span class="ot">&lt;-</span> icb_boundaries <span class="sc">|&gt;</span></span>
 <span id="cb6-2"><a></a>  <span class="fu">filter</span>(ICB23NM <span class="sc">|&gt;</span> stringr<span class="sc">::</span><span class="fu">str_detect</span>(<span class="st">"London"</span>))</span>
 <span id="cb6-3"><a></a></span>
 <span id="cb6-4"><a></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb6-5"><a></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> london_icbs) <span class="sc">+</span></span>
 <span id="cb6-6"><a></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> <span class="fu">st_centroid</span>(london_icbs)) <span class="sc">+</span></span>
-<span id="cb6-7"><a></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-7"><a></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
@@ -356,10 +356,10 @@ Geodetic CRS:  WGS 84
 <h2>Working with geospatial data frames</h2>
 <p>Summarising the data will combine the geometries.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>london_icbs <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>london_icbs <span class="sc">|&gt;</span></span>
 <span id="cb7-2"><a></a>  <span class="fu">summarise</span>(<span class="at">area =</span> <span class="fu">sum</span>(Shape__Area)) <span class="sc">|&gt;</span></span>
 <span id="cb7-3"><a></a>  <span class="co"># and use geospatial functions to create calculations using the geometry</span></span>
-<span id="cb7-4"><a></a>  <span class="fu">mutate</span>(<span class="at">new_area =</span> <span class="fu">st_area</span>(geometry), <span class="at">.before =</span> <span class="st">"geometry"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-4"><a></a>  <span class="fu">mutate</span>(<span class="at">new_area =</span> <span class="fu">st_area</span>(geometry), <span class="at">.before =</span> <span class="st">"geometry"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Simple feature collection with 1 feature and 2 fields
 Geometry type: MULTIPOLYGON
@@ -380,8 +380,8 @@ Geodetic CRS:  WGS 84
 <section id="creating-our-own-geospatial-data" class="slide level2">
 <h2>Creating our own geospatial data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>location_raw <span class="ot">&lt;-</span> <span class="fu">postcode_lookup</span>(<span class="st">"B2 4BJ"</span>)</span>
-<span id="cb9-2"><a></a><span class="fu">glimpse</span>(location_raw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>location_raw <span class="ot">&lt;-</span> <span class="fu">postcode_lookup</span>(<span class="st">"B2 4BJ"</span>)</span>
+<span id="cb9-2"><a></a><span class="fu">glimpse</span>(location_raw)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 1
 Columns: 40
@@ -430,12 +430,12 @@ $ pfa_code                             &lt;chr&gt; "E23000014"</code></pre>
 <div class="fragment">
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>location <span class="ot">&lt;-</span> location_raw <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>location <span class="ot">&lt;-</span> location_raw <span class="sc">|&gt;</span></span>
 <span id="cb11-2"><a></a>  <span class="fu">st_as_sf</span>(<span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"eastings"</span>, <span class="st">"northings"</span>), <span class="at">crs =</span> <span class="dv">27700</span>) <span class="sc">|&gt;</span></span>
 <span id="cb11-3"><a></a>  <span class="fu">select</span>(postcode, ccg) <span class="sc">|&gt;</span></span>
 <span id="cb11-4"><a></a>  <span class="fu">st_transform</span>(<span class="at">crs =</span> <span class="dv">4326</span>)</span>
 <span id="cb11-5"><a></a></span>
-<span id="cb11-6"><a></a>location</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-6"><a></a>location</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Simple feature collection with 1 feature and 2 fields
 Geometry type: POINT
@@ -453,19 +453,19 @@ Geodetic CRS:  WGS 84
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="co"># using the NHSRtools package</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="co"># using the NHSRtools package</span></span>
 <span id="cb13-2"><a></a><span class="co"># remotes::install_github("NHS-R-Community/NHSRtools")</span></span>
 <span id="cb13-3"><a></a>trusts <span class="ot">&lt;-</span> <span class="fu">ods_get_trusts</span>() <span class="sc">|&gt;</span></span>
 <span id="cb13-4"><a></a>  <span class="fu">filter</span>(status <span class="sc">==</span> <span class="st">"Active"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb13-5"><a></a>  <span class="fu">select</span>(name, org_id, post_code) <span class="sc">|&gt;</span></span>
 <span id="cb13-6"><a></a>  <span class="fu">geocode</span>(<span class="at">postalcode =</span> <span class="st">"post_code"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb13-7"><a></a>  <span class="fu">st_as_sf</span>(<span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"long"</span>, <span class="st">"lat"</span>), <span class="at">crs =</span> <span class="dv">4326</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-7"><a></a>  <span class="fu">st_as_sf</span>(<span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"long"</span>, <span class="st">"lat"</span>), <span class="at">crs =</span> <span class="dv">4326</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>trusts <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>trusts <span class="sc">|&gt;</span></span>
 <span id="cb14-2"><a></a>  <span class="fu">leaflet</span>() <span class="sc">|&gt;</span></span>
 <span id="cb14-3"><a></a>  <span class="fu">addProviderTiles</span>(<span class="st">"Stamen.TonerLite"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb14-4"><a></a>  <span class="fu">addMarkers</span>(<span class="at">popup =</span> <span class="sc">~</span>name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-4"><a></a>  <span class="fu">addMarkers</span>(<span class="at">popup =</span> <span class="sc">~</span>name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
@@ -479,14 +479,14 @@ Geodetic CRS:  WGS 84
 <section id="what-are-the-nearest-trusts-to-our-location" class="slide level2">
 <h2>What are the nearest trusts to our location?</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>nearest_trusts <span class="ot">&lt;-</span> trusts <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>nearest_trusts <span class="ot">&lt;-</span> trusts <span class="sc">|&gt;</span></span>
 <span id="cb15-2"><a></a>  <span class="fu">mutate</span>(</span>
 <span id="cb15-3"><a></a>    <span class="at">distance =</span> <span class="fu">st_distance</span>(geometry, location)[, <span class="dv">1</span>]</span>
 <span id="cb15-4"><a></a>  ) <span class="sc">|&gt;</span></span>
 <span id="cb15-5"><a></a>  <span class="fu">arrange</span>(distance) <span class="sc">|&gt;</span></span>
 <span id="cb15-6"><a></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span>
 <span id="cb15-7"><a></a></span>
-<span id="cb15-8"><a></a>nearest_trusts</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-8"><a></a>nearest_trusts</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Simple feature collection with 5 features and 4 fields
 Geometry type: POINT
@@ -507,7 +507,7 @@ Geodetic CRS:  WGS 84
 <section id="lets-find-driving-routes-to-these-trusts" class="slide level2">
 <h2>Let’s find driving routes to these trusts</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>routes <span class="ot">&lt;-</span> nearest_trusts <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>routes <span class="ot">&lt;-</span> nearest_trusts <span class="sc">|&gt;</span></span>
 <span id="cb17-2"><a></a>  <span class="fu">mutate</span>(</span>
 <span id="cb17-3"><a></a>    <span class="at">route =</span> <span class="fu">map</span>(geometry, <span class="sc">~</span> <span class="fu">osrmRoute</span>(location, <span class="fu">st_coordinates</span>(.x)))</span>
 <span id="cb17-4"><a></a>  ) <span class="sc">|&gt;</span></span>
@@ -516,7 +516,7 @@ Geodetic CRS:  WGS 84
 <span id="cb17-7"><a></a>  <span class="fu">unnest</span>(route) <span class="sc">|&gt;</span></span>
 <span id="cb17-8"><a></a>  <span class="fu">st_as_sf</span>()</span>
 <span id="cb17-9"><a></a></span>
-<span id="cb17-10"><a></a>routes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-10"><a></a>routes</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Simple feature collection with 5 features and 8 fields
 Geometry type: LINESTRING
@@ -538,11 +538,11 @@ Geodetic CRS:  WGS 84
 <section id="lets-show-the-routes" class="slide level2">
 <h2>Let’s show the routes</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">leaflet</span>(routes) <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">leaflet</span>(routes) <span class="sc">|&gt;</span></span>
 <span id="cb19-2"><a></a>  <span class="fu">addTiles</span>() <span class="sc">|&gt;</span></span>
 <span id="cb19-3"><a></a>  <span class="fu">addMarkers</span>(<span class="at">data =</span> location) <span class="sc">|&gt;</span></span>
 <span id="cb19-4"><a></a>  <span class="fu">addPolylines</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">weight =</span> <span class="dv">3</span>, <span class="at">opacity =</span> <span class="dv">1</span>) <span class="sc">|&gt;</span></span>
-<span id="cb19-5"><a></a>  <span class="fu">addCircleMarkers</span>(<span class="at">data =</span> nearest_trusts, <span class="at">radius =</span> <span class="dv">4</span>, <span class="at">opacity =</span> <span class="dv">1</span>, <span class="at">fillOpacity =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-5"><a></a>  <span class="fu">addCircleMarkers</span>(<span class="at">data =</span> nearest_trusts, <span class="at">radius =</span> <span class="dv">4</span>, <span class="at">opacity =</span> <span class="dv">1</span>, <span class="at">fillOpacity =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="leaflet html-widget html-fill-item" id="htmlwidget-4bfb388465f526ad42c0" style="width:1920px;height:768px;"></div>
 <script type="application/json" data-for="htmlwidget-4bfb388465f526ad42c0">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[52.47885967601437,-1.900335475630854,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addPolylines","args":[[[[{"lng":[-1.90037000179291,-1.89982998371124,-1.90319991111755,-1.90046000480652,-1.90006995201111,-1.9001100063324,-1.9004499912262,-1.90075993537903,-1.90087997913361,-1.90286993980408,-1.90295994281769,-1.90506994724274,-1.90617001056671,-1.90609991550446,-1.90114998817444,-1.89996993541718,-1.89809989929199,-1.89647996425629,-1.8958899974823,-1.89359998703003,-1.89279997348785,-1.89222991466522,-1.89184999465942,-1.89177000522614,-1.892009973526,-1.89233994483948,-1.89407992362976,-1.89409995079041,-1.89487993717194],"lat":[52.4787101745605,52.4786682128906,52.4775276184082,52.475227355957,52.4751091003418,52.4746971130371,52.4745597839355,52.4746589660645,52.4751396179199,52.4767875671387,52.4769897460938,52.4785270690918,52.4799690246582,52.4804573059082,52.4842376708984,52.4849281311035,52.4853401184082,52.4860801696777,52.4861869812012,52.4860000610352,52.4864196777344,52.4864082336426,52.4862403869629,52.4858894348145,52.4856185913086,52.4855690002441,52.4858169555664,52.4856986999512,52.485279083252]}]],[[{"lng":[-1.90037000179291,-1.89982998371124,-1.90319991111755,-1.90046000480652,-1.90006995201111,-1.90004992485046,-1.90026998519897,-1.90149998664856,-1.90548992156982,-1.9096999168396,-1.90985989570618,-1.91094994544983,-1.91181993484497,-1.91381990909576,-1.91479992866516,-1.91780996322632,-1.91863000392914,-1.9190399646759,-1.91909992694855,-1.92144989967346,-1.92357993125916,-1.9265398979187,-1.9268399477005,-1.92672991752625,-1.92635989189148,-1.92144000530243,-1.91957998275757,-1.91925990581512,-1.91863989830017,-1.91769993305206,-1.9176299571991],"lat":[52.4787101745605,52.4786682128906,52.4775276184082,52.475227355957,52.4751091003418,52.4747886657715,52.4745979309082,52.4744300842285,52.473030090332,52.4726982116699,52.4724884033203,52.4720268249512,52.4710273742676,52.4717483520508,52.4719772338867,52.4725303649902,52.4725074768066,52.4728202819824,52.4734992980957,52.4743995666504,52.475528717041,52.4773101806641,52.4778099060059,52.4789772033691,52.4796981811523,52.4839096069336,52.4848899841309,52.4848670959473,52.4845771789551,52.4839668273926,52.4841499328613]}]],[[{"lng":[-1.90037000179291,-1.89982998371124,-1.90319991111755,-1.90006995201111,-1.9001100063324,-1.9004499912262,-1.90295994281769,-1.90506994724274,-1.90617001056671,-1.90609991550446,-1.89996993541718,-1.89809989929199,-1.89634990692139,-1.89554989337921,-1.89359998703003,-1.89292991161346,-1.89184999465942,-1.88949990272522,-1.88902997970581,-1.88933992385864,-1.88896989822388,-1.88835990428925,-1.88773000240326,-1.88526999950409,-1.88726997375488,-1.88653993606567],"lat":[52.4787101745605,52.4786682128906,52.4775276184082,52.4751091003418,52.4746971130371,52.4745597839355,52.4769897460938,52.4785270690918,52.4799690246582,52.4804573059082,52.4849281311035,52.4853401184082,52.4861068725586,52.4862098693848,52.4860000610352,52.4863891601562,52.4865875244141,52.4905281066895,52.4916572570801,52.4924201965332,52.4927673339844,52.492790222168,52.4925270080566,52.4891891479492,52.487907409668,52.4874000549316]}]],[[{"lng":[-1.90037000179291,-1.89982998371124,-1.90319991111755,-1.90006995201111,-1.90026998519897,-1.90149998664856,-1.90548992156982,-1.9096999168396,-1.91094994544983,-1.91181993484497,-1.91479992866516,-1.91780996322632,-1.91863000392914,-1.9190399646759,-1.91909992694855,-1.92144989967346,-1.9265398979187,-1.93593990802765,-1.93711996078491,-1.93107998371124,-1.9310998916626,-1.92938995361328,-1.92895996570587,-1.93023991584778],"lat":[52.4787101745605,52.4786682128906,52.4775276184082,52.4751091003418,52.4745979309082,52.4744300842285,52.473030090332,52.4726982116699,52.4720268249512,52.4710273742676,52.4719772338867,52.4725303649902,52.4725074768066,52.4728202819824,52.4734992980957,52.4743995666504,52.4773101806641,52.4842491149902,52.4866104125977,52.4869575500488,52.4872589111328,52.4872894287109,52.4880104064941,52.4879493713379]}]],[[{"lng":[-1.90037000179291,-1.89982998371124,-1.90319991111755,-1.90006995201111,-1.89934992790222,-1.89982998371124,-1.90198993682861,-1.91436994075775,-1.91554999351501,-1.91626989841461,-1.91870999336243,-1.92074990272522,-1.92411994934082,-1.92697989940643,-1.92966997623444,-1.93509995937347,-1.93619990348816,-1.93845999240875],"lat":[52.4787101745605,52.4786682128906,52.4775276184082,52.4751091003418,52.4736404418945,52.4702491760254,52.4652290344238,52.4616279602051,52.4614601135254,52.4608573913574,52.4612197875977,52.4599494934082,52.4594192504883,52.45751953125,52.4576873779297,52.4531593322754,52.4537887573242,52.4536590576172]}]]],null,null,{"interactive":true,"className":"","stroke":true,"color":"black","weight":3,"opacity":1,"fill":false,"fillColor":"black","fillOpacity":0.2,"smoothFactor":1,"noClip":false},null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addCircleMarkers","args":[[52.4849032,52.48416265,52.4875426,52.4876369,52.4532961],[-1.89424115,-1.91766305,-1.88628205,-1.9302035,-1.9384003],4,null,null,{"interactive":true,"className":"","stroke":true,"color":"#03F","weight":5,"opacity":1,"fill":true,"fillColor":"#03F","fillOpacity":1},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[52.4531593322754,52.492790222168],"lng":[-1.93845999240875,-1.88526999950409]}},"evals":[],"jsHooks":[]}</script>
@@ -554,7 +554,7 @@ Geodetic CRS:  WGS 84
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>iso <span class="ot">&lt;-</span> <span class="fu">osrmIsochrone</span>(location, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">60</span>, <span class="dv">15</span>), <span class="at">res =</span> <span class="dv">10</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>iso <span class="ot">&lt;-</span> <span class="fu">osrmIsochrone</span>(location, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">60</span>, <span class="dv">15</span>), <span class="at">res =</span> <span class="dv">10</span>)</span>
 <span id="cb20-2"><a></a></span>
 <span id="cb20-3"><a></a>isochrone_ids <span class="ot">&lt;-</span> <span class="fu">unique</span>(iso<span class="sc">$</span>id)</span>
 <span id="cb20-4"><a></a></span>
@@ -571,7 +571,7 @@ Geodetic CRS:  WGS 84
 <span id="cb20-15"><a></a>    <span class="at">fillColor =</span> <span class="sc">~</span> <span class="fu">pal</span>(id),</span>
 <span id="cb20-16"><a></a>    <span class="at">color =</span> <span class="st">"#000000"</span>,</span>
 <span id="cb20-17"><a></a>    <span class="at">weight =</span> <span class="dv">1</span></span>
-<span id="cb20-18"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-18"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
@@ -586,7 +586,7 @@ Geodetic CRS:  WGS 84
 <h2>What trusts are in the isochrones?</h2>
 <p>The <code>summarise()</code> function will “union” the geometry</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">summarise</span>(iso)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">summarise</span>(iso)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Simple feature collection with 1 feature and 0 fields
 Geometry type: POLYGON
@@ -602,14 +602,14 @@ Geodetic CRS:  WGS 84
 <h2>What trusts are in the isochrones?</h2>
 <p>We can use this with a geo-filter to find the trusts in the isochrone</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="co"># also works</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="co"># also works</span></span>
 <span id="cb23-2"><a></a>trusts_in_iso <span class="ot">&lt;-</span> trusts <span class="sc">|&gt;</span></span>
 <span id="cb23-3"><a></a>  <span class="fu">st_filter</span>(</span>
 <span id="cb23-4"><a></a>    <span class="fu">summarise</span>(iso),</span>
 <span id="cb23-5"><a></a>    <span class="at">.predicate =</span> st_within</span>
 <span id="cb23-6"><a></a>  )</span>
 <span id="cb23-7"><a></a></span>
-<span id="cb23-8"><a></a>trusts_in_iso</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-8"><a></a>trusts_in_iso</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Simple feature collection with 31 features and 3 fields
 Geometry type: POINT
@@ -638,7 +638,7 @@ Geodetic CRS:  WGS 84
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">leaflet</span>(trusts_in_iso) <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">leaflet</span>(trusts_in_iso) <span class="sc">|&gt;</span></span>
 <span id="cb25-2"><a></a>  <span class="fu">addProviderTiles</span>(<span class="st">"Stamen.TonerLite"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb25-3"><a></a>  <span class="fu">addMarkers</span>() <span class="sc">|&gt;</span></span>
 <span id="cb25-4"><a></a>  <span class="fu">addPolygons</span>(</span>
@@ -646,7 +646,7 @@ Geodetic CRS:  WGS 84
 <span id="cb25-6"><a></a>    <span class="at">fillColor =</span> <span class="sc">~</span><span class="fu">pal</span>(id),</span>
 <span id="cb25-7"><a></a>    <span class="at">color =</span> <span class="st">"#000000"</span>,</span>
 <span id="cb25-8"><a></a>    <span class="at">weight =</span> <span class="dv">1</span></span>
-<span id="cb25-9"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-9"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
@@ -662,7 +662,7 @@ Geodetic CRS:  WGS 84
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>r <span class="ot">&lt;-</span> <span class="dv">25000</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>r <span class="ot">&lt;-</span> <span class="dv">25000</span></span>
 <span id="cb26-2"><a></a></span>
 <span id="cb26-3"><a></a>trusts_in_radius <span class="ot">&lt;-</span> trusts <span class="sc">|&gt;</span></span>
 <span id="cb26-4"><a></a>  <span class="fu">st_filter</span>(</span>
@@ -684,7 +684,7 @@ Geodetic CRS:  WGS 84
 <span id="cb26-20"><a></a>    <span class="at">data =</span> radius,</span>
 <span id="cb26-21"><a></a>    <span class="at">color =</span> <span class="st">"#000000"</span>,</span>
 <span id="cb26-22"><a></a>    <span class="at">weight =</span> <span class="dv">1</span></span>
-<span id="cb26-23"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-23"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
@@ -898,7 +898,7 @@ Geodetic CRS:  WGS 84
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1010,13 +1010,14 @@ Geodetic CRS:  WGS 84
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

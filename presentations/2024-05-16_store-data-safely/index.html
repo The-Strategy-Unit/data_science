@@ -6,8 +6,8 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.34">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.24">
 
   <meta name="author" content="YiWen Hon">
   <meta name="author" content="Matt Dray">
@@ -97,7 +97,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-09c34abcecefe638f33e6d3c2293a836.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-2079033eeb7d97b2e2953c0f909ee90b.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -281,12 +281,12 @@
 </section>
 <section id="basic-approach" class="slide level2">
 <h2>Basic approach</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">install.packages</span>(<span class="st">"pins"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">install.packages</span>(<span class="st">"pins"</span>)</span>
 <span id="cb1-2"><a></a><span class="fu">library</span>(pins)</span>
 <span id="cb1-3"><a></a></span>
 <span id="cb1-4"><a></a><span class="fu">board_connect</span>()</span>
 <span id="cb1-5"><a></a><span class="fu">pin_write</span>(board, data, <span class="st">"pin_name"</span>)</span>
-<span id="cb1-6"><a></a><span class="fu">pin_read</span>(board, <span class="st">"user_name/pin_name"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-6"><a></a><span class="fu">pin_read</span>(board, <span class="st">"user_name/pin_name"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="live-demo" class="slide level2">
 <h2>Live demo</h2>
@@ -348,27 +348,27 @@
 <p>.Renviron:</p>
 <pre><code>AZ_STORAGE_EP=https://STORAGEACCOUNT.blob.core.windows.net/</code></pre>
 <p>Script:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>ep_uri <span class="ot">&lt;-</span> <span class="fu">Sys.getenv</span>(<span class="st">"AZ_STORAGE_EP"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>ep_uri <span class="ot">&lt;-</span> <span class="fu">Sys.getenv</span>(<span class="st">"AZ_STORAGE_EP"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Tip: reload .Renviron with <code>readRenviron(".Renviron")</code></p>
 </section>
 <section id="step-1-load-your-environment-variables-1" class="slide level2">
 <h2>Step 1: load your environment variables</h2>
 <p>In the demo script we are providing, you will need these environment variables:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>ep_uri <span class="ot">&lt;-</span> <span class="fu">Sys.getenv</span>(<span class="st">"AZ_STORAGE_EP"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>ep_uri <span class="ot">&lt;-</span> <span class="fu">Sys.getenv</span>(<span class="st">"AZ_STORAGE_EP"</span>)</span>
 <span id="cb4-2"><a></a>app_id <span class="ot">&lt;-</span> <span class="fu">Sys.getenv</span>(<span class="st">"AZ_APP_ID"</span>)</span>
 <span id="cb4-3"><a></a>container_name <span class="ot">&lt;-</span> <span class="fu">Sys.getenv</span>(<span class="st">"AZ_STORAGE_CONTAINER"</span>)</span>
-<span id="cb4-4"><a></a>tenant <span class="ot">&lt;-</span> <span class="fu">Sys.getenv</span>(<span class="st">"AZ_TENANT_ID"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-4"><a></a>tenant <span class="ot">&lt;-</span> <span class="fu">Sys.getenv</span>(<span class="st">"AZ_TENANT_ID"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="step-2-authenticate-with-azure" class="slide level2">
 <h2>Step 2: Authenticate with Azure</h2>
 <div class="columns">
 <div class="column" style="width:70%;">
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>token <span class="ot">&lt;-</span> AzureAuth<span class="sc">::</span><span class="fu">get_azure_token</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>token <span class="ot">&lt;-</span> AzureAuth<span class="sc">::</span><span class="fu">get_azure_token</span>(</span>
 <span id="cb5-2"><a></a>  <span class="st">"https://storage.azure.com"</span>,</span>
 <span id="cb5-3"><a></a>  <span class="at">tenant =</span> tenant,</span>
 <span id="cb5-4"><a></a>  <span class="at">app =</span> app_id,</span>
 <span id="cb5-5"><a></a>  <span class="at">auth_type =</span> <span class="st">"device_code"</span>,</span>
-<span id="cb5-6"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-6"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The first time you do this, you will have link to authenticate in your browser and a code in your terminal to enter. Use the browser that works best with your @mlcsu.nhs.uk account!</p>
 </div><div class="column" style="width:30%;">
 <p><img data-src="auth.png" alt="A Microsoft authentication screen asking if the user is trying to sign into a named Azure container."></p>
@@ -376,11 +376,11 @@
 </section>
 <section id="step-3-connect-to-container" class="slide level2">
 <h2>Step 3: Connect to container</h2>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>endpoint <span class="ot">&lt;-</span> AzureStor<span class="sc">::</span><span class="fu">blob_endpoint</span>(ep_uri, <span class="at">token =</span> token)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>endpoint <span class="ot">&lt;-</span> AzureStor<span class="sc">::</span><span class="fu">blob_endpoint</span>(ep_uri, <span class="at">token =</span> token)</span>
 <span id="cb6-2"><a></a>container <span class="ot">&lt;-</span> AzureStor<span class="sc">::</span><span class="fu">storage_container</span>(endpoint, container_name)</span>
 <span id="cb6-3"><a></a></span>
 <span id="cb6-4"><a></a><span class="co"># List files in container</span></span>
-<span id="cb6-5"><a></a>blob_list <span class="ot">&lt;-</span> AzureStor<span class="sc">::</span><span class="fu">list_blobs</span>(container)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-5"><a></a>blob_list <span class="ot">&lt;-</span> AzureStor<span class="sc">::</span><span class="fu">list_blobs</span>(container)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>If you get 403 error, delete your token and re-authenticate, try a different browser/incognito, etc.</p>
 <p>To clear Azure tokens: <code>AzureAuth::clean_token_directory()</code></p>
 </section>
@@ -392,7 +392,7 @@
 </section>
 <section id="interact-with-the-container-1" class="slide level2">
 <h2>Interact with the container</h2>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="co"># Upload contents of a local directory to container</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="co"># Upload contents of a local directory to container</span></span>
 <span id="cb7-2"><a></a>AzureStor<span class="sc">::</span><span class="fu">storage_multiupload</span>(</span>
 <span id="cb7-3"><a></a>  container,</span>
 <span id="cb7-4"><a></a>  <span class="st">"LOCAL_FOLDERNAME/*"</span>,</span>
@@ -404,11 +404,11 @@
 <span id="cb7-10"><a></a>  container,</span>
 <span id="cb7-11"><a></a>  <span class="st">"data/ronald.jpeg"</span>,</span>
 <span id="cb7-12"><a></a>  <span class="st">"newdir/ronald.jpeg"</span></span>
-<span id="cb7-13"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-13"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="load-csv-files-directly-from-azure-container" class="slide level2">
 <h2>Load csv files directly from Azure container</h2>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>df_from_azure <span class="ot">&lt;-</span> AzureStor<span class="sc">::</span><span class="fu">storage_read_csv</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>df_from_azure <span class="ot">&lt;-</span> AzureStor<span class="sc">::</span><span class="fu">storage_read_csv</span>(</span>
 <span id="cb8-2"><a></a>  container,</span>
 <span id="cb8-3"><a></a>  <span class="st">"newdir/cats.csv"</span>,</span>
 <span id="cb8-4"><a></a>  <span class="at">show_col_types =</span> <span class="cn">FALSE</span></span>
@@ -420,12 +420,12 @@
 <span id="cb8-10"><a></a>  container, <span class="at">src =</span> <span class="st">"newdir/cats.parquet"</span>, <span class="at">dest =</span> <span class="cn">NULL</span></span>
 <span id="cb8-11"><a></a>)</span>
 <span id="cb8-12"><a></a></span>
-<span id="cb8-13"><a></a>parq_df <span class="ot">&lt;-</span> arrow<span class="sc">::</span><span class="fu">read_parquet</span>(parquet_in_memory)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-13"><a></a>parq_df <span class="ot">&lt;-</span> arrow<span class="sc">::</span><span class="fu">read_parquet</span>(parquet_in_memory)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="interact-with-the-container-2" class="slide level2">
 <h2>Interact with the container</h2>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="co"># Delete from Azure container (!!!)</span></span>
-<span id="cb9-2"><a></a>AzureStor<span class="sc">::</span><span class="fu">delete_storage_file</span>(container, BLOB_NAME)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="co"># Delete from Azure container (!!!)</span></span>
+<span id="cb9-2"><a></a>AzureStor<span class="sc">::</span><span class="fu">delete_storage_file</span>(container, BLOB_NAME)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="what-does-this-achieve" class="slide level2">
 <h2>What does this achieve?</h2>
@@ -629,7 +629,7 @@
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -741,13 +741,14 @@
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

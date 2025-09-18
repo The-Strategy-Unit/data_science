@@ -15,3 +15,5 @@ site_libs/
 *_cache/
 *_freeze/
 *.html
+
+**/*.quarto_ipynb

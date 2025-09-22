@@ -10,7 +10,105 @@
 <atom:link href="https://the-strategy-unit.github.io/data_science/blogs/index.xml" rel="self" type="application/rss+xml"/>
 <description>Blogs from the Data Science Team at The Strategy Unit</description>
 <generator>quarto-1.8.24</generator>
-<lastBuildDate>Tue, 09 Sep 2025 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 18 Sep 2025 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Verifying Git Commits</title>
+  <link>https://the-strategy-unit.github.io/data_science/blogs/posts/2025-09-18_verifying_git_commits/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Ever looked at a list of commits on GitHub and noticed ✅ green checks next to some commits, but not others?<br>
+Wondered what they mean?</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2025-09-18_verifying_git_commits/nhp_inputs-commits.png" class="img-fluid figure-img"></p>
+<figcaption>Screenshot of the nhp_inputs repository, showing some verified commits and other unverified commits.</figcaption>
+</figure>
+</div>
+<p>Here’s a screenshot of our <a href="https://github.com/The-Strategy-Unit/nhp_inputs/commits/main/">nhp_inputs</a> repository.<br>
+You can see that some commits (merge commits, specifically here) have those checks, while others don’t.</p>
+<p>The green check indicates that the commit has been cryptographically signed — proving it was created by the stated author and hasn’t been tampered with.</p>
+<p>There’s nothing stopping someone from changing their Git username and email to impersonate another author.<br>
+You might have seen this yourself when your local Git config isn’t set correctly (<a href="https://superuser.com/questions/1435213/github-why-do-i-appear-twice-on-every-commit">example and fix</a>).</p>
+<p>So, why are those merge commits verified?</p>
+<p>When you make a commit directly on GitHub (either by editing a file in the browser or merging a pull request), GitHub knows it’s you and “signs” the commit using its <a href="https://en.wikipedia.org/wiki/GNU_Privacy_Guard">GPG</a> private key.<br>
+Others can then independently verify the commit by validating it against <a href="https://keys.openpgp.org/search?q=B5690EEEBB952194">GitHub’s public key</a>.</p>
+<section id="can-you-sign-your-own-commits" class="level2">
+<h2 class="anchored" data-anchor-id="can-you-sign-your-own-commits">Can you sign your own commits?</h2>
+<p>Absolutely — and you probably should!<br>
+This isn’t just a GitHub feature; it’s built directly into Git.</p>
+<p>Below is a screenshot of our <a href="https://github.com/the-strategy-unit/nhp_model/commits/main">nhp_model</a>, where all the commits I’ve authored have been signed with <a href="https://keyserver.ubuntu.com/pks/lookup?search=8F3C2735D62D6993&amp;fingerprint=on&amp;op=index">my GPG key</a>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2025-09-18_verifying_git_commits/nhp_inputs-commits.png" class="img-fluid figure-img"></p>
+<figcaption>Screenshot of the nhp_model repository, showing all commits are verified.</figcaption>
+</figure>
+</div>
+<p>Setting up GPG can be a bit of a faff, but there’s an easier way: using SSH keys to sign commits.<br>
+You may already have SSH set up for pushing and pulling from GitHub, so this is a no-brainer.<br>
+Even if you don’t, setting up SSH is quick.</p>
+</section>
+<section id="easy-approach-using-ssh" class="level2">
+<h2 class="anchored" data-anchor-id="easy-approach-using-ssh">Easy approach: using SSH</h2>
+<p>For more details, see <a href="https://docs.gitlab.com/user/project/repository/signed_commits/ssh/">“Sign commits with SSH keys” from GitLab’s docs</a>, but here’s the short version:</p>
+<p>First, generate an SSH key if you haven’t already. Open a terminal (on Windows you might need Git Bash) and run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ssh-keygen</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-t</span> ed25519 <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-C</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"my.email@example.com"</span></span></code></pre></div></div>
+<p>This creates a new file called <code>~/.ssh/id_25519.pub</code>, where <code>~</code> is your home directory (for example, on Windows: <code>C:\Users\thomas.jemmett\.ssh\id_25519.pub</code>).</p>
+<p>Then run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">git</span> config <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--global</span> gpg.format ssh</span>
+<span id="cb2-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">git</span> config <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--global</span> user.signingkey ~/.ssh/id_25519.pub</span>
+<span id="cb2-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">git</span> config <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--global</span> tag.gpgsign true</span></code></pre></div></div>
+<p>From now on, your commits will be signed — but GitHub won’t yet recognise the signature! You need to upload your SSH key for signing: see<a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account#adding-a-new-ssh-key-to-your-account">“Adding a new SSH key to your account”, GitHub Docs</a>.</p>
+</section>
+<section id="harder-approach-gpg" class="level2">
+<h2 class="anchored" data-anchor-id="harder-approach-gpg">Harder approach: GPG</h2>
+<p>While GitHub supports SSH-signed commits, not all providers do. GPG is a more established way of performing these cryptographic operations.</p>
+<p>It does take more setup, and you may need to install additional tools. Rather than going step by step here, you should read GitHub’s docs on creating a key.</p>
+<p>If you do create a GPG key, consider using a modern algorithm like ECDSA or EdDSA.</p>
+<p>It’s also a good idea to <a href="https://www.gnupg.org/gph/en/manual/x457.html">send your new key to a few keyservers</a> (e.g.&nbsp;<a href="https://pgp.mit.edu">pgp.mit.edu</a>, <a href="https://keyserver.ubuntu.com">keyserver.ubuntu.com</a>, <a href="https://keys.openpgp.org">keys.openpgp.org</a>).</p>
+<p>If some of your colleagues also use GPG, you might <a href="https://gist.github.com/F21/b0e8c62c49dfab267ff1d0c6af39ab84">sign their keys</a> to help establish a <a href="https://en.wikipedia.org/wiki/Chain_of_trust">Chain of trust</a>.</p>
+</section>
+<section id="paranoid-approach" class="level2">
+<h2 class="anchored" data-anchor-id="paranoid-approach">Paranoid approach</h2>
+<p>Once your commits are verifiable, you need to ensure your private key never leaks. If an attacker obtained your SSH or GPG key, they could create commits pretending to be you and sign them so others would completely trust them.</p>
+<p>If you’re ultra-paranoid (or a maintainer of a popular repository), consider this:</p>
+<p>Generate a GPG master key on an air-gapped machine (i.e.&nbsp;not connected to the internet), use it to generate short-lived subkeys, then copy the subkeys to a hardware security key (HSK) like a <a href="https://support.yubico.com/hc/en-us/articles/360013790259-Using-Your-YubiKey-with-OpenPGP">Yubikey</a>.</p>
+<p>If you want a good guide to follow, you might want to read this series of blog posts: (though, I would choose ECC over RSA as suggested). Part 6 explains how to get this to work with a Yubikey.</p>
+<p>A good guide is the blog series <a href="https://chipsenkbeil.com/posts/applying-gpg-and-yubikey-part-1-overview/">Applying GPG and Yubikey</a> (I’d recommend ECC over RSA as suggested). Part 6 covers integrating this with a YubiKey.</p>
+<p>This approach stores your cryptographic secrets in a way they can’t be extracted (HSKs only import keys, not export them), meaning an attacker would have to physically steal your device.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Git</category>
+  <category>GitHub</category>
+  <guid>https://the-strategy-unit.github.io/data_science/blogs/posts/2025-09-18_verifying_git_commits/</guid>
+  <pubDate>Thu, 18 Sep 2025 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Positron for Product Owners</title>
   <link>https://the-strategy-unit.github.io/data_science/blogs/posts/2025-09-09_positron_for_product/</link>
@@ -12983,87 +13081,6 @@ $ git remote remove friend</code></pre>
   <category>tutorial</category>
   <guid>https://the-strategy-unit.github.io/data_science/blogs/posts/2023-04-26_alternative_remotes/</guid>
   <pubDate>Wed, 26 Apr 2023 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Creating a hotfix with git</title>
-  <dc:creator>Tom Jemmett</dc:creator>
-  <link>https://the-strategy-unit.github.io/data_science/blogs/posts/2023-03-24_hotfix-with-git/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>I recently discovered a bug in a code-base which needed to be fixed and deployed back to production A.S.A.P., but since the last release the code has moved on significantly. The history looks something a bit like:</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2023-03-24_hotfix-with-git/index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>That is, we have a tag which is the code that is currently in production (which we need to patch), a number of commits after that tag to main (which were separate branches merged via pull requests), and a current development branch.</p>
-<p>I need to somehow: 1. go back to the tagged release, 2. check that code out, 3. patch that code, 4. commit this change, but insert the commit before all of the new commits after the tag</p>
-<p>There are at least two ways that I know to do this, one would be with an <a href="https://about.gitlab.com/blog/2020/11/23/keep-git-history-clean-with-interactive-rebase/">interactive rebase</a>, but I used a slightly longer method, but one I feel is a little less likely to get wrong.</p>
-<p>Below are the step’s that I took. One thing I should note is this worked well for my particular issue because the change didn’t cause any merge conflicts later on.</p>
-<section id="fixing-my-codebase" class="level2">
-<h2 class="anchored" data-anchor-id="fixing-my-codebase">Fixing my codebase</h2>
-<p>First, we need to checkout the tag</p>
-<pre><code>git checkout -b hotfix v0.2.0</code></pre>
-<p>This creates a new branch called <code>hotfix</code> off of the tag <code>v0.2.0</code>.</p>
-<p>Now that I have the code base checked out at the point I need to fix, I can make the change that is needed, and commit the change</p>
-<pre><code>git add [FILENAME]
-git commit -m "fixes the code"</code></pre>
-<p><em>(Obviously, I used the actual file name and gave a better commit message. I Promise 😝)</em></p>
-<p>Now my code is fixed, I create a new tag for this “release”, as well as push the code to production (this step is omitted here)</p>
-<pre><code>git tag v0.2.1 -m "version 0.2.0"</code></pre>
-<p>At this point, our history looks something like</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2023-03-24_hotfix-with-git/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>What we want to do is break the link between main and <code>v0.2.0</code>, instead attaching to<code>v0.2.1</code>. First though, I want to make sure that if I make a mistake, I’m not making it on the main branch.</p>
-<pre><code>git checkout main
-git checkout -b apply-hotfix</code></pre>
-<p>Then we can fix our history using the rebase command</p>
-<pre><code>git rebase hotfix</code></pre>
-<p>What this does is it rolls back to the point where the branch that we are rebasing (<code>apply-hotfix</code>) and the <code>hotfix</code> branch both share a common commit (<code>v0.2.0</code> tag). It then applies the commits in the <code>hotfix</code> branch, before reapplying the commits from <code>apply-hotfix</code> (a.k.a. the <code>main</code> branch).</p>
-<p>One thing to note, if you have any merge conflicts created by your fix, then the rebase will stop and ask you to fix the merge conflicts. There is some information in the GitHub doc’s for [resolving merge conflicts after a Git rebase][2].</p>
-<p>[2]: https://docs.github.com/en/get-started/using-git/resolving-merge-conflicts-after-a-git-rebase</p>
-<p>At this point, we can check that the commit history looks correct</p>
-<pre><code>git log v0.2.0..HEAD</code></pre>
-<p>If we are happy, then we can apply this to the <code>main</code> branch. I do this by renaming the <code>apply-hotfix</code> branch as <code>main</code>. First, you have to delete the <code>main</code> branch to allow us to rename the branch.</p>
-<pre><code>git branch -D main
-git branch -m main</code></pre>
-<p>We also need to update the other branches to use the new main branch</p>
-<pre><code>git checkout branch
-git rebase main</code></pre>
-<p>Now, we should have a history like</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2023-03-24_hotfix-with-git/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-
-
-</section>
-
- ]]></description>
-  <category>git</category>
-  <category>tutorial</category>
-  <guid>https://the-strategy-unit.github.io/data_science/blogs/posts/2023-03-24_hotfix-with-git/</guid>
-  <pubDate>Fri, 24 Mar 2023 00:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

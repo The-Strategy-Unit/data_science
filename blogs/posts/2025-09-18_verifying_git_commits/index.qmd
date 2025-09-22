@@ -45,7 +45,7 @@ This isn’t just a GitHub feature; it’s built directly into Git.
 
 Below is a screenshot of our [nhp_model](https://github.com/the-strategy-unit/nhp_model/commits/main), where all the commits I’ve authored have been signed with [my GPG key](https://keyserver.ubuntu.com/pks/lookup?search=8F3C2735D62D6993&fingerprint=on&op=index).
 
-![Screenshot of the nhp_model repository, showing all commits are verified.](nhp_inputs-commits.png)
+![Screenshot of the nhp_model repository, showing all commits are verified.](nhp_model-commits.png)
 
 Setting up GPG can be a bit of a faff, but there’s an easier way: using SSH keys to sign commits.  
 You may already have SSH set up for pushing and pulling from GitHub, so this is a no-brainer.  

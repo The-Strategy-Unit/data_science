@@ -43,7 +43,7 @@ This isn’t just a GitHub feature; it’s built directly into Git.</p>
 <p>Below is a screenshot of our <a href="https://github.com/the-strategy-unit/nhp_model/commits/main">nhp_model</a>, where all the commits I’ve authored have been signed with <a href="https://keyserver.ubuntu.com/pks/lookup?search=8F3C2735D62D6993&amp;fingerprint=on&amp;op=index">my GPG key</a>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2025-09-18_verifying_git_commits/nhp_inputs-commits.png" class="img-fluid figure-img"></p>
+<p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2025-09-18_verifying_git_commits/nhp_model-commits.png" class="img-fluid figure-img"></p>
 <figcaption>Screenshot of the nhp_model repository, showing all commits are verified.</figcaption>
 </figure>
 </div>

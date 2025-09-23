@@ -87,6 +87,7 @@ font-style: inherit;">git</span> config <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">--global</span> commit.gpgsign true</span></code></pre></div></div>
 <p>From now on, your commits will be signed — but GitHub won’t yet recognise the signature! You need to upload your SSH key for signing: see<a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account#adding-a-new-ssh-key-to-your-account">“Adding a new SSH key to your account”, GitHub Docs</a>.</p>
+<p>You need to make sure that you set this as a key for signing, not for authentication. If you already have uploaded your key for authentication, you need to upload it again for signing. Using the same key for both is fine.</p>
 </section>
 <section id="harder-approach-gpg" class="level2">
 <h2 class="anchored" data-anchor-id="harder-approach-gpg">Harder approach: GPG</h2>

@@ -458,6 +458,7 @@ Even if you don’t, setting up SSH is quick.</p>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> tag.gpgsign true</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> commit.gpgsign true</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>From now on, your commits will be signed — but GitHub won’t yet recognise the signature! You need to upload your SSH key for signing: see<a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account#adding-a-new-ssh-key-to-your-account">“Adding a new SSH key to your account”, GitHub Docs</a>.</p>
+<p>You need to make sure that you set this as a key for signing, not for authentication. If you already have uploaded your key for authentication, you need to upload it again for signing. Using the same key for both is fine.</p>
 </section>
 <section id="harder-approach-gpg" class="level2">
 <h2 class="anchored" data-anchor-id="harder-approach-gpg">Harder approach: GPG</h2>

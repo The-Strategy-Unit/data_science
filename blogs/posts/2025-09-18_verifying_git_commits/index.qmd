@@ -69,6 +69,7 @@ Then run:
 git config --global gpg.format ssh
 git config --global user.signingkey ~/.ssh/id_25519.pub
 git config --global tag.gpgsign true
+git config --global commit.gpgsign true
 ```
 
 From now on, your commits will be signed — but GitHub won’t yet recognise the signature!

@@ -75,6 +75,10 @@ git config --global commit.gpgsign true
 From now on, your commits will be signed — but GitHub won’t yet recognise the signature!
 You need to upload your SSH key for signing: see["Adding a new SSH key to your account", GitHub Docs](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account#adding-a-new-ssh-key-to-your-account).
 
+You need to make sure that you set this as a key for signing, not for authentication.
+If you already have uploaded your key for authentication, you need to upload it again for signing.
+Using the same key for both is fine.
+
 ## Harder approach: GPG
 
 While GitHub supports SSH-signed commits, not all providers do.

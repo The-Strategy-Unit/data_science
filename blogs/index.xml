@@ -80,7 +80,12 @@ font-style: inherit;">--global</span> user.signingkey ~/.ssh/id_25519.pub</span>
 background-color: null;
 font-style: inherit;">git</span> config <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">--global</span> tag.gpgsign true</span></code></pre></div></div>
+font-style: inherit;">--global</span> tag.gpgsign true</span>
+<span id="cb2-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">git</span> config <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--global</span> commit.gpgsign true</span></code></pre></div></div>
 <p>From now on, your commits will be signed — but GitHub won’t yet recognise the signature! You need to upload your SSH key for signing: see<a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account#adding-a-new-ssh-key-to-your-account">“Adding a new SSH key to your account”, GitHub Docs</a>.</p>
 </section>
 <section id="harder-approach-gpg" class="level2">

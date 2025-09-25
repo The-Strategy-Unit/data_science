@@ -1,0 +1,111 @@
+---
+title: "Verifying Git Commits"
+subtitle: ""
+authors:
+  - name: Tom Jemmett
+    orcid: 0000-0002-6943-2990
+    email: thomas.jemmett@nhs.net
+    affiliation:
+      - name: The Strategy Unit
+        url: https://strategyunitwm.nhs.uk/
+date: "2025-09-18"
+categories: [Git, GitHub]
+execute: 
+  enabled: true
+editor: 
+  markdown: 
+    wrap: sentence
+format:
+  html:
+    code-fold: true
+---
+
+Ever looked at a list of commits on GitHub and noticed ✅ green checks next to some commits, but not others?  
+Wondered what they mean?
+
+![Screenshot of the nhp_inputs repository, showing some verified commits and other unverified commits.](nhp_inputs-commits.png)
+
+Here’s a screenshot of our [nhp_inputs](https://github.com/The-Strategy-Unit/nhp_inputs/commits/main/) repository.  
+You can see that some commits (merge commits, specifically here) have those checks, while others don’t.
+
+The green check indicates that the commit has been cryptographically signed — proving it was created by the stated author and hasn’t been tampered with.
+
+There’s nothing stopping someone from changing their Git username and email to impersonate another author.  
+You might have seen this yourself when your local Git config isn’t set correctly ([example and fix](https://superuser.com/questions/1435213/github-why-do-i-appear-twice-on-every-commit)).
+
+So, why are those merge commits verified?
+
+When you make a commit directly on GitHub (either by editing a file in the browser or merging a pull request), GitHub knows it’s you and “signs” the commit using its [GPG](https://en.wikipedia.org/wiki/GNU_Privacy_Guard) private key.  
+Others can then independently verify the commit by validating it against [GitHub’s public key](https://keys.openpgp.org/search?q=B5690EEEBB952194).
+
+## Can you sign your own commits?
+
+Absolutely — and you probably should!  
+This isn’t just a GitHub feature; it’s built directly into Git.
+
+Below is a screenshot of our [nhp_model](https://github.com/the-strategy-unit/nhp_model/commits/main), where all the commits I’ve authored have been signed with [my GPG key](https://keyserver.ubuntu.com/pks/lookup?search=8F3C2735D62D6993&fingerprint=on&op=index).
+
+![Screenshot of the nhp_model repository, showing all commits are verified.](nhp_model-commits.png)
+
+Setting up GPG can be a bit of a faff, but there’s an easier way: using SSH keys to sign commits.  
+You may already have SSH set up for pushing and pulling from GitHub, so this is a no-brainer.  
+Even if you don’t, setting up SSH is quick.
+
+## Easy approach: using SSH
+
+For more details, see ["Sign commits with SSH keys" from GitLab’s docs](https://docs.gitlab.com/user/project/repository/signed_commits/ssh/), but here’s the short version:
+
+First, generate an SSH key if you haven’t already. Open a terminal (on Windows you might need Git Bash) and run:
+
+``` sh
+ssh-keygen -t ed25519 -C "my.email@example.com"
+```
+
+This creates a new file called `~/.ssh/id_25519.pub`, where `~` is your home directory (for example, on Windows: `C:\Users\thomas.jemmett\.ssh\id_25519.pub`).
+
+Then run:
+
+``` sh
+git config --global gpg.format ssh
+git config --global user.signingkey ~/.ssh/id_25519.pub
+git config --global tag.gpgsign true
+git config --global commit.gpgsign true
+```
+
+From now on, your commits will be signed — but GitHub won’t yet recognise the signature!
+You need to upload your SSH key for signing: see["Adding a new SSH key to your account", GitHub Docs](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account#adding-a-new-ssh-key-to-your-account).
+
+You need to make sure that you set this as a key for signing, not for authentication.
+If you already have uploaded your key for authentication, you need to upload it again for signing.
+Using the same key for both is fine.
+
+## Harder approach: GPG
+
+While GitHub supports SSH-signed commits, not all providers do.
+GPG is a more established way of performing these cryptographic operations.
+
+It does take more setup, and you may need to install additional tools.
+Rather than going step by step here, you should read GitHub’s docs
+ on creating a key.
+
+If you do create a GPG key, consider using a modern algorithm like ECDSA or EdDSA.
+
+It’s also a good idea to [send your new key to a few keyservers](https://www.gnupg.org/gph/en/manual/x457.html)
+ (e.g. [pgp.mit.edu](https://pgp.mit.edu), [keyserver.ubuntu.com](https://keyserver.ubuntu.com), [keys.openpgp.org](https://keys.openpgp.org)).
+
+If some of your colleagues also use GPG, you might [sign their keys](https://gist.github.com/F21/b0e8c62c49dfab267ff1d0c6af39ab84) to help establish a [Chain of trust](https://en.wikipedia.org/wiki/Chain_of_trust).
+
+## Paranoid approach
+Once your commits are verifiable, you need to ensure your private key never leaks.
+If an attacker obtained your SSH or GPG key, they could create commits pretending to be you and sign them so others would completely trust them.
+
+If you’re ultra-paranoid (or a maintainer of a popular repository), consider this:
+
+Generate a GPG master key on an air-gapped machine (i.e. not connected to the internet), use it to generate short-lived subkeys, then copy the subkeys to a hardware security key (HSK) like a [Yubikey](https://support.yubico.com/hc/en-us/articles/360013790259-Using-Your-YubiKey-with-OpenPGP).
+
+If you want a good guide to follow, you might want to read this series of blog posts:  (though, I would choose ECC over RSA as suggested). Part 6 explains how to get this to work with a Yubikey. 
+
+A good guide is the blog series [Applying GPG and Yubikey](https://chipsenkbeil.com/posts/applying-gpg-and-yubikey-part-1-overview/) (I’d recommend ECC over RSA as suggested).
+Part 6 covers integrating this with a YubiKey.
+
+This approach stores your cryptographic secrets in a way they can’t be extracted (HSKs only import keys, not export them), meaning an attacker would have to physically steal your device.

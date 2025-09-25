@@ -2,13 +2,13 @@
 
 ## Slack check-ins
 
-In advanced of the weekly stand-up, all team members share a short summary, in Slack, answering the following questions:
+On Fridays, at the end of each week and in advance of Monday's stand-up, all team members share a short summary, in Slack, answering the following questions:
 
 - ⭐ What went well last week
 - 🦉 What lessons did you learn
 - 🎯 Goal(s) for this week
 
-There is also a Slack bot every Wednesday & Friday prompting a check-in. You don't have to respond to this, but it's a nice way to share any recent wins or blockers.
+There is also a Slack bot every Tuesday and Thursday prompting a check-in. You don't have to respond to this, but it's a nice way to share any recent wins or blockers.
 
 ## Weekly stand up
 
@@ -51,6 +51,6 @@ Tasks outside this project can be managed how you like. If you want to use GitHu
 
 We organise a fortnightly coffee and code for analysts in the Strategy Unit. This is planned in a [Coffee and Coding ☕🧑‍💻 GitHub project](https://github.com/orgs/The-Strategy-Unit/projects/14). Materials from previous sessions are shared here as [blogs](../blogs/) or [presentations](../presentations/).
 
+## Sidequests and support
 
-
-
+We have a fortnightly Wednesday meeting for team members to discuss any interesting side projects or knotty issues. Three members of the team are randomly selected for this on Tuesday morning via Slack.

@@ -1,0 +1,37 @@
+---
+title: "Collaborating with GitHub"
+subtitle: "What is GitHub? Basic introduction"
+author:
+  - "[YiWen Hon](mailto:yiwen.hon1@nhs.net)"
+date: "2025-11-06"
+execute:
+  echo: false
+  eval: false
+format:
+  revealjs:
+    scrollable: true
+    theme: [default, ../su_presentation.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    reference-location: document
+    slide-number: false
+    auto-animate: true
+    footer: |
+      Learn more about [The Strategy Unit](https://www.strategyunitwm.nhs.uk/)
+---
+
+## What the heck is GitHub anyway?
+
+
+## Basic GitHub functionality: Repositories and issues
+
+
+## Basic GitHub functionality: Projects
+
+
+## I don't code, what can GitHub offer me?
+
+
+

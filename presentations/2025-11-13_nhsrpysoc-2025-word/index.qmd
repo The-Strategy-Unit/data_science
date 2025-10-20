@@ -1,0 +1,135 @@
+---
+title: "Word is better than Quarto?"
+subtitle: "NHS RPySOC 2025"
+author: 
+  - "[Jac Grout](mailto:jacqueline.grout@nhs.net)"
+  - "[Matt Dray](mailto:matt.dray@nhs.net)"
+date: 2025-11-13
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, ../su_presentation.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
+    footer: |
+      Find the repo at [The Strategy Unit/nhp_final_reports](https://github.com/The-Strategy-Unit/nhp_final_reports)
+---
+
+## Backstory 📖
+
+* [NHP](https://connect.strategyunitwm.nhs.uk/nhp/project_information/) outputs reports: need automation/reproducibility
+* [Quarto](https://quarto.org/) was the answer... until it wasn't!
+* Solution: meet users where they are (Microsoft Word)
+* Problem: how?
+
+::: {.notes}
+* We had what sounded like an obvious Reproducible Analytical Pipeline (RAP).
+* Ideal solution: create a Quarto document and populate it for a named organisation with images and calculations derived from data read from Azure.
+* However, the customer's pre-existing Word template was complicated and was frequently being changed.
+* It turned out to be easier to use the Word template as an input and insert our figures and values into it instead.
+:::
+
+## The Word template 📄
+
+![](template.png){width='100%' fig-alt="A zoomed out view of pages of a complicated-looking Word document with many chunks of text, tables and page orientations. Much of the text is highlighted in green, yellow and blue."}
+
+::: {.notes}
+* This zoomed-out view of part of the Word document template highlights the complexity.
+* The document uses a pre-existing theme; contains many specifically-formatted text chunks, tables and page orientations; and uses colour-coded highlighting to indicate who needs to edit which parts of the document.
+* The document was being changed and updated quite a lot. The customers were used to amending Word documents quickly, as and when required.
+* A more 'static' Quarto document wasn't going to cut the mustard here.
+:::
+
+## Process ✏️
+
+1. Record a request with a [GitHub issue template](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository).
+2. Tag model-run JSONs on Azure, update site-selections file.
+3. Read SharePoint template with [{Microsoft365R}](https://github.com/Azure/Microsoft365R).
+4. Insert content with [{officer}](https://davidgohel.github.io/officer/).
+5. Write timestamped folder with doc, results, log.
+6. Check output, return to recipient.
+
+::: {.notes}
+* How do we identify chosen runs? On Aure, with run_stage metadata on results files and a list of chosen sites.
+* How to confirm with model relationship managers? Expose tagged scenarios and sites via a scheduled Quarto-report.
+* Basic interface: supply a scheme code, at simplest level.
+* Underlying functions save figures and values independently.
+* Images inserted by moving the imaginary 'cursor' to a known string of text in the report.
+* Value-insertion is more complicated: insert 'field' codes into the report, insert the values to custom document properties, refresh to insert these into the fields.
+* The output is a timestamped directory with the report, standalone images and values, and a log.
+:::
+
+## Generate a report 🖨️
+
+In R:
+
+```r
+populate_template(
+  scheme_code = "XYZ",                  # create a report for this scheme
+  result_sets = get_nhp_result_sets(),  # fetch results metadata from Azure
+  run_stages = list(                    # list the tagged model runs
+    primary = "final_report_ndg2",      # main data source for the report
+    secondary = "final_report_ndg1"     # used as a comparator
+  )
+)
+```
+
+Output file structure:
+
+```
+YYYY-MM-DD-HHMMSS_scheme/
+ ├──YYYY-MM-DD-HHMMSS_scheme.log                        # log of printed metadata
+ ├──YYYY-MM-DD-HHMMSS_scheme_outputs-report_draft.docx  # populated report
+ ├──figures/                                            # standalone PNG files
+ └──values/                                             # CSVs of calculated values
+    
+``` 
+
+::: {.notes}
+* The interface for us is quite simple: a single function where we set the scheme code and identify the metadata 'tag' for the results that will form the main basis of the report and a secondary set used for comparative purposes.
+* A bunch of sub-functions then read the data, calculate values, generate figures, read the Word template from SharePoint and then insert the content.
+* The output is a timestamped folder that contains the populated Word doc, a subfolder of the charts and calculated values, and a log file that contains information printed to the console (details thigns like the scheme name and site selections for the run, as well as warning and error messages if present).
+:::
+
+## Insert content with [{officer}](https://davidgohel.github.io/officer/) 👮
+
+For calculated values:
+
+1. Add doc-property fields, e.g. { DOCPROPERTY item_01 }.
+2. Add values to [custom doc properties](https://davidgohel.github.io/officer/reference/set_doc_properties.html).
+3. Update fields with corresponding property values.
+ 
+For generated figures:
+
+1. Add unique target strings, e.g. '[Insert Figure 8.2]'.
+2. [Find](https://davidgohel.github.io/officer/reference/cursor.html)/[replace](https://davidgohel.github.io/officer/reference/body_add_img.html) with corresponding PNG. 
+
+::: {.notes}
+* The {officer} package is crucial for inserting our content into the template.
+* We use different methods to insert values and images.
+* For calculated values, first add document-property fields to the Word doc (ctrl+F9); then write your calculated values to the custom document properties with `officer::set_doc_properties()`; then open and refresh the document (F9) to replace the fields with the corresponding value for the named property.
+* To insert images, programmatically find unique target strings with {officer}'s `cursor_reach()` and then overwrite with images using `body_add_img()`; we use  and a custom `insert_figure_on_cursor()` to do this.
+:::
+
+## 'Doing it right' 💯
+
+* [Github](https://github.com/The-Strategy-Unit/nhp_final_reports): 'learn by doing', challenge and improve things
+* Documentation/version history have [saved us](https://github.com/The-Strategy-Unit/nhp_final_reports/pull/123)!
+* The repo is a springboard for parallel/future work
+
+## Reflections 🪞
+
+* Challenge your thinking, be adaptable to user needs
+* Embrace agility and acknowledge fragility
+* 'The power of friendship' keeps things working
+
+::: {.notes}
+* The default mode of 'make a Quarto doc' wasn't the right fit here, but we recognised that and pivoted quickly.
+* We know the solution isn't perfect, but it is good enough.
+* The process has some frailties, but we recognise them. For example, the report path being changed on SharePoint means we can't retrieve it!
+* Talking between us on the code side, but also with the user, is really important to handle changing needs and to keep the process and outputs fir for purpose.
+:::

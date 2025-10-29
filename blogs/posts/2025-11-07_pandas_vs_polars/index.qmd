@@ -1,13 +1,22 @@
 ---
-title: "Pandas vs. Polars: Accelerating Healthcare Data Processing"
+title: "Pandas vs. Polars"
+subtitle: "Accelerating Healthcare Data Processing"
 authors:
-  - name: Data Science Team
+  - name: Eirini Komninou
+    email: eirini.komninou@nhs.net
     affiliation:
       - name: The Strategy Unit
         url: https://strategyunitwm.nhs.uk/
-date: "2025-10-27"
+date: "2025-09-09"
 categories: [Python, Data Science, Performance]
-image: "pandas_vs_polars.png"
+execute:
+  enabled: false
+editor:
+  markdown:
+    wrap: sentence
+format:
+  html:
+    code-fold: true
 ---
 
 ## Introduction
@@ -50,7 +59,7 @@ One of the first things you'll notice when comparing the implementations is how 
 
 **Pandas (Monolithic Functions):**
 
-```python
+```{python}
 def _process_inpatient_results(
     ctx: ProcessContext,
     output_dir: str,
@@ -66,7 +75,7 @@ def _process_inpatient_results(
 
 **Polars (Granular Functions):**
 
-```python
+```{python}
 def _process_inpatient_results(
     ctx: ProcessContext,
     output_dir: str,
@@ -106,7 +115,7 @@ Here, the difference between the two implementations is fairly subtle, showcasin
 
 **Pandas:**
 
-```python
+```{python}
 # Load and merge data
 original_df = az.load_data_file(data_connection, model_version_data, trust, "ip", baseline_year)
 reference_df = original_df.copy().drop(columns=["speldur", "classpat"])
@@ -116,7 +125,7 @@ merged = reference_df.merge(df, on="rn", how="inner")
 
 **Polars:**
 
-```python
+```{python}
 # Load and join data
 original_df = az_pl.load_data_file(data_connection, model_version_data, trust, "ip", baseline_year)
 reference_df = original_df.drop(["speldur", "classpat"])
@@ -132,14 +141,14 @@ Null handling differs significantly:
 
 **Pandas:**
 
-```python
+```{python}
 # Fill missing values
 original_df = az.load_data_file(...).fillna("unknown")
 ```
 
 **Polars:**
 
-```python
+```{python}
 # Fill null values with more explicit control
 original_df = az_pl.load_data_file(...)
 original_df = original_df.with_columns(
@@ -160,7 +169,7 @@ Data filtering and aggregation show some of the most significant syntax differen
 
 **Pandas:**
 
-```python
+```{python}
 # Extract a specific value
 detailed_beddays_principal = (
     model_runs_df.loc[
@@ -184,7 +193,7 @@ detailed_beddays_principal = (
 
 **Polars:**
 
-```python
+```{python}
 # Extract the same value with explicit filtering
 detailed_beddays_principal = int(
     model_runs_df.filter(pl.col("measure") == "beddays")
@@ -200,7 +209,7 @@ The Polars version is more compact, enhancing readability, with an SQL-like synt
 As mentioned in the introduction, one of Polars' key features is its support for lazy evaluation, which enables query optimisation:
 
 **Pandas:**
-```python
+```{python}
 # Each operation executes immediately
 result = (
     df[df["measure"] == "beddays"]
@@ -211,7 +220,7 @@ result = (
 ```
 
 **Polars:**
-```python
+```{python}
 # Builds an execution plan that can be optimised
 result = (
     df.lazy()
@@ -230,7 +239,7 @@ Both implementations are designed to manage memory, but with fundamental differe
 
 **Pandas:**
 
-```python
+```{python}
 # Choose batch size and load with caching
 batch_size = 30  # Balance between memory usage and I/O performance
 df = az.load_model_run_results_file(
@@ -249,7 +258,7 @@ logger.info(f"Memory cleaned after IP processing, current usage: {get_memory_usa
 
 **Polars:**
 
-```python
+```{python}
 # Similar batch loading pattern
 batch_size = 50  # Note larger batch size than Pandas
 df = az_pl.load_model_run_results_file(
@@ -285,7 +294,7 @@ Polars' expression system (with `pl.col()` syntax) is a core part of its design,
 
 **Explicit Null Checking:**
 
-```python
+```{python}
 # Count rows with empty sitetret for validation
 empty_sitetret_count = results.filter(
     pl.col("sitetret").is_null() | (pl.col("sitetret") == "")
@@ -296,7 +305,7 @@ if empty_sitetret_count > 0:
 
 **Type System Consistency:**
 
-```python
+```{python}
 # Ensure consistent numerical representation for statistics
 op_model_runs_df = op_model_runs_df.with_columns(
     [

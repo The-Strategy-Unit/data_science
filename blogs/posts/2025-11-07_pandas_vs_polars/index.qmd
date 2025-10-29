@@ -23,7 +23,7 @@ format:
 
 Data processing is at the heart of our work at the Strategy Unit. As our datasets have grown and NHP model has become more complex, we've found that our pipeline takes longer to complete.
 
-Like many data science teams, we've relied heavily on Pandas -Python's well established standard for data manipulation. It's familiar and extensively documented. However, as we've scaled up our operations, we've encountered performance bottlenecks that motivated us to seek more efficient solutions.
+Like many data science teams, we've relied heavily on Pandas -Python's well established standard for data processing. It's familiar and extensively documented. However, as we've scaled up our operations, we've encountered performance bottlenecks that motivated us to seek more efficient solutions.
 
 Polars has been frequently discussed as a possible improvement over Pandas. With language bindings for three languages -[Rust](https://docs.rs/polars/latest/polars/), [Node.js/Deno backend](https://pola-rs.github.io/nodejs-polars/) & [frontend](https://github.com/pola-rs/js-polars), [Python](https://docs.pola.rs/api/python/stable/reference/index.html)- and two execution modes i.e. [lazy](https://docs.pola.rs/user-guide/concepts/lazy-api/) and eager, Polars provides more flexibility in implementation and potential performance gains.
 

@@ -4,5 +4,38 @@
       "language": "quarto",
       "scheme": "file"
     }
-  ]
+  ],
+  "projectColors.mainColor": "#b7b927",
+  "window.title": "SU data_science repo",
+  "workbench.colorCustomizations": {
+    "editorRuler.foreground": "#ff4081",
+    "statusBarItem.warningBackground": "#b7b927",
+    "statusBarItem.warningForeground": "#000000",
+    "statusBarItem.warningHoverBackground": "#b7b927",
+    "statusBarItem.warningHoverForeground": "#00000090",
+    "statusBarItem.remoteBackground": "#c4c634",
+    "statusBarItem.remoteForeground": "#000000",
+    "statusBarItem.remoteHoverBackground": "#d1d341",
+    "statusBarItem.remoteHoverForeground": "#00000090",
+    "statusBar.background": "#b7b927",
+    "statusBar.foreground": "#000000",
+    "statusBar.border": "#b7b927",
+    "statusBar.debuggingBackground": "#b7b927",
+    "statusBar.debuggingForeground": "#000000",
+    "statusBar.debuggingBorder": "#b7b927",
+    "statusBar.noFolderBackground": "#b7b927",
+    "statusBar.noFolderForeground": "#000000",
+    "statusBar.noFolderBorder": "#b7b927",
+    "statusBar.prominentBackground": "#b7b927",
+    "statusBar.prominentForeground": "#000000",
+    "statusBar.prominentHoverBackground": "#b7b927",
+    "statusBar.prominentHoverForeground": "#00000090"
+  },
+  "projectColors.name": "SU data_science repo",
+  "projectColors.isActivityBarColored": false,
+  "projectColors.isTitleBarColored": false,
+  "projectColors.isStatusBarColored": true,
+  "projectColors.isProjectNameColored": true,
+  "projectColors.isActiveItemsColored": false,
+  "projectColors.setWindowTitle": true
 }

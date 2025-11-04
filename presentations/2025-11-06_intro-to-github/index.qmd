@@ -1,0 +1,83 @@
+---
+title: "Collaborating with GitHub"
+subtitle: "What is GitHub? Basic introduction"
+author:
+  - "[YiWen Hon](mailto:yiwen.hon1@nhs.net)"
+date: "2025-11-06"
+execute:
+  echo: false
+  eval: false
+format:
+  revealjs:
+    scrollable: true
+    theme: [default, ../su_presentation.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
+    footer: |
+      Learn more about [The Strategy Unit](https://www.strategyunitwm.nhs.uk/)
+---
+
+## What the heck is GitHub anyway? {{< fa brands github >}}
+
+> a web-based platform that ... combines Git, a powerful version control system, with features that facilitate collaborative work and project management.
+
+- "Version control": like Track Changes in Microsoft Office
+- "Features": will become clearer in today's session.
+
+Free to create an account - we can add you to the Strategy Unit organisation on GitHub[^1]
+
+[^1]: Note that some of the examples in this presentation are in private repositories, which you can only see if you are a member of this organisation on GitHub and are logged in
+
+::: {.notes}
+Note that other Git hosts are available, like GitLab and Bitbucket - but we're focusing on GitHub because that's what we use at the Strategy Unit
+:::
+
+## Basic GitHub functionality: Repositories
+
+- What is a Git repository? 📁
+
+A folder with advanced version control, which you can backup online and share with others.
+Can contain code or other types of files.
+
+- Examples of repositories:
+    - [nhp_model](https://github.com/The-Strategy-Unit/nhp_model): Very code-intensive
+    - [RAP_Drop_In](https://github.com/The-Strategy-Unit/RAP_Drop_In): No code
+
+🔒 Repositories can be public or private - but you should never ever EVER put any sensitive data in them, even if private!
+
+
+
+
+## Basic GitHub functionality: Issues
+
+You can add issues to a repository. Examples of how we've used issues to collaborate:
+
+[nhp_project_information #218](https://github.com/The-Strategy-Unit/nhp_project_information/issues/218)
+
+- Assigning people to issues
+- Having conversations and an audit trail
+- Referencing other issues or specific individuals
+- Labels to help organise issues
+
+[renal-capacity-model #21](https://github.com/The-Strategy-Unit/renal-capacity-model/issues/21)
+
+- Using subissues to help break tasks down
+
+[RAP_Drop_In checklist](https://github.com/The-Strategy-Unit/RAP_Drop_In/blob/main/.github/ISSUE_TEMPLATE/session-checklist.md)
+
+- Create "issue templates" for repetitive tasks/checklists
+
+## Fancier GitHub functionality: Projects
+
+- Like Trello, Asana, Monday, or Microsoft Planner - allows you to manage many issues in one place.
+- Quite flexible: See how we use different views in the [Sprint Planner](https://github.com/orgs/The-Strategy-Unit/projects/8/views/11?filterQuery=sprint%3A%40previous+) for our workload management.
+- Can also be used for non-coding task management: [Coffee and Coding Planner](https://github.com/orgs/The-Strategy-Unit/projects/14/views/1)
+
+## Sounds great! How do I get started?
+
+- Register for a GitHub account and let a member of the DS team know your username, so you can be added to the Strategy Unit organisation
+- Start playing around!

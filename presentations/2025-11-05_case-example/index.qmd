@@ -1,0 +1,106 @@
+---
+title: "Case study presentation- modelling acute hospital demand, collaboratively and openly"
+author: 
+  - "[Chris Beeley, Head of data science, Strategy Unit](mailto:chris.beeley1@nhs.net)"
+date: 2025-11-05
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, ../su_presentation.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
+    footer: |
+      Learn more about [The Strategy Unit](https://www.strategyunitwm.nhs.uk/)
+---
+
+## Intro
+
+*	**Why** did we build this [model](https://www.strategyunitwm.nhs.uk/new-hospital-programme-demand-model)
+*	**What** does it do
+* **What** are the key design decisions from a policy and technical standpoint
+
+## Why?
+
+* New Hospital Programme came to the Strategy Unit c.2020
+* Predict demand for the future of the hospitals c.2041
+* We built on existing work and knowledge in the SU as well as the literature
+* I was not here!
+
+## The landscape
+
+* Lots of models
+* Lots of consultancy support
+* Lots of repetition / duplication
+* BUT no consistency about definitions
+* Methodological progress is slow
+* Proprietary models means progress is not shared
+
+## So what does it do?
+
+<img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMTc3dXMyanF0cjJoem16bjhieDZ5djRqZ2RoNDd2eG43aDg3aXkweSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l2JdSlA1a1zKVAyze/giphy.gif" alt="'Gif of Homer Simpson pressing a button and saying 'do something cool'" height="500">
+
+## The big picture
+
+* Demographic change
+* Non-demographic change
+* Types of potentially mitigable activity
+
+## The model
+
+* Sample the parameters (assume normal)
+* Calculate demand at IP, OP, A&E level
+* Do this 256 times and plot the distribution
+* The results are conceptually at row level, but not in practice
+
+## The principles
+
+* Probabilistic vs point estimates
+* [Transparent and open source](https://www.strategyunitwm.nhs.uk/news/transforming-hospital-planning-open-source-demand-and-capacity-model) vs black box & paid
+* Collaborative vs top-down (done with vs done to)
+* Reproducible vs unverifiable
+* By the NHS, for the NHS vs taking money (and skills) out of the NHS
+* [(And now award winning)](https://www.strategyunitwm.nhs.uk/news/strategy-unit-demand-model-wins-prestigious-florence-nightingale-award)
+
+## Types of potentially mitigable activity
+
+* This is a key task for modellers and a key output of the work
+* Definitions
+* Local intelligence from collaborative relationships with schemes and ICBs
+* The National Elicitation Exercise
+* Links with 10 year plan, neighbourhoods agenda, and more
+
+## Types of potentially mitigable activity (TPMA)
+
+* This shows why open source and transparency are so vital- imagine proprietary definitions of these activities!
+* (you actually don't need to imagine, we already have that...)
+
+## Now for the (data) science
+
+<img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExMjVkNTFoMXNrb3kya3c1aHMzc3VwNGtmbmNkOWJmeHhhemE3NG8wbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oKIPnAiaMCws8nOsE/giphy.gif" alt="Gif of a cat sitting on a keyboard with code on the screen" height="500">
+
+## Big list of technical sounding words coming up...
+
+* SQL -> databricks
+* Azure compute (Docker)
+* Azure BLOB storage
+* Python for the model
+* R for reporting/ dashboards
+* Quarto for documentation
+
+## The future
+
+* National and regional model runs
+* Bring your own data (FDP?)
+* Understanding more about types of potentially mitigable activity, who thinks what's possible, and why it matters
+* Increasing understanding of the shift from hospital to the community
+
+## We believe that as far as possible...
+
+* Models should properly account for *uncertainty in prediction*
+* Modelling results should be *verifiably reproducible*
+* Concepts and definitions (such as of TPMA) should be *open*, *transparent*, and *properly documented*
+* The NHS should *develop*, *own*, and *run* key models in use inside the NHS

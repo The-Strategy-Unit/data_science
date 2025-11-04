@@ -97,7 +97,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-2079033eeb7d97b2e2953c0f909ee90b.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-56f96c8557bc7bd3eabb66eb828f93bc.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -215,20 +215,17 @@
 
   <p class="date">13 November 2025</p>
 </section>
-<section id="backstory" class="slide level2">
-<h2>Backstory 📖</h2>
+<section id="hello" class="slide level2">
+<h2>Hello 👋</h2>
 <ul>
-<li><a href="https://connect.strategyunitwm.nhs.uk/nhp/project_information/">NHP</a> outputs reports: need automation/reproducibility</li>
-<li><a href="https://quarto.org/">Quarto</a> was the answer… until it wasn’t!</li>
-<li>Solution: meet users where they are (Microsoft Word)</li>
-<li>Problem: how?</li>
+<li>We’re from <a href="https://www.strategyunitwm.nhs.uk/">The Strategy Unit</a></li>
+<li>I am Jac</li>
+<li>This is Matt</li>
 </ul>
 <aside class="notes">
 <ul>
-<li>We had what sounded like an obvious Reproducible Analytical Pipeline (RAP).</li>
-<li>Ideal solution: create a Quarto document and populate it for a named organisation with images and calculations derived from data read from Azure.</li>
-<li>However, the customer’s pre-existing Word template was complicated and was frequently being changed.</li>
-<li>It turned out to be easier to use the Word template as an input and insert our figures and values into it instead.</li>
+<li>From the website: ‘The Strategy Unit is a specialist NHS internal consultancy team. We produce high-quality, multi-disciplinary analytical work – and we help people apply the results. Our proposition is simple: better evidence, better decisions, better outcomes.’</li>
+<li>We have different skills that were both needed on this project and could learn a lot from each other.</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -242,15 +239,20 @@
           display:block!important;
       }</style></aside>
 </section>
-<section id="the-word-template" class="slide level2">
-<h2>The Word template 📄</h2>
-
-<img data-src="template.png" style="width:100.0%" alt="A zoomed out view of pages of a complicated-looking Word document with many chunks of text, tables and page orientations. Much of the text is highlighted in green, yellow and blue." class="r-stretch"><aside class="notes">
+<section id="the-new-hospital-programme" class="slide level2">
+<h2>The New Hospital Programme 🏥</h2>
 <ul>
-<li>This zoomed-out view of part of the Word document template highlights the complexity.</li>
-<li>The document uses a pre-existing theme; contains many specifically-formatted text chunks, tables and page orientations; and uses colour-coded highlighting to indicate who needs to edit which parts of the document.</li>
-<li>The document was being changed and updated quite a lot. The customers were used to amending Word documents quickly, as and when required.</li>
-<li>A more ‘static’ Quarto document wasn’t going to cut the mustard here.</li>
+<li>The government is committed to building hospitals</li>
+<li>How to meet needs/get good value for money?</li>
+<li>Answer: we built a <a href="https://connect.strategyunitwm.nhs.uk/nhp/project_information/">demand model</a></li>
+</ul>
+<aside class="notes">
+<ul>
+<li>The government has committed to building new hospitals.</li>
+<li>New hospital infrastructure must meet the future needs of the population and have good value for money.</li>
+<li>NHP is a DHSC/NHSE partnership.</li>
+<li>The Strategy Unit is helping by building and maintaining a demand model.</li>
+<li>The Strategy Unit has model-relationship managers that help end-users create model scenarios and and interpret the outputs.</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -263,6 +265,71 @@
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</section>
+<section id="reporting" class="slide level2">
+<h2>Reporting 📒</h2>
+<ul>
+<li>End-users get model-output reports</li>
+<li>Requires automation/reproducibility</li>
+<li>So use <a href="https://quarto.org/">Quarto</a>, right? <em>Right?</em></li>
+</ul>
+<aside class="notes">
+<ul>
+<li>End-users are ‘schemes’, usually hospitals.</li>
+<li>Once they’ve completed modelling, they are given a report to discuss with model-relationship managers from the Strategy Unit.</li>
+<li>It’s a standard template report, so it would be wise to automate its generation.</li>
+<li>We should be able to recreate these documents in future, if needed.</li>
+<li>Ideal solution: create a Quarto document and populate it for a named organisation with images and calculations derived from data read from Azure.</li>
+<li>In other words, an obvious Reproducible Analytical Pipeline (RAP).</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="existing-word-template" class="slide level2" data-auto-animate="true" data-auto-animate-easing="ease-in-out" data-background-image="template.png" alt="A blurred, zoomed-out view of pages of a complicated-looking Word document with many chunks of text, tables and page orientations. Much of the text is highlighted in green, yellow and blue.">
+<h2 data-id="quarto-animate-title">Existing Word template 📑</h2>
+<aside class="notes">
+<ul>
+<li>However, the customer’s pre-existing Word template was complicated and was frequently being changed.</li>
+<li>It turned out to be easier to use the Word template as an input and insert our figures and values into it instead.</li>
+<li>This zoomed-out view of part of the Word document template highlights the complexity.</li>
+<li>The document uses a pre-existing theme; contains many specifically-formatted text chunks, tables and page orientations; and uses colour-coded highlighting to indicate who needs to edit which parts of the document.</li>
+<li>The document was being changed and updated quite a lot. The customers were used to amending Word documents quickly, as and when required.</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="existing-word-template-1" class="slide level2" data-auto-animate="true" data-auto-animate-easing="ease-in-out" data-background-image="template.png" alt="A blurred, zoomed-out view of pages of a complicated-looking Word document with many chunks of text, tables and page orientations. Much of the text is highlighted in green, yellow and blue.">
+<h2 data-id="quarto-animate-title">Existing Word template 📑</h2>
+<div class="clippy-speech absolute" data-id="speech" alt="A yellow speech bubble that says 'it looks like you're trying to improve a spreadsheet', which is being spoken by an artisanal drawing of the Microsoft Office mascot Clippy." style="top: 20%; left: 40%; ">
+<p>It looks like you’ve accepted your fate.</p>
+</div>
+<p><img data-src="paperclip.png" class="absolute" style="top: 40%; left: 60%; width: 200px; " alt="An unofficial version of the Microsoft Office mascot Clippy, a paperclip with eyes."></p>
+</section>
+<section id="decision" class="slide level2">
+<h2>Decision 🧐</h2>
+<ul>
+<li>Meet users where they are: in Word</li>
+<li>Editability trumps total automation</li>
+<li>How can we maximise reproducibility?</li>
+</ul>
 </section>
 <section id="process" class="slide level2">
 <h2>Process ✏️</h2>
@@ -276,13 +343,35 @@
 </ol>
 <aside class="notes">
 <ul>
-<li>How do we identify chosen runs? On Aure, with run_stage metadata on results files and a list of chosen sites.</li>
+<li>We designed a process to programmatically generate the reports.</li>
+<li>How do we identify chosen runs? On Azure, with run_stage metadata on results files and a list of chosen sites.</li>
 <li>How to confirm with model relationship managers? Expose tagged scenarios and sites via a scheduled Quarto-report.</li>
 <li>Basic interface: supply a scheme code, at simplest level.</li>
 <li>Underlying functions save figures and values independently.</li>
 <li>Images inserted by moving the imaginary ‘cursor’ to a known string of text in the report.</li>
 <li>Value-insertion is more complicated: insert ‘field’ codes into the report, insert the values to custom document properties, refresh to insert these into the fields.</li>
 <li>The output is a timestamped directory with the report, standalone images and values, and a log.</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="issue-template" class="slide level2">
+<h2>Issue template ✅</h2>
+
+<img data-src="issue.png" alt="." class="r-stretch"><aside class="notes">
+<ul>
+<li>We have an issue template in the repo that allows us to assign and manage tasks for creating a new report.</li>
+<li>This makes sure we follow the same steps from receiving a request through to returning a populated report.</li>
+<li>We use it to reference further guidance and links, which should help improve our ‘bus factor’: other members of the SU should be able to run a new report without us.</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -307,18 +396,10 @@
 <span id="cb1-6"><a></a>    <span class="at">secondary =</span> <span class="st">"final_report_ndg1"</span>     <span class="co"># used as a comparator</span></span>
 <span id="cb1-7"><a></a>  )</span>
 <span id="cb1-8"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Output file structure:</p>
-<pre><code>YYYY-MM-DD-HHMMSS_scheme/
- ├──YYYY-MM-DD-HHMMSS_scheme.log                        # log of printed metadata
- ├──YYYY-MM-DD-HHMMSS_scheme_outputs-report_draft.docx  # populated report
- ├──figures/                                            # standalone PNG files
- └──values/                                             # CSVs of calculated values
-    </code></pre>
 <aside class="notes">
 <ul>
 <li>The interface for us is quite simple: a single function where we set the scheme code and identify the metadata ‘tag’ for the results that will form the main basis of the report and a secondary set used for comparative purposes.</li>
 <li>A bunch of sub-functions then read the data, calculate values, generate figures, read the Word template from SharePoint and then insert the content.</li>
-<li>The output is a timestamped folder that contains the populated Word doc, a subfolder of the charts and calculated values, and a log file that contains information printed to the console (details thigns like the scheme name and site selections for the run, as well as warning and error messages if present).</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -332,24 +413,43 @@
           display:block!important;
       }</style></aside>
 </section>
-<section id="insert-content-with-officer" class="slide level2">
-<h2>Insert content with <a href="https://davidgohel.github.io/officer/">{officer}</a> 👮</h2>
-<p>For calculated values:</p>
-<ol type="1">
-<li>Add doc-property fields, e.g.&nbsp;{ DOCPROPERTY item_01 }.</li>
-<li>Add values to <a href="https://davidgohel.github.io/officer/reference/set_doc_properties.html">custom doc properties</a>.</li>
-<li>Update fields with corresponding property values.</li>
-</ol>
-<p>For generated figures:</p>
-<ol type="1">
+<section id="generated-report" class="slide level2">
+<h2>Generated report 📁️</h2>
+<p>Output file structure:</p>
+<pre><code>output/
+└──YYYY-MM-DD-HHMMSS_scheme/
+   ├──YYYY-MM-DD-HHMMSS_scheme.log                        # log of printed metadata
+   ├──YYYY-MM-DD-HHMMSS_scheme_outputs-report_draft.docx  # populated report
+   ├──figures/                                            # standalone PNG files
+   └──values/                                             # CSVs of calculated values
+    </code></pre>
+<aside class="notes">
+<ul>
+<li>The output is a timestamped folder that contains the populated Word doc, a subfolder of the charts and calculated values, and a log file that contains information printed to the console (details things like the scheme name and site selections for the run, as well as warning and error messages if present).</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="insert-images-with-officer" class="slide level2">
+<h2>Insert images with <a href="https://davidgohel.github.io/officer/">{officer}</a> 👮</h2>
+
+<img data-src="insert-image.png" alt="Screenshot of text in a Word document that contains a placeholder in square bracket that says 'insert figure 9.2'." class="r-stretch"><ol type="1">
 <li>Add unique target strings, e.g.&nbsp;‘[Insert Figure 8.2]’.</li>
-<li><a href="https://davidgohel.github.io/officer/reference/cursor.html">Find</a>/<a href="https://davidgohel.github.io/officer/reference/body_add_img.html">replace</a> with corresponding PNG.</li>
+<li><a href="https://davidgohel.github.io/officer/reference/cursor.html">Find</a>/<a href="https://davidgohel.github.io/officer/reference/body_add_img.html">replace</a> at ‘cursor’ with PNG.</li>
 </ol>
 <aside class="notes">
 <ul>
 <li>The {officer} package is crucial for inserting our content into the template.</li>
 <li>We use different methods to insert values and images.</li>
-<li>For calculated values, first add document-property fields to the Word doc (ctrl+F9); then write your calculated values to the custom document properties with <code>officer::set_doc_properties()</code>; then open and refresh the document (F9) to replace the fields with the corresponding value for the named property.</li>
 <li>To insert images, programmatically find unique target strings with {officer}’s <code>cursor_reach()</code> and then overwrite with images using <code>body_add_img()</code>; we use and a custom <code>insert_figure_on_cursor()</code> to do this.</li>
 </ul>
 <style type="text/css">
@@ -364,13 +464,67 @@
           display:block!important;
       }</style></aside>
 </section>
-<section id="doing-it-right" class="slide level2">
-<h2>‘Doing it right’ 💯</h2>
+<section id="insert-values-with-officer" class="slide level2">
+<h2>Insert values with <a href="https://davidgohel.github.io/officer/">{officer}</a> 👮</h2>
+
+<img data-src="insert-value.png" alt="Screenshot of text in a Word document that contains placeholders. Two placeholdesr are in square brackets and they say 'insert value' and then a number (55 and 56 in this case). The other placeholder is in curly brackets and says 'DOCPROPERTY item_54'." class="r-stretch"><ol type="1">
+<li>Add doc-property fields, e.g.&nbsp;<code>{ DOCPROPERTY item_01 }</code>.</li>
+<li>Toggle to friendlier text, e.g.&nbsp;<code>[Insert Value 01]</code></li>
+<li>Add values to <a href="https://davidgohel.github.io/officer/reference/set_doc_properties.html">custom doc properties</a> programmatically.</li>
+<li>Update fields with corresponding property values.</li>
+</ol>
+<aside class="notes">
 <ul>
-<li><a href="https://github.com/The-Strategy-Unit/nhp_final_reports">Github</a>: ‘learn by doing’, challenge and improve things</li>
+<li>We need something smarter for inserting values.</li>
+<li>Images have obvious places for insertion in the document, but calculated values could be in the middle of sentences that get edited later.</li>
+<li>We can instead put placeholders into the document that reference a given value.</li>
+<li>To do this, first add ‘document-property fields’ to the Word doc (ctrl+F9); then write your calculated values to the custom document properties with <code>officer::set_doc_properties()</code>; then open and refresh the document (F9) to replace the fields with the corresponding value for the named property.</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="doing-it-right" class="slide level2">
+<h2>Doing it right 💯</h2>
+<ul>
+<li><a href="https://github.com/The-Strategy-Unit/nhp_output_reports">Github</a>: ‘learn by doing’, challenge and improve things</li>
 <li>Documentation/version history have <a href="https://github.com/The-Strategy-Unit/nhp_final_reports/pull/123">saved us</a>!</li>
 <li>The repo is a springboard for parallel/future work</li>
 </ul>
+</section>
+<section id="flexibility" class="slide level2">
+<h2>Flexibility 🤸</h2>
+<p>The repository and code continue to help with:</p>
+<ul>
+<li>ad hoc work</li>
+<li>upcoming ‘addendum’ reports</li>
+<li>changes to inputs and back-end processes</li>
+</ul>
+<aside class="notes">
+<ul>
+<li>The functions created for this purpose have served as useful tools for related work that doesn’t involve report generation.</li>
+<li>The approach is flexible enough to allow for other types of template report to be included.</li>
+<li>Changes to the template and model, or the way we store results files, can be handled easily and shared between us with version-control and good documentation.</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="reflections" class="slide level2">
 <h2>Reflections 🪞</h2>
@@ -384,7 +538,7 @@
 <li>The default mode of ‘make a Quarto doc’ wasn’t the right fit here, but we recognised that and pivoted quickly.</li>
 <li>We know the solution isn’t perfect, but it is good enough.</li>
 <li>The process has some frailties, but we recognise them. For example, the report path being changed on SharePoint means we can’t retrieve it!</li>
-<li>Talking between us on the code side, but also with the user, is really important to handle changing needs and to keep the process and outputs fir for purpose.</li>
+<li>Talking between us on the code side, but also with the user, is really important to handle changing needs and to keep the process and outputs fit for purpose.</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -397,13 +551,24 @@
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</section>
+<section id="actions" class="slide level2">
+<h2>Actions 🎬</h2>
+<blockquote>
+<p>Meet your users where they are.</p>
+</blockquote>
+<p>Check out:</p>
+<ul>
+<li><a href="https://the-strategy-unit.github.io/data_science/presentations/2025-11-13_nhsrpysoc-2025-word">these slides</a> and <a href="https://github.com/The-Strategy-Unit/nhp_output_reports">open code</a></li>
+<li><a href="https://davidgohel.github.io/officer/">{officer}</a>, the <a href="https://ardata-fr.github.io/officeverse/">officeverse book</a> and <a href="https://github.com/Azure/Microsoft365R">{Microsoft365R}</a></li>
+</ul>
 
 
 </section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-<p>Find the repo at <a href="https://github.com/The-Strategy-Unit/nhp_final_reports">The Strategy Unit/nhp_final_reports</a></p>
+<p>Find the repo at <a href="https://github.com/The-Strategy-Unit/nhp_output_reports">The Strategy Unit/nhp_output_reports</a></p>
 </div>
 </div></div>
 

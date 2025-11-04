@@ -1,0 +1,23 @@
+// https://quarto.org/docs/presentations/revealjs/themes.html#sass-variables
+
+
+// Fonts
+
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap');
+
+/*-- scss:defaults --*/
+
+/*-- scss:rules --*/
+
+.clippy-speech {
+  background: #FFFFC8;
+  border: 1px solid black;
+  border-radius: 15px;
+  padding: 20px;
+  width: 220px;
+  height: 140px;
+  margin: 10px;
+  font-family: 'Comic Neue';
+  font-size: 30px;
+  color: black;
+}

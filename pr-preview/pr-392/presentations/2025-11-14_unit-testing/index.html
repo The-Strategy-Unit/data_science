@@ -797,7 +797,7 @@ a <code>pyproject.toml</code> and a <code>src/</code> folder.
 <span id="cb20-8"><a></a></span>
 <span id="cb20-9"><a></a>  actual <span class="ot">&lt;-</span> <span class="fu">my_function</span>()</span>
 <span id="cb20-10"><a></a></span>
-<span id="cb20-11"><a></a>  <span class="fu">expect_equal</span>(<span class="st">"actual"</span>, <span class="st">"plot_data"</span>)</span>
+<span id="cb20-11"><a></a>  <span class="fu">expect_equal</span>(actual, <span class="st">"plot_data"</span>)</span>
 <span id="cb20-12"><a></a>  <span class="fu">expect_called</span>(m_get_data, <span class="dv">1</span>)</span>
 <span id="cb20-13"><a></a>  <span class="fu">expect_args</span>(m_get_data, <span class="dv">1</span>)</span>
 <span id="cb20-14"><a></a>  <span class="fu">expect_args</span>(m_mutate_data, <span class="dv">1</span>, <span class="st">"get_data"</span>)</span>
@@ -815,7 +815,7 @@ a <code>pyproject.toml</code> and a <code>src/</code> folder.
 <span id="cb21-7"><a></a></span>
 <span id="cb21-8"><a></a>  actual <span class="ot">&lt;-</span> <span class="fu">fn</span>()</span>
 <span id="cb21-9"><a></a></span>
-<span id="cb21-10"><a></a>  <span class="fu">expect_equal</span>(<span class="st">"actual"</span>, <span class="st">"plot_data"</span>)</span>
+<span id="cb21-10"><a></a>  <span class="fu">expect_equal</span>(actual, <span class="st">"plot_data"</span>)</span>
 <span id="cb21-11"><a></a>  <span class="fu">expect_args</span>(m_plot_data, <span class="dv">1</span>, <span class="fu">data.frame</span>(</span>
 <span id="cb21-12"><a></a>    <span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>)), <span class="at">value =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.4</span>))</span>
 <span id="cb21-13"><a></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

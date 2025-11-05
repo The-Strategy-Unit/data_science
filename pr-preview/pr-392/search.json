@@ -1486,7 +1486,7 @@
     "href": "presentations/2025-11-14_unit-testing/index.html#what-is-a-unit-anyway-1",
     "title": "Unit Testing",
     "section": "What is a unit anyway?",
-    "text": "What is a unit anyway?\n\na unit is the smallest testable part of a program\ntypically, a unit is just a function\nit could be a class, or module…\nyou want to test each unit in isolation, without involving other parts of the system\nunit tests are implemented in code, usually with some framework\n\n\nexamples of other parts of the system you want to isolate against:\n\n\nfilesystem\n\n\ndatabase\n\n\nweb api’s\n\n\nessentially, anything which could be slow, unreliable, changeable, or unavailable in a dev environment.\nexamples of testing framworks:\n\n\npytest (python)\n\n\ntestthat (R)"
+    "text": "What is a unit anyway?\n\na unit is the smallest testable part of a program\ntypically, a unit is just a function\nit could be a class, or module…\nyou want to test each unit in isolation, without involving other parts of the system\nunit tests are implemented in code, usually with some framework\n\n\nexamples of other parts of the system you want to isolate against:\n\n\nfilesystem\n\n\ndatabase\n\n\nweb api’s\n\n\nessentially, anything which could be slow, unreliable, changeable, or unavailable in a dev environment.\nexamples of testing frameworks:\n\n\npytest (python)\n\n\ntestthat (R)"
   },
   {
     "objectID": "presentations/2025-11-14_unit-testing/index.html#arrange-act-assert",
@@ -1780,7 +1780,7 @@
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r---flows",
     "title": "System Dynamics in health and care",
     "section": "in R - flows",
-    "text": "in R - flows\nEasy to do with count, or group_by and summarise\n\n\nadmit_d &lt;- spell_dates |&gt;\n  group_by(date_admit) |&gt;\n  count(date_admit)\n\nhead(admit_d)\n\n\n# A tibble: 6 × 2\n# Groups:   date_admit [6]\n  date_admit     n\n  &lt;date&gt;     &lt;int&gt;\n1 2022-01-01    18\n2 2022-01-02    18\n3 2022-01-03    25\n4 2022-01-04    25\n5 2022-01-05    27\n6 2022-01-06    30"
+    "text": "in R - flows\nEasy to do with count, or group_by and summarise\n\n\nadmit_d &lt;- spell_dates |&gt;\n  group_by(date_admit) |&gt;\n  count(date_admit)\n\nhead(admit_d)\n\n\n# A tibble: 6 × 2\n# Groups:   date_admit [6]\n  date_admit     n\n  &lt;date&gt;     &lt;int&gt;\n1 2022-01-01    28\n2 2022-01-02    22\n3 2022-01-03    23\n4 2022-01-04    30\n5 2022-01-05    22\n6 2022-01-06    24"
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r---occupancy",
@@ -1801,7 +1801,7 @@
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods---flows",
     "title": "System Dynamics in health and care",
     "section": "Longer Time Periods - flows",
-    "text": "Longer Time Periods - flows\nUse lubridate::floor_date to generate the date at start of week/month\n\nadmit_wk &lt;- spell_dates |&gt;\n  mutate(\n    week_start = floor_date(\n      date_admit,\n      unit = \"week\",\n      week_start = 1 # start week on Monday\n    )\n  ) |&gt;\n  count(week_start) # could add other parameters such as provider code, TFC etc\n\nhead(admit_wk)\n\n\n\n# A tibble: 6 × 2\n  week_start     n\n  &lt;date&gt;     &lt;int&gt;\n1 2021-12-27    36\n2 2022-01-03   183\n3 2022-01-10   181\n4 2022-01-17   180\n5 2022-01-24   221\n6 2022-01-31   188\n\n\n\nMight run SD model in weeks or months - e.g. months for care homes Use lubridate to create new variable with start date of week/month/year etc"
+    "text": "Longer Time Periods - flows\nUse lubridate::floor_date to generate the date at start of week/month\n\nadmit_wk &lt;- spell_dates |&gt;\n  mutate(\n    week_start = floor_date(\n      date_admit,\n      unit = \"week\",\n      week_start = 1 # start week on Monday\n    )\n  ) |&gt;\n  count(week_start) # could add other parameters such as provider code, TFC etc\n\nhead(admit_wk)\n\n\n\n# A tibble: 6 × 2\n  week_start     n\n  &lt;date&gt;     &lt;int&gt;\n1 2021-12-27    50\n2 2022-01-03   177\n3 2022-01-10   163\n4 2022-01-17   195\n5 2022-01-24   182\n6 2022-01-31   193\n\n\n\nMight run SD model in weeks or months - e.g. months for care homes Use lubridate to create new variable with start date of week/month/year etc"
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods---occupancy",

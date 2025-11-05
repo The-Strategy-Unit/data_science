@@ -2343,144 +2343,515 @@
     "text": "Note\nAll copyrighted material is reused under Fair Dealing"
   },
   {
-    "objectID": "presentations/2024-10-10_what-is-ai-yiwen/index.html#ai-could-help-identify-high-risk-heart-patients",
-    "href": "presentations/2024-10-10_what-is-ai-yiwen/index.html#ai-could-help-identify-high-risk-heart-patients",
-    "title": "Identifying patients at risk",
-    "section": "AI could help identify high-risk heart patients1",
-    "text": "AI could help identify high-risk heart patients1\nThe University of Leeds has helped train an AI system called Optimise, that looked at health records of more than two million people.\n…\nOf those two million records that were scanned, more than 400,000 people were identified as being high risk for the likes of heart failure, stroke and diabetes.\nhttps://www.bbc.co.uk/news/articles/cj620yl96kzo"
+    "objectID": "presentations/2025-11-14_rap-drop-ins-nhsr2025/index.html#rap-drop-ins",
+    "href": "presentations/2025-11-14_rap-drop-ins-nhsr2025/index.html#rap-drop-ins",
+    "title": "Better together",
+    "section": "RAP Drop Ins",
+    "text": "RAP Drop Ins\n\n\n\nRAP: Reproducible Analytical Pipelines\n1 hour long online sessions held every two weeks\nFacilitated by the Strategy Unit\n\n\n\n\n\n\n\n\n\n\nMention origins of this - used to be hosted by NHSE\nEmphasise that we facilitate - we’re not there to answer questions but to encourage discussion"
   },
   {
-    "objectID": "presentations/2024-10-10_what-is-ai-yiwen/index.html#how-it-works",
-    "href": "presentations/2024-10-10_what-is-ai-yiwen/index.html#how-it-works",
-    "title": "Identifying patients at risk",
-    "section": "How it works",
-    "text": "How it works\n\nThe input: Health records\nHealth records can be structured or unstructured\n\nStructured: can be stored in a table\nUnstructured: can’t be stored in a table, different shapes/sizes (e.g. text, audio, images)"
+    "objectID": "presentations/2025-11-14_rap-drop-ins-nhsr2025/index.html#who-is-it-for",
+    "href": "presentations/2025-11-14_rap-drop-ins-nhsr2025/index.html#who-is-it-for",
+    "title": "Better together",
+    "section": "Who is it for?",
+    "text": "Who is it for?\n\nOpen to anyone working in the NHS with an interest in RAP\nNo coding experience required - managers welcome!\nDiscussions captured on GitHub to share learning more widely\n\n\n\nAttendance: 10 attendees on average\nBackground of attendees very varied - NHS England, CSUs, Trusts, Scientists, Analysts\nWe also plan everything using GitHub"
   },
   {
-    "objectID": "presentations/2024-10-10_what-is-ai-yiwen/index.html#example-of-structured-data-in-health-records",
-    "href": "presentations/2024-10-10_what-is-ai-yiwen/index.html#example-of-structured-data-in-health-records",
-    "title": "Identifying patients at risk",
-    "section": "Example of structured data in health records",
-    "text": "Example of structured data in health records\n\n\n\nID\nBMI\nAge\nIMD Decile\nSmoker\nBlood Pressure\n\n\n\n\n1\n17\n49\n3\n1\n110/70\n\n\n2\n25\n67\n1\n1\n129/70\n\n\n3\n20\n39\n8\n0\n140/90\n\n\n4\n28\n81\n6\n0\n130/85\n\n\n5\n29\n41\n4\n0\n120/80\n\n\n\nData is consistent within each column in the table."
+    "objectID": "presentations/2025-11-14_rap-drop-ins-nhsr2025/index.html#common-themes",
+    "href": "presentations/2025-11-14_rap-drop-ins-nhsr2025/index.html#common-themes",
+    "title": "Better together",
+    "section": "Common themes",
+    "text": "Common themes\n\nLots of brilliant individual work happening across the NHS\nOrganisational barriers are widespread\nQuestions around upskilling\nHow to deploy data science products, given limited infrastructure?\nConcerns around safety of data\n\nCan we solve these problems once, for the community?"
   },
   {
-    "objectID": "presentations/2024-10-10_what-is-ai-yiwen/index.html#example-of-unstructured-data-in-health-records",
-    "href": "presentations/2024-10-10_what-is-ai-yiwen/index.html#example-of-unstructured-data-in-health-records",
-    "title": "Identifying patients at risk",
-    "section": "Example of unstructured data in health records",
-    "text": "Example of unstructured data in health records\n\n\n\n\n\n\n\nID\nNotes\n\n\n\n\n1\nShortness of breath\n\n\n2\nPatient attended clinic following one week of fever, vomiting, and abdominal pain.\n\n\n\nThe length of each sentence is different - data not consistent."
+    "objectID": "presentations/2025-11-14_rap-drop-ins-nhsr2025/index.html#some-wins",
+    "href": "presentations/2025-11-14_rap-drop-ins-nhsr2025/index.html#some-wins",
+    "title": "Better together",
+    "section": "Some wins",
+    "text": "Some wins\n\n\n\n\n\nA safe space for people to discuss issues and barriers\nMaking connections with others and working together\nSummary of discussions on GitHub: building a shared community resource"
   },
   {
-    "objectID": "presentations/2024-10-10_what-is-ai-yiwen/index.html#a-simple-approach-to-classifying-data-knn",
-    "href": "presentations/2024-10-10_what-is-ai-yiwen/index.html#a-simple-approach-to-classifying-data-knn",
-    "title": "Identifying patients at risk",
-    "section": "A simple approach to classifying data: KNN",
-    "text": "A simple approach to classifying data: KNN\n\n\nClustering algorithms like K Nearest Neighbours (KNN) are on the more basic end of the scale, requiring very little computational power.\n\n1\n\nAntti Ajanki AnAj, CC BY-SA 3.0 http://creativecommons.org/licenses/by-sa/3.0/, via Wikimedia Commons"
+    "objectID": "presentations/2025-11-14_rap-drop-ins-nhsr2025/index.html#the-rap-code-review-buddies-network",
+    "href": "presentations/2025-11-14_rap-drop-ins-nhsr2025/index.html#the-rap-code-review-buddies-network",
+    "title": "Better together",
+    "section": "The RAP Code Review Buddies Network",
+    "text": "The RAP Code Review Buddies Network"
   },
   {
-    "objectID": "presentations/2024-10-10_what-is-ai-yiwen/index.html#a-simple-approach-to-classifying-data-decision-tree",
-    "href": "presentations/2024-10-10_what-is-ai-yiwen/index.html#a-simple-approach-to-classifying-data-decision-tree",
-    "title": "Identifying patients at risk",
-    "section": "A simple approach to classifying data: Decision Tree",
-    "text": "A simple approach to classifying data: Decision Tree\n1\nhttps://www.researchgate.net/publication/26635430_Using_Machine_Learning_Algorithms_in_Cardiovascular_Disease_Risk_Evaluation"
+    "objectID": "presentations/2025-11-14_rap-drop-ins-nhsr2025/index.html#what-is-the-rap-code-review-buddies-network",
+    "href": "presentations/2025-11-14_rap-drop-ins-nhsr2025/index.html#what-is-the-rap-code-review-buddies-network",
+    "title": "Better together",
+    "section": "What is the RAP Code Review Buddies Network?",
+    "text": "What is the RAP Code Review Buddies Network?\nEvery 3 months, you will be randomly paired up with someone else in the network.\nAs a pair, you will arrange to meet up online and talk through some code you have written.\nYou can then ask each other questions about the code and offer constructive comments."
   },
   {
-    "objectID": "presentations/2024-10-10_what-is-ai-yiwen/index.html#there-are-many-different-models-out-there",
-    "href": "presentations/2024-10-10_what-is-ai-yiwen/index.html#there-are-many-different-models-out-there",
-    "title": "Identifying patients at risk",
-    "section": "There are many different models out there! 🥴",
-    "text": "There are many different models out there! 🥴\n1\nhttps://scikit-learn.org/1.3/tutorial/machine_learning_map/"
+    "objectID": "presentations/2025-11-14_rap-drop-ins-nhsr2025/index.html#is-the-network-for-me",
+    "href": "presentations/2025-11-14_rap-drop-ins-nhsr2025/index.html#is-the-network-for-me",
+    "title": "Better together",
+    "section": "Is the network for me?",
+    "text": "Is the network for me?\nWe’re suggesting a more relaxed approach to code review - a “code walkthrough”. Guidance will be provided.\nIf you have written any code in the past three months for your role, in any language (such as SQL, R, or Python), then you have enough coding knowledge!\nPeople at all stages of their coding and RAP journey are very welcome."
   },
   {
-    "objectID": "presentations/2024-10-10_what-is-ai-yiwen/index.html#what-makes-a-model-simple-or-complex",
-    "href": "presentations/2024-10-10_what-is-ai-yiwen/index.html#what-makes-a-model-simple-or-complex",
-    "title": "Identifying patients at risk",
-    "section": "What makes a model simple or complex?",
-    "text": "What makes a model simple or complex?\n\nThere are dozens of different algorithms out there\nEach algorithm has different strengths and weaknesses\nWhat makes a model simple or complex is the amount of computational power required and how much the model needs to “learn” - how many parameters there are"
+    "objectID": "presentations/2025-11-14_rap-drop-ins-nhsr2025/index.html#sounds-awesome-how-do-i-sign-up",
+    "href": "presentations/2025-11-14_rap-drop-ins-nhsr2025/index.html#sounds-awesome-how-do-i-sign-up",
+    "title": "Better together",
+    "section": "Sounds awesome, how do I sign up?",
+    "text": "Sounds awesome, how do I sign up?\n\n\n\nScan the QR code on the right to register for the RAP Code Review Buddies Network\nFurther details and guidance on our Wiki on GitHub\nI’m also looking for co-organisers - please get in touch if you’re interested"
   },
   {
-    "objectID": "presentations/2024-10-10_what-is-ai-yiwen/index.html#is-the-input-or-the-computation-complex",
-    "href": "presentations/2024-10-10_what-is-ai-yiwen/index.html#is-the-input-or-the-computation-complex",
-    "title": "Identifying patients at risk",
-    "section": "Is the input or the computation complex?",
-    "text": "Is the input or the computation complex?\n“We used UK primary care EHR data from 2,081,139 individuals aged ≥ 30 years…\nWe trained a random forest classifier using age, sex, ethnicity and comorbidities (OPTIMISE).”1\nNadarajah, Ramesh, et al. “Machine learning to identify community-dwelling individuals at higher risk of incident cardio-renal-metabolic diseases and death.” Future Healthcare Journal 11 (2024): 100109. https://www.sciencedirect.com/science/article/pii/S2514664524002212"
+    "objectID": "presentations/index.html",
+    "href": "presentations/index.html",
+    "title": "Presentations",
+    "section": "",
+    "text": "Title\nAuthor\nDate\n\n\n\n\nBetter together: Lessons from RAP Drop-ins\nYiWen Hon\n2025-11-14\n\n\nCollaborating with GitHub: What is GitHub? Basic introduction\nYiWen Hon\n2025-11-06\n\n\nTransforming Hospital Planning with an Open-Source Demand Model\nChris Beeley\n2025-09-04\n\n\nBuilding a model by the NHS, for the NHS: Forecasting future hospital activity and the left shift of care ADRUK 2025\nYiWen Hon\n2025-08-29\n\n\nDeploy to Posit Connect: Coffee and Coding\nMatt Dray, YiWen Hon\n2025-07-17\n\n\nData science in the UK NHS: Building a model and building a community\nChris Beeley, Claire Welsh\n2025-06-06\n\n\nNHP Demand and Capacity (D&C) Model: A Technical Deep Dive for Data Scientists\nClaire Welsh\n2025-05-07\n\n\nPackage tour of sconn: An R package to connect to databricks\nFran Barton\n2025-03-13\n\n\nDeployment of a probabilistic simulation model for predicting demand for acute healthcare in the NHS\nChris Beeley\n2025-02-27\n\n\nWord is better than Quarto?: Mail merge is back, baby!\nJac Grout, Matt Dray\n2025-02-27\n\n\nA gentle introduction to databricks: What the heck is databricks?\nChris Beeley\n2025-01-16\n\n\nWhat the heck do I do all day?: Transitioning to management from a technical analytical role\nChris Beeley\n2024-12-04\n\n\nDHSC presentation: NHS-R and data science at the Strategy Unit\nChris Beeley\n2024-12-02\n\n\nText mining: What it can and can't do, and what it could do\nChris Beeley\n2024-11-27\n\n\nText mining: Some practical examples\nYiWen Hon\n2024-11-26\n\n\nForged in fire: Project management lessons from the frontline\nChris Beeley\n2024-11-22\n\n\nGitHub as a team sport: NHS RPySOC 2024\nMatt Dray\n2024-11-22\n\n\nWhat is AI?\nData science team, Strategy Unit\n2024-10-10\n\n\nLarge Language Models (LLMs): Is this AI?\nData Science team, Strategy Unit\n2024-10-10\n\n\nComputer Vision: Is this AI?\nTom Jemmett\n2024-10-10\n\n\nIdentifying patients at risk: Is this AI?\nYiWen Hon\n2024-10-10\n\n\nRAP: A cautionary tale\nNA\n2024-10-09\n\n\nUsing R and Python to model future hospital activity: EARL Conference 2024\nYiWen Hon, Matt Dray, Tom Jemmett\n2024-09-05\n\n\nAgile and scrum working\nChris Beeley\n2024-08-22\n\n\nOpen source licensing: Or: how I learned to stop worrying and love openness\nChris Beeley\n2024-05-30\n\n\nGitHub as a team sport: DfT QA Month\nMatt Dray\n2024-05-23\n\n\nStore Data Safely: Coffee & Coding\nYiWen Hon, Matt Dray\n2024-05-16\n\n\nCoffee and Coding: Making my analytical workflow more reproducible with {targets}\nJacqueline Grout\n2024-01-25\n\n\nConference Check-in App: NHS-R/NHS.pycom 2023\nTom Jemmett\n2023-10-17\n\n\nSystem Dynamics in health and care: fitting square data into round models\nSally Thompson\n2023-10-09\n\n\nRepeating Yourself with Functions: Coffee and Coding\nSally Thompson\n2023-09-07\n\n\nCoffee and Coding: Working with Geospatial Data in R\nTom Jemmett\n2023-08-24\n\n\nUnit testing in R: NHS-R Community Webinar\nTom Jemmett\n2023-08-23\n\n\nEverything you ever wanted to know about data science: but were too afraid to ask\nChris Beeley\n2023-08-02\n\n\nTravels with R and Python: the power of data science in healthcare\nChris Beeley\n2023-08-02\n\n\nAn Introduction to the New Hospital Programme Demand Model: HACA 2023\nTom Jemmett\n2023-07-11\n\n\nWhat good data science looks like\nChris Beeley\n2023-05-23\n\n\nText mining of patient experience data\nChris Beeley\n2023-05-15\n\n\nCoffee and Coding: {targets}\nTom Jemmett\n2023-03-23\n\n\nCollaborative working\nChris Beeley\n2023-03-23\n\n\nCoffee and Coding: Good Coding Practices\nTom Jemmett\n2023-03-09\n\n\nRAP: what is it and how can my team start using it effectively?\nChris Beeley\n2023-03-09\n\n\nCoffee and coding: Intro session\nChris Beeley\n2023-02-23"
   },
   {
-    "objectID": "presentations/2024-10-10_what-is-ai-yiwen/index.html#pros-and-cons-of-simple-a.i.-approaches",
-    "href": "presentations/2024-10-10_what-is-ai-yiwen/index.html#pros-and-cons-of-simple-a.i.-approaches",
-    "title": "Identifying patients at risk",
-    "section": "Pros and cons of simple “A.I.” approaches",
-    "text": "Pros and cons of simple “A.I.” approaches\n\n\nPros:\n\nSimple models are more easily explained\nCan sometimes find new patterns in the data\n\n\nCons:\n\nThe quality of the data determines the quality of the model\nNot able to handle very complex tasks"
+    "objectID": "presentations/2024-11-22_github-team-sport-rpysoc/index.html#tldr",
+    "href": "presentations/2024-11-22_github-team-sport-rpysoc/index.html#tldr",
+    "title": "GitHub as a team sport",
+    "section": "tl;dr",
+    "text": "tl;dr\n\n\n\nGitHub organises code\nGitHub can help organise people\nWe’re learning as we go\n\n\n\n\n\n\n‘Too long; didn’t read’.\nGitHub isn’t just a dumping ground for code and version histories.\nThere are features that can help with communication and collaboration.\nWe’ve been learning what works for us as our team continues to grow."
   },
   {
-    "objectID": "presentations/2024-10-10_what-is-ai-yiwen/index.html#issues-to-look-out-for",
-    "href": "presentations/2024-10-10_what-is-ai-yiwen/index.html#issues-to-look-out-for",
-    "title": "Identifying patients at risk",
-    "section": "🚩 Issues to look out for 🚩",
-    "text": "🚩 Issues to look out for 🚩\n\nHow complex is the input, or the computational approach?\nHow is the model’s performance measured?\nDoes the model get updated?\nWhere did the data come from?\nHave issues of bias or ethics been considered?\n\n\n\nContinuously learning, or learning from mistakes vs. snapshot in time"
+    "objectID": "presentations/2024-11-22_github-team-sport-rpysoc/index.html#the-data-science-team",
+    "href": "presentations/2024-11-22_github-team-sport-rpysoc/index.html#the-data-science-team",
+    "title": "GitHub as a team sport",
+    "section": "The Data Science Team",
+    "text": "The Data Science Team\n       \n\nExpanding to 8, all remote\nComplex New Hospital Programme (NHP)\nHow should we work together?\n\n\n\nWe’re a growing team (soon to be 8).\nWe’ve got different backgrounds and experiences.\nWe do modelling, data pipelines, apps, etc.\nWe work largely on a big, complicated project with lots of stakeholders and tasks.\nWe want to bring other teams in the SU along with us.\nAre there tools or approaches we can use to help us?"
   },
   {
-    "objectID": "presentations/2024-01-25_coffee-and-coding/index.html#targets-for-analysts",
-    "href": "presentations/2024-01-25_coffee-and-coding/index.html#targets-for-analysts",
-    "title": "Coffee and Coding",
-    "section": "{targets} for analysts",
-    "text": "{targets} for analysts\n\n\n\nTom previously presented about {targets} at a coffee and coding last March and you can revisit his presentation and learn about the reasons why you should use the package to manage your pipeline and see a simple demonstration of how to use the package.\nMatt has presented previously about {targets} and making your workflows (pipelines) reproducible.\nSo….. if you aren’t really even sure why your pipeline needs managing as an analyst or whether you actually have one (you do) then links to their presentations are at the end"
+    "objectID": "presentations/2024-11-22_github-team-sport-rpysoc/index.html#the-dream",
+    "href": "presentations/2024-11-22_github-team-sport-rpysoc/index.html#the-dream",
+    "title": "GitHub as a team sport",
+    "section": "The dream",
+    "text": "The dream\n\n\n\nOrder from chaos\nGood communication\n‘Bus factor’ reduction\n\n\n\n\n\n\nWe have a big project with lots of repositories. We have lots of different tasks and goals.\nWe want to improve clarity and reduce the chance of misunderstanding and error.\nWe don’t want information locked up in one person’s brain."
   },
   {
-    "objectID": "presentations/2024-01-25_coffee-and-coding/index.html#aims",
-    "href": "presentations/2024-01-25_coffee-and-coding/index.html#aims",
-    "title": "Coffee and Coding",
-    "section": "Aims",
-    "text": "Aims\n\nIn this presentation we aim to demonstrate the real-world use of {targets} in an analysis project, but first a brief explanation\n\n\nWithout {targets} we\n\n\nWrite a script\nExecute script\nMake changes\nGo to step 2\n\n\nWith {targets} we will\n\n\nlearn how the various stages of our analysis fit together\nsave time by only running necessary stages as we cycle through the process\nhelp future you and colleagues re-visiting the analysis - Matt says “its like a time-capsule”\nmake Reproducible Analytical Pipelines\n\n\nsource: The {targets} R package user manual"
+    "objectID": "presentations/2024-11-22_github-team-sport-rpysoc/index.html#living-the-dream",
+    "href": "presentations/2024-11-22_github-team-sport-rpysoc/index.html#living-the-dream",
+    "title": "GitHub as a team sport",
+    "section": "Living the dream",
+    "text": "Living the dream\n\n\n\nThis works (for now)\nNew folks are joining\nThings can will change\n\n\n\n\n\n\nWe’ve been slowly changing how we work and the tools we use.\nOur standards will make it easier for new starters, but they should also have an influence on how we do things.\nNothing is set in stone. We’re continually thinking about what works and what doesn’t."
   },
   {
-    "objectID": "presentations/2024-01-25_coffee-and-coding/index.html#explain-the-live-project",
-    "href": "presentations/2024-01-25_coffee-and-coding/index.html#explain-the-live-project",
-    "title": "Coffee and Coding",
-    "section": "Explain the live project",
-    "text": "Explain the live project\n\noriginal project had 30+ metrics\nmultiple inter-related processing steps\neach time a metric changed or a process was altered it impacted across the project\nthere was potential for mistakes, duplication, lots of wasted time\nusing targets provides a structure that handles these inter-relationships"
+    "objectID": "presentations/2024-11-22_github-team-sport-rpysoc/index.html#github-projects",
+    "href": "presentations/2024-11-22_github-team-sport-rpysoc/index.html#github-projects",
+    "title": "GitHub as a team sport",
+    "section": "GitHub Projects",
+    "text": "GitHub Projects\n\n\n\nWe’re ‘agile’\nMany tasks/respositories\nWe want to show progress\n\n\n\n\n\n\nWe work in sprints.\nThere’s lots to keep track of: the model, a couple of apps, a documentation site, etc.\nWe want to show others how things are progressing.\nGitHub Projects helps us by arranging individual tasks from across lots of different repositories.\nWe can also add custom labelling to help us organise and track."
   },
   {
-    "objectID": "presentations/2024-01-25_coffee-and-coding/index.html#how-targets-can-help",
-    "href": "presentations/2024-01-25_coffee-and-coding/index.html#how-targets-can-help",
-    "title": "Coffee and Coding",
-    "section": "How {targets} can help",
-    "text": "How {targets} can help\n\ngets you thinking about your analysis and its building blocks\ntargets forces you into a functions approach to workflow\nentire pipeline is reproducible\nvisualise on one page\nsaves time\n(maybe we need an advanced function writing session in another C&C?)"
+    "objectID": "presentations/2024-11-22_github-team-sport-rpysoc/index.html#section",
+    "href": "presentations/2024-11-22_github-team-sport-rpysoc/index.html#section",
+    "title": "GitHub as a team sport",
+    "section": "",
+    "text": "We can show the tasks in kanban style, or as a list or as a calendar.\nWe can filter down to show only certain labels, statuses or assigned people.\nThis is helps us find, organise and focus during sprint planning and weekly sprint catch-ups."
   },
   {
-    "objectID": "presentations/2024-01-25_coffee-and-coding/index.html#demonstration-in-a-live-project",
-    "href": "presentations/2024-01-25_coffee-and-coding/index.html#demonstration-in-a-live-project",
-    "title": "Coffee and Coding",
-    "section": "Demonstration in a live project",
-    "text": "Demonstration in a live project\nLet’s look at a real life example in a live project…"
+    "objectID": "presentations/2024-11-22_github-team-sport-rpysoc/index.html#division-of-labour",
+    "href": "presentations/2024-11-22_github-team-sport-rpysoc/index.html#division-of-labour",
+    "title": "GitHub as a team sport",
+    "section": "Division of labour",
+    "text": "Division of labour\n\n\n\nThe ‘scrum master’\nOwners and deputies (CODEOWNERS)\nIssue and pull-request assignees\n\n\n\n\n\n\nAt the level of the sprint, we have a scrum master that oversees the movement of tasks from the backlog and takes us through the GitHub Project in weekly sprint catch-ups.\nWithin each repository we have an owner and deputy on each repository, with the goal of keeping the it shipshape (e.g. good docs, no stale branches, PRs are reviewed).\nAnd we have people assigned to issues and PRs, which signals the tasks that people are working on.\nHaving an identifiable person in charge makes it easier to identify ownership and for others to talk to the right person."
   },
   {
-    "objectID": "presentations/2024-01-25_coffee-and-coding/index.html#visualising",
-    "href": "presentations/2024-01-25_coffee-and-coding/index.html#visualising",
-    "title": "Coffee and Coding",
-    "section": "Visualising",
-    "text": "Visualising\nCurrent project in {targets} and visualised with tar_visnetwork()"
+    "objectID": "presentations/2024-11-22_github-team-sport-rpysoc/index.html#task-sorting",
+    "href": "presentations/2024-11-22_github-team-sport-rpysoc/index.html#task-sorting",
+    "title": "GitHub as a team sport",
+    "section": "Task sorting",
+    "text": "Task sorting\n\n\n\nMoSCoW method\nRelease-aligned milestones\nEfficient triage\n\n\n\n\n\n\nOrganising repositories at a higher level doesn’t preclude organisation at the repository level, which is foundational.\nWe typically include the labels Must, Should, Could, Won’t (MoSCoW) to filter tasks and to help assess importance.\nThe issues associated with the current sprint are added to a milestone with the upcoming version number. This makes it easier to focus, but also release the code with auto-generated notes.\nThese approaches signal intent and help the team to more efficiently decide what to do next."
   },
   {
-    "objectID": "presentations/2024-01-25_coffee-and-coding/index.html#code",
-    "href": "presentations/2024-01-25_coffee-and-coding/index.html#code",
-    "title": "Coffee and Coding",
-    "section": "Code",
-    "text": "Code\n\nit’s like a recipe of steps\nit’s easier to read\nyou have built functions which you can transfer and reuse\nit’s efficient, good practice\ndebugging is easier because if/when it fails you know exactly which target it has failed on\nit creates intermediate cached objects you can fetch at any time"
+    "objectID": "presentations/2024-11-22_github-team-sport-rpysoc/index.html#pull-requests-prs",
+    "href": "presentations/2024-11-22_github-team-sport-rpysoc/index.html#pull-requests-prs",
+    "title": "GitHub as a team sport",
+    "section": "Pull requests (PRs)",
+    "text": "Pull requests (PRs)\n\n\n\nTalk!\nUse suggestions\nThe assignee merges the PR\n\n\n\n\n\n\nRespect each others’ time. ‘Closes #10’ isn’t always enough.\nGitHub comments don’t replace talking. Discuss if unclear.\nSuggestions are efficient and respect the submitter.\nThe submitter owns the PR. They’re responsible for closing it."
   },
   {
-    "objectID": "presentations/2024-01-25_coffee-and-coding/index.html#how-can-i-start-using-it",
-    "href": "presentations/2024-01-25_coffee-and-coding/index.html#how-can-i-start-using-it",
-    "title": "Coffee and Coding",
-    "section": "How can I start using it?",
-    "text": "How can I start using it?\n\nYou could “retro-fit” it to your project, but … ideally you should start your project off using {targets}\nThere are at least three of us in SU who have used it in our projects.\nWe are offering to hand hold you to get started with your next project.\nMatt, Tom, Jacqueline"
+    "objectID": "presentations/2024-11-22_github-team-sport-rpysoc/index.html#github-is-a-team-member",
+    "href": "presentations/2024-11-22_github-team-sport-rpysoc/index.html#github-is-a-team-member",
+    "title": "GitHub as a team sport",
+    "section": "GitHub is a team member",
+    "text": "GitHub is a team member\n\n\nAutomate with Actions\nIssue templates\nRepo templates\n\n\n\nMost of the team is human. GitHub itself has features that can automate away some boring things and help prevent accidents or forgetfulness.\nGitHub Actions for continuous integration. R-CMD check at least for R projects. Start with r-lib examples as a basis.\nWe’re looking towards things like templates at the issue and repo levels; again to remove drudgery."
   },
   {
-    "objectID": "presentations/2024-01-25_coffee-and-coding/index.html#useful-targets-links",
-    "href": "presentations/2024-01-25_coffee-and-coding/index.html#useful-targets-links",
-    "title": "Coffee and Coding",
-    "section": "Useful {targets} links",
-    "text": "Useful {targets} links\n\nTom’s previous coffee and coding presentation\nMatt’s previous presentations\nThe {targets} documentation is detailed and easy to follow.\nA demo repository demonstrated in last weeks NHSE C&C\nSoftware Carpentry are developing a course here Pre-alpha targets course\nLive project demonstrated in this presentation using {targets}"
+    "objectID": "presentations/2024-11-22_github-team-sport-rpysoc/index.html#are-we-curling",
+    "href": "presentations/2024-11-22_github-team-sport-rpysoc/index.html#are-we-curling",
+    "title": "GitHub as a team sport",
+    "section": "Are we curling? 🥌",
+    "text": "Are we curling? 🥌\n\n\nWe:\n\nare a small team\nassume specialist roles\nwork in sync\n\n\n\n\n\n\nYou have been wondering: if this is a ‘team sport’, what sport is it?\nThis is a terrible metaphor. But think about it."
+  },
+  {
+    "objectID": "presentations/2024-11-22_github-team-sport-rpysoc/index.html#the-bottom-line-actually",
+    "href": "presentations/2024-11-22_github-team-sport-rpysoc/index.html#the-bottom-line-actually",
+    "title": "GitHub as a team sport",
+    "section": "The bottom line, actually",
+    "text": "The bottom line, actually\n\n\n\n\n\nCommunicate\nHelp each other\nBe kind\n\n\n\n\nThe features of GitHub should help you do the things you should already be doing.\nI am the guy falling over, the stones are tasks, my team mates are picking me up and dusting me off.\nWhat has your team been doing? What works for you?"
+  },
+  {
+    "objectID": "presentations/2024-10-10_what-is-ai-tom/index.html#what-is-computer-vision-cv",
+    "href": "presentations/2024-10-10_what-is-ai-tom/index.html#what-is-computer-vision-cv",
+    "title": "Computer Vision",
+    "section": "What is Computer Vision (CV)",
+    "text": "What is Computer Vision (CV)\n\n\nComputer vision is a field of computer science that focuses on enabling computers to identify and understand objects and people in images and videos.\n\n\n\n\nLike other types of AI, computer vision seeks to perform and automate tasks that replicate human capabilities.\n\n\n\n\nIn this case, computer vision seeks to replicate both the way humans see, and the way humans make sense of what they see.\n\n\n\nSource: What is computer vision? Microsoft"
+  },
+  {
+    "objectID": "presentations/2024-10-10_what-is-ai-tom/index.html#classification",
+    "href": "presentations/2024-10-10_what-is-ai-tom/index.html#classification",
+    "title": "Computer Vision",
+    "section": "Classification",
+    "text": "Classification\n\nAssign a single label to each image\n\n\n\n\n\n\n\nDog\n\n\nWelsh Spaniel\n\n\nAnimal in water\n\n\n\n\n\n\n\n\nDog\n\n\nSussex Spaniel\n\n\nAnimal on land\n\n\n\nImages from imagenet"
+  },
+  {
+    "objectID": "presentations/2024-10-10_what-is-ai-tom/index.html#multi-classification",
+    "href": "presentations/2024-10-10_what-is-ai-tom/index.html#multi-classification",
+    "title": "Computer Vision",
+    "section": "Multi-Classification",
+    "text": "Multi-Classification\n\nAssign one or more labels to each image\n\n\n\n\n\nDog, Welsh Spaniel, Animal in water\n\n\n\n\n\n\nDog, Sussex Spaniel, Animal on land\n\n\n\nImages from imagenet"
+  },
+  {
+    "objectID": "presentations/2024-10-10_what-is-ai-tom/index.html#object-detection",
+    "href": "presentations/2024-10-10_what-is-ai-tom/index.html#object-detection",
+    "title": "Computer Vision",
+    "section": "Object Detection",
+    "text": "Object Detection\n\n\nImage sourced from Wikimedia"
+  },
+  {
+    "objectID": "presentations/2024-10-10_what-is-ai-tom/index.html#event-detection",
+    "href": "presentations/2024-10-10_what-is-ai-tom/index.html#event-detection",
+    "title": "Computer Vision",
+    "section": "Event Detection",
+    "text": "Event Detection\n\n\nIs camera-only the future of self-driving cars?"
+  },
+  {
+    "objectID": "presentations/2024-10-10_what-is-ai-tom/index.html#how-does-cv-work",
+    "href": "presentations/2024-10-10_what-is-ai-tom/index.html#how-does-cv-work",
+    "title": "Computer Vision",
+    "section": "How does CV work?",
+    "text": "How does CV work?\nfor classification tasks\n\nget a very large corpus or labelled images\nconvert the images to a form that the computer can work with (tensors)\nfeed into a convolutional neural network\nprofit?"
+  },
+  {
+    "objectID": "presentations/2024-10-10_what-is-ai-tom/index.html#large-corpus-of-labelled-images",
+    "href": "presentations/2024-10-10_what-is-ai-tom/index.html#large-corpus-of-labelled-images",
+    "title": "Computer Vision",
+    "section": "Large corpus of labelled images",
+    "text": "Large corpus of labelled images\nImageNet\n\na large visual database\nover 14 million hand-annotated images\nmore than 20,000 categories\neach category has “several hundred” images\nstarted in 2006"
+  },
+  {
+    "objectID": "presentations/2024-10-10_what-is-ai-tom/index.html#convert-the-images-to-tensors",
+    "href": "presentations/2024-10-10_what-is-ai-tom/index.html#convert-the-images-to-tensors",
+    "title": "Computer Vision",
+    "section": "Convert the images to tensors",
+    "text": "Convert the images to tensors\n\n\nA fancy way of saying:\nturn the images into a 2d table\nof values between 0 and 1"
+  },
+  {
+    "objectID": "presentations/2024-10-10_what-is-ai-tom/index.html#convolutional-neural-networks",
+    "href": "presentations/2024-10-10_what-is-ai-tom/index.html#convolutional-neural-networks",
+    "title": "Computer Vision",
+    "section": "(Convolutional) Neural Networks",
+    "text": "(Convolutional) Neural Networks\n\n\n3Blue1Brown, YouTube Channel"
+  },
+  {
+    "objectID": "presentations/2024-10-10_what-is-ai-tom/index.html#use-pre-trained-models",
+    "href": "presentations/2024-10-10_what-is-ai-tom/index.html#use-pre-trained-models",
+    "title": "Computer Vision",
+    "section": "Use pre-trained models",
+    "text": "Use pre-trained models\nModels that have been pre-trained on some image datasets which can be downloaded and used\n\nResNet (Microsoft Research)\nInception (Google)\nTrending classifiers from Hugging Face\n\n\nTransfer learning is the concept of taking a pre-trained model as a basis, then fine-tuning it to classify based on your own images."
+  },
+  {
+    "objectID": "presentations/2024-10-10_what-is-ai-tom/index.html#how-can-cv-be-used-in-healthcare",
+    "href": "presentations/2024-10-10_what-is-ai-tom/index.html#how-can-cv-be-used-in-healthcare",
+    "title": "Computer Vision",
+    "section": "How can CV be used in Healthcare?",
+    "text": "How can CV be used in Healthcare?\n\nclassification\nmulti-classification\nobject detection\nevent detection"
+  },
+  {
+    "objectID": "presentations/2024-10-10_what-is-ai-tom/index.html#how-can-cv-be-used-in-healthcare-1",
+    "href": "presentations/2024-10-10_what-is-ai-tom/index.html#how-can-cv-be-used-in-healthcare-1",
+    "title": "Computer Vision",
+    "section": "How can CV be used in Healthcare?",
+    "text": "How can CV be used in Healthcare?\n\n\ndetecting disease or injury\nmonitoring patients vitals, e.g. respiratory rate\ndetecting bounds of a tumour when planning radiotherapy\nautomating cell counting\ncalculating the grade of a cancer\nmonitor for long-term changes, e.g. AAA\ndevices for patients with vision impairments\ndetecting when patients move (fall prevention)\nmonitoring the hygiene of a ward"
+  },
+  {
+    "objectID": "presentations/2024-10-10_what-is-ai-tom/index.html#issues-with-computer-vision",
+    "href": "presentations/2024-10-10_what-is-ai-tom/index.html#issues-with-computer-vision",
+    "title": "Computer Vision",
+    "section": "Issues with Computer Vision",
+    "text": "Issues with Computer Vision\n\n… one neural network learned to differentiate between dogs and wolves. It didn’t learn the differences between dogs and wolves, but instead learned that wolves were on snow in their picture and dogs were on grass.\n\n\nDogs, Wolves, Data Science, and Why Machines Must Learn Like Humans Do (2017)"
+  },
+  {
+    "objectID": "presentations/2024-10-10_what-is-ai-tom/index.html#issues-with-computer-vision-1",
+    "href": "presentations/2024-10-10_what-is-ai-tom/index.html#issues-with-computer-vision-1",
+    "title": "Computer Vision",
+    "section": "Issues with Computer Vision",
+    "text": "Issues with Computer Vision\n\n\nArtificial intelligence could revolutionize medical care. But don’t trust it to read your x-ray just yet (2019)"
+  },
+  {
+    "objectID": "presentations/2024-10-10_what-is-ai-tom/index.html#issues-with-computer-vision-2",
+    "href": "presentations/2024-10-10_what-is-ai-tom/index.html#issues-with-computer-vision-2",
+    "title": "Computer Vision",
+    "section": "Issues with Computer Vision",
+    "text": "Issues with Computer Vision\n\n\nalgorithm trained at Mount Sinai Hospital, New York City\nBusy ICU, many elderly patients\n34% of their x-rays came from patients with pneumonia\n93% accuracy\n\n\n\n\ntested at other sites, pneumonia ~1% of x-rays\naccuracy dropped to 73%-80%\n\n\n\nArtificial intelligence could revolutionize medical care. But don’t trust it to read your x-ray just yet (2019)"
+  },
+  {
+    "objectID": "presentations/2024-10-10_what-is-ai-tom/index.html#issues-with-computer-vision-3",
+    "href": "presentations/2024-10-10_what-is-ai-tom/index.html#issues-with-computer-vision-3",
+    "title": "Computer Vision",
+    "section": "Issues with Computer Vision",
+    "text": "Issues with Computer Vision\n\nAt Mount Sinai, many of the infected patients were too sick to get out of bed, and so doctors used a portable chest x-ray machine. Portable x-ray images look very different from those created when a patient is standing up. Because of what it learned from Mount Sinai’s x-rays, the algorithm began to associate a portable x-ray with illness. It also anticipated a high rate of pneumonia.\n\n\nArtificial intelligence could revolutionize medical care. But don’t trust it to read your x-ray just yet (2019)"
+  },
+  {
+    "objectID": "presentations/2024-10-10_what-is-ai-tom/index.html#the-unique-problems-of-medical-computer-vision",
+    "href": "presentations/2024-10-10_what-is-ai-tom/index.html#the-unique-problems-of-medical-computer-vision",
+    "title": "Computer Vision",
+    "section": "The Unique Problems of Medical Computer Vision",
+    "text": "The Unique Problems of Medical Computer Vision\n\n\n\n\n\n\nThis is the very unique problem of medical computer vision: we are attempting to solve a small signal on the background of small noise whereas standard computer vision’s problem is a large signal on the background of large noise.\n\n\n\n\nThe Unique Problems of Medical Computer Vision"
+  },
+  {
+    "objectID": "presentations/2024-10-10_what-is-ai-tom/index.html#the-unique-problems-of-medical-computer-vision-1",
+    "href": "presentations/2024-10-10_what-is-ai-tom/index.html#the-unique-problems-of-medical-computer-vision-1",
+    "title": "Computer Vision",
+    "section": "The Unique Problems of Medical Computer Vision",
+    "text": "The Unique Problems of Medical Computer Vision\n\n\n\n\nIs this a dog?\n\n\n\n\n\nEnglish Springer Spaniel in a Field, Wikipedia\n\n\n\n\n\n\n\nSmall-cell carcinoma of the lung, Wikipedia\n\n\n\n\n\n\nAnnotations of cats & dogs is cheaper than reviewing medical scans/slides. The latter adds an additional burden on health systems."
+  },
+  {
+    "objectID": "presentations/2024-10-10_what-is-ai-tom/index.html#other-issues-with-cv",
+    "href": "presentations/2024-10-10_what-is-ai-tom/index.html#other-issues-with-cv",
+    "title": "Computer Vision",
+    "section": "Other issues with CV",
+    "text": "Other issues with CV\n\nEarly detection vs over diagnosis\nAdversarial attacks can trick CV algorithms to incorrectly classify images\nComputational power (environmental impact)\nGovernance: have we got consent to use images?\nExplainability of Neural Networks"
+  },
+  {
+    "objectID": "presentations/2023-10-17_conference-check-in-app/index.html#section",
+    "href": "presentations/2023-10-17_conference-check-in-app/index.html#section",
+    "title": "Conference Check-in App",
+    "section": "",
+    "text": "digital.library.unt.edu/ark:/67531/metadc1039451/m1/1/\n\n\nClark, Junebug. [Registration Desk for the LPC Conference], photograph, 2016-03-17/2016-03-19; (https://digital.library.unt.edu/ark:/67531/metadc1039451/m1/1/: accessed October 16, 2023), University of North Texas Libraries, UNT Digital Library, https://digital.library.unt.edu; crediting UNT Libraries Special Collections."
+  },
+  {
+    "objectID": "presentations/2023-10-17_conference-check-in-app/index.html#qr-codes-are-great",
+    "href": "presentations/2023-10-17_conference-check-in-app/index.html#qr-codes-are-great",
+    "title": "Conference Check-in App",
+    "section": "QR codes are great",
+    "text": "QR codes are great"
+  },
+  {
+    "objectID": "presentations/2023-10-17_conference-check-in-app/index.html#and-can-be-easily-generated-in-r",
+    "href": "presentations/2023-10-17_conference-check-in-app/index.html#and-can-be-easily-generated-in-r",
+    "title": "Conference Check-in App",
+    "section": "and can be easily generated in R",
+    "text": "and can be easily generated in R\ninstall.packages(\"qrcode\")\nlibrary(qrcode)\n\nqr_code(\"https://www.youtube.com/watch?v=dQw4w9WgXcQ\")"
+  },
+  {
+    "objectID": "presentations/2023-10-17_conference-check-in-app/index.html#why-not",
+    "href": "presentations/2023-10-17_conference-check-in-app/index.html#why-not",
+    "title": "Conference Check-in App",
+    "section": "Why not?",
+    "text": "Why not?\n\n{shiny} would be doing all the processing on the server side\nwe would need to read from a camera client side\nthen stream video to the server for {shiny} to detect and decode the QR codes"
+  },
+  {
+    "objectID": "presentations/2023-10-17_conference-check-in-app/index.html#how-does-this-work",
+    "href": "presentations/2023-10-17_conference-check-in-app/index.html#how-does-this-work",
+    "title": "Conference Check-in App",
+    "section": "How does this work?",
+    "text": "How does this work?\n\n\nFront-end\n\nuses the React JavaScript framework\n@yidel/react-qr-scanner\nApp scan’s a QR code, then sends this to our backend\nA window pops up to say who has checked in, or shows an error message"
+  },
+  {
+    "objectID": "presentations/2023-10-17_conference-check-in-app/index.html#how-does-this-work-1",
+    "href": "presentations/2023-10-17_conference-check-in-app/index.html#how-does-this-work-1",
+    "title": "Conference Check-in App",
+    "section": "How does this work?",
+    "text": "How does this work?\nBack-end\nUses the {plumber} R package to build the API, with endpoints for\n\ngetting the list of all of the attendees for that day\nuploading a list of attendees in bulk\nadding an attendee individually\ngetting an attendee\nchecking the attendee in"
+  },
+  {
+    "objectID": "presentations/2023-10-17_conference-check-in-app/index.html#how-does-this-work-2",
+    "href": "presentations/2023-10-17_conference-check-in-app/index.html#how-does-this-work-2",
+    "title": "Conference Check-in App",
+    "section": "How does this work?",
+    "text": "How does this work?\nMore Back-end Stuff\n\nuses a simple SQLite DB that will be thrown away at the end of the conference\nwe send personalised emails using {blastula} to the attendees with their QR codes\nthe QR codes are just random ids (UUIDs) that identify each attendee\nuses websockets to update all of the clients when a user checks in (to update the list of attendees)"
+  },
+  {
+    "objectID": "presentations/2023-10-17_conference-check-in-app/index.html#learning-different-tools-can-show-you-the-light",
+    "href": "presentations/2023-10-17_conference-check-in-app/index.html#learning-different-tools-can-show-you-the-light",
+    "title": "Conference Check-in App",
+    "section": "Learning different tools can show you the light",
+    "text": "Learning different tools can show you the light\n\nunsplash.com/photos/tMGMINwFOtI"
+  },
+  {
+    "objectID": "presentations/2024-11-27_text-mining/index.html#intro",
+    "href": "presentations/2024-11-27_text-mining/index.html#intro",
+    "title": "Text mining",
+    "section": "Intro",
+    "text": "Intro\n\nRange of possible applications\nThere are a range of caveats depending on the use case\nSome of them are more relevant than others\nSome of them are “free”, and some aren’t"
+  },
+  {
+    "objectID": "presentations/2024-11-27_text-mining/index.html#what-is-text-mining",
+    "href": "presentations/2024-11-27_text-mining/index.html#what-is-text-mining",
+    "title": "Text mining",
+    "section": "What is text mining?",
+    "text": "What is text mining?\n\nA variety of supervised and unsupervised methods\nThe uses we’ll discuss today have no “understanding” of text (no “intelligence”)\nThey all have the potential, therefore, to be very inaccurate (e.g. negation)\nBut they can be a low cost way of gathering insight, properly applied"
+  },
+  {
+    "objectID": "presentations/2024-11-27_text-mining/index.html#i-just-want-a-bit-of-help-sorting",
+    "href": "presentations/2024-11-27_text-mining/index.html#i-just-want-a-bit-of-help-sorting",
+    "title": "Text mining",
+    "section": "“I just want a bit of help sorting”",
+    "text": "“I just want a bit of help sorting”\n\nThis is one of the safer things to do\nThere are a range of methods\nSome will give you some say of the “theme” of the piles, and some don’t\nGreat for: sifting, looking at relative size of piles, novel suggestions for themes for text\nBad for: accuracy, control over what’s in the piles"
+  },
+  {
+    "objectID": "presentations/2024-11-27_text-mining/index.html#i-just-want-to-find-useful-examples",
+    "href": "presentations/2024-11-27_text-mining/index.html#i-just-want-to-find-useful-examples",
+    "title": "Text mining",
+    "section": "“I just want to find useful examples”",
+    "text": "“I just want to find useful examples”\n\nAlso quite a safe application, and one we implemented for patient experience\nThe algorithm is just helping you to find things with a particular theme or sentiment\nYou bring the understanding\nMany ways of achieving this, from easy to difficult\n\nUnsupervised and supervised\nSearching for strings vs semantic search"
+  },
+  {
+    "objectID": "presentations/2024-11-27_text-mining/index.html#generating-summary-statistics",
+    "href": "presentations/2024-11-27_text-mining/index.html#generating-summary-statistics",
+    "title": "Text mining",
+    "section": "Generating summary statistics",
+    "text": "Generating summary statistics\n\nThis needs to be done with care\nYou can potentially lose a lot of nuance and meaning\nEven the best model is probably only around 80% accurate\nUseful for monitoring and making rough estimates about the size of things\nNot suitable for anything that needs accuracy (e.g. safeguarding)"
+  },
+  {
+    "objectID": "presentations/2024-11-27_text-mining/index.html#free",
+    "href": "presentations/2024-11-27_text-mining/index.html#free",
+    "title": "Text mining",
+    "section": "“Free”",
+    "text": "“Free”\n\nUnsupervised learning is “free”- no labelling necessary\nArguably you may as well use it for everything, speculatively\nHowever there are lots of models and parameters to set\nSo “free” is not really “free”"
+  },
+  {
+    "objectID": "presentations/2024-11-27_text-mining/index.html#whats-going-on",
+    "href": "presentations/2024-11-27_text-mining/index.html#whats-going-on",
+    "title": "Text mining",
+    "section": "What’s going on?",
+    "text": "What’s going on?\n\nText models are only as sensible as their inputs\nWe call the algorithm that turns text to numbers a “vectoriser”"
+  },
+  {
+    "objectID": "presentations/2024-11-27_text-mining/index.html#bag-of-words-vs-tf-idf",
+    "href": "presentations/2024-11-27_text-mining/index.html#bag-of-words-vs-tf-idf",
+    "title": "Text mining",
+    "section": "Bag of words vs TF-IDF",
+    "text": "Bag of words vs TF-IDF\n\nBag of words just counts the number of times each word appears\nCrude but effective\nTF-IDF works similarly but makes rare words more important, which can help with topic modelling and classification"
+  },
+  {
+    "objectID": "presentations/2024-11-27_text-mining/index.html#word-embeddings",
+    "href": "presentations/2024-11-27_text-mining/index.html#word-embeddings",
+    "title": "Text mining",
+    "section": "Word embeddings",
+    "text": "Word embeddings\n\nFrom Sutor et al., reproduced under fair use"
+  },
+  {
+    "objectID": "presentations/2024-11-27_text-mining/index.html#word-embeddings-cont.",
+    "href": "presentations/2024-11-27_text-mining/index.html#word-embeddings-cont.",
+    "title": "Text mining",
+    "section": "Word embeddings cont.",
+    "text": "Word embeddings cont.\n\nThere are some smallish ones (like Glove), and some huge ones (like BERT)\nVectors are the only way to encode meaning and context"
+  },
+  {
+    "objectID": "presentations/2024-11-27_text-mining/index.html#the-future",
+    "href": "presentations/2024-11-27_text-mining/index.html#the-future",
+    "title": "Text mining",
+    "section": "The future",
+    "text": "The future\n\nA number of different things suggest themselves\nUse of topic models to explore and search\nTraining of a supervised model for a particular project"
+  },
+  {
+    "objectID": "presentations/2024-11-27_text-mining/index.html#the-dream",
+    "href": "presentations/2024-11-27_text-mining/index.html#the-dream",
+    "title": "Text mining",
+    "section": "The dream",
+    "text": "The dream\n\nZero shot model with human in the loop learning"
+  },
+  {
+    "objectID": "presentations/2024-05-30_open-source-licensing/index.html#a-note-on-richard-stallman",
+    "href": "presentations/2024-05-30_open-source-licensing/index.html#a-note-on-richard-stallman",
+    "title": "Open source licensing",
+    "section": "A note on Richard Stallman",
+    "text": "A note on Richard Stallman\n\nRichard Stallman has been heavily criticised for some of this views\nHe is hard to ignore when talking about open source so I am going to talk about him\nNothing in this talk should be read as endorsing any of his comments outside (or inside) the world of open source"
+  },
+  {
+    "objectID": "presentations/2024-05-30_open-source-licensing/index.html#the-origin-of-open-source",
+    "href": "presentations/2024-05-30_open-source-licensing/index.html#the-origin-of-open-source",
+    "title": "Open source licensing",
+    "section": "The origin of open source",
+    "text": "The origin of open source\n\nIn the 50s and 60s source code was routinely shared with hardware and users were often expected to modify to run on their hardware\nBy the late 1960s the production cost of software was rising relative to hardware and proprietary licences became more prevalent\nIn 1980 Richard Stallman’s department at MIT took delivery of a printer they were not able to modify the source code for\nRichard Stallman launched the GNU project in 1983 to fight for software freedoms\nMIT licence was launched in the late 1980s\nCathedral and the bazaar was released in 1997 (more on which later)"
+  },
+  {
+    "objectID": "presentations/2024-05-30_open-source-licensing/index.html#what-is-open-source",
+    "href": "presentations/2024-05-30_open-source-licensing/index.html#what-is-open-source",
+    "title": "Open source licensing",
+    "section": "What is open source?",
+    "text": "What is open source?\n\nThink free as in free speech, not free beer (Stallman)\n\n\nOpen source does not mean free of charge! Software freedom implies the ability to sell code\nFree of charge does not mean open source! Many free to download pieces of software are not open source (Zoom, for example)\n\n\nBy Chao-Kuei et al. - https://www.gnu.org/philosophy/categories.en.html, GPL, Link"
+  },
+  {
+    "objectID": "presentations/2024-05-30_open-source-licensing/index.html#the-four-freedoms",
+    "href": "presentations/2024-05-30_open-source-licensing/index.html#the-four-freedoms",
+    "title": "Open source licensing",
+    "section": "The four freedoms",
+    "text": "The four freedoms\n\nFreedom 0: The freedom to use the program for any purpose.\nFreedom 1: The freedom to study how the program works, and change it to make it do what you wish.\nFreedom 2: The freedom to redistribute and make copies so you can help your neighbor.\nFreedom 3: The freedom to improve the program, and release your improvements (and modified versions in general) to the public, so that the whole community benefits."
+  },
+  {
+    "objectID": "presentations/2024-05-30_open-source-licensing/index.html#cathedral-and-the-bazaar",
+    "href": "presentations/2024-05-30_open-source-licensing/index.html#cathedral-and-the-bazaar",
+    "title": "Open source licensing",
+    "section": "Cathedral and the bazaar",
+    "text": "Cathedral and the bazaar\n\nEvery good work of software starts by scratching a developer’s personal itch.\nGood programmers know what to write. Great ones know what to rewrite (and reuse).\nPlan to throw one [version] away; you will, anyhow (copied from Frederick Brooks’s The Mythical Man-Month).\nIf you have the right attitude, interesting problems will find you.\nWhen you lose interest in a program, your last duty to it is to hand it off to a competent successor.\nTreating your users as co-developers is your least-hassle route to rapid code improvement and effective debugging.\nRelease early. Release often. And listen to your customers.\nGiven a large enough beta-tester and co-developer base, almost every problem will be characterized quickly and the fix obvious to someone.\nSmart data structures and dumb code works a lot better than the other way around.\nIf you treat your beta-testers as if they’re your most valuable resource, they will respond by becoming your most valuable resource."
+  },
+  {
+    "objectID": "presentations/2024-05-30_open-source-licensing/index.html#cathedral-and-the-bazaar-cont.",
+    "href": "presentations/2024-05-30_open-source-licensing/index.html#cathedral-and-the-bazaar-cont.",
+    "title": "Open source licensing",
+    "section": "Cathedral and the bazaar (cont.)",
+    "text": "Cathedral and the bazaar (cont.)\n\nThe next best thing to having good ideas is recognizing good ideas from your users. Sometimes the latter is better.\nOften, the most striking and innovative solutions come from realizing that your concept of the problem was wrong.\nPerfection (in design) is achieved not when there is nothing more to add, but rather when there is nothing more to take away. (Attributed to Antoine de Saint-Exupéry)\nAny tool should be useful in the expected way, but a truly great tool lends itself to uses you never expected.\nWhen writing gateway software of any kind, take pains to disturb the data stream as little as possible—and never throw away information unless the recipient forces you to!\nWhen your language is nowhere near Turing-complete, syntactic sugar can be your friend.\nA security system is only as secure as its secret. Beware of pseudo-secrets.\nTo solve an interesting problem, start by finding a problem that is interesting to you.\nProvided the development coordinator has a communications medium at least as good as the Internet, and knows how to lead without coercion, many heads are inevitably better than one."
+  },
+  {
+    "objectID": "presentations/2024-05-30_open-source-licensing/index.html#the-disciplines-of-open-source-are-the-disciplines-of-good-data-science",
+    "href": "presentations/2024-05-30_open-source-licensing/index.html#the-disciplines-of-open-source-are-the-disciplines-of-good-data-science",
+    "title": "Open source licensing",
+    "section": "The disciplines of open source are the disciplines of good data science",
+    "text": "The disciplines of open source are the disciplines of good data science\n\nMeaningful README\nMeaningful commit messages\nModularity\nSeparating data code from analytic code from interactive code\nAssigning issues and pull requests for action/ review\nDon’t forget one of the most lazy and incompetent developers you will ever work with is yourself, six months later"
+  },
+  {
+    "objectID": "presentations/2024-05-30_open-source-licensing/index.html#what-licences-exist",
+    "href": "presentations/2024-05-30_open-source-licensing/index.html#what-licences-exist",
+    "title": "Open source licensing",
+    "section": "What licences exist?",
+    "text": "What licences exist?\n\nPermissive\n\nSuch as MIT but there are others. Recommended by NHSX draft guidelines on open source\nApache is a notable permissive licence- includes a patent licence\nIn our work the OGL is also relevant- civil servant publish stuff under OGL (and MIT- it isn’t particularly recommended for code)\n\nCopyleft\n\nGPL2, GPL3, AGPL (“the GPL of the web”)\nNote that the provisions of the GPL only apply when you distribute the code\nAt a certain point it all gets too complicated and you need a lawyer\nMPL is a notable copyleft licence- can combine with proprietary code as long as kept separate\n\nArguments for permissive/ copyleft- getting your code used versus preserving software freedoms for other people\nNote that most of the licences are impossible to read! There is a website to explain tl;dr"
+  },
+  {
+    "objectID": "presentations/2024-05-30_open-source-licensing/index.html#what-is-copyright-and-why-does-it-matter",
+    "href": "presentations/2024-05-30_open-source-licensing/index.html#what-is-copyright-and-why-does-it-matter",
+    "title": "Open source licensing",
+    "section": "What is copyright and why does it matter",
+    "text": "What is copyright and why does it matter\n\nCopyright is assigned at the moment of creation\nIf you made it in your own time, it’s yours (usually!)\nIf you made it at work, it belongs to your employer\nIf someone paid you to make it (“work for hire”) it belongs to them\nCrucially, the copyright holder can relicence software\n\nIf it’s jointly authored it depends if it’s a “collective” or “joint” work\nHonestly it’s pretty complicated. Just vest copyright in an organisation or group of individuals you trust\nGoldacre review suggests using Crown copyright for copyright in the NHS because it’s a “shoal, not a big fish” (with apologies to Ben whom I am misquoting)"
+  },
+  {
+    "objectID": "presentations/2024-05-30_open-source-licensing/index.html#iceweasel",
+    "href": "presentations/2024-05-30_open-source-licensing/index.html#iceweasel",
+    "title": "Open source licensing",
+    "section": "Iceweasel",
+    "text": "Iceweasel\n\nIceweasel is a story of trademark rather than copyright\nDebian (a Linux flavour) had the permission to use the source code of Firefox, but not the logo\nSo they took the source code and made their own version\nThis sounds very obscure and unimportant but it could become important in future projects of ours, like…"
+  },
+  {
+    "objectID": "presentations/2024-05-30_open-source-licensing/index.html#what-we-have-learned-in-recent-projects",
+    "href": "presentations/2024-05-30_open-source-licensing/index.html#what-we-have-learned-in-recent-projects",
+    "title": "Open source licensing",
+    "section": "What we have learned in recent projects",
+    "text": "What we have learned in recent projects\n\nThe huge benefits of being open\n\nTransparency\nWorking with customers\nGoodwill\n\nNonfree mitigators\nDifferent licences for different repos"
+  },
+  {
+    "objectID": "presentations/2024-05-30_open-source-licensing/index.html#software-freedom-means-allowing-people-to-do-stuff-you-dont-like",
+    "href": "presentations/2024-05-30_open-source-licensing/index.html#software-freedom-means-allowing-people-to-do-stuff-you-dont-like",
+    "title": "Open source licensing",
+    "section": "Software freedom means allowing people to do stuff you don’t like",
+    "text": "Software freedom means allowing people to do stuff you don’t like\n\nFreedom 0: The freedom to use the program for any purpose.\nFreedom 3: The freedom to improve the program, and release your improvements (and modified versions in general) to the public, so that the whole community benefits.\nThe code isn’t the only thing with worth in the project\nThis is why there are whole businesses founded on “here’s the Linux source code”\nSo when we’re sharing code we are letting people do stupid things with it but we’re not recommending that they do stupid things with it\nPeople do stupid things with Excel and Microsoft don’t accept liability for that, and neither should we\nThis issue of sharing analytic code and merchantability for a particular purpose is poorly understood and I think everyone needs to be clearer on it (us, and our customers)\nIn my view a world where consultants are selling our code is better than a world where they’re selling their spreadsheets"
+  },
+  {
+    "objectID": "presentations/2024-05-30_open-source-licensing/index.html#open-source-as-in-piano",
+    "href": "presentations/2024-05-30_open-source-licensing/index.html#open-source-as-in-piano",
+    "title": "Open source licensing",
+    "section": "“Open source as in piano”",
+    "text": "“Open source as in piano”\n\nThe patient experience QDC project\nOur current project\nOpen source code is not necessarily to be run, but understood and learned from\nBuilding a group of people who can use and contribute to your code is arguably as important as writing it"
   },
   {
     "objectID": "presentations/2025-05-13_NHP_DS_deep_dive/index.html#the-new-hospital-programme-nhp-demand-model",
@@ -2672,459 +3043,144 @@
     "text": "Information management\n🗣 Info IN\nInbox, user feedback forms, button on apps, videoed interviews, roundtable, ad hoc.\n📣 Info OUT\nProject information site, GitHub, how-to videos, conference and meeting presentations, blogs.\nTo ensure that:\n\nUser needs guide what we build\nWe help (current and future) users know what we have built and are building"
   },
   {
-    "objectID": "presentations/2024-05-30_open-source-licensing/index.html#a-note-on-richard-stallman",
-    "href": "presentations/2024-05-30_open-source-licensing/index.html#a-note-on-richard-stallman",
-    "title": "Open source licensing",
-    "section": "A note on Richard Stallman",
-    "text": "A note on Richard Stallman\n\nRichard Stallman has been heavily criticised for some of this views\nHe is hard to ignore when talking about open source so I am going to talk about him\nNothing in this talk should be read as endorsing any of his comments outside (or inside) the world of open source"
+    "objectID": "presentations/2024-01-25_coffee-and-coding/index.html#targets-for-analysts",
+    "href": "presentations/2024-01-25_coffee-and-coding/index.html#targets-for-analysts",
+    "title": "Coffee and Coding",
+    "section": "{targets} for analysts",
+    "text": "{targets} for analysts\n\n\n\nTom previously presented about {targets} at a coffee and coding last March and you can revisit his presentation and learn about the reasons why you should use the package to manage your pipeline and see a simple demonstration of how to use the package.\nMatt has presented previously about {targets} and making your workflows (pipelines) reproducible.\nSo….. if you aren’t really even sure why your pipeline needs managing as an analyst or whether you actually have one (you do) then links to their presentations are at the end"
   },
   {
-    "objectID": "presentations/2024-05-30_open-source-licensing/index.html#the-origin-of-open-source",
-    "href": "presentations/2024-05-30_open-source-licensing/index.html#the-origin-of-open-source",
-    "title": "Open source licensing",
-    "section": "The origin of open source",
-    "text": "The origin of open source\n\nIn the 50s and 60s source code was routinely shared with hardware and users were often expected to modify to run on their hardware\nBy the late 1960s the production cost of software was rising relative to hardware and proprietary licences became more prevalent\nIn 1980 Richard Stallman’s department at MIT took delivery of a printer they were not able to modify the source code for\nRichard Stallman launched the GNU project in 1983 to fight for software freedoms\nMIT licence was launched in the late 1980s\nCathedral and the bazaar was released in 1997 (more on which later)"
+    "objectID": "presentations/2024-01-25_coffee-and-coding/index.html#aims",
+    "href": "presentations/2024-01-25_coffee-and-coding/index.html#aims",
+    "title": "Coffee and Coding",
+    "section": "Aims",
+    "text": "Aims\n\nIn this presentation we aim to demonstrate the real-world use of {targets} in an analysis project, but first a brief explanation\n\n\nWithout {targets} we\n\n\nWrite a script\nExecute script\nMake changes\nGo to step 2\n\n\nWith {targets} we will\n\n\nlearn how the various stages of our analysis fit together\nsave time by only running necessary stages as we cycle through the process\nhelp future you and colleagues re-visiting the analysis - Matt says “its like a time-capsule”\nmake Reproducible Analytical Pipelines\n\n\nsource: The {targets} R package user manual"
   },
   {
-    "objectID": "presentations/2024-05-30_open-source-licensing/index.html#what-is-open-source",
-    "href": "presentations/2024-05-30_open-source-licensing/index.html#what-is-open-source",
-    "title": "Open source licensing",
-    "section": "What is open source?",
-    "text": "What is open source?\n\nThink free as in free speech, not free beer (Stallman)\n\n\nOpen source does not mean free of charge! Software freedom implies the ability to sell code\nFree of charge does not mean open source! Many free to download pieces of software are not open source (Zoom, for example)\n\n\nBy Chao-Kuei et al. - https://www.gnu.org/philosophy/categories.en.html, GPL, Link"
+    "objectID": "presentations/2024-01-25_coffee-and-coding/index.html#explain-the-live-project",
+    "href": "presentations/2024-01-25_coffee-and-coding/index.html#explain-the-live-project",
+    "title": "Coffee and Coding",
+    "section": "Explain the live project",
+    "text": "Explain the live project\n\noriginal project had 30+ metrics\nmultiple inter-related processing steps\neach time a metric changed or a process was altered it impacted across the project\nthere was potential for mistakes, duplication, lots of wasted time\nusing targets provides a structure that handles these inter-relationships"
   },
   {
-    "objectID": "presentations/2024-05-30_open-source-licensing/index.html#the-four-freedoms",
-    "href": "presentations/2024-05-30_open-source-licensing/index.html#the-four-freedoms",
-    "title": "Open source licensing",
-    "section": "The four freedoms",
-    "text": "The four freedoms\n\nFreedom 0: The freedom to use the program for any purpose.\nFreedom 1: The freedom to study how the program works, and change it to make it do what you wish.\nFreedom 2: The freedom to redistribute and make copies so you can help your neighbor.\nFreedom 3: The freedom to improve the program, and release your improvements (and modified versions in general) to the public, so that the whole community benefits."
+    "objectID": "presentations/2024-01-25_coffee-and-coding/index.html#how-targets-can-help",
+    "href": "presentations/2024-01-25_coffee-and-coding/index.html#how-targets-can-help",
+    "title": "Coffee and Coding",
+    "section": "How {targets} can help",
+    "text": "How {targets} can help\n\ngets you thinking about your analysis and its building blocks\ntargets forces you into a functions approach to workflow\nentire pipeline is reproducible\nvisualise on one page\nsaves time\n(maybe we need an advanced function writing session in another C&C?)"
   },
   {
-    "objectID": "presentations/2024-05-30_open-source-licensing/index.html#cathedral-and-the-bazaar",
-    "href": "presentations/2024-05-30_open-source-licensing/index.html#cathedral-and-the-bazaar",
-    "title": "Open source licensing",
-    "section": "Cathedral and the bazaar",
-    "text": "Cathedral and the bazaar\n\nEvery good work of software starts by scratching a developer’s personal itch.\nGood programmers know what to write. Great ones know what to rewrite (and reuse).\nPlan to throw one [version] away; you will, anyhow (copied from Frederick Brooks’s The Mythical Man-Month).\nIf you have the right attitude, interesting problems will find you.\nWhen you lose interest in a program, your last duty to it is to hand it off to a competent successor.\nTreating your users as co-developers is your least-hassle route to rapid code improvement and effective debugging.\nRelease early. Release often. And listen to your customers.\nGiven a large enough beta-tester and co-developer base, almost every problem will be characterized quickly and the fix obvious to someone.\nSmart data structures and dumb code works a lot better than the other way around.\nIf you treat your beta-testers as if they’re your most valuable resource, they will respond by becoming your most valuable resource."
+    "objectID": "presentations/2024-01-25_coffee-and-coding/index.html#demonstration-in-a-live-project",
+    "href": "presentations/2024-01-25_coffee-and-coding/index.html#demonstration-in-a-live-project",
+    "title": "Coffee and Coding",
+    "section": "Demonstration in a live project",
+    "text": "Demonstration in a live project\nLet’s look at a real life example in a live project…"
   },
   {
-    "objectID": "presentations/2024-05-30_open-source-licensing/index.html#cathedral-and-the-bazaar-cont.",
-    "href": "presentations/2024-05-30_open-source-licensing/index.html#cathedral-and-the-bazaar-cont.",
-    "title": "Open source licensing",
-    "section": "Cathedral and the bazaar (cont.)",
-    "text": "Cathedral and the bazaar (cont.)\n\nThe next best thing to having good ideas is recognizing good ideas from your users. Sometimes the latter is better.\nOften, the most striking and innovative solutions come from realizing that your concept of the problem was wrong.\nPerfection (in design) is achieved not when there is nothing more to add, but rather when there is nothing more to take away. (Attributed to Antoine de Saint-Exupéry)\nAny tool should be useful in the expected way, but a truly great tool lends itself to uses you never expected.\nWhen writing gateway software of any kind, take pains to disturb the data stream as little as possible—and never throw away information unless the recipient forces you to!\nWhen your language is nowhere near Turing-complete, syntactic sugar can be your friend.\nA security system is only as secure as its secret. Beware of pseudo-secrets.\nTo solve an interesting problem, start by finding a problem that is interesting to you.\nProvided the development coordinator has a communications medium at least as good as the Internet, and knows how to lead without coercion, many heads are inevitably better than one."
+    "objectID": "presentations/2024-01-25_coffee-and-coding/index.html#visualising",
+    "href": "presentations/2024-01-25_coffee-and-coding/index.html#visualising",
+    "title": "Coffee and Coding",
+    "section": "Visualising",
+    "text": "Visualising\nCurrent project in {targets} and visualised with tar_visnetwork()"
   },
   {
-    "objectID": "presentations/2024-05-30_open-source-licensing/index.html#the-disciplines-of-open-source-are-the-disciplines-of-good-data-science",
-    "href": "presentations/2024-05-30_open-source-licensing/index.html#the-disciplines-of-open-source-are-the-disciplines-of-good-data-science",
-    "title": "Open source licensing",
-    "section": "The disciplines of open source are the disciplines of good data science",
-    "text": "The disciplines of open source are the disciplines of good data science\n\nMeaningful README\nMeaningful commit messages\nModularity\nSeparating data code from analytic code from interactive code\nAssigning issues and pull requests for action/ review\nDon’t forget one of the most lazy and incompetent developers you will ever work with is yourself, six months later"
+    "objectID": "presentations/2024-01-25_coffee-and-coding/index.html#code",
+    "href": "presentations/2024-01-25_coffee-and-coding/index.html#code",
+    "title": "Coffee and Coding",
+    "section": "Code",
+    "text": "Code\n\nit’s like a recipe of steps\nit’s easier to read\nyou have built functions which you can transfer and reuse\nit’s efficient, good practice\ndebugging is easier because if/when it fails you know exactly which target it has failed on\nit creates intermediate cached objects you can fetch at any time"
   },
   {
-    "objectID": "presentations/2024-05-30_open-source-licensing/index.html#what-licences-exist",
-    "href": "presentations/2024-05-30_open-source-licensing/index.html#what-licences-exist",
-    "title": "Open source licensing",
-    "section": "What licences exist?",
-    "text": "What licences exist?\n\nPermissive\n\nSuch as MIT but there are others. Recommended by NHSX draft guidelines on open source\nApache is a notable permissive licence- includes a patent licence\nIn our work the OGL is also relevant- civil servant publish stuff under OGL (and MIT- it isn’t particularly recommended for code)\n\nCopyleft\n\nGPL2, GPL3, AGPL (“the GPL of the web”)\nNote that the provisions of the GPL only apply when you distribute the code\nAt a certain point it all gets too complicated and you need a lawyer\nMPL is a notable copyleft licence- can combine with proprietary code as long as kept separate\n\nArguments for permissive/ copyleft- getting your code used versus preserving software freedoms for other people\nNote that most of the licences are impossible to read! There is a website to explain tl;dr"
+    "objectID": "presentations/2024-01-25_coffee-and-coding/index.html#how-can-i-start-using-it",
+    "href": "presentations/2024-01-25_coffee-and-coding/index.html#how-can-i-start-using-it",
+    "title": "Coffee and Coding",
+    "section": "How can I start using it?",
+    "text": "How can I start using it?\n\nYou could “retro-fit” it to your project, but … ideally you should start your project off using {targets}\nThere are at least three of us in SU who have used it in our projects.\nWe are offering to hand hold you to get started with your next project.\nMatt, Tom, Jacqueline"
   },
   {
-    "objectID": "presentations/2024-05-30_open-source-licensing/index.html#what-is-copyright-and-why-does-it-matter",
-    "href": "presentations/2024-05-30_open-source-licensing/index.html#what-is-copyright-and-why-does-it-matter",
-    "title": "Open source licensing",
-    "section": "What is copyright and why does it matter",
-    "text": "What is copyright and why does it matter\n\nCopyright is assigned at the moment of creation\nIf you made it in your own time, it’s yours (usually!)\nIf you made it at work, it belongs to your employer\nIf someone paid you to make it (“work for hire”) it belongs to them\nCrucially, the copyright holder can relicence software\n\nIf it’s jointly authored it depends if it’s a “collective” or “joint” work\nHonestly it’s pretty complicated. Just vest copyright in an organisation or group of individuals you trust\nGoldacre review suggests using Crown copyright for copyright in the NHS because it’s a “shoal, not a big fish” (with apologies to Ben whom I am misquoting)"
+    "objectID": "presentations/2024-01-25_coffee-and-coding/index.html#useful-targets-links",
+    "href": "presentations/2024-01-25_coffee-and-coding/index.html#useful-targets-links",
+    "title": "Coffee and Coding",
+    "section": "Useful {targets} links",
+    "text": "Useful {targets} links\n\nTom’s previous coffee and coding presentation\nMatt’s previous presentations\nThe {targets} documentation is detailed and easy to follow.\nA demo repository demonstrated in last weeks NHSE C&C\nSoftware Carpentry are developing a course here Pre-alpha targets course\nLive project demonstrated in this presentation using {targets}"
   },
   {
-    "objectID": "presentations/2024-05-30_open-source-licensing/index.html#iceweasel",
-    "href": "presentations/2024-05-30_open-source-licensing/index.html#iceweasel",
-    "title": "Open source licensing",
-    "section": "Iceweasel",
-    "text": "Iceweasel\n\nIceweasel is a story of trademark rather than copyright\nDebian (a Linux flavour) had the permission to use the source code of Firefox, but not the logo\nSo they took the source code and made their own version\nThis sounds very obscure and unimportant but it could become important in future projects of ours, like…"
+    "objectID": "presentations/2024-10-10_what-is-ai-yiwen/index.html#ai-could-help-identify-high-risk-heart-patients",
+    "href": "presentations/2024-10-10_what-is-ai-yiwen/index.html#ai-could-help-identify-high-risk-heart-patients",
+    "title": "Identifying patients at risk",
+    "section": "AI could help identify high-risk heart patients1",
+    "text": "AI could help identify high-risk heart patients1\nThe University of Leeds has helped train an AI system called Optimise, that looked at health records of more than two million people.\n…\nOf those two million records that were scanned, more than 400,000 people were identified as being high risk for the likes of heart failure, stroke and diabetes.\nhttps://www.bbc.co.uk/news/articles/cj620yl96kzo"
   },
   {
-    "objectID": "presentations/2024-05-30_open-source-licensing/index.html#what-we-have-learned-in-recent-projects",
-    "href": "presentations/2024-05-30_open-source-licensing/index.html#what-we-have-learned-in-recent-projects",
-    "title": "Open source licensing",
-    "section": "What we have learned in recent projects",
-    "text": "What we have learned in recent projects\n\nThe huge benefits of being open\n\nTransparency\nWorking with customers\nGoodwill\n\nNonfree mitigators\nDifferent licences for different repos"
+    "objectID": "presentations/2024-10-10_what-is-ai-yiwen/index.html#how-it-works",
+    "href": "presentations/2024-10-10_what-is-ai-yiwen/index.html#how-it-works",
+    "title": "Identifying patients at risk",
+    "section": "How it works",
+    "text": "How it works\n\nThe input: Health records\nHealth records can be structured or unstructured\n\nStructured: can be stored in a table\nUnstructured: can’t be stored in a table, different shapes/sizes (e.g. text, audio, images)"
   },
   {
-    "objectID": "presentations/2024-05-30_open-source-licensing/index.html#software-freedom-means-allowing-people-to-do-stuff-you-dont-like",
-    "href": "presentations/2024-05-30_open-source-licensing/index.html#software-freedom-means-allowing-people-to-do-stuff-you-dont-like",
-    "title": "Open source licensing",
-    "section": "Software freedom means allowing people to do stuff you don’t like",
-    "text": "Software freedom means allowing people to do stuff you don’t like\n\nFreedom 0: The freedom to use the program for any purpose.\nFreedom 3: The freedom to improve the program, and release your improvements (and modified versions in general) to the public, so that the whole community benefits.\nThe code isn’t the only thing with worth in the project\nThis is why there are whole businesses founded on “here’s the Linux source code”\nSo when we’re sharing code we are letting people do stupid things with it but we’re not recommending that they do stupid things with it\nPeople do stupid things with Excel and Microsoft don’t accept liability for that, and neither should we\nThis issue of sharing analytic code and merchantability for a particular purpose is poorly understood and I think everyone needs to be clearer on it (us, and our customers)\nIn my view a world where consultants are selling our code is better than a world where they’re selling their spreadsheets"
+    "objectID": "presentations/2024-10-10_what-is-ai-yiwen/index.html#example-of-structured-data-in-health-records",
+    "href": "presentations/2024-10-10_what-is-ai-yiwen/index.html#example-of-structured-data-in-health-records",
+    "title": "Identifying patients at risk",
+    "section": "Example of structured data in health records",
+    "text": "Example of structured data in health records\n\n\n\nID\nBMI\nAge\nIMD Decile\nSmoker\nBlood Pressure\n\n\n\n\n1\n17\n49\n3\n1\n110/70\n\n\n2\n25\n67\n1\n1\n129/70\n\n\n3\n20\n39\n8\n0\n140/90\n\n\n4\n28\n81\n6\n0\n130/85\n\n\n5\n29\n41\n4\n0\n120/80\n\n\n\nData is consistent within each column in the table."
   },
   {
-    "objectID": "presentations/2024-05-30_open-source-licensing/index.html#open-source-as-in-piano",
-    "href": "presentations/2024-05-30_open-source-licensing/index.html#open-source-as-in-piano",
-    "title": "Open source licensing",
-    "section": "“Open source as in piano”",
-    "text": "“Open source as in piano”\n\nThe patient experience QDC project\nOur current project\nOpen source code is not necessarily to be run, but understood and learned from\nBuilding a group of people who can use and contribute to your code is arguably as important as writing it"
+    "objectID": "presentations/2024-10-10_what-is-ai-yiwen/index.html#example-of-unstructured-data-in-health-records",
+    "href": "presentations/2024-10-10_what-is-ai-yiwen/index.html#example-of-unstructured-data-in-health-records",
+    "title": "Identifying patients at risk",
+    "section": "Example of unstructured data in health records",
+    "text": "Example of unstructured data in health records\n\n\n\n\n\n\n\nID\nNotes\n\n\n\n\n1\nShortness of breath\n\n\n2\nPatient attended clinic following one week of fever, vomiting, and abdominal pain.\n\n\n\nThe length of each sentence is different - data not consistent."
   },
   {
-    "objectID": "presentations/2024-11-27_text-mining/index.html#intro",
-    "href": "presentations/2024-11-27_text-mining/index.html#intro",
-    "title": "Text mining",
-    "section": "Intro",
-    "text": "Intro\n\nRange of possible applications\nThere are a range of caveats depending on the use case\nSome of them are more relevant than others\nSome of them are “free”, and some aren’t"
+    "objectID": "presentations/2024-10-10_what-is-ai-yiwen/index.html#a-simple-approach-to-classifying-data-knn",
+    "href": "presentations/2024-10-10_what-is-ai-yiwen/index.html#a-simple-approach-to-classifying-data-knn",
+    "title": "Identifying patients at risk",
+    "section": "A simple approach to classifying data: KNN",
+    "text": "A simple approach to classifying data: KNN\n\n\nClustering algorithms like K Nearest Neighbours (KNN) are on the more basic end of the scale, requiring very little computational power.\n\n1\n\nAntti Ajanki AnAj, CC BY-SA 3.0 http://creativecommons.org/licenses/by-sa/3.0/, via Wikimedia Commons"
   },
   {
-    "objectID": "presentations/2024-11-27_text-mining/index.html#what-is-text-mining",
-    "href": "presentations/2024-11-27_text-mining/index.html#what-is-text-mining",
-    "title": "Text mining",
-    "section": "What is text mining?",
-    "text": "What is text mining?\n\nA variety of supervised and unsupervised methods\nThe uses we’ll discuss today have no “understanding” of text (no “intelligence”)\nThey all have the potential, therefore, to be very inaccurate (e.g. negation)\nBut they can be a low cost way of gathering insight, properly applied"
+    "objectID": "presentations/2024-10-10_what-is-ai-yiwen/index.html#a-simple-approach-to-classifying-data-decision-tree",
+    "href": "presentations/2024-10-10_what-is-ai-yiwen/index.html#a-simple-approach-to-classifying-data-decision-tree",
+    "title": "Identifying patients at risk",
+    "section": "A simple approach to classifying data: Decision Tree",
+    "text": "A simple approach to classifying data: Decision Tree\n1\nhttps://www.researchgate.net/publication/26635430_Using_Machine_Learning_Algorithms_in_Cardiovascular_Disease_Risk_Evaluation"
   },
   {
-    "objectID": "presentations/2024-11-27_text-mining/index.html#i-just-want-a-bit-of-help-sorting",
-    "href": "presentations/2024-11-27_text-mining/index.html#i-just-want-a-bit-of-help-sorting",
-    "title": "Text mining",
-    "section": "“I just want a bit of help sorting”",
-    "text": "“I just want a bit of help sorting”\n\nThis is one of the safer things to do\nThere are a range of methods\nSome will give you some say of the “theme” of the piles, and some don’t\nGreat for: sifting, looking at relative size of piles, novel suggestions for themes for text\nBad for: accuracy, control over what’s in the piles"
+    "objectID": "presentations/2024-10-10_what-is-ai-yiwen/index.html#there-are-many-different-models-out-there",
+    "href": "presentations/2024-10-10_what-is-ai-yiwen/index.html#there-are-many-different-models-out-there",
+    "title": "Identifying patients at risk",
+    "section": "There are many different models out there! 🥴",
+    "text": "There are many different models out there! 🥴\n1\nhttps://scikit-learn.org/1.3/tutorial/machine_learning_map/"
   },
   {
-    "objectID": "presentations/2024-11-27_text-mining/index.html#i-just-want-to-find-useful-examples",
-    "href": "presentations/2024-11-27_text-mining/index.html#i-just-want-to-find-useful-examples",
-    "title": "Text mining",
-    "section": "“I just want to find useful examples”",
-    "text": "“I just want to find useful examples”\n\nAlso quite a safe application, and one we implemented for patient experience\nThe algorithm is just helping you to find things with a particular theme or sentiment\nYou bring the understanding\nMany ways of achieving this, from easy to difficult\n\nUnsupervised and supervised\nSearching for strings vs semantic search"
+    "objectID": "presentations/2024-10-10_what-is-ai-yiwen/index.html#what-makes-a-model-simple-or-complex",
+    "href": "presentations/2024-10-10_what-is-ai-yiwen/index.html#what-makes-a-model-simple-or-complex",
+    "title": "Identifying patients at risk",
+    "section": "What makes a model simple or complex?",
+    "text": "What makes a model simple or complex?\n\nThere are dozens of different algorithms out there\nEach algorithm has different strengths and weaknesses\nWhat makes a model simple or complex is the amount of computational power required and how much the model needs to “learn” - how many parameters there are"
   },
   {
-    "objectID": "presentations/2024-11-27_text-mining/index.html#generating-summary-statistics",
-    "href": "presentations/2024-11-27_text-mining/index.html#generating-summary-statistics",
-    "title": "Text mining",
-    "section": "Generating summary statistics",
-    "text": "Generating summary statistics\n\nThis needs to be done with care\nYou can potentially lose a lot of nuance and meaning\nEven the best model is probably only around 80% accurate\nUseful for monitoring and making rough estimates about the size of things\nNot suitable for anything that needs accuracy (e.g. safeguarding)"
+    "objectID": "presentations/2024-10-10_what-is-ai-yiwen/index.html#is-the-input-or-the-computation-complex",
+    "href": "presentations/2024-10-10_what-is-ai-yiwen/index.html#is-the-input-or-the-computation-complex",
+    "title": "Identifying patients at risk",
+    "section": "Is the input or the computation complex?",
+    "text": "Is the input or the computation complex?\n“We used UK primary care EHR data from 2,081,139 individuals aged ≥ 30 years…\nWe trained a random forest classifier using age, sex, ethnicity and comorbidities (OPTIMISE).”1\nNadarajah, Ramesh, et al. “Machine learning to identify community-dwelling individuals at higher risk of incident cardio-renal-metabolic diseases and death.” Future Healthcare Journal 11 (2024): 100109. https://www.sciencedirect.com/science/article/pii/S2514664524002212"
   },
   {
-    "objectID": "presentations/2024-11-27_text-mining/index.html#free",
-    "href": "presentations/2024-11-27_text-mining/index.html#free",
-    "title": "Text mining",
-    "section": "“Free”",
-    "text": "“Free”\n\nUnsupervised learning is “free”- no labelling necessary\nArguably you may as well use it for everything, speculatively\nHowever there are lots of models and parameters to set\nSo “free” is not really “free”"
+    "objectID": "presentations/2024-10-10_what-is-ai-yiwen/index.html#pros-and-cons-of-simple-a.i.-approaches",
+    "href": "presentations/2024-10-10_what-is-ai-yiwen/index.html#pros-and-cons-of-simple-a.i.-approaches",
+    "title": "Identifying patients at risk",
+    "section": "Pros and cons of simple “A.I.” approaches",
+    "text": "Pros and cons of simple “A.I.” approaches\n\n\nPros:\n\nSimple models are more easily explained\nCan sometimes find new patterns in the data\n\n\nCons:\n\nThe quality of the data determines the quality of the model\nNot able to handle very complex tasks"
   },
   {
-    "objectID": "presentations/2024-11-27_text-mining/index.html#whats-going-on",
-    "href": "presentations/2024-11-27_text-mining/index.html#whats-going-on",
-    "title": "Text mining",
-    "section": "What’s going on?",
-    "text": "What’s going on?\n\nText models are only as sensible as their inputs\nWe call the algorithm that turns text to numbers a “vectoriser”"
-  },
-  {
-    "objectID": "presentations/2024-11-27_text-mining/index.html#bag-of-words-vs-tf-idf",
-    "href": "presentations/2024-11-27_text-mining/index.html#bag-of-words-vs-tf-idf",
-    "title": "Text mining",
-    "section": "Bag of words vs TF-IDF",
-    "text": "Bag of words vs TF-IDF\n\nBag of words just counts the number of times each word appears\nCrude but effective\nTF-IDF works similarly but makes rare words more important, which can help with topic modelling and classification"
-  },
-  {
-    "objectID": "presentations/2024-11-27_text-mining/index.html#word-embeddings",
-    "href": "presentations/2024-11-27_text-mining/index.html#word-embeddings",
-    "title": "Text mining",
-    "section": "Word embeddings",
-    "text": "Word embeddings\n\nFrom Sutor et al., reproduced under fair use"
-  },
-  {
-    "objectID": "presentations/2024-11-27_text-mining/index.html#word-embeddings-cont.",
-    "href": "presentations/2024-11-27_text-mining/index.html#word-embeddings-cont.",
-    "title": "Text mining",
-    "section": "Word embeddings cont.",
-    "text": "Word embeddings cont.\n\nThere are some smallish ones (like Glove), and some huge ones (like BERT)\nVectors are the only way to encode meaning and context"
-  },
-  {
-    "objectID": "presentations/2024-11-27_text-mining/index.html#the-future",
-    "href": "presentations/2024-11-27_text-mining/index.html#the-future",
-    "title": "Text mining",
-    "section": "The future",
-    "text": "The future\n\nA number of different things suggest themselves\nUse of topic models to explore and search\nTraining of a supervised model for a particular project"
-  },
-  {
-    "objectID": "presentations/2024-11-27_text-mining/index.html#the-dream",
-    "href": "presentations/2024-11-27_text-mining/index.html#the-dream",
-    "title": "Text mining",
-    "section": "The dream",
-    "text": "The dream\n\nZero shot model with human in the loop learning"
-  },
-  {
-    "objectID": "presentations/2023-10-17_conference-check-in-app/index.html#section",
-    "href": "presentations/2023-10-17_conference-check-in-app/index.html#section",
-    "title": "Conference Check-in App",
-    "section": "",
-    "text": "digital.library.unt.edu/ark:/67531/metadc1039451/m1/1/\n\n\nClark, Junebug. [Registration Desk for the LPC Conference], photograph, 2016-03-17/2016-03-19; (https://digital.library.unt.edu/ark:/67531/metadc1039451/m1/1/: accessed October 16, 2023), University of North Texas Libraries, UNT Digital Library, https://digital.library.unt.edu; crediting UNT Libraries Special Collections."
-  },
-  {
-    "objectID": "presentations/2023-10-17_conference-check-in-app/index.html#qr-codes-are-great",
-    "href": "presentations/2023-10-17_conference-check-in-app/index.html#qr-codes-are-great",
-    "title": "Conference Check-in App",
-    "section": "QR codes are great",
-    "text": "QR codes are great"
-  },
-  {
-    "objectID": "presentations/2023-10-17_conference-check-in-app/index.html#and-can-be-easily-generated-in-r",
-    "href": "presentations/2023-10-17_conference-check-in-app/index.html#and-can-be-easily-generated-in-r",
-    "title": "Conference Check-in App",
-    "section": "and can be easily generated in R",
-    "text": "and can be easily generated in R\ninstall.packages(\"qrcode\")\nlibrary(qrcode)\n\nqr_code(\"https://www.youtube.com/watch?v=dQw4w9WgXcQ\")"
-  },
-  {
-    "objectID": "presentations/2023-10-17_conference-check-in-app/index.html#why-not",
-    "href": "presentations/2023-10-17_conference-check-in-app/index.html#why-not",
-    "title": "Conference Check-in App",
-    "section": "Why not?",
-    "text": "Why not?\n\n{shiny} would be doing all the processing on the server side\nwe would need to read from a camera client side\nthen stream video to the server for {shiny} to detect and decode the QR codes"
-  },
-  {
-    "objectID": "presentations/2023-10-17_conference-check-in-app/index.html#how-does-this-work",
-    "href": "presentations/2023-10-17_conference-check-in-app/index.html#how-does-this-work",
-    "title": "Conference Check-in App",
-    "section": "How does this work?",
-    "text": "How does this work?\n\n\nFront-end\n\nuses the React JavaScript framework\n@yidel/react-qr-scanner\nApp scan’s a QR code, then sends this to our backend\nA window pops up to say who has checked in, or shows an error message"
-  },
-  {
-    "objectID": "presentations/2023-10-17_conference-check-in-app/index.html#how-does-this-work-1",
-    "href": "presentations/2023-10-17_conference-check-in-app/index.html#how-does-this-work-1",
-    "title": "Conference Check-in App",
-    "section": "How does this work?",
-    "text": "How does this work?\nBack-end\nUses the {plumber} R package to build the API, with endpoints for\n\ngetting the list of all of the attendees for that day\nuploading a list of attendees in bulk\nadding an attendee individually\ngetting an attendee\nchecking the attendee in"
-  },
-  {
-    "objectID": "presentations/2023-10-17_conference-check-in-app/index.html#how-does-this-work-2",
-    "href": "presentations/2023-10-17_conference-check-in-app/index.html#how-does-this-work-2",
-    "title": "Conference Check-in App",
-    "section": "How does this work?",
-    "text": "How does this work?\nMore Back-end Stuff\n\nuses a simple SQLite DB that will be thrown away at the end of the conference\nwe send personalised emails using {blastula} to the attendees with their QR codes\nthe QR codes are just random ids (UUIDs) that identify each attendee\nuses websockets to update all of the clients when a user checks in (to update the list of attendees)"
-  },
-  {
-    "objectID": "presentations/2023-10-17_conference-check-in-app/index.html#learning-different-tools-can-show-you-the-light",
-    "href": "presentations/2023-10-17_conference-check-in-app/index.html#learning-different-tools-can-show-you-the-light",
-    "title": "Conference Check-in App",
-    "section": "Learning different tools can show you the light",
-    "text": "Learning different tools can show you the light\n\nunsplash.com/photos/tMGMINwFOtI"
-  },
-  {
-    "objectID": "presentations/2024-10-10_what-is-ai-tom/index.html#what-is-computer-vision-cv",
-    "href": "presentations/2024-10-10_what-is-ai-tom/index.html#what-is-computer-vision-cv",
-    "title": "Computer Vision",
-    "section": "What is Computer Vision (CV)",
-    "text": "What is Computer Vision (CV)\n\n\nComputer vision is a field of computer science that focuses on enabling computers to identify and understand objects and people in images and videos.\n\n\n\n\nLike other types of AI, computer vision seeks to perform and automate tasks that replicate human capabilities.\n\n\n\n\nIn this case, computer vision seeks to replicate both the way humans see, and the way humans make sense of what they see.\n\n\n\nSource: What is computer vision? Microsoft"
-  },
-  {
-    "objectID": "presentations/2024-10-10_what-is-ai-tom/index.html#classification",
-    "href": "presentations/2024-10-10_what-is-ai-tom/index.html#classification",
-    "title": "Computer Vision",
-    "section": "Classification",
-    "text": "Classification\n\nAssign a single label to each image\n\n\n\n\n\n\n\nDog\n\n\nWelsh Spaniel\n\n\nAnimal in water\n\n\n\n\n\n\n\n\nDog\n\n\nSussex Spaniel\n\n\nAnimal on land\n\n\n\nImages from imagenet"
-  },
-  {
-    "objectID": "presentations/2024-10-10_what-is-ai-tom/index.html#multi-classification",
-    "href": "presentations/2024-10-10_what-is-ai-tom/index.html#multi-classification",
-    "title": "Computer Vision",
-    "section": "Multi-Classification",
-    "text": "Multi-Classification\n\nAssign one or more labels to each image\n\n\n\n\n\nDog, Welsh Spaniel, Animal in water\n\n\n\n\n\n\nDog, Sussex Spaniel, Animal on land\n\n\n\nImages from imagenet"
-  },
-  {
-    "objectID": "presentations/2024-10-10_what-is-ai-tom/index.html#object-detection",
-    "href": "presentations/2024-10-10_what-is-ai-tom/index.html#object-detection",
-    "title": "Computer Vision",
-    "section": "Object Detection",
-    "text": "Object Detection\n\n\nImage sourced from Wikimedia"
-  },
-  {
-    "objectID": "presentations/2024-10-10_what-is-ai-tom/index.html#event-detection",
-    "href": "presentations/2024-10-10_what-is-ai-tom/index.html#event-detection",
-    "title": "Computer Vision",
-    "section": "Event Detection",
-    "text": "Event Detection\n\n\nIs camera-only the future of self-driving cars?"
-  },
-  {
-    "objectID": "presentations/2024-10-10_what-is-ai-tom/index.html#how-does-cv-work",
-    "href": "presentations/2024-10-10_what-is-ai-tom/index.html#how-does-cv-work",
-    "title": "Computer Vision",
-    "section": "How does CV work?",
-    "text": "How does CV work?\nfor classification tasks\n\nget a very large corpus or labelled images\nconvert the images to a form that the computer can work with (tensors)\nfeed into a convolutional neural network\nprofit?"
-  },
-  {
-    "objectID": "presentations/2024-10-10_what-is-ai-tom/index.html#large-corpus-of-labelled-images",
-    "href": "presentations/2024-10-10_what-is-ai-tom/index.html#large-corpus-of-labelled-images",
-    "title": "Computer Vision",
-    "section": "Large corpus of labelled images",
-    "text": "Large corpus of labelled images\nImageNet\n\na large visual database\nover 14 million hand-annotated images\nmore than 20,000 categories\neach category has “several hundred” images\nstarted in 2006"
-  },
-  {
-    "objectID": "presentations/2024-10-10_what-is-ai-tom/index.html#convert-the-images-to-tensors",
-    "href": "presentations/2024-10-10_what-is-ai-tom/index.html#convert-the-images-to-tensors",
-    "title": "Computer Vision",
-    "section": "Convert the images to tensors",
-    "text": "Convert the images to tensors\n\n\nA fancy way of saying:\nturn the images into a 2d table\nof values between 0 and 1"
-  },
-  {
-    "objectID": "presentations/2024-10-10_what-is-ai-tom/index.html#convolutional-neural-networks",
-    "href": "presentations/2024-10-10_what-is-ai-tom/index.html#convolutional-neural-networks",
-    "title": "Computer Vision",
-    "section": "(Convolutional) Neural Networks",
-    "text": "(Convolutional) Neural Networks\n\n\n3Blue1Brown, YouTube Channel"
-  },
-  {
-    "objectID": "presentations/2024-10-10_what-is-ai-tom/index.html#use-pre-trained-models",
-    "href": "presentations/2024-10-10_what-is-ai-tom/index.html#use-pre-trained-models",
-    "title": "Computer Vision",
-    "section": "Use pre-trained models",
-    "text": "Use pre-trained models\nModels that have been pre-trained on some image datasets which can be downloaded and used\n\nResNet (Microsoft Research)\nInception (Google)\nTrending classifiers from Hugging Face\n\n\nTransfer learning is the concept of taking a pre-trained model as a basis, then fine-tuning it to classify based on your own images."
-  },
-  {
-    "objectID": "presentations/2024-10-10_what-is-ai-tom/index.html#how-can-cv-be-used-in-healthcare",
-    "href": "presentations/2024-10-10_what-is-ai-tom/index.html#how-can-cv-be-used-in-healthcare",
-    "title": "Computer Vision",
-    "section": "How can CV be used in Healthcare?",
-    "text": "How can CV be used in Healthcare?\n\nclassification\nmulti-classification\nobject detection\nevent detection"
-  },
-  {
-    "objectID": "presentations/2024-10-10_what-is-ai-tom/index.html#how-can-cv-be-used-in-healthcare-1",
-    "href": "presentations/2024-10-10_what-is-ai-tom/index.html#how-can-cv-be-used-in-healthcare-1",
-    "title": "Computer Vision",
-    "section": "How can CV be used in Healthcare?",
-    "text": "How can CV be used in Healthcare?\n\n\ndetecting disease or injury\nmonitoring patients vitals, e.g. respiratory rate\ndetecting bounds of a tumour when planning radiotherapy\nautomating cell counting\ncalculating the grade of a cancer\nmonitor for long-term changes, e.g. AAA\ndevices for patients with vision impairments\ndetecting when patients move (fall prevention)\nmonitoring the hygiene of a ward"
-  },
-  {
-    "objectID": "presentations/2024-10-10_what-is-ai-tom/index.html#issues-with-computer-vision",
-    "href": "presentations/2024-10-10_what-is-ai-tom/index.html#issues-with-computer-vision",
-    "title": "Computer Vision",
-    "section": "Issues with Computer Vision",
-    "text": "Issues with Computer Vision\n\n… one neural network learned to differentiate between dogs and wolves. It didn’t learn the differences between dogs and wolves, but instead learned that wolves were on snow in their picture and dogs were on grass.\n\n\nDogs, Wolves, Data Science, and Why Machines Must Learn Like Humans Do (2017)"
-  },
-  {
-    "objectID": "presentations/2024-10-10_what-is-ai-tom/index.html#issues-with-computer-vision-1",
-    "href": "presentations/2024-10-10_what-is-ai-tom/index.html#issues-with-computer-vision-1",
-    "title": "Computer Vision",
-    "section": "Issues with Computer Vision",
-    "text": "Issues with Computer Vision\n\n\nArtificial intelligence could revolutionize medical care. But don’t trust it to read your x-ray just yet (2019)"
-  },
-  {
-    "objectID": "presentations/2024-10-10_what-is-ai-tom/index.html#issues-with-computer-vision-2",
-    "href": "presentations/2024-10-10_what-is-ai-tom/index.html#issues-with-computer-vision-2",
-    "title": "Computer Vision",
-    "section": "Issues with Computer Vision",
-    "text": "Issues with Computer Vision\n\n\nalgorithm trained at Mount Sinai Hospital, New York City\nBusy ICU, many elderly patients\n34% of their x-rays came from patients with pneumonia\n93% accuracy\n\n\n\n\ntested at other sites, pneumonia ~1% of x-rays\naccuracy dropped to 73%-80%\n\n\n\nArtificial intelligence could revolutionize medical care. But don’t trust it to read your x-ray just yet (2019)"
-  },
-  {
-    "objectID": "presentations/2024-10-10_what-is-ai-tom/index.html#issues-with-computer-vision-3",
-    "href": "presentations/2024-10-10_what-is-ai-tom/index.html#issues-with-computer-vision-3",
-    "title": "Computer Vision",
-    "section": "Issues with Computer Vision",
-    "text": "Issues with Computer Vision\n\nAt Mount Sinai, many of the infected patients were too sick to get out of bed, and so doctors used a portable chest x-ray machine. Portable x-ray images look very different from those created when a patient is standing up. Because of what it learned from Mount Sinai’s x-rays, the algorithm began to associate a portable x-ray with illness. It also anticipated a high rate of pneumonia.\n\n\nArtificial intelligence could revolutionize medical care. But don’t trust it to read your x-ray just yet (2019)"
-  },
-  {
-    "objectID": "presentations/2024-10-10_what-is-ai-tom/index.html#the-unique-problems-of-medical-computer-vision",
-    "href": "presentations/2024-10-10_what-is-ai-tom/index.html#the-unique-problems-of-medical-computer-vision",
-    "title": "Computer Vision",
-    "section": "The Unique Problems of Medical Computer Vision",
-    "text": "The Unique Problems of Medical Computer Vision\n\n\n\n\n\n\nThis is the very unique problem of medical computer vision: we are attempting to solve a small signal on the background of small noise whereas standard computer vision’s problem is a large signal on the background of large noise.\n\n\n\n\nThe Unique Problems of Medical Computer Vision"
-  },
-  {
-    "objectID": "presentations/2024-10-10_what-is-ai-tom/index.html#the-unique-problems-of-medical-computer-vision-1",
-    "href": "presentations/2024-10-10_what-is-ai-tom/index.html#the-unique-problems-of-medical-computer-vision-1",
-    "title": "Computer Vision",
-    "section": "The Unique Problems of Medical Computer Vision",
-    "text": "The Unique Problems of Medical Computer Vision\n\n\n\n\nIs this a dog?\n\n\n\n\n\nEnglish Springer Spaniel in a Field, Wikipedia\n\n\n\n\n\n\n\nSmall-cell carcinoma of the lung, Wikipedia\n\n\n\n\n\n\nAnnotations of cats & dogs is cheaper than reviewing medical scans/slides. The latter adds an additional burden on health systems."
-  },
-  {
-    "objectID": "presentations/2024-10-10_what-is-ai-tom/index.html#other-issues-with-cv",
-    "href": "presentations/2024-10-10_what-is-ai-tom/index.html#other-issues-with-cv",
-    "title": "Computer Vision",
-    "section": "Other issues with CV",
-    "text": "Other issues with CV\n\nEarly detection vs over diagnosis\nAdversarial attacks can trick CV algorithms to incorrectly classify images\nComputational power (environmental impact)\nGovernance: have we got consent to use images?\nExplainability of Neural Networks"
-  },
-  {
-    "objectID": "presentations/2024-11-22_github-team-sport-rpysoc/index.html#tldr",
-    "href": "presentations/2024-11-22_github-team-sport-rpysoc/index.html#tldr",
-    "title": "GitHub as a team sport",
-    "section": "tl;dr",
-    "text": "tl;dr\n\n\n\nGitHub organises code\nGitHub can help organise people\nWe’re learning as we go\n\n\n\n\n\n\n‘Too long; didn’t read’.\nGitHub isn’t just a dumping ground for code and version histories.\nThere are features that can help with communication and collaboration.\nWe’ve been learning what works for us as our team continues to grow."
-  },
-  {
-    "objectID": "presentations/2024-11-22_github-team-sport-rpysoc/index.html#the-data-science-team",
-    "href": "presentations/2024-11-22_github-team-sport-rpysoc/index.html#the-data-science-team",
-    "title": "GitHub as a team sport",
-    "section": "The Data Science Team",
-    "text": "The Data Science Team\n       \n\nExpanding to 8, all remote\nComplex New Hospital Programme (NHP)\nHow should we work together?\n\n\n\nWe’re a growing team (soon to be 8).\nWe’ve got different backgrounds and experiences.\nWe do modelling, data pipelines, apps, etc.\nWe work largely on a big, complicated project with lots of stakeholders and tasks.\nWe want to bring other teams in the SU along with us.\nAre there tools or approaches we can use to help us?"
-  },
-  {
-    "objectID": "presentations/2024-11-22_github-team-sport-rpysoc/index.html#the-dream",
-    "href": "presentations/2024-11-22_github-team-sport-rpysoc/index.html#the-dream",
-    "title": "GitHub as a team sport",
-    "section": "The dream",
-    "text": "The dream\n\n\n\nOrder from chaos\nGood communication\n‘Bus factor’ reduction\n\n\n\n\n\n\nWe have a big project with lots of repositories. We have lots of different tasks and goals.\nWe want to improve clarity and reduce the chance of misunderstanding and error.\nWe don’t want information locked up in one person’s brain."
-  },
-  {
-    "objectID": "presentations/2024-11-22_github-team-sport-rpysoc/index.html#living-the-dream",
-    "href": "presentations/2024-11-22_github-team-sport-rpysoc/index.html#living-the-dream",
-    "title": "GitHub as a team sport",
-    "section": "Living the dream",
-    "text": "Living the dream\n\n\n\nThis works (for now)\nNew folks are joining\nThings can will change\n\n\n\n\n\n\nWe’ve been slowly changing how we work and the tools we use.\nOur standards will make it easier for new starters, but they should also have an influence on how we do things.\nNothing is set in stone. We’re continually thinking about what works and what doesn’t."
-  },
-  {
-    "objectID": "presentations/2024-11-22_github-team-sport-rpysoc/index.html#github-projects",
-    "href": "presentations/2024-11-22_github-team-sport-rpysoc/index.html#github-projects",
-    "title": "GitHub as a team sport",
-    "section": "GitHub Projects",
-    "text": "GitHub Projects\n\n\n\nWe’re ‘agile’\nMany tasks/respositories\nWe want to show progress\n\n\n\n\n\n\nWe work in sprints.\nThere’s lots to keep track of: the model, a couple of apps, a documentation site, etc.\nWe want to show others how things are progressing.\nGitHub Projects helps us by arranging individual tasks from across lots of different repositories.\nWe can also add custom labelling to help us organise and track."
-  },
-  {
-    "objectID": "presentations/2024-11-22_github-team-sport-rpysoc/index.html#section",
-    "href": "presentations/2024-11-22_github-team-sport-rpysoc/index.html#section",
-    "title": "GitHub as a team sport",
-    "section": "",
-    "text": "We can show the tasks in kanban style, or as a list or as a calendar.\nWe can filter down to show only certain labels, statuses or assigned people.\nThis is helps us find, organise and focus during sprint planning and weekly sprint catch-ups."
-  },
-  {
-    "objectID": "presentations/2024-11-22_github-team-sport-rpysoc/index.html#division-of-labour",
-    "href": "presentations/2024-11-22_github-team-sport-rpysoc/index.html#division-of-labour",
-    "title": "GitHub as a team sport",
-    "section": "Division of labour",
-    "text": "Division of labour\n\n\n\nThe ‘scrum master’\nOwners and deputies (CODEOWNERS)\nIssue and pull-request assignees\n\n\n\n\n\n\nAt the level of the sprint, we have a scrum master that oversees the movement of tasks from the backlog and takes us through the GitHub Project in weekly sprint catch-ups.\nWithin each repository we have an owner and deputy on each repository, with the goal of keeping the it shipshape (e.g. good docs, no stale branches, PRs are reviewed).\nAnd we have people assigned to issues and PRs, which signals the tasks that people are working on.\nHaving an identifiable person in charge makes it easier to identify ownership and for others to talk to the right person."
-  },
-  {
-    "objectID": "presentations/2024-11-22_github-team-sport-rpysoc/index.html#task-sorting",
-    "href": "presentations/2024-11-22_github-team-sport-rpysoc/index.html#task-sorting",
-    "title": "GitHub as a team sport",
-    "section": "Task sorting",
-    "text": "Task sorting\n\n\n\nMoSCoW method\nRelease-aligned milestones\nEfficient triage\n\n\n\n\n\n\nOrganising repositories at a higher level doesn’t preclude organisation at the repository level, which is foundational.\nWe typically include the labels Must, Should, Could, Won’t (MoSCoW) to filter tasks and to help assess importance.\nThe issues associated with the current sprint are added to a milestone with the upcoming version number. This makes it easier to focus, but also release the code with auto-generated notes.\nThese approaches signal intent and help the team to more efficiently decide what to do next."
-  },
-  {
-    "objectID": "presentations/2024-11-22_github-team-sport-rpysoc/index.html#pull-requests-prs",
-    "href": "presentations/2024-11-22_github-team-sport-rpysoc/index.html#pull-requests-prs",
-    "title": "GitHub as a team sport",
-    "section": "Pull requests (PRs)",
-    "text": "Pull requests (PRs)\n\n\n\nTalk!\nUse suggestions\nThe assignee merges the PR\n\n\n\n\n\n\nRespect each others’ time. ‘Closes #10’ isn’t always enough.\nGitHub comments don’t replace talking. Discuss if unclear.\nSuggestions are efficient and respect the submitter.\nThe submitter owns the PR. They’re responsible for closing it."
-  },
-  {
-    "objectID": "presentations/2024-11-22_github-team-sport-rpysoc/index.html#github-is-a-team-member",
-    "href": "presentations/2024-11-22_github-team-sport-rpysoc/index.html#github-is-a-team-member",
-    "title": "GitHub as a team sport",
-    "section": "GitHub is a team member",
-    "text": "GitHub is a team member\n\n\nAutomate with Actions\nIssue templates\nRepo templates\n\n\n\nMost of the team is human. GitHub itself has features that can automate away some boring things and help prevent accidents or forgetfulness.\nGitHub Actions for continuous integration. R-CMD check at least for R projects. Start with r-lib examples as a basis.\nWe’re looking towards things like templates at the issue and repo levels; again to remove drudgery."
-  },
-  {
-    "objectID": "presentations/2024-11-22_github-team-sport-rpysoc/index.html#are-we-curling",
-    "href": "presentations/2024-11-22_github-team-sport-rpysoc/index.html#are-we-curling",
-    "title": "GitHub as a team sport",
-    "section": "Are we curling? 🥌",
-    "text": "Are we curling? 🥌\n\n\nWe:\n\nare a small team\nassume specialist roles\nwork in sync\n\n\n\n\n\n\nYou have been wondering: if this is a ‘team sport’, what sport is it?\nThis is a terrible metaphor. But think about it."
-  },
-  {
-    "objectID": "presentations/2024-11-22_github-team-sport-rpysoc/index.html#the-bottom-line-actually",
-    "href": "presentations/2024-11-22_github-team-sport-rpysoc/index.html#the-bottom-line-actually",
-    "title": "GitHub as a team sport",
-    "section": "The bottom line, actually",
-    "text": "The bottom line, actually\n\n\n\n\n\nCommunicate\nHelp each other\nBe kind\n\n\n\n\nThe features of GitHub should help you do the things you should already be doing.\nI am the guy falling over, the stones are tasks, my team mates are picking me up and dusting me off.\nWhat has your team been doing? What works for you?"
-  },
-  {
-    "objectID": "presentations/index.html",
-    "href": "presentations/index.html",
-    "title": "Presentations",
-    "section": "",
-    "text": "Title\nAuthor\nDate\n\n\n\n\nCollaborating with GitHub: What is GitHub? Basic introduction\nYiWen Hon\n2025-11-06\n\n\nTransforming Hospital Planning with an Open-Source Demand Model\nChris Beeley\n2025-09-04\n\n\nBuilding a model by the NHS, for the NHS: Forecasting future hospital activity and the left shift of care ADRUK 2025\nYiWen Hon\n2025-08-29\n\n\nDeploy to Posit Connect: Coffee and Coding\nMatt Dray, YiWen Hon\n2025-07-17\n\n\nData science in the UK NHS: Building a model and building a community\nChris Beeley, Claire Welsh\n2025-06-06\n\n\nNHP Demand and Capacity (D&C) Model: A Technical Deep Dive for Data Scientists\nClaire Welsh\n2025-05-07\n\n\nPackage tour of sconn: An R package to connect to databricks\nFran Barton\n2025-03-13\n\n\nDeployment of a probabilistic simulation model for predicting demand for acute healthcare in the NHS\nChris Beeley\n2025-02-27\n\n\nWord is better than Quarto?: Mail merge is back, baby!\nJac Grout, Matt Dray\n2025-02-27\n\n\nA gentle introduction to databricks: What the heck is databricks?\nChris Beeley\n2025-01-16\n\n\nWhat the heck do I do all day?: Transitioning to management from a technical analytical role\nChris Beeley\n2024-12-04\n\n\nDHSC presentation: NHS-R and data science at the Strategy Unit\nChris Beeley\n2024-12-02\n\n\nText mining: What it can and can't do, and what it could do\nChris Beeley\n2024-11-27\n\n\nText mining: Some practical examples\nYiWen Hon\n2024-11-26\n\n\nForged in fire: Project management lessons from the frontline\nChris Beeley\n2024-11-22\n\n\nGitHub as a team sport: NHS RPySOC 2024\nMatt Dray\n2024-11-22\n\n\nWhat is AI?\nData science team, Strategy Unit\n2024-10-10\n\n\nLarge Language Models (LLMs): Is this AI?\nData Science team, Strategy Unit\n2024-10-10\n\n\nComputer Vision: Is this AI?\nTom Jemmett\n2024-10-10\n\n\nIdentifying patients at risk: Is this AI?\nYiWen Hon\n2024-10-10\n\n\nRAP: A cautionary tale\nNA\n2024-10-09\n\n\nUsing R and Python to model future hospital activity: EARL Conference 2024\nYiWen Hon, Matt Dray, Tom Jemmett\n2024-09-05\n\n\nAgile and scrum working\nChris Beeley\n2024-08-22\n\n\nOpen source licensing: Or: how I learned to stop worrying and love openness\nChris Beeley\n2024-05-30\n\n\nGitHub as a team sport: DfT QA Month\nMatt Dray\n2024-05-23\n\n\nStore Data Safely: Coffee & Coding\nYiWen Hon, Matt Dray\n2024-05-16\n\n\nCoffee and Coding: Making my analytical workflow more reproducible with {targets}\nJacqueline Grout\n2024-01-25\n\n\nConference Check-in App: NHS-R/NHS.pycom 2023\nTom Jemmett\n2023-10-17\n\n\nSystem Dynamics in health and care: fitting square data into round models\nSally Thompson\n2023-10-09\n\n\nRepeating Yourself with Functions: Coffee and Coding\nSally Thompson\n2023-09-07\n\n\nCoffee and Coding: Working with Geospatial Data in R\nTom Jemmett\n2023-08-24\n\n\nUnit testing in R: NHS-R Community Webinar\nTom Jemmett\n2023-08-23\n\n\nEverything you ever wanted to know about data science: but were too afraid to ask\nChris Beeley\n2023-08-02\n\n\nTravels with R and Python: the power of data science in healthcare\nChris Beeley\n2023-08-02\n\n\nAn Introduction to the New Hospital Programme Demand Model: HACA 2023\nTom Jemmett\n2023-07-11\n\n\nWhat good data science looks like\nChris Beeley\n2023-05-23\n\n\nText mining of patient experience data\nChris Beeley\n2023-05-15\n\n\nCoffee and Coding: {targets}\nTom Jemmett\n2023-03-23\n\n\nCollaborative working\nChris Beeley\n2023-03-23\n\n\nCoffee and Coding: Good Coding Practices\nTom Jemmett\n2023-03-09\n\n\nRAP: what is it and how can my team start using it effectively?\nChris Beeley\n2023-03-09\n\n\nCoffee and coding: Intro session\nChris Beeley\n2023-02-23"
+    "objectID": "presentations/2024-10-10_what-is-ai-yiwen/index.html#issues-to-look-out-for",
+    "href": "presentations/2024-10-10_what-is-ai-yiwen/index.html#issues-to-look-out-for",
+    "title": "Identifying patients at risk",
+    "section": "🚩 Issues to look out for 🚩",
+    "text": "🚩 Issues to look out for 🚩\n\nHow complex is the input, or the computational approach?\nHow is the model’s performance measured?\nDoes the model get updated?\nWhere did the data come from?\nHave issues of bias or ethics been considered?\n\n\n\nContinuously learning, or learning from mistakes vs. snapshot in time"
   },
   {
     "objectID": "presentations/2024-12-02_dhsc/index.html#the-history-of-nhs-r",
@@ -3740,7 +3796,7 @@
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r---flows",
     "title": "System Dynamics in health and care",
     "section": "in R - flows",
-    "text": "in R - flows\nEasy to do with count, or group_by and summarise\n\n\nadmit_d &lt;- spell_dates |&gt;\n  group_by(date_admit) |&gt;\n  count(date_admit)\n\nhead(admit_d)\n\n\n# A tibble: 6 × 2\n# Groups:   date_admit [6]\n  date_admit     n\n  &lt;date&gt;     &lt;int&gt;\n1 2022-01-01    32\n2 2022-01-02    25\n3 2022-01-03    25\n4 2022-01-04    25\n5 2022-01-05    27\n6 2022-01-06    23"
+    "text": "in R - flows\nEasy to do with count, or group_by and summarise\n\n\nadmit_d &lt;- spell_dates |&gt;\n  group_by(date_admit) |&gt;\n  count(date_admit)\n\nhead(admit_d)\n\n\n# A tibble: 6 × 2\n# Groups:   date_admit [6]\n  date_admit     n\n  &lt;date&gt;     &lt;int&gt;\n1 2022-01-01    30\n2 2022-01-02    17\n3 2022-01-03    27\n4 2022-01-04    29\n5 2022-01-05    22\n6 2022-01-06    31"
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r---occupancy",
@@ -3761,7 +3817,7 @@
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods---flows",
     "title": "System Dynamics in health and care",
     "section": "Longer Time Periods - flows",
-    "text": "Longer Time Periods - flows\nUse lubridate::floor_date to generate the date at start of week/month\n\nadmit_wk &lt;- spell_dates |&gt;\n  mutate(\n    week_start = floor_date(\n      date_admit,\n      unit = \"week\",\n      week_start = 1 # start week on Monday\n    )\n  ) |&gt;\n  count(week_start) # could add other parameters such as provider code, TFC etc\n\nhead(admit_wk)\n\n\n\n# A tibble: 6 × 2\n  week_start     n\n  &lt;date&gt;     &lt;int&gt;\n1 2021-12-27    57\n2 2022-01-03   196\n3 2022-01-10   187\n4 2022-01-17   193\n5 2022-01-24   188\n6 2022-01-31   199\n\n\n\nMight run SD model in weeks or months - e.g. months for care homes Use lubridate to create new variable with start date of week/month/year etc"
+    "text": "Longer Time Periods - flows\nUse lubridate::floor_date to generate the date at start of week/month\n\nadmit_wk &lt;- spell_dates |&gt;\n  mutate(\n    week_start = floor_date(\n      date_admit,\n      unit = \"week\",\n      week_start = 1 # start week on Monday\n    )\n  ) |&gt;\n  count(week_start) # could add other parameters such as provider code, TFC etc\n\nhead(admit_wk)\n\n\n\n# A tibble: 6 × 2\n  week_start     n\n  &lt;date&gt;     &lt;int&gt;\n1 2021-12-27    47\n2 2022-01-03   204\n3 2022-01-10   183\n4 2022-01-17   202\n5 2022-01-24   190\n6 2022-01-31   206\n\n\n\nMight run SD model in weeks or months - e.g. months for care homes Use lubridate to create new variable with start date of week/month/year etc"
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods---occupancy",

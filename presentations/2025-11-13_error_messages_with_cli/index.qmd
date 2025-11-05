@@ -1,0 +1,276 @@
+---
+title: Zhuzhing custom error messages with {cli}
+author: "[Fran Barton](mailto:francis.barton@nhs.net)"
+date: 2025-11-13
+date-format: "MMM D, YYYY"
+format:
+  revealjs:
+    theme: [default, ../su_presentation.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
+    footer: |
+      view slides at [the-strategy-unit.github.io/data_science/presentations][ds_presentations]
+---
+
+[ds_presentations]: https://tinyurl.com/zhuzhing-custom-error-messages/
+
+
+## Error messages can be cool 😎🤔
+
+### IMHO... {.fragment .r-fit-text .center}
+
+::: {.notes}
+This is a presentation about R package development.
+
+The `{cli}` package contains some helpful tools to make your error messages
+nicer, and informative in the way most helpful to you and your users.
+
+Checks and assertions are an essential part of writing R code in data analysis.
+We want to make sure that our code is getting the kinds of inputs we expect, and
+giving the kinds of outputs we intend… and if something goes wrong we want it to
+tell us!
+
+BUT - IMHO - writing assertions is a pain!
+
+The nicer - and more fun! - you make it for yourself to write checks, the less
+painful it will be to pepper them through your code.
+You probably aren't like me - I always believe I will write perfect bug-free
+code lol
+Somehow life never actually works out that way, which is just rude.
+
+And then you end up trying to work out what on earth has gone wrong with your
+insubordinate code and your high hopes for your life.
+Custom error messages can really help.
+:::
+
+
+## Error messages can be cool 😎🤔
+
+### ...writing assertions is a pain!
+
+::: {.fragment}
+
+The [`{cli}`](https://cli.r-lib.org/)^[https://cli.r-lib.org/] package contains
+some helpful tools to make your error messages:
+
+* nicer-looking
+* more helpful
+* more fun to write???
+
+:::
+
+## A simple assertion function ☑️❎
+
+::: {.fragment}
+```{r}
+#| echo: true
+#| error: true
+#| code-line-numbers: "1-3|5"
+#| output-location: column-fragment
+check_string <- function(x) {
+  stopifnot(rlang::is_string(x))
+}
+
+check_string(NA)
+```
+
+:::
+
+
+::: {.fragment}
+
+We might want to return `x` if it's OK
+
+:::
+
+::: {.fragment}
+```{r}
+#| echo: true
+#| error: true
+#| code-line-numbers: "3"
+#| output-location: column-fragment
+check_string <- function(x) {
+  stopifnot(rlang::is_string(x))
+  x
+}
+check_string("A")
+```
+
+:::
+
+
+::: {.notes}
+I love piping. One thing I don't like about using a function like
+`assertthat::assert_that()` is that it doesn't pass through the input, and you
+also have to specify a single error message using the `msg` parameter.
+
+I'd rather write a simple custom checking function for myself that supports
+easier customisation for my package.
+
+A very simple function to check that an input is a character of length 1 using
+the `rlang` function `is_string()`, which returns TRUE or FALSE.
+({rlang} provides lots of functions that help with checking function inputs.)
+
+We can cause this to throw an error by wrapping it in `stopifnot()` from base R.
+And personally because I love piping things, if we don't trigger the error,
+let's return the input so the function can be easily included in pipeline code.
+:::
+
+
+## Bringing the zhuzh 💅🏻⏭️ {.incremental}
+
+::: {.notes}
+
+Here's a few things we can do with the cli package
+
+I won't go into formatting much - you can do all sorts of things with colours,
+headings, bold text or whatever.
+
+What I care about more is _semantic formatting_.
+
+:::
+
+::: {.fragment}
+
+### `{cli}` gives us
+
+* [semantic formatting][semfor]^[https://cli.r-lib.org/articles/semantic-cli]
+* using [inline markup][inmark]^[https://cli.r-lib.org/reference/inline-markup]
+
+:::
+
+::: {.fragment}
+For example, we can mark up a span of text as
+:::
+
+::: {.fragment}
+
+* a function name using the `.fn` class
+* an argument name using the `.arg` class...
+
+:::
+
+
+[semfor]: https://cli.r-lib.org/articles/semantic-cli
+[inmark]: https://cli.r-lib.org/reference/inline-markup
+
+
+## In my error era 🎤✨
+
+::: {.notes}
+
+What this looks like in action.
+
+:::
+
+
+### What this looks like
+
+```{r}
+#| echo: true
+#| error: true
+#| code-line-numbers: "2,6"
+#| output-location: fragment
+check_string <- function(x) {
+  cs <- "check_string"
+  if (rlang::is_string(x)) {
+    x
+  } else {
+    cli::cli_abort("{.fn {cs}}: argument {.arg x} is not a valid string")
+  }
+}
+check_string(NA)
+```
+
+
+## The errors tour continues 🏟️💃🏻
+
+::: {.notes}
+
+You can use cli for more than just error messages!
+Can be helpful for providing semantically-formatted and nicely-presented
+info messages to package users.
+
+:::
+
+```{r}
+#| echo: true
+#| error: true
+#| code-line-numbers: "3|7"
+#| output-location: fragment
+check_string <- function(x) {
+  cs <- "check_string"
+  error_text <- "{.fn {cs}}: argument {.arg x} is not a valid string"
+  if (rlang::is_string(x)) {
+    x
+  } else {
+    cli::cli_abort(c(error_text, "x" = "You supplied {.code {x}}"))
+  }
+}
+check_string(NA)
+```
+
+## Nested checking functions 🪆
+
+::: {.notes}
+
+This might all seem a bit excessive, but when I'm building a package I will
+usually have little helper functions within bigger helper functions which in
+turn support the main functions that the user is going to interact with.
+
+:::
+
+::: {.fragment}
+
+```{r}
+#| echo: true
+#| error: true
+#| code-line-numbers: "9|13"
+#| output-location: fragment
+
+check_string <- function(x) {
+  error_text <- c(
+    "{.fn check_string}: argument {.arg x} is not a valid string",
+    "x" = "You supplied {.code {x}}"
+  )
+  if (rlang::is_string(x)) {
+    x
+  } else {
+    cli::cli_abort(error_text, call = rlang::caller_call())
+  }
+}
+
+my_lower <- \(x) tolower(check_string(x))
+my_lower(NA)
+
+```
+
+:::
+
+
+## Giving your errors some class {visibility="hidden"}
+
+::: {.notes}
+
+cli allows you to add a custom class to your messages.
+Which can simplify writing unit tests, as you can check for the class rather
+than (or as well as, if you insist) the specific text of the error message.
+
+:::
+
+
+## Summary
+
+* Take control of the error messages your users might see
+* Let your users know you've thought about them?
+* Help yourself have a tiny bit more fun writing input checking code??
+* Help yourself with writing tests and debugging your code
+
+
+## Thank you
+
+and have fun!

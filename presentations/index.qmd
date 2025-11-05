@@ -65,7 +65,7 @@ dir(path, pattern = "index.qmd", recursive = TRUE, full.names = TRUE) |>
       gt::html
     )
   ) |>
-  dplyr::select(-"date-format", -"subtitle", -"filename") |>
+  dplyr::select("title", "author", "date") |>
   dplyr::arrange(desc(date)) |>
   gt::gt() |>
   gt::cols_align("left") |>

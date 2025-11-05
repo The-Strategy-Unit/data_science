@@ -1,0 +1,827 @@
+---
+title: "Unit Testing"
+author: 
+  - "[Tom Jemmett](mailto:thomas.jemmett@nhs.net)"
+date: 2025-11-14
+date-format: "D MMMM YYYY"
+bibliography: references.bib
+csl: ieee.csl
+format:
+  su-theme-revealjs:
+    theme: [default, slides.scss]
+---
+
+[ds_presentations]: https://the-strategy-unit.github.io/data_science/presentations/2025-11-14_unit-testing
+
+# Writing [good]{.blue} unit tests is [hard]{.yellow} {.inverse}
+
+:::{.notes}
+In a current code base, I have ~2,000 lines of code (ignoring comments), and ~4,000 lines of test code.
+:::
+
+## Goals
+
+- What is a unit, and what is a unit test?
+- Review the basic anatomy of a test, and how to structure your tests
+- How to structure your code to be easier to test
+- How to use mocks to replace complex dependencies
+
+# What is a [unit]{.yellow} anyway? {.inverse}
+
+## What is a [unit]{.yellow} anyway?
+
+:::{.incremental}
+* a unit is the [**smallest**]{.blue} testable part of a program
+* typically, a unit is just a [**function**]{.blue}
+* *it could be a class, or module...*
+* you want to test each unit in [**isolation**]{.blue}, without involving [**other parts of the system**]{.blue}
+* unit tests are implemented in code, usually with some framework
+:::
+
+:::{.notes}
+examples of other parts of the system you want to isolate against:
+
+<ul>
+<li>filesystem</li>
+<li>database</li>
+<li>web api's</li>
+</ul>
+
+essentially, anything which could be slow, unreliable, changeable, or unavailable in a dev environment.
+
+examples of testing frameworks:
+
+<ul>
+<li>pytest (python)</li>
+<li>testthat (R)</li>
+</ul>
+:::
+
+# Basic Anatomy of a Test {.inverse}
+
+## Arrange, Act, Assert
+
+:::{.incremental}
+- **[Arrange]{.blue}**: Set up the data, inputs, and environment required for the test
+
+- **[Act]{.blue}**: Execute the function or code being tested
+
+- **[Assert]{.blue}**: Check that the outcome matches expectations
+:::
+
+[I start by writing all my tests with these three comments, and fill in as I go along]{.fragment}
+
+## Simple example [(1)]{.yellow} {.code-page}
+
+:::{.columns}
+
+::::{.column width=50%}
+
+### R {.blue}
+
+```{.R filename=R/multiply.R}
+multiply <- function(x, y) {
+  x * y
+}
+```
+
+::::
+
+::::{.column width=50%}
+
+### python {.yellow}
+
+```{.python filename=src/multiply.py}
+def multiply(x, y):
+  return x * y
+```
+
+::::
+
+:::
+
+<br />
+<br />
+<br />
+<div class="light-charcoal small">
+This is assuming that in both cases your code is arranged as a package. E.g.
+
+<ul>
+<li>you have an `R/` folder and `DESCRIPTION`/`NAMESPACE` files</li>
+<li>a `pyproject.toml` and a `src/` folder.</li>
+</ul>
+</div>
+
+## Simple example [(2)]{.yellow} {.code-page}
+
+:::{.columns}
+
+::::{.column width=50%}
+
+### R {.blue}
+
+```{.R filename=tests/testthat/test_multiply.R}
+library(testthat)
+
+test_that(
+  "it multiplies correctly",
+  {
+    # arrange
+    x <- 3
+    y <- 2
+
+    # act
+    actual <- multiply(x, y)
+    
+    # assert
+    expect_equal(actual, 6)
+  }
+)
+```
+
+::::
+
+::::{.column width=50%}
+
+### python {.yellow}
+
+```{.python filename=tests/test_multiply.py}
+from multiply import multiply
+
+def test_multiplies_correctly():
+  """test it multiplies correctly
+  """
+  # arrange
+  x = 3
+  y = 2
+
+  # act
+  actual = multiply(x, y)
+
+  # assert
+  assert actual == 6
+```
+
+::::
+
+:::
+
+## Simple example [(3)]{.yellow} {.code-page}
+
+:::{.columns}
+
+::::{.column width=50%}
+
+### R {.blue}
+
+```{.R filename=tests/testthat/test_multiply.R}
+library(testthat)
+
+test_that(
+  "it multiplies correctly",
+  {
+    # act
+    actual <- multiply(3, 2)
+    
+    # assert
+    expect_equal(actual, 6)
+  }
+)
+```
+
+::::
+
+::::{.column width=50%}
+
+### python {.yellow}
+
+```{.python filename=tests/test_multiply.py}
+from multiply import multiply
+
+def test_multiplies_correctly():
+  """test it multiplies correctly
+  """
+  # act
+  actual = multiply(3, 2)
+
+  # assert
+  assert actual == 6
+```
+
+::::
+
+:::
+
+## Simple example [(4)]{.yellow} {.code-page}
+
+:::{.columns}
+
+::::{.column width=50%}
+
+### R {.blue}
+
+``` r
+library(testthat)
+
+# run all tests in a package
+test_package(".")
+
+# or, run a specific test file
+test_file(
+ "tests/testthat/test_multiply.R"
+)
+```
+
+::::
+
+::::{.column width=50%}
+
+### python {.yellow}
+
+``` bash
+# from the command line
+
+# run all tests
+python -m pytest tests
+
+# or, run a specific test file
+pytest tests/test_multiply.py
+
+# you may need to use python -m
+```
+
+::::
+
+:::
+
+<br />
+<br />
+<br />
+[IDEs (e.g. RStudio, Positron, VSCode) will have a way to run tests for you.]{.light-charcoal .small .fragment}
+
+## Other tips for structuring your tests
+
+- [**clean up**:]{.blue} ensure that nothing changes between tests. Use fixtures (pytest [@pytest_fixtures], {testthat} [@testthat_fixtures]), or {withr} [@withr]
+- [**don't overcomplicate tests**:]{.blue} each test should contain a single act step. Additional act = additional test
+- [**create a test per if/else branch**:]{.blue} any time you have branched logic, write a separate test for each branch
+- [**parameterize tests**:]{.blue} to re-use testing logic, but different inputs (pytest.mark.parameterize [@pytest_parametrize], {patrick} [@patrick_package])
+
+# How to [structure]{.yellow} your [code]{.blue} {.inverse}
+
+<br />
+
+[*(to be easier to test)*]{.light-charcoal}
+
+## Complex functions are hard to test
+
+Consider this example
+
+:::{.columns}
+
+::::{.column width=30%}
+
+:::{.incremental}
+
+:::{.small}
+
+- we are connecting to a database
+- we are getting data from that database
+- we add a new column to the table
+- we then filter out certain rows
+- finally we create and return a plot of the data
+
+:::
+
+:::
+
+::::
+
+::::{.column width=70%}
+``` r
+my_function <- function() {
+  con <- dbConnect(odbc(), "dsn")
+
+  df <- tbl(con, "my_table") |>
+    mutate(value = x / y) |>
+    filter(value > 0)
+
+  ggplot(df, aes(y, value)) +
+    geom_point() +
+    geom_line()
+}
+```
+::::
+
+:::
+
+<br />
+<br />
+
+:::{.small .fragment}
+There is a lot going on here - testing that each of these parts are working correctly, along with potential edge cases will be tricky!
+:::
+
+## Break complex functions up {.code-page}
+
+:::{.columns}
+
+::::{.column width=55%}
+
+``` r
+get_data <- function() {
+  con <- dbConnect(odbc(), "dsn")
+  tbl(con, "my_table")
+}
+
+mutate_data <- function(df) {
+  mutate(df, value = x / y)
+}
+
+filter_data <- function(df) {
+  filter(df, value > 0)
+}
+
+plot_data <- function(df) {
+  ggplot(df, aes(y, value)) +
+    geom_point() + geom_line()
+}
+```
+
+::::
+
+::::{.column width=45%}
+
+``` r
+my_function <- function() {
+  get_data() |>
+    mutate_data() |>
+    filter_data() |>
+    plot_data()
+}
+```
+
+::::
+
+:::
+
+:::{.notes}
+Remember back to the definition of a unit: the smallest testable piece of code. We have broken up our code into indvidual units which we can now more easily test.
+
+At least, some of these units are easier to test. We will come back to the get_data, plot_data, and my_function functions later.
+:::
+
+## Why is this easier to test?
+
+:::{.incremental}
+- our mutate and filter functions now can be tested [without]{.blue} needing to connect to the database
+- they are [pure functions]{.blue} @pure_function, every time we run these we will get the [same results back]{.blue}
+- they can be tested with [simple example data frames]{.blue}, rather than the contents of the actual tables (which could have many columns or rows)
+:::
+
+## Why is this easier to test? {.code-page}
+
+:::{.panel-tabset}
+
+### mutate_data
+
+:::{.columns}
+
+::::{.column width=75%}
+
+``` r
+test_that("mutate_data behaves correctly", {
+  # arrange
+  df <- data.frame(x = c(1, 2, 3), y = c(4, 5, 6))
+  expected <- data.frame(
+    x = c(1, 2, 3),
+    y = c(4, 5, 6),
+    value = c(0.25, 0.4, 0.5)
+  )
+
+  # act
+  actual <- mutate_data(df)
+
+  # assert
+  expect_equal(actual, expected)
+})
+```
+
+::::
+
+::::{.column width=25%}
+
+::: {.small .light-charcoal}
+We can use much simpler dataframe than might be expected in the real use of these functions.
+
+But, by using simpler dataframes we can ensure that the only changes are the ones we are expecting.
+
+In this case, a new column `value` is added.
+:::
+
+::::
+
+:::
+
+### filter_data
+
+:::{.columns}
+
+::::{.column width=75%}
+
+``` r
+test_that("filter_data behaves correctly", {
+  # arrange
+  df <- data.frame(value = c(-1, 0, 1, 2))
+  expected <- data.frame(value = c(1, 2))
+
+  # act
+  actual <- filter_data(df)
+
+  # assert
+  expect_equal(nrow(actual), 2)
+  expect_equal(actual, expected)
+})
+
+```
+
+::::
+
+::::{.column width=25%}
+
+::: {.small .light-charcoal}
+We can use much simpler dataframe than might be expected in the real use of these functions.
+
+But, by using simpler dataframes we can ensure that the only changes are the ones we are expecting.
+
+In this case, we are expecting less rows of data, but the same structure of columns.
+:::
+
+::::
+
+:::
+
+:::
+
+
+## But what about the other functions?
+
+:::{.incremental}
+- testing `mutate_data` and `filter_data` was easy
+- but how about testing `get_data` which needs access to the database?
+- or `plot_data`, how can we test a plot?
+- or `my_function`, which calls all of the other functions?
+:::
+
+# Mocking {.inverse}
+
+## Mocking
+
+> In a unit test, mock objects can simulate the behavior of complex, real objects and are therefore useful when a real object is impractical or impossible to incorporate into a unit test. [@mocking]
+
+## Mocking Example [R]{.blue} {.code-page}
+
+:::{.panel-tabset}
+
+### R function
+
+:::{.columns}
+
+::::{.column width=75%}
+
+``` r
+#' @importFrom odbc odbc
+#' @importFrom dplyr tbl
+#' @importFrom DBI dbConnect
+get_data <- function() {
+  con <- dbConnect(
+    odbc(),
+    "dsn"
+  )
+
+  tbl(con, "my_table")
+}
+```
+
+::::
+
+::::{.column width=25%}
+
+:::{.small .light-charcoal}
+[**Note**:]{.yellow} `{testthat}` recommends importing functions into your packages namespace if you
+want to mock the functions.
+:::
+
+::::
+
+:::
+
+### R test (arrange)
+
+:::{.columns}
+
+::::{.column width=75%}
+
+``` r
+library(mockery)
+test_that("it creates a valid database connection", {
+  # arrange
+  m_odbc <- Mock("odbc")
+  m_dbConnect <- Mock("connection")
+  m_tbl <- Mock("table")
+
+  local_mocked_bindings(
+    odbc = m_odbc,
+    dbConnect = m_dbConnect,
+    tbl = m_tbl
+  )
+  ...
+})
+```
+
+::::
+
+::::{.column width=25%}
+
+:::{.small .light-charcoal}
+[**Note**:]{.yellow} we create a "Mock" object for each of the functions we want to mock.
+
+These Mock's will simply return the values we pass in.
+
+When the function is called, the mock will capture the call and value of arguments it was called with.
+:::
+
+::::
+
+:::
+
+### R test (act)
+
+:::{.columns}
+
+::::{.column width=75%}
+
+``` r
+library(mockery)
+test_that("it creates a valid database connection", {
+  ...
+
+  # act
+  actual <- get_data()
+
+  # assert
+  expect_equal(actual, "table")
+  expect_called(m_odbc, 1) # repeat for other mocks
+  
+  expect_args(m_dbConnect, 1, "odbc", "dsn")
+  expect_args(m_tbl, 1, "connection", "my_table")
+})
+```
+
+::::
+
+::::{.column width=25%}
+
+:::{.small .light-charcoal}
+[**Note**:]{.yellow} we can now validate that our functions (mocks) have been called the correct amount of times, and
+that they have been called with the correct arguments.
+:::
+
+::::
+
+:::
+
+:::
+
+## Mocking Example [python]{.yellow} {.code-page}
+
+:::{.panel-tabset}
+
+### python function
+
+:::{.columns}
+
+::::{.column width=75%}
+
+``` python
+import pandas as pd
+from sqlalchemy import create_engine
+
+def get_data():
+    engine = create_engine(
+      "mssql+pyodbc://my_dsn"
+    )
+    
+    return pd.read_sql_table("my_table", engine)
+```
+
+::::
+
+::::{.column width=25%}
+
+:::{.small .light-charcoal}
+[**Note**:]{.yellow} assume that this is saved in a file called `get_data.py`, so the function to import would be `get_data.get_data`.
+:::
+
+::::
+
+:::
+
+### python test
+
+::::{.columns}
+
+::::{.column width=75%}
+
+``` python
+from get_data import get_data
+# using the pytest-mock plugin
+def test_get_data(mocker):
+    m_create_engine = mocker.patch(
+      "get_data.create_engine", return_value="engine")
+    m_read_sql_table = mocker.patch(
+      "pandas.read_sql_table", return_value="table")
+    
+    actual = get_data()
+
+    assert actual == "table"
+    m_create_engine.assert_called_once_with(
+      "mssql+pyodbc://my_dsn")
+    m_read_sql_table.assert_called_once_with(
+      "my_table", "engine")
+```
+
+::::
+
+::::{.column width=25%}
+
+:::{.small .light-charcoal}
+[**Note**:]{.yellow} the difference between mocking functions which are imported vs functions in modules which are imported.
+:::
+
+::::
+
+:::
+
+:::
+
+## Using mocks with `my_function` {.code-page}
+
+:::{.panel-tabset}
+
+### R function
+
+``` r
+my_function <- function() {
+  get_data() |>
+    mutate_data() |>
+    filter_data() |>
+    plot_data()
+}
+```
+
+### unit test
+
+``` r
+test_that("it calls all the other functions", {
+  local_mocked_bindings(
+    get_data = (m_get_data <- Mock("get_data")),
+    mutate_data = (m_mutate_data <- Mock("mutate_data")),
+    filter_data = (m_filter_data <- Mock("filter_data")),
+    plot_data = (m_plot_data <- Mock("plot_data"))
+  )
+
+  actual <- my_function()
+
+  expect_equal(actual, "plot_data")
+  expect_called(m_get_data, 1)
+  expect_args(m_get_data, 1)
+  expect_args(m_mutate_data, 1, "get_data")
+  expect_args(m_filter_data, 1, "mutate_data")
+  expect_args(m_plot_data, 1, "filter_data")
+})
+```
+
+### integration test
+
+``` r
+test_that("fn calls all the other functions", {
+  local_mocked_bindings(
+    get_data = (m_get_data <- data.frame(
+      x = c(0, 1, 2), y = c(3, 4, 5))),
+    plot_data = (m_plot_data <- Mock("plot_data"))
+  )
+
+  actual <- fn()
+
+  expect_equal(actual, "plot_data")
+  expect_args(m_plot_data, 1, data.frame(
+    x = c(1, 2), y = c(4, 5), value = c(0.25, 0.4))
+})
+```
+
+:::
+
+## But, what about the plot function?
+
+:::{.incremental}
+
+- Somethings are just difficult to write tests for
+- Plots for example: how can we write in code that the plot is correct?
+- We could just mock all of the function calls and state that is the correct behaviour...
+- Or, we could write a snapshot test
+
+:::
+
+## Snapshot testing {.code-page}
+
+:::{.panel-tabset}
+
+## R
+
+:::{.columns}
+
+::::{.column width=75%}
+
+``` r
+test_that(
+  "it creates the plot correctly", {
+    # arrange
+    df <- create_sample_data_frame()
+
+    # act
+    actual <- plot_data(df)
+
+    # assert
+    expect_snapshot(actual)
+  }
+)
+```
+
+::::
+
+::::{.column width=25%}
+
+:::{.small .light-charcoal}
+The first time we run this, it will create a [**snapshot**]{.blue} of the plot. This will be a file saved to disk.
+
+Next time we run the test, it will compare the before/after to see if the output of the function has changed.
+
+If the snapshot ever changes, you can run `snapshot_accept()` to use the new snapshot.
+:::
+
+::::
+
+:::
+
+## python
+
+:::{.columns}
+
+::::{.column width=75%}
+
+``` python
+# with the pytest-snapshot plugin
+
+def test_plot_data(snapshot):
+  # arrange
+  df = create_sample_data_frame()
+
+  # act
+  actual = plot_data(df)
+
+  # assert
+  snapshot.assert_match(actual, "plot.png")
+```
+
+::::
+
+::::{.column width=25%}
+
+:::{.small .light-charcoal}
+Similar to [R]{.blue}, but you need to install the pytest-snapshot plugin first.
+
+Then, you need to run `pytest --snapshot-update` to generate the initial snapshot, and run that same command any time you want to update the snapshot.
+:::
+
+::::
+
+:::
+
+:::
+
+## Other tips
+
+:::{.bit-smaller}
+
+- pure functions are much simpler to test, and to mock. Try to write pure functions wherever possible
+- avoid hardcoded values - pass in as arguments, or use configuration files
+- avoid complicated if/else statements. If unavoidable, make the body of the if/else functions
+- parameterize tests where possible, so you can re-use your test logic but test different branches of code
+- use code coverage to find areas of your code that aren't tested, or aren't used
+
+:::
+
+## References
+
+:::{.refs}
+:::

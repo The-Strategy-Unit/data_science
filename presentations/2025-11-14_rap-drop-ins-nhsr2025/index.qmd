@@ -1,0 +1,129 @@
+---
+title: "Better together"
+subtitle: "Lessons from RAP Drop-ins"
+author:
+  - "[YiWen Hon](mailto:yiwen.hon1@nhs.net)"
+date: "2025-11-14"
+execute:
+  echo: false
+  eval: false
+format:
+  revealjs:
+    scrollable: true
+    theme: [default, ../su_presentation.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
+    footer: |
+      Learn more about [The Strategy Unit](https://www.strategyunitwm.nhs.uk/)
+---
+
+## RAP Drop Ins
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- RAP: [Reproducible Analytical Pipelines](https://nhsdigital.github.io/rap-community-of-practice/)
+- 1 hour long online sessions held every two weeks
+- Facilitated by the Strategy Unit
+:::
+
+::: {.column width="40%"}
+![](ratatouille.jpg){fig-alt="A still from the film Ratatouille, showing a cute rat in mid-air" fig-align="right"}
+:::
+
+::::
+
+::: {.notes}
+
+- Mention origins of this - used to be hosted by NHSE
+- Emphasise that we facilitate - we're not there to answer questions but to encourage discussion
+:::
+
+## Who is it for?
+
+- Open to anyone working in the NHS with an interest in RAP
+- No coding experience required - managers welcome!
+- Discussions [captured on GitHub](https://github.com/The-Strategy-Unit/RAP_Drop_In/discussions) to share learning more widely
+
+::: {.notes}
+
+- Attendance: 10 attendees on average
+- Background of attendees very varied - NHS England, CSUs, Trusts, Scientists, Analysts
+- We also plan everything using GitHub
+
+:::
+
+## Common themes
+
+- Lots of brilliant individual work happening across the NHS
+- Organisational barriers are widespread
+- Questions around upskilling
+- How to deploy data science products, given limited infrastructure?
+- Concerns around safety of data
+
+Can we solve these problems once, for the community?
+
+## Some wins
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+![](sharing-is-caring.jpg){fig-alt="A picture of Spongebob Squarepoints with his hands outspread, a rainbow between them. White text across the image reads 'Sharing is caring'"}
+
+:::
+
+::: {.column width="50%"}
+
+- A safe space for people to discuss issues and barriers
+- Making connections with others and working together
+- Summary of discussions on GitHub: building a shared community resource
+
+:::
+
+::::
+
+## The RAP Code Review Buddies Network
+
+![](nerds-together-strong.png){fig-alt="A still from the film Rise of the Planet of the Apes, showing a chimpanzee saying 'Apes together strong'. The word 'Apes' is crossed out a replaced with 'Nerds'."}
+
+
+## What is the RAP Code Review Buddies Network?
+
+Every 3 months, you will be randomly paired up with someone else in the network. 
+
+As a pair, you will arrange to meet up online and talk through some code you have written. 
+
+You can then ask each other questions about the code and offer constructive comments.
+
+## Is the network for me?
+
+We're suggesting a more relaxed approach to code review - a "code walkthrough". Guidance will be provided.
+
+If you have written **any code in the past three months** for your role, in any language (such as SQL, R, or Python), then you have enough coding knowledge! 
+
+People at all stages of their coding and RAP journey are very welcome.
+
+## Sounds awesome, how do I sign up?
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+- Scan the QR code on the right to register for the RAP Code Review Buddies Network
+- Further details and guidance on our [Wiki on GitHub](https://github.com/The-Strategy-Unit/RAP_Drop_In/wiki/Code-Review-Buddies-Network)
+- I'm also looking for co-organisers - please get in touch if you're interested
+
+:::
+
+::: {.column width="50%"}
+
+![](RAP-code-review-buddies-signup.png){fig-alt="QR code, which takes you to the signup URL https://forms.microsoft.com/e/eb2vqdJkMB"}
+:::
+
+::::

@@ -116,7 +116,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-70998aced7d98305b4259ca7632a1c65.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-1c7ef633c6855c2ace8e80c65671b327.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -787,7 +787,7 @@ a <code>pyproject.toml</code> and a <code>src/</code> folder.
 <span id="cb19-6"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="tabset-4-2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">test_that</span>(<span class="st">"fn calls all the other functions"</span>, {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">test_that</span>(<span class="st">"it calls all the other functions"</span>, {</span>
 <span id="cb20-2"><a></a>  <span class="fu">local_mocked_bindings</span>(</span>
 <span id="cb20-3"><a></a>    <span class="at">get_data =</span> (m_get_data <span class="ot">&lt;-</span> <span class="fu">Mock</span>(<span class="st">"get_data"</span>)),</span>
 <span id="cb20-4"><a></a>    <span class="at">mutate_data =</span> (m_mutate_data <span class="ot">&lt;-</span> <span class="fu">Mock</span>(<span class="st">"mutate_data"</span>)),</span>

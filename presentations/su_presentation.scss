@@ -55,8 +55,7 @@ $presentation-heading-color: $su-charcoal;
   z-index: 2;
 }
 
-// need to figure out how to add in :not(.panel-tabset-tabby)
-.reveal .slide ul {
+.reveal .slide ul:not(.panel-tabset-tabby) {
   li {
     list-style: none;
     /* Remove default bullets */

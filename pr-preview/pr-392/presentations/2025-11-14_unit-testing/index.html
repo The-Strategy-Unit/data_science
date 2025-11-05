@@ -336,7 +336,7 @@ testthat (R)
 <div class="code-with-filename-file">
 <pre><strong>src/multiply.py</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-filename="src/multiply.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="kw">def</span> mulitiply(x, y):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-filename="src/multiply.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="kw">def</span> multiply(x, y):</span>
 <span id="cb2-2"><a></a>  <span class="cf">return</span> x <span class="op">*</span> y</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div></div>
@@ -711,8 +711,8 @@ a <code>pyproject.toml</code> and a <code>src/</code> folder.
 <span id="cb16-9"><a></a>  <span class="fu">expect_equal</span>(actual, <span class="st">"table"</span>)</span>
 <span id="cb16-10"><a></a>  <span class="fu">expect_called</span>(m_odbc, <span class="dv">1</span>) <span class="co"># repeat for other mocks</span></span>
 <span id="cb16-11"><a></a>  </span>
-<span id="cb16-12"><a></a>  <span class="fu">expect_args</span>(m_dbConnect, <span class="dv">1</span>, <span class="st">"odbc"</span>, <span class="st">"my_dsn"</span>)</span>
-<span id="cb16-13"><a></a>  <span class="fu">expect_args</span>(m_tbl, <span class="dv">1</span>, <span class="st">"connenction"</span>, <span class="st">"my_table"</span>)</span>
+<span id="cb16-12"><a></a>  <span class="fu">expect_args</span>(m_dbConnect, <span class="dv">1</span>, <span class="st">"odbc"</span>, <span class="st">"dsn"</span>)</span>
+<span id="cb16-13"><a></a>  <span class="fu">expect_args</span>(m_tbl, <span class="dv">1</span>, <span class="st">"connection"</span>, <span class="st">"my_table"</span>)</span>
 <span id="cb16-14"><a></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:25%;">
 <div class="small light-charcoal">
@@ -828,7 +828,7 @@ a <code>pyproject.toml</code> and a <code>src/</code> folder.
 <ul>
 <li class="fragment">Somethings are just difficult to write tests for</li>
 <li class="fragment">Plots for example: how can we write in code that the plot is correct?</li>
-<li class="fragment">We could just mock all of the function calls and state that is the correct beviour…</li>
+<li class="fragment">We could just mock all of the function calls and state that is the correct behaviour…</li>
 <li class="fragment">Or, we could write a snapshot test</li>
 </ul>
 </section>

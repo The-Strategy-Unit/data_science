@@ -62,11 +62,11 @@ format:
 ## Existing Word template 📑 {auto-animate="true" auto-animate-easing="ease-in-out" background-image="template.png" alt="A blurred, zoomed-out view of pages of a complicated-looking Word document with many chunks of text, tables and page orientations. Much of the text is highlighted in green, yellow and blue."}
 
 ::: {.notes}
-* However, the customer's pre-existing Word template was complicated and was frequently being changed.
+* However, the pre-existing Word template was complicated and was frequently being changed as it was passed between the SU and the scheme.
 * It turned out to be easier to use the Word template as an input and insert our figures and values into it instead.
 * This zoomed-out view of part of the Word document template highlights the complexity.
 * The document uses a pre-existing theme; contains many specifically-formatted text chunks, tables and page orientations; and uses colour-coded highlighting to indicate who needs to edit which parts of the document.
-* The document was being changed and updated quite a lot. The customers were used to amending Word documents quickly, as and when required.
+* The document was being changed and updated quite a lot. The customers were used to amending Word documents quickly, as and when required and did not have skills or software to work with R/Quarto.
 :::
 
 ## Existing Word template 📑 {auto-animate="true" auto-animate-easing="ease-in-out" background-image="template.png" alt="A blurred, zoomed-out view of pages of a complicated-looking Word document with many chunks of text, tables and page orientations. Much of the text is highlighted in green, yellow and blue."}

@@ -52,7 +52,7 @@ format:
 
 ::: {.notes}
 * End-users are 'schemes', usually hospitals.
-* Once they've completed modelling, they are given a draft report containing model outputs and calculations derived from model outputs.
+* Once they've completed modelling, they are given a draft report containing model outputs and calculations.
 * It's a standard template report, so it would be wise to automate its generation.
 * We should be able to recreate these documents in future, if needed.
 * Ideal solution: create a Quarto document and populate it for a named organisation with images and calculations derived from data read from Azure.

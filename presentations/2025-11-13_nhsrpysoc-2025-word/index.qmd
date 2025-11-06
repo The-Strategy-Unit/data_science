@@ -46,13 +46,13 @@ format:
 
 ## Reporting 📒
 
-* End-users get model-output reports
+* End-users get model outputs and we co-author a report
 * Requires automation/reproducibility
 * So use [Quarto](https://quarto.org/), right? _Right?_
 
 ::: {.notes}
 * End-users are 'schemes', usually hospitals.
-* Once they've completed modelling, they are given a report to discuss with model-relationship managers from the Strategy Unit.
+* Once they've completed modelling, they are given a draft report containing model outputs and calculations derived from model outputs.
 * It's a standard template report, so it would be wise to automate its generation.
 * We should be able to recreate these documents in future, if needed.
 * Ideal solution: create a Quarto document and populate it for a named organisation with images and calculations derived from data read from Azure.

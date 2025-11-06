@@ -1647,7 +1647,7 @@
     "href": "presentations/2025-11-13_nhsrpysoc-2025-word/index.html#existing-word-template",
     "title": "Word is better than Quarto?",
     "section": "Existing Word template 📑",
-    "text": "Existing Word template 📑\n\n\nHowever, the customer’s pre-existing Word template was complicated and was frequently being changed.\nIt turned out to be easier to use the Word template as an input and insert our figures and values into it instead.\nThis zoomed-out view of part of the Word document template highlights the complexity.\nThe document uses a pre-existing theme; contains many specifically-formatted text chunks, tables and page orientations; and uses colour-coded highlighting to indicate who needs to edit which parts of the document.\nThe document was being changed and updated quite a lot. The customers were used to amending Word documents quickly, as and when required."
+    "text": "Existing Word template 📑\n\n\nHowever, the pre-existing Word template was complicated and was frequently being changed as it was passed between the SU and the scheme.\nIt turned out to be easier to use the Word template as an input and insert our figures and values into it instead.\nThis zoomed-out view of part of the Word document template highlights the complexity.\nThe document uses a pre-existing theme; contains many specifically-formatted text chunks, tables and page orientations; and uses colour-coded highlighting to indicate who needs to edit which parts of the document.\nThe document was being changed and updated quite a lot. The customers were used to amending Word documents quickly, as and when required and did not have skills or software to work with R/Quarto."
   },
   {
     "objectID": "presentations/2025-11-13_nhsrpysoc-2025-word/index.html#existing-word-template-1",
@@ -1661,7 +1661,7 @@
     "href": "presentations/2025-11-13_nhsrpysoc-2025-word/index.html#decision",
     "title": "Word is better than Quarto?",
     "section": "Decision 🧐",
-    "text": "Decision 🧐\n\nMeet users where they are: in Word\nEditability trumps total automation\nHow can we maximise reproducibility?"
+    "text": "Decision 🧐\n\nMeet users where they are: in Word\nEditability and flexability trumps total automation\nHow can we maximise reproducibility?"
   },
   {
     "objectID": "presentations/2025-11-13_nhsrpysoc-2025-word/index.html#process",
@@ -1682,14 +1682,14 @@
     "href": "presentations/2025-11-13_nhsrpysoc-2025-word/index.html#generate-a-report",
     "title": "Word is better than Quarto?",
     "section": "Generate a report 🖨️",
-    "text": "Generate a report 🖨️\nIn R:\npopulate_template(\n  scheme_code = \"XYZ\",                  # create a report for this scheme\n  site_codes = NULL,                    # NULL will fetch site codes from Azure\n  result_sets = get_nhp_result_sets(),  # fetch results metadata from Azure\n  run_stages = list(                    # provide tagged model runs from Azure metadata...\n    primary = \"final_report_ndg2\",      # main data source for the report\n    secondary = \"final_report_ndg1\"     # used as a comparator\n  ),\n  scenario_files = NULL,                # ...or provide arbitrary results filepaths\n  template_path = NULL,                 # NULL to read from SharePoint\n  report_type = \"final\"                 # or 'addendum'\n)\n\n\nThe interface for us is quite simple: a single function where we set the scheme code and identify the metadata ‘tag’ for the results that will form the main basis of the report and a secondary set used for comparative purposes.\nA bunch of sub-functions then read the data, calculate values, generate figures, read the Word template from SharePoint and then insert the content."
+    "text": "Generate a report 🖨️\nIn R:\npopulate_template(\n  scheme_code = \"XYZ\",                  # create a report for this scheme\n  site_codes = NULL,                    # NULL will fetch site codes from Azure\n  result_sets = get_nhp_result_sets(),  # fetch results metadata from Azure\n  run_stages = list(                    # provide tagged model runs from Azure metadata...\n    primary = \"final_report_ndg2\",      # main data source for the report\n    secondary = \"final_report_ndg1\"     # used as a comparator\n  ),\n  scenario_files = NULL,                # ...or provide arbitrary results filepaths\n  template_path = NULL,                 # NULL to read from SharePoint\n  report_type = \"final\"                 # or 'addendum'\n)\n\n\nThe interface for us is quite simple: a single function where we set the scheme code and identify the metadata ‘tag’ for the results that will form the main basis of the report and a secondary set used for comparative purposes.\nAlternatively we can provide a scenario filename directly using the parameter scenario_files.\nAn option also exists to choose different templates.\nA bunch of sub-functions then read the data, calculate values, generate figures, read the Word template from SharePoint and then insert the content."
   },
   {
     "objectID": "presentations/2025-11-13_nhsrpysoc-2025-word/index.html#generated-report",
     "href": "presentations/2025-11-13_nhsrpysoc-2025-word/index.html#generated-report",
     "title": "Word is better than Quarto?",
     "section": "Generated report 📁️",
-    "text": "Generated report 📁️\nOutput file structure:\noutput/\n└──YYYY-MM-DD-HHMMSS_scheme/\n   ├──YYYY-MM-DD-HHMMSS_scheme.log                        # log of printed metadata\n   ├──YYYY-MM-DD-HHMMSS_scheme_outputs-report_draft.docx  # populated report\n   ├──figures/                                            # standalone PNG files\n   └──values/                                             # CSVs of calculated values\n    \n\n\nThe output is a timestamped folder that contains the populated Word doc, a subfolder of the charts and calculated values, and a log file that contains information printed to the console (details things like the scheme name and site selections for the run, as well as warning and error messages if present)."
+    "text": "Generated report 📁️\nOutput file structure:\noutput/\n└──YYYY-MM-DD-HHMMSS_scheme/\n   ├──YYYY-MM-DD-HHMMSS_scheme.log                        # log of printed metadata\n   ├──YYYY-MM-DD-HHMMSS_scheme_outputs-report_draft.docx  # populated report\n   ├──figures/                                            # standalone PNG files\n   └──values/                                             # CSVs of calculated values\n    \n\n\nThe output is a timestamped folder that contains the populated Word doc, subfolders of the charts and calculated values, and a log file that contains information printed to the console (details things like the scheme name and site selections for the run, as well as warning and error messages if present)."
   },
   {
     "objectID": "presentations/2025-11-13_nhsrpysoc-2025-word/index.html#insert-images-with-officer",
@@ -1717,7 +1717,7 @@
     "href": "presentations/2025-11-13_nhsrpysoc-2025-word/index.html#flexibility",
     "title": "Word is better than Quarto?",
     "section": "Flexibility 🤸",
-    "text": "Flexibility 🤸\nThe repository and code continue to help with:\n\nad hoc work\nupcoming ‘addendum’ reports\nchanges to inputs and back-end processes\n\n\n\nThe functions created for this purpose have served as useful tools for related work that doesn’t involve report generation.\nThe approach is flexible enough to allow for other types of template report to be included.\nChanges to the template and model, or the way we store results files, can be handled easily and shared between us with version-control and good documentation."
+    "text": "Flexibility 🤸\nThe repository and code continue to help with:\n\nad hoc work\nupcoming ‘refresh’ reports\nchanges to inputs and back-end processes\n\n\n\nThe functions created for this purpose have served as useful tools for related work that doesn’t involve report generation.\nThe approach is flexible enough to allow for other types of template report to be included.\nChanges to the template and model, or the way we store results files, can be handled easily and shared between us with version-control and good documentation."
   },
   {
     "objectID": "presentations/2025-11-13_nhsrpysoc-2025-word/index.html#reflections",
@@ -4034,7 +4034,7 @@
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r---flows",
     "title": "System Dynamics in health and care",
     "section": "in R - flows",
-    "text": "in R - flows\nEasy to do with count, or group_by and summarise\n\n\nadmit_d &lt;- spell_dates |&gt;\n  group_by(date_admit) |&gt;\n  count(date_admit)\n\nhead(admit_d)\n\n\n# A tibble: 6 × 2\n# Groups:   date_admit [6]\n  date_admit     n\n  &lt;date&gt;     &lt;int&gt;\n1 2022-01-01    27\n2 2022-01-02    24\n3 2022-01-03    35\n4 2022-01-04    36\n5 2022-01-05    27\n6 2022-01-06    29"
+    "text": "in R - flows\nEasy to do with count, or group_by and summarise\n\n\nadmit_d &lt;- spell_dates |&gt;\n  group_by(date_admit) |&gt;\n  count(date_admit)\n\nhead(admit_d)\n\n\n# A tibble: 6 × 2\n# Groups:   date_admit [6]\n  date_admit     n\n  &lt;date&gt;     &lt;int&gt;\n1 2022-01-01    15\n2 2022-01-02    32\n3 2022-01-03    30\n4 2022-01-04    27\n5 2022-01-05    30\n6 2022-01-06    21"
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r---occupancy",
@@ -4055,7 +4055,7 @@
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods---flows",
     "title": "System Dynamics in health and care",
     "section": "Longer Time Periods - flows",
-    "text": "Longer Time Periods - flows\nUse lubridate::floor_date to generate the date at start of week/month\n\nadmit_wk &lt;- spell_dates |&gt;\n  mutate(\n    week_start = floor_date(\n      date_admit,\n      unit = \"week\",\n      week_start = 1 # start week on Monday\n    )\n  ) |&gt;\n  count(week_start) # could add other parameters such as provider code, TFC etc\n\nhead(admit_wk)\n\n\n\n# A tibble: 6 × 2\n  week_start     n\n  &lt;date&gt;     &lt;int&gt;\n1 2021-12-27    51\n2 2022-01-03   208\n3 2022-01-10   193\n4 2022-01-17   196\n5 2022-01-24   183\n6 2022-01-31   200\n\n\n\nMight run SD model in weeks or months - e.g. months for care homes Use lubridate to create new variable with start date of week/month/year etc"
+    "text": "Longer Time Periods - flows\nUse lubridate::floor_date to generate the date at start of week/month\n\nadmit_wk &lt;- spell_dates |&gt;\n  mutate(\n    week_start = floor_date(\n      date_admit,\n      unit = \"week\",\n      week_start = 1 # start week on Monday\n    )\n  ) |&gt;\n  count(week_start) # could add other parameters such as provider code, TFC etc\n\nhead(admit_wk)\n\n\n\n# A tibble: 6 × 2\n  week_start     n\n  &lt;date&gt;     &lt;int&gt;\n1 2021-12-27    47\n2 2022-01-03   189\n3 2022-01-10   203\n4 2022-01-17   175\n5 2022-01-24   206\n6 2022-01-31   192\n\n\n\nMight run SD model in weeks or months - e.g. months for care homes Use lubridate to create new variable with start date of week/month/year etc"
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods---occupancy",

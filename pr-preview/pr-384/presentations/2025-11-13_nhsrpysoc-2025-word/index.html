@@ -298,11 +298,11 @@
 <h2 data-id="quarto-animate-title">Existing Word template 📑</h2>
 <aside class="notes">
 <ul>
-<li>However, the customer’s pre-existing Word template was complicated and was frequently being changed.</li>
+<li>However, the pre-existing Word template was complicated and was frequently being changed as it was passed between the SU and the scheme.</li>
 <li>It turned out to be easier to use the Word template as an input and insert our figures and values into it instead.</li>
 <li>This zoomed-out view of part of the Word document template highlights the complexity.</li>
 <li>The document uses a pre-existing theme; contains many specifically-formatted text chunks, tables and page orientations; and uses colour-coded highlighting to indicate who needs to edit which parts of the document.</li>
-<li>The document was being changed and updated quite a lot. The customers were used to amending Word documents quickly, as and when required.</li>
+<li>The document was being changed and updated quite a lot. The customers were used to amending Word documents quickly, as and when required and did not have skills or software to work with R/Quarto.</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -327,7 +327,7 @@
 <h2>Decision 🧐</h2>
 <ul>
 <li>Meet users where they are: in Word</li>
-<li>Editability trumps total automation</li>
+<li>Editability and flexability trumps total automation</li>
 <li>How can we maximise reproducibility?</li>
 </ul>
 </section>
@@ -403,6 +403,8 @@
 <aside class="notes">
 <ul>
 <li>The interface for us is quite simple: a single function where we set the scheme code and identify the metadata ‘tag’ for the results that will form the main basis of the report and a secondary set used for comparative purposes.</li>
+<li>Alternatively we can provide a scenario filename directly using the parameter scenario_files.</li>
+<li>An option also exists to choose different templates.</li>
 <li>A bunch of sub-functions then read the data, calculate values, generate figures, read the Word template from SharePoint and then insert the content.</li>
 </ul>
 <style type="text/css">
@@ -429,7 +431,7 @@
     </code></pre>
 <aside class="notes">
 <ul>
-<li>The output is a timestamped folder that contains the populated Word doc, a subfolder of the charts and calculated values, and a log file that contains information printed to the console (details things like the scheme name and site selections for the run, as well as warning and error messages if present).</li>
+<li>The output is a timestamped folder that contains the populated Word doc, subfolders of the charts and calculated values, and a log file that contains information printed to the console (details things like the scheme name and site selections for the run, as well as warning and error messages if present).</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -471,7 +473,7 @@
 <section id="insert-values-with-officer" class="slide level2">
 <h2>Insert values with <a href="https://davidgohel.github.io/officer/">{officer}</a> 👮</h2>
 
-<img data-src="insert-value.png" alt="Screenshot of text in a Word document that contains placeholders. Two placeholdesr are in square brackets and they say 'insert value' and then a number (55 and 56 in this case). The other placeholder is in curly brackets and says 'DOCPROPERTY item_54'." class="r-stretch"><ol type="1">
+<img data-src="insert-value.png" alt="Screenshot of text in a Word document that contains placeholders. Two placeholders are in square brackets and they say 'insert value' and then a number (55 and 56 in this case). The other placeholder is in curly brackets and says 'DOCPROPERTY item_54'." class="r-stretch"><ol type="1">
 <li>Add doc-property fields, e.g.&nbsp;<code>{ DOCPROPERTY item_01 }</code>.</li>
 <li>Toggle to friendlier text, e.g.&nbsp;<code>[Insert Value 01]</code></li>
 <li>Add values to <a href="https://davidgohel.github.io/officer/reference/set_doc_properties.html">custom doc properties</a> programmatically.</li>
@@ -509,7 +511,7 @@
 <p>The repository and code continue to help with:</p>
 <ul>
 <li>ad hoc work</li>
-<li>upcoming ‘addendum’ reports</li>
+<li>upcoming ‘refresh’ reports</li>
 <li>changes to inputs and back-end processes</li>
 </ul>
 <aside class="notes">

@@ -172,7 +172,7 @@ output/
 
 ## Insert values with [{officer}](https://davidgohel.github.io/officer/) 👮
 
-![](insert-value.png){alt="Screenshot of text in a Word document that contains placeholders. Two placeholdesr are in square brackets and they say 'insert value' and then a number (55 and 56 in this case). The other placeholder is in curly brackets and says 'DOCPROPERTY item_54'."}
+![](insert-value.png){alt="Screenshot of text in a Word document that contains placeholders. Two placeholders are in square brackets and they say 'insert value' and then a number (55 and 56 in this case). The other placeholder is in curly brackets and says 'DOCPROPERTY item_54'."}
 
 1. Add doc-property fields, e.g. `{ DOCPROPERTY item_01 }`.
 2. Toggle to friendlier text, e.g. `[Insert Value 01]`
@@ -197,7 +197,7 @@ output/
 The repository and code continue to help with:
 
 * ad hoc work
-* upcoming 'addendum' reports
+* upcoming 'refresh' reports
 * changes to inputs and back-end processes
 
 ::: {.notes}

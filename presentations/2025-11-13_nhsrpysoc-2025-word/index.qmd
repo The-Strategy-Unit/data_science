@@ -2,7 +2,7 @@
 title: "Word is better than Quarto?"
 subtitle: "NHS RPySOC 2025"
 author: 
-  - "[Jac Grout](mailto:jacqueline.grout@nhs.net)"
+  - "[Jacqueline Grout](mailto:jacqueline.grout@nhs.net)"
   - "[Matt Dray](mailto:matt.dray@nhs.net)"
 date: 2025-11-13
 date-format: "D MMMM YYYY"
@@ -83,6 +83,8 @@ It looks like you've accepted your fate.
 * Editability and flexability trumps total automation
 * How can we maximise reproducibility?
 
+## Doing it {.inverse .center}
+
 ## Process ✏️
 
 1. Record a request with a [GitHub issue template](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository).
@@ -105,7 +107,7 @@ It looks like you've accepted your fate.
 
 ## Issue template ✅
 
-![](issue.png){alt="."}
+![](issue.png){alt="A screenshot previewing an issue template. There are checklist items explaining the steps to complete to generate a report. There are links to further information and guidance."}
 
 ::: {.notes}
 * We have an issue template in the repo that allows us to assign and manage tasks for creating a new report.
@@ -119,16 +121,13 @@ In R:
 
 ```r
 populate_template(
-  scheme_code = "XYZ",                  # create a report for this scheme
-  site_codes = NULL,                    # NULL will fetch site codes from Azure
-  result_sets = get_nhp_result_sets(),  # fetch results metadata from Azure
-  run_stages = list(                    # provide tagged model runs from Azure metadata...
-    primary = "final_report_ndg2",      # main data source for the report
-    secondary = "final_report_ndg1"     # used as a comparator
-  ),
-  scenario_files = NULL,                # ...or provide arbitrary results filepaths
-  template_path = NULL,                 # NULL to read from SharePoint
-  report_type = "final"                 # or 'addendum'
+  scheme_code = "XYZ",                 # create a report for this scheme
+  site_codes = NULL,                   # NULL to fetch from Azure
+  result_sets = get_nhp_result_sets(), # fetch results metadata from Azure
+  run_stages = list(                   # list the tagged model runs
+    primary = "final_report_ndg3",     # main data source for the report
+    secondary = "final_report_ndg2"    # used as a comparator
+  )
 )
 ```
 
@@ -161,8 +160,8 @@ output/
 
 ![](insert-image.png){alt="Screenshot of text in a Word document that contains a placeholder in square bracket that says 'insert figure 9.2'."}
 
-1. Add unique target strings, e.g. '[Insert Figure 8.2]'.
-2. [Find](https://davidgohel.github.io/officer/reference/cursor.html)/[replace](https://davidgohel.github.io/officer/reference/body_add_img.html) at 'cursor' with PNG. 
+1. Add unique target strings, e.g. `[Insert Figure 9.2]`.
+2. [Find](https://davidgohel.github.io/officer/reference/cursor.html)/[replace](https://davidgohel.github.io/officer/reference/body_add_img.html) with `cursor_reach()` and `body_add_img()`.
 
 ::: {.notes}
 * The {officer} package is crucial for inserting our content into the template.
@@ -174,10 +173,21 @@ output/
 
 ![](insert-value.png){alt="Screenshot of text in a Word document that contains placeholders. Two placeholders are in square brackets and they say 'insert value' and then a number (55 and 56 in this case). The other placeholder is in curly brackets and says 'DOCPROPERTY item_54'."}
 
-1. Add doc-property fields, e.g. `{ DOCPROPERTY item_01 }`.
-2. Toggle to friendlier text, e.g. `[Insert Value 01]`
-3. Add values to [custom doc properties](https://davidgohel.github.io/officer/reference/set_doc_properties.html) programmatically.
-4. Update fields with corresponding property values.
+:::: {.columns}
+
+::: {.column width="70%"}
+
+1. Add doc-property fields, e.g.<p>`{ DOCPROPERTY item_54 }`.
+2. Add [custom doc properties](https://davidgohel.github.io/officer/reference/set_doc_properties.html).
+3. Update values programmatically with `set_doc_properties()`.
+4. Refresh to insert values to fields.
+:::
+
+::: {.column width="30%"}
+![](custom-properties.png){alt="Screenshot of the custom properties dialog in Microsoft Word. A number of custom properties are shown with names like 'item_01' and placeholder values like 'Insert Value 01' in square brackets."}
+:::
+
+::::
 
 ::: {.notes}
 * We need something smarter for inserting values.
@@ -186,11 +196,17 @@ output/
 * To do this, first add 'document-property fields' to the Word doc (ctrl+F9); then write your calculated values to the custom document properties with `officer::set_doc_properties()`; then open and refresh the document (F9) to replace the fields with the corresponding value for the named property.
 :::
 
+## Reflecting on it {.inverse .center}
+
 ## Doing it right 💯
 
 * [Github](https://github.com/The-Strategy-Unit/nhp_output_reports): 'learn by doing', challenge and improve things
-* Documentation/version history have [saved us](https://github.com/The-Strategy-Unit/nhp_final_reports/pull/123)!
+* Documentation/version history have saved us!
 * The repo is a springboard for parallel/future work
+
+:::{.notes}
+
+:::
 
 ## Flexibility 🤸
 
@@ -205,7 +221,6 @@ The repository and code continue to help with:
 * The approach is flexible enough to allow for other types of template report to be included.
 * Changes to the template and model, or the way we store results files, can be handled easily and shared between us with version-control and good documentation.
 :::
-
 
 ## Reflections 🪞
 
@@ -222,7 +237,9 @@ The repository and code continue to help with:
 
 ## Actions 🎬
 
-> Meet your users where they are.
+1. Consider user needs.
+2. Collaborate with GitHub.
+3. Stay flexible.
 
 Check out:
 

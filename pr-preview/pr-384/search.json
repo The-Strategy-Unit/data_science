@@ -1682,7 +1682,7 @@
     "href": "presentations/2025-11-13_nhsrpysoc-2025-word/index.html#generate-a-report",
     "title": "Word is better than Quarto?",
     "section": "Generate a report 🖨️",
-    "text": "Generate a report 🖨️\nIn R:\npopulate_template(\n  scheme_code = \"XYZ\",                  # create a report for this scheme\n  result_sets = get_nhp_result_sets(),  # fetch results metadata from Azure\n  run_stages = list(                    # list the tagged model runs\n    primary = \"final_report_ndg2\",      # main data source for the report\n    secondary = \"final_report_ndg1\"     # used as a comparator\n  )\n)\n\n\nThe interface for us is quite simple: a single function where we set the scheme code and identify the metadata ‘tag’ for the results that will form the main basis of the report and a secondary set used for comparative purposes.\nA bunch of sub-functions then read the data, calculate values, generate figures, read the Word template from SharePoint and then insert the content."
+    "text": "Generate a report 🖨️\nIn R:\npopulate_template(\n  scheme_code = \"XYZ\",                  # create a report for this scheme\n  site_codes = NULL,                    # NULL will fetch site codes from Azure\n  result_sets = get_nhp_result_sets(),  # fetch results metadata from Azure\n  run_stages = list(                    # provide tagged model runs from Azure metadata...\n    primary = \"final_report_ndg2\",      # main data source for the report\n    secondary = \"final_report_ndg1\"     # used as a comparator\n  ),\n  scenario_files = NULL,                # ...or provide arbitrary results filepaths\n  template_path = NULL,                 # NULL to read from SharePoint\n  report_type = \"final\"                 # or 'addendum'\n)\n\n\nThe interface for us is quite simple: a single function where we set the scheme code and identify the metadata ‘tag’ for the results that will form the main basis of the report and a secondary set used for comparative purposes.\nA bunch of sub-functions then read the data, calculate values, generate figures, read the Word template from SharePoint and then insert the content."
   },
   {
     "objectID": "presentations/2025-11-13_nhsrpysoc-2025-word/index.html#generated-report",
@@ -4034,7 +4034,7 @@
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r---flows",
     "title": "System Dynamics in health and care",
     "section": "in R - flows",
-    "text": "in R - flows\nEasy to do with count, or group_by and summarise\n\n\nadmit_d &lt;- spell_dates |&gt;\n  group_by(date_admit) |&gt;\n  count(date_admit)\n\nhead(admit_d)\n\n\n# A tibble: 6 × 2\n# Groups:   date_admit [6]\n  date_admit     n\n  &lt;date&gt;     &lt;int&gt;\n1 2022-01-01    31\n2 2022-01-02    21\n3 2022-01-03    28\n4 2022-01-04    33\n5 2022-01-05    19\n6 2022-01-06    27"
+    "text": "in R - flows\nEasy to do with count, or group_by and summarise\n\n\nadmit_d &lt;- spell_dates |&gt;\n  group_by(date_admit) |&gt;\n  count(date_admit)\n\nhead(admit_d)\n\n\n# A tibble: 6 × 2\n# Groups:   date_admit [6]\n  date_admit     n\n  &lt;date&gt;     &lt;int&gt;\n1 2022-01-01    27\n2 2022-01-02    29\n3 2022-01-03    29\n4 2022-01-04    32\n5 2022-01-05    25\n6 2022-01-06    24"
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r---occupancy",
@@ -4055,7 +4055,7 @@
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods---flows",
     "title": "System Dynamics in health and care",
     "section": "Longer Time Periods - flows",
-    "text": "Longer Time Periods - flows\nUse lubridate::floor_date to generate the date at start of week/month\n\nadmit_wk &lt;- spell_dates |&gt;\n  mutate(\n    week_start = floor_date(\n      date_admit,\n      unit = \"week\",\n      week_start = 1 # start week on Monday\n    )\n  ) |&gt;\n  count(week_start) # could add other parameters such as provider code, TFC etc\n\nhead(admit_wk)\n\n\n\n# A tibble: 6 × 2\n  week_start     n\n  &lt;date&gt;     &lt;int&gt;\n1 2021-12-27    52\n2 2022-01-03   189\n3 2022-01-10   193\n4 2022-01-17   201\n5 2022-01-24   186\n6 2022-01-31   164\n\n\n\nMight run SD model in weeks or months - e.g. months for care homes Use lubridate to create new variable with start date of week/month/year etc"
+    "text": "Longer Time Periods - flows\nUse lubridate::floor_date to generate the date at start of week/month\n\nadmit_wk &lt;- spell_dates |&gt;\n  mutate(\n    week_start = floor_date(\n      date_admit,\n      unit = \"week\",\n      week_start = 1 # start week on Monday\n    )\n  ) |&gt;\n  count(week_start) # could add other parameters such as provider code, TFC etc\n\nhead(admit_wk)\n\n\n\n# A tibble: 6 × 2\n  week_start     n\n  &lt;date&gt;     &lt;int&gt;\n1 2021-12-27    56\n2 2022-01-03   183\n3 2022-01-10   199\n4 2022-01-17   192\n5 2022-01-24   190\n6 2022-01-31   185\n\n\n\nMight run SD model in weeks or months - e.g. months for care homes Use lubridate to create new variable with start date of week/month/year etc"
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods---occupancy",

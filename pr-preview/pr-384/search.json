@@ -1640,7 +1640,7 @@
     "href": "presentations/2025-11-13_nhsrpysoc-2025-word/index.html#reporting",
     "title": "Word is better than Quarto?",
     "section": "Reporting 📒",
-    "text": "Reporting 📒\n\nEnd-users get model-output reports\nRequires automation/reproducibility\nSo use Quarto, right? Right?\n\n\n\nEnd-users are ‘schemes’, usually hospitals.\nOnce they’ve completed modelling, they are given a report to discuss with model-relationship managers from the Strategy Unit.\nIt’s a standard template report, so it would be wise to automate its generation.\nWe should be able to recreate these documents in future, if needed.\nIdeal solution: create a Quarto document and populate it for a named organisation with images and calculations derived from data read from Azure.\nIn other words, an obvious Reproducible Analytical Pipeline (RAP)."
+    "text": "Reporting 📒\n\nEnd-users get model outputs and we co-author a report\nRequires automation/reproducibility\nSo use Quarto, right? Right?\n\n\n\nEnd-users are ‘schemes’, usually hospitals.\nOnce they’ve completed modelling, they are given a draft report containing model outputs and calculations derived from model outputs.\nIt’s a standard template report, so it would be wise to automate its generation.\nWe should be able to recreate these documents in future, if needed.\nIdeal solution: create a Quarto document and populate it for a named organisation with images and calculations derived from data read from Azure.\nIn other words, an obvious Reproducible Analytical Pipeline (RAP)."
   },
   {
     "objectID": "presentations/2025-11-13_nhsrpysoc-2025-word/index.html#existing-word-template",
@@ -4034,7 +4034,7 @@
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r---flows",
     "title": "System Dynamics in health and care",
     "section": "in R - flows",
-    "text": "in R - flows\nEasy to do with count, or group_by and summarise\n\n\nadmit_d &lt;- spell_dates |&gt;\n  group_by(date_admit) |&gt;\n  count(date_admit)\n\nhead(admit_d)\n\n\n# A tibble: 6 × 2\n# Groups:   date_admit [6]\n  date_admit     n\n  &lt;date&gt;     &lt;int&gt;\n1 2022-01-01    27\n2 2022-01-02    23\n3 2022-01-03    27\n4 2022-01-04    16\n5 2022-01-05    25\n6 2022-01-06    27"
+    "text": "in R - flows\nEasy to do with count, or group_by and summarise\n\n\nadmit_d &lt;- spell_dates |&gt;\n  group_by(date_admit) |&gt;\n  count(date_admit)\n\nhead(admit_d)\n\n\n# A tibble: 6 × 2\n# Groups:   date_admit [6]\n  date_admit     n\n  &lt;date&gt;     &lt;int&gt;\n1 2022-01-01    19\n2 2022-01-02    18\n3 2022-01-03    34\n4 2022-01-04    28\n5 2022-01-05    21\n6 2022-01-06    28"
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r---occupancy",
@@ -4055,7 +4055,7 @@
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods---flows",
     "title": "System Dynamics in health and care",
     "section": "Longer Time Periods - flows",
-    "text": "Longer Time Periods - flows\nUse lubridate::floor_date to generate the date at start of week/month\n\nadmit_wk &lt;- spell_dates |&gt;\n  mutate(\n    week_start = floor_date(\n      date_admit,\n      unit = \"week\",\n      week_start = 1 # start week on Monday\n    )\n  ) |&gt;\n  count(week_start) # could add other parameters such as provider code, TFC etc\n\nhead(admit_wk)\n\n\n\n# A tibble: 6 × 2\n  week_start     n\n  &lt;date&gt;     &lt;int&gt;\n1 2021-12-27    50\n2 2022-01-03   191\n3 2022-01-10   197\n4 2022-01-17   225\n5 2022-01-24   195\n6 2022-01-31   184\n\n\n\nMight run SD model in weeks or months - e.g. months for care homes Use lubridate to create new variable with start date of week/month/year etc"
+    "text": "Longer Time Periods - flows\nUse lubridate::floor_date to generate the date at start of week/month\n\nadmit_wk &lt;- spell_dates |&gt;\n  mutate(\n    week_start = floor_date(\n      date_admit,\n      unit = \"week\",\n      week_start = 1 # start week on Monday\n    )\n  ) |&gt;\n  count(week_start) # could add other parameters such as provider code, TFC etc\n\nhead(admit_wk)\n\n\n\n# A tibble: 6 × 2\n  week_start     n\n  &lt;date&gt;     &lt;int&gt;\n1 2021-12-27    37\n2 2022-01-03   192\n3 2022-01-10   183\n4 2022-01-17   184\n5 2022-01-24   211\n6 2022-01-31   187\n\n\n\nMight run SD model in weeks or months - e.g. months for care homes Use lubridate to create new variable with start date of week/month/year etc"
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods---occupancy",

@@ -9,7 +9,7 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.25">
 
-  <meta name="author" content="Jac Grout">
+  <meta name="author" content="Jacqueline Grout">
   <meta name="author" content="Matt Dray">
   <meta name="dcterms.date" content="2025-11-13">
   <title>Data Science @ The Strategy Unit – Word is better than Quarto?</title>
@@ -203,7 +203,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-<a href="mailto:jacqueline.grout@nhs.net" target="_blank">Jac Grout</a> 
+<a href="mailto:jacqueline.grout@nhs.net" target="_blank">Jacqueline Grout</a> 
 </div>
 </div>
 <div class="quarto-title-author">
@@ -331,6 +331,9 @@
 <li>How can we maximise reproducibility?</li>
 </ul>
 </section>
+<section id="doing-it" class="slide level2 inverse center">
+<h2>Doing it</h2>
+</section>
 <section id="process" class="slide level2">
 <h2>Process ✏️</h2>
 <ol type="1">
@@ -367,7 +370,7 @@
 <section id="issue-template" class="slide level2">
 <h2>Issue template ✅</h2>
 
-<img data-src="issue.png" alt="." class="r-stretch"><aside class="notes">
+<img data-src="issue.png" alt="A screenshot previewing an issue template. There are checklist items explaining the steps to complete to generate a report. There are links to further information and guidance." class="r-stretch"><aside class="notes">
 <ul>
 <li>We have an issue template in the repo that allows us to assign and manage tasks for creating a new report.</li>
 <li>This makes sure we follow the same steps from receiving a request through to returning a populated report.</li>
@@ -389,17 +392,14 @@
 <h2>Generate a report 🖨️</h2>
 <p>In R:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">populate_template</span>(</span>
-<span id="cb1-2"><a></a>  <span class="at">scheme_code =</span> <span class="st">"XYZ"</span>,                  <span class="co"># create a report for this scheme</span></span>
-<span id="cb1-3"><a></a>  <span class="at">site_codes =</span> <span class="cn">NULL</span>,                    <span class="co"># NULL will fetch site codes from Azure</span></span>
-<span id="cb1-4"><a></a>  <span class="at">result_sets =</span> <span class="fu">get_nhp_result_sets</span>(),  <span class="co"># fetch results metadata from Azure</span></span>
-<span id="cb1-5"><a></a>  <span class="at">run_stages =</span> <span class="fu">list</span>(                    <span class="co"># provide tagged model runs from Azure metadata...</span></span>
-<span id="cb1-6"><a></a>    <span class="at">primary =</span> <span class="st">"final_report_ndg2"</span>,      <span class="co"># main data source for the report</span></span>
-<span id="cb1-7"><a></a>    <span class="at">secondary =</span> <span class="st">"final_report_ndg1"</span>     <span class="co"># used as a comparator</span></span>
-<span id="cb1-8"><a></a>  ),</span>
-<span id="cb1-9"><a></a>  <span class="at">scenario_files =</span> <span class="cn">NULL</span>,                <span class="co"># ...or provide arbitrary results filepaths</span></span>
-<span id="cb1-10"><a></a>  <span class="at">template_path =</span> <span class="cn">NULL</span>,                 <span class="co"># NULL to read from SharePoint</span></span>
-<span id="cb1-11"><a></a>  <span class="at">report_type =</span> <span class="st">"final"</span>                 <span class="co"># or 'addendum'</span></span>
-<span id="cb1-12"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-2"><a></a>  <span class="at">scheme_code =</span> <span class="st">"XYZ"</span>,                 <span class="co"># create a report for this scheme</span></span>
+<span id="cb1-3"><a></a>  <span class="at">site_codes =</span> <span class="cn">NULL</span>,                   <span class="co"># NULL to fetch from Azure</span></span>
+<span id="cb1-4"><a></a>  <span class="at">result_sets =</span> <span class="fu">get_nhp_result_sets</span>(), <span class="co"># fetch results metadata from Azure</span></span>
+<span id="cb1-5"><a></a>  <span class="at">run_stages =</span> <span class="fu">list</span>(                   <span class="co"># list the tagged model runs</span></span>
+<span id="cb1-6"><a></a>    <span class="at">primary =</span> <span class="st">"final_report_ndg3"</span>,     <span class="co"># main data source for the report</span></span>
+<span id="cb1-7"><a></a>    <span class="at">secondary =</span> <span class="st">"final_report_ndg2"</span>    <span class="co"># used as a comparator</span></span>
+<span id="cb1-8"><a></a>  )</span>
+<span id="cb1-9"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <aside class="notes">
 <ul>
 <li>The interface for us is quite simple: a single function where we set the scheme code and identify the metadata ‘tag’ for the results that will form the main basis of the report and a secondary set used for comparative purposes.</li>
@@ -449,8 +449,8 @@
 <h2>Insert images with <a href="https://davidgohel.github.io/officer/">{officer}</a> 👮</h2>
 
 <img data-src="insert-image.png" alt="Screenshot of text in a Word document that contains a placeholder in square bracket that says 'insert figure 9.2'." class="r-stretch"><ol type="1">
-<li>Add unique target strings, e.g.&nbsp;‘[Insert Figure 8.2]’.</li>
-<li><a href="https://davidgohel.github.io/officer/reference/cursor.html">Find</a>/<a href="https://davidgohel.github.io/officer/reference/body_add_img.html">replace</a> at ‘cursor’ with PNG.</li>
+<li>Add unique target strings, e.g.&nbsp;<code>[Insert Figure 9.2]</code>.</li>
+<li><a href="https://davidgohel.github.io/officer/reference/cursor.html">Find</a>/<a href="https://davidgohel.github.io/officer/reference/body_add_img.html">replace</a> with <code>cursor_reach()</code> and <code>body_add_img()</code>.</li>
 </ol>
 <aside class="notes">
 <ul>
@@ -472,13 +472,20 @@
 </section>
 <section id="insert-values-with-officer" class="slide level2">
 <h2>Insert values with <a href="https://davidgohel.github.io/officer/">{officer}</a> 👮</h2>
-
-<img data-src="insert-value.png" alt="Screenshot of text in a Word document that contains placeholders. Two placeholders are in square brackets and they say 'insert value' and then a number (55 and 56 in this case). The other placeholder is in curly brackets and says 'DOCPROPERTY item_54'." class="r-stretch"><ol type="1">
-<li>Add doc-property fields, e.g.&nbsp;<code>{ DOCPROPERTY item_01 }</code>.</li>
-<li>Toggle to friendlier text, e.g.&nbsp;<code>[Insert Value 01]</code></li>
-<li>Add values to <a href="https://davidgohel.github.io/officer/reference/set_doc_properties.html">custom doc properties</a> programmatically.</li>
-<li>Update fields with corresponding property values.</li>
+<p><img data-src="insert-value.png" alt="Screenshot of text in a Word document that contains placeholders. Two placeholders are in square brackets and they say 'insert value' and then a number (55 and 56 in this case). The other placeholder is in curly brackets and says 'DOCPROPERTY item_54'."></p>
+<div class="columns">
+<div class="column" style="width:70%;">
+<ol type="1">
+<li>Add doc-property fields, e.g.
+<p>
+<code>{ DOCPROPERTY item_54 }</code>.</p></li>
+<li>Add <a href="https://davidgohel.github.io/officer/reference/set_doc_properties.html">custom doc properties</a>.</li>
+<li>Update values programmatically with <code>set_doc_properties()</code>.</li>
+<li>Refresh to insert values to fields.</li>
 </ol>
+</div><div class="column" style="width:30%;">
+<p><img data-src="custom-properties.png" alt="Screenshot of the custom properties dialog in Microsoft Word. A number of custom properties are shown with names like 'item_01' and placeholder values like 'Insert Value 01' in square brackets."></p>
+</div></div>
 <aside class="notes">
 <ul>
 <li>We need something smarter for inserting values.</li>
@@ -498,13 +505,29 @@
           display:block!important;
       }</style></aside>
 </section>
+<section id="reflecting-on-it" class="slide level2 inverse center">
+<h2>Reflecting on it</h2>
+</section>
 <section id="doing-it-right" class="slide level2">
 <h2>Doing it right 💯</h2>
 <ul>
 <li><a href="https://github.com/The-Strategy-Unit/nhp_output_reports">Github</a>: ‘learn by doing’, challenge and improve things</li>
-<li>Documentation/version history have <a href="https://github.com/The-Strategy-Unit/nhp_final_reports/pull/123">saved us</a>!</li>
+<li>Documentation/version history have saved us!</li>
 <li>The repo is a springboard for parallel/future work</li>
 </ul>
+<aside class="notes">
+
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="flexibility" class="slide level2">
 <h2>Flexibility 🤸</h2>
@@ -560,9 +583,11 @@
 </section>
 <section id="actions" class="slide level2">
 <h2>Actions 🎬</h2>
-<blockquote>
-<p>Meet your users where they are.</p>
-</blockquote>
+<ol type="1">
+<li>Consider user needs.</li>
+<li>Collaborate with GitHub.</li>
+<li>Stay flexible.</li>
+</ol>
 <p>Check out:</p>
 <ul>
 <li><a href="https://the-strategy-unit.github.io/data_science/presentations/2025-11-13_nhsrpysoc-2025-word">these slides</a> and <a href="https://github.com/The-Strategy-Unit/nhp_output_reports">open code</a></li>

@@ -22,7 +22,7 @@ format:
 ## Hello 👋
 
 * We're from [The Strategy Unit](https://www.strategyunitwm.nhs.uk/)
-* I am Jac
+* I am Jacqueline
 * This is Matt
 
 ::: {.notes}

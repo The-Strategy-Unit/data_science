@@ -80,7 +80,7 @@ It looks like you've accepted your fate.
 ## Decision 🧐
 
 * Meet users where they are: in Word
-* Editability trumps total automation
+* Editability and flexability trumps total automation
 * How can we maximise reproducibility?
 
 ## Process ✏️

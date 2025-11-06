@@ -154,7 +154,7 @@ output/
 ``` 
 
 ::: {.notes}
-* The output is a timestamped folder that contains the populated Word doc, a subfolder of the charts and calculated values, and a log file that contains information printed to the console (details things like the scheme name and site selections for the run, as well as warning and error messages if present).
+* The output is a timestamped folder that contains the populated Word doc, subfolders of the charts and calculated values, and a log file that contains information printed to the console (details things like the scheme name and site selections for the run, as well as warning and error messages if present).
 :::
 
 ## Insert images with [{officer}](https://davidgohel.github.io/officer/) 👮

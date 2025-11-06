@@ -133,7 +133,9 @@ populate_template(
 ```
 
 ::: {.notes}
-* The interface for us is quite simple: a single function where we set the scheme code and identify the metadata 'tag' for the results that will form the main basis of the report and a secondary set used for comparative purposes.
+* The interface for us is quite simple: a single function where we set the scheme code and identify the metadata 'tag' for the results that will form the main basis of the report and a secondary set used for comparative purposes. 
+* Alternatively we can provide a scenario filename directly using the parameter scenario_files.
+* An option also exists to choose different templates.
 * A bunch of sub-functions then read the data, calculate values, generate figures, read the Word template from SharePoint and then insert the content.
 :::
 

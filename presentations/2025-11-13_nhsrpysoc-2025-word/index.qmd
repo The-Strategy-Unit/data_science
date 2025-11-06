@@ -1,0 +1,247 @@
+---
+title: "Word is better than Quarto?"
+subtitle: "NHS RPySOC 2025"
+author: 
+  - "[Jacqueline Grout](mailto:jacqueline.grout@nhs.net)"
+  - "[Matt Dray](mailto:matt.dray@nhs.net)"
+date: 2025-11-13
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, ../su_presentation.scss, paperclip.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
+    footer: |
+      Find the repo at [The Strategy Unit/nhp_output_reports](https://github.com/The-Strategy-Unit/nhp_output_reports)
+---
+
+## Hello 👋
+
+* We're from [The Strategy Unit](https://www.strategyunitwm.nhs.uk/)
+* I am Jacqueline
+* This is Matt
+
+::: {.notes}
+* From the website: 'The Strategy Unit is a specialist NHS internal consultancy team. We produce high-quality, multi-disciplinary analytical work – and we help people apply the results. Our proposition is simple: better evidence, better decisions, better outcomes.'
+* We have different skills that were both needed on this project and could learn a lot from each other.
+:::
+
+## The New Hospital Programme 🏥
+
+* The government is committed to building hospitals
+* How to meet needs/get good value for money?
+* Answer: we built a [demand model](https://connect.strategyunitwm.nhs.uk/nhp/project_information/)
+
+::: {.notes}
+* The government has committed to building new hospitals.
+* New hospital infrastructure must meet the future needs of the population and have good value for money.
+* NHP is a DHSC/NHSE partnership.
+* The Strategy Unit is helping by building and maintaining a demand model.
+* The Strategy Unit supports end-users to create model scenarios and and interpret the outputs.
+:::
+
+## Reporting 📒
+
+* End-users get model outputs and we co-author a report
+* Requires automation/reproducibility
+* So use [Quarto](https://quarto.org/), right? _Right?_
+
+::: {.notes}
+* End-users are 'schemes', usually hospitals.
+* Once they've completed modelling, they are given a draft report containing model outputs and calculations.
+* It's a standard template report, so it would be wise to automate its generation.
+* We should be able to recreate these documents in future, if needed.
+* Ideal solution: create a Quarto document and populate it for a named organisation with images and calculations derived from data read from Azure.
+* In other words, an obvious Reproducible Analytical Pipeline (RAP).
+:::
+
+## Existing Word template 📑 {auto-animate="true" auto-animate-easing="ease-in-out" background-image="template.png" alt="A blurred, zoomed-out view of pages of a complicated-looking Word document with many chunks of text, tables and page orientations. Much of the text is highlighted in green, yellow and blue."}
+
+::: {.notes}
+* However, the pre-existing Word template was complicated and was frequently being changed as it was passed between the SU and the scheme.
+* It turned out to be easier to use the Word template as an input and insert our figures and values into it instead.
+* This zoomed-out view of part of the Word document template highlights the complexity.
+* The document uses a pre-existing theme; contains many specifically-formatted text chunks, tables and page orientations; and uses colour-coded highlighting to indicate who needs to edit which parts of the document.
+* The document was being changed and updated quite a lot. The customers were used to amending Word documents quickly, as and when required and did not have skills or software to work with R/Quarto.
+:::
+
+## Existing Word template 📑 {auto-animate="true" auto-animate-easing="ease-in-out" background-image="template.png" alt="A blurred, zoomed-out view of pages of a complicated-looking Word document with many chunks of text, tables and page orientations. Much of the text is highlighted in green, yellow and blue."}
+
+::: {.clippy-speech .absolute top="20%" left="40%" data-id="speech" alt="A yellow speech bubble that says 'it looks like you're trying to improve a spreadsheet', which is being spoken by an artisanal drawing of the Microsoft Office mascot Clippy."}
+It looks like you've accepted your fate.
+:::
+
+![](paperclip.png){.absolute top="40%" left="60%" width="200px" alt="An unofficial version of the Microsoft Office mascot Clippy, a paperclip with eyes."}
+
+## Decision 🧐
+
+* Meet users where they are: in Word
+* Editability and flexibility trumps total automation
+* How can we maximise reproducibility?
+
+## Doing it {.inverse .center}
+
+## Process ✏️
+
+1. Record a request with a [GitHub issue template](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository).
+2. Tag model-run JSONs on Azure, update site-selections file.
+3. Read SharePoint template with [{Microsoft365R}](https://github.com/Azure/Microsoft365R).
+4. Insert content with [{officer}](https://davidgohel.github.io/officer/).
+5. Write timestamped folder with doc, results, log.
+6. Check output, return to recipient.
+
+::: {.notes}
+* We designed a process to programmatically generate the reports.
+* How do we identify chosen runs? On Azure, with run_stage metadata on results files and a list of chosen sites.
+* How to confirm with model relationship managers? Expose tagged scenarios and sites via a scheduled Quarto-report.
+* Basic interface: supply a scheme code, at simplest level.
+* Underlying functions save figures and values independently.
+* Images inserted by moving the imaginary 'cursor' to a known string of text in the report.
+* Value-insertion is more complicated: insert 'field' codes into the report, insert the values to custom document properties, refresh to insert these into the fields.
+* The output is a timestamped directory with the report, standalone images and values, and a log.
+:::
+
+## Issue template ✅
+
+![](issue.png){alt="A screenshot previewing an issue template. There are checklist items explaining the steps to complete to generate a report. There are links to further information and guidance."}
+
+::: {.notes}
+* We have an issue template in the repo that allows us to assign and manage tasks for creating a new report.
+* This makes sure we follow the same steps from receiving a request through to returning a populated report.
+* We use it to reference further guidance and links, which should help improve our 'bus factor': other members of the SU should be able to run a new report without us. 
+:::
+
+## Generate a report 🖨️
+
+In R:
+
+```r
+populate_template(
+  scheme_code = "XYZ",                 # create a report for this scheme
+  site_codes = NULL,                   # NULL to fetch from Azure
+  result_sets = get_nhp_result_sets(), # fetch results metadata from Azure
+  run_stages = list(                   # list the tagged model runs
+    primary = "final_report_ndg3",     # main data source for the report
+    secondary = "final_report_ndg2"    # used as a comparator
+  )
+)
+```
+
+::: {.notes}
+* The interface for us is quite simple: a single function where we set the scheme code and identify the metadata 'tag' for the results that will form the main basis of the report and a secondary set used for comparative purposes. 
+* Alternatively we can provide a scenario filename directly using the parameter scenario_files.
+* An option also exists to choose different templates.
+* A bunch of sub-functions then read the data, calculate values, generate figures, read the Word template from SharePoint and then insert the content.
+:::
+
+## Generated report 📁️
+
+Output file structure:
+
+```
+output/
+└──YYYY-MM-DD-HHMMSS_scheme/
+   ├──YYYY-MM-DD-HHMMSS_scheme.log                        # log of printed metadata
+   ├──YYYY-MM-DD-HHMMSS_scheme_outputs-report_draft.docx  # populated report
+   ├──figures/                                            # standalone PNG files
+   └──values/                                             # CSVs of calculated values
+    
+``` 
+
+::: {.notes}
+* The output is a timestamped folder that contains the populated Word doc, subfolders of the charts and calculated values, and a log file that contains information printed to the console (details things like the scheme name and site selections for the run, as well as warning and error messages if present).
+:::
+
+## Insert images with [{officer}](https://davidgohel.github.io/officer/) 👮
+
+![](insert-image.png){alt="Screenshot of text in a Word document that contains a placeholder in square bracket that says 'insert figure 9.2'."}
+
+1. Add unique target strings, e.g. `[Insert Figure 9.2]`.
+2. [Find](https://davidgohel.github.io/officer/reference/cursor.html)/[replace](https://davidgohel.github.io/officer/reference/body_add_img.html) with `cursor_reach()` and `body_add_img()`.
+
+::: {.notes}
+* The {officer} package is crucial for inserting our content into the template.
+* We use different methods to insert values and images.
+* To insert images, programmatically find unique target strings with {officer}'s `cursor_reach()` and then overwrite with images using `body_add_img()`; we use  and a custom `insert_figure_on_cursor()` to do this.
+:::
+
+## Insert values with [{officer}](https://davidgohel.github.io/officer/) 👮
+
+![](insert-value.png){alt="Screenshot of text in a Word document that contains placeholders. Two placeholders are in square brackets and they say 'insert value' and then a number (55 and 56 in this case). The other placeholder is in curly brackets and says 'DOCPROPERTY item_54'."}
+
+:::: {.columns}
+
+::: {.column width="70%"}
+
+1. Add doc-property fields, e.g.<p>`{ DOCPROPERTY item_54 }`.
+2. Add [custom doc properties](https://davidgohel.github.io/officer/reference/set_doc_properties.html).
+3. Update values programmatically with `set_doc_properties()`.
+4. Refresh to insert values to fields.
+:::
+
+::: {.column width="30%"}
+![](custom-properties.png){alt="Screenshot of the custom properties dialog in Microsoft Word. A number of custom properties are shown with names like 'item_01' and placeholder values like 'Insert Value 01' in square brackets."}
+:::
+
+::::
+
+::: {.notes}
+* We need something smarter for inserting values.
+* Images have obvious places for insertion in the document, but calculated values could be in the middle of sentences that get edited later.
+* We can instead put placeholders into the document that reference a given value.
+* To do this, first add 'document-property fields' to the Word doc (ctrl+F9); then write your calculated values to the custom document properties with `officer::set_doc_properties()`; then open and refresh the document (F9) to replace the fields with the corresponding value for the named property.
+:::
+
+## Reflecting on it {.inverse .center}
+
+## Doing it right 💯
+
+* [Github](https://github.com/The-Strategy-Unit/nhp_output_reports): 'learn by doing', challenge and improve things
+* Documentation/version history have saved us!
+* The repo is a springboard for parallel/future work
+
+:::{.notes}
+
+:::
+
+## Flexibility 🤸
+
+The repository and code continue to help with:
+
+* ad hoc work
+* upcoming 'refresh' reports
+* changes to inputs and back-end processes
+
+::: {.notes}
+* The functions created for this purpose have served as useful tools for related work that doesn't involve report generation.
+* The approach is flexible enough to allow for other types of template report to be included.
+* Changes to the template and model, or the way we store results files, can be handled easily and shared between us with version-control and good documentation.
+:::
+
+## Reflections 🪞
+
+* Challenge your thinking, be adaptable to user needs
+* Embrace agility and acknowledge fragility
+* 'The power of friendship' keeps things working
+
+::: {.notes}
+* The default mode of 'make a Quarto doc' wasn't the right fit here, but we recognised that and pivoted quickly.
+* We know the solution isn't perfect, but it is good enough.
+* The process has some frailties, but we recognise them. For example, the report path being changed on SharePoint means we can't retrieve it!
+* Talking between us on the code side, but also with the user, is really important to handle changing needs and to keep the process and outputs fit for purpose.
+:::
+
+## Actions 🎬
+
+1. Consider user needs.
+2. Collaborate with GitHub.
+3. Stay flexible.
+
+Check out:
+
+* [these slides](https://the-strategy-unit.github.io/data_science/presentations/2025-11-13_nhsrpysoc-2025-word) and [open code](https://github.com/The-Strategy-Unit/nhp_output_reports)
+* [{officer}](https://davidgohel.github.io/officer/), the [officeverse book](https://ardata-fr.github.io/officeverse/) and [{Microsoft365R}](https://github.com/Azure/Microsoft365R)

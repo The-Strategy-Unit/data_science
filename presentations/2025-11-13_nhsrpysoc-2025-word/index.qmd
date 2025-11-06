@@ -120,11 +120,15 @@ In R:
 ```r
 populate_template(
   scheme_code = "XYZ",                  # create a report for this scheme
+  site_codes = NULL,                    # NULL will fetch site codes from Azure
   result_sets = get_nhp_result_sets(),  # fetch results metadata from Azure
-  run_stages = list(                    # list the tagged model runs
+  run_stages = list(                    # provide tagged model runs from Azure metadata...
     primary = "final_report_ndg2",      # main data source for the report
     secondary = "final_report_ndg1"     # used as a comparator
-  )
+  ),
+  scenario_files = NULL,                # ...or provide arbitrary results filepaths
+  template_path = NULL,                 # NULL to read from SharePoint
+  report_type = "final"                 # or 'addendum'
 )
 ```
 

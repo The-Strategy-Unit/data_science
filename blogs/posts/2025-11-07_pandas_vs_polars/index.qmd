@@ -29,6 +29,12 @@ Polars has been frequently discussed as a possible improvement over Pandas. With
 
 In this article, we'll share our experience reimplementing one of our core data processing modules from Pandas to Polars, including the challenges we faced, the benefits we've seen, and lessons learned along the way.
 
+::: {layout-ncol=2}
+![Panda](./Rolling-Panda-1647869962.gif){height="200px"}
+
+![Polar bears](./playful-polar-bear-cubs.gif){height="200px"}
+:::
+
 ## Background: The Detailed Results Processing Challenge
 
 The module we chose for our first Polars implementation was our detailed results processor. This critical component takes full model results and produces detailed aggregations of expected hospital activity across inpatient (IP), outpatient (OP), and Accident & Emergency (A&E) services.
@@ -377,9 +383,7 @@ Maintain clear documentation about the differences between your Pandas and Polar
 
 ## Conclusion
 
-Our experiment, transforming our detailed results processor from Pandas-based to Polars has been didactic and positive. The performance improvements have allowed us to process larger datasets more quickly, enabling more complex analyses and faster turnaround times for our stakeholders.
-
-While there was certainly a learning curve and some implementation challenges, the benefits have outweighed the costs. The more modern, explicit API of Polars has also improved the readability and maintainability of our code.
+Our experiment, transforming our detailed results processor from Pandas-based to Polars has been didactic and positive. The expression-based API is more readable, making our code more maintainable and readable. As a bonus, our pipeline can run faster -especially when processing larger datasets.
 
 For teams working with large datasets, particularly those experiencing performance bottlenecks with Pandas, Polars represents a compelling alternative that maintains much of the familiar dataframe paradigm while delivering measurable performance improvements.
 

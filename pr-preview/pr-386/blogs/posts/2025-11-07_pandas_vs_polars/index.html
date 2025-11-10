@@ -444,6 +444,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Like many data science teams, we’ve relied heavily on Pandas -Python’s well established standard for data processing. It’s familiar and extensively documented. However, as we’ve scaled up our operations, we’ve encountered performance bottlenecks that motivated us to seek more efficient solutions.</p>
 <p>Polars has been frequently discussed as a possible improvement over Pandas. With language bindings for three languages -<a href="https://docs.rs/polars/latest/polars/">Rust</a>, <a href="https://pola-rs.github.io/nodejs-polars/">Node.js/Deno backend</a> &amp; <a href="https://github.com/pola-rs/js-polars">frontend</a>, <a href="https://docs.pola.rs/api/python/stable/reference/index.html">Python</a>- and two execution modes i.e.&nbsp;<a href="https://docs.pola.rs/user-guide/concepts/lazy-api/">lazy</a> and eager, Polars provides more flexibility in implementation and potential performance gains.</p>
 <p>In this article, we’ll share our experience reimplementing one of our core data processing modules from Pandas to Polars, including the challenges we faced, the benefits we’ve seen, and lessons learned along the way.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./Rolling-Panda-1647869962.gif" height="200" class="figure-img"></p>
+<figcaption>Panda</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./playful-polar-bear-cubs.gif" height="200" class="figure-img"></p>
+<figcaption>Polar bears</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="background-the-detailed-results-processing-challenge" class="level2">
 <h2 class="anchored" data-anchor-id="background-the-detailed-results-processing-challenge">Background: The Detailed Results Processing Challenge</h2>
@@ -472,7 +492,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="code-organisation">Code Organisation</h3>
 <p>One of the first things you’ll notice when comparing the implementations is how the Polars version breaks down complex operations into smaller, more focused functions:</p>
 <p><strong>Pandas (Monolithic Functions):</strong></p>
-<div id="45e49ef7" class="cell">
+<div id="dc4bea96" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _process_inpatient_results(</span>
@@ -489,7 +509,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 </div>
 <p><strong>Polars (Granular Functions):</strong></p>
-<div id="b1d7084f" class="cell">
+<div id="76f71e62" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _process_inpatient_results(</span>
@@ -529,7 +549,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="data-loading-and-joining">Data Loading and Joining</h4>
 <p>Here, the difference between the two implementations is fairly subtle, showcasing that switching between the two APIs doesn’t always increase the learning curve:</p>
 <p><strong>Pandas:</strong></p>
-<div id="019fb284" class="cell">
+<div id="f1c088dd" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load and merge data</span></span>
@@ -540,7 +560,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 </div>
 <p><strong>Polars:</strong></p>
-<div id="a58301b9" class="cell">
+<div id="5685d542" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load and join data</span></span>
@@ -556,7 +576,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="null-handling">Null Handling</h4>
 <p>Null handling differs significantly:</p>
 <p><strong>Pandas:</strong></p>
-<div id="7db2d108" class="cell">
+<div id="16a4c897" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fill missing values</span></span>
@@ -564,7 +584,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 </div>
 <p><strong>Polars:</strong></p>
-<div id="7dc49e8c" class="cell">
+<div id="3ab9c487" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fill null values with more explicit control</span></span>
@@ -585,7 +605,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="data-aggregation-and-filtering">Data Aggregation and Filtering</h4>
 <p>Data filtering and aggregation show some of the most significant syntax differences:</p>
 <p><strong>Pandas:</strong></p>
-<div id="33920c0f" class="cell">
+<div id="9b1115a8" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract a specific value</span></span>
@@ -610,7 +630,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 </div>
 <p><strong>Polars:</strong></p>
-<div id="d6f548e2" class="cell">
+<div id="d8de8681" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the same value with explicit filtering</span></span>
@@ -627,7 +647,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="lazy-evaluation">Lazy Evaluation</h4>
 <p>As mentioned in the introduction, one of Polars’ key features is its support for lazy evaluation, which enables query optimisation:</p>
 <p><strong>Pandas:</strong></p>
-<div id="000e511f" class="cell">
+<div id="ec3db270" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Each operation executes immediately</span></span>
@@ -640,7 +660,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 </div>
 <p><strong>Polars:</strong></p>
-<div id="06dba692" class="cell">
+<div id="f71ed0f3" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Builds an execution plan that can be optimised</span></span>
@@ -660,7 +680,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="memory-management">Memory Management</h3>
 <p>Both implementations are designed to manage memory, but with fundamental differences in how data is stored and processed:</p>
 <p><strong>Pandas:</strong></p>
-<div id="fe96f972" class="cell">
+<div id="58e995c4" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Choose batch size and load with caching</span></span>
@@ -680,7 +700,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 </div>
 <p><strong>Polars:</strong></p>
-<div id="45b2327c" class="cell">
+<div id="4a0b9494" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Similar batch loading pattern</span></span>
@@ -714,7 +734,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Pandas and Polars differ significantly in how they handle types and expressions. Polars uses a <a href="https://deepwiki.com/pola-rs/polars/6-type-system">strongly-typed system</a> based on Apache Arrow’s type system, while Pandas handles types more implicitly.</p>
 <p>Polars’ expression system (with <code>pl.col()</code> syntax) is a core part of its design, allowing for clear, composable operations that the query optimiser can understand and optimise:</p>
 <p><strong>Explicit Null Checking:</strong></p>
-<div id="6fcaca1e" class="cell">
+<div id="7ba7d73c" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count rows with empty sitetret for validation</span></span>
@@ -726,7 +746,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 </div>
 <p><strong>Type System Consistency:</strong></p>
-<div id="c22d9d82" class="cell">
+<div id="9c864dc6" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure consistent numerical representation for statistics</span></span>
@@ -797,8 +817,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="conclusion" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>Our experiment, transforming our detailed results processor from Pandas-based to Polars has been didactic and positive. The performance improvements have allowed us to process larger datasets more quickly, enabling more complex analyses and faster turnaround times for our stakeholders.</p>
-<p>While there was certainly a learning curve and some implementation challenges, the benefits have outweighed the costs. The more modern, explicit API of Polars has also improved the readability and maintainability of our code.</p>
+<p>Our experiment, transforming our detailed results processor from Pandas-based to Polars has been didactic and positive. The expression-based API is more readable, making our code more maintainable and readable. As a bonus, our pipeline can run faster -especially when processing larger datasets.</p>
 <p>For teams working with large datasets, particularly those experiencing performance bottlenecks with Pandas, Polars represents a compelling alternative that maintains much of the familiar dataframe paradigm while delivering measurable performance improvements.</p>
 <p>We’re continuing to investigate ways to improve our codebase, its speed of execution, memory and overall efficiency, and looking forward to leveraging more effective approaches that’ll render our code even more powerful.</p>
 <hr>

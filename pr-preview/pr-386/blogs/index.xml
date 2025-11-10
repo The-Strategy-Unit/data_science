@@ -10,7 +10,786 @@
 <atom:link href="https://the-strategy-unit.github.io/data_science/blogs/index.xml" rel="self" type="application/rss+xml"/>
 <description>Blogs from the Data Science Team at The Strategy Unit</description>
 <generator>quarto-1.8.25</generator>
-<lastBuildDate>Thu, 18 Sep 2025 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Fri, 07 Nov 2025 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Pandas vs. Polars</title>
+  <link>https://the-strategy-unit.github.io/data_science/blogs/posts/2025-11-07_pandas_vs_polars/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Data processing is at the heart of our work at the Strategy Unit. As our datasets have grown and NHP model has become more complex, we’ve found that our pipeline takes longer to complete.</p>
+<p>Like many data science teams, we’ve relied heavily on Pandas -Python’s well established standard for data processing. It’s familiar and extensively documented. However, as we’ve scaled up our operations, we’ve encountered performance bottlenecks that motivated us to seek more efficient solutions.</p>
+<p>Polars has been frequently discussed as a possible improvement over Pandas. With language bindings for three languages -<a href="https://docs.rs/polars/latest/polars/">Rust</a>, <a href="https://pola-rs.github.io/nodejs-polars/">Node.js/Deno backend</a> &amp; <a href="https://github.com/pola-rs/js-polars">frontend</a>, <a href="https://docs.pola.rs/api/python/stable/reference/index.html">Python</a>- and two execution modes i.e.&nbsp;<a href="https://docs.pola.rs/user-guide/concepts/lazy-api/">lazy</a> and eager, Polars provides more flexibility in implementation and potential performance gains.</p>
+<p>In this article, we’ll share our experience reimplementing one of our core data processing modules from Pandas to Polars, including the challenges we faced, the benefits we’ve seen, and lessons learned along the way.</p>
+</section>
+<section id="background-the-detailed-results-processing-challenge" class="level2">
+<h2 class="anchored" data-anchor-id="background-the-detailed-results-processing-challenge">Background: The Detailed Results Processing Challenge</h2>
+<p>The module we chose for our first Polars implementation was our detailed results processor. This critical component takes full model results and produces detailed aggregations of expected hospital activity across inpatient (IP), outpatient (OP), and Accident &amp; Emergency (A&amp;E) services.</p>
+<p>The processing involves:</p>
+<ol type="1">
+<li>Loading hundreds of results from Azure storage</li>
+<li>Merging these with reference datasets</li>
+<li>Processing 256 Monte Carlo simulation runs</li>
+<li>Aggregating the results into statistical summaries</li>
+<li>Validating the outputs against aggregated results</li>
+<li>Saving the final results as both CSV and Parquet files</li>
+</ol>
+<p>This workload is particularly demanding because:</p>
+<ul>
+<li>Each run processes thousands of records</li>
+<li>The full pipeline handles 256 separate runs (for statistical robustness)</li>
+<li>Memory consumption grows substantially during processing</li>
+<li>The reference datasets contain multiple categorical dimensions for analysis</li>
+</ul>
+<p>Let’s look at how the implementations differ between our original Pandas version and the new Polars version.</p>
+</section>
+<section id="implementation-comparison" class="level2">
+<h2 class="anchored" data-anchor-id="implementation-comparison">Implementation Comparison</h2>
+<section id="code-organisation" class="level3">
+<h3 class="anchored" data-anchor-id="code-organisation">Code Organisation</h3>
+<p>One of the first things you’ll notice when comparing the implementations is how the Polars version breaks down complex operations into smaller, more focused functions:</p>
+<p><strong>Pandas (Monolithic Functions):</strong></p>
+<div id="45e49ef7" class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> _process_inpatient_results(</span>
+<span id="cb1-2">    ctx: ProcessContext,</span>
+<span id="cb1-3">    output_dir: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>,</span>
+<span id="cb1-4">) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-&gt;</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>:</span>
+<span id="cb1-5">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Function contains ~150 lines handling everything from:</span></span>
+<span id="cb1-6">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># - Data loading</span></span>
+<span id="cb1-7">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># - Reference preparation</span></span>
+<span id="cb1-8">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># - Results processing for all runs</span></span>
+<span id="cb1-9">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># - Dictionary aggregation</span></span>
+<span id="cb1-10">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># - Validation and saving</span></span>
+<span id="cb1-11">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ...</span></span></code></pre></div></div>
+</details>
+</div>
+<p><strong>Polars (Granular Functions):</strong></p>
+<div id="b1d7084f" class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> _process_inpatient_results(</span>
+<span id="cb2-2">    ctx: ProcessContext,</span>
+<span id="cb2-3">    output_dir: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>,</span>
+<span id="cb2-4">) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-&gt;</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>:</span>
+<span id="cb2-5">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Higher-level orchestration (~40 lines)</span></span>
+<span id="cb2-6">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ...</span></span>
+<span id="cb2-7"></span>
+<span id="cb2-8"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> _load_ip_reference_data(ctx: ProcessContext) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-&gt;</span> pl.DataFrame:</span>
+<span id="cb2-9">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Focused on just loading reference data (~15 lines)</span></span>
+<span id="cb2-10">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ...</span></span>
+<span id="cb2-11"></span>
+<span id="cb2-12"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> _process_ip_run(</span>
+<span id="cb2-13">    run: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>,</span>
+<span id="cb2-14">    reference_df: pl.DataFrame,</span>
+<span id="cb2-15">    params: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">dict</span>,</span>
+<span id="cb2-16">    model_runs: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">dict</span>,</span>
+<span id="cb2-17">    ip_columns: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">list</span>[<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>],</span>
+<span id="cb2-18">) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-&gt;</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>:</span>
+<span id="cb2-19">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Processes a single run only (~30 lines)</span></span>
+<span id="cb2-20">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ...</span></span>
+<span id="cb2-21"></span>
+<span id="cb2-22"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> _validate_ip_results(</span>
+<span id="cb2-23">    model_runs_df: pl.DataFrame,</span>
+<span id="cb2-24">    actual_results_df: pl.DataFrame</span>
+<span id="cb2-25">) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-&gt;</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>:</span>
+<span id="cb2-26">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Focused validation logic (~20 lines)</span></span>
+<span id="cb2-27">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ...</span></span></code></pre></div></div>
+</details>
+</div>
+<p>This modular approach is more of a design choice, in the context of continually improving our codebase, rather than a Polars-specific trait. Following a more modular approach in the Polars implementation aims at making the code clearer, easier to test, and maintain. Each function has a single responsibility rather than handling multiple concerns.</p>
+</section>
+<section id="syntax-and-api-differences" class="level3">
+<h3 class="anchored" data-anchor-id="syntax-and-api-differences">Syntax and API Differences</h3>
+<section id="data-loading-and-joining" class="level4">
+<h4 class="anchored" data-anchor-id="data-loading-and-joining">Data Loading and Joining</h4>
+<p>Here, the difference between the two implementations is fairly subtle, showcasing that switching between the two APIs doesn’t always increase the learning curve:</p>
+<p><strong>Pandas:</strong></p>
+<div id="019fb284" class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Load and merge data</span></span>
+<span id="cb3-2">original_df <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> az.load_data_file(data_connection, model_version_data, trust, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ip"</span>, baseline_year)</span>
+<span id="cb3-3">reference_df <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> original_df.copy().drop(columns<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"speldur"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"classpat"</span>])</span>
+<span id="cb3-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ...</span></span>
+<span id="cb3-5">merged <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> reference_df.merge(df, on<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"rn"</span>, how<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"inner"</span>)</span></code></pre></div></div>
+</details>
+</div>
+<p><strong>Polars:</strong></p>
+<div id="a58301b9" class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Load and join data</span></span>
+<span id="cb4-2">original_df <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> az_pl.load_data_file(data_connection, model_version_data, trust, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ip"</span>, baseline_year)</span>
+<span id="cb4-3">reference_df <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> original_df.drop([<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"speldur"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"classpat"</span>])</span>
+<span id="cb4-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ...</span></span>
+<span id="cb4-5">merged <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> reference_df.join(df, on<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"rn"</span>, how<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"inner"</span>)</span></code></pre></div></div>
+</details>
+</div>
+<p>The Polars version uses the more intuitive <code>.join()</code> method instead of <code>.merge()</code>, other than that the two implementations align pretty well with the exception of not creating a DataFrame copy.</p>
+</section>
+<section id="null-handling" class="level4">
+<h4 class="anchored" data-anchor-id="null-handling">Null Handling</h4>
+<p>Null handling differs significantly:</p>
+<p><strong>Pandas:</strong></p>
+<div id="7db2d108" class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Fill missing values</span></span>
+<span id="cb5-2">original_df <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> az.load_data_file(...).fillna(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"unknown"</span>)</span></code></pre></div></div>
+</details>
+</div>
+<p><strong>Polars:</strong></p>
+<div id="7dc49e8c" class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Fill null values with more explicit control</span></span>
+<span id="cb6-2">original_df <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> az_pl.load_data_file(...)</span>
+<span id="cb6-3">original_df <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> original_df.with_columns(</span>
+<span id="cb6-4">    [</span>
+<span id="cb6-5">        pl.col(col).map_elements(</span>
+<span id="cb6-6">            <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">lambda</span> x: <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> x <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">""</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">else</span> x, return_dtype<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>pl.Utf8</span>
+<span id="cb6-7">        )</span>
+<span id="cb6-8">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> col <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> original_df.select(pl.col(pl.Utf8)).columns</span>
+<span id="cb6-9">    ]</span>
+<span id="cb6-10">).fill_null(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"unknown"</span>)</span></code></pre></div></div>
+</details>
+</div>
+<p>While the Polars version is more verbose here, it offers greater precision and control over missing data handling. <a href="https://docs.pola.rs/user-guide/expressions/missing-data/">Missing data</a> are typically represented by a single value (<code>null</code>) in Polars, in contrast to Pandas’ dual approach. Our code explicitly converts empty strings to <code>None</code> before filling with “unknown”. This addresses a fundamental difference between the libraries: Pandas represents missing values as <code>NaN</code> (for numeric types) or <code>None</code> (for other types), while Polars uses a single <code>null</code> value for all types. By standardising the treatment of missing values, we ensure consistent results across both implementations. This consistency is important during validation, where we verify that both versions produce identical outputs.</p>
+</section>
+<section id="data-aggregation-and-filtering" class="level4">
+<h4 class="anchored" data-anchor-id="data-aggregation-and-filtering">Data Aggregation and Filtering</h4>
+<p>Data filtering and aggregation show some of the most significant syntax differences:</p>
+<p><strong>Pandas:</strong></p>
+<div id="33920c0f" class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Extract a specific value</span></span>
+<span id="cb7-2">detailed_beddays_principal <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> (</span>
+<span id="cb7-3">    model_runs_df.loc[</span>
+<span id="cb7-4">        (</span>
+<span id="cb7-5">            <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">slice</span>(<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>),</span>
+<span id="cb7-6">            <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">slice</span>(<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>),</span>
+<span id="cb7-7">            <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">slice</span>(<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>),</span>
+<span id="cb7-8">            <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">slice</span>(<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>),</span>
+<span id="cb7-9">            <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">slice</span>(<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>),</span>
+<span id="cb7-10">            <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">slice</span>(<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>),</span>
+<span id="cb7-11">            <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">slice</span>(<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>),</span>
+<span id="cb7-12">            <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"beddays"</span>,</span>
+<span id="cb7-13">        ),</span>
+<span id="cb7-14">        :,</span>
+<span id="cb7-15">    ]</span>
+<span id="cb7-16">    .<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">sum</span>()</span>
+<span id="cb7-17">    .loc[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"mean"</span>]</span>
+<span id="cb7-18">    .astype(<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>)</span>
+<span id="cb7-19">)</span></code></pre></div></div>
+</details>
+</div>
+<p><strong>Polars:</strong></p>
+<div id="d6f548e2" class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Extract the same value with explicit filtering</span></span>
+<span id="cb8-2">detailed_beddays_principal <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>(</span>
+<span id="cb8-3">    model_runs_df.<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">filter</span>(pl.col(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"measure"</span>) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"beddays"</span>)</span>
+<span id="cb8-4">    .select(pl.col(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"mean"</span>).<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">sum</span>())</span>
+<span id="cb8-5">    .item()</span>
+<span id="cb8-6">)</span></code></pre></div></div>
+</details>
+</div>
+<p>The Polars version is more compact, enhancing readability, with an SQL-like syntax that expresses the intent.</p>
+</section>
+<section id="lazy-evaluation" class="level4">
+<h4 class="anchored" data-anchor-id="lazy-evaluation">Lazy Evaluation</h4>
+<p>As mentioned in the introduction, one of Polars’ key features is its support for lazy evaluation, which enables query optimisation:</p>
+<p><strong>Pandas:</strong></p>
+<div id="000e511f" class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Each operation executes immediately</span></span>
+<span id="cb9-2">result <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> (</span>
+<span id="cb9-3">    df[df[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"measure"</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"beddays"</span>]</span>
+<span id="cb9-4">    .groupby([<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"sitetret"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"age_group"</span>])</span>
+<span id="cb9-5">    .agg({<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"value"</span>: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"sum"</span>})</span>
+<span id="cb9-6">    .reset_index()</span>
+<span id="cb9-7">)</span></code></pre></div></div>
+</details>
+</div>
+<p><strong>Polars:</strong></p>
+<div id="06dba692" class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Builds an execution plan that can be optimised</span></span>
+<span id="cb10-2">result <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> (</span>
+<span id="cb10-3">    df.lazy()</span>
+<span id="cb10-4">    .<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">filter</span>(pl.col(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"measure"</span>) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"beddays"</span>)</span>
+<span id="cb10-5">    .groupby([<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"sitetret"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"age_group"</span>])</span>
+<span id="cb10-6">    .agg(pl.col(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"value"</span>).<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">sum</span>())</span>
+<span id="cb10-7">    .collect()  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Only executes the plan when needed</span></span>
+<span id="cb10-8">)</span></code></pre></div></div>
+</details>
+</div>
+<p>Lazy evaluation allows Polars to analyse and optimise the entire query before execution, often resulting in better performance for complex operations. The <a href="https://docs.pola.rs/user-guide/migration/pandas/#polars-can-lazily-evaluate-queries-and-apply-query-optimization">query optimisation engine</a> can eliminate redundant steps, reorder operations, and make better use of available resources (e.g.&nbsp;pushing filter operations before joins to reduce memory usage, combining consecutive transformations, or parallelising independent operations across multiple CPU cores).</p>
+</section>
+</section>
+<section id="memory-management" class="level3">
+<h3 class="anchored" data-anchor-id="memory-management">Memory Management</h3>
+<p>Both implementations are designed to manage memory, but with fundamental differences in how data is stored and processed:</p>
+<p><strong>Pandas:</strong></p>
+<div id="fe96f972" class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Choose batch size and load with caching</span></span>
+<span id="cb11-2">batch_size <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">30</span>  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Balance between memory usage and I/O performance</span></span>
+<span id="cb11-3">df <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> az.load_model_run_results_file(</span>
+<span id="cb11-4">    container_client<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>results_connection,</span>
+<span id="cb11-5">    params<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>{</span>
+<span id="cb11-6">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ... parameters</span></span>
+<span id="cb11-7">        <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"batch_size"</span>: batch_size,  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># This enables batch loading</span></span>
+<span id="cb11-8">    },</span>
+<span id="cb11-9">)</span>
+<span id="cb11-10"></span>
+<span id="cb11-11"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Clean up memory</span></span>
+<span id="cb11-12"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">del</span> model_runs_df, model_runs, original_df, reference_df</span>
+<span id="cb11-13">gc.collect()</span>
+<span id="cb11-14">logger.info(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"Memory cleaned after IP processing, current usage: </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>get_memory_usage()<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:.2f}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> MB"</span>)</span></code></pre></div></div>
+</details>
+</div>
+<p><strong>Polars:</strong></p>
+<div id="45b2327c" class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Similar batch loading pattern</span></span>
+<span id="cb12-2">batch_size <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span>  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Note larger batch size than Pandas</span></span>
+<span id="cb12-3">df <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> az_pl.load_model_run_results_file(</span>
+<span id="cb12-4">    container_client<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>results_connection,</span>
+<span id="cb12-5">    params<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>{</span>
+<span id="cb12-6">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ... parameters</span></span>
+<span id="cb12-7">        <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"batch_size"</span>: batch_size,</span>
+<span id="cb12-8">    },</span>
+<span id="cb12-9">)</span>
+<span id="cb12-10"></span>
+<span id="cb12-11"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Similar memory clean-up</span></span>
+<span id="cb12-12"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> _clean_ip_memory(</span>
+<span id="cb12-13">    model_runs_df: pl.DataFrame,</span>
+<span id="cb12-14">    model_runs: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">dict</span>,</span>
+<span id="cb12-15">    original_df: pl.DataFrame,</span>
+<span id="cb12-16">    reference_df: pl.DataFrame,</span>
+<span id="cb12-17">) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-&gt;</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>:</span>
+<span id="cb12-18">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">del</span> model_runs_df, model_runs, original_df, reference_df</span>
+<span id="cb12-19">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ... cache clearing and collection</span></span>
+<span id="cb12-20">    gc.collect()</span>
+<span id="cb12-21">    logger.debug(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"Memory cleaned after IP processing, current usage: </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>get_memory_usage()<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:.2f}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> MB"</span>)</span></code></pre></div></div>
+</details>
+</div>
+<p>A key difference is that Polars uses <a href="https://docs.pola.rs/user-guide/migration/pandas/#memory-format">Apache Arrow’s columnar memory format</a>, which is more memory-efficient than Pandas’ row-based storage, particularly for operations that work on specific columns rather than entire rows. This format allows Polars to handle a larger batch size without increasing memory pressure.</p>
+<p>Both implementations explicitly clean up memory, with the Polars version extracting this into a dedicated function for improved code organisation.</p>
+</section>
+<section id="type-handling-and-expression-system" class="level3">
+<h3 class="anchored" data-anchor-id="type-handling-and-expression-system">Type Handling and Expression System</h3>
+<p>Pandas and Polars differ significantly in how they handle types and expressions. Polars uses a <a href="https://deepwiki.com/pola-rs/polars/6-type-system">strongly-typed system</a> based on Apache Arrow’s type system, while Pandas handles types more implicitly.</p>
+<p>Polars’ expression system (with <code>pl.col()</code> syntax) is a core part of its design, allowing for clear, composable operations that the query optimiser can understand and optimise:</p>
+<p><strong>Explicit Null Checking:</strong></p>
+<div id="6fcaca1e" class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Count rows with empty sitetret for validation</span></span>
+<span id="cb13-2">empty_sitetret_count <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> results.<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">filter</span>(</span>
+<span id="cb13-3">    pl.col(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"sitetret"</span>).is_null() <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|</span> (pl.col(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"sitetret"</span>) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">""</span>)</span>
+<span id="cb13-4">).height</span>
+<span id="cb13-5"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> empty_sitetret_count <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>:</span>
+<span id="cb13-6">    logger.debug(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"Found </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>empty_sitetret_count<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> rows with empty sitetret in run </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>run<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span></code></pre></div></div>
+</details>
+</div>
+<p><strong>Type System Consistency:</strong></p>
+<div id="c22d9d82" class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Ensure consistent numerical representation for statistics</span></span>
+<span id="cb14-2">op_model_runs_df <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> op_model_runs_df.with_columns(</span>
+<span id="cb14-3">    [</span>
+<span id="cb14-4">        pl.col(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lwr_ci"</span>).fill_nan(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.0</span>),</span>
+<span id="cb14-5">        pl.col(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"median"</span>).fill_nan(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.0</span>),</span>
+<span id="cb14-6">        pl.col(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"mean"</span>).fill_nan(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.0</span>),</span>
+<span id="cb14-7">        pl.col(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"upr_ci"</span>).fill_nan(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.0</span>),</span>
+<span id="cb14-8">    ]</span>
+<span id="cb14-9">)</span></code></pre></div></div>
+</details>
+</div>
+<p>These examples demonstrate how Polars requires explicit handling of <code>null</code>s and <code>NaN</code> values, in contrast to Pandas’ more implicit approach. This explicitness, while slightly more verbose, helps prevent subtle bugs that can occur with implicit type conversions.</p>
+</section>
+</section>
+<section id="performance-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="performance-benefits">Performance Benefits</h2>
+<p>The most compelling reason to switch from Pandas to Polars is its columnar storage, expression-based API, and query optimisation engine. In our benchmarks, we measured total execution time <em>including</em> I/O operations (reading from Azure Blob Storage and writing to local files), providing a realistic picture of performance in production environments. Our experience reimplementing our Pandas code to Polars taught us that:</p>
+<ol type="1">
+<li><p><strong>Processing Speed</strong>: Our Polars implementation, without any additional optimisations that might increase performance, is more than 32% faster than its Pandas counterpart. Our benchmark included I/O time in speed calculations, which relies on Azure and network speed as well as computational performance of the specific machine used to perform this benchmark. Therefore, with the benefit of hindsight, introducing better separation of concerns such as benchmarking dataframe operations <em>separately</em> from loading data from Azure Blob Storage would likely yield even better performance gains. The Polars team’s <a href="https://pola.rs/posts/benchmarks/">comprehensive benchmarks</a> confirm its improved performance across a wide range of operations.</p></li>
+<li><p><strong>I/O Performance</strong>: The Polars implementation handles file operations more efficiently, particularly when loading and saving Parquet files, as it’s designed to work natively with the Apache Arrow format.</p></li>
+<li><p><strong>Parallel Processing</strong>: Polars automatically utilises multiple CPU cores by default, whereas Pandas operations are typically single-threaded. While we haven’t explicitly configured parallel execution in our implementation, we benefit from this feature automatically.</p></li>
+<li><p><strong>Larger-than-RAM Processing</strong>: Polars can <a href="https://github.com/pola-rs/polars#handles-larger-than-ram-data">handle datasets larger than available RAM</a> through its lazy API and streaming engine. This is crucial for our future work as healthcare datasets continue to grow in size and complexity.</p></li>
+<li><p><strong>Lightweight Dependencies</strong>: Unlike Pandas, which depends on NumPy and several other libraries, Polars is certainly <a href="https://github.com/pola-rs/polars#lightweight">more lightweight</a> with no Python dependencies. This makes deployment simpler and reduces potential version conflicts in complex projects.</p></li>
+</ol>
+<p>For context, processing a typical scenario with 256 runs that previously took about 57 minutes with Pandas now completes in 38 minutes with Polars, with basic Polars API knowledge.</p>
+</section>
+<section id="trade-offs-and-considerations" class="level2">
+<h2 class="anchored" data-anchor-id="trade-offs-and-considerations">Trade-offs and Considerations</h2>
+<p>Despite the clear performance advantages, there are some trade-offs to consider:</p>
+<section id="learning-curve" class="level3">
+<h3 class="anchored" data-anchor-id="learning-curve">Learning Curve</h3>
+<p>Polars has a different API than Pandas, requiring time for teams to adjust. While many operations are similar, there are enough differences to necessitate a learning period.</p>
+</section>
+<section id="ecosystem-integration" class="level3">
+<h3 class="anchored" data-anchor-id="ecosystem-integration">Ecosystem Integration</h3>
+<p>Pandas integrates seamlessly with libraries such as NumPy, Scikit-Learn and Matplotlib, which are foundational for Data Science and Machine Learning work. Polars’ <a href="https://docs.pola.rs/user-guide/ecosystem/">ecosystem integration</a> shouldn’t be a concern at this stage, given its wider support for third party libraries and its stable API.</p>
+</section>
+<section id="small-dataset-performance" class="level3">
+<h3 class="anchored" data-anchor-id="small-dataset-performance">Small Dataset Performance</h3>
+<p>For smaller datasets -fewer than a few tens of thousands of rows, the performance advantage of Polars is less pronounced and sometimes negligible. The overhead of setting up optimised execution can actually make Polars slightly slower for smaller scale operations.</p>
+</section>
+</section>
+<section id="practical-advice-for-adoption" class="level2">
+<h2 class="anchored" data-anchor-id="practical-advice-for-adoption">Practical Advice for Adoption</h2>
+<p>Based on our experience, here are some recommendations for teams considering a similar transition:</p>
+<section id="start-with-non-critical-components" class="level3">
+<h3 class="anchored" data-anchor-id="start-with-non-critical-components">Start with Non-Critical Components</h3>
+<p>Begin your Polars adoption with non-critical data processing components where you can thoroughly test and validate outputs against your existing Pandas implementation.</p>
+</section>
+<section id="incremental-migration" class="level3">
+<h3 class="anchored" data-anchor-id="incremental-migration">Incremental Migration</h3>
+<p>Rather than rewriting entire systems at once, migrate components incrementally. Our approach of maintaining both implementations side by side allowed for a detailed comparison that can lead to an informed decision.</p>
+</section>
+<section id="validate-validate-validate" class="level3">
+<h3 class="anchored" data-anchor-id="validate-validate-validate">Validate, Validate, Validate</h3>
+<p>Implement rigorous validation to ensure the Polars implementation produces identical (or appropriately similar) results to your Pandas code. We found tiny discrepancies due to the difference in handling missing data that needed to be addressed.</p>
+</section>
+<section id="review-memory-management" class="level3">
+<h3 class="anchored" data-anchor-id="review-memory-management">Review Memory Management</h3>
+<p>Polars handles memory differently than Pandas. Review your memory management practices and consider Polars’ lazy evaluation capabilities for very large datasets.</p>
+</section>
+<section id="keep-documentation-updated" class="level3">
+<h3 class="anchored" data-anchor-id="keep-documentation-updated">Keep Documentation Updated</h3>
+<p>Maintain clear documentation about the differences between your Pandas and Polars implementations, particularly regarding API differences and performance characteristics.</p>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Our experiment, transforming our detailed results processor from Pandas-based to Polars has been didactic and positive. The performance improvements have allowed us to process larger datasets more quickly, enabling more complex analyses and faster turnaround times for our stakeholders.</p>
+<p>While there was certainly a learning curve and some implementation challenges, the benefits have outweighed the costs. The more modern, explicit API of Polars has also improved the readability and maintainability of our code.</p>
+<p>For teams working with large datasets, particularly those experiencing performance bottlenecks with Pandas, Polars represents a compelling alternative that maintains much of the familiar dataframe paradigm while delivering measurable performance improvements.</p>
+<p>We’re continuing to investigate ways to improve our codebase, its speed of execution, memory and overall efficiency, and looking forward to leveraging more effective approaches that’ll render our code even more powerful.</p>
+<hr>
+<p><em>This blog post reflects the experience of the Strategy Unit’s Data Science team in implementing Polars for detailed results processing. The performance improvements mentioned are specific to our workloads and may vary depending on your specific use case.</em></p>
+
+
+</section>
+
+ ]]></description>
+  <category>Python</category>
+  <category>Data Science</category>
+  <category>Performance</category>
+  <guid>https://the-strategy-unit.github.io/data_science/blogs/posts/2025-11-07_pandas_vs_polars/</guid>
+  <pubDate>Fri, 07 Nov 2025 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Verifying Git Commits</title>
   <link>https://the-strategy-unit.github.io/data_science/blogs/posts/2025-09-18_verifying_git_commits/</link>
@@ -169,785 +948,6 @@ I wanted a quick and easy way to switch between projects, and have found the Pro
   <category>Positron</category>
   <category>Git</category>
   <guid>https://the-strategy-unit.github.io/data_science/blogs/posts/2025-09-09_positron_for_product/</guid>
-  <pubDate>Tue, 09 Sep 2025 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Pandas vs. Polars</title>
-  <link>https://the-strategy-unit.github.io/data_science/blogs/posts/2025-11-07_pandas_vs_polars/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>Data processing is at the heart of our work at the Strategy Unit. As our datasets have grown and NHP model has become more complex, we’ve found that our pipeline takes longer to complete.</p>
-<p>Like many data science teams, we’ve relied heavily on Pandas -Python’s well established standard for data processing. It’s familiar and extensively documented. However, as we’ve scaled up our operations, we’ve encountered performance bottlenecks that motivated us to seek more efficient solutions.</p>
-<p>Polars has been frequently discussed as a possible improvement over Pandas. With language bindings for three languages -<a href="https://docs.rs/polars/latest/polars/">Rust</a>, <a href="https://pola-rs.github.io/nodejs-polars/">Node.js/Deno backend</a> &amp; <a href="https://github.com/pola-rs/js-polars">frontend</a>, <a href="https://docs.pola.rs/api/python/stable/reference/index.html">Python</a>- and two execution modes i.e.&nbsp;<a href="https://docs.pola.rs/user-guide/concepts/lazy-api/">lazy</a> and eager, Polars provides more flexibility in implementation and potential performance gains.</p>
-<p>In this article, we’ll share our experience reimplementing one of our core data processing modules from Pandas to Polars, including the challenges we faced, the benefits we’ve seen, and lessons learned along the way.</p>
-</section>
-<section id="background-the-detailed-results-processing-challenge" class="level2">
-<h2 class="anchored" data-anchor-id="background-the-detailed-results-processing-challenge">Background: The Detailed Results Processing Challenge</h2>
-<p>The module we chose for our first Polars implementation was our detailed results processor. This critical component takes full model results and produces detailed aggregations of expected hospital activity across inpatient (IP), outpatient (OP), and Accident &amp; Emergency (A&amp;E) services.</p>
-<p>The processing involves:</p>
-<ol type="1">
-<li>Loading hundreds of results from Azure storage</li>
-<li>Merging these with reference datasets</li>
-<li>Processing 256 Monte Carlo simulation runs</li>
-<li>Aggregating the results into statistical summaries</li>
-<li>Validating the outputs against aggregated results</li>
-<li>Saving the final results as both CSV and Parquet files</li>
-</ol>
-<p>This workload is particularly demanding because:</p>
-<ul>
-<li>Each run processes thousands of records</li>
-<li>The full pipeline handles 256 separate runs (for statistical robustness)</li>
-<li>Memory consumption grows substantially during processing</li>
-<li>The reference datasets contain multiple categorical dimensions for analysis</li>
-</ul>
-<p>Let’s look at how the implementations differ between our original Pandas version and the new Polars version.</p>
-</section>
-<section id="implementation-comparison" class="level2">
-<h2 class="anchored" data-anchor-id="implementation-comparison">Implementation Comparison</h2>
-<section id="code-organisation" class="level3">
-<h3 class="anchored" data-anchor-id="code-organisation">Code Organisation</h3>
-<p>One of the first things you’ll notice when comparing the implementations is how the Polars version breaks down complex operations into smaller, more focused functions:</p>
-<p><strong>Pandas (Monolithic Functions):</strong></p>
-<div id="5c71bd74" class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">def</span> _process_inpatient_results(</span>
-<span id="cb1-2">    ctx: ProcessContext,</span>
-<span id="cb1-3">    output_dir: <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">str</span>,</span>
-<span id="cb1-4">) <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-&gt;</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">None</span>:</span>
-<span id="cb1-5">    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Function contains ~150 lines handling everything from:</span></span>
-<span id="cb1-6">    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># - Data loading</span></span>
-<span id="cb1-7">    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># - Reference preparation</span></span>
-<span id="cb1-8">    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># - Results processing for all runs</span></span>
-<span id="cb1-9">    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># - Dictionary aggregation</span></span>
-<span id="cb1-10">    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># - Validation and saving</span></span>
-<span id="cb1-11">    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># ...</span></span></code></pre></div></div>
-</details>
-</div>
-<p><strong>Polars (Granular Functions):</strong></p>
-<div id="95b0be50" class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">def</span> _process_inpatient_results(</span>
-<span id="cb2-2">    ctx: ProcessContext,</span>
-<span id="cb2-3">    output_dir: <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">str</span>,</span>
-<span id="cb2-4">) <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-&gt;</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">None</span>:</span>
-<span id="cb2-5">    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Higher-level orchestration (~40 lines)</span></span>
-<span id="cb2-6">    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># ...</span></span>
-<span id="cb2-7"></span>
-<span id="cb2-8"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">def</span> _load_ip_reference_data(ctx: ProcessContext) <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-&gt;</span> pl.DataFrame:</span>
-<span id="cb2-9">    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Focused on just loading reference data (~15 lines)</span></span>
-<span id="cb2-10">    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># ...</span></span>
-<span id="cb2-11"></span>
-<span id="cb2-12"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">def</span> _process_ip_run(</span>
-<span id="cb2-13">    run: <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">int</span>,</span>
-<span id="cb2-14">    reference_df: pl.DataFrame,</span>
-<span id="cb2-15">    params: <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">dict</span>,</span>
-<span id="cb2-16">    model_runs: <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">dict</span>,</span>
-<span id="cb2-17">    ip_columns: <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">list</span>[<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">str</span>],</span>
-<span id="cb2-18">) <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-&gt;</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">None</span>:</span>
-<span id="cb2-19">    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Processes a single run only (~30 lines)</span></span>
-<span id="cb2-20">    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># ...</span></span>
-<span id="cb2-21"></span>
-<span id="cb2-22"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">def</span> _validate_ip_results(</span>
-<span id="cb2-23">    model_runs_df: pl.DataFrame,</span>
-<span id="cb2-24">    actual_results_df: pl.DataFrame</span>
-<span id="cb2-25">) <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-&gt;</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">None</span>:</span>
-<span id="cb2-26">    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Focused validation logic (~20 lines)</span></span>
-<span id="cb2-27">    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># ...</span></span></code></pre></div></div>
-</details>
-</div>
-<p>This modular approach is more of a design choice, in the context of continually improving our codebase, rather than a Polars-specific trait. Following a more modular approach in the Polars implementation aims at making the code clearer, easier to test, and maintain. Each function has a single responsibility rather than handling multiple concerns.</p>
-</section>
-<section id="syntax-and-api-differences" class="level3">
-<h3 class="anchored" data-anchor-id="syntax-and-api-differences">Syntax and API Differences</h3>
-<section id="data-loading-and-joining" class="level4">
-<h4 class="anchored" data-anchor-id="data-loading-and-joining">Data Loading and Joining</h4>
-<p>Here, the difference between the two implementations is fairly subtle, showcasing that switching between the two APIs doesn’t always increase the learning curve:</p>
-<p><strong>Pandas:</strong></p>
-<div id="68366431" class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Load and merge data</span></span>
-<span id="cb3-2">original_df <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> az.load_data_file(data_connection, model_version_data, trust, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"ip"</span>, baseline_year)</span>
-<span id="cb3-3">reference_df <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> original_df.copy().drop(columns<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>[<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"speldur"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"classpat"</span>])</span>
-<span id="cb3-4"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># ...</span></span>
-<span id="cb3-5">merged <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> reference_df.merge(df, on<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"rn"</span>, how<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"inner"</span>)</span></code></pre></div></div>
-</details>
-</div>
-<p><strong>Polars:</strong></p>
-<div id="5e7b682c" class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Load and join data</span></span>
-<span id="cb4-2">original_df <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> az_pl.load_data_file(data_connection, model_version_data, trust, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"ip"</span>, baseline_year)</span>
-<span id="cb4-3">reference_df <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> original_df.drop([<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"speldur"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"classpat"</span>])</span>
-<span id="cb4-4"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># ...</span></span>
-<span id="cb4-5">merged <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> reference_df.join(df, on<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"rn"</span>, how<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"inner"</span>)</span></code></pre></div></div>
-</details>
-</div>
-<p>The Polars version uses the more intuitive <code>.join()</code> method instead of <code>.merge()</code>, other than that the two implementations align pretty well with the exception of not creating a DataFrame copy.</p>
-</section>
-<section id="null-handling" class="level4">
-<h4 class="anchored" data-anchor-id="null-handling">Null Handling</h4>
-<p>Null handling differs significantly:</p>
-<p><strong>Pandas:</strong></p>
-<div id="5f8b0ce6" class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Fill missing values</span></span>
-<span id="cb5-2">original_df <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> az.load_data_file(...).fillna(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"unknown"</span>)</span></code></pre></div></div>
-</details>
-</div>
-<p><strong>Polars:</strong></p>
-<div id="c05d2b73" class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Fill null values with more explicit control</span></span>
-<span id="cb6-2">original_df <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> az_pl.load_data_file(...)</span>
-<span id="cb6-3">original_df <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> original_df.with_columns(</span>
-<span id="cb6-4">    [</span>
-<span id="cb6-5">        pl.col(col).map_elements(</span>
-<span id="cb6-6">            <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">lambda</span> x: <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">None</span> <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">if</span> x <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">==</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">""</span> <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">else</span> x, return_dtype<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>pl.Utf8</span>
-<span id="cb6-7">        )</span>
-<span id="cb6-8">        <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">for</span> col <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">in</span> original_df.select(pl.col(pl.Utf8)).columns</span>
-<span id="cb6-9">    ]</span>
-<span id="cb6-10">).fill_null(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"unknown"</span>)</span></code></pre></div></div>
-</details>
-</div>
-<p>While the Polars version is more verbose here, it offers greater precision and control over missing data handling. <a href="https://docs.pola.rs/user-guide/expressions/missing-data/">Missing data</a> are typically represented by a single value (<code>null</code>) in Polars, in contrast to Pandas’ dual approach. Our code explicitly converts empty strings to <code>None</code> before filling with “unknown”. This addresses a fundamental difference between the libraries: Pandas represents missing values as <code>NaN</code> (for numeric types) or <code>None</code> (for other types), while Polars uses a single <code>null</code> value for all types. By standardising the treatment of missing values, we ensure consistent results across both implementations. This consistency is important during validation, where we verify that both versions produce identical outputs.</p>
-</section>
-<section id="data-aggregation-and-filtering" class="level4">
-<h4 class="anchored" data-anchor-id="data-aggregation-and-filtering">Data Aggregation and Filtering</h4>
-<p>Data filtering and aggregation show some of the most significant syntax differences:</p>
-<p><strong>Pandas:</strong></p>
-<div id="6e5ef6bc" class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Extract a specific value</span></span>
-<span id="cb7-2">detailed_beddays_principal <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> (</span>
-<span id="cb7-3">    model_runs_df.loc[</span>
-<span id="cb7-4">        (</span>
-<span id="cb7-5">            <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">slice</span>(<span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">None</span>),</span>
-<span id="cb7-6">            <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">slice</span>(<span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">None</span>),</span>
-<span id="cb7-7">            <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">slice</span>(<span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">None</span>),</span>
-<span id="cb7-8">            <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">slice</span>(<span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">None</span>),</span>
-<span id="cb7-9">            <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">slice</span>(<span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">None</span>),</span>
-<span id="cb7-10">            <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">slice</span>(<span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">None</span>),</span>
-<span id="cb7-11">            <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">slice</span>(<span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">None</span>),</span>
-<span id="cb7-12">            <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"beddays"</span>,</span>
-<span id="cb7-13">        ),</span>
-<span id="cb7-14">        :,</span>
-<span id="cb7-15">    ]</span>
-<span id="cb7-16">    .<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">sum</span>()</span>
-<span id="cb7-17">    .loc[<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"mean"</span>]</span>
-<span id="cb7-18">    .astype(<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">int</span>)</span>
-<span id="cb7-19">)</span></code></pre></div></div>
-</details>
-</div>
-<p><strong>Polars:</strong></p>
-<div id="7f25cf74" class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Extract the same value with explicit filtering</span></span>
-<span id="cb8-2">detailed_beddays_principal <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">int</span>(</span>
-<span id="cb8-3">    model_runs_df.<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">filter</span>(pl.col(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"measure"</span>) <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">==</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"beddays"</span>)</span>
-<span id="cb8-4">    .select(pl.col(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"mean"</span>).<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">sum</span>())</span>
-<span id="cb8-5">    .item()</span>
-<span id="cb8-6">)</span></code></pre></div></div>
-</details>
-</div>
-<p>The Polars version is more compact, enhancing readability, with an SQL-like syntax that expresses the intent.</p>
-</section>
-<section id="lazy-evaluation" class="level4">
-<h4 class="anchored" data-anchor-id="lazy-evaluation">Lazy Evaluation</h4>
-<p>As mentioned in the introduction, one of Polars’ key features is its support for lazy evaluation, which enables query optimisation:</p>
-<p><strong>Pandas:</strong></p>
-<div id="1d075f01" class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Each operation executes immediately</span></span>
-<span id="cb9-2">result <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> (</span>
-<span id="cb9-3">    df[df[<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"measure"</span>] <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">==</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"beddays"</span>]</span>
-<span id="cb9-4">    .groupby([<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"sitetret"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"age_group"</span>])</span>
-<span id="cb9-5">    .agg({<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"value"</span>: <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"sum"</span>})</span>
-<span id="cb9-6">    .reset_index()</span>
-<span id="cb9-7">)</span></code></pre></div></div>
-</details>
-</div>
-<p><strong>Polars:</strong></p>
-<div id="b09554f4" class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Builds an execution plan that can be optimised</span></span>
-<span id="cb10-2">result <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> (</span>
-<span id="cb10-3">    df.lazy()</span>
-<span id="cb10-4">    .<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">filter</span>(pl.col(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"measure"</span>) <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">==</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"beddays"</span>)</span>
-<span id="cb10-5">    .groupby([<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"sitetret"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"age_group"</span>])</span>
-<span id="cb10-6">    .agg(pl.col(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"value"</span>).<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">sum</span>())</span>
-<span id="cb10-7">    .collect()  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Only executes the plan when needed</span></span>
-<span id="cb10-8">)</span></code></pre></div></div>
-</details>
-</div>
-<p>Lazy evaluation allows Polars to analyse and optimise the entire query before execution, often resulting in better performance for complex operations. The <a href="https://docs.pola.rs/user-guide/migration/pandas/#polars-can-lazily-evaluate-queries-and-apply-query-optimization">query optimisation engine</a> can eliminate redundant steps, reorder operations, and make better use of available resources (e.g.&nbsp;pushing filter operations before joins to reduce memory usage, combining consecutive transformations, or parallelising independent operations across multiple CPU cores).</p>
-</section>
-</section>
-<section id="memory-management" class="level3">
-<h3 class="anchored" data-anchor-id="memory-management">Memory Management</h3>
-<p>Both implementations are designed to manage memory, but with fundamental differences in how data is stored and processed:</p>
-<p><strong>Pandas:</strong></p>
-<div id="7c38941b" class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Choose batch size and load with caching</span></span>
-<span id="cb11-2">batch_size <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">30</span>  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Balance between memory usage and I/O performance</span></span>
-<span id="cb11-3">df <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> az.load_model_run_results_file(</span>
-<span id="cb11-4">    container_client<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>results_connection,</span>
-<span id="cb11-5">    params<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>{</span>
-<span id="cb11-6">        <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># ... parameters</span></span>
-<span id="cb11-7">        <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"batch_size"</span>: batch_size,  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># This enables batch loading</span></span>
-<span id="cb11-8">    },</span>
-<span id="cb11-9">)</span>
-<span id="cb11-10"></span>
-<span id="cb11-11"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Clean up memory</span></span>
-<span id="cb11-12"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">del</span> model_runs_df, model_runs, original_df, reference_df</span>
-<span id="cb11-13">gc.collect()</span>
-<span id="cb11-14">logger.info(<span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">f"Memory cleaned after IP processing, current usage: </span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">{</span>get_memory_usage()<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:.2f}</span><span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;"> MB"</span>)</span></code></pre></div></div>
-</details>
-</div>
-<p><strong>Polars:</strong></p>
-<div id="e7e37799" class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Similar batch loading pattern</span></span>
-<span id="cb12-2">batch_size <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">50</span>  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Note larger batch size than Pandas</span></span>
-<span id="cb12-3">df <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> az_pl.load_model_run_results_file(</span>
-<span id="cb12-4">    container_client<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>results_connection,</span>
-<span id="cb12-5">    params<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>{</span>
-<span id="cb12-6">        <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># ... parameters</span></span>
-<span id="cb12-7">        <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"batch_size"</span>: batch_size,</span>
-<span id="cb12-8">    },</span>
-<span id="cb12-9">)</span>
-<span id="cb12-10"></span>
-<span id="cb12-11"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Similar memory clean-up</span></span>
-<span id="cb12-12"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">def</span> _clean_ip_memory(</span>
-<span id="cb12-13">    model_runs_df: pl.DataFrame,</span>
-<span id="cb12-14">    model_runs: <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">dict</span>,</span>
-<span id="cb12-15">    original_df: pl.DataFrame,</span>
-<span id="cb12-16">    reference_df: pl.DataFrame,</span>
-<span id="cb12-17">) <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-&gt;</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">None</span>:</span>
-<span id="cb12-18">    <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">del</span> model_runs_df, model_runs, original_df, reference_df</span>
-<span id="cb12-19">    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># ... cache clearing and collection</span></span>
-<span id="cb12-20">    gc.collect()</span>
-<span id="cb12-21">    logger.debug(<span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">f"Memory cleaned after IP processing, current usage: </span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">{</span>get_memory_usage()<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:.2f}</span><span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;"> MB"</span>)</span></code></pre></div></div>
-</details>
-</div>
-<p>A key difference is that Polars uses <a href="https://docs.pola.rs/user-guide/migration/pandas/#memory-format">Apache Arrow’s columnar memory format</a>, which is more memory-efficient than Pandas’ row-based storage, particularly for operations that work on specific columns rather than entire rows. This format allows Polars to handle a larger batch size without increasing memory pressure.</p>
-<p>Both implementations explicitly clean up memory, with the Polars version extracting this into a dedicated function for improved code organisation.</p>
-</section>
-<section id="type-handling-and-expression-system" class="level3">
-<h3 class="anchored" data-anchor-id="type-handling-and-expression-system">Type Handling and Expression System</h3>
-<p>Pandas and Polars differ significantly in how they handle types and expressions. Polars uses a <a href="https://deepwiki.com/pola-rs/polars/6-type-system">strongly-typed system</a> based on Apache Arrow’s type system, while Pandas handles types more implicitly.</p>
-<p>Polars’ expression system (with <code>pl.col()</code> syntax) is a core part of its design, allowing for clear, composable operations that the query optimiser can understand and optimise:</p>
-<p><strong>Explicit Null Checking:</strong></p>
-<div id="eee4abee" class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Count rows with empty sitetret for validation</span></span>
-<span id="cb13-2">empty_sitetret_count <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> results.<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">filter</span>(</span>
-<span id="cb13-3">    pl.col(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"sitetret"</span>).is_null() <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|</span> (pl.col(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"sitetret"</span>) <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">==</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">""</span>)</span>
-<span id="cb13-4">).height</span>
-<span id="cb13-5"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">if</span> empty_sitetret_count <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>:</span>
-<span id="cb13-6">    logger.debug(<span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">f"Found </span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">{</span>empty_sitetret_count<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">}</span><span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;"> rows with empty sitetret in run </span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">{</span>run<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">}</span><span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span>)</span></code></pre></div></div>
-</details>
-</div>
-<p><strong>Type System Consistency:</strong></p>
-<div id="f32c52ee" class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Ensure consistent numerical representation for statistics</span></span>
-<span id="cb14-2">op_model_runs_df <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> op_model_runs_df.with_columns(</span>
-<span id="cb14-3">    [</span>
-<span id="cb14-4">        pl.col(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"lwr_ci"</span>).fill_nan(<span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.0</span>),</span>
-<span id="cb14-5">        pl.col(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"median"</span>).fill_nan(<span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.0</span>),</span>
-<span id="cb14-6">        pl.col(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"mean"</span>).fill_nan(<span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.0</span>),</span>
-<span id="cb14-7">        pl.col(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"upr_ci"</span>).fill_nan(<span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.0</span>),</span>
-<span id="cb14-8">    ]</span>
-<span id="cb14-9">)</span></code></pre></div></div>
-</details>
-</div>
-<p>These examples demonstrate how Polars requires explicit handling of <code>null</code>s and <code>NaN</code> values, in contrast to Pandas’ more implicit approach. This explicitness, while slightly more verbose, helps prevent subtle bugs that can occur with implicit type conversions.</p>
-</section>
-</section>
-<section id="performance-benefits" class="level2">
-<h2 class="anchored" data-anchor-id="performance-benefits">Performance Benefits</h2>
-<p>The most compelling reason to switch from Pandas to Polars is its columnar storage, expression-based API, and query optimisation engine. In our benchmarks, we measured total execution time <em>including</em> I/O operations (reading from Azure Blob Storage and writing to local files), providing a realistic picture of performance in production environments. Our experience reimplementing our Pandas code to Polars taught us that:</p>
-<ol type="1">
-<li><p><strong>Processing Speed</strong>: Our Polars implementation, without any additional optimisations that might increase performance, is more than 32% faster than its Pandas counterpart. Our benchmark included I/O time in speed calculations, which relies on Azure and network speed as well as computational performance of the specific machine used to perform this benchmark. Therefore, with the benefit of hindsight, introducing better separation of concerns such as benchmarking dataframe operations <em>separately</em> from loading data from Azure Blob Storage would likely yield even better performance gains. The Polars team’s <a href="https://pola.rs/posts/benchmarks/">comprehensive benchmarks</a> confirm its improved performance across a wide range of operations.</p></li>
-<li><p><strong>I/O Performance</strong>: The Polars implementation handles file operations more efficiently, particularly when loading and saving Parquet files, as it’s designed to work natively with the Apache Arrow format.</p></li>
-<li><p><strong>Parallel Processing</strong>: Polars automatically utilises multiple CPU cores by default, whereas Pandas operations are typically single-threaded. While we haven’t explicitly configured parallel execution in our implementation, we benefit from this feature automatically.</p></li>
-<li><p><strong>Larger-than-RAM Processing</strong>: Polars can <a href="https://github.com/pola-rs/polars#handles-larger-than-ram-data">handle datasets larger than available RAM</a> through its lazy API and streaming engine. This is crucial for our future work as healthcare datasets continue to grow in size and complexity.</p></li>
-<li><p><strong>Lightweight Dependencies</strong>: Unlike Pandas, which depends on NumPy and several other libraries, Polars is certainly <a href="https://github.com/pola-rs/polars#lightweight">more lightweight</a> with no Python dependencies. This makes deployment simpler and reduces potential version conflicts in complex projects.</p></li>
-</ol>
-<p>For context, processing a typical scenario with 256 runs that previously took about 57 minutes with Pandas now completes in 38 minutes with Polars, with basic Polars API knowledge.</p>
-</section>
-<section id="trade-offs-and-considerations" class="level2">
-<h2 class="anchored" data-anchor-id="trade-offs-and-considerations">Trade-offs and Considerations</h2>
-<p>Despite the clear performance advantages, there are some trade-offs to consider:</p>
-<section id="learning-curve" class="level3">
-<h3 class="anchored" data-anchor-id="learning-curve">Learning Curve</h3>
-<p>Polars has a different API than Pandas, requiring time for teams to adjust. While many operations are similar, there are enough differences to necessitate a learning period.</p>
-</section>
-<section id="ecosystem-integration" class="level3">
-<h3 class="anchored" data-anchor-id="ecosystem-integration">Ecosystem Integration</h3>
-<p>Pandas integrates seamlessly with libraries such as NumPy, Scikit-Learn and Matplotlib, which are foundational for Data Science and Machine Learning work. Polars’ <a href="https://docs.pola.rs/user-guide/ecosystem/">ecosystem integration</a> shouldn’t be a concern at this stage, given its wider support for third party libraries and its stable API.</p>
-</section>
-<section id="small-dataset-performance" class="level3">
-<h3 class="anchored" data-anchor-id="small-dataset-performance">Small Dataset Performance</h3>
-<p>For smaller datasets -fewer than a few tens of thousands of rows, the performance advantage of Polars is less pronounced and sometimes negligible. The overhead of setting up optimised execution can actually make Polars slightly slower for smaller scale operations.</p>
-</section>
-</section>
-<section id="practical-advice-for-adoption" class="level2">
-<h2 class="anchored" data-anchor-id="practical-advice-for-adoption">Practical Advice for Adoption</h2>
-<p>Based on our experience, here are some recommendations for teams considering a similar transition:</p>
-<section id="start-with-non-critical-components" class="level3">
-<h3 class="anchored" data-anchor-id="start-with-non-critical-components">Start with Non-Critical Components</h3>
-<p>Begin your Polars adoption with non-critical data processing components where you can thoroughly test and validate outputs against your existing Pandas implementation.</p>
-</section>
-<section id="incremental-migration" class="level3">
-<h3 class="anchored" data-anchor-id="incremental-migration">Incremental Migration</h3>
-<p>Rather than rewriting entire systems at once, migrate components incrementally. Our approach of maintaining both implementations side by side allowed for a detailed comparison that can lead to an informed decision.</p>
-</section>
-<section id="validate-validate-validate" class="level3">
-<h3 class="anchored" data-anchor-id="validate-validate-validate">Validate, Validate, Validate</h3>
-<p>Implement rigorous validation to ensure the Polars implementation produces identical (or appropriately similar) results to your Pandas code. We found tiny discrepancies due to the difference in handling missing data that needed to be addressed.</p>
-</section>
-<section id="review-memory-management" class="level3">
-<h3 class="anchored" data-anchor-id="review-memory-management">Review Memory Management</h3>
-<p>Polars handles memory differently than Pandas. Review your memory management practices and consider Polars’ lazy evaluation capabilities for very large datasets.</p>
-</section>
-<section id="keep-documentation-updated" class="level3">
-<h3 class="anchored" data-anchor-id="keep-documentation-updated">Keep Documentation Updated</h3>
-<p>Maintain clear documentation about the differences between your Pandas and Polars implementations, particularly regarding API differences and performance characteristics.</p>
-</section>
-</section>
-<section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>Our experiment, transforming our detailed results processor from Pandas-based to Polars has been didactic and positive. The performance improvements have allowed us to process larger datasets more quickly, enabling more complex analyses and faster turnaround times for our stakeholders.</p>
-<p>While there was certainly a learning curve and some implementation challenges, the benefits have outweighed the costs. The more modern, explicit API of Polars has also improved the readability and maintainability of our code.</p>
-<p>For teams working with large datasets, particularly those experiencing performance bottlenecks with Pandas, Polars represents a compelling alternative that maintains much of the familiar dataframe paradigm while delivering measurable performance improvements.</p>
-<p>We’re continuing to investigate ways to improve our codebase, its speed of execution, memory and overall efficiency, and looking forward to leveraging more effective approaches that’ll render our code even more powerful.</p>
-<hr>
-<p><em>This blog post reflects the experience of the Strategy Unit’s Data Science team in implementing Polars for detailed results processing. The performance improvements mentioned are specific to our workloads and may vary depending on your specific use case.</em></p>
-
-
-</section>
-
- ]]></description>
-  <category>Python</category>
-  <category>Data Science</category>
-  <category>Performance</category>
-  <guid>https://the-strategy-unit.github.io/data_science/blogs/posts/2025-11-07_pandas_vs_polars/</guid>
   <pubDate>Tue, 09 Sep 2025 00:00:00 GMT</pubDate>
 </item>
 <item>

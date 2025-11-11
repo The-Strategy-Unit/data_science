@@ -27,7 +27,7 @@ Like many data science teams, we've relied heavily on Pandas -Python's well esta
 
 Polars has been frequently discussed as a possible improvement over Pandas. With language bindings for three languages -[Rust](https://docs.rs/polars/latest/polars/), [Node.js/Deno backend](https://pola-rs.github.io/nodejs-polars/) & [frontend](https://github.com/pola-rs/js-polars), [Python](https://docs.pola.rs/api/python/stable/reference/index.html)- and two execution modes i.e. [lazy](https://docs.pola.rs/user-guide/concepts/lazy-api/) and eager, Polars provides more flexibility in implementation and potential performance gains.
 
-In this article, we'll share our experience reimplementing one of our core data processing modules from Pandas to Polars, including the challenges we faced, the benefits we've seen, and lessons learned along the way.
+In this article, we'll share our experience reimplementing one of our core data processing modules from Pandas to Polars, including the challenges we faced, the benefits we've seen, and lessons learned along the way. You can find our [nhp_products](https://github.com/The-Strategy-Unit/nhp_products) code on GitHub. We've kept both implementations for comparison, with polars modules bearing a `_pl.py` suffix.
 
 ::: {layout-ncol=2}
 ![Panda](./Rolling-Panda-1647869962.gif){height="200px"}

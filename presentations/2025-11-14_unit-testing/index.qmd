@@ -787,7 +787,7 @@ test_that("fn calls all the other functions", {
   local_mocked_bindings(get_data = m_get_data, plot_data = m_plot_data)
 
   # act
-  actual <- fn()
+  actual <- my_function()
 
   # assert
   expect_equal(actual, "plot_data")

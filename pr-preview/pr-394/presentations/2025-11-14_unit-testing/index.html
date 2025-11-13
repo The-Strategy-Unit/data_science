@@ -863,7 +863,7 @@ a <code>pyproject.toml</code> and a <code>src/</code> folder.
 <span id="cb23-9"><a></a>  <span class="fu">local_mocked_bindings</span>(<span class="at">get_data =</span> m_get_data, <span class="at">plot_data =</span> m_plot_data)</span>
 <span id="cb23-10"><a></a></span>
 <span id="cb23-11"><a></a>  <span class="co"># act</span></span>
-<span id="cb23-12"><a></a>  actual <span class="ot">&lt;-</span> <span class="fu">fn</span>()</span>
+<span id="cb23-12"><a></a>  actual <span class="ot">&lt;-</span> <span class="fu">my_function</span>()</span>
 <span id="cb23-13"><a></a></span>
 <span id="cb23-14"><a></a>  <span class="co"># assert</span></span>
 <span id="cb23-15"><a></a>  <span class="fu">expect_equal</span>(actual, <span class="st">"plot_data"</span>)</span>

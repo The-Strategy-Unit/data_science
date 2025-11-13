@@ -1654,7 +1654,7 @@
     "href": "presentations/2025-11-14_unit-testing/index.html#using-mocks-with-my_function-3",
     "title": "Unit Testing",
     "section": "Using mocks with my_function",
-    "text": "Using mocks with my_function\nintegration test\ntest_that(\"fn calls all the other functions\", {\n  # arrange\n  df &lt;- data.frame(x = c(0, 1, 2), y = c(3, 4, 5))\n  expected_df &lt;- data.frame(x = c(1, 2), y = c(4, 5), value = c(0.25, 0.4))\n\n  m_get_data &lt;- Mock(df)\n  m_plot_data &lt;- Mock(\"plot_data\")\n\n  local_mocked_bindings(get_data = m_get_data, plot_data = m_plot_data)\n\n  # act\n  actual &lt;- fn()\n\n  # assert\n  expect_equal(actual, \"plot_data\")\n  expect_args(m_plot_data, 1, expected_df)\n})"
+    "text": "Using mocks with my_function\nintegration test\ntest_that(\"fn calls all the other functions\", {\n  # arrange\n  df &lt;- data.frame(x = c(0, 1, 2), y = c(3, 4, 5))\n  expected_df &lt;- data.frame(x = c(1, 2), y = c(4, 5), value = c(0.25, 0.4))\n\n  m_get_data &lt;- Mock(df)\n  m_plot_data &lt;- Mock(\"plot_data\")\n\n  local_mocked_bindings(get_data = m_get_data, plot_data = m_plot_data)\n\n  # act\n  actual &lt;- my_function()\n\n  # assert\n  expect_equal(actual, \"plot_data\")\n  expect_args(m_plot_data, 1, expected_df)\n})"
   },
   {
     "objectID": "presentations/2025-11-14_unit-testing/index.html#but-what-about-the-plot-function",
@@ -4118,7 +4118,7 @@
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r---flows",
     "title": "System Dynamics in health and care",
     "section": "in R - flows",
-    "text": "in R - flows\nEasy to do with count, or group_by and summarise\n\n\nadmit_d &lt;- spell_dates |&gt;\n  group_by(date_admit) |&gt;\n  count(date_admit)\n\nhead(admit_d)\n\n\n# A tibble: 6 × 2\n# Groups:   date_admit [6]\n  date_admit     n\n  &lt;date&gt;     &lt;int&gt;\n1 2022-01-01    27\n2 2022-01-02    27\n3 2022-01-03    30\n4 2022-01-04    21\n5 2022-01-05    24\n6 2022-01-06    26"
+    "text": "in R - flows\nEasy to do with count, or group_by and summarise\n\n\nadmit_d &lt;- spell_dates |&gt;\n  group_by(date_admit) |&gt;\n  count(date_admit)\n\nhead(admit_d)\n\n\n# A tibble: 6 × 2\n# Groups:   date_admit [6]\n  date_admit     n\n  &lt;date&gt;     &lt;int&gt;\n1 2022-01-01    28\n2 2022-01-02    27\n3 2022-01-03    15\n4 2022-01-04    28\n5 2022-01-05    21\n6 2022-01-06    19"
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r---occupancy",
@@ -4139,7 +4139,7 @@
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods---flows",
     "title": "System Dynamics in health and care",
     "section": "Longer Time Periods - flows",
-    "text": "Longer Time Periods - flows\nUse lubridate::floor_date to generate the date at start of week/month\n\nadmit_wk &lt;- spell_dates |&gt;\n  mutate(\n    week_start = floor_date(\n      date_admit,\n      unit = \"week\",\n      week_start = 1 # start week on Monday\n    )\n  ) |&gt;\n  count(week_start) # could add other parameters such as provider code, TFC etc\n\nhead(admit_wk)\n\n\n\n# A tibble: 6 × 2\n  week_start     n\n  &lt;date&gt;     &lt;int&gt;\n1 2021-12-27    54\n2 2022-01-03   185\n3 2022-01-10   168\n4 2022-01-17   197\n5 2022-01-24   222\n6 2022-01-31   219\n\n\n\nMight run SD model in weeks or months - e.g. months for care homes Use lubridate to create new variable with start date of week/month/year etc"
+    "text": "Longer Time Periods - flows\nUse lubridate::floor_date to generate the date at start of week/month\n\nadmit_wk &lt;- spell_dates |&gt;\n  mutate(\n    week_start = floor_date(\n      date_admit,\n      unit = \"week\",\n      week_start = 1 # start week on Monday\n    )\n  ) |&gt;\n  count(week_start) # could add other parameters such as provider code, TFC etc\n\nhead(admit_wk)\n\n\n\n# A tibble: 6 × 2\n  week_start     n\n  &lt;date&gt;     &lt;int&gt;\n1 2021-12-27    55\n2 2022-01-03   166\n3 2022-01-10   167\n4 2022-01-17   180\n5 2022-01-24   219\n6 2022-01-31   197\n\n\n\nMight run SD model in weeks or months - e.g. months for care homes Use lubridate to create new variable with start date of week/month/year etc"
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods---occupancy",

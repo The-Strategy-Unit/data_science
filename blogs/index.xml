@@ -9,7 +9,7 @@
 <link>https://the-strategy-unit.github.io/data_science/blogs/</link>
 <atom:link href="https://the-strategy-unit.github.io/data_science/blogs/index.xml" rel="self" type="application/rss+xml"/>
 <description>Blogs from the Data Science Team at The Strategy Unit</description>
-<generator>quarto-1.8.25</generator>
+<generator>quarto-1.8.26</generator>
 <lastBuildDate>Thu, 18 Sep 2025 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Verifying Git Commits</title>

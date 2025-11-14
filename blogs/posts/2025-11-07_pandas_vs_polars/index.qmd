@@ -355,7 +355,7 @@ Pandas integrates seamlessly with libraries such as NumPy, Scikit-Learn and Matp
 
 ### Small Dataset Performance
 
-For smaller datasets -fewer than a few tens of thousands of rows, the performance advantage of Polars is less pronounced and sometimes negligible. The overhead of setting up optimised execution can actually make Polars slightly slower for smaller scale operations.
+For smaller datasets -fewer than a few tens of thousands of rows- the performance advantage of Polars is less pronounced and sometimes negligible. The overhead of setting up optimised execution can actually make Polars slightly slower for smaller scale operations.
 
 ## Practical Advice for Adoption
 
@@ -383,7 +383,7 @@ Maintain clear documentation about the differences between your Pandas and Polar
 
 ## Conclusion
 
-Our experiment, transforming our detailed results processor from Pandas-based to Polars has been didactic and positive. The expression-based API is more readable, making our code more maintainable and readable. As a bonus, our pipeline can run faster -especially when processing larger datasets.
+Our experiment, transforming our detailed results processor from Pandas-based to Polars has been didactic and positive. The expression-based API is more readable, making our code more maintainable. As a bonus, our pipeline can run faster -especially when processing larger datasets.
 
 For teams working with large datasets, particularly those experiencing performance bottlenecks with Pandas, Polars represents a compelling alternative that maintains much of the familiar dataframe paradigm while delivering measurable performance improvements.
 

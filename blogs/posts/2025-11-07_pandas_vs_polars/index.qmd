@@ -1,0 +1,393 @@
+---
+title: "Pandas vs. Polars"
+subtitle: "Accelerating Healthcare Data Processing"
+authors:
+  - name: Eirini Komninou
+    email: eirini.komninou@nhs.net
+    affiliation:
+      - name: The Strategy Unit
+        url: https://strategyunitwm.nhs.uk/
+date: "2025-11-07"
+categories: [Python, Data Science, Performance]
+execute:
+  enabled: false
+editor:
+  markdown:
+    wrap: sentence
+format:
+  html:
+    code-fold: true
+---
+
+## Introduction
+
+Data processing is at the heart of our work at the Strategy Unit. As our datasets have grown and NHP model has become more complex, we've found that our pipeline takes longer to complete.
+
+Like many data science teams, we've relied heavily on Pandas -Python's well established standard for data processing. It's familiar and extensively documented. However, as we've scaled up our operations, we've encountered performance bottlenecks that motivated us to seek more efficient solutions.
+
+Polars has been frequently discussed as a possible improvement over Pandas. With language bindings for three languages -[Rust](https://docs.rs/polars/latest/polars/), [Node.js/Deno backend](https://pola-rs.github.io/nodejs-polars/) & [frontend](https://github.com/pola-rs/js-polars), [Python](https://docs.pola.rs/api/python/stable/reference/index.html)- and two execution modes i.e. [lazy](https://docs.pola.rs/user-guide/concepts/lazy-api/) and eager, Polars provides more flexibility in implementation and potential performance gains.
+
+In this article, we'll share our experience reimplementing one of our core data processing modules from Pandas to Polars, including the challenges we faced, the benefits we've seen, and lessons learned along the way. You can find our [nhp_products](https://github.com/The-Strategy-Unit/nhp_products) code on GitHub. We've kept both implementations for comparison, with polars modules bearing a `_pl.py` suffix.
+
+::: {layout-ncol=2}
+![Panda](./Rolling-Panda-1647869962.gif){height="200px"}
+
+![Polar bears](./playful-polar-bear-cubs.gif){height="200px"}
+:::
+
+## Background: The Detailed Results Processing Challenge
+
+The module we chose for our first Polars implementation was our detailed results processor. This critical component takes full model results and produces detailed aggregations of expected hospital activity across inpatient (IP), outpatient (OP), and Accident & Emergency (A&E) services.
+
+The processing involves:
+
+1. Loading hundreds of results from Azure storage
+2. Merging these with reference datasets
+3. Processing 256 Monte Carlo simulation runs
+4. Aggregating the results into statistical summaries
+5. Validating the outputs against aggregated results
+6. Saving the final results as both CSV and Parquet files
+
+This workload is particularly demanding because:
+
+- Each run processes thousands of records
+- The full pipeline handles 256 separate runs (for statistical robustness)
+- Memory consumption grows substantially during processing
+- The reference datasets contain multiple categorical dimensions for analysis
+
+Let's look at how the implementations differ between our original Pandas version and the new Polars version.
+
+## Implementation Comparison
+
+### Code Organisation
+
+One of the first things you'll notice when comparing the implementations is how the Polars version breaks down complex operations into smaller, more focused functions:
+
+**Pandas (Monolithic Functions):**
+
+```{python}
+def _process_inpatient_results(
+    ctx: ProcessContext,
+    output_dir: str,
+) -> None:
+    # Function contains ~150 lines handling everything from:
+    # - Data loading
+    # - Reference preparation
+    # - Results processing for all runs
+    # - Dictionary aggregation
+    # - Validation and saving
+    # ...
+```
+
+**Polars (Granular Functions):**
+
+```{python}
+def _process_inpatient_results(
+    ctx: ProcessContext,
+    output_dir: str,
+) -> None:
+    # Higher-level orchestration (~40 lines)
+    # ...
+
+def _load_ip_reference_data(ctx: ProcessContext) -> pl.DataFrame:
+    # Focused on just loading reference data (~15 lines)
+    # ...
+
+def _process_ip_run(
+    run: int,
+    reference_df: pl.DataFrame,
+    params: dict,
+    model_runs: dict,
+    ip_columns: list[str],
+) -> None:
+    # Processes a single run only (~30 lines)
+    # ...
+
+def _validate_ip_results(
+    model_runs_df: pl.DataFrame,
+    actual_results_df: pl.DataFrame
+) -> None:
+    # Focused validation logic (~20 lines)
+    # ...
+```
+
+This modular approach is more of a design choice, in the context of continually improving our codebase, rather than a Polars-specific trait. Following a more modular approach in the Polars implementation aims at making the code clearer, easier to test, and maintain. Each function has a single responsibility rather than handling multiple concerns.
+
+### Syntax and API Differences
+
+#### Data Loading and Joining
+
+Here, the difference between the two implementations is fairly subtle, showcasing that switching between the two APIs doesn't always increase the learning curve:
+
+**Pandas:**
+
+```{python}
+# Load and merge data
+original_df = az.load_data_file(data_connection, model_version_data, trust, "ip", baseline_year)
+reference_df = original_df.copy().drop(columns=["speldur", "classpat"])
+# ...
+merged = reference_df.merge(df, on="rn", how="inner")
+```
+
+**Polars:**
+
+```{python}
+# Load and join data
+original_df = az_pl.load_data_file(data_connection, model_version_data, trust, "ip", baseline_year)
+reference_df = original_df.drop(["speldur", "classpat"])
+# ...
+merged = reference_df.join(df, on="rn", how="inner")
+```
+
+The Polars version uses the more intuitive `.join()` method instead of `.merge()`, other than that the two implementations align pretty well with the exception of not creating a DataFrame copy.
+
+#### Null Handling
+
+Null handling differs significantly:
+
+**Pandas:**
+
+```{python}
+# Fill missing values
+original_df = az.load_data_file(...).fillna("unknown")
+```
+
+**Polars:**
+
+```{python}
+# Fill null values with more explicit control
+original_df = az_pl.load_data_file(...)
+original_df = original_df.with_columns(
+    [
+        pl.col(col).map_elements(
+            lambda x: None if x == "" else x, return_dtype=pl.Utf8
+        )
+        for col in original_df.select(pl.col(pl.Utf8)).columns
+    ]
+).fill_null("unknown")
+```
+
+While the Polars version is more verbose here, it offers greater precision and control over missing data handling. [Missing data](https://docs.pola.rs/user-guide/expressions/missing-data/) are typically represented by a single value (`null`) in Polars, in contrast to Pandas' dual approach. Our code explicitly converts empty strings to `None` before filling with "unknown". This addresses a fundamental difference between the libraries: Pandas represents missing values as `NaN` (for numeric types) or `None` (for other types), while Polars uses a single `null` value for all types. By standardising the treatment of missing values, we ensure consistent results across both implementations. This consistency is important during validation, where we verify that both versions produce identical outputs.
+
+#### Data Aggregation and Filtering
+
+Data filtering and aggregation show some of the most significant syntax differences:
+
+**Pandas:**
+
+```{python}
+# Extract a specific value
+detailed_beddays_principal = (
+    model_runs_df.loc[
+        (
+            slice(None),
+            slice(None),
+            slice(None),
+            slice(None),
+            slice(None),
+            slice(None),
+            slice(None),
+            "beddays",
+        ),
+        :,
+    ]
+    .sum()
+    .loc["mean"]
+    .astype(int)
+)
+```
+
+**Polars:**
+
+```{python}
+# Extract the same value with explicit filtering
+detailed_beddays_principal = int(
+    model_runs_df.filter(pl.col("measure") == "beddays")
+    .select(pl.col("mean").sum())
+    .item()
+)
+```
+
+The Polars version is more compact, enhancing readability, with an SQL-like syntax that expresses the intent.
+
+#### Lazy Evaluation
+
+As mentioned in the introduction, one of Polars' key features is its support for lazy evaluation, which enables query optimisation:
+
+**Pandas:**
+```{python}
+# Each operation executes immediately
+result = (
+    df[df["measure"] == "beddays"]
+    .groupby(["sitetret", "age_group"])
+    .agg({"value": "sum"})
+    .reset_index()
+)
+```
+
+**Polars:**
+```{python}
+# Builds an execution plan that can be optimised
+result = (
+    df.lazy()
+    .filter(pl.col("measure") == "beddays")
+    .groupby(["sitetret", "age_group"])
+    .agg(pl.col("value").sum())
+    .collect()  # Only executes the plan when needed
+)
+```
+
+Lazy evaluation allows Polars to analyse and optimise the entire query before execution, often resulting in better performance for complex operations. The [query optimisation engine](https://docs.pola.rs/user-guide/migration/pandas/#polars-can-lazily-evaluate-queries-and-apply-query-optimization) can eliminate redundant steps, reorder operations, and make better use of available resources (e.g. pushing filter operations before joins to reduce memory usage, combining consecutive transformations, or parallelising independent operations across multiple CPU cores).
+
+### Memory Management
+
+Both implementations are designed to manage memory, but with fundamental differences in how data is stored and processed:
+
+**Pandas:**
+
+```{python}
+# Choose batch size and load with caching
+batch_size = 30  # Balance between memory usage and I/O performance
+df = az.load_model_run_results_file(
+    container_client=results_connection,
+    params={
+        # ... parameters
+        "batch_size": batch_size,  # This enables batch loading
+    },
+)
+
+# Clean up memory
+del model_runs_df, model_runs, original_df, reference_df
+gc.collect()
+logger.info(f"Memory cleaned after IP processing, current usage: {get_memory_usage():.2f} MB")
+```
+
+**Polars:**
+
+```{python}
+# Similar batch loading pattern
+batch_size = 50  # Note larger batch size than Pandas
+df = az_pl.load_model_run_results_file(
+    container_client=results_connection,
+    params={
+        # ... parameters
+        "batch_size": batch_size,
+    },
+)
+
+# Similar memory clean-up
+def _clean_ip_memory(
+    model_runs_df: pl.DataFrame,
+    model_runs: dict,
+    original_df: pl.DataFrame,
+    reference_df: pl.DataFrame,
+) -> None:
+    del model_runs_df, model_runs, original_df, reference_df
+    # ... cache clearing and collection
+    gc.collect()
+    logger.debug(f"Memory cleaned after IP processing, current usage: {get_memory_usage():.2f} MB")
+```
+
+A key difference is that Polars uses [Apache Arrow's columnar memory format](https://docs.pola.rs/user-guide/migration/pandas/#memory-format), which is more memory-efficient than Pandas' row-based storage, particularly for operations that work on specific columns rather than entire rows. This format allows Polars to handle a larger batch size without increasing memory pressure.
+
+Both implementations explicitly clean up memory, with the Polars version extracting this into a dedicated function for improved code organisation.
+
+### Type Handling and Expression System
+
+Pandas and Polars differ significantly in how they handle types and expressions. Polars uses a [strongly-typed system](https://deepwiki.com/pola-rs/polars/6-type-system) based on Apache Arrow's type system, while Pandas handles types more implicitly.
+
+Polars' expression system (with `pl.col()` syntax) is a core part of its design, allowing for clear, composable operations that the query optimiser can understand and optimise:
+
+**Explicit Null Checking:**
+
+```{python}
+# Count rows with empty sitetret for validation
+empty_sitetret_count = results.filter(
+    pl.col("sitetret").is_null() | (pl.col("sitetret") == "")
+).height
+if empty_sitetret_count > 0:
+    logger.debug(f"Found {empty_sitetret_count} rows with empty sitetret in run {run}")
+```
+
+**Type System Consistency:**
+
+```{python}
+# Ensure consistent numerical representation for statistics
+op_model_runs_df = op_model_runs_df.with_columns(
+    [
+        pl.col("lwr_ci").fill_nan(0.0),
+        pl.col("median").fill_nan(0.0),
+        pl.col("mean").fill_nan(0.0),
+        pl.col("upr_ci").fill_nan(0.0),
+    ]
+)
+```
+
+These examples demonstrate how Polars requires explicit handling of `null`s and `NaN` values, in contrast to Pandas' more implicit approach. This explicitness, while slightly more verbose, helps prevent subtle bugs that can occur with implicit type conversions.
+
+## Performance Benefits
+
+The most compelling reason to switch from Pandas to Polars is its columnar storage, expression-based API, and query optimisation engine. In our benchmarks, we measured total execution time _including_ I/O operations (reading from Azure Blob Storage and writing to local files), providing a realistic picture of performance in production environments. Our experience reimplementing our Pandas code to Polars taught us that:
+
+1. **Processing Speed**: Our Polars implementation, without any additional optimisations that might increase performance, is more than 32% faster than its Pandas counterpart. Our benchmark included I/O time in speed calculations, which relies on Azure and network speed as well as computational performance of the specific machine used to perform this benchmark. Therefore, with the benefit of hindsight, introducing better separation of concerns such as benchmarking dataframe operations _separately_ from loading data from Azure Blob Storage would likely yield even better performance gains. The Polars team's [comprehensive benchmarks](https://pola.rs/posts/benchmarks/) confirm its improved performance across a wide range of operations.
+
+2. **I/O Performance**: The Polars implementation handles file operations more efficiently, particularly when loading and saving Parquet files, as it's designed to work natively with the Apache Arrow format.
+
+3. **Parallel Processing**: Polars automatically utilises multiple CPU cores by default, whereas Pandas operations are typically single-threaded. While we haven't explicitly configured parallel execution in our implementation, we benefit from this feature automatically.
+
+4. **Larger-than-RAM Processing**: Polars can [handle datasets larger than available RAM](https://github.com/pola-rs/polars#handles-larger-than-ram-data) through its lazy API and streaming engine. This is crucial for our future work as healthcare datasets continue to grow in size and complexity.
+
+5. **Lightweight Dependencies**: Unlike Pandas, which depends on NumPy and several other libraries, Polars is certainly [more lightweight](https://github.com/pola-rs/polars#lightweight) with no Python dependencies. This makes deployment simpler and reduces potential version conflicts in complex projects.
+
+For context, processing a typical scenario with 256 runs that previously took about 57 minutes with Pandas now completes in 38 minutes with Polars, with basic Polars API knowledge.
+
+## Trade-offs and Considerations
+
+Despite the clear performance advantages, there are some trade-offs to consider:
+
+### Learning Curve
+
+Polars has a different API than Pandas, requiring time for teams to adjust. While many operations are similar, there are enough differences to necessitate a learning period.
+
+### Ecosystem Integration
+
+Pandas integrates seamlessly with libraries such as NumPy, Scikit-Learn and Matplotlib, which are foundational for Data Science and Machine Learning work. Polars' [ecosystem integration](https://docs.pola.rs/user-guide/ecosystem/) shouldn't be a concern at this stage, given its wider support for third party libraries and its stable API.
+
+### Small Dataset Performance
+
+For smaller datasets -fewer than a few tens of thousands of rows- the performance advantage of Polars is less pronounced and sometimes negligible. The overhead of setting up optimised execution can actually make Polars slightly slower for smaller scale operations.
+
+## Practical Advice for Adoption
+
+Based on our experience, here are some recommendations for teams considering a similar transition:
+
+### Start with Non-Critical Components
+
+Begin your Polars adoption with non-critical data processing components where you can thoroughly test and validate outputs against your existing Pandas implementation.
+
+### Incremental Migration
+
+Rather than rewriting entire systems at once, migrate components incrementally. Our approach of maintaining both implementations side by side allowed for a detailed comparison that can lead to an informed decision.
+
+### Validate, Validate, Validate
+
+Implement rigorous validation to ensure the Polars implementation produces identical (or appropriately similar) results to your Pandas code. We found tiny discrepancies due to the difference in handling missing data that needed to be addressed.
+
+### Review Memory Management
+
+Polars handles memory differently than Pandas. Review your memory management practices and consider Polars' lazy evaluation capabilities for very large datasets.
+
+### Keep Documentation Updated
+
+Maintain clear documentation about the differences between your Pandas and Polars implementations, particularly regarding API differences and performance characteristics.
+
+## Conclusion
+
+Our experiment, transforming our detailed results processor from Pandas-based to Polars has been didactic and positive. The expression-based API is more readable, making our code more maintainable. As a bonus, our pipeline can run faster -especially when processing larger datasets.
+
+For teams working with large datasets, particularly those experiencing performance bottlenecks with Pandas, Polars represents a compelling alternative that maintains much of the familiar dataframe paradigm while delivering measurable performance improvements.
+
+We're continuing to investigate ways to improve our codebase, its speed of execution, memory and overall efficiency, and looking forward to leveraging more effective approaches that'll render our code even more powerful.
+
+---
+_This blog post reflects the experience of the Strategy Unit's Data Science team in implementing Polars for detailed results processing. The performance improvements mentioned are specific to our workloads and may vary depending on your specific use case._

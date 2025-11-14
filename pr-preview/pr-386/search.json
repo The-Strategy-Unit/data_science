@@ -254,7 +254,7 @@
     "href": "blogs/posts/2025-11-07_pandas_vs_polars/index.html#trade-offs-and-considerations",
     "title": "Pandas vs. Polars",
     "section": "Trade-offs and Considerations",
-    "text": "Trade-offs and Considerations\nDespite the clear performance advantages, there are some trade-offs to consider:\n\nLearning Curve\nPolars has a different API than Pandas, requiring time for teams to adjust. While many operations are similar, there are enough differences to necessitate a learning period.\n\n\nEcosystem Integration\nPandas integrates seamlessly with libraries such as NumPy, Scikit-Learn and Matplotlib, which are foundational for Data Science and Machine Learning work. Polars’ ecosystem integration shouldn’t be a concern at this stage, given its wider support for third party libraries and its stable API.\n\n\nSmall Dataset Performance\nFor smaller datasets -fewer than a few tens of thousands of rows, the performance advantage of Polars is less pronounced and sometimes negligible. The overhead of setting up optimised execution can actually make Polars slightly slower for smaller scale operations."
+    "text": "Trade-offs and Considerations\nDespite the clear performance advantages, there are some trade-offs to consider:\n\nLearning Curve\nPolars has a different API than Pandas, requiring time for teams to adjust. While many operations are similar, there are enough differences to necessitate a learning period.\n\n\nEcosystem Integration\nPandas integrates seamlessly with libraries such as NumPy, Scikit-Learn and Matplotlib, which are foundational for Data Science and Machine Learning work. Polars’ ecosystem integration shouldn’t be a concern at this stage, given its wider support for third party libraries and its stable API.\n\n\nSmall Dataset Performance\nFor smaller datasets -fewer than a few tens of thousands of rows- the performance advantage of Polars is less pronounced and sometimes negligible. The overhead of setting up optimised execution can actually make Polars slightly slower for smaller scale operations."
   },
   {
     "objectID": "blogs/posts/2025-11-07_pandas_vs_polars/index.html#practical-advice-for-adoption",
@@ -268,7 +268,7 @@
     "href": "blogs/posts/2025-11-07_pandas_vs_polars/index.html#conclusion",
     "title": "Pandas vs. Polars",
     "section": "Conclusion",
-    "text": "Conclusion\nOur experiment, transforming our detailed results processor from Pandas-based to Polars has been didactic and positive. The expression-based API is more readable, making our code more maintainable and readable. As a bonus, our pipeline can run faster -especially when processing larger datasets.\nFor teams working with large datasets, particularly those experiencing performance bottlenecks with Pandas, Polars represents a compelling alternative that maintains much of the familiar dataframe paradigm while delivering measurable performance improvements.\nWe’re continuing to investigate ways to improve our codebase, its speed of execution, memory and overall efficiency, and looking forward to leveraging more effective approaches that’ll render our code even more powerful.\n\nThis blog post reflects the experience of the Strategy Unit’s Data Science team in implementing Polars for detailed results processing. The performance improvements mentioned are specific to our workloads and may vary depending on your specific use case."
+    "text": "Conclusion\nOur experiment, transforming our detailed results processor from Pandas-based to Polars has been didactic and positive. The expression-based API is more readable, making our code more maintainable. As a bonus, our pipeline can run faster -especially when processing larger datasets.\nFor teams working with large datasets, particularly those experiencing performance bottlenecks with Pandas, Polars represents a compelling alternative that maintains much of the familiar dataframe paradigm while delivering measurable performance improvements.\nWe’re continuing to investigate ways to improve our codebase, its speed of execution, memory and overall efficiency, and looking forward to leveraging more effective approaches that’ll render our code even more powerful.\n\nThis blog post reflects the experience of the Strategy Unit’s Data Science team in implementing Polars for detailed results processing. The performance improvements mentioned are specific to our workloads and may vary depending on your specific use case."
   },
   {
     "objectID": "blogs/posts/2024-05-22_storing-data-safely/azure_python.html",
@@ -1738,7 +1738,7 @@
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r---flows",
     "title": "System Dynamics in health and care",
     "section": "in R - flows",
-    "text": "in R - flows\nEasy to do with count, or group_by and summarise\n\n\nadmit_d &lt;- spell_dates |&gt;\n  group_by(date_admit) |&gt;\n  count(date_admit)\n\nhead(admit_d)\n\n\n# A tibble: 6 × 2\n# Groups:   date_admit [6]\n  date_admit     n\n  &lt;date&gt;     &lt;int&gt;\n1 2022-01-01    23\n2 2022-01-02    26\n3 2022-01-03    28\n4 2022-01-04    35\n5 2022-01-05    31\n6 2022-01-06    25"
+    "text": "in R - flows\nEasy to do with count, or group_by and summarise\n\n\nadmit_d &lt;- spell_dates |&gt;\n  group_by(date_admit) |&gt;\n  count(date_admit)\n\nhead(admit_d)\n\n\n# A tibble: 6 × 2\n# Groups:   date_admit [6]\n  date_admit     n\n  &lt;date&gt;     &lt;int&gt;\n1 2022-01-01    25\n2 2022-01-02    24\n3 2022-01-03    21\n4 2022-01-04    24\n5 2022-01-05    29\n6 2022-01-06    31"
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r---occupancy",
@@ -1759,7 +1759,7 @@
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods---flows",
     "title": "System Dynamics in health and care",
     "section": "Longer Time Periods - flows",
-    "text": "Longer Time Periods - flows\nUse lubridate::floor_date to generate the date at start of week/month\n\nadmit_wk &lt;- spell_dates |&gt;\n  mutate(\n    week_start = floor_date(\n      date_admit,\n      unit = \"week\",\n      week_start = 1 # start week on Monday\n    )\n  ) |&gt;\n  count(week_start) # could add other parameters such as provider code, TFC etc\n\nhead(admit_wk)\n\n\n\n# A tibble: 6 × 2\n  week_start     n\n  &lt;date&gt;     &lt;int&gt;\n1 2021-12-27    49\n2 2022-01-03   189\n3 2022-01-10   183\n4 2022-01-17   203\n5 2022-01-24   193\n6 2022-01-31   188\n\n\n\nMight run SD model in weeks or months - e.g. months for care homes Use lubridate to create new variable with start date of week/month/year etc"
+    "text": "Longer Time Periods - flows\nUse lubridate::floor_date to generate the date at start of week/month\n\nadmit_wk &lt;- spell_dates |&gt;\n  mutate(\n    week_start = floor_date(\n      date_admit,\n      unit = \"week\",\n      week_start = 1 # start week on Monday\n    )\n  ) |&gt;\n  count(week_start) # could add other parameters such as provider code, TFC etc\n\nhead(admit_wk)\n\n\n\n# A tibble: 6 × 2\n  week_start     n\n  &lt;date&gt;     &lt;int&gt;\n1 2021-12-27    49\n2 2022-01-03   190\n3 2022-01-10   172\n4 2022-01-17   215\n5 2022-01-24   201\n6 2022-01-31   186\n\n\n\nMight run SD model in weeks or months - e.g. months for care homes Use lubridate to create new variable with start date of week/month/year etc"
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods---occupancy",
@@ -4240,11 +4240,18 @@
     "text": "Simple example (4)\n\n\nR\nlibrary(testthat)\n\n# run all tests in a package\ntest_package(\".\")\n\n# or, run a specific test file\ntest_file(\n \"tests/testthat/test_multiply.R\"\n)\n\npython\n# from the command line\n\n# run all tests\npython -m pytest tests\n\n# or, run a specific test file\npytest tests/test_multiply.py\n\n# you may need to use python -m\n\n   IDEs (e.g. RStudio, Positron, VSCode) will have a way to run tests for you."
   },
   {
+    "objectID": "presentations/2025-11-14_unit-testing/index.html#running-tests-in-vscode",
+    "href": "presentations/2025-11-14_unit-testing/index.html#running-tests-in-vscode",
+    "title": "Unit Testing",
+    "section": "Running tests in VSCode",
+    "text": "Running tests in VSCode"
+  },
+  {
     "objectID": "presentations/2025-11-14_unit-testing/index.html#other-tips-for-structuring-your-tests",
     "href": "presentations/2025-11-14_unit-testing/index.html#other-tips-for-structuring-your-tests",
     "title": "Unit Testing",
     "section": "Other tips for structuring your tests",
-    "text": "Other tips for structuring your tests\n\nclean up: ensure that nothing changes between tests. Use fixtures (pytest [1], {testthat} [2]), or {withr} [3]\ndon’t overcomplicate tests: each test should contain a single act step. Additional act = additional test\ncreate a test per if/else branch: any time you have branched logic, write a separate test for each branch\nparameterize tests: to re-use testing logic, but different inputs (pytest.mark.parameterize [4], {patrick} [5])"
+    "text": "Other tips for structuring your tests\n\nclean up: ensure that nothing changes between tests. Use fixtures (pytest [1], {testthat} [2]), or {withr} [3]\ncreate a test per if/else branch: any time you have branched logic, write a separate test for each branch\ndon’t overcomplicate tests: each test should contain a single act step. Additional act = additional test\nparameterize tests: to re-use testing logic, but different inputs (pytest.mark.parameterize [4], {patrick} [5])"
   },
   {
     "objectID": "presentations/2025-11-14_unit-testing/index.html#complex-functions-are-hard-to-test",
@@ -4272,7 +4279,14 @@
     "href": "presentations/2025-11-14_unit-testing/index.html#why-is-this-easier-to-test-1",
     "title": "Unit Testing",
     "section": "Why is this easier to test?",
-    "text": "Why is this easier to test?\n\nmutate_datafilter_data\n\n\n\n\ntest_that(\"mutate_data behaves correctly\", {\n  # arrange\n  df &lt;- data.frame(x = c(1, 2, 3), y = c(4, 5, 6))\n  expected &lt;- data.frame(\n    x = c(1, 2, 3),\n    y = c(4, 5, 6),\n    value = c(0.25, 0.4, 0.5)\n  )\n\n  # act\n  actual &lt;- mutate_data(df)\n\n  # assert\n  expect_equal(actual, expected)\n})\n\n\nWe can use much simpler dataframe than might be expected in the real use of these functions.\nBut, by using simpler dataframes we can ensure that the only changes are the ones we are expecting.\nIn this case, a new column value is added.\n\n\n\n\n\n\ntest_that(\"filter_data behaves correctly\", {\n  # arrange\n  df &lt;- data.frame(value = c(-1, 0, 1, 2))\n  expected &lt;- data.frame(value = c(1, 2))\n\n  # act\n  actual &lt;- filter_data(df)\n\n  # assert\n  expect_equal(nrow(actual), 2)\n  expect_equal(actual, expected)\n})\n\n\nWe can use much simpler dataframe than might be expected in the real use of these functions.\nBut, by using simpler dataframes we can ensure that the only changes are the ones we are expecting.\nIn this case, we are expecting less rows of data, but the same structure of columns."
+    "text": "Why is this easier to test?\nmutate_data\n\n\ntest_that(\"mutate_data behaves correctly\", {\n  # arrange\n  df &lt;- data.frame(x = c(1, 2, 3), y = c(4, 5, 6))\n  expected &lt;- data.frame(\n    x = c(1, 2, 3),\n    y = c(4, 5, 6),\n    value = c(0.25, 0.4, 0.5)\n  )\n\n  # act\n  actual &lt;- mutate_data(df)\n\n  # assert\n  expect_equal(actual, expected)\n})\n\n\nWe can use much simpler dataframe than might be expected in the real use of these functions.\nBut, by using simpler dataframes we can ensure that the only changes are the ones we are expecting.\nIn this case, a new column value is added."
+  },
+  {
+    "objectID": "presentations/2025-11-14_unit-testing/index.html#why-is-this-easier-to-test-2",
+    "href": "presentations/2025-11-14_unit-testing/index.html#why-is-this-easier-to-test-2",
+    "title": "Unit Testing",
+    "section": "Why is this easier to test?",
+    "text": "Why is this easier to test?\nfilter_data\n\n\ntest_that(\"filter_data behaves correctly\", {\n  # arrange\n  df &lt;- data.frame(value = c(-1, 0, 1, 2))\n  expected &lt;- data.frame(value = c(1, 2))\n\n  # act\n  actual &lt;- filter_data(df)\n\n  # assert\n  expect_equal(nrow(actual), 2)\n  expect_equal(actual, expected)\n})\n\n\nWe can use much simpler dataframe than might be expected in the real use of these functions.\nBut, by using simpler dataframes we can ensure that the only changes are the ones we are expecting.\nIn this case, we are expecting less rows of data, but the same structure of columns."
   },
   {
     "objectID": "presentations/2025-11-14_unit-testing/index.html#but-what-about-the-other-functions",
@@ -4289,25 +4303,74 @@
     "text": "Mocking\n\nIn a unit test, mock objects can simulate the behavior of complex, real objects and are therefore useful when a real object is impractical or impossible to incorporate into a unit test. [7]"
   },
   {
-    "objectID": "presentations/2025-11-14_unit-testing/index.html#mocking-example-r",
-    "href": "presentations/2025-11-14_unit-testing/index.html#mocking-example-r",
+    "objectID": "presentations/2025-11-14_unit-testing/index.html#mocking-example",
+    "href": "presentations/2025-11-14_unit-testing/index.html#mocking-example",
     "title": "Unit Testing",
-    "section": "Mocking Example R",
-    "text": "Mocking Example R\n\nR functionR test (arrange)R test (act)\n\n\n\n\n#' @importFrom odbc odbc\n#' @importFrom dplyr tbl\n#' @importFrom DBI dbConnect\nget_data &lt;- function() {\n  con &lt;- dbConnect(\n    odbc(),\n    \"dsn\"\n  )\n\n  tbl(con, \"my_table\")\n}\n\n\nNote: {testthat} recommends importing functions into your packages namespace if you want to mock the functions.\n\n\n\n\n\n\nlibrary(mockery)\ntest_that(\"it creates a valid database connection\", {\n  # arrange\n  m_odbc &lt;- Mock(\"odbc\")\n  m_dbConnect &lt;- Mock(\"connection\")\n  m_tbl &lt;- Mock(\"table\")\n\n  local_mocked_bindings(\n    odbc = m_odbc,\n    dbConnect = m_dbConnect,\n    tbl = m_tbl\n  )\n  ...\n})\n\n\nNote: we create a “Mock” object for each of the functions we want to mock.\nThese Mock’s will simply return the values we pass in.\nWhen the function is called, the mock will capture the call and value of arguments it was called with.\n\n\n\n\n\n\nlibrary(mockery)\ntest_that(\"it creates a valid database connection\", {\n  ...\n\n  # act\n  actual &lt;- get_data()\n\n  # assert\n  expect_equal(actual, \"table\")\n  expect_called(m_odbc, 1) # repeat for other mocks\n  \n  expect_args(m_dbConnect, 1, \"odbc\", \"dsn\")\n  expect_args(m_tbl, 1, \"connection\", \"my_table\")\n})\n\n\nNote: we can now validate that our functions (mocks) have been called the correct amount of times, and that they have been called with the correct arguments."
+    "section": "Mocking Example",
+    "text": "Mocking Example\nR (function)\n\n\n#' @importFrom odbc odbc\n#' @importFrom dplyr tbl\n#' @importFrom DBI dbConnect\nget_data &lt;- function() {\n  con &lt;- dbConnect(\n    odbc(),\n    \"dsn\"\n  )\n\n  tbl(con, \"my_table\")\n}\n\n\nNote: {testthat} recommends importing functions into your packages namespace if you want to mock the functions."
   },
   {
-    "objectID": "presentations/2025-11-14_unit-testing/index.html#mocking-example-python",
-    "href": "presentations/2025-11-14_unit-testing/index.html#mocking-example-python",
+    "objectID": "presentations/2025-11-14_unit-testing/index.html#mocking-example-1",
+    "href": "presentations/2025-11-14_unit-testing/index.html#mocking-example-1",
     "title": "Unit Testing",
-    "section": "Mocking Example python",
-    "text": "Mocking Example python\n\npython functionpython test\n\n\n\n\nimport pandas as pd\nfrom sqlalchemy import create_engine\n\ndef get_data():\n    engine = create_engine(\n      \"mssql+pyodbc://my_dsn\"\n    )\n    \n    return pd.read_sql_table(\"my_table\", engine)\n\n\nNote: assume that this is saved in a file called get_data.py, so the function to import would be get_data.get_data.\n\n\n\n\n\n\nfrom get_data import get_data\n# using the pytest-mock plugin\ndef test_get_data(mocker):\n    m_create_engine = mocker.patch(\n      \"get_data.create_engine\", return_value=\"engine\")\n    m_read_sql_table = mocker.patch(\n      \"pandas.read_sql_table\", return_value=\"table\")\n    \n    actual = get_data()\n\n    assert actual == \"table\"\n    m_create_engine.assert_called_once_with(\n      \"mssql+pyodbc://my_dsn\")\n    m_read_sql_table.assert_called_once_with(\n      \"my_table\", \"engine\")\n\n\nNote: the difference between mocking functions which are imported vs functions in modules which are imported."
+    "section": "Mocking Example",
+    "text": "Mocking Example\nR (arrange)\n\n\nlibrary(mockery)\ntest_that(\"it creates a valid database connection\", {\n  # arrange\n  m_odbc &lt;- Mock(\"odbc\")\n  m_dbConnect &lt;- Mock(\"connection\")\n  m_tbl &lt;- Mock(\"table\")\n\n  local_mocked_bindings(\n    odbc = m_odbc,\n    dbConnect = m_dbConnect,\n    tbl = m_tbl\n  )\n  ...\n})\n\n\nNote: we create a “Mock” object for each of the functions we want to mock.\nThese Mock’s will simply return the values we pass in.\nWhen the function is called, the mock will capture the call and value of arguments it was called with."
+  },
+  {
+    "objectID": "presentations/2025-11-14_unit-testing/index.html#mocking-example-2",
+    "href": "presentations/2025-11-14_unit-testing/index.html#mocking-example-2",
+    "title": "Unit Testing",
+    "section": "Mocking Example",
+    "text": "Mocking Example\nR (act/assert)\n\n\nlibrary(mockery)\ntest_that(\"it creates a valid database connection\", {\n  ...\n\n  # act\n  actual &lt;- get_data()\n\n  # assert\n  expect_equal(actual, \"table\")\n  expect_called(m_odbc, 1) # repeat for other mocks\n  \n  expect_args(m_dbConnect, 1, \"odbc\", \"dsn\")\n  expect_args(m_tbl, 1, \"connection\", \"my_table\")\n})\n\n\nNote: we can now validate that our functions (mocks) have been called the correct amount of times, and that they have been called with the correct arguments."
+  },
+  {
+    "objectID": "presentations/2025-11-14_unit-testing/index.html#mocking-example-3",
+    "href": "presentations/2025-11-14_unit-testing/index.html#mocking-example-3",
+    "title": "Unit Testing",
+    "section": "Mocking Example",
+    "text": "Mocking Example\npython (function)\n\n\nimport pandas as pd\nfrom sqlalchemy import create_engine\n\ndef get_data():\n    engine = create_engine(\n      \"mssql+pyodbc://my_dsn\"\n    )\n    \n    return pd.read_sql_table(\"my_table\", engine)\n\n\nNote: assume that this is saved in a file called get_data.py, so the function to import would be get_data.get_data."
+  },
+  {
+    "objectID": "presentations/2025-11-14_unit-testing/index.html#mocking-example-4",
+    "href": "presentations/2025-11-14_unit-testing/index.html#mocking-example-4",
+    "title": "Unit Testing",
+    "section": "Mocking Example",
+    "text": "Mocking Example\npython (arrange)\n\n\nfrom get_data import get_data\n\ndef test_get_data(mocker):\n    # arrange\n    m_create_engine = mocker.patch(\n      \"get_data.create_engine\",\n      return_value=\"engine\"\n    )\n    \n    m_read_sql_table = mocker.patch(\n      \"pandas.read_sql_table\",\n      return_value=\"table\"\n    )\n    \n    ...\n\n\nNote: the difference between mocking functions which are imported vs functions in modules which are imported.\nThis requires the pytest-mock plugin to be installed (via pip)."
+  },
+  {
+    "objectID": "presentations/2025-11-14_unit-testing/index.html#mocking-example-5",
+    "href": "presentations/2025-11-14_unit-testing/index.html#mocking-example-5",
+    "title": "Unit Testing",
+    "section": "Mocking Example",
+    "text": "Mocking Example\npython (act/assert)\n\n\nfrom get_data import get_data\n\ndef test_get_data(mocker):\n    ...\n    # act\n    actual = get_data()\n\n    # assert\n    assert actual == \"table\"\n\n    m_create_engine.assert_called_once_with(\n      \"mssql+pyodbc://my_dsn\"\n    )\n    \n    m_read_sql_table.assert_called_once_with(\n      \"my_table\", \"engine\"\n    )\n\n\nNote: the difference between mocking functions which are imported vs functions in modules which are imported.\nThis requires the pytest-mock plugin to be installed (via pip)."
   },
   {
     "objectID": "presentations/2025-11-14_unit-testing/index.html#using-mocks-with-my_function",
     "href": "presentations/2025-11-14_unit-testing/index.html#using-mocks-with-my_function",
     "title": "Unit Testing",
     "section": "Using mocks with my_function",
-    "text": "Using mocks with my_function\n\nR functionunit testintegration test\n\n\nmy_function &lt;- function() {\n  get_data() |&gt;\n    mutate_data() |&gt;\n    filter_data() |&gt;\n    plot_data()\n}\n\n\ntest_that(\"it calls all the other functions\", {\n  local_mocked_bindings(\n    get_data = (m_get_data &lt;- Mock(\"get_data\")),\n    mutate_data = (m_mutate_data &lt;- Mock(\"mutate_data\")),\n    filter_data = (m_filter_data &lt;- Mock(\"filter_data\")),\n    plot_data = (m_plot_data &lt;- Mock(\"plot_data\"))\n  )\n\n  actual &lt;- my_function()\n\n  expect_equal(actual, \"plot_data\")\n  expect_called(m_get_data, 1)\n  expect_args(m_get_data, 1)\n  expect_args(m_mutate_data, 1, \"get_data\")\n  expect_args(m_filter_data, 1, \"mutate_data\")\n  expect_args(m_plot_data, 1, \"filter_data\")\n})\n\n\ntest_that(\"fn calls all the other functions\", {\n  local_mocked_bindings(\n    get_data = (m_get_data &lt;- data.frame(\n      x = c(0, 1, 2), y = c(3, 4, 5))),\n    plot_data = (m_plot_data &lt;- Mock(\"plot_data\"))\n  )\n\n  actual &lt;- fn()\n\n  expect_equal(actual, \"plot_data\")\n  expect_args(m_plot_data, 1, data.frame(\n    x = c(1, 2), y = c(4, 5), value = c(0.25, 0.4))\n})"
+    "text": "Using mocks with my_function\nR function\nmy_function &lt;- function() {\n  get_data() |&gt;\n    mutate_data() |&gt;\n    filter_data() |&gt;\n    plot_data()\n}"
+  },
+  {
+    "objectID": "presentations/2025-11-14_unit-testing/index.html#using-mocks-with-my_function-1",
+    "href": "presentations/2025-11-14_unit-testing/index.html#using-mocks-with-my_function-1",
+    "title": "Unit Testing",
+    "section": "Using mocks with my_function",
+    "text": "Using mocks with my_function\nunit test (arrange)\ntest_that(\"it calls other functions correctly\", {   \n  # arrange\n  m_get_data &lt;- Mock(\"get_data\")\n  m_mutate_data &lt;- Mock(\"mutate_data\")\n  m_filter_data &lt;- Mock(\"filter_data\")\n  m_plot_data &lt;- Mock(\"plot_data\")\n\n  local_mocked_bindings(\n    get_data = m_get_data,\n    mutate_data = m_mutate_data,\n    filter_data = m_filter_data,\n    plot_data = m_plot_data\n  )\n\n  # ...\n})"
+  },
+  {
+    "objectID": "presentations/2025-11-14_unit-testing/index.html#using-mocks-with-my_function-2",
+    "href": "presentations/2025-11-14_unit-testing/index.html#using-mocks-with-my_function-2",
+    "title": "Unit Testing",
+    "section": "Using mocks with my_function",
+    "text": "Using mocks with my_function\nunit test (arrange)\ntest_that(\"it calls other functions correctly\", {\n  # ...\n  # act\n  actual &lt;- my_function()\n\n  # assert\n  expect_equal(actual, \"plot_data\")\n\n  expect_called(m_get_data, 1)\n  expect_args(m_get_data, 1)\n\n  expect_args(m_mutate_data, 1, \"get_data\")\n  expect_args(m_filter_data, 1, \"mutate_data\")\n\n  expect_args(m_plot_data, 1, \"filter_data\")\n})\n::::\n:::"
+  },
+  {
+    "objectID": "presentations/2025-11-14_unit-testing/index.html#using-mocks-with-my_function-3",
+    "href": "presentations/2025-11-14_unit-testing/index.html#using-mocks-with-my_function-3",
+    "title": "Unit Testing",
+    "section": "Using mocks with my_function",
+    "text": "Using mocks with my_function\nintegration test\ntest_that(\"fn calls all the other functions\", {\n  # arrange\n  df &lt;- data.frame(x = c(0, 1, 2), y = c(3, 4, 5))\n  expected_df &lt;- data.frame(x = c(1, 2), y = c(4, 5), value = c(0.25, 0.4))\n\n  m_get_data &lt;- Mock(df)\n  m_plot_data &lt;- Mock(\"plot_data\")\n\n  local_mocked_bindings(get_data = m_get_data, plot_data = m_plot_data)\n\n  # act\n  actual &lt;- my_function()\n\n  # assert\n  expect_equal(actual, \"plot_data\")\n  expect_args(m_plot_data, 1, expected_df)\n})"
   },
   {
     "objectID": "presentations/2025-11-14_unit-testing/index.html#but-what-about-the-plot-function",
@@ -4317,11 +4380,18 @@
     "text": "But, what about the plot function?\n\nSomethings are just difficult to write tests for\nPlots for example: how can we write in code that the plot is correct?\nWe could just mock all of the function calls and state that is the correct behaviour…\nOr, we could write a snapshot test"
   },
   {
-    "objectID": "presentations/2025-11-14_unit-testing/index.html#snapshot-testing",
-    "href": "presentations/2025-11-14_unit-testing/index.html#snapshot-testing",
+    "objectID": "presentations/2025-11-14_unit-testing/index.html#snapshot-testing-1",
+    "href": "presentations/2025-11-14_unit-testing/index.html#snapshot-testing-1",
     "title": "Unit Testing",
     "section": "Snapshot testing",
-    "text": "Snapshot testing\n\nRpython\n\n\n\n\ntest_that(\n  \"it creates the plot correctly\", {\n    # arrange\n    df &lt;- create_sample_data_frame()\n\n    # act\n    actual &lt;- plot_data(df)\n\n    # assert\n    expect_snapshot(actual)\n  }\n)\n\n\nThe first time we run this, it will create a snapshot of the plot. This will be a file saved to disk.\nNext time we run the test, it will compare the before/after to see if the output of the function has changed.\nIf the snapshot ever changes, you can run snapshot_accept() to use the new snapshot.\n\n\n\n\n\n\n# with the pytest-snapshot plugin\n\ndef test_plot_data(snapshot):\n  # arrange\n  df = create_sample_data_frame()\n\n  # act\n  actual = plot_data(df)\n\n  # assert\n  snapshot.assert_match(actual, \"plot.png\")\n\n\nSimilar to R, but you need to install the pytest-snapshot plugin first.\nThen, you need to run pytest --snapshot-update to generate the initial snapshot, and run that same command any time you want to update the snapshot."
+    "text": "Snapshot testing\nR\n\n\ntest_that(\n  \"it creates the plot correctly\", {\n    # arrange\n    df &lt;- create_sample_data_frame()\n\n    # act\n    actual &lt;- plot_data(df)\n\n    # assert\n    expect_snapshot(actual)\n  }\n)\n\n\nThe first time we run this, it will create a snapshot of the plot. This will be a file saved to disk.\nNext time we run the test, it will compare the before/after to see if the output of the function has changed.\nIf the snapshot ever changes, you can run snapshot_accept() to use the new snapshot."
+  },
+  {
+    "objectID": "presentations/2025-11-14_unit-testing/index.html#snapshot-testing-2",
+    "href": "presentations/2025-11-14_unit-testing/index.html#snapshot-testing-2",
+    "title": "Unit Testing",
+    "section": "Snapshot testing",
+    "text": "Snapshot testing\npython\n\n\n# with the pytest-snapshot plugin\n\ndef test_plot_data(snapshot):\n  # arrange\n  df = create_sample_data_frame()\n\n  # act\n  actual = plot_data(df)\n\n  # assert\n  snapshot.assert_match(actual, \"plot.png\")\n\n\nSimilar to R, but you need to install the pytest-snapshot plugin first.\nThen, you need to run pytest --snapshot-update to generate the initial snapshot, and run that same command any time you want to update the snapshot."
   },
   {
     "objectID": "presentations/2025-11-14_unit-testing/index.html#other-tips",

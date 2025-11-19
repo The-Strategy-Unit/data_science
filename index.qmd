@@ -5,7 +5,8 @@ sidebar: false
 
 This is the home of Data Science activities at [The Strategy Unit][su_web].
 
-Here, we host information about how we work, links to presentations, and blogposts relating to how we utilise data science tools. 
+Here, we host information about how we work, links to presentations, and
+blog posts relating to how we utilise data science tools.
 
 All members of the Strategy Unit are welcome to contribute.
 

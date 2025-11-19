@@ -7,12 +7,12 @@ The Data Science team at the Strategy Unit comprises the following team members:
 - [Chris Beeley](https://github.com/ChrisBeeley)
 - [Claire Welsh](https://github.com/DCEW)
 - [Francis Barton](https://github.com/francisbarton)
-- [Matt Dray](https://github.com/matt-dray)
-- [Ozayr Mohammed](https://github.com/O-Mohammed)
 - [Rhian Davies](https://github.com/statsRhian)
-- [Tom Jemmett](https://github.com/tomjemmett)
+- [Matt Dray](https://github.com/matt-dray)
 - [YiWen Hon](https://github.com/yiwen-h)
+- [Tom Jemmett](https://github.com/tomjemmett)
 - [Eirini Komninou](https://github.com/ai-mindset)
+- [Ozayr Mohammed](https://github.com/O-Mohammed)
 - [Natasha Stephenson](https://github.com/Nat-Stephenson)
 
 The team has a wealth of experience in deploying models and other products to
@@ -32,7 +32,7 @@ open-sourcing them for the benefit of users across the health and care sector,
 enables us to contribute meaningfully at every stage of a project’s life cycle —
 from design through to deployment and adoption.
 
-Current and previous projects of note include:
+Current and past projects of note include:
 
 - Work supporting the New Hospitals Programme, including building a
   [model for predicting demand and capacity requirements for hospitals][nhpinfo]

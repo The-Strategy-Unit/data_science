@@ -1,0 +1,91 @@
+---
+title: "Multidisciplinary analytical pipelines: Productionising a business critical simulation model"
+author: 
+  - "[Chris Beeley](mailto:chris.beeley1@nhs.net)"
+date: 2025-12-04
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, ../su_presentation.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
+    footer: |
+      Learn more about [The Strategy Unit](https://www.strategyunitwm.nhs.uk/)
+---
+
+## Intro
+
+* This presentation is about building a model to predict the future
+* Doing it well required high quality collaboration from a range of staff in different teams with very different skillsets
+* I think the stuff "around" the modelling is non-obvious and this presentation is intended to help others treading a similar path
+
+## Why?
+
+* New Hospital Programme came to the Strategy Unit c.2020
+* Predict demand for the future of the hospitals c.2041
+* We built on existing work and knowledge in the SU as well as the literature
+* I was not here!
+
+## The principles
+
+* Probabilistic
+* [Transparent and open source](https://www.strategyunitwm.nhs.uk/news/transforming-hospital-planning-open-source-demand-and-capacity-model)
+* Collaborative
+* Reproducible
+* By the NHS, for the NHS
+* [(And now award winning)](https://www.strategyunitwm.nhs.uk/news/strategy-unit-demand-model-wins-prestigious-florence-nightingale-award)
+
+## So what does it do?
+
+<img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMTc3dXMyanF0cjJoem16bjhieDZ5djRqZ2RoNDd2eG43aDg3aXkweSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l2JdSlA1a1zKVAyze/giphy.gif" alt="'Gif of Homer Simpson pressing a button and saying 'do something cool'" height="500">
+
+## So what does it do?
+
+* Demographic change
+* Non-demographic change
+* Categories of potentially mitigable activity
+* More to come
+
+## The model
+
+* Sample the parameters (assume normal)
+* Calculate demand at IP, OP, A&E level
+* Do this 256 times and plot the distribution
+* The results are conceptually at row level, but not in practice
+
+## Challenges- DS
+
+* Complexity- structure
+* Versioning, RAP, and audit
+* Processing data pipelines and compute
+* RAP e.g. The Org That Shall Not Be Named
+
+## Challenges- users
+
+* Complexity correctness versus accessibility correctness
+* DS/ digital perspectives
+* Hospital perspective
+
+## Challenges- decision making
+
+* Different analytical teams
+* NHP
+* Strategic versus operational
+* Prioritising
+
+## Challenges- openness and transparency
+
+* The work it takes to actually make this happen
+* Running the code
+* IG and sharing
+
+## The future
+
+* National and regional model runs
+* Bring your own data (FDP?)
+* Understanding more about categories of potentially mitigable activity, who thinks what's possible, and why it matters
+* Increasing understanding of the shift from hospital to the community

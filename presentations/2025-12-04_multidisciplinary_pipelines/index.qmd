@@ -57,22 +57,39 @@ format:
 * Do this 256 times and plot the distribution
 * The results are conceptually at row level, but not in practice
 
-## Challenges- DS
+## Structure of the project
 
-* Complexity- structure
-* Versioning, RAP, and audit
-* Processing data pipelines and compute
-* RAP e.g. The Org That Shall Not Be Named
+* Not going to show a big confusing diagram
+* [There is one if you want one](https://connect.strategyunitwm.nhs.uk/nhp/project_information/project_plan_and_summary/components-overview.html)
+* There are three places that stuff happens, partly because of IG
+* We store and process data in Azure (SQL -> databricks)
+* We host the reports and dashboards separately, with no data on this server, only results
+* And we have a plethora of scripts, notebooks, and other gubbins on laptops
+
+## Versioning, RAP, and audit
+
+* Versioning is really challenging
+* We learned a lot!
+* Are we Apple or Microsoft?
+* RAP is important for audit too
+* We continue to wrestle with versioning of data to support old model runs
+
+## RAP is awesome... right?
+
+![](rap.jpg)
 
 ## Challenges- users
 
 * Complexity correctness versus accessibility correctness
-* DS/ digital perspectives
-* Hospital perspective
+* Who is a user? What do they want? (I'll talk more about this in a talk later on)
+* Hospital vs ICB vs NHP vs director vs data scientist vs... perspective
 
 ## Challenges- decision making
 
 * Different analytical teams
+  * Theoretical ideas to 
+  * Pragmatic interpretations 
+  * All delivered with data science
 * NHP
 * Strategic versus operational
 * Prioritising

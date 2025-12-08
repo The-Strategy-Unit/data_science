@@ -1,0 +1,128 @@
+---
+title: "Whose application is it anyway?"
+subtitle: "Building products for everyone in the UK health and care system"
+author: 
+  - "[Chris Beeley](mailto:chris.beeley1@nhs.net)"
+date: 2025-12-04
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, ../su_presentation.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
+    footer: |
+      Learn more about [The Strategy Unit](https://www.strategyunitwm.nhs.uk/)
+---
+
+## Introduction
+
+* I want to tell a story
+* It's about ending up in the middle of two things- data science and digital
+* I naively launched in the wrong direction and have beeen redirecting since
+* I'm not an expert in anything I talk about today- if you're doing something big ask an expert
+
+## The story
+
+* I lead a team that built a demand and capacity model for the New Hospital Programme
+* It's a simulation model that predicts demand for acute care in c. 2041
+* There's a huge amount of analytical work on and around the model
+* We have produced lots of whizzy reports and dashboards to assist with parameter setting and results interpretation
+
+## The problem
+
+* We did everything we were supposed to and people were happy with the model. But there were issues
+* User feedback and prioritisation of developments were ad-hoc
+* Programmes of work were siloed 
+* The needs of different bugfixes and improvements were considered in isolation
+* The connection between different deliverables was poorly understood
+
+## Where next?
+
+* I wanted somebody to work across all of the different streams of work
+* They would consider the work programme as a whole and help to prioritise
+* We started to think, **really think** of individuals interacting with our model, inside and outside the unit, as users
+
+## Another story
+
+* This is someone else's story
+* It has a real resonance with an age old problem in analytics- nobody uses our dashboards!
+* The results that the intervention produced were profound but come from a world I knew nothing about two years ago
+
+## The solution - product
+
+![Source: [Oscar G Torres](https://oscargt.com/)](what_is_product_management.png)
+
+## What is product?
+
+* Pro*ject* management is all about delivering a thing
+* You can be agile and iterate on the thing
+* You can do waterfall and spec a thing and then do it
+* Pro*duct* management is about *Why* and *What*
+
+## Back to the other person's story
+
+* They introduced the disciplines of product into their team building PowerBI stuff
+* Specifically:
+  * Product management; Product design; Developer; User researcher; Delivery manager
+* Excellent results on engagement with outputs was immediate
+
+## Next steps
+
+* Staff found their roles were too broad
+* It was challenging from a skills and workload point of view
+* Root and branch change of job roles and JDs with the willing participation of all staff
+
+## End result
+
+* Their work is transformed- roughly a third of the staff are involved in:
+  * Product management
+  * Design
+  * User research
+* And they could do more given time and resources- this work is not "one and done"
+
+## Back to my story
+
+* We've been working on adding product roles for the last year
+* Two full time roles (and me chipping in)
+* Many things have worked really well
+* Some things we are still working on
+
+## Product versus delivery
+
+* Separating the *why* from the *how*
+* It's a really specific and clear example of "Involve us at the start"
+* People work better with clear roles and clear responsibilities
+* Build a group of people who know why and a group who know how
+
+## Agile
+
+* Customers talk waterfall but behave agile
+* Agility is a mindset, a mode of practice
+* Being agile is all about being able to review and make decisions frequently
+* But it isn't about changing what you're doing all the time
+* Good code and good teams are ready to change direction- whether they change or not
+
+## Money for old rope
+
+* This is old news to digital people
+* Data science and analytics are expanding
+* We're reinventing the wheel
+* But these methods are being looked at by other teams
+  * And I think we really do need to reinvent the wheel
+
+## Data science and analytics is entering its Max Power stage
+
+![The wrong way... But faster!](https://media1.tenor.com/m/X8smvfU4WTMAAAAd/simpsons-max-power.gif)
+
+## Tying threads
+
+* We need to listen and learn from agile and product colleagues in digital
+* But I also think we need to make these methods our own
+* Let's do it together 🙂
+
+
+

@@ -1,0 +1,122 @@
+---
+title: "Multidisciplinary analytical pipelines: Productionising a business critical simulation model"
+author: 
+  - "[Chris Beeley](mailto:chris.beeley1@nhs.net)"
+date: 2025-12-04
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, ../su_presentation.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
+    footer: |
+      Learn more about [The Strategy Unit](https://www.strategyunitwm.nhs.uk/)
+---
+
+## Intro
+
+* This presentation is about building a model to predict the future
+* Doing it well required high quality collaboration from a range of staff in different teams with very different skillsets
+* I think the stuff "around" the modelling is non-obvious and this presentation is intended to help others treading a similar path
+
+## Why?
+
+* New Hospital Programme came to the Strategy Unit c.2020
+* Predict demand for the future of the hospitals c.2041
+* We built on existing work and knowledge in the SU as well as the literature
+* I was not here!
+
+## The principles
+
+* Probabilistic
+* [Transparent and open source](https://www.strategyunitwm.nhs.uk/news/transforming-hospital-planning-open-source-demand-and-capacity-model)
+* Collaborative
+* Reproducible
+* By the NHS, for the NHS
+* [(And now award winning)](https://www.strategyunitwm.nhs.uk/news/strategy-unit-demand-model-wins-prestigious-florence-nightingale-award)
+
+## So what does it do?
+
+<img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMTc3dXMyanF0cjJoem16bjhieDZ5djRqZ2RoNDd2eG43aDg3aXkweSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l2JdSlA1a1zKVAyze/giphy.gif" alt="'Gif of Homer Simpson pressing a button and saying 'do something cool'" height="500">
+
+## So what does it do?
+
+* Demographic change
+* Non-demographic change
+* Types of potentially mitigable activity
+* More to come
+
+## The model
+
+* Sample the parameters (assume normal)
+* Calculate demand at IP, OP, A&E level
+* Do this 256 times and plot the distribution
+* The results are conceptually at row level, but not in practice
+
+## Structure of the project
+
+* Not going to show a big confusing diagram
+* [There is one if you want one](https://connect.strategyunitwm.nhs.uk/nhp/project_information/project_plan_and_summary/components-overview.html)
+* Three places that stuff happens, partly because of IG
+* We store and process data in Azure (SQL -> databricks; Docker)
+* We host the reports and dashboards separately, with no data on this server, only results
+* And we have a plethora of scripts, notebooks, and other gubbins on laptops
+
+## Versioning, RAP, and audit
+
+* Versioning is really challenging
+* We learned a lot!
+* Are we Apple or Microsoft?
+* RAP is important for audit too
+* We continue to wrestle with versioning of data to support old model runs
+
+## RAP is awesome... right?
+
+![](rap.jpg)
+
+## Challenges
+
+* All models are wrong
+* Consistency versus accuracy
+* "It is difficult to make predictions, especially about the future"
+  * "This model is simple"
+
+## The national elicitation exercise
+
+* We asked experts to predict likely levels of mitigation in the future, in a structured way
+* We also made some whizzy data science tools to do it with- which ended up being really important and useful
+* It's not my area so I won't say any more- this was Prof Mohammed and team
+* We show these values to trusts to help them make better guesses about the future
+
+## Challenges- users
+
+* Complexity correctness versus accessibility correctness
+* Who is a user? What do they want? (I'll talk more about this in a talk later on)
+* Hospital vs ICB vs NHP vs director vs data scientist vs... perspective
+
+## Challenges- decision making
+
+* Different analytical teams
+  * Theoretical ideas to... 
+  * Pragmatic interpretations 
+  * All delivered with data science
+* NHP
+* Strategic versus operational
+* Prioritising
+
+## Challenges- openness and transparency
+
+* The work it takes to actually make this happen
+* Running the code
+* IG and sharing
+
+## The future
+
+* National and regional model runs
+* Bring your own data (FDP?)
+* Understanding more about categories of potentially mitigable activity, who thinks what's possible, and why it matters
+* Increasing understanding of the shift from hospital to the community

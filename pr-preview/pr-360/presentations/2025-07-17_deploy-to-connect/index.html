@@ -6,8 +6,8 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.33">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.26">
 
   <meta name="author" content="Matt Dray">
   <meta name="author" content="YiWen Hon">
@@ -97,7 +97,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-09c34abcecefe638f33e6d3c2293a836.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-79e13ccf49a1761138acbe053d10a724.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -349,7 +349,7 @@
 <h2>R demo</h2>
 <p>Example <code>deploy.R</code> for a Shiny app:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>rsconnect<span class="sc">::</span><span class="fu">deployApp</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>rsconnect<span class="sc">::</span><span class="fu">deployApp</span>(</span>
 <span id="cb1-2"><a></a>  <span class="at">appName =</span> <span class="st">"coffee-test-app"</span>,</span>
 <span id="cb1-3"><a></a>  <span class="at">appTitle =</span> <span class="st">"Test app: Coffee and Coding"</span>,</span>
 <span id="cb1-4"><a></a>  <span class="at">appFiles =</span> <span class="fu">c</span>(<span class="st">"R/"</span>, <span class="st">"ui.R"</span>, <span class="st">"server.R"</span>),</span>
@@ -357,7 +357,7 @@
 <span id="cb1-6"><a></a>  <span class="co"># appId = &lt;your deployed app's content ID&gt;,</span></span>
 <span id="cb1-7"><a></a>  <span class="at">lint =</span> <span class="cn">FALSE</span>,</span>
 <span id="cb1-8"><a></a>  <span class="at">forceUpdate =</span> <span class="cn">TRUE</span></span>
-<span id="cb1-9"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-9"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Find <code>appID</code> in ⚙️ Settings &gt; Info &gt; Content ID after it’s deployed for the first time.</p>
 <aside class="notes">
@@ -381,14 +381,14 @@
 <h2>R demo</h2>
 <p>Example <code>deploy.R</code> for a Quarto doc:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>rsconnect<span class="sc">::</span><span class="fu">deployDoc</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>rsconnect<span class="sc">::</span><span class="fu">deployDoc</span>(</span>
 <span id="cb2-2"><a></a>  <span class="at">appName =</span> <span class="st">"coffee-test-doc"</span>,</span>
 <span id="cb2-3"><a></a>  <span class="at">appTitle =</span> <span class="st">"Test doc: Coffee and Coding"</span>,</span>
 <span id="cb2-4"><a></a>  <span class="at">server =</span> <span class="st">"connect.strategyunitwm.nhs.uk"</span>,</span>
 <span id="cb2-5"><a></a>  <span class="co"># appId = &lt;your deployed app's content ID&gt;,</span></span>
 <span id="cb2-6"><a></a>  <span class="at">lint =</span> <span class="cn">FALSE</span>,</span>
 <span id="cb2-7"><a></a>  <span class="at">forceUpdate =</span> <span class="cn">TRUE</span></span>
-<span id="cb2-8"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-8"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Or <code>deployApp()</code> to specify undetected <code>appFiles</code>.</p>
 <aside class="notes">
@@ -716,7 +716,7 @@
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -828,13 +828,14 @@
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

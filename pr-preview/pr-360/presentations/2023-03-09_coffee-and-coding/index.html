@@ -6,8 +6,8 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.33">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.26">
 
   <meta name="author" content="Tom Jemmett">
   <title>Data Science @ The Strategy Unit – Coffee and Coding</title>
@@ -95,7 +95,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-09c34abcecefe638f33e6d3c2293a836.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-79e13ccf49a1761138acbe053d10a724.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -222,15 +222,15 @@
 <section id="which-is-easier-to-read" class="slide level2">
 <h2>Which is easier to read?</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>ae_attendances <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>ae_attendances <span class="sc">|&gt;</span></span>
 <span id="cb1-2"><a></a>  <span class="fu">filter</span>(org_code <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"RNA"</span>, <span class="st">"RL4"</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb1-3"><a></a>  <span class="fu">mutate</span>(<span class="at">performance =</span> <span class="dv">1</span> <span class="sc">+</span> breaches <span class="sc">/</span> attendances) <span class="sc">|&gt;</span></span>
 <span id="cb1-4"><a></a>  <span class="fu">filter</span>(type <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">|&gt;</span></span>
-<span id="cb1-5"><a></a>  <span class="fu">mutate</span>(<span class="at">met_target =</span> performance <span class="sc">&gt;=</span> <span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a></a>  <span class="fu">mutate</span>(<span class="at">met_target =</span> performance <span class="sc">&gt;=</span> <span class="fl">0.95</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>or</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>ae_attendances <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>ae_attendances <span class="sc">|&gt;</span></span>
 <span id="cb2-2"><a></a>  <span class="fu">filter</span>(</span>
 <span id="cb2-3"><a></a>    org_code <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"RNA"</span>, <span class="st">"RL4"</span>),</span>
 <span id="cb2-4"><a></a>    type <span class="sc">==</span> <span class="dv">1</span></span>
@@ -238,7 +238,7 @@
 <span id="cb2-6"><a></a>  <span class="fu">mutate</span>(</span>
 <span id="cb2-7"><a></a>    <span class="at">performance =</span> <span class="dv">1</span> <span class="sc">+</span> breaches <span class="sc">/</span> attendances,</span>
 <span id="cb2-8"><a></a>    <span class="at">met_target =</span> performance <span class="sc">&gt;=</span> <span class="fl">0.95</span></span>
-<span id="cb2-9"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-9"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="fragment">
 <p><br> <br> spending a few seconds to neatly format your code can greatly improve the legibility to future readers, making the intent of the code far clearer, and will make finding bugs easier to spot.</p>
@@ -271,16 +271,16 @@
 </ul>
 </div><div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># Good</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># Good</span></span>
 <span id="cb3-2"><a></a>day_one</span>
 <span id="cb3-3"><a></a>day_1</span>
 <span id="cb3-4"><a></a></span>
 <span id="cb3-5"><a></a><span class="co"># Bad</span></span>
 <span id="cb3-6"><a></a>DayOne</span>
-<span id="cb3-7"><a></a>dayone</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-7"><a></a>dayone</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="co"># Good</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="co"># Good</span></span>
 <span id="cb4-2"><a></a>day_one</span>
 <span id="cb4-3"><a></a></span>
 <span id="cb4-4"><a></a><span class="co"># Bad</span></span>
@@ -290,10 +290,10 @@
 <span id="cb4-8"><a></a><span class="co"># Bad</span></span>
 <span id="cb4-9"><a></a>T <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
 <span id="cb4-10"><a></a>c <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb4-11"><a></a>mean <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">sum</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-11"><a></a>mean <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">sum</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="co"># Good</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="co"># Good</span></span>
 <span id="cb5-2"><a></a>iris <span class="sc">%&gt;%</span></span>
 <span id="cb5-3"><a></a>  <span class="fu">group_by</span>(Species) <span class="sc">%&gt;%</span></span>
 <span id="cb5-4"><a></a>  <span class="fu">summarize_if</span>(is.numeric, mean) <span class="sc">%&gt;%</span></span>
@@ -307,7 +307,7 @@
 <span id="cb5-12"><a></a>  <span class="fu">summarize_all</span>(mean) <span class="sc">%&gt;%</span></span>
 <span id="cb5-13"><a></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb5-14"><a></a>  <span class="fu">gather</span>(measure, value, <span class="sc">-</span>Species) <span class="sc">%&gt;%</span></span>
-<span id="cb5-15"><a></a>  <span class="fu">arrange</span>(value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-15"><a></a>  <span class="fu">arrange</span>(value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div></div>
 </section>
@@ -341,7 +341,7 @@
 </div><div class="column" style="width:30%;">
 <p>running lintr can be done in the console, e.g.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>lintr<span class="sc">::</span><span class="fu">lintr_dir</span>(<span class="st">"."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>lintr<span class="sc">::</span><span class="fu">lintr_dir</span>(<span class="st">"."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>or via the Addins menu</p>
 <p><img data-src="lintr_addin.png"></p>
@@ -554,7 +554,7 @@
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -666,13 +666,14 @@
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

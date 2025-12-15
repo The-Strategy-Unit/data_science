@@ -4,7 +4,6 @@ subtitle: "Principles and Practices for Performant Code"
 author: "Eirini & Rhian, DS @ SU"
 format:
   revealjs:
-    #theme: [default, ../su_presentation.scss]
     theme: dark
     code-fold: true
     code-overflow: wrap
@@ -13,6 +12,11 @@ execute:
   eval: false
   engine: jupyter
 ---
+
+```{r lockfile}
+#| include: FALSE
+renv::use(lockfile = "renv.lock")
+```
 
 ## Agenda
 

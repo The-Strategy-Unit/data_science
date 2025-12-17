@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=80.9.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pres"
+version = "0.1.0"
+description = "Dependencies for Efficient Coding Quarto presentation"
+requires-python = ">=3.12"
+dependencies = [
+    "jupyter>=1.1.1",
+    "numpy>=2.2.3", # https://github.com/numba/numba/releases/tag/0.61.2
+    "pandas>=2.3.2",
+    "pyinstrument>=5.1.1",
+    "numba>=0.61.2",
+    "jupyter-cache>=1.0.1",
+]

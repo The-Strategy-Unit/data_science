@@ -1,6 +1,6 @@
 ---
-editor: 
-  markdown: 
+editor:
+  markdown:
     wrap: sentence
 ---
 
@@ -146,6 +146,78 @@ The deputy should perform these duties in the absence of the owner and provide u
 
 The Data Science team at The Strategy Unit maintain [a template repository](https://github.com/The-Strategy-Unit/template-repository) that contains the minimum set of files and basic structure needed to ensure organisational consistency in repository management. You are welcome to view, clone, copy or reuse the template as you see fit.
 
+## Make your repo useful for others
+
+### Motivation
+
+In the spirit of [our open source policy](https://connect.strategyunitwm.nhs.uk/open-source-policy/), we should make it easy for others to reuse, repurpose or contribute to our code.
+Given our desire to improve transparency and help educate others, our content should be findable and the content understood easily.
+Visitors to our repos should be able to find what they're looking for and maybe discover something new.
+
+This sentiment is true for private as well as public repositories.
+Thoughtful repo construction and documentation are a courtesy to your colleagues.
+It's also good practice because we should aim for all repos to be open eventually, if not immediately.
+
+### User stories
+
+You should consider who your users might be and what their user stories might be.
+For example, as:
+
+* an internal developer I want to reuse some code so that I can ensure consistency with our existing approaches
+* an external developer I want to understand the contribution process for a repo so that I can submit a bug fix
+* an external manager I want to look at The Strategy Unit's repos so that I can understand best practice for presenting and disseminating code
+* a member of the public I want to inspect the code and methods used by the team so that I can understand how taxpayer money is being used
+
+### Practical tips
+
+Below are some non-exhaustive ideas for how you can improve the usefulness and usability of your repo to others.
+This is non-exhaustive set of suggestions and you will need to make your own decisions depending on the nature of the repo.
+
+To improve organisation and findability:
+
+* use a succinct but explanatory name for your repo (you can [change it](https://docs.github.com/en/repositories/creating-and-managing-repositories/renaming-a-repository))
+* add some [GitHub topics](https://github.com/topics) to group-up repos and make them more searchable (see [the topics on our NHP repos](https://github.com/The-Strategy-Unit/nhp_products/wiki/List-of-all-NHP-repos), for example)
+* consider [custom properties](https://docs.github.com/en/enterprise-cloud@latest/organizations/managing-organization-settings/managing-custom-properties-for-repositories-in-your-organization)
+
+To explain your code's purpose:
+
+* complete the description in the repo's 'about' section
+* make sure to include a `README` file with a short description near the top, which can provide quick context and link to related information or projects
+
+So people can understand the state of your project:
+
+* use `README` badges to indicate statuses like passing checks, [project lifecycle stage](https://www.repostatus.org/) and publication to package indexes (e.g. PyPi, CRAN)
+* [tag and release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository) your code using [semantic versioning](https://semver.org/) and add clear notes of the changes made
+* keep a human-readable changelog up-to-date (e.g. [a NEWS.md file](https://r-pkgs.org/other-markdown.html#sec-news) in an R package)
+
+To make it easy for people to (re)use your code (and products):
+
+* make sure your `README` file explains any prerequisites (e.g. dependencies, data, environment variables) and outlines the method to run the code
+* consider [a repo Wiki](https://docs.github.com/en/communities/documenting-your-project-with-wikis/about-wikis) to provide supporting info
+* consider organising your code into its most reusable or shareable form (e.g. an R package)
+* ensure you have a `LICENSE` so people know how they can (re)use your code
+
+To allow people to contribute:
+
+* make clear the repo's owner and deputy with a [CODEOWNERS file](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners) and possibly include owners for specific directories and files
+* state preferred methods of contact in the `README` (e.g. via issues or perhaps [GitHub Discussions](https://github.com/features/discussions) for community building)
+* add instructions in [a `CONTRIBUTING.md` file](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors)
+* use [issue templates](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository) to help users ask for or report things
+* use common [issue labels](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels) to highlight issue complexity/priority
+* consider a [CODE_OF_CONDUCT.md](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/adding-a-code-of-conduct-to-your-project) document
+
+So other developers know how to dev with you:
+
+* Use [rulesets](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets) to protect your main branch
+* make pull requests early, [marked as draft](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/changing-the-stage-of-a-pull-request) with an assignee so 'in-progress' work is visible
+* make clear the preferred Git branching strategy (e.g. feature branches off of main)
+
+To make it easier for developers to get an at-a-glance understanding:
+
+* follow conventions and good-practice for the language being used, e.g. R and Python packages
+* use a simple, self-explanatory directory structure (e.g. images in `img/`, data in `data/`)
+* start with [the SU template repository](https://github.com/The-Strategy-Unit/template-repository) (click 'use this template' button or '+ create new' > 'new repository' > 'start with template')
+
 ## Further reading
 
-See also our [GitHub as a Team Sport](../presentations/2024-05-23_github-team-sport/index.qmd) presentation.
+See also our [GitHub as a Team Sport](../presentations/2024-05-23_github-team-sport/index.qmd) presentation for ideas about working together in GitHub repos.

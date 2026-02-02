@@ -193,6 +193,7 @@ So people can understand the state of your project:
 To make it easy for people to (re)use your code (and products):
 
 * make sure your `README` file explains any prerequisites (e.g. dependencies, data, environment variables) and outlines the method to run the code
+* use good coding practice like clear variable naming, modularisation into functions/classes/sub-scripts and judicious use of explanatory comments
 * consider [a repo Wiki](https://docs.github.com/en/communities/documenting-your-project-with-wikis/about-wikis) to provide supporting info
 * consider organising your code into its most reusable or shareable form (e.g. an R package)
 * ensure you have a `LICENSE` so people know how they can (re)use your code

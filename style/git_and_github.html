@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.8.27">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -37,9 +37,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-0ad13c1849c5fdbf423e616c9f8fb074.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -386,6 +386,12 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#template-repository" id="toc-template-repository" class="nav-link" data-scroll-target="#template-repository">Template repository</a></li>
   </ul></li>
+  <li><a href="#make-your-repo-useful-for-others" id="toc-make-your-repo-useful-for-others" class="nav-link" data-scroll-target="#make-your-repo-useful-for-others">Make your repo useful for others</a>
+  <ul class="collapse">
+  <li><a href="#motivation" id="toc-motivation" class="nav-link" data-scroll-target="#motivation">Motivation</a></li>
+  <li><a href="#user-stories" id="toc-user-stories" class="nav-link" data-scroll-target="#user-stories">User stories</a></li>
+  <li><a href="#practical-tips" id="toc-practical-tips" class="nav-link" data-scroll-target="#practical-tips">Practical tips</a></li>
+  </ul></li>
   <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further reading</a></li>
   </ul></li>
   </ul>
@@ -522,9 +528,77 @@ Important
 <p>The Data Science team at The Strategy Unit maintain <a href="https://github.com/The-Strategy-Unit/template-repository">a template repository</a> that contains the minimum set of files and basic structure needed to ensure organisational consistency in repository management. You are welcome to view, clone, copy or reuse the template as you see fit.</p>
 </section>
 </section>
+<section id="make-your-repo-useful-for-others" class="level2">
+<h2 class="anchored" data-anchor-id="make-your-repo-useful-for-others">Make your repo useful for others</h2>
+<section id="motivation" class="level3">
+<h3 class="anchored" data-anchor-id="motivation">Motivation</h3>
+<p>In the spirit of <a href="https://connect.strategyunitwm.nhs.uk/open-source-policy/">our open source policy</a>, we should make it easy for others to reuse, repurpose or contribute to our code. Given our desire to improve transparency and help educate others, our content should be findable and the content understood easily. Visitors to our repos should be able to find what they’re looking for and maybe discover something new.</p>
+<p>This sentiment is true for private as well as public repositories. Thoughtful repo construction and documentation are a courtesy to your colleagues. It’s also good practice because we should aim for all repos to be open eventually, if not immediately.</p>
+</section>
+<section id="user-stories" class="level3">
+<h3 class="anchored" data-anchor-id="user-stories">User stories</h3>
+<p>You should consider who your users might be and what their user stories might be. For example, as:</p>
+<ul>
+<li>an internal developer I want to reuse some code so that I can ensure consistency with our existing approaches</li>
+<li>an external developer I want to understand the contribution process for a repo so that I can submit a bug fix</li>
+<li>an external manager I want to look at The Strategy Unit’s repos so that I can understand best practice for presenting and disseminating code</li>
+<li>a member of the public I want to inspect the code and methods used by the team so that I can understand how taxpayer money is being used</li>
+</ul>
+</section>
+<section id="practical-tips" class="level3">
+<h3 class="anchored" data-anchor-id="practical-tips">Practical tips</h3>
+<p>Below are some non-exhaustive ideas for how you can improve the usefulness and usability of your repo to others. This is non-exhaustive set of suggestions and you will need to make your own decisions depending on the nature of the repo.</p>
+<p>To improve organisation and findability:</p>
+<ul>
+<li>use a succinct but explanatory name for your repo (you can <a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/renaming-a-repository">change it</a>)</li>
+<li>add some <a href="https://github.com/topics">GitHub topics</a> to group-up repos and make them more searchable (see <a href="https://github.com/The-Strategy-Unit/nhp_products/wiki/List-of-all-NHP-repos">the topics on our NHP repos</a>, for example)</li>
+<li>consider <a href="https://docs.github.com/en/enterprise-cloud@latest/organizations/managing-organization-settings/managing-custom-properties-for-repositories-in-your-organization">custom properties</a></li>
+</ul>
+<p>To explain your code’s purpose:</p>
+<ul>
+<li>complete the description in the repo’s ‘about’ section</li>
+<li>make sure to include a <code>README</code> file with a short description near the top, which can provide quick context and link to related information or projects</li>
+</ul>
+<p>So people can understand the state of your project:</p>
+<ul>
+<li>use <code>README</code> badges to indicate statuses like passing checks, <a href="https://www.repostatus.org/">project lifecycle stage</a> and publication to package indexes (e.g.&nbsp;PyPi, CRAN)</li>
+<li><a href="https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository">tag and release</a> your code using <a href="https://semver.org/">semantic versioning</a> and add clear notes of the changes made</li>
+<li>keep a human-readable changelog up-to-date (e.g.&nbsp;<a href="https://r-pkgs.org/other-markdown.html#sec-news">a NEWS.md file</a> in an R package)</li>
+</ul>
+<p>To make it easy for people to (re)use your code (and products):</p>
+<ul>
+<li>make sure your <code>README</code> file explains any prerequisites (e.g.&nbsp;dependencies, data, environment variables) and outlines the method to run the code</li>
+<li>use good coding practice like clear variable naming, modularisation into functions/classes/sub-scripts and judicious use of explanatory comments</li>
+<li>consider <a href="https://docs.github.com/en/communities/documenting-your-project-with-wikis/about-wikis">a repo Wiki</a> to provide supporting info</li>
+<li>consider organising your code into its most reusable or shareable form (e.g.&nbsp;an R package)</li>
+<li>ensure you have a <code>LICENSE</code> so people know how they can (re)use your code</li>
+</ul>
+<p>To allow people to contribute:</p>
+<ul>
+<li>make clear the repo’s owner and deputy with a <a href="https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners">CODEOWNERS file</a> and possibly include owners for specific directories and files</li>
+<li>state preferred methods of contact in the <code>README</code> (e.g.&nbsp;via issues or perhaps <a href="https://github.com/features/discussions">GitHub Discussions</a> for community building)</li>
+<li>add instructions in <a href="https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors">a <code>CONTRIBUTING.md</code> file</a></li>
+<li>use <a href="https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository">issue templates</a> to help users ask for or report things</li>
+<li>use common <a href="https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels">issue labels</a> to highlight issue complexity/priority</li>
+<li>consider a <a href="https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/adding-a-code-of-conduct-to-your-project">CODE_OF_CONDUCT.md</a> document</li>
+</ul>
+<p>So other developers know how to dev with you:</p>
+<ul>
+<li>Use <a href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets">rulesets</a> to protect your main branch</li>
+<li>make pull requests early, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/changing-the-stage-of-a-pull-request">marked as draft</a> with an assignee so ‘in-progress’ work is visible</li>
+<li>make clear the preferred Git branching strategy (e.g.&nbsp;feature branches off main)</li>
+</ul>
+<p>To make it easier for developers to get an at-a-glance understanding:</p>
+<ul>
+<li>follow conventions and good-practice for the language being used, e.g.&nbsp;R and Python packages</li>
+<li>use a simple, self-explanatory directory structure (e.g.&nbsp;images in <code>img/</code>, data in <code>data/</code>)</li>
+<li>start with <a href="https://github.com/The-Strategy-Unit/template-repository">the SU template repository</a> (click ‘use this template’ button or ‘+ create new’ &gt; ‘new repository’ &gt; ‘start with template’)</li>
+</ul>
+</section>
+</section>
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further reading</h2>
-<p>See also our <a href="../presentations/2024-05-23_github-team-sport/index.html" target="_blank">GitHub as a Team Sport</a> presentation.</p>
+<p>See also our <a href="../presentations/2024-05-23_github-team-sport/index.html" target="_blank">GitHub as a Team Sport</a> presentation for ideas about working together in GitHub repos.</p>
 
 
 </section>

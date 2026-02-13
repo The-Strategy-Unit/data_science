@@ -1,0 +1,169 @@
+# How to build shiny apps
+
+## Structure your code as an R package
+
+All code should be under the `R/` folder. At minimum, you want to have 3 files:
+
+* `server.R` which defines a `server()` function
+* `ui.R` which defines an app's UI body (or, a function which returns the body)
+* `run_app.R`, which returns `shinyApp(ui, server)`
+
+You can then have an `app.R` in the project root which contains the following:
+
+``` r
+pkgload::load_all(export_all = FALSE, helpers = FALSE, attach_testthat = FALSE)
+options("golem.app.prod" = TRUE)
+
+run_app()
+````
+
+## Simplify observers
+
+if you have some event, say you are watching a single input for change, and you
+want to perform 2 actions on that, favour splitting this into two observers.
+
+This can make it far easier to read the code afterwards, especially if you add
+comments above the observer to explain what it is that you are trying to
+achieve.
+
+### Example of what not to do:
+
+``` r
+observe({
+  updateSliderInput(session, "slider", ...)
+
+  updateCheckboxInput(session, "checkbox", ...)
+}) |>
+  bindEvent(input$thing)
+```
+
+### Better:
+
+``` r
+observe({
+  updateSliderInput(session, "slider", ...)
+}) |>
+  bindEvent(input$thing)
+
+observe({
+  updateCheckboxInput(session, "checkbox", ...)
+}) |>
+  bindEvent(input$thing)
+```
+
+Another reason for this approach is if you want to bind to two events, but only
+in the case of one of the actions that you want to perform. For example:
+
+``` r
+observe({
+  updateSliderInput(session, "slider", ...)
+}) |>
+  bindEvent(input$thing)
+
+observe({
+  updateCheckboxInput(session, "checkbox", ...)
+}) |>
+  bindEvent(input$thing, input$other)
+```
+
+## Simplify Reactives/Observers/Renders
+
+Do not do any business logic in your reactives etc. Move all the logic into some
+function which is defined outside of the server.
+
+The only logic to include would be `req()` and `validate()` calls.
+
+### Example
+
+``` r
+
+get_my_data <- function() {
+
+}
+
+modify_my_data <- function(data, filter_condition) {
+  ...
+}
+
+server <- function(input, output, session) {
+...
+  my_data <- reactive({
+    get_my_data()    
+  })
+
+  modified_data <- reactive({
+    my_data <- req(my_data())
+    filter_condition <- shiny::req(input$filter_condition)
+
+    modifiy_my_data(my_data, filter_condition)
+  })
+...
+}
+```
+
+Note in the above, the `modified_data` reactive creates some simple variables
+evaluating the `my_data` reactive and getting some input value. But that is all
+we do, we do not alter those values in any way.
+
+If we did need to, say alter the `input$filter_condition` value, introduce a
+reactive and function to handle this separately.
+
+Also note that we evaluate any reactives, and pass the variables through to the
+function calls. That separates reactivity with business logic.
+
+The two benefits of this approach are:
+
+1. You can more easily try out the code outside of a reactive context, such as
+from an interactive R session.
+
+2. Unit testing becomes much easier. We can use
+`testthat::local_mocked_bindings` to replace the actual function calls with
+simpler mocks.
+
+## Don't overuse reactives
+
+Say we have some code that looks like this:
+
+``` r
+server <- function(input, output, session) {
+  lookup <- reactive({
+    read_csv("data.csv")
+  })
+}
+```
+
+In this case, `lookup` does not depend upon any shiny inputs or `reactive`
+values. It would be the same data loaded for any user that connects to this app.
+
+Now, consider what happens when a user connects to our app. Each time a new
+user connects, `server()` is called. So each time a user connects, this csv file
+will be reloaded into memory. This could be problematic if we load particularly
+large files, as the memory will not be shared.
+
+A better approach would be to load the csv outside of the server function, like:
+
+``` r
+lookup <- read_csv("data.csv")
+
+server <- function(input, output, session) {
+  ...
+}
+```
+
+You could also build this data in a lazy way:
+
+``` r
+.lookup <- new.env()
+get_lookup <- function() {
+  if (is.null(.lookup$data)) {
+    .lookup$data <- read_csv("data.csv")
+  }
+  .lookup$data
+}
+
+server <- function(input, output, session) {
+  get_lookup()
+}
+```
+
+This could prove useful if you have issues when unit testing.

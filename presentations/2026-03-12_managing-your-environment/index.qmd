@@ -1,0 +1,72 @@
+---
+title: "Managing your environment"
+subtitle: "When and how to manage package requirements in Python and R"
+author: 
+  - "[YiWen Hon](mailto:yiwen.hon1@nhs.net)"
+  - "[Matt Dray](mailto:matt.dray@nhs.net)"
+date: 2026-03-12
+date-format: "D MMMM YYYY"
+execute:
+  echo: false
+  eval: false
+format:
+  revealjs:
+    scrollable: true
+    theme: [default, ../su_presentation.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
+    footer: |
+      Learn more about [The Strategy Unit](https://www.strategyunitwm.nhs.uk/)
+---
+
+## Storytime #1
+
+Ronald worked on a project last year. He did some quick analysis and saved his scripts.
+He's revisiting the project now but the code isn't running because one of the functions has now been deprecated.
+
+## Storytime #2
+
+Bella's finished working on a data pipeline! It runs on her machine. However one of her colleagues Freud can't run it on their machine because they don't know what packages they need to install.
+
+## Solution: environment management
+
+We need to record what versions of the programming language and packages were used in your code at that specific point in time.
+
+Like a time capsule, "freezing" your programming environment.
+
+![](mr-freeze-ice.gif){fig-alt="A gif showing Arnold Schwarzenegger as Mr Freeze in Batman & Robin (1997), with the caption 'Lets kick some ice!'." fig-align="center"}
+
+## Environment management basics in R
+
+
+
+
+## Environment management basics in Python
+
+- Many, _many_ different options in Python. [See table here](https://pythonhealthdatascience.github.io/des_rap_book/pages/guide/setup/environment.html)
+- We use `uv` in the Data Science team
+
+## Taking it further: Docker 🐳
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+- Recreates the WHOLE MACHINE, not just the environment!
+- Docker creates a temporary virtual computer with the sole purpose of running your script.
+- This means you have full control over _everything_ running your code
+
+:::
+::: {.column width="50%"}
+![](what-is-my-purpose.png){fig-alt="Meme from Rick and Morty cartoon. Shows a small robot asking Rick 'What is my purpose?'. Rick replies 'You run my code reproducibly'. The robot, disillusioned, says 'oh my god'." fig-align="center"}
+:::
+::::
+
+## When should we manage environments?
+
+- For every single project, no matter how small?
+- You never know when you might need to revisit something...

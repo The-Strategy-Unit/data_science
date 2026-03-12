@@ -44,7 +44,7 @@ format:
 
 ::: {.column width="50%"}
 * Freud's finished working on a data pipeline! It runs on his machine.
-* However his colleague Pavlova can't run it on her laptop because she don't know what package versions she needs to install.
+* However his colleague Pavlova can't run it on her laptop because she doesn't know what package versions she needs to install.
 :::
 
 ::: {.column width="50%"}

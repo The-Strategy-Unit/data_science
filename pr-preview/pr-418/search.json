@@ -5590,7 +5590,7 @@
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r---flows",
     "title": "System Dynamics in health and care",
     "section": "in R - flows",
-    "text": "in R - flows\nEasy to do with count, or group_by and summarise\n\n\nadmit_d &lt;- spell_dates |&gt;\n  group_by(date_admit) |&gt;\n  count(date_admit)\n\nhead(admit_d)\n\n\n# A tibble: 6 × 2\n# Groups:   date_admit [6]\n  date_admit     n\n  &lt;date&gt;     &lt;int&gt;\n1 2022-01-01    25\n2 2022-01-02    25\n3 2022-01-03    25\n4 2022-01-04    26\n5 2022-01-05    24\n6 2022-01-06    26"
+    "text": "in R - flows\nEasy to do with count, or group_by and summarise\n\n\nadmit_d &lt;- spell_dates |&gt;\n  group_by(date_admit) |&gt;\n  count(date_admit)\n\nhead(admit_d)\n\n\n# A tibble: 6 × 2\n# Groups:   date_admit [6]\n  date_admit     n\n  &lt;date&gt;     &lt;int&gt;\n1 2022-01-01    30\n2 2022-01-02    21\n3 2022-01-03    26\n4 2022-01-04    31\n5 2022-01-05    28\n6 2022-01-06    31"
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r---occupancy",
@@ -5611,7 +5611,7 @@
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods---flows",
     "title": "System Dynamics in health and care",
     "section": "Longer Time Periods - flows",
-    "text": "Longer Time Periods - flows\nUse lubridate::floor_date to generate the date at start of week/month\n\nadmit_wk &lt;- spell_dates |&gt;\n  mutate(\n    week_start = floor_date(\n      date_admit,\n      unit = \"week\",\n      week_start = 1 # start week on Monday\n    )\n  ) |&gt;\n  count(week_start) # could add other parameters such as provider code, TFC etc\n\nhead(admit_wk)\n\n\n\n# A tibble: 6 × 2\n  week_start     n\n  &lt;date&gt;     &lt;int&gt;\n1 2021-12-27    50\n2 2022-01-03   168\n3 2022-01-10   178\n4 2022-01-17   172\n5 2022-01-24   188\n6 2022-01-31   205\n\n\n\nMight run SD model in weeks or months - e.g. months for care homes Use lubridate to create new variable with start date of week/month/year etc"
+    "text": "Longer Time Periods - flows\nUse lubridate::floor_date to generate the date at start of week/month\n\nadmit_wk &lt;- spell_dates |&gt;\n  mutate(\n    week_start = floor_date(\n      date_admit,\n      unit = \"week\",\n      week_start = 1 # start week on Monday\n    )\n  ) |&gt;\n  count(week_start) # could add other parameters such as provider code, TFC etc\n\nhead(admit_wk)\n\n\n\n# A tibble: 6 × 2\n  week_start     n\n  &lt;date&gt;     &lt;int&gt;\n1 2021-12-27    51\n2 2022-01-03   207\n3 2022-01-10   203\n4 2022-01-17   202\n5 2022-01-24   205\n6 2022-01-31   203\n\n\n\nMight run SD model in weeks or months - e.g. months for care homes Use lubridate to create new variable with start date of week/month/year etc"
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods---occupancy",
@@ -5947,7 +5947,7 @@
     "href": "presentations/2026-03-12_managing-your-environment/index.html#step-2-environment-managers-1",
     "title": "Managing your environment",
     "section": "Step 2: environment managers",
-    "text": "Step 2: environment managers\nFor python:\n\nthere’s many, many different options (see table here)\nwe use uv in the DS team and recommend it\n\nFor R:\n\n{renv} with caveats (see Shannon’s talk)\nversion-switching (try Positron, rig)\nrv?\n\n\n\nLive demonstration goes here\nTooling in R is developing, but isn’t as strong or diverse as for Python.\nPeople seem to use {renv} a lot, it lets you install and snapshot packages so others can later restore.\nBut it isn’t a perfect solution: it doesn’t handle external system dependencies including RTools for Windows; binaries may not be available from package repositories (e.g. CRAN), or need compilation.\nSwitching R versions is also not handled. It’s possible manually, but ugh.\nrv is a tool that sits outside of R and works differently (see uv later)."
+    "text": "Step 2: environment managers\nFor Python:\n\nthere’s many, many different options (see table here)\nwe use uv in the DS team and recommend it\n\nFor R:\n\n{renv} with caveats (see Shannon’s talk)\nversion-switching (try Positron, rig)\nrv?\n\n\n\nLive demonstration goes here\nTooling in R is developing, but isn’t as strong or diverse as for Python.\nPeople seem to use {renv} a lot, it lets you install and snapshot packages so others can later restore.\nBut it isn’t a perfect solution: it doesn’t handle external system dependencies including RTools for Windows; binaries may not be available from package repositories (e.g. CRAN), or need compilation.\nSwitching R versions is also not handled. It’s possible manually, but ugh.\nrv is a tool that sits outside of R and works differently (see uv later)."
   },
   {
     "objectID": "presentations/2026-03-12_managing-your-environment/index.html#step-3-containers",

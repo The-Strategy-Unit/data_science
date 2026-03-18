@@ -1,0 +1,62 @@
+---
+title: A digital exclusion risk index
+author: Fran Barton
+date: 2026-03-18
+date-format: "MMM D, YYYY"
+format:
+  revealjs:
+    theme: [default, ../su_presentation.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
+    footer: |
+      view slides at [the-strategy-unit.github.io/data_science/presentations][ds_presentations]
+---
+
+## The general idea
+
+- Similar in concept to the IMD
+- Focused set of indicators, differently weighted
+- Areas where people are more likely to be digitally excluded
+- Shiona wrote [a lit review][litrev2021] on this
+- A tool / dataset we could publish as a mini-site
+
+[litrev2021]: https://www.strategyunitwm.nhs.uk/publications/reviewing-evidence-digital-inclusion
+
+
+
+## The story
+
+- Unfinished business 😏
+- [Technical work][tsuderi] mostly done
+- GMCA have published [a similar tool][gmca]...
+- ...but I think we can do better!
+- It would be good to validate our index and publish supporting analysis
+
+
+[tsuderi]: https://github.com/The-Strategy-Unit/tsuderi
+[gmca]: https://www.greatermanchester-ca.gov.uk/what-we-do/digital/digital-strategy/empowering-people-and-communities/get-online-greater-manchester/greater-manchester-wide-support/digital-exclusion-risk-index-deri/
+
+
+
+## The potential
+
+- A product that might support bids for work
+- Add an element to our understanding of intersecting inequalities
+- Relevant to any work and comms around digital health and social exclusion
+- An analytic element in evaluation work
+- Background data for qualitative work for example on patient experience
+
+
+## Questions
+
+- Is this useful?
+- Explore what it might tell us that the IMD doesn't already
+- Who else is interested in collaborating on this?
+- Or just chipping in your ideas?
+
+
+[ds_presentations]: https://the-strategy-unit.github.io/data_science/presentations/2026-03-18_digital_exclusion/

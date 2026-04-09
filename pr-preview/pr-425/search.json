@@ -697,11 +697,60 @@
     "text": "🥉/🥈/🥇 RAP is cool and all… but\n\nThere are so many easy wins that get you most of the way\nConsistently save files\nStore any query and steps to reproduce alongside results\nUse PowerQuery or equivalent to automate data-&gt;Excel\nUse .Rmd/.Qmd documents to do everything in one file\nUtilise git/version control\nblah blah blah, docker, CI/CD…"
   },
   {
-    "objectID": "presentations/2026-04-09_proj_github/index.html#intro",
-    "href": "presentations/2026-04-09_proj_github/index.html#intro",
+    "objectID": "presentations/2026-04-09_proj_github/index.html#wny-should-i-care-about-this",
+    "href": "presentations/2026-04-09_proj_github/index.html#wny-should-i-care-about-this",
     "title": "Project management in GitHub",
-    "section": "Intro",
-    "text": "Intro"
+    "section": "Wny should I care about this?",
+    "text": "Wny should I care about this?\n\nMaybe you don’t care because you’ve used [insert tool here] in the past and it works fine thank you very much\nMaybe you don’t care because your project is small\nMaybe you don’t care because your project is really big\nMaybe you were expecting a younger less broken member of the data science team- can’t help you there I’m afraid"
+  },
+  {
+    "objectID": "presentations/2026-04-09_proj_github/index.html#why-should-i-care-about-this--i-use-other-tools",
+    "href": "presentations/2026-04-09_proj_github/index.html#why-should-i-care-about-this--i-use-other-tools",
+    "title": "Project management in GitHub",
+    "section": "Why should I care about this- I use other tools",
+    "text": "Why should I care about this- I use other tools\n\nThe right tool for the right job- I’m not selling you GitHub\nWe’ve used other approaches too (more on which later)\nDuplication\nLack of coherence between tools\nSkill issue"
+  },
+  {
+    "objectID": "presentations/2026-04-09_proj_github/index.html#why-should-i-care-about-this--small-projects",
+    "href": "presentations/2026-04-09_proj_github/index.html#why-should-i-care-about-this--small-projects",
+    "title": "Project management in GitHub",
+    "section": "Why should I care about this- small projects",
+    "text": "Why should I care about this- small projects\n\nYou know what to do- but will you do it in the right order? (Agile!)\nYou know what to do- but does your client agree?\nYou know what to do- but will your colleague after you’re hit by a bus and off sick for 3 months?\nYou know what to do- but can you easily isolate specific changes in the code made for specific purposes if something goes wrong"
+  },
+  {
+    "objectID": "presentations/2026-04-09_proj_github/index.html#why-should-i-care-about-this--big-projects",
+    "href": "presentations/2026-04-09_proj_github/index.html#why-should-i-care-about-this--big-projects",
+    "title": "Project management in GitHub",
+    "section": "Why should I care about this- big projects",
+    "text": "Why should I care about this- big projects\n\nStory time\nOur friend at OpenSAFELY helped us\nRhian gave it a go\nAnd now we wouldn’t use anything else"
+  },
+  {
+    "objectID": "presentations/2026-04-09_proj_github/index.html#demo-a-small-project",
+    "href": "presentations/2026-04-09_proj_github/index.html#demo-a-small-project",
+    "title": "Project management in GitHub",
+    "section": "Demo a small project",
+    "text": "Demo a small project\n\nI’ll make one up for ease"
+  },
+  {
+    "objectID": "presentations/2026-04-09_proj_github/index.html#show-some-other-stuff",
+    "href": "presentations/2026-04-09_proj_github/index.html#show-some-other-stuff",
+    "title": "Project management in GitHub",
+    "section": "Show some other stuff",
+    "text": "Show some other stuff\n\nCoffee and coding, in a meta type way\nWe also have a GitHub project for RAP dropins"
+  },
+  {
+    "objectID": "presentations/2026-04-09_proj_github/index.html#the-nhp-behemoth",
+    "href": "presentations/2026-04-09_proj_github/index.html#the-nhp-behemoth",
+    "title": "Project management in GitHub",
+    "section": "The NHP behemoth",
+    "text": "The NHP behemoth\n\nShow some of the stuff that we use to keep organised\nWelcome thoughts from scrummasters and other DS people"
+  },
+  {
+    "objectID": "presentations/2026-04-09_proj_github/index.html#time-for-discussion-and-questions",
+    "href": "presentations/2026-04-09_proj_github/index.html#time-for-discussion-and-questions",
+    "title": "Project management in GitHub",
+    "section": "Time for discussion and questions",
+    "text": "Time for discussion and questions\n\nDo you use these features?\nCould/ would you?\nWould you like to know more about either doing it yourself or following along with ours (for the NHP people in the audience)"
   },
   {
     "objectID": "presentations/2024-10-10_what-is-ai-matt/index.html#generative-ai",
@@ -2857,7 +2906,7 @@
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r---flows",
     "title": "System Dynamics in health and care",
     "section": "in R - flows",
-    "text": "in R - flows\nEasy to do with count, or group_by and summarise\n\n\nadmit_d &lt;- spell_dates |&gt;\n  group_by(date_admit) |&gt;\n  count(date_admit)\n\nhead(admit_d)\n\n\n# A tibble: 6 × 2\n# Groups:   date_admit [6]\n  date_admit     n\n  &lt;date&gt;     &lt;int&gt;\n1 2022-01-01    26\n2 2022-01-02    30\n3 2022-01-03    28\n4 2022-01-04    26\n5 2022-01-05    19\n6 2022-01-06    33"
+    "text": "in R - flows\nEasy to do with count, or group_by and summarise\n\n\nadmit_d &lt;- spell_dates |&gt;\n  group_by(date_admit) |&gt;\n  count(date_admit)\n\nhead(admit_d)\n\n\n# A tibble: 6 × 2\n# Groups:   date_admit [6]\n  date_admit     n\n  &lt;date&gt;     &lt;int&gt;\n1 2022-01-01    27\n2 2022-01-02    22\n3 2022-01-03    17\n4 2022-01-04    19\n5 2022-01-05    29\n6 2022-01-06    33"
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#in-r---occupancy",
@@ -2878,7 +2927,7 @@
     "href": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods---flows",
     "title": "System Dynamics in health and care",
     "section": "Longer Time Periods - flows",
-    "text": "Longer Time Periods - flows\nUse lubridate::floor_date to generate the date at start of week/month\n\nadmit_wk &lt;- spell_dates |&gt;\n  mutate(\n    week_start = floor_date(\n      date_admit,\n      unit = \"week\",\n      week_start = 1 # start week on Monday\n    )\n  ) |&gt;\n  count(week_start) # could add other parameters such as provider code, TFC etc\n\nhead(admit_wk)\n\n\n\n# A tibble: 6 × 2\n  week_start     n\n  &lt;date&gt;     &lt;int&gt;\n1 2021-12-27    56\n2 2022-01-03   195\n3 2022-01-10   158\n4 2022-01-17   186\n5 2022-01-24   181\n6 2022-01-31   194\n\n\n\nMight run SD model in weeks or months - e.g. months for care homes Use lubridate to create new variable with start date of week/month/year etc"
+    "text": "Longer Time Periods - flows\nUse lubridate::floor_date to generate the date at start of week/month\n\nadmit_wk &lt;- spell_dates |&gt;\n  mutate(\n    week_start = floor_date(\n      date_admit,\n      unit = \"week\",\n      week_start = 1 # start week on Monday\n    )\n  ) |&gt;\n  count(week_start) # could add other parameters such as provider code, TFC etc\n\nhead(admit_wk)\n\n\n\n# A tibble: 6 × 2\n  week_start     n\n  &lt;date&gt;     &lt;int&gt;\n1 2021-12-27    49\n2 2022-01-03   189\n3 2022-01-10   199\n4 2022-01-17   197\n5 2022-01-24   205\n6 2022-01-31   181\n\n\n\nMight run SD model in weeks or months - e.g. months for care homes Use lubridate to create new variable with start date of week/month/year etc"
   },
   {
     "objectID": "presentations/2023-10-09_nhs-r_conf_sd_in_health_social_care/index.html#longer-time-periods---occupancy",

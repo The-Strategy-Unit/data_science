@@ -1,6 +1,6 @@
 ---
 title: Project management in GitHub
-author: Chris beeley
+author: Chris Beeley
 date: 2026-04-09
 date-format: "MMM D, YYYY"
 format:

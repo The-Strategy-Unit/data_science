@@ -1,0 +1,67 @@
+---
+title: Project management in GitHub
+author: Chris Beeley
+date: 2026-04-09
+date-format: "MMM D, YYYY"
+format:
+  revealjs:
+    theme: [default, ../su_presentation.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
+---
+
+## Wny should I care about this?
+
+* Maybe you don't care because you've used [insert tool here] in the past and it works fine thank you very much
+* Maybe you don't care because your project is small
+* Maybe you don't care because your project is really big
+* Maybe you were expecting a younger less broken member of the data science team- can't help you there I'm afraid
+
+## Why should I care about this- I use other tools
+
+* The right tool for the right job- I'm not selling you GitHub
+* We've used other approaches too (more on which later)
+* Duplication
+* Lack of coherence between tools
+* Skill issue
+
+## Why should I care about this- small projects
+
+* You know what to do- but will you do it in the right order? (Agile!)
+* You know what to do- but does your client agree?
+* You know what to do- but will your colleague after you're hit by a bus and off sick for 3 months?
+* You know what to do- but can you easily isolate specific changes in the code made for specific purposes if something goes wrong
+
+## Why should I care about this- big projects
+
+* Story time
+* Our friend at OpenSAFELY helped us
+* Rhian gave it a go
+* And now we wouldn't use anything else
+
+## Demo a small project
+
+* I'll make one up for ease
+
+## Show some other stuff
+
+* Coffee and coding, in a meta type way
+* We also have a GitHub project for RAP dropins
+
+## The NHP behemoth
+
+* Show some of the stuff that we use to keep organised
+* Welcome thoughts from scrummasters and other DS people
+
+## Time for discussion and questions
+
+* Do you use these features?
+* Could/ would you?
+* Would you like to know more about either doing it yourself or following along with ours (for the NHP people in the audience)
+
+
+

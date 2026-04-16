@@ -13,7 +13,6 @@ site_libs/
 *.rmarkdown
 
 *_cache/
-*_freeze/
 *.html
 
 *.egg-info/

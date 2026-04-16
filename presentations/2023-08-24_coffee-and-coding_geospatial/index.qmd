@@ -21,11 +21,6 @@ execute:
   echo: true
 ---
 
-```{r lockfile}
-#| include: FALSE
-renv::use(lockfile = "renv.lock")
-```
-
 
 [ds_presentations]: https://the-strategy-unit.github.io/data_science/presentations/
 
@@ -220,7 +215,7 @@ trusts <- read_sf("trusts.geojson")
 #| eval: false
 trusts |>
   leaflet() |>
-  addProviderTiles("Stamen.TonerLite") |>
+  addProviderTiles("CartoDB.VoyagerLabelsUnder") |>
   addMarkers(popup = ~name)
 ```
 ::::
@@ -272,7 +267,12 @@ leaflet(routes) |>
   addTiles() |>
   addMarkers(data = location) |>
   addPolylines(color = "black", weight = 3, opacity = 1) |>
-  addCircleMarkers(data = nearest_trusts, radius = 4, opacity = 1, fillOpacity = 1)
+  addCircleMarkers(
+    data = nearest_trusts,
+    radius = 4,
+    opacity = 1,
+    fillOpacity = 1
+  )
 ```
 
 ## We can use `{osrm}` to calculate isochrones
@@ -292,7 +292,7 @@ pal <- colorFactor(
 )
 
 leaflet(location) |>
-  addProviderTiles("Stamen.TonerLite") |>
+  addProviderTiles("CartoDB.VoyagerLabelsUnder") |>
   addMarkers() |>
   addPolygons(
     data = iso,
@@ -345,11 +345,11 @@ trusts_in_iso
 ```{r, trusts-in-iso-plot}
 #| eval: false
 leaflet(trusts_in_iso) |>
-  addProviderTiles("Stamen.TonerLite") |>
+  addProviderTiles("CartoDB.VoyagerLabelsUnder") |>
   addMarkers() |>
   addPolygons(
     data = iso,
-    fillColor = ~pal(id),
+    fillColor = ~ pal(id),
     color = "#000000",
     weight = 1
   )
@@ -390,7 +390,7 @@ radius <- location |>
   st_transform(crs = 4326)
 
 leaflet(trusts_in_radius) |>
-  addProviderTiles("Stamen.TonerLite") |>
+  addProviderTiles("CartoDB.VoyagerLabelsUnder") |>
   addMarkers() |>
   addPolygons(
     data = radius,

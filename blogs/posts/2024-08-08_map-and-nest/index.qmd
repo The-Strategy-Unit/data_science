@@ -12,14 +12,6 @@ knitr:
       bg: transparent
 ---
 
-```{r lockfile}
-#| include: FALSE
-renv::use(lockfile = "renv.lock")
-
-# ensure captured by renv
-library(snakecase)
-```
-
 I want to share a framework that I like using occasionally for data analysis. It's the nest-and-map and it's helped me countless times when I'm working with related datasets. By combining [{purrr}](https://purrr.tidyverse.org/) mapping with [{tidyr}](https://tidyr.tidyverse.org/) nesting, I can keep my analysis steps linked, allowing me to easily track from a summary or plot, back to the original data.
 
 The main funtions we'll need are 
@@ -42,7 +34,7 @@ I want to perform an analysis for each of the 42 integrated care systems (ICS). 
 Let's group by ICS, and call the nested data column `raw_data`.
 ```{r}
 group_by_ics <- staff_group |>
-    tidyr::nest(raw_data = -ics_name)
+  tidyr::nest(raw_data = -ics_name)
 ```
 
 The new column is a list-column, with each cell containing an entire tibble of data relating to that individual ICS.
@@ -69,24 +61,28 @@ Next, let's apply some simple processing, say converting absolute numbers into p
 #' Convert percent
 #' @param raw_staff Tibble containing organisation_name, total and a number of staff categories
 #' @return Tibble like raw_staff but with staff categories represented as percentages rather than absolute numbers
-convert_percent <- function(staff){
-    staff |>
-    dplyr::mutate(dplyr::across(.cols = -c(organisation_name, total),
-                  .fns =  \(x)x/total)) |>
-    dplyr::rename("Doctors" = "hchs_doctors",
-                  "Nurses" = "nurses_health_visitors",
-                  "Ambulance staff" = "ambulance_staff",
-                  "Midwives" = "midwives")
+convert_percent <- function(staff) {
+  staff |>
+    dplyr::mutate(dplyr::across(
+      .cols = -c(organisation_name, total),
+      .fns = \(x) x / total
+    )) |>
+    dplyr::rename(
+      "Doctors" = "hchs_doctors",
+      "Nurses" = "nurses_health_visitors",
+      "Ambulance staff" = "ambulance_staff",
+      "Midwives" = "midwives"
+    )
 }
 ```
 </details>
 
 ```{r}
 processed_staff <-
-group_by_ics |>
-    dplyr::mutate(
-        staff_percent = purrr::map(raw_data, convert_percent)
-    )
+  group_by_ics |>
+  dplyr::mutate(
+    staff_percent = purrr::map(raw_data, convert_percent)
+  )
 ```
 
 
@@ -105,13 +101,21 @@ plot_barchart <- function(df) {
   df |>
     dplyr::filter(organisation_name != "Total") |>
     dplyr::select(-total) |>
-    tidyr::pivot_longer(cols = -c(organisation_name), names_to = "job", values_to = "percent") |>
-    ggplot2::ggplot(ggplot2::aes(x = percent, y = organisation_name, fill = job)) +
-    ggplot2::geom_col(position = "dodge") + 
+    tidyr::pivot_longer(
+      cols = -c(organisation_name),
+      names_to = "job",
+      values_to = "percent"
+    ) |>
+    ggplot2::ggplot(ggplot2::aes(
+      x = percent,
+      y = organisation_name,
+      fill = job
+    )) +
+    ggplot2::geom_col(position = "dodge") +
     ggplot2::scale_x_continuous(labels = scales::percent_format(scale = 100)) +
     ggplot2::labs(x = "", y = "") +
-    StrategyUnitTheme::scale_fill_su() + 
-    ggplot2::theme_minimal() + 
+    StrategyUnitTheme::scale_fill_su() +
+    ggplot2::theme_minimal() +
     ggplot2::theme(legend.title = ggplot2::element_blank())
 }
 
@@ -120,19 +124,23 @@ plot_barchart <- function(df) {
 #' @param raw_staff count data of staff
 #' @param title Title for the graphic
 plot_waffle <- function(raw_staff, title) {
-waffle_data <-
-raw_staff |>
+  waffle_data <-
+    raw_staff |>
     dplyr::filter(organisation_name == "Total") |>
     dplyr::select(-total, -organisation_name) |>
-    tidyr::pivot_longer(cols = dplyr::everything(), names_to = "names", values_to = "vals") |>
+    tidyr::pivot_longer(
+      cols = dplyr::everything(),
+      names_to = "names",
+      values_to = "vals"
+    ) |>
     dplyr::mutate(vals = round(vals / 100))
 
-ggplot2::ggplot(waffle_data, ggplot2::aes(fill = names, values = vals)) +
-  waffle::geom_waffle(n_rows = 8, size = 0.33, colour = "white") +
-  ggplot2::coord_equal() +
-  ggplot2::theme_void() + 
-  ggplot2::theme(legend.title = ggplot2::element_blank()) +
-  ggplot2::ggtitle(title)
+  ggplot2::ggplot(waffle_data, ggplot2::aes(fill = names, values = vals)) +
+    waffle::geom_waffle(n_rows = 8, size = 0.33, colour = "white") +
+    ggplot2::coord_equal() +
+    ggplot2::theme_void() +
+    ggplot2::theme(legend.title = ggplot2::element_blank()) +
+    ggplot2::ggtitle(title)
 }
 ```
 
@@ -143,10 +151,10 @@ ggplot2::ggplot(waffle_data, ggplot2::aes(fill = names, values = vals)) +
 
 ```{r}
 graphs <-
-processed_staff |>
-    dplyr::mutate(
-        barchart =  purrr::map(staff_percent, plot_barchart)
-    ) 
+  processed_staff |>
+  dplyr::mutate(
+    barchart = purrr::map(staff_percent, plot_barchart)
+  )
 ```
 
 The resulting column `barchart` is again a list-column, but this time instead of containing a tibble, it holds a ggplot object. A whole ggplot in a single cell. ^[This totally blew my mind the first time I saw it 🤯.]
@@ -155,12 +163,12 @@ If we want to pass two arguments to our function, we can replace `map()` with `m
 
 ```{r}
 graphs <-
-processed_staff |>
-    dplyr::mutate(
-        waffle =  purrr::map2(raw_data, ics_name, 
-            \(data, title) plot_waffle(data, title)
-        )
-    ) 
+  processed_staff |>
+  dplyr::mutate(
+    waffle = purrr::map2(raw_data, ics_name, \(data, title) {
+      plot_waffle(data, title)
+    })
+  )
 ```
 
 ![An example bar chart plot](example_bar_chart.png)
@@ -172,15 +180,25 @@ I've also used `pivot_longer()` to move the two plotting columns into a single p
 
 ```{r}
 results <-
-staff_group |>
-    tidyr::nest(raw_data = -ics_name) |>
-    dplyr::mutate(
-        staff_percent = purrr::map(raw_data, convert_percent),
-        barchart =  purrr::map(staff_percent, plot_barchart),
-        waffle =  purrr::map2(raw_data, ics_name, \(data, title) plot_waffle(data, title)) 
-    )     |>
-    tidyr::pivot_longer(cols = c(barchart, waffle), names_to = "plot_type", values_to = "plot") |>
-    dplyr::mutate(filename = glue::glue("{snakecase::to_snake_case(ics_name)}_{plot_type}.png"))
+  staff_group |>
+  tidyr::nest(raw_data = -ics_name) |>
+  dplyr::mutate(
+    staff_percent = purrr::map(raw_data, convert_percent),
+    barchart = purrr::map(staff_percent, plot_barchart),
+    waffle = purrr::map2(raw_data, ics_name, \(data, title) {
+      plot_waffle(data, title)
+    })
+  ) |>
+  tidyr::pivot_longer(
+    cols = c(barchart, waffle),
+    names_to = "plot_type",
+    values_to = "plot"
+  ) |>
+  dplyr::mutate(
+    filename = glue::glue(
+      "{snakecase::to_snake_case(ics_name)}_{plot_type}.png"
+    )
+  )
 ```
 
 The `walk()` family of functions in {purrr} are used when the function you're applying does not return an object, but is being used for it's side-effect, for example reading or writing files.
@@ -192,7 +210,9 @@ Here we call `walk2()`, passing in both the filename column and the plots column
 purrr::walk2(
   results$filename,
   results$plot,
-  \(filename, plot) ggplot2::ggsave(file.path("plots", filename), plot, width = 10, height = 6)
+  \(filename, plot) {
+    ggplot2::ggsave(file.path("plots", filename), plot, width = 10, height = 6)
+  }
 )
 ```
 

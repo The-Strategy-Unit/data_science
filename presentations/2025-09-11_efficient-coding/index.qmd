@@ -1,7 +1,10 @@
 ---
 title: "Efficient Coding"
 subtitle: "Principles and Practices for Performant Code"
-author: "Eirini & Rhian, DS @ SU"
+author:
+  - "Eirini & Rhian, DS @ SU"
+date: 2025-09-11
+date-format: "D MMMM YYYY"
 engine: knitr
 format:
   revealjs:
@@ -16,11 +19,6 @@ knitr:
     python.reticulate: false
 
 ---
-
-```{r lockfile}
-#| include: FALSE
-renv::use(lockfile = "renv.lock")
-```
 
 ## Agenda
 

@@ -12,11 +12,6 @@ knitr:
       bg: transparent
 ---
 
-```{r lockfile}
-#| include: FALSE
-renv::use(lockfile = "renv.lock")
-```
-
 
 [R 4.3.0 was released](https://stat.ethz.ch/pipermail/r-announce/2023/000691.html) last week. Anytime you update R you will probably find yourself in the position where no packages are installed. This is by design - the packages that you have installed may need to be updated and recompiled to work under new versions of R.
 

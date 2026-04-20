@@ -1,2 +1,4 @@
 blogs/
-presentations/
+presentations/*
+!presentations/index.qmd
+presentations/*/

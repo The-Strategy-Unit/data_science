@@ -22,7 +22,7 @@ library(snakecase)
 
 I want to share a framework that I like using occasionally for data analysis. It's the nest-and-map and it's helped me countless times when I'm working with related datasets. By combining [{purrr}](https://purrr.tidyverse.org/) mapping with [{tidyr}](https://tidyr.tidyverse.org/) nesting, I can keep my analysis steps linked, allowing me to easily track from a summary or plot, back to the original data.
 
-The main funtions we'll need are 
+The main functions we'll need are 
 
 - `tidyr::nest()`
 - `dplyr::mutate()`
@@ -99,7 +99,7 @@ I've created two functions, `plot_barchart()` and `plot_waffle()` which take the
 <summary>See definition for `plot_barchart()` & `plot_waffle()`</summary> 
 ```{r}
 #' Plot barchart
-#' Makes a bar chart of staff perentages by organisation
+#' Makes a bar chart of staff percentages by organisation
 #' @param df tibble of staff data in percent format
 plot_barchart <- function(df) {
   df |>
@@ -139,7 +139,7 @@ ggplot2::ggplot(waffle_data, ggplot2::aes(fill = names, values = vals)) +
 
 </details>
 
- Again, using `mutate()` I can create a new column called `barchart` and I can `map()` the function `plot_barchart()`, applying it to each row at a time.
+Again, using `mutate()` I can create a new column called `barchart` and I can `map()` the function `plot_barchart()`, applying it to each row at a time.
 
 ```{r}
 graphs <-
@@ -163,7 +163,7 @@ processed_staff |>
     ) 
 ```
 
-![An example bar chart plot](example_bar_chart.png)
+![An example bar chart plot](example_bar_chart.png){fig-alt="A horizontally placed bar chart example with categories for Ambulance staff, Doctors, Midwives and Nurses as specific bars across sections for 7 Hospital and Ambulance Trusts"}
 
 ## Putting it all together
 
@@ -197,4 +197,4 @@ purrr::walk2(
 ```
 
 By keeping everything together in one nested structure, I personally find it much easier to keep track of my analyses.
-If you're doing a more complex or permenant analysis, you might want to consider setting up a more formal data processing pipeline, and following RAP principals. 
+If you're doing a more complex or permanent analysis, you might want to consider setting up a more formal data processing pipeline, and following RAP principals. 

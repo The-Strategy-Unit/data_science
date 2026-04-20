@@ -14,7 +14,7 @@ execute:
   enabled: false
 ---
 
-![Data Science](StockCake-Healthcare Data Analysis_1747409640.jpg)
+![Data Science](StockCake-Healthcare Data Analysis_1747409640.jpg){fig.alt="Image of part of a person in view in a white coat with stethoscope with a pen in one hand which is poised over document on a clip pad of a bar chart. The person is holding a 3D bar chart type model in the other hand."}
 
 Data science in healthcare is booming. 
 Every day new advances emerge that promise to deepen understanding, improve screening or optimise treatments. 

@@ -106,7 +106,7 @@ Once the site has rendered, we just need to add a step to deploy the PR.
 
 Now everytime a PR is created, or updated, the GitHub Action bot will spring into action.
 
-![A screenshot of a GitHub PR. Under the description, there is a comment from the GitHub actions bot with links to the deployed PR.](deploy-pr-preview.PNG)\
+![A screenshot of a GitHub PR. Under the description, there is a comment from the GitHub actions bot with links to the deployed PR.](deploy-pr-preview.PNG){fig-alt="Screenshot of a conversation from GitHub with a GitHub action for the preview."}
 
 ## Adjusting the publish.yml
 

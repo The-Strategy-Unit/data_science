@@ -631,7 +631,7 @@ def get_data():
 
 ### [python (arrange)]{.yellow}
 
-::::{.columns}
+:::{.columns}
 
 ::::{.column width=75%}
 
@@ -671,7 +671,7 @@ This requires the pytest-mock plugin to be installed (via pip).
 
 ### [python (act/assert)]{.yellow}
 
-::::{.columns}
+:::{.columns}
 
 ::::{.column width=75%}
 
@@ -767,9 +767,6 @@ test_that("it calls other functions correctly", {
   expect_args(m_plot_data, 1, "filter_data")
 })
 ```
-::::
-
-:::
 
 ## Using mocks with `my_function` {.code-page}
 

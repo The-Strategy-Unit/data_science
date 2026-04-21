@@ -34,15 +34,6 @@ All members of the Strategy Unit organisation on Github should be able to contri
 2. Create a folder for your blogpost, following the naming convention `YYYY-MM-DD_title-of-post`
 3. Copy a previous blogpost index.qmd file into your folder and use that as your template
 4. Write your blogpost. To preview changes, run `quarto preview path/to/index.qmd` in terminal.
-5. If your blogpost requires any specific packages, capture them with `renv::snapshot("PATH_TO_THE_FOLDER")` and ensure that you include in the top of your .qmd file (after the yaml) the following code chunk, without the hashes (#)
-
-```
-#```
-{r lockfile}
-#| include: FALSE
-renv::use(lockfile = "renv.lock")
-#```
-```
 
 
 ### How to create/edit pages on the website

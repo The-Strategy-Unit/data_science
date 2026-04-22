@@ -45,10 +45,26 @@ All members of the Strategy Unit organisation on Github should be able to contri
 
 ### Pushing your blog post/presentation/page to GitHub
 
-1. Save your file, then add and commit it (`git add file.qmd` and `git commit -m "Add blog post/presentation about x"`)
+1. Save your file, then add and commit it (`git add file.qmd` and `git commit -m "Add blog post/presentation about x"`). If you have any computed blocks in your content, ensure that you have run the code locally; this should generate files in the `_freeze` directory. You must ensure that these files are added to version control.
 2. Push your content to your branch in GitHub (`git push origin branchname`). 
 3. Then, on GitHub, make a pull request to main. Put any member of the Data Science team down as a reviewer. Link your pull request with your issue by typing `Closes #issuenumber` in the comment field of your pull request.
 4. When approved and merged to main, the Quarto page will automatically be rendered thanks to the GitHub action that has been set up.
+
+### Potential issues
+
+The GitHub action runner does not have R installed on it, so as mentioned above, all computations must be run locally and then added to the _freeze folder.
+
+#### code-fold blocks
+
+If you have an `R` code block that has `#| code-fold: true`, then this can cause issues as quarto will need to run `R` with `{rmarkdown}` and `{knitr}` even when you have freeze'd the computations. You can get around this by using code-fold across the entire post (via the documents `format: html` options), or by doing something like:
+
+```
+<details>
+<summary>Your code block title</summary>
+
+[your code chunk here]
+</details>
+```
 
 # Contributors ✨
 

@@ -111,7 +111,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<link href="../../../site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<link href="../../../site_libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet">
 <script src="../../../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
 <script src="../../../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="../../../site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
@@ -120,7 +120,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/proj4-2.6.2/proj4.min.js"></script>
 <script src="../../../site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
 <link href="../../../site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
-<script src="../../../site_libs/leaflet-binding-2.2.2/leaflet.js"></script>
+<script src="../../../site_libs/leaflet-binding-2.2.3/leaflet.js"></script>
 
 
 </head>
@@ -424,21 +424,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Create some data with two practices with no need data</span></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># and a selection of practices locally with need data</span></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>practices <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>practice_code, <span class="sc">~</span>postcode, <span class="sc">~</span>has_orig_need, <span class="sc">~</span>value,</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">"P1"</span>, <span class="st">"CV1 4FS"</span>, <span class="dv">0</span>, <span class="cn">NA</span>,</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">"P2"</span>, <span class="st">"CV1 3GB"</span>, <span class="dv">1</span>, <span class="fl">7.3</span>,</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="st">"P3"</span>, <span class="st">"CV11 5TW"</span>, <span class="dv">1</span>, <span class="fl">6.9</span>,</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="st">"P4"</span>, <span class="st">"CV6 3HZ"</span>, <span class="dv">1</span>, <span class="fl">7.1</span>,</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="st">"P5"</span>, <span class="st">"CV6 1HS"</span>, <span class="dv">1</span>, <span class="fl">7.7</span>,</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="st">"P6"</span>, <span class="st">"CV6 5DF"</span>, <span class="dv">1</span>, <span class="fl">8.2</span>,</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="st">"P7"</span>, <span class="st">"CV6 3FA"</span>, <span class="dv">1</span>, <span class="fl">7.9</span>,</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="st">"P8"</span>, <span class="st">"CV1 2DL"</span>, <span class="dv">1</span>, <span class="fl">7.5</span>,</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  <span class="st">"P9"</span>, <span class="st">"CV1 4JH"</span>, <span class="dv">1</span>, <span class="fl">7.7</span>,</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="st">"P10"</span>, <span class="st">"CV10 0GQ"</span>, <span class="dv">1</span>, <span class="fl">7.5</span>,</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  <span class="st">"P11"</span>, <span class="st">"CV10 0JH"</span>, <span class="dv">1</span>, <span class="fl">7.8</span>,</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  <span class="st">"P12"</span>, <span class="st">"CV11 5QT"</span>, <span class="dv">0</span>, <span class="cn">NA</span>,</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  <span class="st">"P13"</span>, <span class="st">"CV11 6AB"</span>, <span class="dv">1</span>, <span class="fl">7.6</span>,</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  <span class="st">"P14"</span>, <span class="st">"CV6 4DD"</span>, <span class="dv">1</span>, <span class="fl">7.9</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>practice_code , <span class="sc">~</span>postcode  , <span class="sc">~</span>has_orig_need , <span class="sc">~</span>value ,</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">"P1"</span>           , <span class="st">"CV1 4FS"</span>  ,              <span class="dv">0</span> , <span class="cn">NA</span>     ,</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">"P2"</span>           , <span class="st">"CV1 3GB"</span>  ,              <span class="dv">1</span> , <span class="fl">7.3</span>    ,</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="st">"P3"</span>           , <span class="st">"CV11 5TW"</span> ,              <span class="dv">1</span> , <span class="fl">6.9</span>    ,</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="st">"P4"</span>           , <span class="st">"CV6 3HZ"</span>  ,              <span class="dv">1</span> , <span class="fl">7.1</span>    ,</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="st">"P5"</span>           , <span class="st">"CV6 1HS"</span>  ,              <span class="dv">1</span> , <span class="fl">7.7</span>    ,</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="st">"P6"</span>           , <span class="st">"CV6 5DF"</span>  ,              <span class="dv">1</span> , <span class="fl">8.2</span>    ,</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="st">"P7"</span>           , <span class="st">"CV6 3FA"</span>  ,              <span class="dv">1</span> , <span class="fl">7.9</span>    ,</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="st">"P8"</span>           , <span class="st">"CV1 2DL"</span>  ,              <span class="dv">1</span> , <span class="fl">7.5</span>    ,</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  <span class="st">"P9"</span>           , <span class="st">"CV1 4JH"</span>  ,              <span class="dv">1</span> , <span class="fl">7.7</span>    ,</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="st">"P10"</span>          , <span class="st">"CV10 0GQ"</span> ,              <span class="dv">1</span> , <span class="fl">7.5</span>    ,</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  <span class="st">"P11"</span>          , <span class="st">"CV10 0JH"</span> ,              <span class="dv">1</span> , <span class="fl">7.8</span>    ,</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  <span class="st">"P12"</span>          , <span class="st">"CV11 5QT"</span> ,              <span class="dv">0</span> , <span class="cn">NA</span>     ,</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  <span class="st">"P13"</span>          , <span class="st">"CV11 6AB"</span> ,              <span class="dv">1</span> , <span class="fl">7.6</span>    ,</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  <span class="st">"P14"</span>          , <span class="st">"CV6 4DD"</span>  ,              <span class="dv">1</span> , <span class="fl">7.9</span></span>
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="co"># get domain of numeric data</span></span>
@@ -462,23 +462,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<div id="slddrbfmwz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#slddrbfmwz table {
+<div id="koybphfjvx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#koybphfjvx table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#slddrbfmwz thead, #slddrbfmwz tbody, #slddrbfmwz tfoot, #slddrbfmwz tr, #slddrbfmwz td, #slddrbfmwz th {
+#koybphfjvx thead, #koybphfjvx tbody, #koybphfjvx tfoot, #koybphfjvx tr, #koybphfjvx td, #koybphfjvx th {
   border-style: none;
 }
 
-#slddrbfmwz p {
+#koybphfjvx p {
   margin: 0;
   padding: 0;
 }
 
-#slddrbfmwz .gt_table {
+#koybphfjvx .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -504,12 +504,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#slddrbfmwz .gt_caption {
+#koybphfjvx .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#slddrbfmwz .gt_title {
+#koybphfjvx .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -521,7 +521,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#slddrbfmwz .gt_subtitle {
+#koybphfjvx .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -533,7 +533,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#slddrbfmwz .gt_heading {
+#koybphfjvx .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -545,13 +545,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#slddrbfmwz .gt_bottom_border {
+#koybphfjvx .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#slddrbfmwz .gt_col_headings {
+#koybphfjvx .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -566,7 +566,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#slddrbfmwz .gt_col_heading {
+#koybphfjvx .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -586,7 +586,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#slddrbfmwz .gt_column_spanner_outer {
+#koybphfjvx .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -598,15 +598,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#slddrbfmwz .gt_column_spanner_outer:first-child {
+#koybphfjvx .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#slddrbfmwz .gt_column_spanner_outer:last-child {
+#koybphfjvx .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#slddrbfmwz .gt_column_spanner {
+#koybphfjvx .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -618,11 +618,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#slddrbfmwz .gt_spanner_row {
+#koybphfjvx .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#slddrbfmwz .gt_group_heading {
+#koybphfjvx .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -648,7 +648,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#slddrbfmwz .gt_empty_group_heading {
+#koybphfjvx .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -663,15 +663,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#slddrbfmwz .gt_from_md > :first-child {
+#koybphfjvx .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#slddrbfmwz .gt_from_md > :last-child {
+#koybphfjvx .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#slddrbfmwz .gt_row {
+#koybphfjvx .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -690,7 +690,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#slddrbfmwz .gt_stub {
+#koybphfjvx .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -703,7 +703,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#slddrbfmwz .gt_stub_row_group {
+#koybphfjvx .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -717,15 +717,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#slddrbfmwz .gt_row_group_first td {
+#koybphfjvx .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#slddrbfmwz .gt_row_group_first th {
+#koybphfjvx .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#slddrbfmwz .gt_summary_row {
+#koybphfjvx .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -735,16 +735,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#slddrbfmwz .gt_first_summary_row {
+#koybphfjvx .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#slddrbfmwz .gt_first_summary_row.thick {
+#koybphfjvx .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#slddrbfmwz .gt_last_summary_row {
+#koybphfjvx .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -754,7 +754,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#slddrbfmwz .gt_grand_summary_row {
+#koybphfjvx .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -764,7 +764,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#slddrbfmwz .gt_first_grand_summary_row {
+#koybphfjvx .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -774,7 +774,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#slddrbfmwz .gt_last_grand_summary_row_top {
+#koybphfjvx .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -784,11 +784,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#slddrbfmwz .gt_striped {
+#koybphfjvx .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#slddrbfmwz .gt_table_body {
+#koybphfjvx .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -797,7 +797,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#slddrbfmwz .gt_footnotes {
+#koybphfjvx .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -811,7 +811,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#slddrbfmwz .gt_footnote {
+#koybphfjvx .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -820,7 +820,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#slddrbfmwz .gt_sourcenotes {
+#koybphfjvx .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -834,7 +834,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#slddrbfmwz .gt_sourcenote {
+#koybphfjvx .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -842,72 +842,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#slddrbfmwz .gt_left {
+#koybphfjvx .gt_left {
   text-align: left;
 }
 
-#slddrbfmwz .gt_center {
+#koybphfjvx .gt_center {
   text-align: center;
 }
 
-#slddrbfmwz .gt_right {
+#koybphfjvx .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#slddrbfmwz .gt_font_normal {
+#koybphfjvx .gt_font_normal {
   font-weight: normal;
 }
 
-#slddrbfmwz .gt_font_bold {
+#koybphfjvx .gt_font_bold {
   font-weight: bold;
 }
 
-#slddrbfmwz .gt_font_italic {
+#koybphfjvx .gt_font_italic {
   font-style: italic;
 }
 
-#slddrbfmwz .gt_super {
+#koybphfjvx .gt_super {
   font-size: 65%;
 }
 
-#slddrbfmwz .gt_footnote_marks {
+#koybphfjvx .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#slddrbfmwz .gt_asterisk {
+#koybphfjvx .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#slddrbfmwz .gt_indent_1 {
+#koybphfjvx .gt_indent_1 {
   text-indent: 5px;
 }
 
-#slddrbfmwz .gt_indent_2 {
+#koybphfjvx .gt_indent_2 {
   text-indent: 10px;
 }
 
-#slddrbfmwz .gt_indent_3 {
+#koybphfjvx .gt_indent_3 {
   text-indent: 15px;
 }
 
-#slddrbfmwz .gt_indent_4 {
+#koybphfjvx .gt_indent_4 {
   text-indent: 20px;
 }
 
-#slddrbfmwz .gt_indent_5 {
+#koybphfjvx .gt_indent_5 {
   text-indent: 25px;
 }
 
-#slddrbfmwz .katex-display {
+#koybphfjvx .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#slddrbfmwz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#koybphfjvx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -930,7 +930,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td class="gt_row gt_right" headers="has_orig_need">0</td>
 <td class="gt_row gt_right" headers="value">NA</td>
 <td class="gt_row gt_right" headers="id">1</td>
-<td class="gt_row gt_center" headers="geometry">c(-1.50672203333333, 52.4140662333333)</td>
+<td class="gt_row gt_center" headers="geometry">c(-1.506722, 52.4140662)</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="practice_code">P2</td>
@@ -938,7 +938,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td class="gt_row gt_right" headers="has_orig_need">1</td>
 <td class="gt_row gt_right" headers="value">7.3</td>
 <td class="gt_row gt_right" headers="id">2</td>
-<td class="gt_row gt_center" headers="geometry">c(-1.51888, 52.4034199)</td>
+<td class="gt_row gt_center" headers="geometry">c(-1.5188722, 52.4034678)</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="practice_code">P3</td>
@@ -962,7 +962,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td class="gt_row gt_right" headers="has_orig_need">1</td>
 <td class="gt_row gt_right" headers="value">7.7</td>
 <td class="gt_row gt_right" headers="id">5</td>
-<td class="gt_row gt_center" headers="geometry">c(-1.52542, 52.41989)</td>
+<td class="gt_row gt_center" headers="geometry">c(-1.5254306, 52.4198858)</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="practice_code">P6</td>
@@ -970,7 +970,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td class="gt_row gt_right" headers="has_orig_need">1</td>
 <td class="gt_row gt_right" headers="value">8.2</td>
 <td class="gt_row gt_right" headers="id">6</td>
-<td class="gt_row gt_center" headers="geometry">c(-1.498344825, 52.4250186)</td>
+<td class="gt_row gt_center" headers="geometry">c(-1.4984146, 52.4250418)</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="practice_code">P7</td>
@@ -986,7 +986,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td class="gt_row gt_right" headers="has_orig_need">1</td>
 <td class="gt_row gt_right" headers="value">7.5</td>
 <td class="gt_row gt_right" headers="id">8</td>
-<td class="gt_row gt_center" headers="geometry">c(-1.49105, 52.40582)</td>
+<td class="gt_row gt_center" headers="geometry">c(-1.4910423, 52.4058739)</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="practice_code">P9</td>
@@ -994,7 +994,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td class="gt_row gt_right" headers="has_orig_need">1</td>
 <td class="gt_row gt_right" headers="value">7.7</td>
 <td class="gt_row gt_right" headers="id">9</td>
-<td class="gt_row gt_center" headers="geometry">c(-1.5069566, 52.4191685)</td>
+<td class="gt_row gt_center" headers="geometry">c(-1.5065683, 52.4196091)</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="practice_code">P10</td>
@@ -1026,7 +1026,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td class="gt_row gt_right" headers="has_orig_need">1</td>
 <td class="gt_row gt_right" headers="value">7.6</td>
 <td class="gt_row gt_right" headers="id">13</td>
-<td class="gt_row gt_center" headers="geometry">c(-1.45822, 52.52682)</td>
+<td class="gt_row gt_center" headers="geometry">c(-1.4584209, 52.5266445)</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="practice_code">P14</td>
@@ -1034,7 +1034,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td class="gt_row gt_right" headers="has_orig_need">1</td>
 <td class="gt_row gt_right" headers="value">7.9</td>
 <td class="gt_row gt_right" headers="id">14</td>
-<td class="gt_row gt_center" headers="geometry">c(-1.50832, 52.44104)</td>
+<td class="gt_row gt_center" headers="geometry">c(-1.5084103, 52.4411831)</td>
 </tr>
 </tbody>
 </table>
@@ -1052,8 +1052,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addCircleMarkers</span>(<span class="at">color =</span> <span class="sc">~</span> <span class="fu">pal</span>(has_orig_need))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item" id="htmlwidget-3f87eed0d4201a3dc2d8" style="width:672px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-3f87eed0d4201a3dc2d8">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addCircleMarkers","args":[[52.41406623333333,52.4034199,52.519,52.42367,52.41989,52.4250186,52.43135,52.40582,52.4191685,52.54074,52.53723,52.51899,52.52682,52.44104],[-1.506722033333333,-1.51888,-1.46746,-1.52231,-1.52542,-1.498344825,-1.51787,-1.49105,-1.5069566,-1.52197,-1.5163199,-1.46927,-1.45822,-1.50832],10,null,null,{"interactive":true,"className":"","stroke":true,"color":["#440154","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#440154","#FDE725","#FDE725"],"weight":5,"opacity":0.5,"fill":true,"fillColor":["#440154","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#440154","#FDE725","#FDE725"],"fillOpacity":0.2},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[52.4034199,52.54074],"lng":[-1.52542,-1.45822]}},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-015b8b7c070ae1b9c235" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-015b8b7c070ae1b9c235">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addCircleMarkers","args":[[52.4140662,52.4034678,52.519,52.42367,52.4198858,52.4250418,52.43135,52.4058739,52.4196091,52.54074,52.53723,52.51899,52.5266445,52.4411831],[-1.506722,-1.5188722,-1.46746,-1.52231,-1.5254306,-1.4984146,-1.51787,-1.4910423,-1.5065683,-1.52197,-1.5163199,-1.46927,-1.4584209,-1.5084103],10,null,null,{"interactive":true,"className":"","stroke":true,"color":["#440154","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#440154","#FDE725","#FDE725"],"weight":5,"opacity":0.5,"fill":true,"fillColor":["#440154","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#FDE725","#440154","#FDE725","#FDE725"],"fillOpacity":0.2},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[52.4034678,52.54074],"lng":[-1.5254306,-1.4584209]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>The data was split into those with, and without, a value for need. Using <code>st_join</code> from the {sf} package to join those without, and those with, a value for need, using the geometry to find all those within 1500m (1.5km).</p>
@@ -1078,14 +1078,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">leaflet</span>(neighbours) <span class="sc">|&gt;</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addTiles</span>() <span class="sc">|&gt;</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addCircleMarkers</span>(<span class="at">color =</span> <span class="st">"purple"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addMarkers</span>(<span class="sc">-</span><span class="fl">1.50686326666667</span>, <span class="fl">52.4141089666667</span>, <span class="at">popup =</span> <span class="st">"Practice with no data"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addCircles</span>(<span class="sc">-</span><span class="fl">1.50686326666667</span>, <span class="fl">52.4141089666667</span>, <span class="at">radius =</span> <span class="dv">1500</span>) <span class="sc">|&gt;</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addMarkers</span>(<span class="sc">-</span><span class="fl">1.46927</span>, <span class="fl">52.51899</span>, <span class="at">popup =</span> <span class="st">"Practice with no data"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addCircles</span>(<span class="sc">-</span><span class="fl">1.46927</span>, <span class="fl">52.51899</span>, <span class="at">radius =</span> <span class="dv">1500</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addMarkers</span>(</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span><span class="fl">1.50686326666667</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="fl">52.4141089666667</span>,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">popup =</span> <span class="st">"Practice with no data"</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addCircles</span>(<span class="sc">-</span><span class="fl">1.50686326666667</span>, <span class="fl">52.4141089666667</span>, <span class="at">radius =</span> <span class="dv">1500</span>) <span class="sc">|&gt;</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addMarkers</span>(<span class="sc">-</span><span class="fl">1.46927</span>, <span class="fl">52.51899</span>, <span class="at">popup =</span> <span class="st">"Practice with no data"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addCircles</span>(<span class="sc">-</span><span class="fl">1.46927</span>, <span class="fl">52.51899</span>, <span class="at">radius =</span> <span class="dv">1500</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item" id="htmlwidget-f13f8eb74f3d4edabaad" style="width:672px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-f13f8eb74f3d4edabaad">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addCircleMarkers","args":[[52.4034199,52.519,52.41989,52.4250186,52.40582,52.4191685,52.52682],[-1.51888,-1.46746,-1.52542,-1.498344825,-1.49105,-1.5069566,-1.45822],10,null,null,{"interactive":true,"className":"","stroke":true,"color":"purple","weight":5,"opacity":0.5,"fill":true,"fillColor":"purple","fillOpacity":0.2},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addMarkers","args":[52.4141089666667,-1.50686326666667,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Practice with no data",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addCircles","args":[52.4141089666667,-1.50686326666667,1500,null,null,{"interactive":true,"className":"","stroke":true,"color":"#03F","weight":5,"opacity":0.5,"fill":true,"fillColor":"#03F","fillOpacity":0.2},null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null,null]},{"method":"addMarkers","args":[52.51899,-1.46927,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Practice with no data",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addCircles","args":[52.51899,-1.46927,1500,null,null,{"interactive":true,"className":"","stroke":true,"color":"#03F","weight":5,"opacity":0.5,"fill":true,"fillColor":"#03F","fillOpacity":0.2},null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null,null]}],"limits":{"lat":[52.4034199,52.52682],"lng":[-1.52542,-1.45822]}},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-34c6a1ad667cf10d11c8" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-34c6a1ad667cf10d11c8">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addCircleMarkers","args":[[52.4034678,52.519,52.4198858,52.4250418,52.4058739,52.4196091,52.5266445],[-1.5188722,-1.46746,-1.5254306,-1.4984146,-1.4910423,-1.5065683,-1.4584209],10,null,null,{"interactive":true,"className":"","stroke":true,"color":"purple","weight":5,"opacity":0.5,"fill":true,"fillColor":"purple","fillOpacity":0.2},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addMarkers","args":[52.4141089666667,-1.50686326666667,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Practice with no data",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addCircles","args":[52.4141089666667,-1.50686326666667,1500,null,null,{"interactive":true,"className":"","stroke":true,"color":"#03F","weight":5,"opacity":0.5,"fill":true,"fillColor":"#03F","fillOpacity":0.2},null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null,null]},{"method":"addMarkers","args":[52.51899,-1.46927,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Practice with no data",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addCircles","args":[52.51899,-1.46927,1500,null,null,{"interactive":true,"className":"","stroke":true,"color":"#03F","weight":5,"opacity":0.5,"fill":true,"fillColor":"#03F","fillOpacity":0.2},null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null,null]}],"limits":{"lat":[52.4034678,52.5266445],"lng":[-1.5254306,-1.4584209]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>The data for the “neighbours” was grouped by the practice code of those without need data and a mean value was calculated for each practice to generate an estimated value.</p>
@@ -1109,23 +1113,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<div id="hoquacyrox" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#hoquacyrox table {
+<div id="blhkbzcvug" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#blhkbzcvug table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#hoquacyrox thead, #hoquacyrox tbody, #hoquacyrox tfoot, #hoquacyrox tr, #hoquacyrox td, #hoquacyrox th {
+#blhkbzcvug thead, #blhkbzcvug tbody, #blhkbzcvug tfoot, #blhkbzcvug tr, #blhkbzcvug td, #blhkbzcvug th {
   border-style: none;
 }
 
-#hoquacyrox p {
+#blhkbzcvug p {
   margin: 0;
   padding: 0;
 }
 
-#hoquacyrox .gt_table {
+#blhkbzcvug .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1151,12 +1155,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#hoquacyrox .gt_caption {
+#blhkbzcvug .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#hoquacyrox .gt_title {
+#blhkbzcvug .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1168,7 +1172,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#hoquacyrox .gt_subtitle {
+#blhkbzcvug .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1180,7 +1184,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#hoquacyrox .gt_heading {
+#blhkbzcvug .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1192,13 +1196,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#hoquacyrox .gt_bottom_border {
+#blhkbzcvug .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#hoquacyrox .gt_col_headings {
+#blhkbzcvug .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1213,7 +1217,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#hoquacyrox .gt_col_heading {
+#blhkbzcvug .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1233,7 +1237,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#hoquacyrox .gt_column_spanner_outer {
+#blhkbzcvug .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1245,15 +1249,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#hoquacyrox .gt_column_spanner_outer:first-child {
+#blhkbzcvug .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#hoquacyrox .gt_column_spanner_outer:last-child {
+#blhkbzcvug .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#hoquacyrox .gt_column_spanner {
+#blhkbzcvug .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1265,11 +1269,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#hoquacyrox .gt_spanner_row {
+#blhkbzcvug .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#hoquacyrox .gt_group_heading {
+#blhkbzcvug .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1295,7 +1299,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#hoquacyrox .gt_empty_group_heading {
+#blhkbzcvug .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1310,15 +1314,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#hoquacyrox .gt_from_md > :first-child {
+#blhkbzcvug .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#hoquacyrox .gt_from_md > :last-child {
+#blhkbzcvug .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#hoquacyrox .gt_row {
+#blhkbzcvug .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1337,7 +1341,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#hoquacyrox .gt_stub {
+#blhkbzcvug .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1350,7 +1354,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#hoquacyrox .gt_stub_row_group {
+#blhkbzcvug .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1364,15 +1368,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#hoquacyrox .gt_row_group_first td {
+#blhkbzcvug .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#hoquacyrox .gt_row_group_first th {
+#blhkbzcvug .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#hoquacyrox .gt_summary_row {
+#blhkbzcvug .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1382,16 +1386,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#hoquacyrox .gt_first_summary_row {
+#blhkbzcvug .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#hoquacyrox .gt_first_summary_row.thick {
+#blhkbzcvug .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#hoquacyrox .gt_last_summary_row {
+#blhkbzcvug .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1401,7 +1405,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#hoquacyrox .gt_grand_summary_row {
+#blhkbzcvug .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1411,7 +1415,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#hoquacyrox .gt_first_grand_summary_row {
+#blhkbzcvug .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1421,7 +1425,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#hoquacyrox .gt_last_grand_summary_row_top {
+#blhkbzcvug .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1431,11 +1435,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#hoquacyrox .gt_striped {
+#blhkbzcvug .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#hoquacyrox .gt_table_body {
+#blhkbzcvug .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1444,7 +1448,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#hoquacyrox .gt_footnotes {
+#blhkbzcvug .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1458,7 +1462,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#hoquacyrox .gt_footnote {
+#blhkbzcvug .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1467,7 +1471,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#hoquacyrox .gt_sourcenotes {
+#blhkbzcvug .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1481,7 +1485,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#hoquacyrox .gt_sourcenote {
+#blhkbzcvug .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1489,72 +1493,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#hoquacyrox .gt_left {
+#blhkbzcvug .gt_left {
   text-align: left;
 }
 
-#hoquacyrox .gt_center {
+#blhkbzcvug .gt_center {
   text-align: center;
 }
 
-#hoquacyrox .gt_right {
+#blhkbzcvug .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#hoquacyrox .gt_font_normal {
+#blhkbzcvug .gt_font_normal {
   font-weight: normal;
 }
 
-#hoquacyrox .gt_font_bold {
+#blhkbzcvug .gt_font_bold {
   font-weight: bold;
 }
 
-#hoquacyrox .gt_font_italic {
+#blhkbzcvug .gt_font_italic {
   font-style: italic;
 }
 
-#hoquacyrox .gt_super {
+#blhkbzcvug .gt_super {
   font-size: 65%;
 }
 
-#hoquacyrox .gt_footnote_marks {
+#blhkbzcvug .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#hoquacyrox .gt_asterisk {
+#blhkbzcvug .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#hoquacyrox .gt_indent_1 {
+#blhkbzcvug .gt_indent_1 {
   text-indent: 5px;
 }
 
-#hoquacyrox .gt_indent_2 {
+#blhkbzcvug .gt_indent_2 {
   text-indent: 10px;
 }
 
-#hoquacyrox .gt_indent_3 {
+#blhkbzcvug .gt_indent_3 {
   text-indent: 15px;
 }
 
-#hoquacyrox .gt_indent_4 {
+#blhkbzcvug .gt_indent_4 {
   text-indent: 20px;
 }
 
-#hoquacyrox .gt_indent_5 {
+#blhkbzcvug .gt_indent_5 {
   text-indent: 25px;
 }
 
-#hoquacyrox .katex-display {
+#blhkbzcvug .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#hoquacyrox div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#blhkbzcvug div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1662,30 +1666,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Finally, an updated data frame was created of the need data using the actual need for the practice where available, otherwise using estimated need.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>practices_with_neighbours_estimate <span class="ot">&lt;-</span> practices_with_neighbours_estimate <span class="sc">|&gt;</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">need_to_use =</span> <span class="fu">case_when</span>(value <span class="sc">&gt;=</span> <span class="dv">0</span> <span class="sc">~</span> value,</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">.default =</span> need_est</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">|&gt;</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(practice_code, need_to_use)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">need_to_use =</span> <span class="fu">case_when</span>(value <span class="sc">&gt;=</span> <span class="dv">0</span> <span class="sc">~</span> value, <span class="at">.default =</span> need_est)) <span class="sc">|&gt;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(practice_code, need_to_use)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div id="ponhwjqynj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ponhwjqynj table {
+<div id="bngrnrifsz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#bngrnrifsz table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ponhwjqynj thead, #ponhwjqynj tbody, #ponhwjqynj tfoot, #ponhwjqynj tr, #ponhwjqynj td, #ponhwjqynj th {
+#bngrnrifsz thead, #bngrnrifsz tbody, #bngrnrifsz tfoot, #bngrnrifsz tr, #bngrnrifsz td, #bngrnrifsz th {
   border-style: none;
 }
 
-#ponhwjqynj p {
+#bngrnrifsz p {
   margin: 0;
   padding: 0;
 }
 
-#ponhwjqynj .gt_table {
+#bngrnrifsz .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1711,12 +1713,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#ponhwjqynj .gt_caption {
+#bngrnrifsz .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ponhwjqynj .gt_title {
+#bngrnrifsz .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1728,7 +1730,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#ponhwjqynj .gt_subtitle {
+#bngrnrifsz .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1740,7 +1742,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#ponhwjqynj .gt_heading {
+#bngrnrifsz .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1752,13 +1754,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#ponhwjqynj .gt_bottom_border {
+#bngrnrifsz .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ponhwjqynj .gt_col_headings {
+#bngrnrifsz .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1773,7 +1775,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#ponhwjqynj .gt_col_heading {
+#bngrnrifsz .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1793,7 +1795,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#ponhwjqynj .gt_column_spanner_outer {
+#bngrnrifsz .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1805,15 +1807,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#ponhwjqynj .gt_column_spanner_outer:first-child {
+#bngrnrifsz .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ponhwjqynj .gt_column_spanner_outer:last-child {
+#bngrnrifsz .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ponhwjqynj .gt_column_spanner {
+#bngrnrifsz .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1825,11 +1827,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#ponhwjqynj .gt_spanner_row {
+#bngrnrifsz .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ponhwjqynj .gt_group_heading {
+#bngrnrifsz .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1855,7 +1857,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#ponhwjqynj .gt_empty_group_heading {
+#bngrnrifsz .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1870,15 +1872,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#ponhwjqynj .gt_from_md > :first-child {
+#bngrnrifsz .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ponhwjqynj .gt_from_md > :last-child {
+#bngrnrifsz .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ponhwjqynj .gt_row {
+#bngrnrifsz .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1897,7 +1899,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#ponhwjqynj .gt_stub {
+#bngrnrifsz .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1910,7 +1912,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#ponhwjqynj .gt_stub_row_group {
+#bngrnrifsz .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1924,15 +1926,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#ponhwjqynj .gt_row_group_first td {
+#bngrnrifsz .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ponhwjqynj .gt_row_group_first th {
+#bngrnrifsz .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ponhwjqynj .gt_summary_row {
+#bngrnrifsz .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1942,16 +1944,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#ponhwjqynj .gt_first_summary_row {
+#bngrnrifsz .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ponhwjqynj .gt_first_summary_row.thick {
+#bngrnrifsz .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ponhwjqynj .gt_last_summary_row {
+#bngrnrifsz .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1961,7 +1963,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#ponhwjqynj .gt_grand_summary_row {
+#bngrnrifsz .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1971,7 +1973,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#ponhwjqynj .gt_first_grand_summary_row {
+#bngrnrifsz .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1981,7 +1983,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#ponhwjqynj .gt_last_grand_summary_row_top {
+#bngrnrifsz .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1991,11 +1993,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#ponhwjqynj .gt_striped {
+#bngrnrifsz .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ponhwjqynj .gt_table_body {
+#bngrnrifsz .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2004,7 +2006,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#ponhwjqynj .gt_footnotes {
+#bngrnrifsz .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2018,7 +2020,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#ponhwjqynj .gt_footnote {
+#bngrnrifsz .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2027,7 +2029,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#ponhwjqynj .gt_sourcenotes {
+#bngrnrifsz .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2041,7 +2043,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#ponhwjqynj .gt_sourcenote {
+#bngrnrifsz .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2049,72 +2051,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#ponhwjqynj .gt_left {
+#bngrnrifsz .gt_left {
   text-align: left;
 }
 
-#ponhwjqynj .gt_center {
+#bngrnrifsz .gt_center {
   text-align: center;
 }
 
-#ponhwjqynj .gt_right {
+#bngrnrifsz .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ponhwjqynj .gt_font_normal {
+#bngrnrifsz .gt_font_normal {
   font-weight: normal;
 }
 
-#ponhwjqynj .gt_font_bold {
+#bngrnrifsz .gt_font_bold {
   font-weight: bold;
 }
 
-#ponhwjqynj .gt_font_italic {
+#bngrnrifsz .gt_font_italic {
   font-style: italic;
 }
 
-#ponhwjqynj .gt_super {
+#bngrnrifsz .gt_super {
   font-size: 65%;
 }
 
-#ponhwjqynj .gt_footnote_marks {
+#bngrnrifsz .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ponhwjqynj .gt_asterisk {
+#bngrnrifsz .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ponhwjqynj .gt_indent_1 {
+#bngrnrifsz .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ponhwjqynj .gt_indent_2 {
+#bngrnrifsz .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ponhwjqynj .gt_indent_3 {
+#bngrnrifsz .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ponhwjqynj .gt_indent_4 {
+#bngrnrifsz .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ponhwjqynj .gt_indent_5 {
+#bngrnrifsz .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ponhwjqynj .katex-display {
+#bngrnrifsz .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ponhwjqynj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#bngrnrifsz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>

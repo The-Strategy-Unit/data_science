@@ -463,10 +463,11 @@ Let me outline the workflow and show how to generate the token using R and the <
 <section id="generate-a-jwt" class="level4">
 <h4 class="anchored" data-anchor-id="generate-a-jwt">1. Generate a JWT</h4>
 <p>First, we need to create a <a href="https://jwt.io/">JSON Web Token (JWT)</a> issued by our app (using the App ID and private key from earlier):</p>
-<div class="cell">
-<details class="code-fold">
-<summary>show code for get_github_jwt()</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' Get GitHub JWT for an Application</span></span>
+<details>
+<summary>
+Show code for get_github_jwt()
+</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' Get GitHub JWT for an Application</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param key Path to the private key file or a string containing the private</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#'     key. Defaults to the environment variable `GITHUB_APP_PRIVATE_KEY`.</span></span>
@@ -491,16 +492,16 @@ Let me outline the workflow and show how to generate the token using R and the <
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  httr2<span class="sc">::</span><span class="fu">jwt_encode_sig</span>(claim, <span class="at">key =</span> private_key)</span>
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-</div>
 </section>
 <section id="get-the-installation-id-for-the-app" class="level4">
 <h4 class="anchored" data-anchor-id="get-the-installation-id-for-the-app">2. Get the Installation ID for the App</h4>
 <p>Next, we need the App’s installation ID.</p>
 <p>You could find it manually via your organisation’s settings page under Installed Apps, but that’s cumbersome. Instead, we’ll use the API and our JWT to fetch it. Since we created the app and restricted installation to our org only, we can assume there’s just one installation.</p>
-<div class="cell">
-<details class="code-fold">
-<summary>show code for get_github_app_installation_id()</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' Get GitHub PAT from Installation Access Token</span></span>
+<details>
+<summary>
+show code for get_github_app_installation_id()
+</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' Get GitHub PAT from Installation Access Token</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param jwt JSON Web Token (JWT) for the GitHub App. Defaults to the output of</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#'     `get_github_jwt()`.</span></span>
@@ -530,15 +531,15 @@ Let me outline the workflow and show how to generate the token using R and the <
 <span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>  httr2<span class="sc">::</span><span class="fu">resp_body_json</span>(resp)[[<span class="dv">1</span>]][[<span class="st">"id"</span>]]</span>
 <span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-</div>
 </section>
 <section id="generate-a-pat" class="level4">
 <h4 class="anchored" data-anchor-id="generate-a-pat">3. Generate a PAT</h4>
 <p>We’re now ready to generate the token we’ll use for API requests.</p>
-<div class="cell">
-<details class="code-fold">
-<summary>show code for get_github_iat_pat()</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' Get GitHub PAT from Installation Access Token</span></span>
+<details>
+<summary>
+show code for get_github_iat_pat()
+</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' Get GitHub PAT from Installation Access Token</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param jwt JSON Web Token (JWT) for the GitHub App. Defaults to the output of</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#'     `get_github_jwt()`.</span></span>
@@ -572,7 +573,6 @@ Let me outline the workflow and show how to generate the token using R and the <
 <span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>    purrr<span class="sc">::</span><span class="fu">pluck</span>(<span class="st">"token"</span>)</span>
 <span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-</div>
 </section>
 </section>
 </section>
@@ -580,10 +580,7 @@ Let me outline the workflow and show how to generate the token using R and the <
 <h2 class="anchored" data-anchor-id="putting-it-all-together">Putting it all together</h2>
 <p>Now that we can generate a token using our app, we can write a function to query the list of repositories.</p>
 <p>We need to keep in mind that the API returns a maximum of 100 items per page. Fortunately, <code>{httr2}</code> makes it easy to iterate through paginated responses.</p>
-<div class="cell">
-<details class="code-fold">
-<summary>show code for get_repos()</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' Get GitHub Repositories for an organisation</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' Get GitHub Repositories for an organisation</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param org The name of the GitHub organisation.</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param pat Personal Access Token (PAT) for authentication. Defaults to the</span></span>
@@ -635,16 +632,12 @@ Let me outline the workflow and show how to generate the token using R and the <
 <span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>    httr2<span class="sc">::</span><span class="fu">resps_data</span>(httr2<span class="sc">::</span>resp_body_json) <span class="sc">|&gt;</span></span>
 <span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>    purrr<span class="sc">::</span><span class="fu">map_chr</span>(<span class="st">"name"</span>)</span>
 <span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-</div>
 <p>Finally, run the function like this:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># replace the below as required</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># replace the below as required</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setenv</span>(<span class="st">"GITHUB_APP_ID"</span> <span class="ot">=</span> <span class="st">"[app_id]"</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setenv</span>(<span class="st">"GITHUB_APP_PRIVATE_KEY"</span> <span class="ot">=</span> <span class="st">"path-to-your.private-key.pem"</span>)</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">get_repos</span>(<span class="st">"Your Organisation"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
 
 
 </section>

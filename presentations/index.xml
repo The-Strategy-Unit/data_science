@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>Data Science @ The Strategy Unit</title>
+<link>https://the-strategy-unit.github.io/data_science/presentations/</link>
+<atom:link href="https://the-strategy-unit.github.io/data_science/presentations/index.xml" rel="self" type="application/rss+xml"/>
+<description>Blogs from the Data Science Team at The Strategy Unit</description>
+<generator>quarto-1.9.37</generator>
+<lastBuildDate>Thu, 09 Apr 2026 00:00:00 GMT</lastBuildDate>
+<item>
+  <title></title>
+  <dc:creator>Chris Beeley</dc:creator>
+  <link>https://the-strategy-unit.github.io/data_science/presentations/2026-04-09_proj_github/</link>
+  <description><![CDATA[ undefined ]]></description>
+  <guid>https://the-strategy-unit.github.io/data_science/presentations/2026-04-09_proj_github/</guid>
+  <pubDate>Thu, 09 Apr 2026 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <dc:creator>Fran Barton</dc:creator>
+  <link>https://the-strategy-unit.github.io/data_science/presentations/2026-03-18_digital_exclusion/</link>
+  <description><![CDATA[ undefined ]]></description>
+  <guid>https://the-strategy-unit.github.io/data_science/presentations/2026-03-18_digital_exclusion/</guid>
+  <pubDate>Wed, 18 Mar 2026 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <dc:creator>[YiWen Hon](mailto:yiwen.hon1@nhs.net)</dc:creator>
+  <dc:creator>[Matt Dray](mailto:matt.dray@nhs.net)</dc:creator>
+  <link>https://the-strategy-unit.github.io/data_science/presentations/2026-03-12_managing-your-environment/</link>
+  <description><![CDATA[ undefined ]]></description>
+  <guid>https://the-strategy-unit.github.io/data_science/presentations/2026-03-12_managing-your-environment/</guid>
+  <pubDate>Thu, 12 Mar 2026 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <dc:creator>[Chris Beeley](mailto:chris.beeley1@nhs.net)</dc:creator>
+  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-12-04_whose_application/</link>
+  <description><![CDATA[ undefined ]]></description>
+  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-12-04_whose_application/</guid>
+  <pubDate>Thu, 04 Dec 2025 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <dc:creator>[Chris Beeley](mailto:chris.beeley1@nhs.net)</dc:creator>
+  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-12-04_multidisciplinary_pipelines/</link>
+  <description><![CDATA[ undefined ]]></description>
+  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-12-04_multidisciplinary_pipelines/</guid>
+  <pubDate>Thu, 04 Dec 2025 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <dc:creator>[YiWen Hon](mailto:yiwen.hon1@nhs.net)</dc:creator>
+  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-11-14_rap-drop-ins-nhsr2025/</link>
+  <description><![CDATA[ undefined ]]></description>
+  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-11-14_rap-drop-ins-nhsr2025/</guid>
+  <pubDate>Fri, 14 Nov 2025 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <dc:creator>[Tom Jemmett](mailto:thomas.jemmett@nhs.net)</dc:creator>
+  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-11-14_unit-testing/</link>
+  <description><![CDATA[ undefined ]]></description>
+  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-11-14_unit-testing/</guid>
+  <pubDate>Fri, 14 Nov 2025 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <dc:creator>[Jacqueline Grout](mailto:jacqueline.grout@nhs.net)</dc:creator>
+  <dc:creator>[Matt Dray](mailto:matt.dray@nhs.net)</dc:creator>
+  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-11-13_nhsrpysoc-2025-word/</link>
+  <description><![CDATA[ undefined ]]></description>
+  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-11-13_nhsrpysoc-2025-word/</guid>
+  <pubDate>Thu, 13 Nov 2025 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <dc:creator>[Fran Barton](mailto:francis.barton@nhs.net)</dc:creator>
+  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-11-13_error_messages_with_cli/</link>
+  <description><![CDATA[ undefined ]]></description>
+  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-11-13_error_messages_with_cli/</guid>
+  <pubDate>Thu, 13 Nov 2025 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <dc:creator>[YiWen Hon](mailto:yiwen.hon1@nhs.net)</dc:creator>
+  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-11-06_intro-to-github/</link>
+  <description><![CDATA[ undefined ]]></description>
+  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-11-06_intro-to-github/</guid>
+  <pubDate>Thu, 06 Nov 2025 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <dc:creator>[Chris Beeley, Head of data science, Strategy Unit](mailto:chris.beeley1@nhs.net)</dc:creator>
+  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-11-05_case-example/</link>
+  <description><![CDATA[ undefined ]]></description>
+  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-11-05_case-example/</guid>
+  <pubDate>Wed, 05 Nov 2025 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <dc:creator>Eirini &amp; Rhian, DS @ SU</dc:creator>
+  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-09-11_efficient-coding/</link>
+  <description><![CDATA[ undefined ]]></description>
+  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-09-11_efficient-coding/</guid>
+  <pubDate>Thu, 11 Sep 2025 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <dc:creator>[Chris Beeley](mailto:chris.beeley1@nhs.net)</dc:creator>
+  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-09-04_demand-presentation/</link>
+  <description><![CDATA[ undefined ]]></description>
+  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-09-04_demand-presentation/</guid>
+  <pubDate>Thu, 04 Sep 2025 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <dc:creator>[YiWen Hon](mailto:yiwen.hon1@nhs.net)</dc:creator>
+  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-08-29_adruk-nhp/</link>
+  <description><![CDATA[ undefined ]]></description>
+  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-08-29_adruk-nhp/</guid>
+  <pubDate>Fri, 29 Aug 2025 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <dc:creator>[Matt Dray](mailto:matt.dray@nhs.net)</dc:creator>
+  <dc:creator>[YiWen Hon](mailto:yiwen.hon1@nhs.net)</dc:creator>
+  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-07-17_deploy-to-connect/</link>
+  <description><![CDATA[ undefined ]]></description>
+  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-07-17_deploy-to-connect/</guid>
+  <pubDate>Thu, 17 Jul 2025 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <dc:creator>[Chris Beeley](mailto:chris.beeley1@nhs.net)</dc:creator>
+  <dc:creator>[Claire Welsh](mailto:claire.welsh8@nhs.net)</dc:creator>
+  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-06-06_nhsr_nhp/</link>
+  <description><![CDATA[ undefined ]]></description>
+  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-06-06_nhsr_nhp/</guid>
+  <pubDate>Fri, 06 Jun 2025 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <dc:creator>[Claire Welsh](mailto:claire.welsh8@nhs.net)</dc:creator>
+  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-05-13_NHP_DS_deep_dive/</link>
+  <description><![CDATA[ undefined ]]></description>
+  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-05-13_NHP_DS_deep_dive/</guid>
+  <pubDate>Wed, 07 May 2025 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <dc:creator>Fran Barton</dc:creator>
+  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-03-13_sconn-r-pkg-databricks/</link>
+  <description><![CDATA[ undefined ]]></description>
+  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-03-13_sconn-r-pkg-databricks/</guid>
+  <pubDate>Thu, 13 Mar 2025 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <dc:creator>[Chris Beeley](mailto:chris.beeley1@nhs.net)</dc:creator>
+  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-02-27_nhp-deployment/</link>
+  <description><![CDATA[ undefined ]]></description>
+  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-02-27_nhp-deployment/</guid>
+  <pubDate>Thu, 27 Feb 2025 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <dc:creator>[Jac Grout](mailto:jacqueline.grout@nhs.net)</dc:creator>
+  <dc:creator>[Matt Dray](mailto:matt.dray@nhs.net)</dc:creator>
+  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-02-27_word-not-quarto/</link>
+  <description><![CDATA[ undefined ]]></description>
+  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-02-27_word-not-quarto/</guid>
+  <pubDate>Thu, 27 Feb 2025 00:00:00 GMT</pubDate>
+</item>
+</channel>
+</rss>

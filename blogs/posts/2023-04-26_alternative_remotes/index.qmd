@@ -2,7 +2,7 @@
 title: "Alternative remote repositories"
 author: "Tom Jemmett"
 date: "2023-04-26"
-categories: [git, tutorial]
+categories: [Git, tutorial]
 knitr:
   opts_chunk:
     fig.height: 2.5

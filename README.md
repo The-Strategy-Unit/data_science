@@ -21,36 +21,12 @@ All members of the Strategy Unit organisation on Github should be able to contri
 2. Clone the repository (in RStudio, File > New Project > Checkout a project from a version controlled repository). Paste in the URL of this repository.
 3. Check out the main branch and check it's up to date in the RStudio Terminal  (type `git checkout main && git pull` in terminal)
 4. Check out a new branch  (`git checkout -b issue-number` in terminal)
-5. Follow instructions in the {renv} section.
-
-### {renv}
-
-Please note this project uses {renv}. This is a way of managing the different packages 
-that are required for each blogpost and presentation.
-
-1. Install the R toolchain [RTools](https://cran.r-project.org/bin/windows/Rtools/) to compile some of the packages. 
-2. Install {renv} (`install.packages("renv")` in console)
-3. Run `renv::restore()` in Console to install all the required packages, and ensure that you are on the version of R detailed in the `renv.lock` file in the parent directory.
-
-There is a separate renv lockfile for each blogpost/presentation so it will be difficult to render the whole website at once.
-
-To work on an already published blogpost/presentation:
-
-1. Run `renv::use(lockfile="/path/to/page/renv.lock")` in Console
-2. Edit the .qmd file that you are working on. To preview your changes, run `quarto preview path/to/page.qmd` in terminal.
 
 ### How to create a new presentation
 
 1. Make the presentation with quarto, and put it in `presentations/` in a `YYYY-MM-DD_Talk-title` folder. Your presentation should conform to the SU branding. It should have the filename `index.qmd`
-2. If your presentation requires any specific packages, capture them with `renv::snapshot("PATH_TO_THE_FOLDER")` and ensure that you include in the top of your .qmd file (after the yaml) the following code chunk, without the hashes (#)
+2. Copy and edit the yaml header from another post to ensure you have the correct metadata (e.g. theming, author, date)
 
-```
-#```
-{r lockfile}
-#| include: FALSE
-renv::use(lockfile = "renv.lock")
-#```
-```
 
 ### How to create a new blogpost 
 
@@ -58,15 +34,6 @@ renv::use(lockfile = "renv.lock")
 2. Create a folder for your blogpost, following the naming convention `YYYY-MM-DD_title-of-post`
 3. Copy a previous blogpost index.qmd file into your folder and use that as your template
 4. Write your blogpost. To preview changes, run `quarto preview path/to/index.qmd` in terminal.
-5. If your blogpost requires any specific packages, capture them with `renv::snapshot("PATH_TO_THE_FOLDER")` and ensure that you include in the top of your .qmd file (after the yaml) the following code chunk, without the hashes (#)
-
-```
-#```
-{r lockfile}
-#| include: FALSE
-renv::use(lockfile = "renv.lock")
-#```
-```
 
 
 ### How to create/edit pages on the website
@@ -78,10 +45,26 @@ renv::use(lockfile = "renv.lock")
 
 ### Pushing your blog post/presentation/page to GitHub
 
-1. Save your file, then add and commit it (`git add file.qmd` and `git commit -m "Add blog post/presentation about x"`)
+1. Save your file, then add and commit it (`git add file.qmd` and `git commit -m "Add blog post/presentation about x"`). If you have any computed blocks in your content, ensure that you have run the code locally; this should generate files in the `_freeze` directory. You must ensure that these files are added to version control.
 2. Push your content to your branch in GitHub (`git push origin branchname`). 
 3. Then, on GitHub, make a pull request to main. Put any member of the Data Science team down as a reviewer. Link your pull request with your issue by typing `Closes #issuenumber` in the comment field of your pull request.
 4. When approved and merged to main, the Quarto page will automatically be rendered thanks to the GitHub action that has been set up.
+
+### Potential issues
+
+The GitHub action runner does not have R installed on it, so as mentioned above, all computations must be run locally and then added to the _freeze folder.
+
+#### code-fold blocks
+
+If you have an `R` code block that has `#| code-fold: true`, then this can cause issues as quarto will need to run `R` with `{rmarkdown}` and `{knitr}` even when you have freeze'd the computations. You can get around this by using code-fold across the entire post (via the documents `format: html` options), or by doing something like:
+
+```
+<details>
+<summary>Your code block title</summary>
+
+[your code chunk here]
+</details>
+```
 
 # Contributors ✨
 

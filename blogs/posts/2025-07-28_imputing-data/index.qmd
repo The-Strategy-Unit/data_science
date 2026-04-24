@@ -20,24 +20,6 @@ format:
     code-fold: true
 ---
 
-```{r setup}
-#| include: false
-
-renv::use(
-  "dplyr",
-  "gt",
-  "tibble",
-  "ggplot2",
-  "glue",
-  "patchwork",
-  "scales",
-  "mice",
-  "purrr",
-  "tidyr",
-  "rmarkdown"
-)
-```
-
 In the world of data analysis, missing values can feel like puzzle pieces that just won't fit, leaving analysts frustrated and insights incomplete.
 But what if I told you that imputing these missing values could be the key to unlocking a treasure trove of insights?
 By skilfully filling in the gaps, we can enhance the integrity of our datasets *and* elevate the quality of our analyses.
@@ -158,7 +140,7 @@ df_complete <-
       age %in% 30:39 ~ rnorm(n = rows, mean = 40000, sd = 7000),
       age %in% 40:49 ~ rnorm(n = rows, mean = 43000, sd = 8000),
       age %in% 50:59 ~ rnorm(n = rows, mean = 41000, sd = 7000),
-      age > 59       ~ rnorm(n = rows, mean = 36000, sd = 5000)
+      age > 59 ~ rnorm(n = rows, mean = 36000, sd = 5000)
     ),
 
     # gender pay gap of 7% across all age ranges
@@ -172,9 +154,9 @@ df_complete <-
   dplyr::select(-salary_age)
 
 # see a sample
-df_complete |> 
-  dplyr::slice_head(n = 10) |> 
-  gt::gt() |> 
+df_complete |>
+  dplyr::slice_head(n = 10) |>
+  gt::gt() |>
   gt::opt_stylize(style = 5, add_row_striping = FALSE)
 ```
 
@@ -186,16 +168,14 @@ Below are two function definitions, one for generating a density plot for a give
 
 ```{r}
 #| warning: false
-
 #' Function to create a density plot
-#' 
+#'
 #' @param df Tibble of data
 #' @param x_val Variable to plot on the x axis
 #' @param x_label String - Name of the variable in the x axis
 #' @param summary String - Summary stats (mean and sd) for `x_val`
 #' @param complete Boolean (default = FALSE) - Is this complete data?
 plot_density <- function(df, x_val, x_label, summary, complete = FALSE) {
-  
   # define our fill colour:
   # reference (complete) data is coloured orange,
   # comparison data is coloured blue
@@ -210,11 +190,11 @@ plot_density <- function(df, x_val, x_label, summary, complete = FALSE) {
       alpha.f = 0.2
     )
   }
-  
+
   # produce the plot
-  p <- 
-    df |> 
-    ggplot2::ggplot(ggplot2::aes(x = {{x_val}})) +
+  p <-
+    df |>
+    ggplot2::ggplot(ggplot2::aes(x = {{ x_val }})) +
     ggplot2::geom_density(
       fill = fill_colour,
       outline.type = "upper"
@@ -223,8 +203,8 @@ plot_density <- function(df, x_val, x_label, summary, complete = FALSE) {
     ggplot2::annotate(
       geom = 'text',
       label = summary,
-      size = 14/ggplot2::.pt,
-      x = mean(df |> dplyr::pull({{x_val}}), na.rm = TRUE),
+      size = 14 / ggplot2::.pt,
+      x = mean(df |> dplyr::pull({{ x_val }}), na.rm = TRUE),
       y = 0,
       hjust = 0.5,
       vjust = 0
@@ -245,7 +225,7 @@ plot_density <- function(df, x_val, x_label, summary, complete = FALSE) {
       # background
       plot.background = ggplot2::element_blank()
     )
-  
+
   # add thousands suffix to salary outputs
   if (x_label == "Salary") {
     p <-
@@ -254,7 +234,7 @@ plot_density <- function(df, x_val, x_label, summary, complete = FALSE) {
         labels = scales::label_number(suffix = 'k', scale = 1e-3)
       )
   }
-  
+
   # return the plot
   return(p)
 }
@@ -267,19 +247,18 @@ plot_density <- function(df, x_val, x_label, summary, complete = FALSE) {
 #'
 #' @returns ggplot2 object
 compare_distributions <- function(df_complete, df = NA) {
-  
   # summary stats for age and salary
   complete_summary_age = glue::glue(
     "Mean: {round(mean(df_complete$age, na.rm = TRUE), digits = 2)}\n",
     "SD: {round(sd(df_complete$age, na.rm = TRUE), digits = 2)}"
   )
-  
+
   complete_summary_salary = glue::glue(
     "Mean: {round(mean(df_complete$salary, na.rm = TRUE)/1000, digits = 2)}k\n",
     "SD: {round(sd(df_complete$salary, na.rm = TRUE)/1000, digits = 2)}k"
   )
-  
-   # get the 'complete' density plots
+
+  # get the 'complete' density plots
   complete_age <-
     plot_density(
       df = df_complete,
@@ -288,7 +267,7 @@ compare_distributions <- function(df_complete, df = NA) {
       summary = complete_summary_age,
       complete = TRUE
     )
-  
+
   complete_salary <-
     plot_density(
       df = df_complete,
@@ -297,21 +276,20 @@ compare_distributions <- function(df_complete, df = NA) {
       summary = complete_summary_salary,
       complete = TRUE
     )
-  
+
   # check whether a comparison dataset has been provided
   if (!missing(df)) {
-    
     # summary stats for age and salary
     input_summary_age = glue::glue(
       "Mean: {round(mean(df$age, na.rm = TRUE), digits = 2)}\n",
       "SD: {round(sd(df$age, na.rm = TRUE), digits = 2)}"
     )
-  
+
     input_summary_salary = glue::glue(
       "Mean: {round(mean(df$salary, na.rm = TRUE)/1000, digits = 2)}k\n",
       "SD: {round(sd(df$salary, na.rm = TRUE)/1000, digits = 2)}k"
     )
-    
+
     # get the comparison density plots
     comparison_age <-
       plot_density(
@@ -321,7 +299,7 @@ compare_distributions <- function(df_complete, df = NA) {
         summary = input_summary_age,
         complete = FALSE
       )
-    
+
     comparison_salary <-
       plot_density(
         df = df,
@@ -330,26 +308,28 @@ compare_distributions <- function(df_complete, df = NA) {
         summary = input_summary_salary,
         complete = FALSE
       )
-    
+
     # combine the charts to compare
-    plots <- 
+    plots <-
       patchwork::wrap_plots(
-        complete_age, comparison_age,
-        complete_salary, comparison_salary,
+        complete_age,
+        comparison_age,
+        complete_salary,
+        comparison_salary,
         nrow = 2
       )
   } else {
     # there is only the complete dataset included, so show that
     plots <-
       patchwork::wrap_plots(
-        complete_age, complete_salary,
+        complete_age,
+        complete_salary,
         ncol = 1
       )
   }
-  
+
   # return the plots
   return(plots)
-  
 }
 ```
 
@@ -357,7 +337,6 @@ We'll see examples comparing datasets later, but for now lets examine how `age` 
 
 ```{r}
 #| warning: false
-
 compare_distributions(df_complete = df_complete)
 ```
 
@@ -401,39 +380,36 @@ seed <- 100
 # age - where salary > 45000
 set.seed(seed) # for reproducibility
 df_missing$age[
-  sample(which(df_complete$salary > 45000), 
-         size = 100, 
-         replace = FALSE)] <- NA
-  
+  sample(which(df_complete$salary > 45000), size = 100, replace = FALSE)
+] <- NA
+
 # salary - 90 where age > 45, 10 from rest
 set.seed(seed) # for reproducibility
 df_missing$salary[
-  sample(which(df_complete$age < 40), 
-         size = 100, 
-         replace = FALSE)] <- NA
+  sample(which(df_complete$age < 40), size = 100, replace = FALSE)
+] <- NA
 
 # gender - 100 randomly
 set.seed(seed) # for reproducibility
 df_missing$gender[
-  sample(1:rows, 
-         size = 100, 
-         replace = FALSE)] <- NA
+  sample(1:rows, size = 100, replace = FALSE)
+] <- NA
 
 # see a sample
 missing_cell_style <- gt::cell_fill(color = "#ec6555")
-df_missing |> 
-  dplyr::slice_head(n = 10) |> 
-  gt::gt() |> 
-  gt::opt_stylize(style = 5, add_row_striping = FALSE) |> 
+df_missing |>
+  dplyr::slice_head(n = 10) |>
+  gt::gt() |>
+  gt::opt_stylize(style = 5, add_row_striping = FALSE) |>
   # highlight cells with missing values
   gt::tab_style(
     style = missing_cell_style,
     locations = gt::cells_body(columns = age, rows = is.na(age))
-  ) |> 
+  ) |>
   gt::tab_style(
     style = missing_cell_style,
     locations = gt::cells_body(columns = gender, rows = is.na(gender))
-  ) |> 
+  ) |>
   gt::tab_style(
     style = missing_cell_style,
     locations = gt::cells_body(columns = salary, rows = is.na(salary))
@@ -452,10 +428,9 @@ This means only observations with complete data for age, gender and salary are u
 
 ```{r}
 #| warning: false
-
 # remove records containing missing values
 df_removal <-
-  df_missing |> 
+  df_missing |>
   na.omit()
 
 # see the result
@@ -474,22 +449,21 @@ This technique involves replacing missing values with the mean of the observed v
 
 ```{r}
 #| warning: false
-
-df_average <- 
-  df_missing |> 
+df_average <-
+  df_missing |>
   dplyr::mutate(
     age = dplyr::case_match(
       age,
       NA ~ mean(age, na.rm = TRUE),
       .default = age
-    ) |> 
+    ) |>
       round(digits = 0),
-    
+
     salary = dplyr::case_match(
       salary,
       NA ~ mean(salary, na.rm = TRUE),
       .default = salary
-    ) |> 
+    ) |>
       round(digits = 0)
   )
 
@@ -508,7 +482,6 @@ Specifically, salary is imputed based on its relationship with age, and age is i
 
 ```{r}
 #| warning: false
-
 # model age and salary
 model_age <- glm(
   data = df_missing |> na.omit(),
@@ -524,27 +497,29 @@ model_salary <- glm(
 
 # fill in details using regression
 df_regression <-
-  df_missing |> 
+  df_missing |>
   dplyr::mutate(
     age_pred = predict(
       object = model_age,
       newdata = data.frame(
-        gender = df_average$gender, 
-        salary = df_average$salary)
-    ) |> 
+        gender = df_average$gender,
+        salary = df_average$salary
+      )
+    ) |>
       round(digits = 0),
-    
+
     salary_pred = predict(
       object = model_salary,
       newdata = data.frame(
-        gender = df_average$gender, 
-        age = df_average$age)
-    ) |> 
+        gender = df_average$gender,
+        age = df_average$age
+      )
+    ) |>
       round(digits = 0),
-    
+
     age = dplyr::coalesce(age, age_pred),
     salary = dplyr::coalesce(salary, salary_pred)
-  ) |> 
+  ) |>
   dplyr::select(-c(age_pred, salary_pred))
 
 # see the result
@@ -563,18 +538,17 @@ This iterative process is repeated multiple times, creating multiple imputed dat
 
 ```{r}
 #| warning: false
-
 # let {mice} suggest an imputation method for each variable
 init <- mice::mice(df_missing, maxit = 0)
 
 # calculate the imputed values
 imputed <- mice::mice(
-  data = df_missing,          # data to be used
-  m = 10,                     # number of multiple imputations (dflt = 5)
-  method = init$method,       # matching method - will go with default
-  seed = 123,                 # for reproducibility
-  maxit = 10,                 # 10 iterations (default = 5)
-  printFlag = FALSE           # don't print history to the console
+  data = df_missing, # data to be used
+  m = 10, # number of multiple imputations (dflt = 5)
+  method = init$method, # matching method - will go with default
+  seed = 123, # for reproducibility
+  maxit = 10, # 10 iterations (default = 5)
+  printFlag = FALSE # don't print history to the console
 )
 
 # complete the data
@@ -608,14 +582,14 @@ This discrepancy indicates that the resulting distributions were altered, as obs
 
 ```{r}
 # list the data showing different imputation approaches
-data <- 
+data <-
   tibble::tribble(
-    ~df, ~df_name,
-    df_complete, "Original",
-    df_removal, "Complete-case",
-    df_average, "Average",
-    df_regression, "Regression",
-    df_mice, "MICE"
+    ~df           , ~df_name        ,
+    df_complete   , "Original"      ,
+    df_removal    , "Complete-case" ,
+    df_average    , "Average"       ,
+    df_regression , "Regression"    ,
+    df_mice       , "MICE"
   )
 
 # summarise the results to a single df
@@ -624,7 +598,7 @@ df_summary_test <-
     .x = data$df,
     .y = data$df_name,
     .f = \(.x, .y) {
-      .x |> 
+      .x |>
         dplyr::summarise(
           set = .y,
           age_mean = mean(age),
@@ -633,13 +607,13 @@ df_summary_test <-
           salary_sd = sd(salary)
         )
     }
-  ) |> 
+  ) |>
   # split age and salary to separate rows
   tidyr::pivot_longer(
     cols = -set,
     names_to = c("measure", ".value"),
     names_pattern = "(.*)_(.*)"
-  ) |> 
+  ) |>
   # convert salary to thousands to put on the same scale as age
   dplyr::mutate(
     mean = dplyr::case_when(
@@ -660,22 +634,21 @@ df_summary_test <-
 #'
 #' @returns gt table
 imputation_summary_table <- function(df, .measure = c("age", "salary")) {
-  
   # get the original data as reference
   df_original <-
-    df |> 
-    dplyr::filter(measure == .measure, set == "Original") |> 
+    df |>
+    dplyr::filter(measure == .measure, set == "Original") |>
     dplyr::select(mean, sd)
-  
+
   # filter the data for the specified measure and work out differences
   df_summary <-
-    df |> 
-    dplyr::filter(measure == .measure) |> 
+    df |>
+    dplyr::filter(measure == .measure) |>
     dplyr::mutate(
       # add the 'original' mean and sd values to each row
       mean_original = df_original$mean,
       sd_original = df_original$sd,
-      
+
       # work out  differences between the imputation and original
       mean_difference = dplyr::case_when(
         set == "Original" ~ NA, # leave original blank
@@ -685,31 +658,33 @@ imputation_summary_table <- function(df, .measure = c("age", "salary")) {
         set == "Original" ~ NA, # leave original blank
         .default = abs(sd - sd_original)
       ),
-      
+
       # determine which approach gives the overall lowest difference
       overall_difference = mean_difference + sd_difference,
       trophy = dplyr::case_when(
         overall_difference == min(overall_difference, na.rm = TRUE) ~ "🏆"
       )
     )
-  
+
   # display as a formatted table
-  tab <- 
-    df_summary |> 
-    gt::gt() |> 
-    gt::tab_options(quarto.disable_processing = TRUE) |> 
-    gt::fmt_number(decimals = 2) |> 
-    gt::cols_hide(columns = c(
-      "measure", 
-      "mean_original", 
-      "sd_original"
-    )) |> 
-    gt::sub_missing(missing_text = "") |> 
+  tab <-
+    df_summary |>
+    gt::gt() |>
+    gt::tab_options(quarto.disable_processing = TRUE) |>
+    gt::fmt_number(decimals = 2) |>
+    gt::cols_hide(
+      columns = c(
+        "measure",
+        "mean_original",
+        "sd_original"
+      )
+    ) |>
+    gt::sub_missing(missing_text = "") |>
     gt::data_color(
       columns = c("mean_difference", "sd_difference", "overall_difference"),
       palette = c("#5881c1", "#dff9fb"),
       na_color = "white"
-    ) |> 
+    ) |>
     gt::cols_label(
       set = "Set",
       mean = "Mean",
@@ -718,13 +693,13 @@ imputation_summary_table <- function(df, .measure = c("age", "salary")) {
       sd_difference = "SD",
       overall_difference = "Overall",
       trophy = "Trophy"
-    ) |> 
+    ) |>
     gt::tab_spanner(
       columns = c(mean_difference, sd_difference, overall_difference),
       label = "Difference from 'Original'"
-    ) |> 
+    ) |>
     gt::cols_align(columns = trophy, align = "center")
-  
+
   return(tab)
 }
 

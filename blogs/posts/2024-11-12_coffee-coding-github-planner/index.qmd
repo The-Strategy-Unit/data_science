@@ -5,11 +5,6 @@ date: "2024-11-12"
 categories: [GitHub, learning]
 ---
 
-```{r lockfile}
-#| include: FALSE
-renv::use(lockfile = "renv.lock")
-```
-
 
 ## Coffee & Coding
 

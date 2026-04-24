@@ -27,14 +27,8 @@ execute:
   warning: false
 ---
 
-```{r lockfile}
-#| include: FALSE
-renv::use(lockfile = "renv.lock")
-```
-
 ```{r setup}
 #| include: false
-
 library(tidyr)
 library(dplyr)
 library(readr)
@@ -53,7 +47,6 @@ spell_dates <- data |>
   ) |>
   select(facid, date_admit, date_discharge) |>
   sample_n(10000)
-
 ```
 
 ## Health Data in the Headlines
@@ -130,7 +123,6 @@ in open source.)
 
 ::: r-stack
  ![](images/pat%20dates.png){.fragment .absolute bottom="160" left="340" width="458"} <!--![](images/flow%20date%201.png){.fragment .absolute bottom="160" left="340" width="593"} ![](images/flow%20date%202.png){.fragment .absolute bottom="160" left="340" width="718"} ![](images/flow%20date%203.png){.fragment .absolute bottom="160" left="340" width="856"}  ![](images/flow%20date%204.png){.fragment .absolute bottom="160" left="340" width="977"}--> ![](images/admissions.png){.fragment .absolute bottom="110" left="850" width="205"} 
- ![](images/wk admissions.png){.fragment .absolute bottom="275" left="1100" width="205"}
 :::
 
 ::: {.notes}
@@ -192,13 +184,11 @@ Easy to do with `count`, or `group_by` and `summarise`
 
 ```{r}
 #| output-location: column-fragment
-
 admit_d <- spell_dates |>
   group_by(date_admit) |>
   count(date_admit)
 
 head(admit_d)
-
 ```
 
 
@@ -212,7 +202,6 @@ Generate list of key dates
 
 ::: {.column width="65%"}
 ```{r}
-
 date_start <- dmy(01012022)
 date_end <- dmy(31012022)
 run_len <- length(seq(from = date_start, to = date_end, by = "day"))
@@ -220,8 +209,6 @@ run_len <- length(seq(from = date_start, to = date_end, by = "day"))
 keydates <- data.frame(
   date = c(seq(date_start, by = "day", length.out = run_len))
 )
-
-
 ```
 
 :::
@@ -250,7 +237,6 @@ Iterate over each date - need to have been admitted before, and discharged after
 
 ```{r}
 #| eval: false
-
 occupancy_flag <- function(df) {
   # pre-allocate tibble size to speed up iteration in loop
   activity_all <- tibble(nrow = nrow(df)) |>
@@ -286,8 +272,6 @@ occupancy_flag <- function(df) {
     ungroup() |>
     mutate(date = str_remove(date, "d_"))
 }
-
-
 ```
 
 
@@ -312,7 +296,6 @@ Use `lubridate::floor_date` to generate the date at start of week/month
 
 ```{r}
 #| output-location: fragment
-
 admit_wk <- spell_dates |>
   mutate(
     week_start = floor_date(
@@ -324,7 +307,6 @@ admit_wk <- spell_dates |>
   count(week_start) # could add other parameters such as provider code, TFC etc
 
 head(admit_wk)
-
 ```
 
 
@@ -343,7 +325,6 @@ Key dates to include the dates at the start and end of each time period
 ::: {.column width="65%"}
 
 ```{r}
-
 date_start <- dmy(03012022) # first Monday of the year
 date_end <- dmy(01012023)
 run_len <- length(seq(from = date_start, to = date_end, by = "week"))
@@ -354,7 +335,6 @@ keydates <- data.frame(
   mutate(
     wk_end = wk_start + 6
   ) # last date in time period
-
 ```
 
 :::
@@ -363,7 +343,6 @@ keydates <- data.frame(
 
 ```{r}
 #| echo: false
-
 head(keydates)
 ```
 
@@ -382,7 +361,6 @@ More logic required if working in weeks or months - can only be in one place at 
 
 ```{r}
 #| eval: false
-
 # flag for occupancy
 activity_period <- case_when(
   # creates 1 flag if resident for complete week

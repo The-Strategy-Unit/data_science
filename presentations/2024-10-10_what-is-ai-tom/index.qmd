@@ -19,11 +19,6 @@ format:
       Learn more about [The Strategy Unit](https://www.strategyunitwm.nhs.uk/)
 ---
 
-```{r lockfile}
-#| include: FALSE
-renv::use(lockfile = "renv.lock")
-```
-
 
 ## What is Computer Vision (CV)
 
@@ -201,7 +196,6 @@ of values between 0 and 1
 ```{r}
 #| fig-width: 5
 #| fig-height: 5
-
 i <- 0
 j <- 0
 
@@ -209,10 +203,12 @@ f <- \(x, y) pmin(1, sqrt((x - 5)^2 + (y - 5)^2) / sqrt(32))
 
 p <- purrr::map(
   0:10,
-  \(i) purrr::map(
-    0:10,
-    \(j) list(x = i, y = j, v = f(i, j))
-  )
+  \(i) {
+    purrr::map(
+      0:10,
+      \(j) list(x = i, y = j, v = f(i, j))
+    )
+  }
 ) |>
   purrr::flatten() |>
   dplyr::bind_rows() |>

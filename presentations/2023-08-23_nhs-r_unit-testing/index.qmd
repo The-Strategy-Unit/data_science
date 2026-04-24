@@ -20,11 +20,6 @@ execute:
   error: true
 ---
 
-```{r lockfile}
-#| include: FALSE
-renv::use(lockfile = "renv.lock")
-```
-
 
 [ds_presentations]: https://the-strategy-unit.github.io/data_science/presentations/2023-08-23_nhs-r_unit-testing
 
@@ -189,7 +184,6 @@ library(dplyr)
 
 ```{r}
 my_function <- function(x, y) {
-  
   stopifnot(
     "x must be numeric" = is.numeric(x),
     "y must be numeric" = is.numeric(y),
@@ -207,7 +201,6 @@ my_function <- function(x, y) {
 #| eval: FALSE
 #| code-line-numbers: "1,10,11"
 my_function <- function(x, y) {
-  
   stopifnot(
     "x must be numeric" = is.numeric(x),
     "y must be numeric" = is.numeric(y),
@@ -225,7 +218,6 @@ my_function <- function(x, y) {
 #| eval: FALSE
 #| code-line-numbers: "3-8"
 my_function <- function(x, y) {
-  
   stopifnot(
     "x must be numeric" = is.numeric(x),
     "y must be numeric" = is.numeric(y),
@@ -406,13 +398,11 @@ test_that("my_function correctly divides values", {
 #| eval: false
 test_that("my_function works", {
   # arrange
-  #  
   #
   #
-
+  #
   # act
   #
-
   # assert
   #
 })
@@ -673,7 +663,8 @@ my_big_function <- function(type) {
     mutate(across(date, lubridate::ymd))
 
   conditions <- read_csv(
-    "conditions.csv", col_types = "cc"
+    "conditions.csv",
+    col_types = "cc"
   ) |>
     filter(condition_type == type)
 
@@ -728,7 +719,8 @@ Function to get the relevant conditions
 #| eval: FALSE
 get_conditions <- function(type) {
   read_csv(
-    "conditions.csv", col_types = "cc"
+    "conditions.csv",
+    col_types = "cc"
   ) |>
     filter(condition_type == type)
 }

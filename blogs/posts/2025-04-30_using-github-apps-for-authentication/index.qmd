@@ -9,8 +9,6 @@ author:
         url: https://strategyunitwm.nhs.uk/
 date: "2025-04-30"
 categories: [GitHub, learning, deployment]
-execute: 
-  enabled: false
 ---
 
 Recently, we've been working on building an internal dashboard to monitor the repositories in our GitHub organisation.
@@ -72,10 +70,10 @@ If you haven't used `{httr2}` before, the final code example includes extra comm
 
 First, we need to create a [JSON Web Token (JWT)][jwt] issued by our app (using the App ID and private key from earlier):
 
-```{r}
-#| code-fold: true
-#| code-summary: show code for get_github_jwt()
+<details>
+  <summary>Show code for get_github_jwt()</summary>
 
+``` r
 #' Get GitHub JWT for an Application
 #'
 #' @param key Path to the private key file or a string containing the private
@@ -102,6 +100,8 @@ get_github_jwt <- function(
 }
 ```
 
+</details>
+
 #### 2. Get the Installation ID for the App
 
 Next, we need the App's installation ID.
@@ -109,10 +109,10 @@ Next, we need the App's installation ID.
 You could find it manually via your organisation’s settings page under Installed Apps, but that’s cumbersome.
 Instead, we’ll use the API and our JWT to fetch it. Since we created the app and restricted installation to our org only, we can assume there’s just one installation.
 
-```{r}
-#| code-fold: true
-#| code-summary: show code for get_github_app_installation_id()
+<details>
+  <summary>show code for get_github_app_installation_id()</summary>
 
+``` r
 #' Get GitHub PAT from Installation Access Token
 #'
 #' @param jwt JSON Web Token (JWT) for the GitHub App. Defaults to the output of
@@ -144,14 +144,16 @@ get_github_app_installation_id <- function(
 }
 ```
 
+</details>
+
 #### 3. Generate a PAT
 
 We're now ready to generate the token we'll use for API requests.
 
-```{r}
-#| code-fold: true
-#| code-summary: show code for get_github_iat_pat()
+<details>
+  <summary>show code for get_github_iat_pat()</summary>
 
+``` r
 #' Get GitHub PAT from Installation Access Token
 #'
 #' @param jwt JSON Web Token (JWT) for the GitHub App. Defaults to the output of
@@ -187,16 +189,15 @@ get_github_iat_pat <- function(
 }
 ```
 
+</details>
+
 ## Putting it all together
 
 Now that we can generate a token using our app, we can write a function to query the list of repositories.
 
 We need to keep in mind that the API returns a maximum of 100 items per page. Fortunately, `{httr2}` makes it easy to iterate through paginated responses.
 
-```{r}
-#| code-fold: true
-#| code-summary: show code for get_repos()
-
+``` r
 #' Get GitHub Repositories for an organisation
 #'
 #' @param org The name of the GitHub organisation.
@@ -253,17 +254,13 @@ get_repos <- function(
 
 Finally, run the function like this:
 
-```{r}
-#| code-fold: false
-
+``` r
 # replace the below as required
 Sys.setenv("GITHUB_APP_ID" = "[app_id]")
 Sys.setenv("GITHUB_APP_PRIVATE_KEY" = "path-to-your.private-key.pem")
 
 get_repos("Your Organisation")
 ```
-
-
 
 
 [codeowners]: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners

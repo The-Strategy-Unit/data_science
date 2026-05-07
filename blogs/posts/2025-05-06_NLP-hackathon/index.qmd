@@ -31,7 +31,7 @@ We decided to use some data from a recent survey, which needed to be categorised
 
 Our mission was to develop a model to help the Evaluation team categorise responses quickly, with a reasonable degree of performance.
 
-![Mission impossible](mission_impossible.jpg)
+![Mission impossible](mission_impossible.jpg){fig.alt="Film image of actor hanging from the ceiling with his legs higher than his head. He is facing a computer terminal which he is poised at a keyboard typing."}
 
 ## The Hackathon format
 

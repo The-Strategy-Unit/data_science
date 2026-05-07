@@ -29,20 +29,10 @@
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2025-11-07_pandas_vs_polars/Rolling-Panda-1647869962.gif" height="200" class="figure-img"></p>
-<figcaption>Panda</figcaption>
-</figure>
-</div>
+<p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2025-11-07_pandas_vs_polars/Rolling-Panda-1647869962.gif" height="200" alt="Panda">{fig.alt=“Panda rolling down a hill” width=“100%”}</p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2025-11-07_pandas_vs_polars/playful-polar-bear-cubs.gif" height="200" class="figure-img"></p>
-<figcaption>Polar bears</figcaption>
-</figure>
-</div>
+<p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2025-11-07_pandas_vs_polars/playful-polar-bear-cubs.gif" height="200" alt="Polar bears">{fig.alt=“Two polar bear cubs playing in the snow, one goes up to the other, grabs it in a bite and they both slide down the snow turning over onto their backs.” width=“100%”}</p>
 </div>
 </div>
 </div>
@@ -74,7 +64,7 @@
 <h3 class="anchored" data-anchor-id="code-organisation">Code Organisation</h3>
 <p>One of the first things you’ll notice when comparing the implementations is how the Polars version breaks down complex operations into smaller, more focused functions:</p>
 <p><strong>Pandas (Monolithic Functions):</strong></p>
-<div id="7c7d2a38" class="cell">
+<div id="4f845416" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="kw" style="color: #003B4F;
@@ -114,7 +104,7 @@ font-style: inherit;"># ...</span></span></code></pre></div></div>
 </details>
 </div>
 <p><strong>Polars (Granular Functions):</strong></p>
-<div id="5e30d3a5" class="cell">
+<div id="762fe4f9" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="kw" style="color: #003B4F;
@@ -208,7 +198,7 @@ font-style: inherit;"># ...</span></span></code></pre></div></div>
 <h4 class="anchored" data-anchor-id="data-loading-and-joining">Data Loading and Joining</h4>
 <p>Here, the difference between the two implementations is fairly subtle, showcasing that switching between the two APIs doesn’t always increase the learning curve:</p>
 <p><strong>Pandas:</strong></p>
-<div id="aee2126f" class="cell">
+<div id="1e889a9b" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
@@ -245,7 +235,7 @@ font-style: inherit;">"inner"</span>)</span></code></pre></div></div>
 </details>
 </div>
 <p><strong>Polars:</strong></p>
-<div id="aedbda13" class="cell">
+<div id="4749689c" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
@@ -285,7 +275,7 @@ font-style: inherit;">"inner"</span>)</span></code></pre></div></div>
 <h4 class="anchored" data-anchor-id="null-handling">Null Handling</h4>
 <p>Null handling differs significantly:</p>
 <p><strong>Pandas:</strong></p>
-<div id="d7edb284" class="cell">
+<div id="bec997f2" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
@@ -299,7 +289,7 @@ font-style: inherit;">"unknown"</span>)</span></code></pre></div></div>
 </details>
 </div>
 <p><strong>Polars:</strong></p>
-<div id="9bf12761" class="cell">
+<div id="b8f9a422" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
@@ -351,7 +341,7 @@ font-style: inherit;">"unknown"</span>)</span></code></pre></div></div>
 <h4 class="anchored" data-anchor-id="data-aggregation-and-filtering">Data Aggregation and Filtering</h4>
 <p>Data filtering and aggregation show some of the most significant syntax differences:</p>
 <p><strong>Pandas:</strong></p>
-<div id="c18a6890" class="cell">
+<div id="fb29ef36" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
@@ -416,7 +406,7 @@ font-style: inherit;">int</span>)</span>
 </details>
 </div>
 <p><strong>Polars:</strong></p>
-<div id="2bbc1446" class="cell">
+<div id="87a83c97" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
@@ -451,7 +441,7 @@ font-style: inherit;">sum</span>())</span>
 <h4 class="anchored" data-anchor-id="lazy-evaluation">Lazy Evaluation</h4>
 <p>As mentioned in the introduction, one of Polars’ key features is its support for lazy evaluation, which enables query optimisation:</p>
 <p><strong>Pandas:</strong></p>
-<div id="d6d01428" class="cell">
+<div id="007215b1" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
@@ -482,7 +472,7 @@ font-style: inherit;">"sum"</span>})</span>
 </details>
 </div>
 <p><strong>Polars:</strong></p>
-<div id="d23bcf86" class="cell">
+<div id="507dd032" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><span class="co" style="color: #5E5E5E;
@@ -524,7 +514,7 @@ font-style: inherit;"># Only executes the plan when needed</span></span>
 <h3 class="anchored" data-anchor-id="memory-management">Memory Management</h3>
 <p>Both implementations are designed to manage memory, but with fundamental differences in how data is stored and processed:</p>
 <p><strong>Pandas:</strong></p>
-<div id="f3d268aa" class="cell">
+<div id="9771f339" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><span class="co" style="color: #5E5E5E;
@@ -577,7 +567,7 @@ font-style: inherit;"> MB"</span>)</span></code></pre></div></div>
 </details>
 </div>
 <p><strong>Polars:</strong></p>
-<div id="5ccde927" class="cell">
+<div id="23915f84" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><span class="co" style="color: #5E5E5E;
@@ -653,7 +643,7 @@ font-style: inherit;"> MB"</span>)</span></code></pre></div></div>
 <p>Pandas and Polars differ significantly in how they handle types and expressions. Polars uses a <a href="https://deepwiki.com/pola-rs/polars/6-type-system">strongly-typed system</a> based on Apache Arrow’s type system, while Pandas handles types more implicitly.</p>
 <p>Polars’ expression system (with <code>pl.col()</code> syntax) is a core part of its design, allowing for clear, composable operations that the query optimiser can understand and optimise:</p>
 <p><strong>Explicit Null Checking:</strong></p>
-<div id="6d54b7ad" class="cell">
+<div id="cb04c5a4" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><span class="co" style="color: #5E5E5E;
@@ -702,7 +692,7 @@ font-style: inherit;">"</span>)</span></code></pre></div></div>
 </details>
 </div>
 <p><strong>Type System Consistency:</strong></p>
-<div id="88b6a1ab" class="cell">
+<div id="abea316a" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><span class="co" style="color: #5E5E5E;
@@ -822,7 +812,7 @@ font-style: inherit;">0.0</span>),</span>
 Wondered what they mean?</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2025-09-18_verifying_git_commits/nhp_inputs-commits.png" class="img-fluid figure-img"></p>
+<p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2025-09-18_verifying_git_commits/nhp_inputs-commits.png" class="img-fluid figure-img" style="width:100.0%" data-fig.alt="Screenshot of the Commit history view of GitHub with examples of both verified commits and  unverified commits by the same person."></p>
 <figcaption>Screenshot of the nhp_inputs repository, showing some verified commits and other unverified commits.</figcaption>
 </figure>
 </div>
@@ -841,7 +831,7 @@ This isn’t just a GitHub feature; it’s built directly into Git.</p>
 <p>Below is a screenshot of our <a href="https://github.com/the-strategy-unit/nhp_model/commits/main">nhp_model</a>, where all the commits I’ve authored have been signed with <a href="https://keyserver.ubuntu.com/pks/lookup?search=8F3C2735D62D6993&amp;fingerprint=on&amp;op=index">my GPG key</a>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2025-09-18_verifying_git_commits/nhp_model-commits.png" class="img-fluid figure-img"></p>
+<p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2025-09-18_verifying_git_commits/nhp_model-commits.png" class="img-fluid figure-img" style="width:100.0%" data-fig.alt="Screenshot of the Git commit history which are all verified and also a tool tip box showing details of the verification details: who did the commit and the GPG key along with verification date."></p>
 <figcaption>Screenshot of the nhp_model repository, showing all commits are verified.</figcaption>
 </figure>
 </div>
@@ -5461,7 +5451,7 @@ font-style: inherit;">"salary"</span>)</span></code></pre></div></div>
 
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2025-05-16 data-science-as-a-product/StockCake-Healthcare Data Analysis_1747409640.jpg" class="img-fluid figure-img"></p>
+<p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2025-05-16 data-science-as-a-product/StockCake-Healthcare Data Analysis_1747409640.jpg" class="img-fluid figure-img" data-fig.alt="Image of part of a person in view in a white coat with stethoscope with a pen in one hand which is poised over document on a clip pad of a bar chart. The person is holding a 3D bar chart type model in the other hand."></p>
 <figcaption>Data Science</figcaption>
 </figure>
 </div>
@@ -5513,7 +5503,7 @@ We want our data scientists to do data science because they love it and excel at
 <p>Our mission was to develop a model to help the Evaluation team categorise responses quickly, with a reasonable degree of performance.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2025-05-06_NLP-hackathon/mission_impossible.jpg" class="img-fluid figure-img"></p>
+<p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2025-05-06_NLP-hackathon/mission_impossible.jpg" class="img-fluid figure-img" data-fig.alt="Film image of actor hanging from the ceiling with his legs higher than his head. He is facing a computer terminal which he is poised at a keyboard typing."></p>
 <figcaption>Mission impossible</figcaption>
 </figure>
 </div>
@@ -6267,7 +6257,7 @@ font-style: inherit;">"Your Organisation"</span>)</span></code></pre></div></div
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2024-11-29-mapping-my-r-learning/Nebula.jpg" class="img-fluid figure-img"></p>
-<figcaption>An image generated using the <a href="https://cran.r-project.org/web/packages/aRtsy/readme/README.html">aRtsy</a> package and the <a href="https://koenderks.github.io/aRtsy/#nebula">canvas_nebula</a> function</figcaption>
+<figcaption>An image generated using the <a href="https://cran.r-project.org/web/packages/aRtsy/readme/README.html">aRtsy</a> package and the <a href="https://koenderks.github.io/aRtsy/#nebula" data-fig.alt="An abstract art piece with shades of blue colour that give it an almost organic or cloud appearance">canvas_nebula</a> function</figcaption>
 </figure>
 </div>
 <p>I also discovered colour palettes such as those in the <a href="https://github.com/karthik/wesanderson">wesanderson</a> package, and tried experimenting with those along with the generative art functions. I soon found that my fear of R was quickly replaced by a geeky fascination with all of the beautiful artwork that could be created with only a few lines of code. It felt like a low-stakes situation, because the worst that could happen was that the code wouldn’t work. Suddenly, the process of coding felt less intimidating, and it had opened up a wealth of possibilities<sup>1</sup>.</p>
@@ -6299,7 +6289,7 @@ font-style: inherit;">"Your Organisation"</span>)</span></code></pre></div></div
 <p>As well as providing some humour to contrast with the often frustrating process of learning to code, these failures also helped me to get unstuck. More often than not, they were a catalyst for problem-solving as they provided useful information about what specific aspect of the code had gone wrong, which would give me a clue about what I needed to look into to fix the problem.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2024-11-29-mapping-my-r-learning/Terrible map.png" class="img-fluid figure-img"></p>
+<p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2024-11-29-mapping-my-r-learning/Terrible_map.png" class="img-fluid figure-img" alt="A chart with axes latitude and logitude that has been stretched so the chart itself is just a centimetre or so across but many centimetres from top to bottom. A very small country shaped blob can be seen at the very top and to the side of the chart the population density 2021 key is more clearly viewable."></p>
 <figcaption>This is an example of one of the terrible maps I accidentally made, where the map ended up so small it could have been a data point, the axes were changed beyond recognition, and one of the map markers, which was supposed to be located in the North of England, ended up with coordinates somewhere in the Atlantic Ocean.</figcaption>
 </figure>
 </div>
@@ -6314,7 +6304,7 @@ font-style: inherit;">"Your Organisation"</span>)</span></code></pre></div></div
 <p>I realised this a few months ago when my friend got me a beginner’s embroidery kit, and as I followed the pattern and learned how to create the different types of embroidery stitch, I reflected that just like with the embroidery pattern I was working on, I needed to structure the coding for the map in <a href="https://ggplot2.tidyverse.org/reference/layer_geoms.html#:~:text=In%20ggplot2%2C%20a%20plot%20in,displayed%2C%20not%20what%20is%20displayed.">layers</a>. This led me to approach the process like I would for an art project<sup>4</sup> to identify what I needed to do to adequately visualise both types of data that I wanted to include in the map.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2024-11-29-mapping-my-r-learning/R textile map.jpg" class="img-fluid figure-img" alt="Textile art piece showing a map with the letter R - for decorative purposes only" width="384"></p>
+<p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2024-11-29-mapping-my-r-learning/R_textile_map.jpg" class="img-fluid figure-img" alt="Textile art piece showing a map with the letter R - for decorative purposes only" width="384"></p>
 <figcaption>An abstract textile art piece that I made to illustrate the blog post. This symbolises my non-linear R learning journey - with overlapping and convoluted pathways, dead ends, and roadblocks along the way.</figcaption>
 </figure>
 </div>
@@ -6332,7 +6322,7 @@ font-style: inherit;">"Your Organisation"</span>)</span></code></pre></div></div
 <li id="fn1"><p>If this topic is of interest, I would recommend getting involved in the <a href="https://github.com/rfordatascience/tidytuesday">Tidy Tuesday community activity</a> and also having a look at <a href="https://nrennie.rbind.io/tidytuesday-shiny-app/">Nicola Rennie’s data visualisations</a>.↩︎</p></li>
 <li id="fn2"><p>This amused me greatly, as a fan of the <a href="https://www.instagram.com/terriblemap/p/DCh2NhfB2JX/">Terrible Maps social media pages</a>.↩︎</p></li>
 <li id="fn3"><p>This has also worked the other way around, with my R learning journey helping me with learning new crafts. I have recently begun learning sewing and dressmaking. I have quickly found that the learning journey is just as intimidating, meticulous and complicated as it was for learning R. I have also unintentionally chosen a very complicated project for a beginner, which has resulted in a very steep learning curve and lots of failures and mistakes along the way. Throughout the process, I have applied some of the same principles as I did for learning coding. For example, one of the key parts of my journey of learning sewing and dressmaking has been the process of embracing and learning from failure. This has been essential both in terms of knowing what not to do next time, but also to learn how to fix mistakes, ideally early on in a practice situation (e.g.&nbsp;when creating a mock-up). Luckily there is a large community of supportive fellow learners and patient mentors, who are keen to help with fixing mistakes and to pass on their knowledge to new learners. I’m pleased to say, with a lot of help (and many failures) along the way, I did eventually manage to produce three choropleth maps and submitted them with the report late last year.↩︎</p></li>
-<li id="fn4"><p>Throughout the journey I have realised that thinking about the problem like an artist has been very helpful, because it allows me to use a similarly iterative approach. I wanted my choropleth maps to show both the population density and the underlying terrain when superimposed. To do this, I used the <a href="https://colorbrewer2.org/#type=sequential&amp;scheme=BuGn&amp;n=3">colorbrewer2</a> tool to test out different colour palettes, and changed the opacity and terrain to identify which colours would clearly to show the population data and the terrain underneath. The tool let me test this on an example map and showed me the hexadecimal colour codes for the colours in the palettes. Once I had found some combinations that would likely work for my particular map, I then iteratively adjusted the aesthetics in my R code until I found a combination that worked for my data. &nbsp;↩︎</p></li>
+<li id="fn4"><p>Throughout the journey I have realised that thinking about the problem like an artist has been very helpful, because it allows me to use a similarly iterative approach. I wanted my choropleth maps to show both the population density and the underlying terrain when superimposed. To do this, I used the <a href="https://colorbrewer2.org/#type=sequential&amp;scheme=BuGn&amp;n=3">colorbrewer2</a> tool to test out different colour palettes, and changed the opacity and terrain to identify which colours would clearly to show the population data and the terrain underneath. The tool let me test this on an example map and showed me the hexadecimal colour codes for the colours in the palettes. Once I had found some combinations that would likely work for my particular map, I then iteratively adjusted the aesthetics in my R code until I found a combination that worked for my data.↩︎</p></li>
 </ol>
 </section></div> ]]></description>
   <category>learning</category>
@@ -7621,8 +7611,12 @@ on:
         with:
           source-dir: ./_site/</code></pre>
 <p>Now everytime a PR is created, or updated, the GitHub Action bot will spring into action.</p>
-<p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2024-12-04-gha-branch-preview/deploy-pr-preview.PNG" class="img-fluid" alt="A screenshot of a GitHub PR. Under the description, there is a comment from the GitHub actions bot with links to the deployed PR."><br>
-</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2024-12-04-gha-branch-preview/deploy-pr-preview.PNG" class="img-fluid figure-img" alt="Screenshot of a conversation from GitHub with a GitHub action for the preview."></p>
+<figcaption>A screenshot of a GitHub PR. Under the description, there is a comment from the GitHub actions bot with links to the deployed PR.</figcaption>
+</figure>
+</div>
 </section>
 <section id="adjusting-the-publish.yml" class="level2">
 <h2 class="anchored" data-anchor-id="adjusting-the-publish.yml">Adjusting the publish.yml</h2>

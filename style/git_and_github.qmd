@@ -113,7 +113,17 @@ If the PR is later assigned back to you then you must immediately pull changes.
 
 There may be times when you cannot be the assignee on a PR and in those situations you should nominate someone else to be the assignee and in charge of the PR, the same rules as in the paragraph above would then apply.
 
-If, as a reviewer, you find that no one is assigned to the branch, you should get in contact with the person who created the branch and decide who is going to be the assigned owner of the PR.
+### Reviewing with GitHub Copilot
+
+When GitHub Copilot acts as a PR reviewer:
+- **PR opened with Copilot comments:** Author addresses all comments
+- **Human reviewer starts while Copilot comments pending:** Review concurrently. Explicitly agree with overlapping suggestions
+- **No pending Copilot comments:** Human reviewer is sole blocker
+- **Pending Copilot comments unaddressed:** Author is blocker. Reviewer may continue or unassign themselves until Copilot comments are resolved
+- **PR needs more time for Copilot feedback:** Convert to Draft until resolved
+- **Copilot feedback appears after review begins:** Keep PR open. Author addresses feedback, reviewer completes remaining items
+
+If you're reviewing a PR and notice no assignee has been assigned (indicating no one is responsible for merging it), contact the PR creator to decide who will take ownership of merging the PR.
 
 #### Outside collaborators
 

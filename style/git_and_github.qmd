@@ -122,8 +122,7 @@ When GitHub Copilot acts as a PR reviewer:
 - **Pending Copilot comments unaddressed:** Author is blocker. Reviewer may continue or unassign themselves until Copilot comments are resolved
 - **PR needs more time for Copilot feedback:** Convert to Draft until resolved
 - **Copilot feedback appears after review begins:** Keep PR open. Author addresses feedback, reviewer completes remaining items
-
-If you're reviewing a PR and notice no assignee has been assigned (indicating no one is responsible for merging it), contact the PR creator to decide who will take ownership of merging the PR.
+- **No assignee on PR:** If no assignee is set, contact the PR creator to agree who is responsible for merging
 
 #### Outside collaborators
 

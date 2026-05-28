@@ -43,7 +43,7 @@ We could blame the technology. It would be more accurate to blame the learning c
 In the 1980s, desktop publishing software arrived and gave Macintosh users the ability to produce documents that looked professionally typeset. The reaction of some was alarm rather than delight.[^2]
 A piece in an educational journal asked, with concern, whether students were producing work that looked polished but read poorly - style masking a lack of substance. 
 
-![A newspaper clipping asking whether desktop publishing was harming student writing quality.](desktop-publishing-essay-quality.png){fig-alt="Newspaper clipping with the headline 'Do our students pen failure with colorful computers?' from an educational journal in the 1980s. Shared by Pessimists Archive."}
+![A newspaper clipping asking whether desktop publishing was harming student writing quality.](desktop-publishing-essay-quality.jpg){fig-alt="Newspaper clipping with the headline 'Do our students pen failure with colorful computers?' from an educational journal in the 1980s. Shared by Pessimists Archive."}
 
 *Source: [Pessimists Archive](https://nitter.net/PessimistsArc).*
 

@@ -114,7 +114,7 @@ These predictions generated headlines and serious debate.
 Industry pushed back.
 An IBM expert, Arthur L. Samuel, responded that "a machine is not a genie, it does not work by magic" and that nothing comes out of a machine that has not been put in.
 
-![Newspaper coverage of the debate between Wiener's warnings and IBM's pushback, circa 1960.](wiener-ibm-samuel-debate-press.jpeg){fig-alt="Historical newspaper clippings showing press coverage of the debate between Norbert Wiener's automation warnings and IBM's response. Sourced from the Pessimists Archive newsletter."}
+![Newspaper coverage of the debate between Wiener's warnings and IBM's pushback, circa 1960.](wiener-ibm-samuel-debate-press.jpg){fig-alt="Historical newspaper clippings showing press coverage of the debate between Norbert Wiener's automation warnings and IBM's response. Sourced from the Pessimists Archive newsletter."}
 
 *Source: [Pessimists Archive - The Original AI Doomer: Dr. Norbert Wiener](https://newsletter.pessimistsarchive.org/p/the-original-ai-doomer-dr-norbert).*
 

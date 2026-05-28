@@ -1,4 +1,11 @@
-# Claire Welsh
+---
+title: "Claire Welsh"
+freeze: true
+execute:
+  enabled: false
+format: null
+---
+
 ## ![Picture of me](team_members/CW.jpg){width="10%" fig-align="right"} Lead Data Scientist 
 
 

@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-09-18">
+<meta name="dcterms.date" content="2026-06-01">
 
-<title>Verifying Git Commits – Data Science @ The Strategy Unit</title>
+<title>We’ve Been Here Before – Data Science @ The Strategy Unit</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -23,41 +23,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -360,12 +325,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#can-you-sign-your-own-commits" id="toc-can-you-sign-your-own-commits" class="nav-link active" data-scroll-target="#can-you-sign-your-own-commits">Can you sign your own commits?</a></li>
-  <li><a href="#easy-approach-using-ssh" id="toc-easy-approach-using-ssh" class="nav-link" data-scroll-target="#easy-approach-using-ssh">Easy approach: using SSH</a></li>
-  <li><a href="#harder-approach-gpg" id="toc-harder-approach-gpg" class="nav-link" data-scroll-target="#harder-approach-gpg">Harder approach: GPG</a></li>
-  <li><a href="#paranoid-approach" id="toc-paranoid-approach" class="nav-link" data-scroll-target="#paranoid-approach">Paranoid approach</a></li>
+  <li><a href="#ai-generates-slop" id="toc-ai-generates-slop" class="nav-link active" data-scroll-target="#ai-generates-slop">AI Generates Slop</a></li>
+  <li><a href="#professional-identity-and-the-fear-of-being-replaced" id="toc-professional-identity-and-the-fear-of-being-replaced" class="nav-link" data-scroll-target="#professional-identity-and-the-fear-of-being-replaced">Professional Identity and the Fear of Being Replaced</a></li>
+  <li><a href="#when-the-experts-worried-too" id="toc-when-the-experts-worried-too" class="nav-link" data-scroll-target="#when-the-experts-worried-too">When the Experts Worried Too</a></li>
+  <li><a href="#proceeding-with-caution" id="toc-proceeding-with-caution" class="nav-link" data-scroll-target="#proceeding-with-caution">Proceeding with Caution</a></li>
+  <li><a href="#every-age-has-its-concerns" id="toc-every-age-has-its-concerns" class="nav-link" data-scroll-target="#every-age-has-its-concerns">Every Age Has Its Concerns</a></li>
+  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/the-strategy-unit/data_science/edit/main/blogs/posts/2025-09-18_verifying_git_commits/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/the-strategy-unit/data_science/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/the-strategy-unit/data_science/edit/main/blogs/posts/2026-06-01-a-brief-history-of-scepticism-towards-new-tech/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/the-strategy-unit/data_science/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -373,10 +340,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Verifying Git Commits</h1>
+<h1 class="title">We’ve Been Here Before</h1>
+<p class="subtitle lead">A brief history of our scepticism towards new technology, and what it means for AI today</p>
   <div class="quarto-categories">
-    <div class="quarto-category">Git</div>
-    <div class="quarto-category">GitHub</div>
+    <div class="quarto-category">AI</div>
+    <div class="quarto-category">Data Science</div>
+    <div class="quarto-category">Technology</div>
+    <div class="quarto-category">History</div>
   </div>
   </div>
 
@@ -386,7 +356,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="quarto-title-meta-heading">Affiliation</div>
   
     <div class="quarto-title-meta-contents">
-    <p class="author">Tom Jemmett <a href="mailto:thomas.jemmett@nhs.net" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0002-6943-2990" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+    <p class="author">Eirini Komninou <a href="mailto:eirini.komninou@nhs.net" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
   </div>
   <div class="quarto-title-meta-contents">
         <p class="affiliation">
@@ -403,7 +373,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 18, 2025</p>
+      <p class="date">June 1, 2026</p>
     </div>
   </div>
   
@@ -415,72 +385,115 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Ever looked at a list of commits on GitHub and noticed ✅ green checks next to some commits, but not others?<br>
-Wondered what they mean?</p>
+<p>In Plato’s <em>Phaedrus</em>, over 2,000 years ago, Socrates tells a story about a dangerous new technology that would erode memory, encourage shallow thinking, and give people the illusion of knowledge without the substance. The technology he was referring to was writing.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>His concern was not aiming for eccentricity. It was the considered view of one of history’s greatest minds. And he was - in a sense - not entirely wrong. We do rely on written records rather than memorising everything. Whether that is a loss or a liberation probably depends on who you ask.</p>
+<p>Socrates’ concern sounds familiar, we have been here before. Every generation faces a technology that feels somewhat unsettling. The printing press, the telegraph, the telephone, the word processor - each raised concerns that look remarkably familiar in hindsight. Artificial intelligence is the latest addition in a very long story.</p>
+<p>This blog post aims to offer some perspective, and perhaps make the present moment feel more like the beginning of something new rather than the end of something old.</p>
+<section id="ai-generates-slop" class="level2">
+<h2 class="anchored" data-anchor-id="ai-generates-slop">AI Generates Slop</h2>
+<p>We’re all familiar with this complaint: the new tool is producing poor work, and standards are slipping. We could blame the technology. It would be more accurate to blame the learning curve.</p>
+<p>In the 1980s, desktop publishing software arrived and gave Macintosh users the ability to produce documents that looked professionally typeset. The reaction of some was alarm rather than delight.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> A piece in an educational journal asked, with concern, whether students were producing work that looked polished but read poorly - style masking a lack of substance.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="nhp_inputs-commits.png" class="img-fluid figure-img" style="width:100.0%" data-fig.alt="Screenshot of the Commit history view of GitHub with examples of both verified commits and  unverified commits by the same person."></p>
-<figcaption>Screenshot of the nhp_inputs repository, showing some verified commits and other unverified commits.</figcaption>
+<p><img src="desktop-publishing-essay-quality.png" class="img-fluid figure-img" alt="Newspaper clipping with the headline 'Do our students pen failure with colorful computers?' from an educational journal in the 1980s. Shared by Pessimists Archive."></p>
+<figcaption>A newspaper clipping asking whether desktop publishing was harming student writing quality.</figcaption>
 </figure>
 </div>
-<p>Here’s a screenshot of our <a href="https://github.com/The-Strategy-Unit/nhp_inputs/commits/main/">nhp_inputs</a> repository.<br>
-You can see that some commits (merge commits, specifically here) have those checks, while others don’t.</p>
-<p>The green check indicates that the commit has been cryptographically signed — proving it was created by the stated author and hasn’t been tampered with.</p>
-<p>There’s nothing stopping someone from changing their Git username and email to impersonate another author.<br>
-You might have seen this yourself when your local Git config isn’t set correctly (<a href="https://superuser.com/questions/1435213/github-why-do-i-appear-twice-on-every-commit">example and fix</a>).</p>
-<p>So, why are those merge commits verified?</p>
-<p>When you make a commit directly on GitHub (either by editing a file in the browser or merging a pull request), GitHub knows it’s you and “signs” the commit using its <a href="https://en.wikipedia.org/wiki/GNU_Privacy_Guard">GPG</a> private key.<br>
-Others can then independently verify the commit by validating it against <a href="https://keys.openpgp.org/search?q=B5690EEEBB952194">GitHub’s public key</a>.</p>
-<section id="can-you-sign-your-own-commits" class="level2">
-<h2 class="anchored" data-anchor-id="can-you-sign-your-own-commits">Can you sign your own commits?</h2>
-<p>Absolutely — and you probably should!<br>
-This isn’t just a GitHub feature; it’s built directly into Git.</p>
-<p>Below is a screenshot of our <a href="https://github.com/the-strategy-unit/nhp_model/commits/main">nhp_model</a>, where all the commits I’ve authored have been signed with <a href="https://keyserver.ubuntu.com/pks/lookup?search=8F3C2735D62D6993&amp;fingerprint=on&amp;op=index">my GPG key</a>.</p>
+<p><em>Source: <a href="https://nitter.net/PessimistsArc">Pessimists Archive</a>.</em></p>
+<p>Today, the same concern is framed slightly differently. “AI slop” - content that is fluent, plausible, and oddly hollow - is a genuine phenomenon. But it is worth asking what produces it. A word processor does not write a poor essay. A desktop publishing tool does not design an ugly leaflet. And an AI assistant does not generate hollow content on its own accord. In each case, the output reflects the intent, the skill, and the judgement of the person using it.</p>
+<p>The tool amplifies what you bring to it. That has always been true. A person who has not learned to think carefully will not suddenly think carefully because they have a powerful new tool. But a person who has - will find that the tool extends their reach considerably.</p>
+<p>This is not a defence of laziness. It is an argument for investing in understanding how to use AI well, rather than either dismissing it or outsourcing your thinking to it uncritically.</p>
+<p>As Jony Ive once observed, when people encounter something new, they instinctively try to reference what’s familiar - and judge it by how well it matches the past.</p>
+</section>
+<section id="professional-identity-and-the-fear-of-being-replaced" class="level2">
+<h2 class="anchored" data-anchor-id="professional-identity-and-the-fear-of-being-replaced">Professional Identity and the Fear of Being Replaced</h2>
+<p>There is a particular kind of anxiety that is less about the technology itself and more about what it means for the person using it - or the person being replaced by it.</p>
+<p>Consider the London black cab driver. To earn a licence, a cabbie must pass The Knowledge - a gruelling test requiring the memorisation of around 25,000 streets and thousands of points of interest across London. It takes most candidates between three and four years to prepare. It is a remarkable human achievement.</p>
+<p>When GPS navigation arrived, some cabbies dismissed it outright. In a recent CBS News interview, a veteran driver compared Google Maps to a hot dog vendor and himself to Gordon Ramsay. In his view, the tool simply could not replicate what years of hard-won expertise had built.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> The instinct he is expressing is deeply human and thoroughly familiar.</p>
+<p>This example is current, not historical. Autonomous taxis are currently being trialled in London, with British startup Wayve Technologies already conducting test runs and US company Waymo among those planning to participate.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> The sense that something irreplaceable is being undervalued, remains.</p>
+<p>This is worth sitting with for a moment. The concern is not always “will I have a job”. It is often something quieter and more personal: “will what I have learned still matter”.</p>
+<p>That is a reasonable thing to wonder. And it deserves a more thoughtful answer than either “don’t worry” or “adapt or be left behind”.</p>
+</section>
+<section id="when-the-experts-worried-too" class="level2">
+<h2 class="anchored" data-anchor-id="when-the-experts-worried-too">When the Experts Worried Too</h2>
+<p>If the anxieties of cab drivers and students feel relatable, consider that the most serious concerns about artificial intelligence were voiced not by outsiders looking in, but by the very people who built the foundations of the field.</p>
+<p>Dr.&nbsp;Norbert Wiener is not a household name, but he arguably should be. A mathematician and scientist at MIT, Wiener pioneered the field he called <em>cybernetics</em> - the study of how systems, whether mechanical or biological, regulate themselves through feedback. The concepts he developed in the 1940s and 1950s underpin much of what we now call artificial intelligence.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="nhp_model-commits.png" class="img-fluid figure-img" style="width:100.0%" data-fig.alt="Screenshot of the Git commit history which are all verified and also a tool tip box showing details of the verification details: who did the commit and the GPG key along with verification date."></p>
-<figcaption>Screenshot of the nhp_model repository, showing all commits are verified.</figcaption>
+<p><img src="norbert-wiener-portrait.jpeg" class="img-fluid figure-img" alt="Historical photograph of Dr. Norbert Wiener, mathematician and founder of cybernetics, at work. Sourced from the Pessimists Archive newsletter."></p>
+<figcaption>Dr.&nbsp;Norbert Wiener, pioneer of cybernetics and one of the earliest voices warning about the risks of intelligent machines.</figcaption>
 </figure>
 </div>
-<p>Setting up GPG can be a bit of a faff, but there’s an easier way: using SSH keys to sign commits.<br>
-You may already have SSH set up for pushing and pulling from GitHub, so this is a no-brainer.<br>
-Even if you don’t, setting up SSH is quick.</p>
+<p><em>Source: <a href="https://newsletter.pessimistsarchive.org/p/the-original-ai-doomer-dr-norbert">Pessimists Archive - The Original AI Doomer: Dr.&nbsp;Norbert Wiener</a>.</em></p>
+<p>He was also, from the start, deeply uncomfortable about where it was all heading.</p>
+<p>In 1948, his book <em>Cybernetics</em> raised the first serious warnings about thinking machines. A year later, the editor of the New York Times invited him to write about “what the ultimate machine age is likely to be”. His drafts were rejected twice - reportedly too unsettling for a general readership. The version that survives in the MIT archives contains a warning that feels contemporary despite originating from 1949 - that machines “will do what we ask them to do and not what we ought to ask them to do”.</p>
+<p>By 1960, Wiener was warning of an “industrial revolution of unmitigated cruelty” - automation displacing workers at a scale society was not prepared for. These predictions generated headlines and serious debate. Industry pushed back. An IBM expert, Arthur L. Samuel, responded that “a machine is not a genie, it does not work by magic” and that nothing comes out of a machine that has not been put in.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="wiener-ibm-samuel-debate-press.jpeg" class="img-fluid figure-img" alt="Historical newspaper clippings showing press coverage of the debate between Norbert Wiener's automation warnings and IBM's response. Sourced from the Pessimists Archive newsletter."></p>
+<figcaption>Newspaper coverage of the debate between Wiener’s warnings and IBM’s pushback, circa 1960.</figcaption>
+</figure>
+</div>
+<p><em>Source: <a href="https://newsletter.pessimistsarchive.org/p/the-original-ai-doomer-dr-norbert">Pessimists Archive - The Original AI Doomer: Dr.&nbsp;Norbert Wiener</a>.</em></p>
+<p>That exchange between a pioneering scientist sounding the alarm and an industry insider urging calm will feel recognisable to those following the AI debate today. The characters have changed, the argument has not.</p>
+<p>Wiener’s parting message, after decades of thinking about all of this, was measured: “We can be humble and live a good life with the aid of the machines, or we can be arrogant and die.”</p>
+<p>He was not against the machines. He was against thoughtlessness.</p>
 </section>
-<section id="easy-approach-using-ssh" class="level2">
-<h2 class="anchored" data-anchor-id="easy-approach-using-ssh">Easy approach: using SSH</h2>
-<p>For more details, see <a href="https://docs.gitlab.com/user/project/repository/signed_commits/ssh/">“Sign commits with SSH keys” from GitLab’s docs</a>, but here’s the short version:</p>
-<p>First, generate an SSH key if you haven’t already. Open a terminal (on Windows you might need Git Bash) and run:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> ed25519 <span class="at">-C</span> <span class="st">"my.email@example.com"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>This creates a new file called <code>~/.ssh/id_25519.pub</code>, where <code>~</code> is your home directory (for example, on Windows: <code>C:\Users\thomas.jemmett\.ssh\id_25519.pub</code>).</p>
-<p>Then run:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> gpg.format ssh</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.signingkey ~/.ssh/id_25519.pub</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> tag.gpgsign true</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> commit.gpgsign true</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>From now on, your commits will be signed — but GitHub won’t yet recognise the signature! You need to upload your SSH key for signing: see<a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account#adding-a-new-ssh-key-to-your-account">“Adding a new SSH key to your account”, GitHub Docs</a>.</p>
-<p>You need to make sure that you set this as a key for signing, not for authentication. If you already have uploaded your key for authentication, you need to upload it again for signing. Using the same key for both is fine.</p>
+<section id="proceeding-with-caution" class="level2">
+<h2 class="anchored" data-anchor-id="proceeding-with-caution">Proceeding with Caution</h2>
+<p>It is not only individuals who resist new technology. Institutions do too, often with the best of intentions.</p>
+<p>In 1983, Harvard University introduced coin-operated word processing terminals across its dormitories, libraries, and classrooms. The initiative was cautious and carefully managed - the university wanted to understand whether students who were not technically inclined could use computers as everyday writing tools. Access was structured and monitored.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
+<p>Organisations today that require sign-off before staff can use AI tools, or that restrict access while policies are drafted, are operating from a similar - reasonable - instinct. Moving carefully in the face of genuine uncertainty is not the same as moving badly.</p>
+<p>But caution has its own costs - ones that are easier to overlook because they are slower and quieter than the risks being guarded against. Staff who feel held back while the world moves on can become disengaged. Teams that are denied the chance to develop familiarity with new tools fall behind not through any fault of their own. The gap between those organisations that engaged early and those that waited tends to widen before it narrows.</p>
+<p>The question for institutions is not simply “is it safe to proceed” but “what are we risking by waiting”.</p>
+<p>Harvard in 1983 is one instance. But institutional caution around new technology is as old as the technologies themselves.</p>
 </section>
-<section id="harder-approach-gpg" class="level2">
-<h2 class="anchored" data-anchor-id="harder-approach-gpg">Harder approach: GPG</h2>
-<p>While GitHub supports SSH-signed commits, not all providers do. GPG is a more established way of performing these cryptographic operations.</p>
-<p>It does take more setup, and you may need to install additional tools. Rather than going step by step here, you should read GitHub’s docs on creating a key.</p>
-<p>If you do create a GPG key, consider using a modern algorithm like ECDSA or EdDSA.</p>
-<p>It’s also a good idea to <a href="https://www.gnupg.org/gph/en/manual/x457.html">send your new key to a few keyservers</a> (e.g.&nbsp;<a href="https://pgp.mit.edu">pgp.mit.edu</a>, <a href="https://keyserver.ubuntu.com">keyserver.ubuntu.com</a>, <a href="https://keys.openpgp.org">keys.openpgp.org</a>).</p>
-<p>If some of your colleagues also use GPG, you might <a href="https://gist.github.com/F21/b0e8c62c49dfab267ff1d0c6af39ab84">sign their keys</a> to help establish a <a href="https://en.wikipedia.org/wiki/Chain_of_trust">Chain of trust</a>.</p>
+<section id="every-age-has-its-concerns" class="level2">
+<h2 class="anchored" data-anchor-id="every-age-has-its-concerns">Every Age Has Its Concerns</h2>
+<p>In 1926, a professor at New York University gave an interview reported under the headline <em>“Modern Age of Speed Deplored By Professor”</em>. Radio, jazz, new psychology, and modern commerce fell under the “seven deadly values” of contemporary life. There is a quote that stands out across the intervening century - that another age “would have hesitated to annihilate space and time the way we grind them up in our machines”.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
+<p>Swap “radio” for “social media” or “AI” and the sentence barely needs editing.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="radio-1926-modern-age-deplored.png" class="img-fluid figure-img" alt="Newspaper clipping with the headline 'Modern Age of Speed Deplored By Professor' from 1926, warning against radio, jazz, and new psychology. Shared by Pessimists Archive."></p>
+<figcaption>A 1926 newspaper headline deploring the modern age of speed, radio, and jazz as deadly to civilised values.</figcaption>
+</figure>
+</div>
+<p><em>Source: <a href="https://nitter.net/PessimistsArc">Pessimists Archive</a>.</em></p>
+<p>The speaker and their language sound familiar. It is a professor - an educated, credentialed authority - expressing alarm about the pace of change. This is not a fringe view or a tabloid panic. It is a considered, serious concern from someone who, in most other respects, probably knew a great deal.</p>
+<p>That is perhaps the most honest thing to acknowledge about technophobia across the ages - it is not a sign of being uninformed. It is a very human response to genuine uncertainty. The printing press did change how knowledge was produced and who controlled it. The telephone did change the texture of social life. Radio did reshape politics and culture in ways that were not all benign.</p>
+<p>The question has never been whether a new technology will change things. It always does. The question is whether we engage with that change deliberately, or simply react to it.</p>
 </section>
-<section id="paranoid-approach" class="level2">
-<h2 class="anchored" data-anchor-id="paranoid-approach">Paranoid approach</h2>
-<p>Once your commits are verifiable, you need to ensure your private key never leaks. If an attacker obtained your SSH or GPG key, they could create commits pretending to be you and sign them so others would completely trust them.</p>
-<p>If you’re ultra-paranoid (or a maintainer of a popular repository), consider this:</p>
-<p>Generate a GPG master key on an air-gapped machine (i.e.&nbsp;not connected to the internet), use it to generate short-lived subkeys, then copy the subkeys to a hardware security key (HSK) like a <a href="https://support.yubico.com/hc/en-us/articles/360013790259-Using-Your-YubiKey-with-OpenPGP">Yubikey</a>.</p>
-<p>If you want a good guide to follow, you might want to read this series of blog posts: (though, I would choose ECC over RSA as suggested). Part 6 explains how to get this to work with a Yubikey.</p>
-<p>A good guide is the blog series <a href="https://chipsenkbeil.com/posts/applying-gpg-and-yubikey-part-1-overview/">Applying GPG and Yubikey</a> (I’d recommend ECC over RSA as suggested). Part 6 covers integrating this with a YubiKey.</p>
-<p>This approach stores your cryptographic secrets in a way they can’t be extracted (HSKs only import keys, not export them), meaning an attacker would have to physically steal your device.</p>
+<section id="conclusions" class="level2">
+<h2 class="anchored" data-anchor-id="conclusions">Conclusions</h2>
+<p>Socrates worried that writing would hollow out human memory. A professor in 1926 worried that radio was grinding up the fabric of civilised life. In 1983, Harvard worried that word processors might change writing in ways it could not yet predict. A pioneering AI scientist spent decades warning that machines would do what we asked rather than what we ought to ask. A London cab driver worries that a lifetime of hard-won expertise is about to be made redundant.</p>
+<p>None of these people were being unreasonable. All of them were responding, in good faith, to something that felt genuinely uncertain.</p>
+<p>And yet here we are - reading, writing, coding, navigating, and working with tools that each generation before us found cause to question. The concerns did not stop the technology. But they did shape how it was adopted - slowly, with friction, and with enough pushback to force developers and institutions to take human costs seriously.</p>
+<p>That friction is not always comfortable to sit in. If you are working in an organisation that feels slow to move, or if you find yourself uncertain about when and how to use AI tools, or if the whole conversation feels exhausting - that is a reasonable place to be. It does not mean you are behind. It may mean you are paying attention.</p>
+<p>As Jony Ive observed, when people encounter something new, they instinctively try to reference what’s familiar - and judge it by how well it matches the past.<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a> That instinct is human and understandable. But it is not the same as engagement.</p>
+<p>Tradition, as Mahler said, is not the worship of ashes - it is the preservation of fire.<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></p>
+<p>The most useful thing any of us can do right now is probably the same thing Wiener was asking for in 1949. Erich Fromm put it plainly: <em>“Creativity requires the courage of letting go of certainty.”</em><a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a> Those who have navigated it best have tended to engage thoughtfully, ask good questions, and resist the pull towards both uncritical enthusiasm and reflexive resistance.</p>
+<p>The technology will keep moving. The steadier we are in how we meet it, the better the outcomes are likely to be - for the people using it, and for the people affected by it.</p>
+<hr>
 
 
 </section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Plato, <em>Phaedrus</em>, 274c-275b. <a href="https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0174%3Atext%3DPhaedrus">Perseus Digital Library, Tufts University</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Pessimists Archive. “Desktop publishing was blamed for ruining college essay quality.” <a href="https://nitter.net/PessimistsArc/status/2056871747152928875">Pessimists Archive, May 2026</a>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>CBS News / 60 Minutes. “London black cab drivers face the rise of autonomous taxis.” <a href="https://www.cbsnews.com/news/london-black-cab-robotaxi-ai-60-minutes/">CBS News, May 2026</a>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Fortune. “Self-driving taxis hit London, a city with such complex streets that it has a ‘Knowledge’ test that takes cabbies years to pass.” <a href="https://fortune.com/2026/02/23/self-driving-taxis-london-what-is-the-knowledge-street-test/">Fortune, February 2026</a>.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Pessimists Archive. “The Original AI Doomer: Dr.&nbsp;Norbert Wiener.” <a href="https://newsletter.pessimistsarchive.org/p/the-original-ai-doomer-dr-norbert">Pessimists Archive Newsletter</a>.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Inside Higher Ed. “Harvard’s 1983 Experiment with Coin-Operated Word Processors.” <a href="https://www.insidehighered.com/blogs/technology-and-learning/harvard%E2%80%99s-1983-experiment-coin-operated-word-processors">Inside Higher Ed</a>.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>Pessimists Archive. “1926 screed against radio - ‘annihilating space and time’.” <a href="https://nitter.net/PessimistsArc/status/2056784678753866086">Pessimists Archive, May 2026</a>.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>Jony Ive, in conversation with Cleo Abram and Flavio Manzoni. <em>Huge Conversations: Iconic Sports Car Ferrari.</em> <a href="https://youtu.be/K-o0r2zSgCE">YouTube, May 2026</a>.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>Gustav Mahler, as quoted in the same conversation by Flavio Manzoni: “Tradition is not the worship of ashes. Tradition is the preservation of fire.”<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>Erich Fromm, as quoted by Flavio Manzoni in the same conversation.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
@@ -899,4 +912,4 @@ Even if you don’t, setting up SSH is quick.</p>
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/the-strategy-unit/data_science/edit/main/blogs/posts/2025-09-18_verifying_git_commits/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/the-strategy-unit/data_science/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/the-strategy-unit/data_science/edit/main/blogs/posts/2026-06-01-a-brief-history-of-scepticism-towards-new-tech/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/the-strategy-unit/data_science/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

@@ -1,0 +1,70 @@
+---
+title: "📆Day plans and brain plates 🤯"
+subtitle: ""
+authors:
+  - name: Claire Welsh
+    orcid: 0000-0001-9477-0775
+    email: claire.welsh8@nhs.net
+    affiliation:
+      - name: The Strategy Unit
+        url: https://strategyunitwm.nhs.uk/
+date: last-modified
+categories: 
+execute: 
+  enabled: true
+editor: 
+  markdown: 
+    wrap: sentence
+format:
+  html:
+    code-fold: true
+---
+
+In our data science team, we recently started having fortnightly ‘side-quests and 
+support’ meetings. 
+The whole team is invited, and the blurb that goes along with the invite is: 
+"This meeting is a chance for the team to get together informally and discuss 
+their work, get help unsticking tricky elements, show off cool things they've 
+done, air worries and find solutions. We all benefit from having some idea of 
+the work of others, can spot areas of duplication and pick up on the use of 
+skills we want to acquire. 
+If you're picked to present, use your time how you like - tell us about what's 
+bothering you, what you're proud of, issues with how the team are working, the 
+wider Unit, or anything you'd like us to know.” 
+
+We’ve grown to really value this hour, and lots of interesting ideas and 
+positivity fall out of them. We try to avoid talking about BAU work, so that we 
+can have a little and celebrate each other’s’ unique flavours of nerdery.  
+Some recent highlights have been an app that was built to find optimal walking 
+routes between pubs and landmarks, an auto-generated personal blog website with 
+great photos and a notebook to analyse football statistics.
+
+Recently, one of the topics we discussed was how we each maintain a healthy 
+‘brain plate’ – meaning how we ensure we are not relying on memory to ensure we 
+do all the things we need/want to. 
+
+Our team is a mix of coders, managers, designers and consultants, and we all 
+approach similar problems differently. 
+This blog is a set of mini interviews with our lovely team members to capture 
+the different ways we manage our working lives.
+
+#{{< include team_members/RD.qmd >}}
+
+#{{< include team_members/NS.qmd >}}
+
+#{{< include team_members/TJ.qmd >}}
+
+#{{< include team_members/EK.qmd >}}
+
+#{{< include team_members/MD.qmd >}}
+
+#{{< include team_members/CB.qmd >}}
+
+#{{< include team_members/ZT.qmd >}}
+
+{{< include team_members/CW.qmd >}}
+
+#{{< include team_members/YH.qmd >}}
+
+#{{< include team_members/FB.qmd >}}
+

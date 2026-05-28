@@ -43,9 +43,7 @@ We could blame the technology. It would be more accurate to blame the learning c
 In the 1980s, desktop publishing software arrived and gave Macintosh users the ability to produce documents that looked professionally typeset. The reaction of some was alarm rather than delight.[^2]
 A piece in an educational journal asked, with concern, whether students were producing work that looked polished but read poorly - style masking a lack of substance. 
 
-![A newspaper clipping asking whether desktop publishing was harming student writing quality.](desktop-publishing-essay-quality.jpg){fig-alt="Newspaper clipping with the headline 'Do our students pen failure with colorful computers?' from an educational journal in the 1980s. Shared by Pessimists Archive."}
-
-*Source: [Pessimists Archive](https://nitter.net/PessimistsArc).*
+![A newspaper clipping asking whether desktop publishing was harming student writing quality. Shared by Pessimists Archive.](desktop-publishing-essay-quality.jpg){fig-alt="Newspaper clipping with the headline 'Do our students pen failure with colorful computers?' from an educational journal in the 1980s. Shared by Pessimists Archive."}
 
 Today, the same concern is framed slightly differently.
 "AI slop" - content that is fluent, plausible, and oddly hollow - is a genuine phenomenon.
@@ -94,13 +92,11 @@ And it deserves a more thoughtful answer than either "don't worry" or "adapt or 
 
 If the anxieties of cab drivers and students feel relatable, consider that the most serious concerns about artificial intelligence were voiced not by outsiders looking in, but by the very people who built the foundations of the field.
 
-Dr. Norbert Wiener is not a household name, but he arguably should be.
+Dr Norbert Wiener is not a household name, but he arguably should be.
 A mathematician and scientist at MIT, Wiener pioneered the field he called *cybernetics* - the study of how systems, whether mechanical or biological, regulate themselves through feedback.
 The concepts he developed in the 1940s and 1950s underpin much of what we now call artificial intelligence.[^5]
 
-![Dr. Norbert Wiener, pioneer of cybernetics and one of the earliest voices warning about the risks of intelligent machines.](norbert-wiener-portrait.jpg){fig-alt="Historical photograph of Dr. Norbert Wiener, mathematician and founder of cybernetics, at work. Sourced from the Pessimists Archive newsletter."}
-
-*Source: [Pessimists Archive - The Original AI Doomer: Dr. Norbert Wiener](https://newsletter.pessimistsarchive.org/p/the-original-ai-doomer-dr-norbert).*
+![Dr Norbert Wiener, pioneer of cybernetics and one of the earliest voices warning about the risks of intelligent machines. Sourced from the Pessimists Archive newsletter."](https://newsletter.pessimistsarchive.org/p/the-original-ai-doomer-dr-norbert).](norbert-wiener-portrait.jpg){fig-alt="Historical photograph of Dr Norbert Wiener, mathematician and founder of cybernetics, at work. Sourced from the Pessimists Archive newsletter."}
 
 He was also, from the start, deeply uncomfortable about where it was all heading.
 
@@ -114,9 +110,7 @@ These predictions generated headlines and serious debate.
 Industry pushed back.
 An IBM expert, Arthur L. Samuel, responded that "a machine is not a genie, it does not work by magic" and that nothing comes out of a machine that has not been put in.
 
-![Newspaper coverage of the debate between Wiener's warnings and IBM's pushback, circa 1960.](wiener-ibm-samuel-debate-press.jpg){fig-alt="Historical newspaper clippings showing press coverage of the debate between Norbert Wiener's automation warnings and IBM's response. Sourced from the Pessimists Archive newsletter."}
-
-*Source: [Pessimists Archive - The Original AI Doomer: Dr. Norbert Wiener](https://newsletter.pessimistsarchive.org/p/the-original-ai-doomer-dr-norbert).*
+![Newspaper coverage of the debate between Wiener's warnings and IBM's pushback, circa 1960. Sourced from the Pessimists Archive newsletter.](wiener-ibm-samuel-debate-press.jpg){fig-alt="Historical newspaper clippings showing press coverage of the debate between Norbert Wiener's automation warnings and IBM's response. Sourced from the Pessimists Archive newsletter."}
 
 That exchange between a pioneering scientist sounding the alarm and an industry insider urging calm will feel recognisable to those following the AI debate today.
 The characters have changed, the argument has not.
@@ -154,9 +148,7 @@ There is a quote that stands out across the intervening century - that another a
 
 Swap "radio" for "social media" or "AI" and the sentence barely needs editing.
 
-![A 1926 newspaper headline deploring the modern age of speed, radio, and jazz as deadly to civilised values.](radio-1926-modern-age-deplored.png){fig-alt="Newspaper clipping with the headline 'Modern Age of Speed Deplored By Professor' from 1926, warning against radio, jazz, and new psychology. Shared by Pessimists Archive."}
-
-*Source: [Pessimists Archive](https://nitter.net/PessimistsArc).*
+![A 1926 newspaper headline deploring the modern age of speed, radio, and jazz as deadly to civilised values. Shared by Pessimists Archive.](radio-1926-modern-age-deplored.png){fig-alt="Newspaper clipping with the headline 'Modern Age of Speed Deplored By Professor' from 1926, warning against radio, jazz, and new psychology. Shared by Pessimists Archive."}
 
 The speaker and their language sound familiar. 
 It is a professor - an educated, credentialed authority - expressing alarm about the pace of change.

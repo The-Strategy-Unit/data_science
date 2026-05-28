@@ -198,6 +198,10 @@ Those who have navigated it best have tended to engage thoughtfully, ask good qu
 The technology will keep moving.
 The steadier we are in how we meet it, the better the outcomes are likely to be - for the people using it, and for the people affected by it.
 
+## Acknowledgement
+This piece grew out of a conversation started by Jonathan Spencer during a recent Coffee & Coding session our Unit organises fortnightly. With characteristic modesty, Jonathan shared some questions he'd been
+asking himself about AI - and in doing so, sparked an interesting discussion that led to this blog post.
+
 ---
 
 [^1]: Plato, *Phaedrus*, 274c-275b. [Perseus Digital Library, Tufts University](https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0174%3Atext%3DPhaedrus).

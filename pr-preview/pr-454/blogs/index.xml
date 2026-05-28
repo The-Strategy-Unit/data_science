@@ -31,10 +31,9 @@
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2026-06-01-a-brief-history-of-scepticism-towards-new-tech/desktop-publishing-essay-quality.jpg" class="img-fluid figure-img" alt="Newspaper clipping with the headline 'Do our students pen failure with colorful computers?' from an educational journal in the 1980s. Shared by Pessimists Archive."></p>
-<figcaption>A newspaper clipping asking whether desktop publishing was harming student writing quality.</figcaption>
+<figcaption>A newspaper clipping asking whether desktop publishing was harming student writing quality. Shared by Pessimists Archive.</figcaption>
 </figure>
 </div>
-<p><em>Source: <a href="https://nitter.net/PessimistsArc">Pessimists Archive</a>.</em></p>
 <p>Today, the same concern is framed slightly differently. “AI slop” - content that is fluent, plausible, and oddly hollow - is a genuine phenomenon. But it is worth asking what produces it. A word processor does not write a poor essay. A desktop publishing tool does not design an ugly leaflet. And an AI assistant does not generate hollow content on its own accord. In each case, the output reflects the intent, the skill, and the judgement of the person using it.</p>
 <p>The tool amplifies what you bring to it. That has always been true. A person who has not learned to think carefully will not suddenly think carefully because they have a powerful new tool. But a person who has - will find that the tool extends their reach considerably.</p>
 <p>This is not a defence of laziness. It is an argument for investing in understanding how to use AI well, rather than either dismissing it or outsourcing your thinking to it uncritically.</p>
@@ -52,24 +51,17 @@
 <section id="when-the-experts-worried-too" class="level2">
 <h2 class="anchored" data-anchor-id="when-the-experts-worried-too">When the Experts Worried Too</h2>
 <p>If the anxieties of cab drivers and students feel relatable, consider that the most serious concerns about artificial intelligence were voiced not by outsiders looking in, but by the very people who built the foundations of the field.</p>
-<p>Dr.&nbsp;Norbert Wiener is not a household name, but he arguably should be. A mathematician and scientist at MIT, Wiener pioneered the field he called <em>cybernetics</em> - the study of how systems, whether mechanical or biological, regulate themselves through feedback. The concepts he developed in the 1940s and 1950s underpin much of what we now call artificial intelligence.<sup>5</sup></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2026-06-01-a-brief-history-of-scepticism-towards-new-tech/norbert-wiener-portrait.jpg" class="img-fluid figure-img" alt="Historical photograph of Dr. Norbert Wiener, mathematician and founder of cybernetics, at work. Sourced from the Pessimists Archive newsletter."></p>
-<figcaption>Dr.&nbsp;Norbert Wiener, pioneer of cybernetics and one of the earliest voices warning about the risks of intelligent machines.</figcaption>
-</figure>
-</div>
-<p><em>Source: <a href="https://newsletter.pessimistsarchive.org/p/the-original-ai-doomer-dr-norbert">Pessimists Archive - The Original AI Doomer: Dr.&nbsp;Norbert Wiener</a>.</em></p>
+<p>Dr Norbert Wiener is not a household name, but he arguably should be. A mathematician and scientist at MIT, Wiener pioneered the field he called <em>cybernetics</em> - the study of how systems, whether mechanical or biological, regulate themselves through feedback. The concepts he developed in the 1940s and 1950s underpin much of what we now call artificial intelligence.<sup>5</sup></p>
+<p><img src="https://newsletter.pessimistsarchive.org/p/the-original-ai-doomer-dr-norbert.png" class="img-fluid" alt="Dr Norbert Wiener, pioneer of cybernetics and one of the earliest voices warning about the risks of intelligent machines. Sourced from the Pessimists Archive newsletter.”">.](norbert-wiener-portrait.jpg){fig-alt=“Historical photograph of Dr Norbert Wiener, mathematician and founder of cybernetics, at work. Sourced from the Pessimists Archive newsletter.”}</p>
 <p>He was also, from the start, deeply uncomfortable about where it was all heading.</p>
 <p>In 1948, his book <em>Cybernetics</em> raised the first serious warnings about thinking machines. A year later, the editor of the New York Times invited him to write about “what the ultimate machine age is likely to be”. His drafts were rejected twice - reportedly too unsettling for a general readership. The version that survives in the MIT archives contains a warning that feels contemporary despite originating from 1949 - that machines “will do what we ask them to do and not what we ought to ask them to do”.</p>
 <p>By 1960, Wiener was warning of an “industrial revolution of unmitigated cruelty” - automation displacing workers at a scale society was not prepared for. These predictions generated headlines and serious debate. Industry pushed back. An IBM expert, Arthur L. Samuel, responded that “a machine is not a genie, it does not work by magic” and that nothing comes out of a machine that has not been put in.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2026-06-01-a-brief-history-of-scepticism-towards-new-tech/wiener-ibm-samuel-debate-press.jpg" class="img-fluid figure-img" alt="Historical newspaper clippings showing press coverage of the debate between Norbert Wiener's automation warnings and IBM's response. Sourced from the Pessimists Archive newsletter."></p>
-<figcaption>Newspaper coverage of the debate between Wiener’s warnings and IBM’s pushback, circa 1960.</figcaption>
+<figcaption>Newspaper coverage of the debate between Wiener’s warnings and IBM’s pushback, circa 1960. Sourced from the Pessimists Archive newsletter.</figcaption>
 </figure>
 </div>
-<p><em>Source: <a href="https://newsletter.pessimistsarchive.org/p/the-original-ai-doomer-dr-norbert">Pessimists Archive - The Original AI Doomer: Dr.&nbsp;Norbert Wiener</a>.</em></p>
 <p>That exchange between a pioneering scientist sounding the alarm and an industry insider urging calm will feel recognisable to those following the AI debate today. The characters have changed, the argument has not.</p>
 <p>Wiener’s parting message, after decades of thinking about all of this, was measured: “We can be humble and live a good life with the aid of the machines, or we can be arrogant and die.”</p>
 <p>He was not against the machines. He was against thoughtlessness.</p>
@@ -90,10 +82,9 @@
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2026-06-01-a-brief-history-of-scepticism-towards-new-tech/radio-1926-modern-age-deplored.png" class="img-fluid figure-img" alt="Newspaper clipping with the headline 'Modern Age of Speed Deplored By Professor' from 1926, warning against radio, jazz, and new psychology. Shared by Pessimists Archive."></p>
-<figcaption>A 1926 newspaper headline deploring the modern age of speed, radio, and jazz as deadly to civilised values.</figcaption>
+<figcaption>A 1926 newspaper headline deploring the modern age of speed, radio, and jazz as deadly to civilised values. Shared by Pessimists Archive.</figcaption>
 </figure>
 </div>
-<p><em>Source: <a href="https://nitter.net/PessimistsArc">Pessimists Archive</a>.</em></p>
 <p>The speaker and their language sound familiar. It is a professor - an educated, credentialed authority - expressing alarm about the pace of change. This is not a fringe view or a tabloid panic. It is a considered, serious concern from someone who, in most other respects, probably knew a great deal.</p>
 <p>That is perhaps the most honest thing to acknowledge about technophobia across the ages - it is not a sign of being uninformed. It is a very human response to genuine uncertainty. The printing press did change how knowledge was produced and who controlled it. The telephone did change the texture of social life. Radio did reshape politics and culture in ways that were not all benign.</p>
 <p>The question has never been whether a new technology will change things. It always does. The question is whether we engage with that change deliberately, or simply react to it.</p>
@@ -189,7 +180,7 @@
 <h3 class="anchored" data-anchor-id="code-organisation">Code Organisation</h3>
 <p>One of the first things you’ll notice when comparing the implementations is how the Polars version breaks down complex operations into smaller, more focused functions:</p>
 <p><strong>Pandas (Monolithic Functions):</strong></p>
-<div id="a2716e11" class="cell">
+<div id="f83f3f20" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="kw" style="color: #003B4F;
@@ -229,7 +220,7 @@ font-style: inherit;"># ...</span></span></code></pre></div></div>
 </details>
 </div>
 <p><strong>Polars (Granular Functions):</strong></p>
-<div id="f7cad1a9" class="cell">
+<div id="e04f8ddf" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="kw" style="color: #003B4F;
@@ -323,7 +314,7 @@ font-style: inherit;"># ...</span></span></code></pre></div></div>
 <h4 class="anchored" data-anchor-id="data-loading-and-joining">Data Loading and Joining</h4>
 <p>Here, the difference between the two implementations is fairly subtle, showcasing that switching between the two APIs doesn’t always increase the learning curve:</p>
 <p><strong>Pandas:</strong></p>
-<div id="f597b4a2" class="cell">
+<div id="94605376" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
@@ -360,7 +351,7 @@ font-style: inherit;">"inner"</span>)</span></code></pre></div></div>
 </details>
 </div>
 <p><strong>Polars:</strong></p>
-<div id="f03290d9" class="cell">
+<div id="99e1f66e" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
@@ -400,7 +391,7 @@ font-style: inherit;">"inner"</span>)</span></code></pre></div></div>
 <h4 class="anchored" data-anchor-id="null-handling">Null Handling</h4>
 <p>Null handling differs significantly:</p>
 <p><strong>Pandas:</strong></p>
-<div id="643a93cf" class="cell">
+<div id="6492adf2" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
@@ -414,7 +405,7 @@ font-style: inherit;">"unknown"</span>)</span></code></pre></div></div>
 </details>
 </div>
 <p><strong>Polars:</strong></p>
-<div id="77d39982" class="cell">
+<div id="b774ec05" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
@@ -466,7 +457,7 @@ font-style: inherit;">"unknown"</span>)</span></code></pre></div></div>
 <h4 class="anchored" data-anchor-id="data-aggregation-and-filtering">Data Aggregation and Filtering</h4>
 <p>Data filtering and aggregation show some of the most significant syntax differences:</p>
 <p><strong>Pandas:</strong></p>
-<div id="24199148" class="cell">
+<div id="c090b9f6" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
@@ -531,7 +522,7 @@ font-style: inherit;">int</span>)</span>
 </details>
 </div>
 <p><strong>Polars:</strong></p>
-<div id="85b47333" class="cell">
+<div id="99a1aad5" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
@@ -566,7 +557,7 @@ font-style: inherit;">sum</span>())</span>
 <h4 class="anchored" data-anchor-id="lazy-evaluation">Lazy Evaluation</h4>
 <p>As mentioned in the introduction, one of Polars’ key features is its support for lazy evaluation, which enables query optimisation:</p>
 <p><strong>Pandas:</strong></p>
-<div id="1ca80c51" class="cell">
+<div id="6c62415f" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
@@ -597,7 +588,7 @@ font-style: inherit;">"sum"</span>})</span>
 </details>
 </div>
 <p><strong>Polars:</strong></p>
-<div id="3d8d5b0b" class="cell">
+<div id="4b7326ca" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><span class="co" style="color: #5E5E5E;
@@ -639,7 +630,7 @@ font-style: inherit;"># Only executes the plan when needed</span></span>
 <h3 class="anchored" data-anchor-id="memory-management">Memory Management</h3>
 <p>Both implementations are designed to manage memory, but with fundamental differences in how data is stored and processed:</p>
 <p><strong>Pandas:</strong></p>
-<div id="62da13bb" class="cell">
+<div id="588e8cd5" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><span class="co" style="color: #5E5E5E;
@@ -692,7 +683,7 @@ font-style: inherit;"> MB"</span>)</span></code></pre></div></div>
 </details>
 </div>
 <p><strong>Polars:</strong></p>
-<div id="1b119188" class="cell">
+<div id="922f729b" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><span class="co" style="color: #5E5E5E;
@@ -768,7 +759,7 @@ font-style: inherit;"> MB"</span>)</span></code></pre></div></div>
 <p>Pandas and Polars differ significantly in how they handle types and expressions. Polars uses a <a href="https://deepwiki.com/pola-rs/polars/6-type-system">strongly-typed system</a> based on Apache Arrow’s type system, while Pandas handles types more implicitly.</p>
 <p>Polars’ expression system (with <code>pl.col()</code> syntax) is a core part of its design, allowing for clear, composable operations that the query optimiser can understand and optimise:</p>
 <p><strong>Explicit Null Checking:</strong></p>
-<div id="4bfbe44c" class="cell">
+<div id="6b220584" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><span class="co" style="color: #5E5E5E;
@@ -817,7 +808,7 @@ font-style: inherit;">"</span>)</span></code></pre></div></div>
 </details>
 </div>
 <p><strong>Type System Consistency:</strong></p>
-<div id="d1fedbc9" class="cell">
+<div id="5a4631d8" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><span class="co" style="color: #5E5E5E;

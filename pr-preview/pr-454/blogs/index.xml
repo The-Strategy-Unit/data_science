@@ -55,7 +55,7 @@
 <p>Dr.&nbsp;Norbert Wiener is not a household name, but he arguably should be. A mathematician and scientist at MIT, Wiener pioneered the field he called <em>cybernetics</em> - the study of how systems, whether mechanical or biological, regulate themselves through feedback. The concepts he developed in the 1940s and 1950s underpin much of what we now call artificial intelligence.<sup>5</sup></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2026-06-01-a-brief-history-of-scepticism-towards-new-tech/norbert-wiener-portrait.jpeg" class="img-fluid figure-img" alt="Historical photograph of Dr. Norbert Wiener, mathematician and founder of cybernetics, at work. Sourced from the Pessimists Archive newsletter."></p>
+<p><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2026-06-01-a-brief-history-of-scepticism-towards-new-tech/norbert-wiener-portrait.jpg" class="img-fluid figure-img" alt="Historical photograph of Dr. Norbert Wiener, mathematician and founder of cybernetics, at work. Sourced from the Pessimists Archive newsletter."></p>
 <figcaption>Dr.&nbsp;Norbert Wiener, pioneer of cybernetics and one of the earliest voices warning about the risks of intelligent machines.</figcaption>
 </figure>
 </div>
@@ -189,7 +189,7 @@
 <h3 class="anchored" data-anchor-id="code-organisation">Code Organisation</h3>
 <p>One of the first things you’ll notice when comparing the implementations is how the Polars version breaks down complex operations into smaller, more focused functions:</p>
 <p><strong>Pandas (Monolithic Functions):</strong></p>
-<div id="2bca24b8" class="cell">
+<div id="6fdfc3f5" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="kw" style="color: #003B4F;
@@ -229,7 +229,7 @@ font-style: inherit;"># ...</span></span></code></pre></div></div>
 </details>
 </div>
 <p><strong>Polars (Granular Functions):</strong></p>
-<div id="28d7a2bd" class="cell">
+<div id="fed574b0" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="kw" style="color: #003B4F;
@@ -323,7 +323,7 @@ font-style: inherit;"># ...</span></span></code></pre></div></div>
 <h4 class="anchored" data-anchor-id="data-loading-and-joining">Data Loading and Joining</h4>
 <p>Here, the difference between the two implementations is fairly subtle, showcasing that switching between the two APIs doesn’t always increase the learning curve:</p>
 <p><strong>Pandas:</strong></p>
-<div id="8c1bb4aa" class="cell">
+<div id="f30053fc" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
@@ -360,7 +360,7 @@ font-style: inherit;">"inner"</span>)</span></code></pre></div></div>
 </details>
 </div>
 <p><strong>Polars:</strong></p>
-<div id="39a6f7b4" class="cell">
+<div id="c1aa912c" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
@@ -400,7 +400,7 @@ font-style: inherit;">"inner"</span>)</span></code></pre></div></div>
 <h4 class="anchored" data-anchor-id="null-handling">Null Handling</h4>
 <p>Null handling differs significantly:</p>
 <p><strong>Pandas:</strong></p>
-<div id="053192e1" class="cell">
+<div id="2c7d4065" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
@@ -414,7 +414,7 @@ font-style: inherit;">"unknown"</span>)</span></code></pre></div></div>
 </details>
 </div>
 <p><strong>Polars:</strong></p>
-<div id="11c99acc" class="cell">
+<div id="d9c122c0" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
@@ -466,7 +466,7 @@ font-style: inherit;">"unknown"</span>)</span></code></pre></div></div>
 <h4 class="anchored" data-anchor-id="data-aggregation-and-filtering">Data Aggregation and Filtering</h4>
 <p>Data filtering and aggregation show some of the most significant syntax differences:</p>
 <p><strong>Pandas:</strong></p>
-<div id="233680cf" class="cell">
+<div id="f718b92a" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
@@ -531,7 +531,7 @@ font-style: inherit;">int</span>)</span>
 </details>
 </div>
 <p><strong>Polars:</strong></p>
-<div id="72960791" class="cell">
+<div id="bee8123a" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
@@ -566,7 +566,7 @@ font-style: inherit;">sum</span>())</span>
 <h4 class="anchored" data-anchor-id="lazy-evaluation">Lazy Evaluation</h4>
 <p>As mentioned in the introduction, one of Polars’ key features is its support for lazy evaluation, which enables query optimisation:</p>
 <p><strong>Pandas:</strong></p>
-<div id="f2b2a366" class="cell">
+<div id="1713fc19" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
@@ -597,7 +597,7 @@ font-style: inherit;">"sum"</span>})</span>
 </details>
 </div>
 <p><strong>Polars:</strong></p>
-<div id="b5fe5dc1" class="cell">
+<div id="9eb8d131" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><span class="co" style="color: #5E5E5E;
@@ -639,7 +639,7 @@ font-style: inherit;"># Only executes the plan when needed</span></span>
 <h3 class="anchored" data-anchor-id="memory-management">Memory Management</h3>
 <p>Both implementations are designed to manage memory, but with fundamental differences in how data is stored and processed:</p>
 <p><strong>Pandas:</strong></p>
-<div id="12edaf44" class="cell">
+<div id="f482b354" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><span class="co" style="color: #5E5E5E;
@@ -692,7 +692,7 @@ font-style: inherit;"> MB"</span>)</span></code></pre></div></div>
 </details>
 </div>
 <p><strong>Polars:</strong></p>
-<div id="e8b1dc4a" class="cell">
+<div id="1da1e4f5" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><span class="co" style="color: #5E5E5E;
@@ -768,7 +768,7 @@ font-style: inherit;"> MB"</span>)</span></code></pre></div></div>
 <p>Pandas and Polars differ significantly in how they handle types and expressions. Polars uses a <a href="https://deepwiki.com/pola-rs/polars/6-type-system">strongly-typed system</a> based on Apache Arrow’s type system, while Pandas handles types more implicitly.</p>
 <p>Polars’ expression system (with <code>pl.col()</code> syntax) is a core part of its design, allowing for clear, composable operations that the query optimiser can understand and optimise:</p>
 <p><strong>Explicit Null Checking:</strong></p>
-<div id="d6f8c725" class="cell">
+<div id="0d6dee0e" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><span class="co" style="color: #5E5E5E;
@@ -817,7 +817,7 @@ font-style: inherit;">"</span>)</span></code></pre></div></div>
 </details>
 </div>
 <p><strong>Type System Consistency:</strong></p>
-<div id="58bedbfd" class="cell">
+<div id="100044f2" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><span class="co" style="color: #5E5E5E;

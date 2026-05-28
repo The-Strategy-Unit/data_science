@@ -62,7 +62,7 @@ the different ways we manage our working lives.
 
 #{{< include team_members/ZT.qmd >}}
 
-{{< include team_members/CW.qmd >}}
+{{< include team_members/_CW.qmd >}}
 
 #{{< include team_members/YH.qmd >}}
 

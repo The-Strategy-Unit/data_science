@@ -20,8 +20,8 @@
 
 
 
-<p>In Plato’s <em>Phaedrus</em>, over 2,000 years ago, Socrates tells a story about a dangerous new technology that would erode memory, encourage shallow thinking, and give people the illusion of knowledge without the substance. The technology he was referring to was writing.<sup>1</sup></p>
-<p>His concern was not aiming for eccentricity. It was the considered view of one of history’s greatest minds. And he was - in a sense - not entirely wrong. We do rely on written records rather than memorising everything. Whether that is a loss or a liberation probably depends on who you ask.</p>
+<p>In Plato’s <em>Phaedrus</em>, over 2,000 years ago, Socrates tells a story about a dangerous new technology that would erode memory, encourage shallow thinking, and give people the illusion of knowledge without the substance. That technology was <em>writing</em>.<sup>1</sup></p>
+<p>His concern was not aiming for eccentricity. It was the considered view of one of history’s greatest minds. And he was not entirely wrong. We do rely on written records rather than memorising everything. Whether that is a loss or a liberation probably depends on who you ask.</p>
 <p>Socrates’ concern sounds familiar, we have been here before. Every generation faces a technology that feels somewhat unsettling. The printing press, the telegraph, the telephone, the word processor - each raised concerns that look remarkably familiar in hindsight. Artificial intelligence is the latest addition in a very long story.</p>
 <p>This blog post aims to offer some perspective, and perhaps make the present moment feel more like the beginning of something new rather than the end of something old.</p>
 <section id="ai-generates-slop" class="level2">
@@ -37,21 +37,21 @@
 <p>Today, the same concern is framed slightly differently. “AI slop” - content that is fluent, plausible, and oddly hollow - is a genuine phenomenon. But it is worth asking what produces it. A word processor does not write a poor essay. A desktop publishing tool does not design an ugly leaflet. And an AI assistant does not generate hollow content on its own accord. In each case, the output reflects the intent, the skill, and the judgement of the person using it.</p>
 <p>The tool amplifies what you bring to it. That has always been true. A person who has not learned to think carefully will not suddenly think carefully because they have a powerful new tool. But a person who has - will find that the tool extends their reach considerably.</p>
 <p>This is not a defence of laziness. It is an argument for investing in understanding how to use AI well, rather than either dismissing it or outsourcing your thinking to it uncritically.</p>
-<p>As Jony Ive once observed, when people encounter something new, they instinctively try to reference what’s familiar - and judge it by how well it matches the past.</p>
+<p>As Jony Ive once observed, when people encounter something new, they instinctively try to reference what’s familiar - and judge it by how well it matches the past.<sup>3</sup></p>
 </section>
 <section id="professional-identity-and-the-fear-of-being-replaced" class="level2">
 <h2 class="anchored" data-anchor-id="professional-identity-and-the-fear-of-being-replaced">Professional Identity and the Fear of Being Replaced</h2>
 <p>There is a particular kind of anxiety that is less about the technology itself and more about what it means for the person using it - or the person being replaced by it.</p>
 <p>Consider the London black cab driver. To earn a licence, a cabbie must pass The Knowledge - a gruelling test requiring the memorisation of around 25,000 streets and thousands of points of interest across London. It takes most candidates between three and four years to prepare. It is a remarkable human achievement.</p>
-<p>When GPS navigation arrived, some cabbies dismissed it outright. In a recent CBS News interview, a veteran driver compared Google Maps to a hot dog vendor and himself to Gordon Ramsay. In his view, the tool simply could not replicate what years of hard-won expertise had built.<sup>3</sup> The instinct he is expressing is deeply human and thoroughly familiar.</p>
-<p>This example is current, not historical. Autonomous taxis are currently being trialled in London, with British startup Wayve Technologies already conducting test runs and US company Waymo among those planning to participate.<sup>4</sup> The sense that something irreplaceable is being undervalued, remains.</p>
+<p>When GPS navigation arrived, some cabbies dismissed it outright. In a recent CBS News interview, a veteran driver compared Google Maps to a hot dog vendor and himself to Gordon Ramsay. In his view, the tool simply could not replicate what years of hard-won expertise had built.<sup>4</sup>. The instinct he is expressing is deeply human and thoroughly familiar.</p>
+<p>This example is current, not historical. Autonomous taxis are currently being trialled in London, with British startup Wayve Technologies already conducting test runs and US company Waymo among those planning to participate.<sup>5</sup> The sense that something irreplaceable is being undervalued, remains.</p>
 <p>This is worth sitting with for a moment. The concern is not always “will I have a job”. It is often something quieter and more personal: “will what I have learned still matter”.</p>
 <p>That is a reasonable thing to wonder. And it deserves a more thoughtful answer than either “don’t worry” or “adapt or be left behind”.</p>
 </section>
 <section id="when-the-experts-worried-too" class="level2">
 <h2 class="anchored" data-anchor-id="when-the-experts-worried-too">When the Experts Worried Too</h2>
 <p>If the anxieties of cab drivers and students feel relatable, consider that the most serious concerns about artificial intelligence were voiced not by outsiders looking in, but by the very people who built the foundations of the field.</p>
-<p>Dr Norbert Wiener is not a household name, but he arguably should be. A mathematician and scientist at MIT, Wiener pioneered the field he called <em>cybernetics</em> - the study of how systems, whether mechanical or biological, regulate themselves through feedback. The concepts he developed in the 1940s and 1950s underpin much of what we now call artificial intelligence.<sup>5</sup></p>
+<p>Dr Norbert Wiener is not a household name, but he probably should be. A mathematician and scientist at MIT, Wiener pioneered the field he called <em>cybernetics</em> - the study of how systems, whether mechanical or biological, regulate themselves through feedback. The concepts he developed in the 1940s and 1950s underpin much of what we now call artificial intelligence.<sup>6</sup></p>
 <p><img src="https://newsletter.pessimistsarchive.org/p/the-original-ai-doomer-dr-norbert.png" class="img-fluid" alt="Dr Norbert Wiener, pioneer of cybernetics and one of the earliest voices warning about the risks of intelligent machines. Sourced from the Pessimists Archive newsletter.”">.](norbert-wiener-portrait.jpg){fig-alt=“Historical photograph of Dr Norbert Wiener, mathematician and founder of cybernetics, at work. Sourced from the Pessimists Archive newsletter.”}</p>
 <p>He was also, from the start, deeply uncomfortable about where it was all heading.</p>
 <p>In 1948, his book <em>Cybernetics</em> raised the first serious warnings about thinking machines. A year later, the editor of the New York Times invited him to write about “what the ultimate machine age is likely to be”. His drafts were rejected twice - reportedly too unsettling for a general readership. The version that survives in the MIT archives contains a warning that feels contemporary despite originating from 1949 - that machines “will do what we ask them to do and not what we ought to ask them to do”.</p>
@@ -69,7 +69,7 @@
 <section id="proceeding-with-caution" class="level2">
 <h2 class="anchored" data-anchor-id="proceeding-with-caution">Proceeding with Caution</h2>
 <p>It is not only individuals who resist new technology. Institutions do too, often with the best of intentions.</p>
-<p>In 1983, Harvard University introduced coin-operated word processing terminals across its dormitories, libraries, and classrooms. The initiative was cautious and carefully managed - the university wanted to understand whether students who were not technically inclined could use computers as everyday writing tools. Access was structured and monitored.<sup>6</sup></p>
+<p>In 1983, Harvard University introduced coin-operated word processing terminals across its dormitories, libraries, and classrooms. The initiative was cautious and carefully managed - the university wanted to understand whether students who were not technically inclined could use computers as everyday writing tools. Access was structured and monitored.<sup>7</sup></p>
 <p>Organisations today that require sign-off before staff can use AI tools, or that restrict access while policies are drafted, are operating from a similar - reasonable - instinct. Moving carefully in the face of genuine uncertainty is not the same as moving badly.</p>
 <p>But caution has its own costs - ones that are easier to overlook because they are slower and quieter than the risks being guarded against. Staff who feel held back while the world moves on can become disengaged. Teams that are denied the chance to develop familiarity with new tools fall behind not through any fault of their own. The gap between those organisations that engaged early and those that waited tends to widen before it narrows.</p>
 <p>The question for institutions is not simply “is it safe to proceed” but “what are we risking by waiting”.</p>
@@ -77,7 +77,7 @@
 </section>
 <section id="every-age-has-its-concerns" class="level2">
 <h2 class="anchored" data-anchor-id="every-age-has-its-concerns">Every Age Has Its Concerns</h2>
-<p>In 1926, a professor at New York University gave an interview reported under the headline <em>“Modern Age of Speed Deplored By Professor”</em>. Radio, jazz, new psychology, and modern commerce fell under the “seven deadly values” of contemporary life. There is a quote that stands out across the intervening century - that another age “would have hesitated to annihilate space and time the way we grind them up in our machines”.<sup>7</sup></p>
+<p>In 1926, a professor at New York University gave an interview reported under the headline <em>“Modern Age of Speed Deplored By Professor”</em>. Radio, jazz, new psychology, and modern commerce fell under the “seven deadly values” of contemporary life. There is a quote that stands out across the intervening century - that another age “would have hesitated to annihilate space and time the way we grind them up in our machines”.<sup>8</sup></p>
 <p>Swap “radio” for “social media” or “AI” and the sentence barely needs editing.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -95,14 +95,14 @@
 <p>None of these people were being unreasonable. All of them were responding, in good faith, to something that felt genuinely uncertain.</p>
 <p>And yet here we are - reading, writing, coding, navigating, and working with tools that each generation before us found cause to question. The concerns did not stop the technology. But they did shape how it was adopted - slowly, with friction, and with enough pushback to force developers and institutions to take human costs seriously.</p>
 <p>That friction is not always comfortable to sit in. If you are working in an organisation that feels slow to move, or if you find yourself uncertain about when and how to use AI tools, or if the whole conversation feels exhausting - that is a reasonable place to be. It does not mean you are behind. It may mean you are paying attention.</p>
-<p>As Jony Ive observed, when people encounter something new, they instinctively try to reference what’s familiar - and judge it by how well it matches the past.<sup>8</sup> That instinct is human and understandable. But it is not the same as engagement.</p>
-<p>Tradition, as Mahler said, is not the worship of ashes - it is the preservation of fire.<sup>9</sup></p>
-<p>The most useful thing any of us can do right now is probably the same thing Wiener was asking for in 1949. Erich Fromm put it plainly: <em>“Creativity requires the courage of letting go of certainty.”</em><sup>10</sup> Those who have navigated it best have tended to engage thoughtfully, ask good questions, and resist the pull towards both uncritical enthusiasm and reflexive resistance.</p>
+<p>As Jony Ive observed, when people encounter something new, they instinctively try to reference what’s familiar - and judge it by how well it matches the past.<sup>9</sup> That instinct is human and understandable. But it is not the same as engagement.</p>
+<p>Tradition, as Mahler said, is not the worship of ashes - it is the preservation of fire.<sup>10</sup></p>
+<p>The most useful thing any of us can do right now is probably the same thing Wiener was asking for in 1949. Erich Fromm put it pertinently: <em>“Creativity requires the courage of letting go of certainty.”</em><sup>11</sup> Those who have navigated it best have tended to engage thoughtfully, ask good questions, and resist the pull towards both uncritical enthusiasm and reflexive resistance.</p>
 <p>The technology will keep moving. The steadier we are in how we meet it, the better the outcomes are likely to be - for the people using it, and for the people affected by it.</p>
 </section>
 <section id="acknowledgement" class="level2">
 <h2 class="anchored" data-anchor-id="acknowledgement">Acknowledgement</h2>
-<p>This piece grew out of a conversation started by Jonathan Spencer during a recent Coffee &amp; Coding session our Unit organises fortnightly. With characteristic modesty, Jonathan shared some questions he’d been asking himself about AI - and in doing so, sparked an interesting discussion that led to this blog post.</p>
+<p>This piece grew out of a conversation started by Jonathan Spencer during a recent Coffee &amp; Coding session our Unit organises fortnightly. With characteristic modesty, Jonathan shared some questions he’s been asking himself about AI - and in doing so, sparked an interesting discussion that led to this blog post.</p>
 <hr>
 
 
@@ -114,14 +114,15 @@
 <ol>
 <li id="fn1"><p>Plato, <em>Phaedrus</em>, 274c-275b. <a href="https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0174%3Atext%3DPhaedrus">Perseus Digital Library, Tufts University</a>.↩︎</p></li>
 <li id="fn2"><p>Pessimists Archive. “Desktop publishing was blamed for ruining college essay quality.” <a href="https://nitter.net/PessimistsArc/status/2056871747152928875">Pessimists Archive, May 2026</a>.↩︎</p></li>
-<li id="fn3"><p>CBS News / 60 Minutes. “London black cab drivers face the rise of autonomous taxis.” <a href="https://www.cbsnews.com/news/london-black-cab-robotaxi-ai-60-minutes/">CBS News, May 2026</a>.↩︎</p></li>
-<li id="fn4"><p>Fortune. “Self-driving taxis hit London, a city with such complex streets that it has a ‘Knowledge’ test that takes cabbies years to pass.” <a href="https://fortune.com/2026/02/23/self-driving-taxis-london-what-is-the-knowledge-street-test/">Fortune, February 2026</a>.↩︎</p></li>
-<li id="fn5"><p>Pessimists Archive. “The Original AI Doomer: Dr.&nbsp;Norbert Wiener.” <a href="https://newsletter.pessimistsarchive.org/p/the-original-ai-doomer-dr-norbert">Pessimists Archive Newsletter</a>.↩︎</p></li>
-<li id="fn6"><p>Inside Higher Ed. “Harvard’s 1983 Experiment with Coin-Operated Word Processors.” <a href="https://www.insidehighered.com/blogs/technology-and-learning/harvard%E2%80%99s-1983-experiment-coin-operated-word-processors">Inside Higher Ed</a>.↩︎</p></li>
-<li id="fn7"><p>Pessimists Archive. “1926 screed against radio - ‘annihilating space and time’.” <a href="https://nitter.net/PessimistsArc/status/2056784678753866086">Pessimists Archive, May 2026</a>.↩︎</p></li>
-<li id="fn8"><p>Jony Ive, in conversation with Cleo Abram and Flavio Manzoni. <em>Huge Conversations: Iconic Sports Car Ferrari.</em> <a href="https://youtu.be/K-o0r2zSgCE">YouTube, May 2026</a>.↩︎</p></li>
-<li id="fn9"><p>Gustav Mahler, as quoted in the same conversation by Flavio Manzoni: “Tradition is not the worship of ashes. Tradition is the preservation of fire.”↩︎</p></li>
-<li id="fn10"><p>Erich Fromm, as quoted by Flavio Manzoni in the same conversation.↩︎</p></li>
+<li id="fn3"><p>Jony Ive, in conversation with Cleo Abram and Flavio Manzoni. <em>Huge Conversations: Iconic Sports Car Ferrari.</em> <a href="https://youtu.be/K-o0r2zSgCE">YouTube, May 2026</a>.↩︎</p></li>
+<li id="fn4"><p>CBS News / 60 Minutes. “London black cab drivers face the rise of autonomous taxis.” <a href="https://www.cbsnews.com/news/london-black-cab-robotaxi-ai-60-minutes/">CBS News, May 2026</a>.↩︎</p></li>
+<li id="fn5"><p>Fortune. “Self-driving taxis hit London, a city with such complex streets that it has a ‘Knowledge’ test that takes cabbies years to pass.” <a href="https://fortune.com/2026/02/23/self-driving-taxis-london-what-is-the-knowledge-street-test/">Fortune, February 2026</a>.↩︎</p></li>
+<li id="fn6"><p>Pessimists Archive. “The Original AI Doomer: Dr.&nbsp;Norbert Wiener.” <a href="https://newsletter.pessimistsarchive.org/p/the-original-ai-doomer-dr-norbert">Pessimists Archive Newsletter</a>.↩︎</p></li>
+<li id="fn7"><p>Inside Higher Ed. “Harvard’s 1983 Experiment with Coin-Operated Word Processors.” <a href="https://www.insidehighered.com/blogs/technology-and-learning/harvard%E2%80%99s-1983-experiment-coin-operated-word-processors">Inside Higher Ed</a>.↩︎</p></li>
+<li id="fn8"><p>Pessimists Archive. “1926 screed against radio - ‘annihilating space and time’.” <a href="https://nitter.net/PessimistsArc/status/2056784678753866086">Pessimists Archive, May 2026</a>.↩︎</p></li>
+<li id="fn9"><p>Jony Ive, in conversation with Cleo Abram and Flavio Manzoni. <em>Huge Conversations: Iconic Sports Car Ferrari.</em> <a href="https://youtu.be/K-o0r2zSgCE">YouTube, May 2026</a>.↩︎</p></li>
+<li id="fn10"><p>Gustav Mahler, as quoted in the same conversation by Flavio Manzoni: “Tradition is not the worship of ashes. Tradition is the preservation of fire.”↩︎</p></li>
+<li id="fn11"><p>Erich Fromm, as quoted by Flavio Manzoni in the same conversation.↩︎</p></li>
 </ol>
 </section></div> ]]></description>
   <category>AI</category>
@@ -184,7 +185,7 @@
 <h3 class="anchored" data-anchor-id="code-organisation">Code Organisation</h3>
 <p>One of the first things you’ll notice when comparing the implementations is how the Polars version breaks down complex operations into smaller, more focused functions:</p>
 <p><strong>Pandas (Monolithic Functions):</strong></p>
-<div id="f992593b" class="cell">
+<div id="0fa2c05e" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="kw" style="color: #003B4F;
@@ -224,7 +225,7 @@ font-style: inherit;"># ...</span></span></code></pre></div></div>
 </details>
 </div>
 <p><strong>Polars (Granular Functions):</strong></p>
-<div id="01fdd551" class="cell">
+<div id="30706d10" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="kw" style="color: #003B4F;
@@ -318,7 +319,7 @@ font-style: inherit;"># ...</span></span></code></pre></div></div>
 <h4 class="anchored" data-anchor-id="data-loading-and-joining">Data Loading and Joining</h4>
 <p>Here, the difference between the two implementations is fairly subtle, showcasing that switching between the two APIs doesn’t always increase the learning curve:</p>
 <p><strong>Pandas:</strong></p>
-<div id="145aabe4" class="cell">
+<div id="421d486c" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
@@ -355,7 +356,7 @@ font-style: inherit;">"inner"</span>)</span></code></pre></div></div>
 </details>
 </div>
 <p><strong>Polars:</strong></p>
-<div id="a26eaacb" class="cell">
+<div id="5296e2af" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
@@ -395,7 +396,7 @@ font-style: inherit;">"inner"</span>)</span></code></pre></div></div>
 <h4 class="anchored" data-anchor-id="null-handling">Null Handling</h4>
 <p>Null handling differs significantly:</p>
 <p><strong>Pandas:</strong></p>
-<div id="5dc794e5" class="cell">
+<div id="3981bfda" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
@@ -409,7 +410,7 @@ font-style: inherit;">"unknown"</span>)</span></code></pre></div></div>
 </details>
 </div>
 <p><strong>Polars:</strong></p>
-<div id="b4062dd5" class="cell">
+<div id="8b1dc316" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
@@ -461,7 +462,7 @@ font-style: inherit;">"unknown"</span>)</span></code></pre></div></div>
 <h4 class="anchored" data-anchor-id="data-aggregation-and-filtering">Data Aggregation and Filtering</h4>
 <p>Data filtering and aggregation show some of the most significant syntax differences:</p>
 <p><strong>Pandas:</strong></p>
-<div id="4e71d7eb" class="cell">
+<div id="1257afaa" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
@@ -526,7 +527,7 @@ font-style: inherit;">int</span>)</span>
 </details>
 </div>
 <p><strong>Polars:</strong></p>
-<div id="1b7d7aa4" class="cell">
+<div id="ae5812ee" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
@@ -561,7 +562,7 @@ font-style: inherit;">sum</span>())</span>
 <h4 class="anchored" data-anchor-id="lazy-evaluation">Lazy Evaluation</h4>
 <p>As mentioned in the introduction, one of Polars’ key features is its support for lazy evaluation, which enables query optimisation:</p>
 <p><strong>Pandas:</strong></p>
-<div id="4e9b7b9a" class="cell">
+<div id="c93480f9" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
@@ -592,7 +593,7 @@ font-style: inherit;">"sum"</span>})</span>
 </details>
 </div>
 <p><strong>Polars:</strong></p>
-<div id="bd0e108c" class="cell">
+<div id="58758c5d" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><span class="co" style="color: #5E5E5E;
@@ -634,7 +635,7 @@ font-style: inherit;"># Only executes the plan when needed</span></span>
 <h3 class="anchored" data-anchor-id="memory-management">Memory Management</h3>
 <p>Both implementations are designed to manage memory, but with fundamental differences in how data is stored and processed:</p>
 <p><strong>Pandas:</strong></p>
-<div id="2d6350f9" class="cell">
+<div id="0759ecbf" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><span class="co" style="color: #5E5E5E;
@@ -687,7 +688,7 @@ font-style: inherit;"> MB"</span>)</span></code></pre></div></div>
 </details>
 </div>
 <p><strong>Polars:</strong></p>
-<div id="6fdbd4ff" class="cell">
+<div id="0cd1ae90" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><span class="co" style="color: #5E5E5E;
@@ -763,7 +764,7 @@ font-style: inherit;"> MB"</span>)</span></code></pre></div></div>
 <p>Pandas and Polars differ significantly in how they handle types and expressions. Polars uses a <a href="https://deepwiki.com/pola-rs/polars/6-type-system">strongly-typed system</a> based on Apache Arrow’s type system, while Pandas handles types more implicitly.</p>
 <p>Polars’ expression system (with <code>pl.col()</code> syntax) is a core part of its design, allowing for clear, composable operations that the query optimiser can understand and optimise:</p>
 <p><strong>Explicit Null Checking:</strong></p>
-<div id="351132ec" class="cell">
+<div id="d62b3506" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><span class="co" style="color: #5E5E5E;
@@ -812,7 +813,7 @@ font-style: inherit;">"</span>)</span></code></pre></div></div>
 </details>
 </div>
 <p><strong>Type System Consistency:</strong></p>
-<div id="d732749d" class="cell">
+<div id="58ff3569" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><span class="co" style="color: #5E5E5E;

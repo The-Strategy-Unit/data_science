@@ -8,8 +8,8 @@ authors:
     affiliation:
       - name: The Strategy Unit
         url: https://strategyunitwm.nhs.uk/
-date: last-modified
-categories: 
+date: "2026-05-29"
+categories: [data science, knowledge management, GitHub]
 execute: 
   enabled: true
 editor: 

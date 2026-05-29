@@ -20,6 +20,8 @@ format:
     code-fold: true
 ---
 
+![InsideOut](inside_out.gif){fig.alt="Joy from the move Inside Out hugging a 'core memory'" width="100%"}
+
 In our data science team, we recently started having fortnightly ‘side-quests and 
 support’ meetings. 
 The whole team is invited, and the blurb that goes along with the invite is: 
@@ -62,7 +64,71 @@ the different ways we manage our working lives.
 
 #{{< include team_members/ZT.qmd >}}
 
-{{< include team_members/_CW.qmd >}}
+## ![Picture of me](team_members/CW.jpg){width="10%" fig-align="right"} Lead Data Scientist 
+
+
+## How do I store my meeting notes and thoughts/ideas? 🧠
+
+### Quarto book
+
+I use a Quarto book to store all my meeting notes and thoughts. 
+It’s tracked with git locally for version control, but because it includes line 
+management notes, it can’t be safely deployed. 
+I separate topics into different markdown files. 
+Each entry in a file is started with the date (in ‘yyyy-mm-dd’ format) as a 
+heading. 
+The whole thing is searchable at once (using the keyboard shortcut of CTRL>Shift>F). 
+I also record bits of positive feedback for myself to go back to when I need a 
+boost🥰, and a separate page for useful little hints and tips for myself. 
+I write into this book during meetings, but any actions are immediately added to
+my OneNote list.
+
+![Screenshot of my notes in a Quarto book in the Positron IDE](team_members/Positron%20quarto%20book.png)
+
+### Helpers
+
+I did write a little basic R package 📦 to allow me to write notes into my Quarto 
+book straight from an R project, the code is available [here](https://github.com/DCEW/projectlog). 
+I used it for a little while but found it less useful than I’d thought, since I 
+can just type directly into Positron which I have open all day.
+
+![Screenshot of the landing page of my GitHub repository for my ‘projectlog’ package](team_members/projectlog.png)
+
+## What about my to-do lists?
+
+### OneNote
+
+For to do lists – it allows a quick bullet point view of what I need to spend my 
+time on. 
+I delete the row when the work is done ✅.
+
+![OneNote logo](team_members/OneNote_logo.jpg)
+
+### Emails
+
+I use this as a to-do list also in a sense, because once I’ve taken the relevant 
+action from an email, I delete or file it, so that my inbox is always those that 
+still need attention. 
+I aim to get to zero-inbox at the end of each week! 🥅
+
+### GitHub
+
+Daily I check on the PRs that need review, and I frequently look through my list 
+of issues. 
+I make use of the filtering options to narrow down the issues list to those 
+relevant to certain projects.
+
+![Screenshot of the top right of the GitHub website showing the buttons that can take you to a list of your issues, or your pull requests](team_members/PR%20and%20issues%20shortcut.png)
+
+### Paper!
+
+When trying to conceptualise something complicated, or design something, you 
+can’t beat scribbling on paper ✍️. 
+I try to minimise the amount of paper I use, and transfer designs etc to 
+something electronic quickly (so I can't destroy it with coffee stains as easily ☕). 
+Its also quicker for me than using any drawing software.
+
+![Photograph of notepaper with messy writing on it showing a process I wanted to visualise as I was talking](team_members/scribble.jpg)
 
 #{{< include team_members/YH.qmd >}}
 

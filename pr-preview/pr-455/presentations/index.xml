@@ -39,17 +39,17 @@
 <item>
   <title></title>
   <dc:creator>[Chris Beeley](mailto:chris.beeley1@nhs.net)</dc:creator>
-  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-12-04_whose_application/</link>
+  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-12-04_multidisciplinary_pipelines/</link>
   <description><![CDATA[ undefined ]]></description>
-  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-12-04_whose_application/</guid>
+  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-12-04_multidisciplinary_pipelines/</guid>
   <pubDate>Thu, 04 Dec 2025 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title></title>
   <dc:creator>[Chris Beeley](mailto:chris.beeley1@nhs.net)</dc:creator>
-  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-12-04_multidisciplinary_pipelines/</link>
+  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-12-04_whose_application/</link>
   <description><![CDATA[ undefined ]]></description>
-  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-12-04_multidisciplinary_pipelines/</guid>
+  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-12-04_whose_application/</guid>
   <pubDate>Thu, 04 Dec 2025 00:00:00 GMT</pubDate>
 </item>
 <item>
@@ -70,19 +70,19 @@
 </item>
 <item>
   <title></title>
-  <dc:creator>[Fran Barton](mailto:francis.barton@nhs.net)</dc:creator>
-  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-11-13_error_messages_with_cli/</link>
-  <description><![CDATA[ undefined ]]></description>
-  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-11-13_error_messages_with_cli/</guid>
-  <pubDate>Thu, 13 Nov 2025 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title></title>
   <dc:creator>[Jacqueline Grout](mailto:jacqueline.grout@nhs.net)</dc:creator>
   <dc:creator>[Matt Dray](mailto:matt.dray@nhs.net)</dc:creator>
   <link>https://the-strategy-unit.github.io/data_science/presentations/2025-11-13_nhsrpysoc-2025-word/</link>
   <description><![CDATA[ undefined ]]></description>
   <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-11-13_nhsrpysoc-2025-word/</guid>
+  <pubDate>Thu, 13 Nov 2025 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <dc:creator>[Fran Barton](mailto:francis.barton@nhs.net)</dc:creator>
+  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-11-13_error_messages_with_cli/</link>
+  <description><![CDATA[ undefined ]]></description>
+  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-11-13_error_messages_with_cli/</guid>
   <pubDate>Thu, 13 Nov 2025 00:00:00 GMT</pubDate>
 </item>
 <item>
@@ -161,19 +161,19 @@
 </item>
 <item>
   <title></title>
-  <dc:creator>[Chris Beeley](mailto:chris.beeley1@nhs.net)</dc:creator>
-  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-02-27_nhp-deployment/</link>
-  <description><![CDATA[ undefined ]]></description>
-  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-02-27_nhp-deployment/</guid>
-  <pubDate>Thu, 27 Feb 2025 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title></title>
   <dc:creator>[Jac Grout](mailto:jacqueline.grout@nhs.net)</dc:creator>
   <dc:creator>[Matt Dray](mailto:matt.dray@nhs.net)</dc:creator>
   <link>https://the-strategy-unit.github.io/data_science/presentations/2025-02-27_word-not-quarto/</link>
   <description><![CDATA[ undefined ]]></description>
   <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-02-27_word-not-quarto/</guid>
+  <pubDate>Thu, 27 Feb 2025 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <dc:creator>[Chris Beeley](mailto:chris.beeley1@nhs.net)</dc:creator>
+  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-02-27_nhp-deployment/</link>
+  <description><![CDATA[ undefined ]]></description>
+  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-02-27_nhp-deployment/</guid>
   <pubDate>Thu, 27 Feb 2025 00:00:00 GMT</pubDate>
 </item>
 </channel>

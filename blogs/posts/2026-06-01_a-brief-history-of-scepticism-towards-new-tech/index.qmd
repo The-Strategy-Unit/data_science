@@ -36,7 +36,7 @@ We're all familiar with this complaint: the new tool is producing poor work, and
 In the 1980s, desktop publishing software arrived and gave Macintosh users the ability to produce documents that looked professionally typeset. The reaction of some was alarm rather than delight.[^2]
 A piece in an educational journal asked, with concern, whether students were producing work that looked polished but read poorly - style masking a lack of substance. 
 
-![A newspaper clipping asking whether desktop publishing was harming student writing quality. Shared by Pessimists Archive.](desktop-publishing-essay-quality.jpg){fig-alt="Newspaper clipping with the headline 'Do our students pen failure with colorful computers?' from an educational journal in the 1980s. Shared by Pessimists Archive."}
+![A newspaper clipping asking whether desktop publishing was harming student writing quality. Shared by Pessimists Archive.](desktop-publishing-essay-quality.jpg){fig-alt="Newspaper clipping with the headline 'Do our students pen failure with colorful computers?' from an educational journal in the 1980s. Shared by Pessimists Archive"}
 
 Today, the same concern is framed slightly differently. "AI slop" - content that is fluent, plausible, and oddly hollow - is a genuine phenomenon. But it is worth asking what produces it. A word processor does not write a poor essay. A desktop publishing tool does not design an ugly leaflet. And an AI assistant does not generate hollow content on its own accord. In each case, the output reflects the intent, the skill, and the judgement of the person using it.
 
@@ -44,7 +44,7 @@ The tool amplifies what you bring to it. That has always been true. A person who
 
 This is not a defence of laziness. It is an argument for investing in understanding how to use AI well, rather than either dismissing it or outsourcing your thinking to it uncritically.
 
-As Jony Ive once observed, when people encounter something new, they instinctively try to reference what's familiar - and judge it by how well it matches the past.[^8]
+As Jony Ive once observed, when people encounter something new, they instinctively try to reference what's familiar - and judge it by how well it matches the past.[^9]
 
 ## Professional Identity and the Fear of Being Replaced
 
@@ -53,10 +53,10 @@ There is a particular kind of anxiety that is less about the technology itself a
 Consider the London black cab driver. To earn a licence, a cabbie must pass The Knowledge - a gruelling test requiring the memorisation of around 25,000 streets and thousands of points of interest across London.
 It takes most candidates between three and four years to prepare. It is a remarkable human achievement.
 
-When GPS navigation arrived, some cabbies dismissed it outright. In a recent CBS News interview, a veteran driver compared Google Maps to a hot dog vendor and himself to Gordon Ramsay. In his view, the tool simply could not replicate what years of hard-won expertise had built.[^3].
+When GPS navigation arrived, some cabbies dismissed it outright. In a recent CBS News interview, a veteran driver compared Google Maps to a hot dog vendor and himself to Gordon Ramsay. In his view, the tool simply could not replicate what years of hard-won expertise had built.[^4]
 The instinct he is expressing is deeply human and thoroughly familiar.
 
-This example is current, not historical. Autonomous taxis are currently being trialled in London, with British startup Wayve Technologies already conducting test runs and US company Waymo among those planning to participate.[^4]
+This example is current, not historical. Autonomous taxis are currently being trialled in London, with British startup Wayve Technologies already conducting test runs and US company Waymo among those planning to participate.[^5]
 The sense that something irreplaceable is being undervalued, remains.
 
 This is worth sitting with for a moment. The concern is not always "will I have a job". It is often something quieter and more personal: "will what I have learned still matter".
@@ -67,9 +67,9 @@ That is a reasonable thing to wonder. And it deserves a more thoughtful answer t
 
 If the anxieties of cab drivers and students feel relatable, consider that the most serious concerns about artificial intelligence were voiced not by outsiders looking in, but by the very people who built the foundations of the field.
 
-Dr Norbert Wiener is not a household name, but he probably should be. A mathematician and scientist at MIT, Wiener pioneered the field he called *cybernetics* - the study of how systems, whether mechanical or biological, regulate themselves through feedback. The concepts he developed in the 1940s and 1950s underpin much of what we now call artificial intelligence.[^5]
+Dr Norbert Wiener is not a household name, but he probably should be. A mathematician and scientist at MIT, Wiener pioneered the field he called *cybernetics* - the study of how systems, whether mechanical or biological, regulate themselves through feedback. The concepts he developed in the 1940s and 1950s underpin much of what we now call artificial intelligence.[^6]
 
-![Dr Norbert Wiener, pioneer of cybernetics and one of the earliest voices warning about the risks of intelligent machines. Sourced from the Pessimists Archive newsletter."](https://newsletter.pessimistsarchive.org/p/the-original-ai-doomer-dr-norbert).](norbert-wiener-portrait.jpg){fig-alt="Historical photograph of Dr Norbert Wiener, mathematician and founder of cybernetics, at work. Sourced from the Pessimists Archive newsletter."}
+![Dr Norbert Wiener, pioneer of cybernetics and one of the earliest voices warning about the risks of intelligent machines. Sourced from the Pessimists Archive newsletter.](norbert-wiener-portrait.jpg){fig-alt="Historical photograph of Dr Norbert Wiener, mathematician and founder of cybernetics, at work. Sourced from the Pessimists Archive newsletter"}
 
 He was also, from the start, deeply uncomfortable about where it was all heading.
 
@@ -78,11 +78,11 @@ A year later, the editor of the New York Times invited him to write about "what 
 
 By 1960, Wiener was warning of an "industrial revolution of unmitigated cruelty" - automation displacing workers at a scale society was not prepared for. These predictions generated headlines and serious debate. Industry pushed back. An IBM expert, Arthur L. Samuel, responded that "a machine is not a genie, it does not work by magic" and that nothing comes out of a machine that has not been put in.
 
-![Newspaper coverage of the debate between Wiener's warnings and IBM's pushback, circa 1960. Sourced from the Pessimists Archive newsletter.](wiener-ibm-samuel-debate-press.jpg){fig-alt="Historical newspaper clippings showing press coverage of the debate between Norbert Wiener's automation warnings and IBM's response. Sourced from the Pessimists Archive newsletter."}
+![Newspaper coverage of the debate between Wiener's warnings and IBM's pushback, circa 1960. Sourced from the Pessimists Archive newsletter.](wiener-ibm-samuel-debate-press.jpg){fig-alt="Historical newspaper clippings showing press coverage of the debate between Norbert Wiener's automation warnings and IBM's response. Sourced from the Pessimists Archive newsletter"}
 
 That exchange between a pioneering scientist sounding the alarm and an industry insider urging calm will feel recognisable to those following the AI debate today. The characters have changed, the argument has not.
 
-Wiener's parting message, after decades of thinking about all of this, was measured: "We can be humble and live a good life with the aid of the machines, or we can be arrogant and die."
+Wiener's parting message, after decades of thinking about all of this, was measured: "We can be humble and live a good life with the aid of the machines, or we can be arrogant and die".
 
 He was not against the machines. He was against thoughtlessness.
 
@@ -91,7 +91,7 @@ He was not against the machines. He was against thoughtlessness.
 It is not only individuals who resist new technology. Institutions do too, often with the best of intentions.
 
 In 1983, Harvard University introduced coin-operated word processing terminals across its dormitories, libraries, and classrooms. The initiative was cautious and carefully managed - the university wanted to understand whether students who were not technically inclined could use computers as everyday writing tools.
-Access was structured and monitored.[^6]
+Access was structured and monitored.[^7]
 
 Organisations today that require sign-off before staff can use AI tools, or that restrict access while policies are drafted, are operating from a similar - reasonable - instinct. Moving carefully in the face of genuine uncertainty is not the same as moving badly.
 
@@ -104,11 +104,11 @@ Harvard in 1983 is one instance. But institutional caution around new technology
 
 ## Every Age Has Its Concerns
 
-In 1926, a professor at New York University gave an interview reported under the headline *"Modern Age of Speed Deplored By Professor"*. Radio, jazz, new psychology, and modern commerce fell under the "seven deadly values" of contemporary life. There is a quote that stands out across the intervening century - that another age "would have hesitated to annihilate space and time the way we grind them up in our machines".[^7]
+In 1926, a professor at New York University gave an interview reported under the headline *"Modern Age of Speed Deplored By Professor"*. Radio, jazz, new psychology, and modern commerce fell under the "seven deadly values" of contemporary life. There is a quote that stands out across the intervening century - that another age "would have hesitated to annihilate space and time the way we grind them up in our machines. [...] They would have feared the envy of the gods but we enjoy the idea of overcoming the natural limits of human life".[^8]
 
 Swap "radio" for "social media" or "AI" and the sentence barely needs editing.
 
-![A 1926 newspaper headline deploring the modern age of speed, radio, and jazz as deadly to civilised values. Shared by Pessimists Archive.](radio-1926-modern-age-deplored.png){fig-alt="Newspaper clipping with the headline 'Modern Age of Speed Deplored By Professor' from 1926, warning against radio, jazz, and new psychology. Shared by Pessimists Archive."}
+![A 1926 newspaper headline deploring the modern age of speed, radio, and jazz as deadly to civilised values. Shared by Pessimists Archive.](radio-1926-modern-age-deplored.png){fig-alt="Newspaper clipping with the headline 'Modern Age of Speed Deplored By Professor' from 1926, warning against radio, jazz, and new psychology. Shared by Pessimists Archive"}
 
 The speaker and their language sound familiar. It is a professor - an educated, credentialed authority - expressing alarm about the pace of change. This is not a fringe view or a tabloid panic. It is a considered, serious concern from someone who, in most other respects, probably knew a great deal.
 
@@ -130,12 +130,12 @@ And yet here we are - reading, writing, coding, navigating, and working with too
 
 That friction is not always comfortable to sit in. If you are working in an organisation that feels slow to move, or if you find yourself uncertain about when and how to use AI tools, or if the whole conversation feels exhausting - that is a reasonable place to be. It does not mean you are behind. It may mean you are paying attention.
 
-As Jony Ive observed, when people encounter something new, they instinctively try to reference what's familiar - and judge it by how well it matches the past.[^8]
+As Jony Ive observed, when people encounter something new, they instinctively try to reference what's familiar - and judge it by how well it matches the past.[^9]
 That instinct is human and understandable. But it is not the same as engagement.
 
-Tradition, as Mahler said, is not the worship of ashes - it is the preservation of fire.[^9]
+Tradition, as Mahler said, is not the worship of ashes - it is the preservation of fire.[^10]
 
-The most useful thing any of us can do right now is probably the same thing Wiener was asking for in 1949. Erich Fromm put it pertinently: *"Creativity requires the courage of letting go of certainty."*[^10]
+The most useful thing any of us can do right now is probably the same thing Wiener was asking for in 1949. Erich Fromm put it pertinently: *"Creativity requires the courage of letting go of certainty".*[^11]
 Those who have navigated it best have tended to engage thoughtfully, ask good questions, and resist the pull towards both uncritical enthusiasm and reflexive resistance.
 
 The technology will keep moving. The steadier we are in how we meet it, the better the outcomes are likely to be - for the people using it, and for the people affected by it.
@@ -148,17 +148,17 @@ asking himself about AI - and in doing so, sparked an interesting discussion tha
 
 [^1]: Plato, *Phaedrus*, 274c-275b. [Perseus Digital Library, Tufts University](https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0174%3Atext%3DPhaedrus).
 
-[^2]: Pessimists Archive. "Desktop publishing was blamed for ruining college essay quality." [Pessimists Archive, May 2026](https://nitter.net/PessimistsArc/status/2056871747152928875).
+[^2]: Pessimists Archive. "Desktop publishing was blamed for ruining college essay quality" [Pessimists Archive, May 2026](https://nitter.net/PessimistsArc/status/2056871747152928875).
 
-[^3]: CBS News / 60 Minutes. "London black cab drivers face the rise of autonomous taxis." [CBS News, May 2026](https://www.cbsnews.com/news/london-black-cab-robotaxi-ai-60-minutes/).
+[^3]: CBS News / 60 Minutes. "London black cab drivers face the rise of autonomous taxis" [CBS News, May 2026](https://www.cbsnews.com/news/london-black-cab-robotaxi-ai-60-minutes/).
 
-[^4]: Fortune. "Self-driving taxis hit London, a city with such complex streets that it has a 'Knowledge' test that takes cabbies years to pass." [Fortune, February 2026](https://fortune.com/2026/02/23/self-driving-taxis-london-what-is-the-knowledge-street-test/).
+[^4]: Fortune. "Self-driving taxis hit London, a city with such complex streets that it has a 'Knowledge' test that takes cabbies years to pass" [Fortune, February 2026](https://fortune.com/2026/02/23/self-driving-taxis-london-what-is-the-knowledge-street-test/).
 
-[^5]: Pessimists Archive. "The Original AI Doomer: Dr. Norbert Wiener." [Pessimists Archive Newsletter](https://newsletter.pessimistsarchive.org/p/the-original-ai-doomer-dr-norbert).
+[^5]: Pessimists Archive. "The Original AI Doomer: Dr. Norbert Wiener" [Pessimists Archive Newsletter](https://newsletter.pessimistsarchive.org/p/the-original-ai-doomer-dr-norbert).
 
-[^6]: Inside Higher Ed. "Harvard's 1983 Experiment with Coin-Operated Word Processors." [Inside Higher Ed](https://www.insidehighered.com/blogs/technology-and-learning/harvard%E2%80%99s-1983-experiment-coin-operated-word-processors).
+[^6]: Inside Higher Ed. "Harvard's 1983 Experiment with Coin-Operated Word Processors" [Inside Higher Ed](https://www.insidehighered.com/blogs/technology-and-learning/harvard%E2%80%99s-1983-experiment-coin-operated-word-processors).
 
-[^7]: Pessimists Archive. "1926 screed against radio - 'annihilating space and time'." [Pessimists Archive, May 2026](https://nitter.net/PessimistsArc/status/2056784678753866086).
+[^7]: Pessimists Archive. "1926 screed against radio - 'annihilating space and time'" [Pessimists Archive, May 2026](https://nitter.net/PessimistsArc/status/2056784678753866086).
 
 [^8]: Jony Ive, in conversation with Cleo Abram and Flavio Manzoni. 
 *Huge Conversations: Iconic Sports Car Ferrari.* [YouTube, May 2026](https://youtu.be/K-o0r2zSgCE).

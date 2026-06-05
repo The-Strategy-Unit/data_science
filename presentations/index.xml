@@ -9,7 +9,7 @@
 <link>https://the-strategy-unit.github.io/data_science/presentations/</link>
 <atom:link href="https://the-strategy-unit.github.io/data_science/presentations/index.xml" rel="self" type="application/rss+xml"/>
 <description>Blogs from the Data Science Team at The Strategy Unit</description>
-<generator>quarto-1.9.37</generator>
+<generator>quarto-1.9.38</generator>
 <lastBuildDate>Thu, 09 Apr 2026 00:00:00 GMT</lastBuildDate>
 <item>
   <title></title>
@@ -39,14 +39,6 @@
 <item>
   <title></title>
   <dc:creator>[Chris Beeley](mailto:chris.beeley1@nhs.net)</dc:creator>
-  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-12-04_whose_application/</link>
-  <description><![CDATA[ undefined ]]></description>
-  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-12-04_whose_application/</guid>
-  <pubDate>Thu, 04 Dec 2025 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <dc:creator>[Chris Beeley](mailto:chris.beeley1@nhs.net)</dc:creator>
   <link>https://the-strategy-unit.github.io/data_science/presentations/2025-12-04_multidisciplinary_pipelines/</link>
   <description><![CDATA[ undefined ]]></description>
   <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-12-04_multidisciplinary_pipelines/</guid>
@@ -54,11 +46,11 @@
 </item>
 <item>
   <title></title>
-  <dc:creator>[YiWen Hon](mailto:yiwen.hon1@nhs.net)</dc:creator>
-  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-11-14_rap-drop-ins-nhsr2025/</link>
+  <dc:creator>[Chris Beeley](mailto:chris.beeley1@nhs.net)</dc:creator>
+  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-12-04_whose_application/</link>
   <description><![CDATA[ undefined ]]></description>
-  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-11-14_rap-drop-ins-nhsr2025/</guid>
-  <pubDate>Fri, 14 Nov 2025 00:00:00 GMT</pubDate>
+  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-12-04_whose_application/</guid>
+  <pubDate>Thu, 04 Dec 2025 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -66,6 +58,14 @@
   <link>https://the-strategy-unit.github.io/data_science/presentations/2025-11-14_unit-testing/</link>
   <description><![CDATA[ undefined ]]></description>
   <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-11-14_unit-testing/</guid>
+  <pubDate>Fri, 14 Nov 2025 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <dc:creator>[YiWen Hon](mailto:yiwen.hon1@nhs.net)</dc:creator>
+  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-11-14_rap-drop-ins-nhsr2025/</link>
+  <description><![CDATA[ undefined ]]></description>
+  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-11-14_rap-drop-ins-nhsr2025/</guid>
   <pubDate>Fri, 14 Nov 2025 00:00:00 GMT</pubDate>
 </item>
 <item>
@@ -161,19 +161,19 @@
 </item>
 <item>
   <title></title>
-  <dc:creator>[Chris Beeley](mailto:chris.beeley1@nhs.net)</dc:creator>
-  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-02-27_nhp-deployment/</link>
-  <description><![CDATA[ undefined ]]></description>
-  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-02-27_nhp-deployment/</guid>
-  <pubDate>Thu, 27 Feb 2025 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title></title>
   <dc:creator>[Jac Grout](mailto:jacqueline.grout@nhs.net)</dc:creator>
   <dc:creator>[Matt Dray](mailto:matt.dray@nhs.net)</dc:creator>
   <link>https://the-strategy-unit.github.io/data_science/presentations/2025-02-27_word-not-quarto/</link>
   <description><![CDATA[ undefined ]]></description>
   <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-02-27_word-not-quarto/</guid>
+  <pubDate>Thu, 27 Feb 2025 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <dc:creator>[Chris Beeley](mailto:chris.beeley1@nhs.net)</dc:creator>
+  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-02-27_nhp-deployment/</link>
+  <description><![CDATA[ undefined ]]></description>
+  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-02-27_nhp-deployment/</guid>
   <pubDate>Thu, 27 Feb 2025 00:00:00 GMT</pubDate>
 </item>
 </channel>

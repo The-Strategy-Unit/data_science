@@ -126,7 +126,7 @@ And yet here we are reading, writing, coding, navigating, and working with tools
 
 That friction is not always comfortable. If you are working in an organisation that feels slow to move, or find yourself uncertain about when and how to use AI tools, or if the whole conversation feels exhausting - that is a reasonable place to be. It does not mean you are behind. It may mean you are paying attention.
 
-Erich Fromm put it nicely: *"Creativity requires the courage to let go of certainty."*[^10] That has always been the steadier path - not uncritical enthusiasm, not reflexive resistance, but the willingness to engage thoughtfully with what is actually new.
+Erich Fromm put it nicely: "Creativity requires the courage to let go of certainty".[^10] That has always been the steadier path - not uncritical enthusiasm, not reflexive resistance, but the willingness to engage thoughtfully with what is actually new.
 
 ## Acknowledgement
 This piece grew out of a conversation started by Jonathan Spencer during a recent Coffee & Coding session our Unit organises fortnightly. With characteristic modesty, Jonathan shared some questions he's been

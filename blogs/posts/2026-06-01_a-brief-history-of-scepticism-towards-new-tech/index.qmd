@@ -53,10 +53,10 @@ There is a particular kind of anxiety that is less about the technology itself a
 Consider the London black cab driver. To earn a licence, a cabbie must pass The Knowledge - a gruelling test requiring the memorisation of around 25,000 streets and thousands of points of interest across London.
 It takes most candidates between three and four years to prepare. It is a remarkable human achievement.
 
-When GPS navigation arrived, some cabbies dismissed it outright. In a recent CBS News interview, a veteran driver compared Google Maps to a hot dog vendor and himself to Gordon Ramsay. In his view, the tool simply could not replicate what years of hard-won expertise had built.[^4]
+When GPS navigation arrived, some cabbies dismissed it outright. In a recent CBS News interview, a veteran driver compared Google Maps to a hot dog vendor and himself to Gordon Ramsay. In his view, the tool simply could not replicate what years of hard-won expertise had built.[^3]
 The instinct he is expressing is deeply human and thoroughly familiar.
 
-This example is current, not historical. Autonomous taxis are currently being trialled in London, with British startup Wayve Technologies already conducting test runs and US company Waymo among those planning to participate.[^5]
+This example is current, not historical. Autonomous taxis are currently being trialled in London, with British startup Wayve Technologies already conducting test runs and US company Waymo among those planning to participate.[^4]
 The sense that something irreplaceable is being undervalued, remains.
 
 This is worth sitting with for a moment. The concern is not always "will I have a job". It is often something quieter and more personal: "will what I have learned still matter".
@@ -67,7 +67,7 @@ That is a reasonable thing to wonder. And it deserves a more thoughtful answer t
 
 If the anxieties of cab drivers and students feel relatable, consider that the most serious concerns about artificial intelligence were voiced not by outsiders looking in, but by the very people who built the foundations of the field.
 
-Dr Norbert Wiener is not a household name, but he probably should be. A mathematician and scientist at MIT, Wiener pioneered the field he called *cybernetics* - the study of how systems, whether mechanical or biological, regulate themselves through feedback. The concepts he developed in the 1940s and 1950s underpin much of what we now call artificial intelligence.[^6]
+Dr Norbert Wiener is not a household name, but he probably should be. A mathematician and scientist at MIT, Wiener pioneered the field he called *cybernetics* - the study of how systems, whether mechanical or biological, regulate themselves through feedback. The concepts he developed in the 1940s and 1950s underpin much of what we now call artificial intelligence.[^5]
 
 ![Dr Norbert Wiener, pioneer of cybernetics and one of the earliest voices warning about the risks of intelligent machines. Sourced from the Pessimists Archive newsletter.](norbert-wiener-portrait.jpg){fig-alt="Historical photograph of Dr Norbert Wiener, mathematician and founder of cybernetics, at work. Sourced from the Pessimists Archive newsletter"}
 
@@ -91,7 +91,7 @@ He was not against the machines. He was against thoughtlessness.
 It is not only individuals who resist new technology. Institutions do too, often with the best of intentions.
 
 In 1983, Harvard University introduced coin-operated word processing terminals across its dormitories, libraries, and classrooms. The initiative was cautious and carefully managed - the university wanted to understand whether students who were not technically inclined could use computers as everyday writing tools.
-Access was structured and monitored.[^7]
+Access was structured and monitored.[^6]
 
 Organisations today that require sign-off before staff can use AI tools, or that restrict access while policies are drafted, are operating from a similar - reasonable - instinct. Moving carefully in the face of genuine uncertainty is not the same as moving badly.
 
@@ -104,7 +104,7 @@ Harvard in 1983 is one instance. But institutional caution around new technology
 
 ## Every Age Has Its Concerns
 
-In 1926, a professor at New York University gave an interview reported under the headline *"Modern Age of Speed Deplored By Professor"*. Radio, jazz, new psychology, and modern commerce fell under the "seven deadly values" of contemporary life. There is a quote that stands out across the intervening century - that another age "would have hesitated to annihilate space and time the way we grind them up in our machines. [...] They would have feared the envy of the gods but we enjoy the idea of overcoming the natural limits of human life".[^8]
+In 1926, a professor at New York University gave an interview reported under the headline *"Modern Age of Speed Deplored By Professor"*. Radio, jazz, new psychology, and modern commerce fell under the "seven deadly values" of contemporary life. There is a quote that stands out across the intervening century - that another age "would have hesitated to annihilate space and time the way we grind them up in our machines. [...] They would have feared the envy of the gods but we enjoy the idea of overcoming the natural limits of human life".[^7]
 
 Swap "radio" for "social media" or "AI" and the sentence barely needs editing.
 

@@ -9,7 +9,7 @@ format:
     code-fold: true
     code-overflow: wrap
     font-size: 0.7em
-execute: 
+execute:
   eval: false
   engine: jupyter
 ---
@@ -18,9 +18,9 @@ execute:
 
 - **Measuring Performance**: Time and profile your code
 - **Common Performance Tweaks**: Easy wins for faster code
-- **Loops vs. Vectorisation vs. Functional**: Choose the right approach
+- **Loops vs. Vectorisation vs. ...**: Choose the right approach
 - **Optimising Loops**: When you should use them
-- **Beyond Basics**: Tools for further optimisation
+- **Beyond the Basics**: Tools for further optimisation
 
 # Measuring Performance
 
@@ -29,32 +29,28 @@ execute:
 - How long does it take?
 - Can compare approaches?
 - When will your code finish running when you scale it up?
- 
+
 ## 🐍 Timing
 
 ```{python}
 #| echo: true
 #| code-fold: show
-from timeit import timeit  # Python's precise timing module
+from timeit import timeit
 
-size = 1_000_000
+size = 100_000
 
-def sum_of_squares(): # Function to measure
+def sum_of_squares():
     return sum(i**2 for i in range(size))
 
-# Time the function execution
-# number=100: run multiple times for statistical significance
-# globals=globals(): access functions defined in current scope
 execution_time = timeit('sum_of_squares()',
                        globals=globals(),
                        number=100)
 
-# Calculate and display average execution time per call
 print(f"Average execution time: {execution_time/1000:.6f}s")
 ```
 
 
-## 🦜 Timing 
+## 🦜 Timing
 
 - `system.time()` for quick one-off timing
 - {benchmark} for parameterised comparisons
@@ -77,30 +73,31 @@ ggplot2::autoplot(df)
 
 > *"We should forget about small efficiencies, say about 97% of the time: premature optimization is the root of all evil."*
  - Donald Knuth
- 
+
 - Identify the slowest functions
 
 ## 🐍 Profiling
 
 ```{python}
 #| echo: true
-import cProfile, pstats
-from io import StringIO
+from random import uniform
+from pyinstrument import Profiler
 
-def sum_of_squares(n):
-    return sum(i * i for i in range(n))
+# Monte Carlo method estimating pi through simulation and geometric probability
+def hits(point):
+    return abs(point) <= 1
 
-# Create a StringIO object to capture output
-pr = cProfile.Profile()
-pr.enable()
-sum_of_squares(1_000_000)
-pr.disable()
+def point():
+    return complex(uniform(0, 1), uniform(0, 1))
 
-# Display results
-s = StringIO()
-ps = pstats.Stats(pr, stream=s).sort_stats('cumulative')
-ps.print_stats(5)
-print(s.getvalue())
+def estimate_pi(n):
+    return 4 * sum(hits(point()) for _ in range(n)) / n
+
+with Profiler(interval=0.1) as profiler:
+    estimate_pi(n=10_000_000)
+
+profiler.print()
+# profiler.open_in_browser()
 ```
 
 ## 🦜 Profiling
@@ -123,21 +120,21 @@ RD to introduce general
 ```{python}
 #| echo: true
 #| code-fold: show
-from timeit import timeit  # For timing operations
-import numpy as np  # For pre-allocated arrays
+from timeit import timeit
+import numpy as np
 
-size = 100_000  # Number of elements to process
+size = 100_000
 
-def growing_list(): # Growing a list dynamically (expensive)
-    result = []  # Empty list that will grow
+def growing_list():
+    result = []
     for i in range(size):
-        result.append(i**2)  # Triggers resize
+        result.append(i**2)
     return result
 
-def preallocated_array(): # Pre-allocated array
-    result = np.zeros(size, dtype=int)  # Preallocate array
+def preallocated_array():
+    result = np.zeros(size, dtype=int)
     for i in range(size):
-        result[i] = i**2  # No resizing needed
+        result[i] = i**2
     return result
 
 t1 = timeit(growing_list, number=100)
@@ -152,88 +149,39 @@ print(f"Speedup: {t2/t1:.1f}x faster")
 
 ## Appropriate Data Structures
 
-- Numpy array faster than a python list
+- NumPy array faster than a Python list
 - Set is _much_ faster than list* but only keeps _unique elements_
 - Just doing numeric calculations? Can you use a matrix?
 
 ## 🐍 Appropriate Data Structures
 
-```{python}
-#| echo: true
-#| code-fold: show
-from timeit import timeit  # For timing the operations
-import random  # To select a random lookup value
+| Data Structure   | Mutability | Use Cases                 | Performance   |
+|------------------|------------|---------------------------|---------------|
+| **List**         | Mutable    | Ordered collections       | Moderate      |
+| **Tuple**        | Immutable  | Fixed collections         | Fast          |
+| **Dictionary**   | Mutable    | KV pairs, fast lookups    | Fast          |
+| **Set**          | Mutable    | Unique collections        | Fast          |
+| **NumPy Array**  | Mutable    | Numerical data, math. ops | Very Fast     |
 
-size = 100_000
-
-# Setup test data
-data = list(range(size))  # A list with 100,000 items
-lookup_val = random.choice(data)  # Random value to find
-lookup_set = set(data)  # Same data as a set for O(1) lookup
-
-# Time list lookup (O(n) - must check each element)
-t1 = timeit(lambda: lookup_val in data, number=100)
-
-# Time set lookup (O(1) - constant time hash table)
-t2 = timeit(lambda: lookup_val in lookup_set, number=100)
-
-print(f"List lookup: {t1:.6f}s\nSet lookup: {t2:.6f}s")
-print(f"Speedup: {t1/t2:.1f}x faster")
-```
-
-## 🦜 Appropriate Data Structures
-
-## 🐍 String Concatenation
-
-```{python}
-#| echo: true
-#| code-fold: show
-from timeit import timeit
-
-size = 100_000
-
-def join_method(): # Fast - O(n) complexity with clear intent
-    return "".join("Hello World! " for _ in range(size))  # Single operation
-
-def concat_method(): # Slow - O(n²) complexity
-    result = ""
-    for _ in range(size):
-        result += "Hello World! "  # Creates new string each time
-    return result
-
-t1 = timeit(join_method, number=100)
-t2 = timeit(concat_method, number=100) 
-print(f"join: {t1:.6f}s\n+=: {t2:.6f}s")
-print(f"Speedup: {t2/t1:.1f}x faster")
-```
-
-# Loops vs. Vectorisation vs. Functional
-
-## Loops vs. Vectorisation vs. Functional
-
-| Approach | Best For | Example Use Case |
-|---|---|---|
-| **Loops** | Complex logic, small data | Custom algorithms |
-| **Vectorisation** | Numerical operations | Data science, NumPy |
-| **Functional** | Data transformations | Pipelines, map/reduce/filter |
+# Loops vs. Vectorisation vs. ...
 
 ## Loops
 
 ```{python}
 #| echo: true
 #| code-fold: show
-from timeit import timeit  # For timing code execution
+from timeit import timeit
 
-size = 100_000
+size = 64
 
-def standard_loop():  # Slower - bytecode overhead + repeated .append() calls
+def standard_loop():
     result = []
     for i in range(size):
-        result.append(i**2)
+        result.append(2**i)
     return result
 
-def list_comprehension():  # Faster, concise
-    return [i**2 for i in range(size)]
+def list_comprehension():
+    return [2**i for i in range(size)]
 
 t1 = timeit(standard_loop, number=100)
 t2 = timeit(list_comprehension, number=100)
@@ -247,18 +195,17 @@ print(f"Speedup: {t1/t2:.1f}x faster")
 ```{python}
 #| echo: true
 #| code-fold: show
-from timeit import timeit  # For timing code execution
-import numpy as np  # NumPy for vectorised operations
+from timeit import timeit
+import numpy as np
 
 size = 100_000
 
-def python_way(): # Pure Python approach (loops through each element)
+def python_way():
     return [i**2 for i in range(size)]
 
-def numpy_way(): # NumPy vectorised approach (operates on entire array at once)
+def numpy_way():
     return np.arange(size)**2 # Uses C implementation
 
-# Compare execution times
 t1 = timeit(python_way, number=100)
 t2 = timeit(numpy_way, number=100)
 
@@ -271,17 +218,16 @@ print(f"Speedup: {t1/t2:.1f}x faster")
 ```{python}
 #| echo: true
 #| code-fold: show
-import pandas as pd  # For DataFrame operations
-import numpy as np   # For random data generation
-from timeit import timeit  # For timing operations
+import pandas as pd
+import numpy as np
+from timeit import timeit
 
-# Create sample dataframe with 10,000 random values (reduced for demo)
 df = pd.DataFrame({"value": np.random.rand(10_000)})
 
-def apply_method(): # Slow: Using apply (runs Python function on each row)
+def apply_method():
     return df["value"].apply(lambda x: x**2)
 
-def vector_method(): # Fast: Vectorised operations (C implementation)
+def vector_method():
     return df["value"]**2
 
 # Compare execution times
@@ -293,7 +239,6 @@ print(f"Speedup: {t1/t2:.1f}x faster")
 ```
 
 ## Functional Programming
-[Functional programming in Python? by David Vujic](https://www.youtube.com/watch?v=hz4OPyBYA98)
 
 ```{python}
 #| echo: true
@@ -302,7 +247,6 @@ from timeit import timeit
 
 size = 100_000
 
-# Compare map vs list comprehension
 t1 = timeit(lambda: list(map(lambda x: x**2, range(size))), number=100)
 t2 = timeit(lambda: [x**2 for x in range(size)], number=100)
 
@@ -315,24 +259,27 @@ print(f"Speedup: {t1/t2:.1f}x faster")
 ```{python}
 #| echo: true
 #| code-fold: show
+
+# Generator
 def count_up_to(limit):
     count = 0
     while count < limit:
         yield count
         count += 1
 
-# Usage
-for number in count_up_to(5):
-    print(number)
+print([n for n in count_up_to(50)])
 ```
 
 ## When to Use Each Approach
 
-- **Vectorisation**: Large numerical datasets (NumPy/Pandas)
-- **List Comprehensions**: Simple transformations on sequences
-- **Functional**: Complex pipelines, data transformations
-- **Loops**: Complex logic, small datasets, or when readability matters
-- **Generators**: Process large datasets, that shouldn't be loaded entirely into memory
+| Approach                | Best For | Example Use Case |
+|-------------------------|-------------------------------------|----------------------------------------|
+| **Loops**               | Complex logic, small data           | Custom algorithms                      |
+| **Vectorisation**       | Numerical operations                | Data science, NumPy                    |
+| **Functional**          | Data transformations                | Pipelines, filter/map/reduce           |
+| **List Comprehensions** | Simple transformations              | Filter elements                        |
+| **Generators**          | Large dataset processing            | Read large files line by line          |
+
 
 # Loop Optimisation
 
@@ -341,8 +288,8 @@ for number in count_up_to(5):
 - Define anything you can _outside_ the loop
 - Consider locally assigning common functions
 - I/O slows loops
-- Look out for `print` or `plot` 
-- Use argument for "chatty / "quiet"
+- Look out for `print` or `plot`
+- Use flag for "chatty" / "quiet"
 - Proper logging instead of printing
 
 ## 🐍 Optimisation Techniques
@@ -350,25 +297,25 @@ for number in count_up_to(5):
 ```{python}
 #| echo: true
 #| code-fold: show
-from timeit import timeit  # For timing execution
-import math  # For sqrt, sin, cos functions
-from random import random
+from timeit import timeit
+import math
+from random import randint
 
-size = 1_000_000
+size = 300_000
 
-data = [random()**2 for _ in range(size)] # Create test data
+data = [2**randint(0, 64) for _ in range(size)]
 
-def regular_loop(): # len() and function lookups each iteration
+def regular_loop():
     result = 0
-    for i in range(len(data)):  # len() recalculated in every iteration
+    for i in range(len(data)):
         x = data[i]
-        result += math.sqrt(x) + math.sin(x) + math.cos(x)  # Function lookups each time
+        result += math.sqrt(x) + math.sin(x) + math.cos(x)
     return result
 
-def optimised_loop(): # pre-computed length and local function bindings
+def optimised_loop():
     result = 0
-    n = len(data)  # Pre-compute length once
-    sqrt, sin, cos = math.sqrt, math.sin, math.cos  # Bind functions locally
+    n = len(data)
+    sqrt, sin, cos = math.sqrt, math.sin, math.cos
     for i in range(n):
         x = data[i]
         result += sqrt(x) + sin(x) + cos(x)
@@ -383,7 +330,7 @@ print(f"Speedup: {t1/t2:.1f}x faster")
 ## 🦜 Optimisation Techniques
 
 
-# Beyond Basics
+# Beyond the Basics
 
 ## Rewrite in C++
 
@@ -474,8 +421,11 @@ print(f"Speedup: {t1/t2:.1f}x faster")
 ## 📚 Resources
 
 - [Efficient R](https://csgillespie.github.io/efficientR/)
-- [Effective Python, The Book: Third Edition, Brett Slatkin](https://effectivepython.com/)
+- [Effective Python, The Book: Third Edition](https://effectivepython.com/)
 - [Advanced R](https://adv-r.hadley.nz/index.html)
+- [Python data structures](https://docs.python.org/3/tutorial/datastructures.html)
+- [Functional programming in Python? by David Vujic](https://www.youtube.com/watch?v=hz4OPyBYA98)
+- [Python profiling](https://realpython.com/python-profiling/)
 
 # Appendix
 

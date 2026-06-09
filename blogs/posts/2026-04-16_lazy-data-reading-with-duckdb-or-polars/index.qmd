@@ -1,0 +1,38 @@
+---
+title: "Lazily working with large data on Azure storage, with DuckDB or polars"
+author:
+  - name: Fran Barton
+    orcid: 0000-0002-5650-1176
+    email: francis.barton@nhs.net
+    affiliation:
+      - name: The Strategy Unit
+        url: https://strategyunitwm.nhs.uk/
+date: today
+categories: [Python, learning, Azure, polars, howto]
+execute:
+  enabled: false
+---
+
+(#lede)
+(use callout?)
+
+I experimented with various Python tools to work with a large amount of data on
+Azure storage.
+Here's what I learned.
+
+
+### Intro
+
+So you've got a load of data on a storage server.
+And you need to do something with it.
+
+But you don't need - or want - to just download it all and do your thing
+on your laptop.
+There's GBs of it, for one thing, and for another it just feels _wrong_.
+
+And anyway, there are tools to help you work with data on the server, and those
+have been built for a reason, right?
+And it's just not good practice to be downloading data - which might contain
+or constitute sensitive information - onto your machine.
+
+We use the server for a reason.

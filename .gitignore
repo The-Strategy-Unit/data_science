@@ -19,5 +19,5 @@ site_libs/
 renv
 
 *.code-workspace
-
+*.egg-info/
 **/*.quarto_ipynb

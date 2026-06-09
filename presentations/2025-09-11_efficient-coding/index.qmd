@@ -10,7 +10,6 @@ format:
     font-size: 0.7em
 execute:
   eval: false
-  engine: jupyter
 ---
 
 ```{r lockfile}

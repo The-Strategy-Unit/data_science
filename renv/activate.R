@@ -143,6 +143,7 @@ local({
     indent <- regexpr("[^[:space:]]", lines)
     common <- min(setdiff(indent, -1L)) - leave
     paste(substring(lines, common), collapse = "\n")
+
   }
 
   startswith <- function(string, prefix) {
@@ -383,6 +384,7 @@ local({
     # iterate over types + repositories
     for (type in types) {
       for (repos in renv_bootstrap_repos()) {
+
         # retrieve package database
         db <- tryCatch(
           as.data.frame(
@@ -467,6 +469,7 @@ local({
     tarball
 
   }
+
   renv_bootstrap_download_github <- function(version) {
 
     enabled <- Sys.getenv("RENV_BOOTSTRAP_FROM_GITHUB", unset = "TRUE")

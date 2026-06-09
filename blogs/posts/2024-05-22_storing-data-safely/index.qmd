@@ -11,11 +11,6 @@ notebook-view:
     title: "Interacting with Azure Storage with Python"
 ---
 
-```{r lockfile}
-#| include: FALSE
-renv::use(lockfile = "renv.lock")
-```
-
 ::: callout-note
 **UPDATED**: Please see the Addendum to this blog, added 2025-04-03 regarding accessing data from SharePoint
 :::
@@ -30,14 +25,10 @@ In order to avoid duplication, this blog post will not cover the pros and cons o
 
 ```{r}
 #| eval: false
-
-
 # A brief intro to using {pins} to store, version, share and protect a dataset
 # on Posit Connect. Documentation: https://pins.rstudio.com/
 
-
 # Setup -------------------------------------------------------------------
-
 
 install.packages(c("pins", "dplyr")) # if not yet installed
 
@@ -69,12 +60,12 @@ board |> pin_list() # see all the pins on that board
 
 # Create a pin ------------------------------------------------------------
 
-
 # Write a dataset to the board as a pin
-board |> pin_write(
-  x = starwars,
-  name = "starwars_demo"
-)
+board |>
+  pin_write(
+    x = starwars,
+    name = "starwars_demo"
+  )
 # Guessing `type = 'rds'`
 # Writing to pin 'matt.dray/starwars_demo'
 
@@ -92,23 +83,21 @@ board |> pin_browse(pin_name) # view the pin in the browser
 
 # Permissions -------------------------------------------------------------
 
-
 # You can let people see and edit a pin. Log into Posit Connect and select the
 # pin under 'Content'. In the 'Settings' panel on the right-hand side, adjust
 # the 'sharing' options in the 'Access' tab.
 
-
 # Overwrite and version ---------------------------------------------------
-
 
 starwars_droids <- starwars |>
   filter(species == "Droid") # beep boop
 
-board |> pin_write(
-  starwars_droids,
-  pin_name,
-  type = "rds"
-)
+board |>
+  pin_write(
+    starwars_droids,
+    pin_name,
+    type = "rds"
+  )
 # Writing to pin 'matt.dray/starwars_demo'
 
 board |> pin_versions(pin_name) # see version history
@@ -116,17 +105,16 @@ board |> pin_versions_prune(pin_name, n = 1) # remove history
 board |> pin_versions(pin_name)
 
 # What if you try to overwrite the data but it hasn't changed?
-board |> pin_write(
-  starwars_droids,
-  pin_name,
-  type = "rds"
-)
+board |>
+  pin_write(
+    starwars_droids,
+    pin_name,
+    type = "rds"
+  )
 # ! The hash of pin "matt.dray/starwars_demo" has not changed.
 # • Your pin will not be stored.
 
-
 # Use the pin -------------------------------------------------------------
-
 
 # You can read a pin to your local machine, or access it from a Quarto file
 # or Shiny app hosted on Connect, for example. If the output and the pin are
@@ -140,11 +128,9 @@ board |>
 
 # Delete pin --------------------------------------------------------------
 
-
 board |> pin_exists(pin_name) # logical, good function for error handling
 board |> pin_delete(pin_name)
 board |> pin_exists(pin_name)
-
 ```
 
 ## Azure Storage in R
@@ -162,7 +148,6 @@ AZ_APP_ID=another-long-sequence-of-numbers-and-letters
 
 ```{r}
 #| eval: false
-
 install.packages(c("AzureAuth", "AzureStor", "arrow")) # if not yet installed
 
 # Load all environment variables
@@ -214,7 +199,8 @@ df_from_azure <- AzureStor::storage_read_csv(
 # and storing it in memory)
 parquet_in_memory <- AzureStor::storage_download(
   container,
-  src = "newdir/cats.parquet", dest = NULL
+  src = "newdir/cats.parquet",
+  dest = NULL
 )
 parq_df <- arrow::read_parquet(parquet_in_memory)
 
@@ -258,7 +244,6 @@ To access data on SharePoint, follow these steps:
 ```{r}
 #| eval: false
 #| echo: true
-
 # Read in the securely saved path and site variables
 sharepoint_site <- Sys.getenv("SP_SITE_NAME")
 template_path <- Sys.getenv("SP_FILE_PATH")

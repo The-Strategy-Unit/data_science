@@ -26,11 +26,6 @@ editor:
     wrap: 120
 ---
 
-```{r lockfile}
-#| include: FALSE
-renv::use(lockfile = "renv.lock")
-```
-
 
 [ds_presentations]: https://the-strategy-unit.github.io/data_science/
 
@@ -131,7 +126,6 @@ list(
   tar_target(model, build_model(processed_data)),
   tar_target(report, generate_report(chart, model))
 )
-
 ```
 
 ![](visnetwork.png)

@@ -23,15 +23,9 @@ execute:
   echo: true
 ---
 
-```{r lockfile}
-#| include: FALSE
-renv::use(lockfile = "renv.lock")
-```
-
 
 ```{r setup}
 #| echo: false
-
 library(here)
 library(purrr)
 library(lubridate)
@@ -43,17 +37,18 @@ library(StrategyUnitTheme)
 
 
 # load data - taken from UDAL
-new_rtt <- read.csv("rtt clock starts.csv") |> 
-  clean_names() |> 
-  rename(provider_code = organisation_code,
-         count = clock_starts) |> 
-  mutate(snapshot_date = dmy(effective_snapshot_date),
-         rtt_yrmon = as.yearmon(snapshot_date),
-         rtt_mon = lubridate::month(snapshot_date))|> 
-  select(-c(x, treatment_function_code, effective_snapshot_date, snapshot_date)) |> 
-  mutate(count = case_when(count == 0 ~ 1,
-                           TRUE ~ count))
-
+new_rtt <- read.csv("rtt clock starts.csv") |>
+  clean_names() |>
+  rename(provider_code = organisation_code, count = clock_starts) |>
+  mutate(
+    snapshot_date = dmy(effective_snapshot_date),
+    rtt_yrmon = as.yearmon(snapshot_date),
+    rtt_mon = lubridate::month(snapshot_date)
+  ) |>
+  select(
+    -c(x, treatment_function_code, effective_snapshot_date, snapshot_date)
+  ) |>
+  mutate(count = case_when(count == 0 ~ 1, TRUE ~ count))
 ```
 
 ## Why?
@@ -70,7 +65,6 @@ Demo with plots, equally applicable to 'doing stuff' with data.
 
 ::: fragment
 ```{r}
-
 # preview data
 head(new_rtt)
 ```
@@ -81,27 +75,25 @@ head(new_rtt)
 ::: fragment
 ```{r}
 #| echo: false
-
-p1 <- new_rtt |> 
-  filter(provider_code == "RJE") |> 
+p1 <- new_rtt |>
+  filter(provider_code == "RJE") |>
   ggplot(aes(x = rtt_yrmon, y = count)) +
   geom_line() +
   su_theme() +
-    theme(legend.position = "none") +
-  labs(title = "RJE",
-       subtitle = "time trend of new referrals")
+  theme(legend.position = "none") +
+  labs(title = "RJE", subtitle = "time trend of new referrals")
 
-p2 <- new_rtt |> 
-  filter(provider_code == "RJE") |> 
+p2 <- new_rtt |>
+  filter(provider_code == "RJE") |>
   ggplot(aes(x = month(rtt_yrmon), y = count)) +
   geom_col() +
   su_theme() +
-    theme(legend.position = "none") +
+  theme(legend.position = "none") +
   labs(
-       subtitle = "monthly pattern of new referrals")
+    subtitle = "monthly pattern of new referrals"
+  )
 
 plots <- ggarrange(p1, p2, nrow = 2)
-
 ```
 
 ```{r}
@@ -127,24 +119,23 @@ Do it 'normally' for one centre. What are the parameters to change?
 ```{r}
 #| output-location: column
 #| code-line-numbers: "|2|7|11"
-
-p1 <- new_rtt |> 
-  filter(provider_code == "RJE") |> 
+p1 <- new_rtt |>
+  filter(provider_code == "RJE") |>
   ggplot(aes(x = rtt_yrmon, y = count)) +
   geom_line() +
   su_theme() +
-    theme(legend.position = "none") +
-  labs(title = "RJE",
-       subtitle = "time trend of new referrals")
+  theme(legend.position = "none") +
+  labs(title = "RJE", subtitle = "time trend of new referrals")
 
-p2 <- new_rtt |> 
-  filter(provider_code == "RJE") |> 
+p2 <- new_rtt |>
+  filter(provider_code == "RJE") |>
   ggplot(aes(x = month(rtt_yrmon), y = count)) +
   geom_col() +
   su_theme() +
-    theme(legend.position = "none") +
+  theme(legend.position = "none") +
   labs(
-       subtitle = "monthly pattern of new referrals")
+    subtitle = "monthly pattern of new referrals"
+  )
 
 plots <- ggarrange(p1, p2, nrow = 2)
 
@@ -167,13 +158,9 @@ Please remember, this is about writing functions, not creating stunning visualis
 
 ```{r}
 #| eval: false
-
-fn_name <- function(arguments){
-  
+fn_name <- function(arguments) {
   # do stuff
-  
 }
-
 ```
 
 Run the function with `fn_name(parameter as argument)`
@@ -184,61 +171,55 @@ Run the function with `fn_name(parameter as argument)`
 ::: {.column width="50%"}
 ```{r}
 #| output: false
-
-p1 <- new_rtt |> 
-  filter(provider_code == "RJE") |> 
+p1 <- new_rtt |>
+  filter(provider_code == "RJE") |>
   ggplot(aes(x = rtt_yrmon, y = count)) +
   geom_line() +
   su_theme() +
-    theme(legend.position = "none") +
-  labs(title = "RJE",
-       subtitle = "time trend of new referrals")
+  theme(legend.position = "none") +
+  labs(title = "RJE", subtitle = "time trend of new referrals")
 
-p2 <- new_rtt |> 
-  filter(provider_code == "RJE") |> 
+p2 <- new_rtt |>
+  filter(provider_code == "RJE") |>
   ggplot(aes(x = month(rtt_yrmon), y = count)) +
   geom_col() +
   su_theme() +
-    theme(legend.position = "none") +
+  theme(legend.position = "none") +
   labs(
-       subtitle = "monthly pattern of new referrals")
+    subtitle = "monthly pattern of new referrals"
+  )
 
 plots <- ggarrange(p1, p2, nrow = 2)
 
 plots
-
-
 ```
 :::
 
 ::: {.column width="50%"}
 ```{r}
 #| output: false
+fn_plots <- function(prov) {
+  p1 <- new_rtt |>
+    filter(provider_code == prov) |>
+    ggplot(aes(x = rtt_yrmon, y = count)) +
+    geom_line() +
+    su_theme() +
+    theme(legend.position = "none") +
+    labs(title = prov, subtitle = "time trend of new referrals")
 
-fn_plots <- function(prov){
-  
-    p1 <- new_rtt |> 
-      filter(provider_code == prov) |> 
-      ggplot(aes(x = rtt_yrmon, y = count)) +
-      geom_line() +
-      su_theme() +
-        theme(legend.position = "none") +
-      labs(title = prov,
-           subtitle = "time trend of new referrals")
-    
-    p2 <- new_rtt |> 
-      filter(provider_code == prov) |> 
-      ggplot(aes(x = month(rtt_yrmon), y = count)) +
-      geom_col() +
-      su_theme() +
-        theme(legend.position = "none") +
-      labs(
-           subtitle = "monthly pattern of new referrals")
-    
-    plots <- ggarrange(p1, p2, nrow = 2)
-    
-    plots
-    
+  p2 <- new_rtt |>
+    filter(provider_code == prov) |>
+    ggplot(aes(x = month(rtt_yrmon), y = count)) +
+    geom_col() +
+    su_theme() +
+    theme(legend.position = "none") +
+    labs(
+      subtitle = "monthly pattern of new referrals"
+    )
+
+  plots <- ggarrange(p1, p2, nrow = 2)
+
+  plots
 }
 ```
 :::
@@ -249,40 +230,35 @@ fn_plots <- function(prov){
 ::: columns
 ::: {.column width="50%"}
 ```{r}
+fn_plots <- function(prov) {
+  p1 <- new_rtt |>
+    filter(provider_code == prov) |>
+    ggplot(aes(x = rtt_yrmon, y = count)) +
+    geom_line() +
+    su_theme() +
+    theme(legend.position = "none") +
+    labs(title = prov, subtitle = "time trend of new referrals")
 
-fn_plots <- function(prov){
-  
-    p1 <- new_rtt |> 
-      filter(provider_code == prov) |> 
-      ggplot(aes(x = rtt_yrmon, y = count)) +
-      geom_line() +
-      su_theme() +
-        theme(legend.position = "none") +
-      labs(title = prov,
-           subtitle = "time trend of new referrals")
-    
-    p2 <- new_rtt |> 
-      filter(provider_code == prov) |> 
-      ggplot(aes(x = month(rtt_yrmon), y = count)) +
-      geom_col() +
-      su_theme() +
-        theme(legend.position = "none") +
-      labs(
-           subtitle = "monthly pattern of new referrals")
-    
-    plots <- ggarrange(p1, p2, nrow = 2)
-    
-    plots
-    
+  p2 <- new_rtt |>
+    filter(provider_code == prov) |>
+    ggplot(aes(x = month(rtt_yrmon), y = count)) +
+    geom_col() +
+    su_theme() +
+    theme(legend.position = "none") +
+    labs(
+      subtitle = "monthly pattern of new referrals"
+    )
+
+  plots <- ggarrange(p1, p2, nrow = 2)
+
+  plots
 }
 ```
 :::
 
 ::: {.column width="50%"}
 ```{r}
-
 fn_plots("RKB")
-  
 ```
 :::
 :::
@@ -295,14 +271,11 @@ If I wanted to run this function on multiple dataframes I would change the funct
 
 ```{r}
 #| eval: false
-
-fn_plots <- function(df, prov){
-  
-    p1 <- df |> 
-      filter(provider_code == prov) 
-    # and the rest as before
+fn_plots <- function(df, prov) {
+  p1 <- df |>
+    filter(provider_code == prov)
+  # and the rest as before
 }
-
 ```
 
 and run it with `fn_plots(new_rtt, "RKB")`.
@@ -316,7 +289,6 @@ Use `purrr::map` to iterate over a list
 
 ```{r}
 #| output-location: column
-
 # create a vector of all the providers
 prov_labels <- c("RJE", "RKB", "RL4", "RRK", "RWE", "RX1")
 
@@ -335,23 +307,19 @@ This is a new function that will save each time-trend plot
 
 ```{r}
 #| eval: false
+fn_save_plot <- function(prov) {
+  p <- new_rtt |>
+    filter(provider_code == prov) |>
+    ggplot(aes(x = month(rtt_yrmon), y = count)) +
+    geom_col() +
+    su_theme() +
+    theme(legend.position = "none") +
+    labs(
+      subtitle = paste0(prov, " - monthly pattern of new referrals")
+    )
 
-fn_save_plot <- function(prov){
-  
-    p <- new_rtt |> 
-      filter(provider_code == prov) |> 
-      ggplot(aes(x = month(rtt_yrmon), y = count)) +
-      geom_col() +
-      su_theme() +
-        theme(legend.position = "none") +
-      labs(
-           subtitle = paste0(prov, " - monthly pattern of new referrals"))
-    
-    ggsave(paste0(prov, "_plot.png"), 
-           plot = p)
-  
+  ggsave(paste0(prov, "_plot.png"), plot = p)
 }
-
 ```
 :::
 
@@ -372,7 +340,6 @@ When learning to walk, use `safely()` or `possibly()` in your `walk` function - 
 ::: column
 ```{r}
 #| eval: false
-
 # wrap fn_plots in safely
 safe_pl <- safely(.f = fn_save_plot)
 
@@ -383,7 +350,6 @@ map(prov_labels, ~ safe_pl(.x))
 poss_pl <- possibly(.f = fn_save_plot)
 
 map(prov_labels, ~ poss_pl(.x))
-
 ```
 :::
 

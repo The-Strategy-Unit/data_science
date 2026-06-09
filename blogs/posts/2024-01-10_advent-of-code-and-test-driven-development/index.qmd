@@ -5,11 +5,6 @@ date: "2024-01-10"
 categories: [learning]
 ---
 
-```{r lockfile}
-#| include: FALSE
-renv::use(lockfile = "renv.lock")
-```
-
 
 [Advent of Code]( https://adventofcode.com/) is an annual event, where daily coding puzzles are released from 1st – 24th December. 
 We ran one of our fortnightly Coffee & Coding sessions introducing Advent of Code to people who code in the Strategy Unit, as well as the concept of test-driven development as a potential way of approaching the puzzles.

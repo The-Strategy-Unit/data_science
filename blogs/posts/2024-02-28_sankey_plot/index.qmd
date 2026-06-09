@@ -8,11 +8,6 @@ reference-location: margin
 citation-location: margin
 ---
 
-```{r lockfile}
-#| include: FALSE
-renv::use(lockfile = "renv.lock")
-```
-
 
 # Introduction
 
@@ -29,7 +24,13 @@ This blog post is about the technical process of preparing record-level data for
 ```{r}
 #| echo: false
 # here's one I prepared earlier
-readRDS(file = here::here("blogs", "posts", "2024-02-28_sankey_plot", "sankey_example.rds"))
+path <- "sankey_example.rds"
+
+if (!file.exists(path)) {
+  path <- here::here("blogs/posts/2024-02-28_sankey_plot/sankey_example.rds")
+}
+
+readRDS(path)
 ```
 
 # Data wrangling
@@ -41,7 +42,6 @@ First we'll attach some packages. I'll be using [plotly](https://plotly.com/r/sa
 #| warning: false
 #| message: false
 #| output: false
-
 # libraries
 library(tidyverse) # 'tidy' data wrangling
 library(plotly) # sankey visualisation framework
@@ -95,7 +95,6 @@ Here we generate 100 rows of example data to populate our table.
 #| code-fold: true
 #| fig-cap: Generated invite table
 #| fig-cap-location: top
-
 # set a randomisation seed for reproducibility
 set.seed(seed = 1234)
 
@@ -111,13 +110,15 @@ df_invites_1 <- tibble(
   # create a random initial invite date between our start and end dates
   invite_1_date = sample(
     seq(start_date, end_date, by = "day"),
-    size = rows, replace = T
+    size = rows,
+    replace = T
   ),
 
   # create a random outcome for this participant
   invite_outcome = sample(
     x = c("Accepted", "Declined", "No response"),
-    size = rows, replace = T
+    size = rows,
+    replace = T
   )
 )
 
@@ -191,7 +192,6 @@ The reason for this will become clearer when we come to plot the Sankey, but for
 #| code-fold: true
 #| fig-cap: Milestone-outcomes for participants
 #| fig-cap-location: top
-
 df_milestones <- df_invites |>
   mutate(
     # everyone starts in the eligible population
@@ -251,9 +251,7 @@ For invites 2 and 3 we perform two sets of summaries:
 #| code-fold: true
 #| fig-cap: Flows of participants between milestones
 #| fig-cap-location: top
-
 df_flows <- bind_rows(
-
   # flow from population to invite 1
   df_milestones |>
     filter(!is.na(start_population) & !is.na(invite_1_outcome)) |>
@@ -332,7 +330,6 @@ It is possible to extract this data by hand but I found using the [tidygraph](ht
 df_sankey <- df_flows |>
   # convert our flows data to a tidy graph object
   as_tbl_graph()
-
 ```
 
 The tidygraph package splits our data into nodes and edges. We can selectively work on each by 'activating' them - here is the nodes list:
@@ -363,7 +360,6 @@ Finally we pass these two dataframes to plotly's `node` and `link` function inpu
 #| code-fold: true
 #| fig-cap: Our first sankey
 #| fig-cap-location: top
-
 # extract the nodes to a dataframe
 nodes <- df_sankey |>
   activate(nodes) |>
@@ -430,7 +426,6 @@ For the nodes object we define colours based on the name of each node and manual
 #| code-fold: true
 #| fig-cap: Styling the nodes dataframe
 #| fig-cap-location: top
-
 # get the eligible population as a single value
 # NB, will be used to work out % amounts in each node and edge
 temp_eligible_pop <- df_flows |>
@@ -466,7 +461,8 @@ nodes <- nodes |>
       str_detect(name, "Invitation 2") ~ 3,
       str_detect(name, "Invitation 3") ~ 4,
       .default = 5
-    ) |> rescale(to = c(0.001, 0.9)),
+    ) |>
+      rescale(to = c(0.001, 0.9)),
 
     # vertical position (1 = bottom, 0 = top)
     y = case_when(
@@ -488,7 +484,8 @@ nodes <- nodes |>
       str_detect(name, "No response") ~ 5,
       str_detect(name, "Declined") ~ 8,
       .default = 5
-    ) |> rescale(to = c(0.001, 0.999))
+    ) |>
+      rescale(to = c(0.001, 0.999))
   ) |>
   # add in a custom field to show the percentage flow
   left_join(
@@ -513,7 +510,6 @@ Next we move to styling the edges, which is a much simpler prospect:
 #| code-fold: true
 #| fig-cap: Styling the edges dataframe
 #| fig-cap-location: top
-
 edges <- edges |>
   mutate(
     # add a label for each flow to tell us how many people are in each
@@ -538,7 +534,6 @@ We now have stylised node and edge tables ready and can bring it all together. N
 #| code-fold: true
 #| fig-cap: A stylish Sankey
 #| fig-cap-location: top
-
 # plot our stylised sankey
 plot_ly(
   # setup

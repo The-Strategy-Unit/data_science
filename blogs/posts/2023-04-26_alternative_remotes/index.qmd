@@ -12,11 +12,6 @@ knitr:
       bg: transparent
 ---
 
-```{r lockfile}
-#| include: FALSE
-renv::use(lockfile = "renv.lock")
-```
-
 
 It's great when someone send's you a pull request on GitHub to fix bugs or add new features to your project, but you probably always want to check the other persons work in someway before merging that pull request.
 

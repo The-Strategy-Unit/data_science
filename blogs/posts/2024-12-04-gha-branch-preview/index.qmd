@@ -9,11 +9,6 @@ execute:
 engine: markdown
 ---
 
-```{r lockfile}
-#| include: FALSE
-renv::use(lockfile = "renv.lock")
-```
-
 
 When reviewing a pull request (PR) for a Quarto website, it's good practice to check the rendered output, as well as the code. This is useful for ensuring that the changes look as expected, for example, ensuring that bullet points have rendered correctly, or that images are well sized.
 

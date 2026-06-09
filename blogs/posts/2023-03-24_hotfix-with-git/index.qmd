@@ -12,11 +12,6 @@ knitr:
       bg: transparent
 ---
 
-```{r lockfile}
-#| include: FALSE
-renv::use(lockfile = "renv.lock")
-```
-
 ```{r setup}
 library(ggplot2)
 theme_set(

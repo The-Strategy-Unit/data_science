@@ -1,0 +1,15 @@
+{
+  "hash": "e953ae04420a1bca6c4c108b1be26122",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Advent of Code and Test Driven Development\"\nauthor: \"YiWen Hon\"\ndate: \"2024-01-10\"\ncategories: [learning]\n---\n\n\n\n\n[Advent of Code]( https://adventofcode.com/) is an annual event, where daily coding puzzles are released from 1st – 24th December. \nWe ran one of our fortnightly Coffee & Coding sessions introducing Advent of Code to people who code in the Strategy Unit, as well as the concept of test-driven development as a potential way of approaching the puzzles.\n\n[Test-driven development](https://developer.ibm.com/articles/5-steps-of-test-driven-development/) (TDD) is an approach to coding which involves writing the test for a function BEFORE we write the function. \nThis might seem quite counterintuitive, but it makes it easier to identify bugs 🐛 when they are introduced to our code, and ensures that our functions meet all necessary criteria. \nFrom my experience, this takes quite a long time to implement and can be quite tedious, but it is definitely worth it overall, especially as your project develops. \nTesting is also recommended in the [NHS Reproducible Analytical Pipeline (RAP)](https://nhsdigital.github.io/rap-community-of-practice/introduction_to_RAP/levels_of_RAP/) guidelines. \n\nAn interesting thing to note about TDD is that we're always expecting our first test to fail, and indeed failing tests are useful and important! \nIf we wrote tests that just passed all the time, this would not be useful at all for our code.\n\nThe way that Advent of Code is structured, with test data for each puzzle and an expected test result, makes it very amenable to a test-driven approach. \nIn order to support this, Matt and I created template repositories for a test-driven approach to Advent of Code, in [Python](https://github.com/yiwen-h/aoc_python_template) and in [R]( https://github.com/matt-dray/aoc.rstats.template). \n\nOur goal when setting this up was to introduce others in the Strategy Unit to both TDD and Advent of Code. \nAdvent of code can be challenging and I personally struggle to get past the first week, but it encourages creative (and maybe even fun?!) approaches to coding problems. \nI'm glad that we had the chance to explore some of the puzzles together in Coffee & Coding – it was interesting to see so many different approaches to the same problem, and hopefully it also gave us all the chance to practice writing tests.",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

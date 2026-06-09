@@ -26,11 +26,6 @@ editor:
     wrap: 120
 ---
 
-```{r lockfile}
-#| include: FALSE
-renv::use(lockfile = "renv.lock")
-```
-
 
 ## A note on Richard Stallman
 

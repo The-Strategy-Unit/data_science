@@ -34,8 +34,7 @@ format:
 
 ## The problem
 
-* We did everything we were supposed to and people were happy with the model
-* But there were issues
+* We did everything we were supposed to and people were happy with the model. But there were issues
 * User feedback and prioritisation of developments were ad-hoc
 * Programmes of work were siloed 
 * Crucially, the needs of different bugfixes and improvements were considered in isolation
@@ -50,10 +49,48 @@ format:
 ## Another story
 
 * This is someone else's story
+* It has a real resonance with an age old problem in analytics- nobody uses our dashboards!
+* The results that the intervention produced were profound but come from a world I knew nothing about two years ago
 
-## The solution
+## The solution - product
 
-![Source: [What exactly is a product manager](https://www.mindtheproduct.com/what-exactly-is-a-product-manager/)](what_is_product_management.png)
+![Source: [Oscar G Torres](https://oscargt.com/)](what_is_product_management.png)
+
+## What is product?
+
+* Pro*ject* management is all about delivering a thing
+* You can be agile and iterate on the thing
+* You can do waterfall and spec a thing and then do it
+* Pro*duct* management is about *Why* and *What*
+
+## Back to the other person's story
+
+* They introduced the disciplines of product into their team building PowerBI stuff
+* Specifically:
+  * Product management; Product design; Developer; User researcher; Delivery manager
+* Excellent results on engagement with outputs was immediate
+
+## Next steps
+
+* Staff found their roles were too broad
+* It was challenging from a skills and workload point of view
+* Root and branch change of job roles and JDs with the willing participation of all staff
+
+## End result
+
+* Their work is transformed- roughly a third of the staff are involved in:
+  * Product management
+  * Design
+  * User research
+* And they could do more given time and resources- this work is not "one and done"
+
+## Back to my story
+
+* We've been working on adding product roles for the last year
+* Two full time roles (and me chipping in)
+* Many things have worked really well
+* Some things we are still working on
+
 
 
 

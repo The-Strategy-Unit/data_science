@@ -16,6 +16,8 @@ site_libs/
 *_freeze/
 *.html
 
+renv
+
 *.code-workspace
 
 **/*.quarto_ipynb

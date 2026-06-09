@@ -9,7 +9,7 @@ authors:
       - name: The Strategy Unit
         url: https://strategyunitwm.nhs.uk/
 date: "2025-07-28"
-categories: [R, Imputation, Learning, MICE]
+categories: [R, imputation, learning, MICE]
 execute: 
   enabled: true
 editor: 

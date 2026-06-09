@@ -8,7 +8,7 @@ authors:
       - name: The Strategy Unit
         url: https://strategyunitwm.nhs.uk/
 date: "2025-11-07"
-categories: [Python, Data Science, Performance]
+categories: [Python, data science, performance]
 execute:
   enabled: false
 editor:

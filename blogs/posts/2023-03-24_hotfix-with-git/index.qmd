@@ -2,7 +2,7 @@
 title: "Creating a hotfix with git"
 author: "Tom Jemmett"
 date: "2023-03-24"
-categories: [git, tutorial]
+categories: [Git, tutorial]
 knitr:
   opts_chunk:
     fig.height: 2.5

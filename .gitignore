@@ -13,10 +13,9 @@ site_libs/
 *.rmarkdown
 
 *_cache/
+*_freeze/
 *.html
 
-*.egg-info/
-*_freeze/
+*.code-workspace
 
 **/*.quarto_ipynb
-**/*.ipynb_checkpoints

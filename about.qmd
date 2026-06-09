@@ -12,6 +12,7 @@ The Data Science team at the Strategy Unit comprises the following team members:
 - [YiWen Hon](https://github.com/yiwen-h)
 - [Tom Jemmett](https://github.com/tomjemmett)
 - [Eirini Komninou](https://github.com/ai-mindset)
+- [Ozayr Mohammed](https://github.com/O-Mohammed)
 - [Natasha Stephenson](https://github.com/Nat-Stephenson)
 - [Zoë Turner](https://github.com/Lextuga007)
 

@@ -13,6 +13,7 @@ The Data Science team at the Strategy Unit comprises the following team members:
 - [Tom Jemmett](https://github.com/tomjemmett)
 - [Eirini Komninou](https://github.com/ai-mindset)
 - [Natasha Stephenson](https://github.com/Nat-Stephenson)
+- [Zoë Turner](https://github.com/Lextuga007)
 
 The team has a wealth of experience in deploying models and other products to
 the cloud for use by a wide range of users across health and care.

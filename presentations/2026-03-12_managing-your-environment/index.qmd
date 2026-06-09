@@ -25,14 +25,37 @@ format:
 
 ## Storytime #1
 
+:::: {.columns}
+
+::: {.column width="50%"}
+
 Ronald worked on a project last year. He did some quick analysis and saved his scripts.
 He's revisiting the project now but the code isn't running because one of the functions has now been deprecated.
+:::
+
+::: {.column width="50%"}
+![](ronald-laptop.jpeg){fig-alt="An orange tabby cat lying on a laptop keyboard, asleep" fig-align="center"}
+
+:::
+::::
 
 ## Storytime #2
 
-Bella's finished working on a data pipeline! It runs on her machine. However one of her colleagues Freud can't run it on their machine because they don't know what packages they need to install.
+Freud's finished working on a data pipeline! It runs on his machine. However his colleague Pavlova can't run it on her laptop because she don't know what package versions she needs to install.
 
-## Solution: environment management
+![](pavlova-laptop.jpg){fig-alt="A fluffy brown cat sitting in front of a computer screen, looking both sleepy and mildly annoyed. RStudio is displayed on the computer screen, obscured by her fluff" fig-align="center"}
+
+## Step 1: Simplest methods to ensure portability
+
+@matt-dray to expand on this slide
+Are we looking at the same files? 
+
+- OS-agnostic filepaths
+- .Renviron / .env files to store variables
+- Portability - treat each project individually
+
+
+## Step 2: Using dedicated tools
 
 We need to record what versions of the programming language and packages were used in your code at that specific point in time.
 
@@ -40,25 +63,39 @@ Like a time capsule, "freezing" your programming environment.
 
 ![](mr-freeze-ice.gif){fig-alt="A gif showing Arnold Schwarzenegger as Mr Freeze in Batman & Robin (1997), with the caption 'Lets kick some ice!'." fig-align="center"}
 
+
 ## Environment management basics in R
 
 
 
 
-## Environment management basics in Python
+## Environment management basics in Python: Level 1
+
+- Use `os.path.join` for OS-agnostic filepaths
+- Use `.env` files and the `dotenv` package for environment variables
+
+::: {.notes}
+Live demonstration goes here showing what these functions are doing
+:::
+
+## Environment management basics in Python: Level 2
 
 - Many, _many_ different options in Python. [See table here](https://pythonhealthdatascience.github.io/des_rap_book/pages/guide/setup/environment.html)
-- We use `uv` in the Data Science team
+- We use `uv` in the Data Science team and would highly recommend it
 
-## Taking it further: Docker 🐳
+::: {.notes}
+Live demonstration goes here
+:::
+
+## Step 3: Reproducible OS (operating systems)
 
 :::: {.columns}
 
 ::: {.column width="50%"}
 
+- [Docker](https://www.docker.com/) 🐳 / [nix](https://nixos.org/) / rix
 - Recreates the WHOLE MACHINE, not just the environment!
-- Docker creates a temporary virtual computer with the sole purpose of running your script.
-- This means you have full control over _everything_ running your code
+- Docker creates a temporary virtual computer with the sole purpose of running your script
 
 :::
 ::: {.column width="50%"}
@@ -66,7 +103,8 @@ Like a time capsule, "freezing" your programming environment.
 :::
 ::::
 
-## When should we manage environments?
+## What are we trying to achieve?
 
-- For every single project, no matter how small?
-- You never know when you might need to revisit something...
+Different solutions for different project needs.
+
+@matt-dray to add detail here

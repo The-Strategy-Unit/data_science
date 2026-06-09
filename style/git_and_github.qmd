@@ -211,7 +211,7 @@ So other developers know how to dev with you:
 
 * Use [rulesets](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets) to protect your main branch
 * make pull requests early, [marked as draft](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/changing-the-stage-of-a-pull-request) with an assignee so 'in-progress' work is visible
-* make clear the preferred Git branching strategy (e.g. feature branches off of main)
+* make clear the preferred Git branching strategy (e.g. feature branches off main)
 
 To make it easier for developers to get an at-a-glance understanding:
 

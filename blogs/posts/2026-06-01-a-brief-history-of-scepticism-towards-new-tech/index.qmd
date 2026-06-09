@@ -98,7 +98,7 @@ Dr. Norbert Wiener is not a household name, but he arguably should be.
 A mathematician and scientist at MIT, Wiener pioneered the field he called *cybernetics* - the study of how systems, whether mechanical or biological, regulate themselves through feedback.
 The concepts he developed in the 1940s and 1950s underpin much of what we now call artificial intelligence.[^5]
 
-![Dr. Norbert Wiener, pioneer of cybernetics and one of the earliest voices warning about the risks of intelligent machines.](norbert-wiener-portrait.jpeg){fig-alt="Historical photograph of Dr. Norbert Wiener, mathematician and founder of cybernetics, at work. Sourced from the Pessimists Archive newsletter."}
+![Dr. Norbert Wiener, pioneer of cybernetics and one of the earliest voices warning about the risks of intelligent machines.](norbert-wiener-portrait.jpg){fig-alt="Historical photograph of Dr. Norbert Wiener, mathematician and founder of cybernetics, at work. Sourced from the Pessimists Archive newsletter."}
 
 *Source: [Pessimists Archive - The Original AI Doomer: Dr. Norbert Wiener](https://newsletter.pessimistsarchive.org/p/the-original-ai-doomer-dr-norbert).*
 

@@ -91,6 +91,18 @@ format:
 * Many things have worked really well
 * Some things we are still working on
 
+## Product versus delivery
+
+* Separating the *why* from the *how*
+* It's a really specific and clear example of "Involve us at the start"
+* People work better with clear roles and clear responsibilities
+* Build a group of people who know why and a group who know how
+
+## In practice
+
+* Agile rituals as cargo cult
+* Product
+
 
 
 

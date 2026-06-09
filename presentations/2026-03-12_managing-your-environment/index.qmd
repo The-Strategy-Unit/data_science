@@ -101,7 +101,7 @@ For R:
 
 ## Step 2: environment managers
 
-For python:
+For Python:
 
 - there's many, _many_ different options ([see table here](https://pythonhealthdatascience.github.io/des_rap_book/pages/guide/setup/environment.html))
 - [we use `uv`](https://docs.astral.sh/uv/) in the DS team and recommend it

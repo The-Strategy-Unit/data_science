@@ -1,0 +1,59 @@
+---
+title: "Whose application is it anyway?"
+subtitle: "Building products for everyone in the UK health and care system"
+author: 
+  - "[Chris Beeley](mailto:chris.beeley1@nhs.net)"
+date: 2025-12-04
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, ../su_presentation.scss]
+    transition: none
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    slide-number: false
+    auto-animate: true
+    footer: |
+      Learn more about [The Strategy Unit](https://www.strategyunitwm.nhs.uk/)
+---
+
+## Introduction
+
+* I want to tell a story
+* It's about ending up in the middle of two things- data science and digital
+* I naively launched in the wrong direction and have beeen redirecting since
+* I'm not an expert in anything I talk about today- if you're doing something big ask an expert
+
+## The story
+
+* I lead a team that built a demand and capacity model for the New Hospital Programme
+* It's a simulation model that predicts demand for acute care in c. 2041
+* There's a huge amount of analytical work on and around the model
+* We have produced lots of whizzy reports and dashboards to assist with parameter setting and results interpretation
+
+## The problem
+
+* We did everything we were supposed to and people were happy with the model
+* But there were issues
+* User feedback and prioritisation of developments were ad-hoc
+* Programmes of work were siloed 
+* Crucially, the needs of different bugfixes and improvements were considered in isolation
+* The connection between different deliverables was poorly understood, leading to delays and missed opportunities
+
+## Where next?
+
+* I wanted somebody to work across all of the different streams of work
+* They would consider the work programme as a whole and help to prioritise
+* We started to think, **really think** of individuals interacting with our model, inside and outside the unit, as users
+
+## Another story
+
+* This is someone else's story
+
+## The solution
+
+![Source: [What exactly is a product manager](https://www.mindtheproduct.com/what-exactly-is-a-product-manager/)](what_is_product_management.png)
+
+
+

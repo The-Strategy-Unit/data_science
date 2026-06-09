@@ -65,13 +65,32 @@ To work on an already published blogpost/presentation:
   `renv::snapshot("PATH_TO_THE_FOLDER")` and ensure that you include at the top
   of your .qmd file (after the yaml block) the following code chunk:
 
+````
+```{r lockfile}
+#| include: FALSE
+renv::use(lockfile = "renv.lock")
+```
+````
 
 ### How to create a new blogpost
 
 1. Navigate to the `blogs/posts` folder
-2. Create a folder for your blogpost, following the naming convention `YYYY-MM-DD_title-of-post`
-3. Copy a previous blogpost index.qmd file into your folder and use that as your template
-4. Write your blogpost. To preview changes, run `quarto preview path/to/index.qmd` in terminal.
+2. Create a folder for your blogpost, following the naming convention
+  `YYYY-MM-DD_title-of-post`
+3. Copy a previous blogpost index.qmd file into your folder and use that as your
+  template
+4. Write your blogpost. To preview changes, run `quarto preview path/to/index.qmd`
+  in terminal.
+5. If your blogpost requires any specific packages, capture them with
+  `renv::snapshot("PATH_TO_THE_FOLDER")` and ensure that you include at the top
+  of your .qmd file (after the yaml block) the following code chunk:
+
+````
+```{r lockfile}
+#| include: FALSE
+renv::use(lockfile = "renv.lock")
+```
+````
 
 
 ### How to create/edit pages on the website
@@ -88,10 +107,15 @@ To work on an already published blogpost/presentation:
 
 ### Pushing your blog post/presentation/page to GitHub
 
-1. Save your file, then add and commit it (`git add file.qmd` and `git commit -m "Add blog post/presentation about x"`). If you have any computed blocks in your content, ensure that you have run the code locally; this should generate files in the `_freeze` directory. You must ensure that these files are added to version control.
+1. Save your file, then add and commit it (`git add file.qmd` and
+  `git commit -m "Add blog post/presentation about x"`)
 2. Push your content to your branch in GitHub (`git push origin branchname`).
-3. Then, on GitHub, make a pull request to main. Put any member of the Data Science team down as a reviewer. Link your pull request with your issue by typing `Closes #issuenumber` in the comment field of your pull request.
-4. When approved and merged to main, the Quarto page will automatically be rendered thanks to the GitHub action that has been set up.
+3. Then, on GitHub, make a pull request to `main`.
+  Put any member of the Data Science team down as a reviewer.
+  Link your pull request with your issue by typing `Closes #issuenumber` in the
+  comment field of your pull request.
+4. When approved and merged to main, the Quarto page will automatically be
+  rendered thanks to the GitHub action that has been set up.
 
 ### Potential issues
 

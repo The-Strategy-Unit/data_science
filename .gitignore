@@ -17,3 +17,4 @@ site_libs/
 *.html
 
 **/*.quarto_ipynb
+**/*.ipynb_checkpoints

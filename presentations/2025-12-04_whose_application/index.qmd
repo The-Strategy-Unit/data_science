@@ -98,30 +98,31 @@ format:
 * People work better with clear roles and clear responsibilities
 * Build a group of people who know why and a group who know how
 
-## What is agile
+## Agile
 
 * Customers talk waterfall but behave agile
-* My 2022 agile definition:
-  * Customers can't make up their minds
-  * It's hard to design software all at once
-  * Continuous delivery keeps customers happy
-
-## Some highlights from [The agile manifesto](https://agilemanifesto.org/)
-
-* "Welcome changing requirements, even late in development"
-* "At regular intervals, the team reflects on how to become more effective, then tunes and adjusts its behavior accordingly"
-* "Continuous attention to technical excellence and good design enhances agility"
-* "Simplicity- the art of maximizing the amount of work not done- is essential"
-
-## How agile helps
-
-* Those shaping the project wanted to be able to make quick changes- and see the long term plan
 * Agility is a mindset, a mode of practice
 * Being agile is all about being able to review and make decisions frequently
 * But it isn't about changing what you're doing all the time
 * Good code and good teams are ready to change direction- whether they change or not
 
+## Money for old rope
 
+* This is old news to digital people
+* Data science and analytics are expanding
+* We're reinventing the wheel
+* But these methods are being looked at by other teams
+  * And I think we really do need to reinvent the wheel
+
+## Data science and analytics is entering its Max Power stage
+
+![The wrong way... But faster!](https://media1.tenor.com/m/X8smvfU4WTMAAAAd/simpsons-max-power.gif)
+
+## Tying threads
+
+* We need to listen and learn from agile and product colleagues in digital
+* But I also think we need to make these methods our own
+* Let's do it together 🙂
 
 
 

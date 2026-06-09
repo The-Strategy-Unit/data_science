@@ -2,6 +2,7 @@
 title: "Efficient Coding"
 subtitle: "Principles and Practices for Performant Code"
 author: "Eirini & Rhian, DS @ SU"
+engine: knitr
 format:
   revealjs:
     theme: dark
@@ -10,6 +11,10 @@ format:
     font-size: 0.7em
 execute:
   eval: false
+knitr:
+  opts_chunk:
+    python.reticulate: false
+
 ---
 
 ```{r lockfile}

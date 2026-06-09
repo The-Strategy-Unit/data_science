@@ -16,7 +16,7 @@ format:
       view slides at [the-strategy-unit.github.io/data_science/presentations][ds_presentations]
 ---
 
-[ds_presentations]: https://tinyurl.com/zhuzhing-custom-error-messages/
+[ds_presentations]: https://tinyurl.com/zhuzhing-error-messages
 
 
 ## Error messages can be cool 😎🤔
@@ -192,8 +192,8 @@ check_string(NA)
 ::: {.notes}
 
 You can use cli for more than just error messages!
-Can be helpful for providing semantically-formatted and nicely-presented
-info messages to package users.
+Can be helpful for providing semantically-formatted and nicely-presented info
+messages to package users.
 
 :::
 
@@ -265,12 +265,16 @@ than (or as well as, if you insist) the specific text of the error message.
 
 ## Summary
 
+::: {.notes}
+
+
+:::
+
 * Take control of the error messages your users might see
-* Let your users know you've thought about them?
-* Help yourself have a tiny bit more fun writing input checking code??
+* Let your users know you've thought about them (?)
 * Help yourself with writing tests and debugging your code
 
 
 ## Thank you
 
-and have fun!
+### ...and have fun! {.r-fit-text .center}

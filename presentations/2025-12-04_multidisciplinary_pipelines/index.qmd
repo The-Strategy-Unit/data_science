@@ -47,7 +47,7 @@ format:
 
 * Demographic change
 * Non-demographic change
-* Categories of potentially mitigable activity
+* Types of potentially mitigable activity
 * More to come
 
 ## The model
@@ -61,8 +61,8 @@ format:
 
 * Not going to show a big confusing diagram
 * [There is one if you want one](https://connect.strategyunitwm.nhs.uk/nhp/project_information/project_plan_and_summary/components-overview.html)
-* There are three places that stuff happens, partly because of IG
-* We store and process data in Azure (SQL -> databricks)
+* Three places that stuff happens, partly because of IG
+* We store and process data in Azure (SQL -> databricks; Docker)
 * We host the reports and dashboards separately, with no data on this server, only results
 * And we have a plethora of scripts, notebooks, and other gubbins on laptops
 
@@ -78,6 +78,20 @@ format:
 
 ![](rap.jpg)
 
+## Challenges
+
+* All models are wrong
+* Consistency versus accuracy
+* "It is difficult to make predictions, especially about the future"
+  * "This model is simple"
+
+## The national elicitation exercise
+
+* We asked experts to predict likely levels of mitigation in the future, in a structured way
+* We also made some whizzy data science tools to do it with- which ended up being really important and useful
+* It's not my area so I won't say any more- this was Prof Mohammed and team
+* We show these values to trusts to help them make better guesses about the future
+
 ## Challenges- users
 
 * Complexity correctness versus accessibility correctness
@@ -87,7 +101,7 @@ format:
 ## Challenges- decision making
 
 * Different analytical teams
-  * Theoretical ideas to 
+  * Theoretical ideas to... 
   * Pragmatic interpretations 
   * All delivered with data science
 * NHP

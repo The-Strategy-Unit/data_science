@@ -1,0 +1,15 @@
+{
+  "hash": "079480e23c4477f75a48ee14704b94a3",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Collaborative working\"\nauthor: \"[Chris Beeley](mailto:chris.beeley1@nhs.net)\"\ndate: 2023-03-23\ndate-format: \"MMM D, YYYY\"\nformat:\n  revealjs:\n    theme: [default, ../su_presentation.scss]\n    transition: none\n    chalkboard:\n      buttons: false\n    footer: |\n      view slides at [the-strategy-unit.github.io/data_science/presentations][ds_presentations]\n    preview-links: auto\n    slide-number: false\n    auto-animate: true\n---\n\n\n\n\n[ds_presentations]: https://the-strategy-unit.github.io/data_science/\n\n## Introduction\n\n* This is definitely an art and not a science\n* I do not claim to have all, or even most of, the answers\n* How you use these tools is way more important than the tools themselves\n* This is a culture and not a technique\n\n## Costs\n\n* Delay and time\n* Stress and disagreement\n* Committee thinking\n* Learning and effort\n\n## Benefits\n\n* \"From each according to their ability\"\n* Learning\n* Reproducibility and reduced truck factor\n* Fun!\n\n## GitHub as an organising principle behind work\n\n* A project is just a set of milestones\n* A milestone is just a set of issues\n* An issue is just a set of commits\n* A commit is just text added and removed\n\n## The repo owner\n\n* Review milestones\n* Review issues\n  * Discuss the issue on the issue- NOT on email!\n* Review pull requests and get your pull requests reviewed!\n\n## Asynchronous communication\n\n* Involve others *before* you pull request\n* Involve others *when* you pull request\n* Read issues!\n* Comment on issues!\n* File issues- suggestions/ bug reports/ questions\n  * NOT in emails\n\n## Asynchronous work\n\n* Every piece of work has an issues associated with it\n* Every piece of work associated with an issue lives on its own branch\n* Every branch is incorporated to the main repo by a pull request\n* Every pull request is reviewed\n\n## Iteration and documentation\n\n* Analyse early, analyse often (using RAPs!)\n* Write down what you did\n* Write down what you did but then changed your mind about\n* Favour Quarto/ RMarkdown\n  * Clean sessions\n  * Documentation and graphics\n\n## Data and .gitignore\n\n* Your repo needs to be reproducible but also needs to be safe\n* The main branch should be reproducible by anyone at any time\n  * Document package dependencies (using renv)\n  * Document data loads if the data isn't in the repo\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

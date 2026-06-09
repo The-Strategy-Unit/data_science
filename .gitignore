@@ -18,5 +18,3 @@ site_libs/
 *.egg-info/
 **/*.quarto_ipynb
 **/*.ipynb_checkpoints
-
-**/*.quarto_ipynb

@@ -1,7 +1,7 @@
 ---
 title: "Efficient Coding"
 subtitle: "Principles and Practices for Performant Code"
-author: "Eirini, Rhian & YiWen, DS @ SU"
+author: "Eirini & Rhian, DS @ SU"
 format:
   revealjs:
     theme: dark
@@ -16,23 +16,27 @@ jupyter: python3
 - **Measuring Performance**: Time and profile your code
 - **Common Performance Tweaks**: Easy wins for faster code
 - **Loops vs. Vectorisation vs. Functional**: Choose the right approach
-- **Optimising Loops**: When you must use them
-- **Beyond Basics**: Tools for serious optimisation
+- **Optimising Loops**: When you should use them
+- **Beyond Basics**: Tools for further optimisation
+
+## Measuring Performance
 
 ## Measuring Performance: Timing
 
 ```{python}
 #| echo: true
+#| code-fold: show
 from timeit import timeit  # Python's precise timing module
 
-# Function to measure
-def my_function():
-    return sum(i**2 for i in range(1_000_000))  # Sum of squares
+size = 1_000_000
+
+def sum_of_squares(): # Function to measure
+    return sum(i**2 for i in range(size))
 
 # Time the function execution
 # number=100: run multiple times for statistical significance
 # globals=globals(): access functions defined in current scope
-execution_time = timeit('my_function()',
+execution_time = timeit('sum_of_squares()',
                        globals=globals(),
                        number=100)
 
@@ -67,28 +71,29 @@ print(s.getvalue())
 
 **Understanding the output:**
 
-- `ncalls`: The function was called directly 1 time but expanded to 1M total calls
+- `ncalls`: No. of times the function was called directly
 - `tottime`: sum_of_squares consumed 0.000 seconds in its own code
-- `cumtime`: Total time including nested calls was 0.141 seconds
-- **Last column**: The bottleneck is split between `{built-in method builtins.sum}` and the generator expression (`i * i for i in range(n)`)
+- `cumtime`: Total time including nested calls
+- `percall`: The bottleneck(s) i.e. `{built-in method builtins.sum}` and the generator expression (`i * i for i in range(n)`)
 
-**Key insight**: The overhead is split almost evenly between sum() and the generator expression when processing 1M items.
+## Performance Tweaks
 
 ## Performance Tweak: String Concatenation
 
 ```{python}
 #| echo: true
+#| code-fold: show
 from timeit import timeit  # Import timing functionality
 
-# Fast - O(n) complexity with clear intent
-def join_method():
-    return "".join(str(i) for i in range(100_000))  # Single efficient operation
+size = 100_000
 
-# Slow - O(n²) complexity
-def concat_method():
+def join_method(): # Fast - O(n) complexity with clear intent
+    return "".join("Hello World! " for _ in range(size))  # Single operation
+
+def concat_method(): # Slow - O(n²) complexity
     result = ""
-    for i in range(100_000):
-        result += str(i)  # Creates new string each time
+    for _ in range(size):
+        result += "Hello World! "  # Creates new string each time
     return result
 
 t1 = timeit(join_method, number=100)  # Time the fast method
@@ -101,11 +106,14 @@ print(f"Speedup: {t2/t1:.1f}x faster")
 
 ```{python}
 #| echo: true
+#| code-fold: show
 from timeit import timeit  # For timing the operations
 import random  # To select a random lookup value
 
+size = 100_000
+
 # Setup test data
-data = list(range(100_000))  # A list with 10,000 items
+data = list(range(size))  # A list with 100,000 items
 lookup_val = random.choice(data)  # Random value to find
 lookup_set = set(data)  # Same data as a set for O(1) lookup
 
@@ -123,23 +131,22 @@ print(f"Speedup: {t1/t2:.1f}x faster")
 
 ```{python}
 #| echo: true
+#| code-fold: show
 from timeit import timeit  # For timing operations
 import numpy as np  # For pre-allocated arrays
 
 size = 100_000  # Number of elements to process
 
-# Growing a list dynamically (expensive resizing operations)
-def growing_list():
+def growing_list(): # Growing a list dynamically (expensive)
     result = []  # Empty list that will grow
     for i in range(size):
-        result.append(i*2)  # Potentially triggers resize
+        result.append(i**2)  # Triggers resize
     return result
 
-# Pre-allocated array (fixed size from beginning)
-def preallocated_array():
-    result = np.zeros(size, dtype=int)  # Create array of right size first
+def preallocated_array(): # Pre-allocated array
+    result = np.zeros(size, dtype=int)  # Preallocate array
     for i in range(size):
-        result[i] = i*2  # No resizing needed
+        result[i] = i**2  # No resizing needed
     return result
 
 t1 = timeit(growing_list, number=100)
@@ -153,26 +160,26 @@ print(f"Speedup: {t2/t1:.1f}x faster")
 | Approach | Best For | Example Use Case |
 |---|---|---|
 | **Loops** | Complex logic, small data | Custom algorithms |
-| **Vectorisation** | Numerical operations | Data science, numpy |
-| **Functional** | Data transformations | Pipelines, map/reduce |
+| **Vectorisation** | Numerical operations | Data science, NumPy |
+| **Functional** | Data transformations | Pipelines, map/reduce/filter |
 
 ## Loops
 
 ```{python}
 #| echo: true
+#| code-fold: show
 from timeit import timeit  # For timing code execution
 
-size = 100_000  # Number of elements to process (reduced for demo)
+size = 100_000
 
-# Standard loop approach (explicit iteration)
-def standard_loop():
+def standard_loop():  # Slower - bytecode overhead + repeated .append() calls
     result = []
     for i in range(size):
-        result.append(i * 2 + 5)  # Each operation done sequentially
+        result.append(i**2)
     return result
 
-def list_comprehension():
-    return [i * 2 + 5 for i in range(size)]
+def list_comprehension():  # Faster, concise
+    return [i**2 for i in range(size)]
 
 t1 = timeit(standard_loop, number=100)
 t2 = timeit(list_comprehension, number=100)
@@ -185,18 +192,17 @@ print(f"Speedup: {t1/t2:.1f}x faster")
 
 ```{python}
 #| echo: true
+#| code-fold: show
 from timeit import timeit  # For timing code execution
 import numpy as np  # NumPy for vectorised operations
 
-size = 100_000  # Number of elements to process (reduced for demo)
+size = 100_000
 
-# Pure Python approach (loops through each element)
-def python_way():
-    return [i * 2 + 5 for i in range(size)]
+def python_way(): # Pure Python approach (loops through each element)
+    return [i**2 for i in range(size)]
 
-# NumPy vectorised approach (operates on entire array at once)
-def numpy_way():
-    return np.arange(size) * 2 + 5  # Uses C implementation
+def numpy_way(): # NumPy vectorised approach (operates on entire array at once)
+    return np.arange(size)**2 # Uses C implementation
 
 # Compare execution times
 t1 = timeit(python_way, number=100)
@@ -210,20 +216,19 @@ print(f"Speedup: {t1/t2:.1f}x faster")
 
 ```{python}
 #| echo: true
+#| code-fold: show
 import pandas as pd  # For DataFrame operations
 import numpy as np   # For random data generation
 from timeit import timeit  # For timing operations
 
 # Create sample dataframe with 10,000 random values (reduced for demo)
-df = pd.DataFrame({'value': np.random.rand(100)})
+df = pd.DataFrame({"value": np.random.rand(10_000)})
 
-# Slow: Using apply (runs Python function on each row)
-def apply_method():
-    return df['value'].apply(lambda x: x * 2 + 5)
+def apply_method(): # Slow: Using apply (runs Python function on each row)
+    return df["value"].apply(lambda x: x**2)
 
-# Fast: Vectorised operations (C implementation)
-def vector_method():
-    return df['value'] * 2 + 5
+def vector_method(): # Fast: Vectorised operations (C implementation)
+    return df["value"]**2
 
 # Compare execution times
 t1 = timeit(apply_method, number=100)
@@ -234,71 +239,75 @@ print(f"Speedup: {t1/t2:.1f}x faster")
 ```
 
 ## Functional Programming
+[Functional programming in Python? by David Vujic](https://www.youtube.com/watch?v=hz4OPyBYA98)
 
 ```{python}
 #| echo: true
+#| code-fold: show
 from timeit import timeit
 
+size = 100_000
+
 # Compare map vs list comprehension
-t1 = timeit(lambda: list(map(lambda x: x**2, range(100_000))), number=100)
-t2 = timeit(lambda: [x**2 for x in range(100_000)], number=100)
+t1 = timeit(lambda: list(map(lambda x: x**2, range(size))), number=100)
+t2 = timeit(lambda: [x**2 for x in range(size)], number=100)
 
 print(f"map: {t1:.6f}s\ncomprehension: {t2:.6f}s")
 print(f"Speedup: {t1/t2:.1f}x faster")
 ```
 
-## Speed Comparison Summary
+## Generators
 
 ```{python}
-#| echo: false
-import pandas as pd
+#| echo: true
+#| code-fold: show
+def count_up_to(limit):
+    count = 0
+    while count < limit:
+        yield count
+        count += 1
 
-# Create a summary table of typical performance results
-data = {
-    'Approach': ['Standard loop', 'List comprehension', 'Python list ops', 'NumPy vectorised',
-                 'Pandas apply', 'Pandas vectorised', 'Map function', 'List comprehension'],
-    'Category': ['Loops', 'Loops', 'Vectorisation', 'Vectorisation',
-                 'Vectorisation', 'Vectorisation', 'Functional', 'Functional'],
-    'Typical Time (sec)': [0.049893, 0.027239, 0.054816, 0.002517, 0.104524, 0.001358, 0.040885, 0.025535]
-}
-
-df = pd.DataFrame(data)
-print(df.to_string(index=False))
+# Usage
+for number in count_up_to(5):
+    print(number)
 ```
 
 ## When to Use Each Approach
 
 - **Vectorisation**: Large numerical datasets (NumPy/Pandas)
 - **List Comprehensions**: Simple transformations on sequences
-- **Generators**: Large datasets, memory efficiency
 - **Functional**: Complex pipelines, data transformations
 - **Loops**: Complex logic, small datasets, or when readability matters
+- **Generators**: Process large datasets, that shouldn't be loaded entirely into memory
 
 ## Loop Optimisation Techniques
 
 ```{python}
 #| echo: true
+#| code-fold: show
 from timeit import timeit  # For timing execution
-import math  # For sqrt function
+import math  # For sqrt, sin, cos functions
+from random import random
 
-# Create test data - objects with a 'value' attribute
-data = [type('obj', (), {'value': i}) for i in range(100_000)]
+size = 1_000_000
 
-# Regular approach: recalculating len() and looking up math.sqrt each time
-def regular_loop():
-    total = 0
-    for i in range(len(data)):  # len() called with every iteration
-        total += math.sqrt(data[i].value)  # Function lookup each time
-    return total
+data = [random()**2 for _ in range(size)] # Create test data
 
-# Optimised approach: pre-compute length and bind function locally
-def optimised_loop():
-    total = 0
-    n = len(data)  # Calculate length once
-    sqrt = math.sqrt  # Local reference to function
+def regular_loop(): # len() and function lookups each iteration
+    result = 0
+    for i in range(len(data)):  # len() recalculated in every iteration
+        x = data[i]
+        result += math.sqrt(x) + math.sin(x) + math.cos(x)  # Function lookups each time
+    return result
+
+def optimised_loop(): # pre-computed length and local function bindings
+    result = 0
+    n = len(data)  # Pre-compute length once
+    sqrt, sin, cos = math.sqrt, math.sin, math.cos  # Bind functions locally
     for i in range(n):
-        total += sqrt(data[i].value)
-    return total
+        x = data[i]
+        result += sqrt(x) + sin(x) + cos(x)
+    return result
 
 t1 = timeit(regular_loop, number=100)
 t2 = timeit(optimised_loop, number=100)
@@ -314,12 +323,15 @@ print(f"Speedup: {t1/t2:.1f}x faster")
 4. **Avoid premature optimisation** - readable code first
 5. **Know when to use loops, comprehensions, or functional styles**
 
+[Effective Python, The Book: Third Edition, Brett Slatkin](https://effectivepython.com/)
+
 # Appendix: Beyond Basics
 
-## Just-In-Time Compilation (1)
+## Appendix: Just-in-Time Compilation (1)
 
 ```{python}
 #| echo: true
+#| code-fold: show
 from numba import jit
 import numpy as np
 from timeit import timeit
@@ -344,7 +356,7 @@ print(f"Python: {t1:.6f}s\nNumba: {t2:.6f}s")
 print(f"Speedup: {t1/t2:.1f}x faster")
 ```
 
-## Just-In-Time Compilation (2)
+## Appendix: Just-In-Time Compilation (2)
 
 **What is JIT?**
 
@@ -355,7 +367,7 @@ print(f"Speedup: {t1/t2:.1f}x faster")
 - Works especially well with NumPy operations
 - Requires minimal code changes (just add decorators)
 
-## Cython - Basic Example
+## Appendix: Cython (Basics)
 
 **Pure Python version (slow.py):**
 ```python
@@ -379,7 +391,7 @@ def calculate_sum_cy(int n):
 
 **Result**: Typically 20-100x faster performance
 
-## Cython - Best Practices
+## Appendix: Cython (Best Practices)
 
 **Key techniques for maximum performance:**
 
@@ -407,7 +419,7 @@ cpdef process_parallel(double[:] data) nogil:  # No Python GIL
     # Can now use OpenMP for parallelism
 ```
 
-## Compiling Cython Code
+## Appendix: Cython (Compiling)
 
 **Option 1: Using setuptools (recommended for projects)**
 ```python

@@ -22,23 +22,23 @@ format:
 
 ## The New Hospital Programme (NHP)
 
-:::: {.columns}
+::: {.columns}
 
-::: {.column width='40%'}
+:::: {.column width='40%'}
 
 - A manifesto commitment
 - Future activity must be modelled
 - Need consistency across schemes
 
-:::
+::::
 
-::: {.column width='60%'}
+:::: {.column width='60%'}
 
 ![](kettering-raac.png){width='100%' fig-alt="The headline of a BBC article that says 'Raac: Top floor of Kettering General Hospital Wing vacated'. There is a picture of the hospital with a caption that starts 'crumbling Raac was discovered in the roof."}
 
-:::
-
 ::::
+
+:::
 
 ::: {.notes}
 
@@ -49,7 +49,6 @@ format:
 
 :::
 
-::::
 
 ## {#model-process data-menu-title="Model process diagram" .center}
 
@@ -155,23 +154,23 @@ A probabilistic Monte Carlo simulation that:
 
 # Thank you {.inverse}
 
-:::: {.columns}
+::: {.columns}
 
-::: {.column width='60%'}
+:::: {.column width='60%'}
 
 - Using R and Python to Model Future Hospital Activity: The New Hospital Programme Demand and Capacity Model
 - [YiWen Hon](mailto:yiwen.hon1@nhs.net), [Matt Dray](mailto:matt.dray@nhs.net) and [Tom Jemmett](mailto:thomas.jemmett@nhs.net)
 - [The Strategy Unit](https://www.strategyunitwm.nhs.uk/), [NHS ML](https://www.midlandsandlancashirecsu.nhs.uk/)
 
-:::
+::::
 
 ::: {.column width='40%'}
 
 ![](earl-nhp-qr.svg)
 
-:::
-
 ::::
+
+:::
 
 ::: {.notes}
 

@@ -123,7 +123,6 @@ in open source.)
 
 ::: r-stack
  ![](images/pat%20dates.png){.fragment .absolute bottom="160" left="340" width="458"} <!--![](images/flow%20date%201.png){.fragment .absolute bottom="160" left="340" width="593"} ![](images/flow%20date%202.png){.fragment .absolute bottom="160" left="340" width="718"} ![](images/flow%20date%203.png){.fragment .absolute bottom="160" left="340" width="856"}  ![](images/flow%20date%204.png){.fragment .absolute bottom="160" left="340" width="977"}--> ![](images/admissions.png){.fragment .absolute bottom="110" left="850" width="205"} 
- ![](images/wk admissions.png){.fragment .absolute bottom="275" left="1100" width="205"}
 :::
 
 ::: {.notes}

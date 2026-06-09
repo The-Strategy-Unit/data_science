@@ -65,32 +65,13 @@ To work on an already published blogpost/presentation:
   `renv::snapshot("PATH_TO_THE_FOLDER")` and ensure that you include at the top
   of your .qmd file (after the yaml block) the following code chunk:
 
-````
-```{r lockfile}
-#| include: FALSE
-renv::use(lockfile = "renv.lock")
-```
-````
 
 ### How to create a new blogpost
 
 1. Navigate to the `blogs/posts` folder
-2. Create a folder for your blogpost, following the naming convention
-  `YYYY-MM-DD_title-of-post`
-3. Copy a previous blogpost index.qmd file into your folder and use that as your
-  template
-4. Write your blogpost. To preview changes, run `quarto preview path/to/index.qmd`
-  in terminal.
-5. If your blogpost requires any specific packages, capture them with
-  `renv::snapshot("PATH_TO_THE_FOLDER")` and ensure that you include at the top
-  of your .qmd file (after the yaml block) the following code chunk:
-
-````
-```{r lockfile}
-#| include: FALSE
-renv::use(lockfile = "renv.lock")
-```
-````
+2. Create a folder for your blogpost, following the naming convention `YYYY-MM-DD_title-of-post`
+3. Copy a previous blogpost index.qmd file into your folder and use that as your template
+4. Write your blogpost. To preview changes, run `quarto preview path/to/index.qmd` in terminal.
 
 
 ### How to create/edit pages on the website

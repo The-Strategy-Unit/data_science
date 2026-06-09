@@ -16,5 +16,7 @@ site_libs/
 *.html
 
 *.egg-info/
+*_freeze/
+
 **/*.quarto_ipynb
 **/*.ipynb_checkpoints

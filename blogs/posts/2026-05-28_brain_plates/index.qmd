@@ -58,7 +58,7 @@ the different ways we manage our working lives.
 
 #{{< include EK.qmd >}}
 
-##[Picture of EK](EK.png){fig-align="right"} Eirini: AI Agent Herder 
+## ![Picture of EK](EK.png){fig-align="right"} Eirini: AI Agent Herder 
 
 
 ## How do I manage my work knowledge and tasks? 

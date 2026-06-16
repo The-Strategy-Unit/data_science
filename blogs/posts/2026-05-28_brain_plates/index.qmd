@@ -105,7 +105,33 @@ The majority of my time is spent in a terminal window - aligning with the team's
 
 #{{< include MD.qmd >}}
 
-#{{< include CB.qmd >}}
+## ![Picture of Chris](CB.jpg){width="10%" fig-align="right"} Chris: Head of data science
+
+### How do I manage my work knowledge and tasks? 
+
+I would say largely that I don't manage my work knowledge and tasks. I'm head of a decently sized data science team (~10 people) and my remit 
+across the unit and team includes information governance, delivery, product, a business critical model, and more besides. 
+
+For a long time I thought that I couldn't do the kind of job that I do now because I thought that management (not leadership- management) 
+was all about being incredibly organised and having lots of checklists and plans. I'm just not that person so I counted myself out. 
+I've since learned that the task of a team leader is to create a team and systems that are responsive, organised, and get the job done. 
+If you can do that with plans and checklists, great, but if not you have options, or I certainly did.
+
+Having said all that, what do I do to organise myself. My principle job as it is for many people is to clear out my inbox of all the pressing things in it. 
+My priorities shift a lot and what's important on a Monday morning can be forgotten by Thursday afternoon. That's just how it is in my job. I try to 
+help the team to stick to what they're doing and not get tossed around by events but if I worked like that there would be lots of (rightly) angry people in my inbox. 
+And of course a decent chunk of my time is spent in meetings. I try to go where I'm needed and not go where I'm not needed but sometimes it can feel like there is a lot 
+to keep on top of.
+
+I use [Todoist](https://app.todoist.com) to keep track of the things that I do actually do apart from clearing out my inbox and going to meetings. 
+The team do tag me on GitHub and I do try to keep up with it but because it isn't my main place to look GitHub notifications can fall through the cracks. 
+The team know I always appreciate a nudge on stuff they're waiting for and I try to get to things when or before people nudge me. 
+
+I'm a great believer in the power of pen and paper to help one think and I do do that when I'm doing something knotty, but honestly these days I 
+rarely am. People bring me stuff, I try to say something helpful about it, and they go on their way. My team have all the brilliant insights and do the important 
+work. I just offer prompts and questions to help us through when things seem a bit uncertain.
+
+
 
 #{{< include ZT.qmd >}}
 

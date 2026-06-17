@@ -1,0 +1,15 @@
+{
+  "hash": "3107001e69521c50c48630165cecd82f",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Data Science @ The Strategy Unit\"\nsidebar: false\n---\n\nThis is the home of Data Science activities at [The Strategy Unit][su_web].\n\nHere, we host information about how we work, links to presentations, and blogposts relating to how we utilise data science tools. \n\nAll members of the Strategy Unit are welcome to contribute.\n\n[su_web]: https://strategyunitwm.nhs.uk/\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -102,8 +102,22 @@ that maintaining a minimal and focused toolbox helps me keep reasonably organise
 It also allows me to leverage a wider range of computers (older, with constrained resources), as most of my tools are lightweight, easy to install and free. Finally, I favour plain markdown or JSON - if hierarchy is required - as they are portable and universal formats.
 The majority of my time is spent in a terminal window - aligning with the team's nerdery - and my web browser running Solveit and GitHub tabs.
 
+## ![A white thirty-something male with short brown hair, wearing a blue jumper over shirt and tie. The type of person who looks like his name is probably 'Matt'.](MD.jpg){width="10%" fig-align="right"} Matt: yak-shaver
 
-#{{< include MD.qmd >}}
+As a developer and scrummaster, I record tasks as **GitHub issues** and track them through our GitHub project board.
+I label issues by type and priority and add them to release milestones.
+In the comments I write up-to-date notes, tag team members and record any agreements.
+This way, _all the information is on the task_.
+
+At the start of the day I might write down a few to-dos with **pen and paper**.
+Sometimes I'll scribble ephemeral notes as I work, but my notepad is disposable.
+Meaningful information goes on GitHub where it belongs.
+Anyway, the notepad can't be a long-term store because I can barely read my handwriting.
+
+I wrote a [lightweight Python-powered command-line interface called jot](https://github.com/matt-dray/jot) to log time-stamped notes in **a text file**.
+During my work day I go frequently to a terminal and type something like `jot "circled-back on paradigm-shifting"`.
+This isn't about note-taking; I use the entries to help reflect on what I've been up to.
+It's especially useful for capturing 'softer skills' or 'glue work' that often goes undervalued.
 
 ## ![Picture of Chris](CB.jpg){width="10%" fig-align="right"} Chris: Head of data science
 

@@ -17,12 +17,6 @@ format:
     code-fold: true
 ---
 
-
-```{r lockfile}
-#| include: FALSE
-renv::use(lockfile = "renv.lock")
-```
-
 *"Do I have to wait for GitHub Copilot comments to be addressed before I start my code review?"*
 
 It's a simple question, but one that reveals a genuine gap in how teams think about AI-assisted reviews. Much like a human reviewer, GitHub Copilot provides feedback on code changes when requested - but as it takes on a more active role in the PR process, the old mental model of "one reviewer at a time" doesn't quite fit anymore. This post sets out our team's answer - and the reasoning behind it.

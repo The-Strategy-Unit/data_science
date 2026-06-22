@@ -58,8 +58,9 @@ the different ways we manage our working lives.
 
 #{{< include EK.qmd >}}
 
-## ![Picture of EK](EK.png){width="10%" fig-align="right"} Eirini: AI Agent Herder 
+<!-- ## ![Picture of EK](EK.png){width="10%" fig-align="right"} Eirini: AI Agent Herder --> 
 
+## Eirini: AI Agent Herder <Picture of EK src="EK.png" width="10%" align="right">
 
 ## How do I manage my work? 
 

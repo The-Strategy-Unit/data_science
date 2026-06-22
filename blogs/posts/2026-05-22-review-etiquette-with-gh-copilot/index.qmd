@@ -14,6 +14,7 @@ editor:
     wrap: sentence
 format:
   html:
+    code-fold: true
 ---
 
 *"Do I have to wait for GitHub Copilot comments to be addressed before I start my code review?"*

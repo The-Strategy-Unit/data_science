@@ -36,7 +36,7 @@ wider Unit, or anything you'd like us to know.”
 
 We’ve grown to really value this hour, and lots of interesting ideas and 
 positivity fall out of them. We try to avoid talking about BAU work, so that we 
-can have a little and celebrate each other’s’ unique flavours of nerdery.  
+can have a little fun and celebrate each other’s’ unique flavours of nerdery.  
 Some recent highlights have been an app that was built to find optimal walking 
 routes between pubs and landmarks, an auto-generated personal blog website with 
 great photos and a notebook to analyse football statistics.
@@ -50,15 +50,7 @@ approach similar problems differently.
 This blog is a set of mini interviews with our lovely team members to capture 
 the different ways we manage our working lives.
 
-#{{< include RD.qmd >}}
-
-#{{< include NS.qmd >}}
-
-#{{< include TJ.qmd >}}
-
-#{{< include EK.qmd >}}
-
-<!-- ## ![Picture of EK](EK.png){width="10%" fig-align="right"} Eirini: AI Agent Herder --> 
+## ![Picture of EK](EK.png){width="10%" fig-align="right"} Eirini: AI Agent Herder 
 
 ## Eirini: AI Agent Herder <Picture of EK src="EK.png" width="10%" align="right">
 
@@ -113,12 +105,48 @@ It also allows me to leverage a wider range of computers (older, with constraine
 easy to install and free. Finally, I favour plain markdown or JSON - if hierarchy is required - as they are portable and universal formats.
 The majority of my time is spent in a terminal window - aligning with the team's nerdery - and my web browser running Solveit and GitHub tabs.
 
+## ![A white thirty-something male with short brown hair, wearing a blue jumper over shirt and tie. The type of person who looks like his name is probably 'Matt'.](MD.jpg){width="10%" fig-align="right"} Matt: yak-shaver
 
-#{{< include MD.qmd >}}
+As a developer and scrummaster, I record tasks as **GitHub issues** and track them through our GitHub project board.
+I label issues by type and priority and add them to release milestones.
+In the comments I write up-to-date notes, tag team members and record any agreements.
+This way, _all the information is on the task_.
 
-#{{< include CB.qmd >}}
+At the start of the day I might write down a few to-dos with **pen and paper**.
+Sometimes I'll scribble ephemeral notes as I work, but my notepad is disposable.
+Meaningful information goes on GitHub where it belongs.
+Anyway, the notepad can't be a long-term store because I can barely read my handwriting.
 
-#{{< include ZT.qmd >}}
+I wrote a [lightweight Python-powered command-line interface called jot](https://github.com/matt-dray/jot) to log time-stamped notes in **a text file**.
+During my work day I go frequently to a terminal and type something like `jot "circled-back on paradigm-shifting"`.
+This isn't about note-taking; I use the entries to help reflect on what I've been up to.
+It's especially useful for capturing 'softer skills' or 'glue work' that often goes undervalued.
+
+## ![Picture of Chris](CB.jpg){width="10%" fig-align="right"} Chris: Head of data science
+
+### How do I manage my work knowledge and tasks? 
+
+I would say largely that I don't manage my work knowledge and tasks. I'm head of a decently sized data science team (~10 people) and my remit 
+across the unit and team includes information governance, delivery, product, a business critical model, and more besides. 
+
+For a long time I thought that I couldn't do the kind of job that I do now because I thought that management (not leadership- management) 
+was all about being incredibly organised and having lots of checklists and plans. I'm just not that person so I counted myself out. 
+I've since learned that the task of a team leader is to create a team and systems that are responsive, organised, and get the job done. 
+If you can do that with plans and checklists, great, but if not you have options, or I certainly did.
+
+Having said all that, what do I do to organise myself. My principal job as it is for many people is to clear out my inbox of all the pressing things in it. 
+My priorities shift a lot and what's important on a Monday morning can be forgotten by Thursday afternoon. That's just how it is in my job. I try to 
+help the team to stick to what they're doing and not get tossed around by events but if I worked like that there would be lots of (rightly) angry people in my inbox. 
+And of course a decent chunk of my time is spent in meetings. I try to go where I'm needed and not go where I'm not needed but sometimes it can feel like there is a lot 
+to keep on top of.
+
+I use [Todoist](https://app.todoist.com) to keep track of the things that I actually do apart from clearing out my inbox and going to meetings. 
+The team tag me on GitHub and I do try to keep up with it but because it isn't my main place to look GitHub notifications can fall through the cracks. 
+The team know I always appreciate a nudge on stuff they're waiting for and I try to get to things when or before people nudge me. 
+
+I'm a great believer in the power of pen and paper to help one think and I do do that when I'm doing something knotty, but honestly these days I 
+rarely am. People bring me stuff, I try to say something helpful about it, and they go on their way. My team have all the brilliant insights and do the important 
+work. I just offer prompts and questions to help us through when things seem uncertain.
 
 ## ![Picture of CW](CW.jpg){width="10%" fig-align="right"} Claire: Lead Data Scientist 
 
@@ -184,8 +212,4 @@ something electronic quickly (so I can't destroy it with coffee stains as easily
 Its also quicker for me than using any drawing software.
 
 ![Photograph of notepaper with messy writing on it showing a process I wanted to visualise as I was talking](scribble.jpg)
-
-#{{< include YH.qmd >}}
-
-#{{< include FB.qmd >}}
 

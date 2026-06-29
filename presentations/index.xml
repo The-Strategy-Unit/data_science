@@ -39,14 +39,6 @@
 <item>
   <title></title>
   <dc:creator>[Chris Beeley](mailto:chris.beeley1@nhs.net)</dc:creator>
-  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-12-04_multidisciplinary_pipelines/</link>
-  <description><![CDATA[ undefined ]]></description>
-  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-12-04_multidisciplinary_pipelines/</guid>
-  <pubDate>Thu, 04 Dec 2025 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <dc:creator>[Chris Beeley](mailto:chris.beeley1@nhs.net)</dc:creator>
   <link>https://the-strategy-unit.github.io/data_science/presentations/2025-12-04_whose_application/</link>
   <description><![CDATA[ undefined ]]></description>
   <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-12-04_whose_application/</guid>
@@ -54,11 +46,11 @@
 </item>
 <item>
   <title></title>
-  <dc:creator>[Tom Jemmett](mailto:thomas.jemmett@nhs.net)</dc:creator>
-  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-11-14_unit-testing/</link>
+  <dc:creator>[Chris Beeley](mailto:chris.beeley1@nhs.net)</dc:creator>
+  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-12-04_multidisciplinary_pipelines/</link>
   <description><![CDATA[ undefined ]]></description>
-  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-11-14_unit-testing/</guid>
-  <pubDate>Fri, 14 Nov 2025 00:00:00 GMT</pubDate>
+  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-12-04_multidisciplinary_pipelines/</guid>
+  <pubDate>Thu, 04 Dec 2025 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -70,12 +62,11 @@
 </item>
 <item>
   <title></title>
-  <dc:creator>[Jacqueline Grout](mailto:jacqueline.grout@nhs.net)</dc:creator>
-  <dc:creator>[Matt Dray](mailto:matt.dray@nhs.net)</dc:creator>
-  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-11-13_nhsrpysoc-2025-word/</link>
+  <dc:creator>[Tom Jemmett](mailto:thomas.jemmett@nhs.net)</dc:creator>
+  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-11-14_unit-testing/</link>
   <description><![CDATA[ undefined ]]></description>
-  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-11-13_nhsrpysoc-2025-word/</guid>
-  <pubDate>Thu, 13 Nov 2025 00:00:00 GMT</pubDate>
+  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-11-14_unit-testing/</guid>
+  <pubDate>Fri, 14 Nov 2025 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -83,6 +74,15 @@
   <link>https://the-strategy-unit.github.io/data_science/presentations/2025-11-13_error_messages_with_cli/</link>
   <description><![CDATA[ undefined ]]></description>
   <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-11-13_error_messages_with_cli/</guid>
+  <pubDate>Thu, 13 Nov 2025 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <dc:creator>[Jacqueline Grout](mailto:jacqueline.grout@nhs.net)</dc:creator>
+  <dc:creator>[Matt Dray](mailto:matt.dray@nhs.net)</dc:creator>
+  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-11-13_nhsrpysoc-2025-word/</link>
+  <description><![CDATA[ undefined ]]></description>
+  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-11-13_nhsrpysoc-2025-word/</guid>
   <pubDate>Thu, 13 Nov 2025 00:00:00 GMT</pubDate>
 </item>
 <item>

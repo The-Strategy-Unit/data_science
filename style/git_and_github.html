@@ -44,9 +44,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-d99d2eb964990dd25c3b73d3592ecb3b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-19c99e26dd5a9a0d802a7e2804f7fdd9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-d99d2eb964990dd25c3b73d3592ecb3b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-01c21a508e1d220cde4cf39d373c93ba.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-0851a1e92f310d0dd2cadc2234feacd4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-01c21a508e1d220cde4cf39d373c93ba.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -382,6 +382,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#creating-and-reviewing-prs" id="toc-creating-and-reviewing-prs" class="nav-link" data-scroll-target="#creating-and-reviewing-prs">Creating and reviewing PRs</a>
   <ul class="collapse">
   <li><a href="#reviewing-methodology" id="toc-reviewing-methodology" class="nav-link" data-scroll-target="#reviewing-methodology">Reviewing methodology</a></li>
+  <li><a href="#reviewing-with-github-copilot" id="toc-reviewing-with-github-copilot" class="nav-link" data-scroll-target="#reviewing-with-github-copilot">Reviewing with GitHub Copilot</a></li>
   </ul></li>
   <li><a href="#preparing-a-package-release-of-your-code" id="toc-preparing-a-package-release-of-your-code" class="nav-link" data-scroll-target="#preparing-a-package-release-of-your-code">Preparing a package release of your code</a></li>
   <li><a href="#repository-organisation" id="toc-repository-organisation" class="nav-link" data-scroll-target="#repository-organisation">Repository organisation</a>
@@ -500,7 +501,10 @@ Important
 <div class="no-row-height column-margin column-container"><div class="margin-aside">
 <p>If the PR is later assigned back to you then you must immediately pull changes.</p>
 </div></div><p>There may be times when you cannot be the assignee on a PR and in those situations you should nominate someone else to be the assignee and in charge of the PR, the same rules as in the paragraph above would then apply.</p>
-<p>If, as a reviewer, you find that no one is assigned to the branch, you should get in contact with the person who created the branch and decide who is going to be the assigned owner of the PR.</p>
+</section>
+<section id="reviewing-with-github-copilot" class="level3">
+<h3 class="anchored" data-anchor-id="reviewing-with-github-copilot">Reviewing with GitHub Copilot</h3>
+<p>When GitHub Copilot acts as a PR reviewer: - <strong>PR opened with Copilot comments:</strong> Author addresses all comments - <strong>Human reviewer starts while Copilot comments pending:</strong> Review concurrently. Explicitly agree with overlapping suggestions - <strong>No pending Copilot comments:</strong> Human reviewer is sole blocker - <strong>Pending Copilot comments unaddressed:</strong> Author is blocker. Reviewer may continue or unassign themselves until Copilot comments are resolved - <strong>PR needs more time for Copilot feedback:</strong> Convert to Draft until resolved - <strong>Copilot feedback appears after review begins:</strong> Keep PR open. Author addresses feedback, reviewer completes remaining items - <strong>No assignee on PR:</strong> If no assignee is set, contact the PR creator to agree who is responsible for merging</p>
 <section id="outside-collaborators" class="level4">
 <h4 class="anchored" data-anchor-id="outside-collaborators">Outside collaborators</h4>
 <p>In circumstances where the person who created the PR is an outside collaborator and doesn’t have permission to merge, then the reviewer should also be the assignee. In these circumstances, the collaborator will be working from their local fork and will be the only person who can push to the branch. The reviewer, once happy to approve the changes, can merge the PR.</p>

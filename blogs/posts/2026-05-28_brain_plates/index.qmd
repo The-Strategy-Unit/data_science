@@ -50,14 +50,6 @@ approach similar problems differently.
 This blog is a set of mini interviews with our lovely team members to capture 
 the different ways we manage our working lives.
 
-#{{< include RD.qmd >}}
-
-#{{< include NS.qmd >}}
-
-#{{< include TJ.qmd >}}
-
-#{{< include EK.qmd >}}
-
 ## ![Picture of EK](EK.png){width="10%" fig-align="right"} Eirini: AI Agent Herder 
 
 
@@ -145,10 +137,6 @@ I'm a great believer in the power of pen and paper to help one think and I do do
 rarely am. People bring me stuff, I try to say something helpful about it, and they go on their way. My team have all the brilliant insights and do the important 
 work. I just offer prompts and questions to help us through when things seem uncertain.
 
-
-
-#{{< include ZT.qmd >}}
-
 ## ![Picture of CW](CW.jpg){width="10%" fig-align="right"} Claire: Lead Data Scientist 
 
 ## How do I store my meeting notes and thoughts/ideas? 🧠
@@ -213,8 +201,4 @@ something electronic quickly (so I can't destroy it with coffee stains as easily
 Its also quicker for me than using any drawing software.
 
 ![Photograph of notepaper with messy writing on it showing a process I wanted to visualise as I was talking](scribble.jpg)
-
-#{{< include YH.qmd >}}
-
-#{{< include FB.qmd >}}
 

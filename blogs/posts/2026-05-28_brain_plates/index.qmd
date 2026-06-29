@@ -52,8 +52,9 @@ the different ways we manage our working lives.
 
 ## ![Picture of EK](EK.png){width="10%" fig-align="right"} Eirini: AI Agent Herder 
 
+## Eirini: AI Agent Herder <Picture of EK src="EK.png" width="10%" align="right">
 
-## How do I manage my work knowledge and tasks? 
+## How do I manage my work? 
 
 ### To-do list and notes 📋
 
@@ -66,32 +67,42 @@ Both projects, organisation aside, have acted as a "wet lab" that allow experime
 [Deno](https://deno.com/) with TypeScript) and [Rust](https://rust-lang.org/) - in search of a single, compact, 
 batteries-included language outside the Python realm, that'll be my hammer to hit most nails. More on that another time.
 
-_Task_ allows me to create a to-do list and notes in a single, lightweight, easily backed up Markdown file. It has worked well for me so far. Poke, using JSON for maintaining hierarchy, will allow me to keep local notes under GitHub Issues, similar to Tasks created under Azure DevOps Board work items. 
+_Task_ allows me to create a to-do list and notes in a single, lightweight, easily backed up Markdown file. It has 
+worked well for me so far. Poke, using JSON for maintaining hierarchy, will allow me to keep local notes under 
+GitHub Issues, similar to Tasks created under Azure DevOps Board work items. 
 
 ### Emails 📩
 
-I use Outlook (classic), as a more lightweight email client. It's a feature-rich tool, sometimes unnecessarily 
-rich. Thus, I simply keep an Outlook window on one side of my screen, for email and meeting notifications. 
+I use Outlook (classic), as a more lightweight email client. It's a feature-rich tool, sometimes unnecessarily rich. 
+Thus, I simply keep an Outlook window on one side of my screen, for email and meeting notifications. 
+GitHub notifications over email have felt overwhelming at times, therefore I set up a list of filters to redirect 
+GitHub notifications accordingly. This system has had varying levels of success, hence I've reverted to tweaking my 
+GitHub notifications and simply receive notification emails in my inbox. 
 
-GitHub notifications over email have felt overwhelming at times, therefore I set up a list of filters to redirect GitHub notifications accordingly. This system has had varying levels of success, hence I've reverted to tweaking my GitHub notifications and simply receive notification emails in my inbox. 
-
-At the end of each day, I strive to get most pending emails addressed or at least lined up for the next day if they're not urgent.
+At the end of each day, I strive to get most pending emails addressed or at least lined up for the next day 
+if they're not urgent.
 
 ### GitHub
 
-I always have a web browser window open with two or three GitHub tabs to help me have an overview of my current 
-workload. One tab with my GitHub issues, another tab containing PRs, a third tab listing my Notifications. 
-Filters are very useful since they allow me to categorise and organise my work accordingly. They help reduce the noise and maintain my focus on tasks requiring my attention.
+I always have a web browser window open with two or three GitHub tabs to help me have an overview of my current workload. 
+One tab with my GitHub issues, another tab containing PRs, a third tab listing my Notifications. 
+Filters are very useful since they allow me to categorise and organise my work accordingly. They help reduce the noise 
+and maintain my focus on tasks requiring my attention.
 
 ### Solveit
 
-My daily driver and AI harness of choice is [Solveit](https://solve.it.com/); a fusion between literate programming and agentic AI forming an editable dialogue between the user and the language model. Solveit is my thinking partner, that helps me plan, research, interrogate, dissect and distil knowledge. It also helps me examine, improve, fix and architect new code.  
+My daily driver and AI harness of choice is [Solveit](https://solve.it.com/); a fusion between literate programming and 
+agentic AI forming an editable dialogue between the user and the language model. Solveit is my thinking partner, 
+that helps me plan, research, interrogate, dissect and distil knowledge. It also helps me examine, improve, fix and architect 
+new code. Local AI is also very helpful, running on my own machine to use as a private free AI API or for agentic AI workflows 
+with OpenCode (for the time being, while experimenting with other harnesses 🚧).
 
 ### Other tools
 
-I do not use pen and paper, or other tools outside the minimal list above. This is by choice, as experience has shown 
-that maintaining a minimal and focused toolbox helps me keep reasonably organised.
-It also allows me to leverage a wider range of computers (older, with constrained resources), as most of my tools are lightweight, easy to install and free. Finally, I favour plain markdown or JSON - if hierarchy is required - as they are portable and universal formats.
+As much as I enjoy a good pen or pencil and a nice notebook, I do not use pen and paper - or other tools outside the minimal list above. 
+This is by choice, as experience has shown that maintaining a minimal and focused toolbox helps me keep reasonably organised.
+It also allows me to leverage a wider range of computers (older, with constrained resources), as most of my tools are lightweight, 
+easy to install and free. Finally, I favour plain markdown or JSON - if hierarchy is required - as they are portable and universal formats.
 The majority of my time is spent in a terminal window - aligning with the team's nerdery - and my web browser running Solveit and GitHub tabs.
 
 ## ![A white thirty-something male with short brown hair, wearing a blue jumper over shirt and tie. The type of person who looks like his name is probably 'Matt'.](MD.jpg){width="10%" fig-align="right"} Matt: yak-shaver

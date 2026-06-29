@@ -1,0 +1,68 @@
+---
+title: "Code Review Etiquette with GitHub Copilot"
+subtitle: "Best practices for collaborating with AI-powered review"
+authors:
+  - name: Eirini Komninou 
+    email: eirini.komninou@nhs.net
+    affiliation:
+      - name: The Strategy Unit
+        url: https://strategyunitwm.nhs.uk/
+date: "2026-05-22"
+categories: [Git, GitHub]
+editor: 
+  markdown: 
+    wrap: sentence
+format:
+  html:
+    code-fold: true
+---
+
+*"Do I have to wait for GitHub Copilot comments to be addressed before I start my code review?"*
+
+It's a simple question, but one that reveals a genuine gap in how teams think about AI-assisted reviews. Much like a human reviewer, GitHub Copilot provides feedback on code changes when requested - but as it takes on a more active role in the PR process, the old mental model of "one reviewer at a time" doesn't quite fit anymore. This post sets out our team's answer - and the reasoning behind it.
+
+## Team Discussion: Different Perspectives on Copilot-Involved Reviews
+
+During a recent team discussion, three distinct perspectives emerged on how to handle PRs when Copilot comments are pending.
+
+**Review in sequence** - Some felt that human reviewers should hold off entirely until the author had addressed all Copilot comments. The concern was straightforward: reviewing code that may soon change wastes reviewers' time and creates unnecessary back-and-forth. Converting the PR to draft status until Copilot feedback is resolved was seen as a clean way to signal this.
+
+**Coordinate, then review** - Others agreed that waiting was considerate, but noted it works best when made explicit. Without coordination, multiple reviewers might unknowingly create serial dependencies that slow the whole process down.
+
+**Review in parallel** - A third view favoured concurrent review, on the grounds that Copilot and human reviewers tend to focus on very different things: Copilot on style and common patterns, humans on logic, architecture, and business context. Explicitly noting agreement with Copilot suggestions was seen as a clean way to avoid duplication without adding delay.
+
+### Team Conclusion
+After weighing these perspectives, the team converged on **review in parallel** as the default, with draft status used whenever Copilot comments remain unaddressed.
+
+## Copilot Review Etiquette Guidelines
+
+**PR Opened with Copilot Comments**
+The author should address all Copilot comments before requesting human review - just as they would with automated linting or formatting checks. This keeps the review focused: human reviewers shouldn't have to mentally filter out feedback the author has already seen and may be acting on.
+
+**Human Reviewer Starts While Copilot Comments Pending**
+Human reviewers should review concurrently with Copilot rather than waiting - the two tend to focus on different things, so there's rarely as much overlap as expected. Where the reviewer agrees with a Copilot suggestion, noting it explicitly saves the author from having to reconcile two separate threads of feedback.
+
+**No Pending Copilot Comments**
+When all Copilot comments have been addressed (or none were generated), the human reviewer becomes the sole blocker for merging. At this point, the PR should be treated like any standard review.
+
+**Pending Copilot Comments Unaddressed**
+If Copilot comments remain unresolved, the author is blocked from merging until they are addressed. The reviewer may continue reviewing other aspects of the PR, or temporarily unassign themselves - whichever makes better use of their time given the likely scope of changes ahead.
+
+**PR Needs More Time for Copilot Feedback**
+If Copilot comments are pending, the author should convert the PR to draft status until that feedback has been addressed.
+
+**Copilot Feedback Appears After Review Begins**
+If Copilot generates new feedback after a human reviewer has already started, the author should address it before the PR is marked ready to merge - the reviewer can then wrap up any remaining items with the full picture in front of them.
+
+**No Assignee on a PR**
+If a PR has no assignee, it has no clear path to merging - someone needs to own it. The reviewer who notices this should flag it to the PR author so they can designate who is responsible for merging. This applies regardless of whether Copilot is involved.
+
+## Conclusion
+
+GitHub Copilot is a tool to augment the review process, not replace the judgement that human reviewers bring. By treating it as another reviewer in the system - rather than a gatekeeper - teams can maintain code quality without unnecessary delays. Clear communication and a shared understanding of these guidelines are what make that work in practice.
+
+## References
+
+1. GitHub Copilot documentation - https://docs.github.com/en/copilot
+2. 60 million Copilot code reviews and counting - https://github.blog/ai-and-ml/github-copilot/60-million-copilot-code-reviews-and-counting/
+

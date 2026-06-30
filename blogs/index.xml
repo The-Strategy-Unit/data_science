@@ -149,15 +149,13 @@
 </figure>
 </div>
 <p>In our data science team, we recently started having fortnightly ‘side-quests and support’ meetings. RD The whole team is invited, and the blurb that goes along with the invite is: “This meeting is a chance for the team to get together informally and discuss their work, get help unsticking tricky elements, show off cool things they’ve done, air worries and find solutions. We all benefit from having some idea of the work of others, can spot areas of duplication and pick up on the use of skills we want to acquire. If you’re picked to present, use your time how you like - tell us about what’s bothering you, what you’re proud of, issues with how the team are working, the wider Unit, or anything you’d like us to know.”</p>
-<p>We’ve grown to really value this hour, and lots of interesting ideas and positivity fall out of them. We try to avoid talking about BAU work, so that we can have a little and celebrate each other’s’ unique flavours of nerdery.<br>
+<p>We’ve grown to really value this hour, and lots of interesting ideas and positivity fall out of them. We try to avoid talking about BAU work, so that we can have a little fun and celebrate each other’s’ unique flavours of nerdery.<br>
 Some recent highlights have been an app that was built to find optimal walking routes between pubs and landmarks, an auto-generated personal blog website with great photos and a notebook to analyse football statistics.</p>
 <p>Recently, one of the topics we discussed was how we each maintain a healthy ‘brain plate’ – meaning how we ensure we are not relying on memory to ensure we do all the things we need/want to.</p>
 <p>Our team is a mix of coders, managers, designers and consultants, and we all approach similar problems differently. This blog is a set of mini interviews with our lovely team members to capture the different ways we manage our working lives.</p>
-<p>#{{&lt; include RD.qmd &gt;}}</p>
-<p>#{{&lt; include NS.qmd &gt;}}</p>
-<p>#{{&lt; include TJ.qmd &gt;}}</p>
-<p>#{{&lt; include EK.qmd &gt;}}</p>
-<!-- ## ![Picture of EK](EK.png){width="10%" fig-align="right"} Eirini: AI Agent Herder -->
+<section id="picture-of-ek-eirini-ai-agent-herder" class="level2">
+<h2 class="anchored" data-anchor-id="picture-of-ek-eirini-ai-agent-herder"><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2026-05-28_brain_plates/EK.png" class="img-fluid quarto-figure quarto-figure-right" style="width:10.0%" alt="Picture of EK"> Eirini: AI Agent Herder</h2>
+</section>
 <section id="eirini-ai-agent-herder" class="level2">
 <h2 class="anchored" data-anchor-id="eirini-ai-agent-herder">Eirini: AI Agent Herder <picture of="" ek="" src="EK.png" width="10%" align="right"></picture></h2>
 </section>
@@ -184,9 +182,23 @@ Some recent highlights have been an app that was built to find optimal walking r
 <section id="other-tools" class="level3">
 <h3 class="anchored" data-anchor-id="other-tools">Other tools</h3>
 <p>As much as I enjoy a good pen or pencil and a nice notebook, I do not use pen and paper - or other tools outside the minimal list above. This is by choice, as experience has shown that maintaining a minimal and focused toolbox helps me keep reasonably organised. It also allows me to leverage a wider range of computers (older, with constrained resources), as most of my tools are lightweight, easy to install and free. Finally, I favour plain markdown or JSON - if hierarchy is required - as they are portable and universal formats. The majority of my time is spent in a terminal window - aligning with the team’s nerdery - and my web browser running Solveit and GitHub tabs.</p>
-<p>#{{&lt; include MD.qmd &gt;}}</p>
-<p>#{{&lt; include CB.qmd &gt;}}</p>
-<p>#{{&lt; include ZT.qmd &gt;}}</p>
+</section>
+</section>
+<section id="a-white-thirty-something-male-with-short-brown-hair-wearing-a-blue-jumper-over-shirt-and-tie.-the-type-of-person-who-looks-like-his-name-is-probably-matt.-matt-yak-shaver" class="level2">
+<h2 class="anchored" data-anchor-id="a-white-thirty-something-male-with-short-brown-hair-wearing-a-blue-jumper-over-shirt-and-tie.-the-type-of-person-who-looks-like-his-name-is-probably-matt.-matt-yak-shaver"><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2026-05-28_brain_plates/MD.jpg" class="img-fluid quarto-figure quarto-figure-right" style="width:10.0%" alt="A white thirty-something male with short brown hair, wearing a blue jumper over shirt and tie. The type of person who looks like his name is probably ‘Matt’."> Matt: yak-shaver</h2>
+<p>As a developer and scrummaster, I record tasks as <strong>GitHub issues</strong> and track them through our GitHub project board. I label issues by type and priority and add them to release milestones. In the comments I write up-to-date notes, tag team members and record any agreements. This way, <em>all the information is on the task</em>.</p>
+<p>At the start of the day I might write down a few to-dos with <strong>pen and paper</strong>. Sometimes I’ll scribble ephemeral notes as I work, but my notepad is disposable. Meaningful information goes on GitHub where it belongs. Anyway, the notepad can’t be a long-term store because I can barely read my handwriting.</p>
+<p>I wrote a <a href="https://github.com/matt-dray/jot">lightweight Python-powered command-line interface called jot</a> to log time-stamped notes in <strong>a text file</strong>. During my work day I go frequently to a terminal and type something like <code>jot "circled-back on paradigm-shifting"</code>. This isn’t about note-taking; I use the entries to help reflect on what I’ve been up to. It’s especially useful for capturing ‘softer skills’ or ‘glue work’ that often goes undervalued.</p>
+</section>
+<section id="picture-of-chris-chris-head-of-data-science" class="level2">
+<h2 class="anchored" data-anchor-id="picture-of-chris-chris-head-of-data-science"><img src="https://the-strategy-unit.github.io/data_science/blogs/posts/2026-05-28_brain_plates/CB.jpg" class="img-fluid quarto-figure quarto-figure-right" style="width:10.0%" alt="Picture of Chris"> Chris: Head of data science</h2>
+<section id="how-do-i-manage-my-work-knowledge-and-tasks" class="level3">
+<h3 class="anchored" data-anchor-id="how-do-i-manage-my-work-knowledge-and-tasks">How do I manage my work knowledge and tasks?</h3>
+<p>I would say largely that I don’t manage my work knowledge and tasks. I’m head of a decently sized data science team (~10 people) and my remit across the unit and team includes information governance, delivery, product, a business critical model, and more besides.</p>
+<p>For a long time I thought that I couldn’t do the kind of job that I do now because I thought that management (not leadership- management) was all about being incredibly organised and having lots of checklists and plans. I’m just not that person so I counted myself out. I’ve since learned that the task of a team leader is to create a team and systems that are responsive, organised, and get the job done. If you can do that with plans and checklists, great, but if not you have options, or I certainly did.</p>
+<p>Having said all that, what do I do to organise myself. My principal job as it is for many people is to clear out my inbox of all the pressing things in it. My priorities shift a lot and what’s important on a Monday morning can be forgotten by Thursday afternoon. That’s just how it is in my job. I try to help the team to stick to what they’re doing and not get tossed around by events but if I worked like that there would be lots of (rightly) angry people in my inbox. And of course a decent chunk of my time is spent in meetings. I try to go where I’m needed and not go where I’m not needed but sometimes it can feel like there is a lot to keep on top of.</p>
+<p>I use <a href="https://app.todoist.com">Todoist</a> to keep track of the things that I actually do apart from clearing out my inbox and going to meetings. The team tag me on GitHub and I do try to keep up with it but because it isn’t my main place to look GitHub notifications can fall through the cracks. The team know I always appreciate a nudge on stuff they’re waiting for and I try to get to things when or before people nudge me.</p>
+<p>I’m a great believer in the power of pen and paper to help one think and I do do that when I’m doing something knotty, but honestly these days I rarely am. People bring me stuff, I try to say something helpful about it, and they go on their way. My team have all the brilliant insights and do the important work. I just offer prompts and questions to help us through when things seem uncertain.</p>
 </section>
 </section>
 <section id="picture-of-cw-claire-lead-data-scientist" class="level2">
@@ -250,8 +262,6 @@ Some recent highlights have been an app that was built to find optimal walking r
 <figcaption>Photograph of notepaper with messy writing on it showing a process I wanted to visualise as I was talking</figcaption>
 </figure>
 </div>
-<p>#{{&lt; include YH.qmd &gt;}}</p>
-<p>#{{&lt; include FB.qmd &gt;}}</p>
 
 
 </section>
@@ -369,7 +379,7 @@ Some recent highlights have been an app that was built to find optimal walking r
 <h3 class="anchored" data-anchor-id="code-organisation">Code Organisation</h3>
 <p>One of the first things you’ll notice when comparing the implementations is how the Polars version breaks down complex operations into smaller, more focused functions:</p>
 <p><strong>Pandas (Monolithic Functions):</strong></p>
-<div id="6a108cc8" class="cell">
+<div id="4e370747" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="kw" style="color: #003B4F;
@@ -409,7 +419,7 @@ font-style: inherit;"># ...</span></span></code></pre></div></div>
 </details>
 </div>
 <p><strong>Polars (Granular Functions):</strong></p>
-<div id="9cb32a7a" class="cell">
+<div id="eb2b7050" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="kw" style="color: #003B4F;
@@ -503,7 +513,7 @@ font-style: inherit;"># ...</span></span></code></pre></div></div>
 <h4 class="anchored" data-anchor-id="data-loading-and-joining">Data Loading and Joining</h4>
 <p>Here, the difference between the two implementations is fairly subtle, showcasing that switching between the two APIs doesn’t always increase the learning curve:</p>
 <p><strong>Pandas:</strong></p>
-<div id="1dd7adf9" class="cell">
+<div id="81e15a4b" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
@@ -540,7 +550,7 @@ font-style: inherit;">"inner"</span>)</span></code></pre></div></div>
 </details>
 </div>
 <p><strong>Polars:</strong></p>
-<div id="058e2ea6" class="cell">
+<div id="24319e35" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
@@ -580,7 +590,7 @@ font-style: inherit;">"inner"</span>)</span></code></pre></div></div>
 <h4 class="anchored" data-anchor-id="null-handling">Null Handling</h4>
 <p>Null handling differs significantly:</p>
 <p><strong>Pandas:</strong></p>
-<div id="adf8bf3d" class="cell">
+<div id="496b1228" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
@@ -594,7 +604,7 @@ font-style: inherit;">"unknown"</span>)</span></code></pre></div></div>
 </details>
 </div>
 <p><strong>Polars:</strong></p>
-<div id="f86390ef" class="cell">
+<div id="1df00023" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
@@ -646,7 +656,7 @@ font-style: inherit;">"unknown"</span>)</span></code></pre></div></div>
 <h4 class="anchored" data-anchor-id="data-aggregation-and-filtering">Data Aggregation and Filtering</h4>
 <p>Data filtering and aggregation show some of the most significant syntax differences:</p>
 <p><strong>Pandas:</strong></p>
-<div id="bedc46ba" class="cell">
+<div id="6a670f11" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
@@ -711,7 +721,7 @@ font-style: inherit;">int</span>)</span>
 </details>
 </div>
 <p><strong>Polars:</strong></p>
-<div id="3e937db5" class="cell">
+<div id="ed29ee2f" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
@@ -746,7 +756,7 @@ font-style: inherit;">sum</span>())</span>
 <h4 class="anchored" data-anchor-id="lazy-evaluation">Lazy Evaluation</h4>
 <p>As mentioned in the introduction, one of Polars’ key features is its support for lazy evaluation, which enables query optimisation:</p>
 <p><strong>Pandas:</strong></p>
-<div id="120c979b" class="cell">
+<div id="8f857d2b" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
@@ -777,7 +787,7 @@ font-style: inherit;">"sum"</span>})</span>
 </details>
 </div>
 <p><strong>Polars:</strong></p>
-<div id="3a6f487f" class="cell">
+<div id="e61e5ae6" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><span class="co" style="color: #5E5E5E;
@@ -819,7 +829,7 @@ font-style: inherit;"># Only executes the plan when needed</span></span>
 <h3 class="anchored" data-anchor-id="memory-management">Memory Management</h3>
 <p>Both implementations are designed to manage memory, but with fundamental differences in how data is stored and processed:</p>
 <p><strong>Pandas:</strong></p>
-<div id="00ec190f" class="cell">
+<div id="88c8c600" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><span class="co" style="color: #5E5E5E;
@@ -872,7 +882,7 @@ font-style: inherit;"> MB"</span>)</span></code></pre></div></div>
 </details>
 </div>
 <p><strong>Polars:</strong></p>
-<div id="79408da3" class="cell">
+<div id="a26c6208" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><span class="co" style="color: #5E5E5E;
@@ -948,7 +958,7 @@ font-style: inherit;"> MB"</span>)</span></code></pre></div></div>
 <p>Pandas and Polars differ significantly in how they handle types and expressions. Polars uses a <a href="https://deepwiki.com/pola-rs/polars/6-type-system">strongly-typed system</a> based on Apache Arrow’s type system, while Pandas handles types more implicitly.</p>
 <p>Polars’ expression system (with <code>pl.col()</code> syntax) is a core part of its design, allowing for clear, composable operations that the query optimiser can understand and optimise:</p>
 <p><strong>Explicit Null Checking:</strong></p>
-<div id="dd601e0d" class="cell">
+<div id="a6395e40" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><span class="co" style="color: #5E5E5E;
@@ -997,7 +1007,7 @@ font-style: inherit;">"</span>)</span></code></pre></div></div>
 </details>
 </div>
 <p><strong>Type System Consistency:</strong></p>
-<div id="5c2d0fb0" class="cell">
+<div id="cdcf059d" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><span class="co" style="color: #5E5E5E;

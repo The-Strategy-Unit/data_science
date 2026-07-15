@@ -167,6 +167,40 @@ format:
 
 ![](add_window.png){fig-alt="A foreman in front of a broken house saying 'I don't understand why it takes so long to add a new window'" width="50%"}
 
-## What to do?
+## So what's the point of all this?
 
+* Reproducibility and applications are great but they come with a hidden cost
+* Every time you build something you have to maintain it forever
+* Reusing data and products sounds like a no brainer and it is- done slowly with care
 
+## QA and IG
+
+* QA in particular with applications it's a different ball game
+  * QA complexity scales exponentially with the complexity of the application and its dependencies
+* What is non disclosive in a report can become disclosive in an application
+
+## How do DS work?
+
+* We're always managing techdebt. Either avoiding the debt we have or trying not to create more
+* Mo' speed, mo' techdebt (you might call it the Max Power way)
+* We do as little as possible, in the simplest way possible
+* We plan carefully and maintain visibility as well as managing bus factor
+* Sometimes we create techdebt to meet SU deadlines- and that's fine, but it needs to be fixed
+
+## What's my message to you?
+
+* Be aware of the huge debt underneath the beautiful NHP iceberg
+* Don't underestimate how long it will take us even to decide to do something
+* Think about your own work- am I using or referencing something else (e.g. TPMAs)? Is my work increasing confusion or complexity?
+* Think carefully about the reusable reports and applications you build. It takes time to get them right and they're not just for Christmas
+
+## Pace
+
+![](pace.jpg){fig-alt="Meme template- a man sweating choosing between a button that says 'The right way' and another that says 'Fast'" width="50%"}
+
+## Pace
+
+* This is almost my entire job
+* I try to help the team do small, simple things, carefully
+* I try to help the organisation to meet its strategic objectives with data science
+* The team can screw up in the huge range of ways possible to screw up- and they manage that risk every day

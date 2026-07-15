@@ -161,7 +161,7 @@ format:
 * Then they all QA all of it again
 * Then I remember the change in the data is visible in something I didn't change
 * Yet more QA
-* My boss have given up even trying to follow at this point
+* My boss has given up even trying to follow at this point
 
 ## Tech debt {.nostretch}
 

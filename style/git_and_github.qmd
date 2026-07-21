@@ -116,6 +116,7 @@ There may be times when you cannot be the assignee on a PR and in those situatio
 ### Reviewing with GitHub Copilot
 
 When GitHub Copilot acts as a PR reviewer:
+
 - **PR opened with Copilot comments:** Author addresses all comments
 - **Human reviewer starts while Copilot comments pending:** Review concurrently. Explicitly agree with overlapping suggestions
 - **No pending Copilot comments:** Human reviewer is sole blocker

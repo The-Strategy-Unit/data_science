@@ -44,9 +44,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-01c21a508e1d220cde4cf39d373c93ba.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-0851a1e92f310d0dd2cadc2234feacd4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-01c21a508e1d220cde4cf39d373c93ba.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-6c28e2e5cbf64527d0b29767877bcb7a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-6769d04d5ed28de43b444f5120612fa3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-6c28e2e5cbf64527d0b29767877bcb7a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -504,7 +504,16 @@ Important
 </section>
 <section id="reviewing-with-github-copilot" class="level3">
 <h3 class="anchored" data-anchor-id="reviewing-with-github-copilot">Reviewing with GitHub Copilot</h3>
-<p>When GitHub Copilot acts as a PR reviewer: - <strong>PR opened with Copilot comments:</strong> Author addresses all comments - <strong>Human reviewer starts while Copilot comments pending:</strong> Review concurrently. Explicitly agree with overlapping suggestions - <strong>No pending Copilot comments:</strong> Human reviewer is sole blocker - <strong>Pending Copilot comments unaddressed:</strong> Author is blocker. Reviewer may continue or unassign themselves until Copilot comments are resolved - <strong>PR needs more time for Copilot feedback:</strong> Convert to Draft until resolved - <strong>Copilot feedback appears after review begins:</strong> Keep PR open. Author addresses feedback, reviewer completes remaining items - <strong>No assignee on PR:</strong> If no assignee is set, contact the PR creator to agree who is responsible for merging</p>
+<p>When GitHub Copilot acts as a PR reviewer:</p>
+<ul>
+<li><strong>PR opened with Copilot comments:</strong> Author addresses all comments</li>
+<li><strong>Human reviewer starts while Copilot comments pending:</strong> Review concurrently. Explicitly agree with overlapping suggestions</li>
+<li><strong>No pending Copilot comments:</strong> Human reviewer is sole blocker</li>
+<li><strong>Pending Copilot comments unaddressed:</strong> Author is blocker. Reviewer may continue or unassign themselves until Copilot comments are resolved</li>
+<li><strong>PR needs more time for Copilot feedback:</strong> Convert to Draft until resolved</li>
+<li><strong>Copilot feedback appears after review begins:</strong> Keep PR open. Author addresses feedback, reviewer completes remaining items</li>
+<li><strong>No assignee on PR:</strong> If no assignee is set, contact the PR creator to agree who is responsible for merging</li>
+</ul>
 <section id="outside-collaborators" class="level4">
 <h4 class="anchored" data-anchor-id="outside-collaborators">Outside collaborators</h4>
 <p>In circumstances where the person who created the PR is an outside collaborator and doesn’t have permission to merge, then the reviewer should also be the assignee. In these circumstances, the collaborator will be working from their local fork and will be the only person who can push to the branch. The reviewer, once happy to approve the changes, can merge the PR.</p>

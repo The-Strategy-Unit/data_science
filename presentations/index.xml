@@ -62,18 +62,18 @@
 </item>
 <item>
   <title></title>
-  <dc:creator>[YiWen Hon](mailto:yiwen.hon1@nhs.net)</dc:creator>
-  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-11-14_rap-drop-ins-nhsr2025/</link>
-  <description><![CDATA[ undefined ]]></description>
-  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-11-14_rap-drop-ins-nhsr2025/</guid>
-  <pubDate>Fri, 14 Nov 2025 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title></title>
   <dc:creator>[Tom Jemmett](mailto:thomas.jemmett@nhs.net)</dc:creator>
   <link>https://the-strategy-unit.github.io/data_science/presentations/2025-11-14_unit-testing/</link>
   <description><![CDATA[ undefined ]]></description>
   <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-11-14_unit-testing/</guid>
+  <pubDate>Fri, 14 Nov 2025 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <dc:creator>[YiWen Hon](mailto:yiwen.hon1@nhs.net)</dc:creator>
+  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-11-14_rap-drop-ins-nhsr2025/</link>
+  <description><![CDATA[ undefined ]]></description>
+  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-11-14_rap-drop-ins-nhsr2025/</guid>
   <pubDate>Fri, 14 Nov 2025 00:00:00 GMT</pubDate>
 </item>
 <item>
@@ -169,11 +169,10 @@
 </item>
 <item>
   <title></title>
-  <dc:creator>[Jac Grout](mailto:jacqueline.grout@nhs.net)</dc:creator>
-  <dc:creator>[Matt Dray](mailto:matt.dray@nhs.net)</dc:creator>
-  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-02-27_word-not-quarto/</link>
+  <dc:creator>[Chris Beeley](mailto:chris.beeley1@nhs.net)</dc:creator>
+  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-02-27_nhp-deployment/</link>
   <description><![CDATA[ undefined ]]></description>
-  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-02-27_word-not-quarto/</guid>
+  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-02-27_nhp-deployment/</guid>
   <pubDate>Thu, 27 Feb 2025 00:00:00 GMT</pubDate>
 </item>
 </channel>

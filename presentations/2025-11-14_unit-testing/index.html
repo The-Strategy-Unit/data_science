@@ -6,8 +6,8 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.38">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="Tom Jemmett">
   <meta name="dcterms.date" content="2025-11-14">
@@ -21,10 +21,13 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
-    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -224,7 +227,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-<a href="mailto:thomas.jemmett@nhs.net" target="_blank">Tom Jemmett</a> 
+<a href="mailto:thomas.jemmett@nhs.net" target="_blank">Tom Jemmett</a>
 </div>
 </div>
 </div>
@@ -329,9 +332,9 @@ testthat (R)
 <div class="code-with-filename-file">
 <pre><strong>R/multiply.R</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-filename="R/multiply.R"><pre class="sourceCode numberSource R number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>multiply <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
-<span id="cb1-2"><a></a>  x <span class="sc">*</span> y</span>
-<span id="cb1-3"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-filename="R/multiply.R"><pre class="sourceCode numberSource R number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a>multiply <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb1-2"><a aria-label="2"></a>  x <span class="sc">*</span> y</span>
+<span id="cb1-3"><a aria-label="3"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column" style="width:50%;">
 <h3 class="yellow" id="python">python</h3>
@@ -339,8 +342,8 @@ testthat (R)
 <div class="code-with-filename-file">
 <pre><strong>src/multiply.py</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-filename="src/multiply.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="kw">def</span> multiply(x, y):</span>
-<span id="cb2-2"><a></a>  <span class="cf">return</span> x <span class="op">*</span> y</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-filename="src/multiply.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-label="1"></a><span class="kw">def</span> multiply(x, y):</span>
+<span id="cb2-2"><a aria-label="2"></a>  <span class="cf">return</span> x <span class="op">*</span> y</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div></div>
 <br> <br> <br>
@@ -365,22 +368,22 @@ a <code>pyproject.toml</code> and a <code>src/</code> folder.
 <div class="code-with-filename-file">
 <pre><strong>tests/testthat/test_multiply.R</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" data-filename="tests/testthat/test_multiply.R"><pre class="sourceCode numberSource R number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">library</span>(testthat)</span>
-<span id="cb3-2"><a></a></span>
-<span id="cb3-3"><a></a><span class="fu">test_that</span>(</span>
-<span id="cb3-4"><a></a>  <span class="st">"it multiplies correctly"</span>,</span>
-<span id="cb3-5"><a></a>  {</span>
-<span id="cb3-6"><a></a>    <span class="co"># arrange</span></span>
-<span id="cb3-7"><a></a>    x <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb3-8"><a></a>    y <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb3-9"><a></a></span>
-<span id="cb3-10"><a></a>    <span class="co"># act</span></span>
-<span id="cb3-11"><a></a>    actual <span class="ot">&lt;-</span> <span class="fu">multiply</span>(x, y)</span>
-<span id="cb3-12"><a></a>    </span>
-<span id="cb3-13"><a></a>    <span class="co"># assert</span></span>
-<span id="cb3-14"><a></a>    <span class="fu">expect_equal</span>(actual, <span class="dv">6</span>)</span>
-<span id="cb3-15"><a></a>  }</span>
-<span id="cb3-16"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" data-filename="tests/testthat/test_multiply.R"><pre class="sourceCode numberSource R number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-label="1"></a><span class="fu">library</span>(testthat)</span>
+<span id="cb3-2"><a aria-label="2"></a></span>
+<span id="cb3-3"><a aria-label="3"></a><span class="fu">test_that</span>(</span>
+<span id="cb3-4"><a aria-label="4"></a>  <span class="st">"it multiplies correctly"</span>,</span>
+<span id="cb3-5"><a aria-label="5"></a>  {</span>
+<span id="cb3-6"><a aria-label="6"></a>    <span class="co"># arrange</span></span>
+<span id="cb3-7"><a aria-label="7"></a>    x <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb3-8"><a aria-label="8"></a>    y <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb3-9"><a aria-label="9"></a></span>
+<span id="cb3-10"><a aria-label="10"></a>    <span class="co"># act</span></span>
+<span id="cb3-11"><a aria-label="11"></a>    actual <span class="ot">&lt;-</span> <span class="fu">multiply</span>(x, y)</span>
+<span id="cb3-12"><a aria-label="12"></a>    </span>
+<span id="cb3-13"><a aria-label="13"></a>    <span class="co"># assert</span></span>
+<span id="cb3-14"><a aria-label="14"></a>    <span class="fu">expect_equal</span>(actual, <span class="dv">6</span>)</span>
+<span id="cb3-15"><a aria-label="15"></a>  }</span>
+<span id="cb3-16"><a aria-label="16"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column" style="width:50%;">
 <h3 class="yellow" id="python-1">python</h3>
@@ -388,20 +391,20 @@ a <code>pyproject.toml</code> and a <code>src/</code> folder.
 <div class="code-with-filename-file">
 <pre><strong>tests/test_multiply.py</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" data-filename="tests/test_multiply.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">from</span> multiply <span class="im">import</span> multiply</span>
-<span id="cb4-2"><a></a></span>
-<span id="cb4-3"><a></a><span class="kw">def</span> test_multiplies_correctly():</span>
-<span id="cb4-4"><a></a>  <span class="co">"""test it multiplies correctly</span></span>
-<span id="cb4-5"><a></a><span class="co">  """</span></span>
-<span id="cb4-6"><a></a>  <span class="co"># arrange</span></span>
-<span id="cb4-7"><a></a>  x <span class="op">=</span> <span class="dv">3</span></span>
-<span id="cb4-8"><a></a>  y <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb4-9"><a></a></span>
-<span id="cb4-10"><a></a>  <span class="co"># act</span></span>
-<span id="cb4-11"><a></a>  actual <span class="op">=</span> multiply(x, y)</span>
-<span id="cb4-12"><a></a></span>
-<span id="cb4-13"><a></a>  <span class="co"># assert</span></span>
-<span id="cb4-14"><a></a>  <span class="cf">assert</span> actual <span class="op">==</span> <span class="dv">6</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" data-filename="tests/test_multiply.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-label="1"></a><span class="im">from</span> multiply <span class="im">import</span> multiply</span>
+<span id="cb4-2"><a aria-label="2"></a></span>
+<span id="cb4-3"><a aria-label="3"></a><span class="kw">def</span> test_multiplies_correctly():</span>
+<span id="cb4-4"><a aria-label="4"></a>  <span class="co">"""test it multiplies correctly</span></span>
+<span id="cb4-5"><a aria-label="5"></a><span class="co">  """</span></span>
+<span id="cb4-6"><a aria-label="6"></a>  <span class="co"># arrange</span></span>
+<span id="cb4-7"><a aria-label="7"></a>  x <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb4-8"><a aria-label="8"></a>  y <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb4-9"><a aria-label="9"></a></span>
+<span id="cb4-10"><a aria-label="10"></a>  <span class="co"># act</span></span>
+<span id="cb4-11"><a aria-label="11"></a>  actual <span class="op">=</span> multiply(x, y)</span>
+<span id="cb4-12"><a aria-label="12"></a></span>
+<span id="cb4-13"><a aria-label="13"></a>  <span class="co"># assert</span></span>
+<span id="cb4-14"><a aria-label="14"></a>  <span class="cf">assert</span> actual <span class="op">==</span> <span class="dv">6</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div></div>
 </section>
@@ -414,18 +417,18 @@ a <code>pyproject.toml</code> and a <code>src/</code> folder.
 <div class="code-with-filename-file">
 <pre><strong>tests/testthat/test_multiply.R</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" data-filename="tests/testthat/test_multiply.R"><pre class="sourceCode numberSource R number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">library</span>(testthat)</span>
-<span id="cb5-2"><a></a></span>
-<span id="cb5-3"><a></a><span class="fu">test_that</span>(</span>
-<span id="cb5-4"><a></a>  <span class="st">"it multiplies correctly"</span>,</span>
-<span id="cb5-5"><a></a>  {</span>
-<span id="cb5-6"><a></a>    <span class="co"># act</span></span>
-<span id="cb5-7"><a></a>    actual <span class="ot">&lt;-</span> <span class="fu">multiply</span>(<span class="dv">3</span>, <span class="dv">2</span>)</span>
-<span id="cb5-8"><a></a>    </span>
-<span id="cb5-9"><a></a>    <span class="co"># assert</span></span>
-<span id="cb5-10"><a></a>    <span class="fu">expect_equal</span>(actual, <span class="dv">6</span>)</span>
-<span id="cb5-11"><a></a>  }</span>
-<span id="cb5-12"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" data-filename="tests/testthat/test_multiply.R"><pre class="sourceCode numberSource R number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-label="1"></a><span class="fu">library</span>(testthat)</span>
+<span id="cb5-2"><a aria-label="2"></a></span>
+<span id="cb5-3"><a aria-label="3"></a><span class="fu">test_that</span>(</span>
+<span id="cb5-4"><a aria-label="4"></a>  <span class="st">"it multiplies correctly"</span>,</span>
+<span id="cb5-5"><a aria-label="5"></a>  {</span>
+<span id="cb5-6"><a aria-label="6"></a>    <span class="co"># act</span></span>
+<span id="cb5-7"><a aria-label="7"></a>    actual <span class="ot">&lt;-</span> <span class="fu">multiply</span>(<span class="dv">3</span>, <span class="dv">2</span>)</span>
+<span id="cb5-8"><a aria-label="8"></a>    </span>
+<span id="cb5-9"><a aria-label="9"></a>    <span class="co"># assert</span></span>
+<span id="cb5-10"><a aria-label="10"></a>    <span class="fu">expect_equal</span>(actual, <span class="dv">6</span>)</span>
+<span id="cb5-11"><a aria-label="11"></a>  }</span>
+<span id="cb5-12"><a aria-label="12"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column" style="width:50%;">
 <h3 class="yellow" id="python-2">python</h3>
@@ -433,16 +436,16 @@ a <code>pyproject.toml</code> and a <code>src/</code> folder.
 <div class="code-with-filename-file">
 <pre><strong>tests/test_multiply.py</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" data-filename="tests/test_multiply.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="im">from</span> multiply <span class="im">import</span> multiply</span>
-<span id="cb6-2"><a></a></span>
-<span id="cb6-3"><a></a><span class="kw">def</span> test_multiplies_correctly():</span>
-<span id="cb6-4"><a></a>  <span class="co">"""test it multiplies correctly</span></span>
-<span id="cb6-5"><a></a><span class="co">  """</span></span>
-<span id="cb6-6"><a></a>  <span class="co"># act</span></span>
-<span id="cb6-7"><a></a>  actual <span class="op">=</span> multiply(<span class="dv">3</span>, <span class="dv">2</span>)</span>
-<span id="cb6-8"><a></a></span>
-<span id="cb6-9"><a></a>  <span class="co"># assert</span></span>
-<span id="cb6-10"><a></a>  <span class="cf">assert</span> actual <span class="op">==</span> <span class="dv">6</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" data-filename="tests/test_multiply.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a aria-label="1"></a><span class="im">from</span> multiply <span class="im">import</span> multiply</span>
+<span id="cb6-2"><a aria-label="2"></a></span>
+<span id="cb6-3"><a aria-label="3"></a><span class="kw">def</span> test_multiplies_correctly():</span>
+<span id="cb6-4"><a aria-label="4"></a>  <span class="co">"""test it multiplies correctly</span></span>
+<span id="cb6-5"><a aria-label="5"></a><span class="co">  """</span></span>
+<span id="cb6-6"><a aria-label="6"></a>  <span class="co"># act</span></span>
+<span id="cb6-7"><a aria-label="7"></a>  actual <span class="op">=</span> multiply(<span class="dv">3</span>, <span class="dv">2</span>)</span>
+<span id="cb6-8"><a aria-label="8"></a></span>
+<span id="cb6-9"><a aria-label="9"></a>  <span class="co"># assert</span></span>
+<span id="cb6-10"><a aria-label="10"></a>  <span class="cf">assert</span> actual <span class="op">==</span> <span class="dv">6</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div></div>
 </section>
@@ -451,26 +454,26 @@ a <code>pyproject.toml</code> and a <code>src/</code> folder.
 <div class="columns">
 <div class="column" style="width:50%;">
 <h3 class="blue" id="r-3">R</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">library</span>(testthat)</span>
-<span id="cb7-2"><a></a></span>
-<span id="cb7-3"><a></a><span class="co"># run all tests in a package</span></span>
-<span id="cb7-4"><a></a><span class="fu">test_package</span>(<span class="st">"."</span>)</span>
-<span id="cb7-5"><a></a></span>
-<span id="cb7-6"><a></a><span class="co"># or, run a specific test file</span></span>
-<span id="cb7-7"><a></a><span class="fu">test_file</span>(</span>
-<span id="cb7-8"><a></a> <span class="st">"tests/testthat/test_multiply.R"</span></span>
-<span id="cb7-9"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-label="1"></a><span class="fu">library</span>(testthat)</span>
+<span id="cb7-2"><a aria-label="2"></a></span>
+<span id="cb7-3"><a aria-label="3"></a><span class="co"># run all tests in a package</span></span>
+<span id="cb7-4"><a aria-label="4"></a><span class="fu">test_package</span>(<span class="st">"."</span>)</span>
+<span id="cb7-5"><a aria-label="5"></a></span>
+<span id="cb7-6"><a aria-label="6"></a><span class="co"># or, run a specific test file</span></span>
+<span id="cb7-7"><a aria-label="7"></a><span class="fu">test_file</span>(</span>
+<span id="cb7-8"><a aria-label="8"></a> <span class="st">"tests/testthat/test_multiply.R"</span></span>
+<span id="cb7-9"><a aria-label="9"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:50%;">
 <h3 class="yellow" id="python-3">python</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a></a><span class="co"># from the command line</span></span>
-<span id="cb8-2"><a></a></span>
-<span id="cb8-3"><a></a><span class="co"># run all tests</span></span>
-<span id="cb8-4"><a></a><span class="ex">python</span> <span class="at">-m</span> pytest tests</span>
-<span id="cb8-5"><a></a></span>
-<span id="cb8-6"><a></a><span class="co"># or, run a specific test file</span></span>
-<span id="cb8-7"><a></a><span class="ex">pytest</span> tests/test_multiply.py</span>
-<span id="cb8-8"><a></a></span>
-<span id="cb8-9"><a></a><span class="co"># you may need to use python -m</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a aria-label="1"></a><span class="co"># from the command line</span></span>
+<span id="cb8-2"><a aria-label="2"></a></span>
+<span id="cb8-3"><a aria-label="3"></a><span class="co"># run all tests</span></span>
+<span id="cb8-4"><a aria-label="4"></a><span class="ex">python</span> <span class="at">-m</span> pytest tests</span>
+<span id="cb8-5"><a aria-label="5"></a></span>
+<span id="cb8-6"><a aria-label="6"></a><span class="co"># or, run a specific test file</span></span>
+<span id="cb8-7"><a aria-label="7"></a><span class="ex">pytest</span> tests/test_multiply.py</span>
+<span id="cb8-8"><a aria-label="8"></a></span>
+<span id="cb8-9"><a aria-label="9"></a><span class="co"># you may need to use python -m</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></div>
 <p><br> <br> <br> <span class="light-charcoal small fragment">IDEs (e.g.&nbsp;RStudio, Positron, VSCode) will have a way to run tests for you.</span></p>
 </section>
@@ -508,17 +511,17 @@ a <code>pyproject.toml</code> and a <code>src/</code> folder.
 </ul>
 </div>
 </div><div class="column" style="width:70%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>my_function <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb9-2"><a></a>  con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">odbc</span>(), <span class="st">"dsn"</span>)</span>
-<span id="cb9-3"><a></a></span>
-<span id="cb9-4"><a></a>  df <span class="ot">&lt;-</span> <span class="fu">tbl</span>(con, <span class="st">"my_table"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb9-5"><a></a>    <span class="fu">mutate</span>(<span class="at">value =</span> x <span class="sc">/</span> y) <span class="sc">|&gt;</span></span>
-<span id="cb9-6"><a></a>    <span class="fu">filter</span>(value <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
-<span id="cb9-7"><a></a></span>
-<span id="cb9-8"><a></a>  <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(y, value)) <span class="sc">+</span></span>
-<span id="cb9-9"><a></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb9-10"><a></a>    <span class="fu">geom_line</span>()</span>
-<span id="cb9-11"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-label="1"></a>my_function <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb9-2"><a aria-label="2"></a>  con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">odbc</span>(), <span class="st">"dsn"</span>)</span>
+<span id="cb9-3"><a aria-label="3"></a></span>
+<span id="cb9-4"><a aria-label="4"></a>  df <span class="ot">&lt;-</span> <span class="fu">tbl</span>(con, <span class="st">"my_table"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb9-5"><a aria-label="5"></a>    <span class="fu">mutate</span>(<span class="at">value =</span> x <span class="sc">/</span> y) <span class="sc">|&gt;</span></span>
+<span id="cb9-6"><a aria-label="6"></a>    <span class="fu">filter</span>(value <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb9-7"><a aria-label="7"></a></span>
+<span id="cb9-8"><a aria-label="8"></a>  <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(y, value)) <span class="sc">+</span></span>
+<span id="cb9-9"><a aria-label="9"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb9-10"><a aria-label="10"></a>    <span class="fu">geom_line</span>()</span>
+<span id="cb9-11"><a aria-label="11"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></div>
 <p><br> <br></p>
 <div class="small fragment">
@@ -529,30 +532,30 @@ a <code>pyproject.toml</code> and a <code>src/</code> folder.
 <h2>Break complex functions up</h2>
 <div class="columns">
 <div class="column" style="width:55%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>get_data <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb10-2"><a></a>  con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">odbc</span>(), <span class="st">"dsn"</span>)</span>
-<span id="cb10-3"><a></a>  <span class="fu">tbl</span>(con, <span class="st">"my_table"</span>)</span>
-<span id="cb10-4"><a></a>}</span>
-<span id="cb10-5"><a></a></span>
-<span id="cb10-6"><a></a>mutate_data <span class="ot">&lt;-</span> <span class="cf">function</span>(df) {</span>
-<span id="cb10-7"><a></a>  <span class="fu">mutate</span>(df, <span class="at">value =</span> x <span class="sc">/</span> y)</span>
-<span id="cb10-8"><a></a>}</span>
-<span id="cb10-9"><a></a></span>
-<span id="cb10-10"><a></a>filter_data <span class="ot">&lt;-</span> <span class="cf">function</span>(df) {</span>
-<span id="cb10-11"><a></a>  <span class="fu">filter</span>(df, value <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
-<span id="cb10-12"><a></a>}</span>
-<span id="cb10-13"><a></a></span>
-<span id="cb10-14"><a></a>plot_data <span class="ot">&lt;-</span> <span class="cf">function</span>(df) {</span>
-<span id="cb10-15"><a></a>  <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(y, value)) <span class="sc">+</span></span>
-<span id="cb10-16"><a></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_line</span>()</span>
-<span id="cb10-17"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-label="1"></a>get_data <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb10-2"><a aria-label="2"></a>  con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">odbc</span>(), <span class="st">"dsn"</span>)</span>
+<span id="cb10-3"><a aria-label="3"></a>  <span class="fu">tbl</span>(con, <span class="st">"my_table"</span>)</span>
+<span id="cb10-4"><a aria-label="4"></a>}</span>
+<span id="cb10-5"><a aria-label="5"></a></span>
+<span id="cb10-6"><a aria-label="6"></a>mutate_data <span class="ot">&lt;-</span> <span class="cf">function</span>(df) {</span>
+<span id="cb10-7"><a aria-label="7"></a>  <span class="fu">mutate</span>(df, <span class="at">value =</span> x <span class="sc">/</span> y)</span>
+<span id="cb10-8"><a aria-label="8"></a>}</span>
+<span id="cb10-9"><a aria-label="9"></a></span>
+<span id="cb10-10"><a aria-label="10"></a>filter_data <span class="ot">&lt;-</span> <span class="cf">function</span>(df) {</span>
+<span id="cb10-11"><a aria-label="11"></a>  <span class="fu">filter</span>(df, value <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb10-12"><a aria-label="12"></a>}</span>
+<span id="cb10-13"><a aria-label="13"></a></span>
+<span id="cb10-14"><a aria-label="14"></a>plot_data <span class="ot">&lt;-</span> <span class="cf">function</span>(df) {</span>
+<span id="cb10-15"><a aria-label="15"></a>  <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(y, value)) <span class="sc">+</span></span>
+<span id="cb10-16"><a aria-label="16"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_line</span>()</span>
+<span id="cb10-17"><a aria-label="17"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:45%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>my_function <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb11-2"><a></a>  <span class="fu">get_data</span>() <span class="sc">|&gt;</span></span>
-<span id="cb11-3"><a></a>    <span class="fu">mutate_data</span>() <span class="sc">|&gt;</span></span>
-<span id="cb11-4"><a></a>    <span class="fu">filter_data</span>() <span class="sc">|&gt;</span></span>
-<span id="cb11-5"><a></a>    <span class="fu">plot_data</span>()</span>
-<span id="cb11-6"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-label="1"></a>my_function <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb11-2"><a aria-label="2"></a>  <span class="fu">get_data</span>() <span class="sc">|&gt;</span></span>
+<span id="cb11-3"><a aria-label="3"></a>    <span class="fu">mutate_data</span>() <span class="sc">|&gt;</span></span>
+<span id="cb11-4"><a aria-label="4"></a>    <span class="fu">filter_data</span>() <span class="sc">|&gt;</span></span>
+<span id="cb11-5"><a aria-label="5"></a>    <span class="fu">plot_data</span>()</span>
+<span id="cb11-6"><a aria-label="6"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></div>
 <aside class="notes">
 <p>Remember back to the definition of a unit: the smallest testable piece of code. We have broken up our code into indvidual units which we can now more easily test.</p>
@@ -582,21 +585,21 @@ a <code>pyproject.toml</code> and a <code>src/</code> folder.
 <h3 class="blue" id="mutate_data">mutate_data</h3>
 <div class="columns">
 <div class="column" style="width:75%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">test_that</span>(<span class="st">"mutate_data behaves correctly"</span>, {</span>
-<span id="cb12-2"><a></a>  <span class="co"># arrange</span></span>
-<span id="cb12-3"><a></a>  df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>))</span>
-<span id="cb12-4"><a></a>  expected <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb12-5"><a></a>    <span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),</span>
-<span id="cb12-6"><a></a>    <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>),</span>
-<span id="cb12-7"><a></a>    <span class="at">value =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.4</span>, <span class="fl">0.5</span>)</span>
-<span id="cb12-8"><a></a>  )</span>
-<span id="cb12-9"><a></a></span>
-<span id="cb12-10"><a></a>  <span class="co"># act</span></span>
-<span id="cb12-11"><a></a>  actual <span class="ot">&lt;-</span> <span class="fu">mutate_data</span>(df)</span>
-<span id="cb12-12"><a></a></span>
-<span id="cb12-13"><a></a>  <span class="co"># assert</span></span>
-<span id="cb12-14"><a></a>  <span class="fu">expect_equal</span>(actual, expected)</span>
-<span id="cb12-15"><a></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-label="1"></a><span class="fu">test_that</span>(<span class="st">"mutate_data behaves correctly"</span>, {</span>
+<span id="cb12-2"><a aria-label="2"></a>  <span class="co"># arrange</span></span>
+<span id="cb12-3"><a aria-label="3"></a>  df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>))</span>
+<span id="cb12-4"><a aria-label="4"></a>  expected <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb12-5"><a aria-label="5"></a>    <span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),</span>
+<span id="cb12-6"><a aria-label="6"></a>    <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>),</span>
+<span id="cb12-7"><a aria-label="7"></a>    <span class="at">value =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.4</span>, <span class="fl">0.5</span>)</span>
+<span id="cb12-8"><a aria-label="8"></a>  )</span>
+<span id="cb12-9"><a aria-label="9"></a></span>
+<span id="cb12-10"><a aria-label="10"></a>  <span class="co"># act</span></span>
+<span id="cb12-11"><a aria-label="11"></a>  actual <span class="ot">&lt;-</span> <span class="fu">mutate_data</span>(df)</span>
+<span id="cb12-12"><a aria-label="12"></a></span>
+<span id="cb12-13"><a aria-label="13"></a>  <span class="co"># assert</span></span>
+<span id="cb12-14"><a aria-label="14"></a>  <span class="fu">expect_equal</span>(actual, expected)</span>
+<span id="cb12-15"><a aria-label="15"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:25%;">
 <div class="small light-charcoal">
 <p>We can use much simpler dataframe than might be expected in the real use of these functions.</p>
@@ -610,18 +613,18 @@ a <code>pyproject.toml</code> and a <code>src/</code> folder.
 <h3 class="blue" id="filter_data">filter_data</h3>
 <div class="columns">
 <div class="column" style="width:75%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">test_that</span>(<span class="st">"filter_data behaves correctly"</span>, {</span>
-<span id="cb13-2"><a></a>  <span class="co"># arrange</span></span>
-<span id="cb13-3"><a></a>  df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">value =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>))</span>
-<span id="cb13-4"><a></a>  expected <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">value =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
-<span id="cb13-5"><a></a></span>
-<span id="cb13-6"><a></a>  <span class="co"># act</span></span>
-<span id="cb13-7"><a></a>  actual <span class="ot">&lt;-</span> <span class="fu">filter_data</span>(df)</span>
-<span id="cb13-8"><a></a></span>
-<span id="cb13-9"><a></a>  <span class="co"># assert</span></span>
-<span id="cb13-10"><a></a>  <span class="fu">expect_equal</span>(<span class="fu">nrow</span>(actual), <span class="dv">2</span>)</span>
-<span id="cb13-11"><a></a>  <span class="fu">expect_equal</span>(actual, expected)</span>
-<span id="cb13-12"><a></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-label="1"></a><span class="fu">test_that</span>(<span class="st">"filter_data behaves correctly"</span>, {</span>
+<span id="cb13-2"><a aria-label="2"></a>  <span class="co"># arrange</span></span>
+<span id="cb13-3"><a aria-label="3"></a>  df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">value =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb13-4"><a aria-label="4"></a>  expected <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">value =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb13-5"><a aria-label="5"></a></span>
+<span id="cb13-6"><a aria-label="6"></a>  <span class="co"># act</span></span>
+<span id="cb13-7"><a aria-label="7"></a>  actual <span class="ot">&lt;-</span> <span class="fu">filter_data</span>(df)</span>
+<span id="cb13-8"><a aria-label="8"></a></span>
+<span id="cb13-9"><a aria-label="9"></a>  <span class="co"># assert</span></span>
+<span id="cb13-10"><a aria-label="10"></a>  <span class="fu">expect_equal</span>(<span class="fu">nrow</span>(actual), <span class="dv">2</span>)</span>
+<span id="cb13-11"><a aria-label="11"></a>  <span class="fu">expect_equal</span>(actual, expected)</span>
+<span id="cb13-12"><a aria-label="12"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:25%;">
 <div class="small light-charcoal">
 <p>We can use much simpler dataframe than might be expected in the real use of these functions.</p>
@@ -655,17 +658,17 @@ a <code>pyproject.toml</code> and a <code>src/</code> folder.
 <h3 id="r-function"><span class="blue">R (function)</span></h3>
 <div class="columns">
 <div class="column" style="width:75%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="co">#' @importFrom odbc odbc</span></span>
-<span id="cb14-2"><a></a><span class="co">#' @importFrom dplyr tbl</span></span>
-<span id="cb14-3"><a></a><span class="co">#' @importFrom DBI dbConnect</span></span>
-<span id="cb14-4"><a></a>get_data <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb14-5"><a></a>  con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(</span>
-<span id="cb14-6"><a></a>    <span class="fu">odbc</span>(),</span>
-<span id="cb14-7"><a></a>    <span class="st">"dsn"</span></span>
-<span id="cb14-8"><a></a>  )</span>
-<span id="cb14-9"><a></a></span>
-<span id="cb14-10"><a></a>  <span class="fu">tbl</span>(con, <span class="st">"my_table"</span>)</span>
-<span id="cb14-11"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-label="1"></a><span class="co">#' @importFrom odbc odbc</span></span>
+<span id="cb14-2"><a aria-label="2"></a><span class="co">#' @importFrom dplyr tbl</span></span>
+<span id="cb14-3"><a aria-label="3"></a><span class="co">#' @importFrom DBI dbConnect</span></span>
+<span id="cb14-4"><a aria-label="4"></a>get_data <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb14-5"><a aria-label="5"></a>  con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(</span>
+<span id="cb14-6"><a aria-label="6"></a>    <span class="fu">odbc</span>(),</span>
+<span id="cb14-7"><a aria-label="7"></a>    <span class="st">"dsn"</span></span>
+<span id="cb14-8"><a aria-label="8"></a>  )</span>
+<span id="cb14-9"><a aria-label="9"></a></span>
+<span id="cb14-10"><a aria-label="10"></a>  <span class="fu">tbl</span>(con, <span class="st">"my_table"</span>)</span>
+<span id="cb14-11"><a aria-label="11"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:25%;">
 <div class="small light-charcoal">
 <p><span class="yellow"><strong>Note</strong>:</span> <code>{testthat}</code> recommends importing functions into your packages namespace if you want to mock the functions.</p>
@@ -677,20 +680,20 @@ a <code>pyproject.toml</code> and a <code>src/</code> folder.
 <h3 id="r-arrange"><span class="blue">R (arrange)</span></h3>
 <div class="columns">
 <div class="column" style="width:75%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">library</span>(mockery)</span>
-<span id="cb15-2"><a></a><span class="fu">test_that</span>(<span class="st">"it creates a valid database connection"</span>, {</span>
-<span id="cb15-3"><a></a>  <span class="co"># arrange</span></span>
-<span id="cb15-4"><a></a>  m_odbc <span class="ot">&lt;-</span> <span class="fu">Mock</span>(<span class="st">"odbc"</span>)</span>
-<span id="cb15-5"><a></a>  m_dbConnect <span class="ot">&lt;-</span> <span class="fu">Mock</span>(<span class="st">"connection"</span>)</span>
-<span id="cb15-6"><a></a>  m_tbl <span class="ot">&lt;-</span> <span class="fu">Mock</span>(<span class="st">"table"</span>)</span>
-<span id="cb15-7"><a></a></span>
-<span id="cb15-8"><a></a>  <span class="fu">local_mocked_bindings</span>(</span>
-<span id="cb15-9"><a></a>    <span class="at">odbc =</span> m_odbc,</span>
-<span id="cb15-10"><a></a>    <span class="at">dbConnect =</span> m_dbConnect,</span>
-<span id="cb15-11"><a></a>    <span class="at">tbl =</span> m_tbl</span>
-<span id="cb15-12"><a></a>  )</span>
-<span id="cb15-13"><a></a>  ...</span>
-<span id="cb15-14"><a></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a aria-label="1"></a><span class="fu">library</span>(mockery)</span>
+<span id="cb15-2"><a aria-label="2"></a><span class="fu">test_that</span>(<span class="st">"it creates a valid database connection"</span>, {</span>
+<span id="cb15-3"><a aria-label="3"></a>  <span class="co"># arrange</span></span>
+<span id="cb15-4"><a aria-label="4"></a>  m_odbc <span class="ot">&lt;-</span> <span class="fu">Mock</span>(<span class="st">"odbc"</span>)</span>
+<span id="cb15-5"><a aria-label="5"></a>  m_dbConnect <span class="ot">&lt;-</span> <span class="fu">Mock</span>(<span class="st">"connection"</span>)</span>
+<span id="cb15-6"><a aria-label="6"></a>  m_tbl <span class="ot">&lt;-</span> <span class="fu">Mock</span>(<span class="st">"table"</span>)</span>
+<span id="cb15-7"><a aria-label="7"></a></span>
+<span id="cb15-8"><a aria-label="8"></a>  <span class="fu">local_mocked_bindings</span>(</span>
+<span id="cb15-9"><a aria-label="9"></a>    <span class="at">odbc =</span> m_odbc,</span>
+<span id="cb15-10"><a aria-label="10"></a>    <span class="at">dbConnect =</span> m_dbConnect,</span>
+<span id="cb15-11"><a aria-label="11"></a>    <span class="at">tbl =</span> m_tbl</span>
+<span id="cb15-12"><a aria-label="12"></a>  )</span>
+<span id="cb15-13"><a aria-label="13"></a>  ...</span>
+<span id="cb15-14"><a aria-label="14"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:25%;">
 <div class="small light-charcoal">
 <p><span class="yellow"><strong>Note</strong>:</span> we create a “Mock” object for each of the functions we want to mock.</p>
@@ -704,20 +707,20 @@ a <code>pyproject.toml</code> and a <code>src/</code> folder.
 <h3 id="r-actassert"><span class="blue">R (act/assert)</span></h3>
 <div class="columns">
 <div class="column" style="width:75%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">library</span>(mockery)</span>
-<span id="cb16-2"><a></a><span class="fu">test_that</span>(<span class="st">"it creates a valid database connection"</span>, {</span>
-<span id="cb16-3"><a></a>  ...</span>
-<span id="cb16-4"><a></a></span>
-<span id="cb16-5"><a></a>  <span class="co"># act</span></span>
-<span id="cb16-6"><a></a>  actual <span class="ot">&lt;-</span> <span class="fu">get_data</span>()</span>
-<span id="cb16-7"><a></a></span>
-<span id="cb16-8"><a></a>  <span class="co"># assert</span></span>
-<span id="cb16-9"><a></a>  <span class="fu">expect_equal</span>(actual, <span class="st">"table"</span>)</span>
-<span id="cb16-10"><a></a>  <span class="fu">expect_called</span>(m_odbc, <span class="dv">1</span>) <span class="co"># repeat for other mocks</span></span>
-<span id="cb16-11"><a></a>  </span>
-<span id="cb16-12"><a></a>  <span class="fu">expect_args</span>(m_dbConnect, <span class="dv">1</span>, <span class="st">"odbc"</span>, <span class="st">"dsn"</span>)</span>
-<span id="cb16-13"><a></a>  <span class="fu">expect_args</span>(m_tbl, <span class="dv">1</span>, <span class="st">"connection"</span>, <span class="st">"my_table"</span>)</span>
-<span id="cb16-14"><a></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a aria-label="1"></a><span class="fu">library</span>(mockery)</span>
+<span id="cb16-2"><a aria-label="2"></a><span class="fu">test_that</span>(<span class="st">"it creates a valid database connection"</span>, {</span>
+<span id="cb16-3"><a aria-label="3"></a>  ...</span>
+<span id="cb16-4"><a aria-label="4"></a></span>
+<span id="cb16-5"><a aria-label="5"></a>  <span class="co"># act</span></span>
+<span id="cb16-6"><a aria-label="6"></a>  actual <span class="ot">&lt;-</span> <span class="fu">get_data</span>()</span>
+<span id="cb16-7"><a aria-label="7"></a></span>
+<span id="cb16-8"><a aria-label="8"></a>  <span class="co"># assert</span></span>
+<span id="cb16-9"><a aria-label="9"></a>  <span class="fu">expect_equal</span>(actual, <span class="st">"table"</span>)</span>
+<span id="cb16-10"><a aria-label="10"></a>  <span class="fu">expect_called</span>(m_odbc, <span class="dv">1</span>) <span class="co"># repeat for other mocks</span></span>
+<span id="cb16-11"><a aria-label="11"></a>  </span>
+<span id="cb16-12"><a aria-label="12"></a>  <span class="fu">expect_args</span>(m_dbConnect, <span class="dv">1</span>, <span class="st">"odbc"</span>, <span class="st">"dsn"</span>)</span>
+<span id="cb16-13"><a aria-label="13"></a>  <span class="fu">expect_args</span>(m_tbl, <span class="dv">1</span>, <span class="st">"connection"</span>, <span class="st">"my_table"</span>)</span>
+<span id="cb16-14"><a aria-label="14"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:25%;">
 <div class="small light-charcoal">
 <p><span class="yellow"><strong>Note</strong>:</span> we can now validate that our functions (mocks) have been called the correct amount of times, and that they have been called with the correct arguments.</p>
@@ -729,15 +732,15 @@ a <code>pyproject.toml</code> and a <code>src/</code> folder.
 <h3 id="python-function"><span class="yellow">python (function)</span></h3>
 <div class="columns">
 <div class="column" style="width:75%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb17-2"><a></a><span class="im">from</span> sqlalchemy <span class="im">import</span> create_engine</span>
-<span id="cb17-3"><a></a></span>
-<span id="cb17-4"><a></a><span class="kw">def</span> get_data():</span>
-<span id="cb17-5"><a></a>    engine <span class="op">=</span> create_engine(</span>
-<span id="cb17-6"><a></a>      <span class="st">"mssql+pyodbc://my_dsn"</span></span>
-<span id="cb17-7"><a></a>    )</span>
-<span id="cb17-8"><a></a>    </span>
-<span id="cb17-9"><a></a>    <span class="cf">return</span> pd.read_sql_table(<span class="st">"my_table"</span>, engine)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a aria-label="1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb17-2"><a aria-label="2"></a><span class="im">from</span> sqlalchemy <span class="im">import</span> create_engine</span>
+<span id="cb17-3"><a aria-label="3"></a></span>
+<span id="cb17-4"><a aria-label="4"></a><span class="kw">def</span> get_data():</span>
+<span id="cb17-5"><a aria-label="5"></a>    engine <span class="op">=</span> create_engine(</span>
+<span id="cb17-6"><a aria-label="6"></a>      <span class="st">"mssql+pyodbc://my_dsn"</span></span>
+<span id="cb17-7"><a aria-label="7"></a>    )</span>
+<span id="cb17-8"><a aria-label="8"></a>    </span>
+<span id="cb17-9"><a aria-label="9"></a>    <span class="cf">return</span> pd.read_sql_table(<span class="st">"my_table"</span>, engine)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:25%;">
 <div class="small light-charcoal">
 <p><span class="yellow"><strong>Note</strong>:</span> assume that this is saved in a file called <code>get_data.py</code>, so the function to import would be <code>get_data.get_data</code>.</p>
@@ -749,21 +752,21 @@ a <code>pyproject.toml</code> and a <code>src/</code> folder.
 <h3 id="python-arrange"><span class="yellow">python (arrange)</span></h3>
 <div class="columns">
 <div class="column" style="width:75%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="im">from</span> get_data <span class="im">import</span> get_data</span>
-<span id="cb18-2"><a></a></span>
-<span id="cb18-3"><a></a><span class="kw">def</span> test_get_data(mocker):</span>
-<span id="cb18-4"><a></a>    <span class="co"># arrange</span></span>
-<span id="cb18-5"><a></a>    m_create_engine <span class="op">=</span> mocker.patch(</span>
-<span id="cb18-6"><a></a>      <span class="st">"get_data.create_engine"</span>,</span>
-<span id="cb18-7"><a></a>      return_value<span class="op">=</span><span class="st">"engine"</span></span>
-<span id="cb18-8"><a></a>    )</span>
-<span id="cb18-9"><a></a>    </span>
-<span id="cb18-10"><a></a>    m_read_sql_table <span class="op">=</span> mocker.patch(</span>
-<span id="cb18-11"><a></a>      <span class="st">"pandas.read_sql_table"</span>,</span>
-<span id="cb18-12"><a></a>      return_value<span class="op">=</span><span class="st">"table"</span></span>
-<span id="cb18-13"><a></a>    )</span>
-<span id="cb18-14"><a></a>    </span>
-<span id="cb18-15"><a></a>    ...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a aria-label="1"></a><span class="im">from</span> get_data <span class="im">import</span> get_data</span>
+<span id="cb18-2"><a aria-label="2"></a></span>
+<span id="cb18-3"><a aria-label="3"></a><span class="kw">def</span> test_get_data(mocker):</span>
+<span id="cb18-4"><a aria-label="4"></a>    <span class="co"># arrange</span></span>
+<span id="cb18-5"><a aria-label="5"></a>    m_create_engine <span class="op">=</span> mocker.patch(</span>
+<span id="cb18-6"><a aria-label="6"></a>      <span class="st">"get_data.create_engine"</span>,</span>
+<span id="cb18-7"><a aria-label="7"></a>      return_value<span class="op">=</span><span class="st">"engine"</span></span>
+<span id="cb18-8"><a aria-label="8"></a>    )</span>
+<span id="cb18-9"><a aria-label="9"></a>    </span>
+<span id="cb18-10"><a aria-label="10"></a>    m_read_sql_table <span class="op">=</span> mocker.patch(</span>
+<span id="cb18-11"><a aria-label="11"></a>      <span class="st">"pandas.read_sql_table"</span>,</span>
+<span id="cb18-12"><a aria-label="12"></a>      return_value<span class="op">=</span><span class="st">"table"</span></span>
+<span id="cb18-13"><a aria-label="13"></a>    )</span>
+<span id="cb18-14"><a aria-label="14"></a>    </span>
+<span id="cb18-15"><a aria-label="15"></a>    ...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:25%;">
 <div class="small light-charcoal">
 <p><span class="yellow"><strong>Note</strong>:</span> the difference between mocking functions which are imported vs functions in modules which are imported.</p>
@@ -776,23 +779,23 @@ a <code>pyproject.toml</code> and a <code>src/</code> folder.
 <h3 id="python-actassert"><span class="yellow">python (act/assert)</span></h3>
 <div class="columns">
 <div class="column" style="width:75%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a><span class="im">from</span> get_data <span class="im">import</span> get_data</span>
-<span id="cb19-2"><a></a></span>
-<span id="cb19-3"><a></a><span class="kw">def</span> test_get_data(mocker):</span>
-<span id="cb19-4"><a></a>    ...</span>
-<span id="cb19-5"><a></a>    <span class="co"># act</span></span>
-<span id="cb19-6"><a></a>    actual <span class="op">=</span> get_data()</span>
-<span id="cb19-7"><a></a></span>
-<span id="cb19-8"><a></a>    <span class="co"># assert</span></span>
-<span id="cb19-9"><a></a>    <span class="cf">assert</span> actual <span class="op">==</span> <span class="st">"table"</span></span>
-<span id="cb19-10"><a></a></span>
-<span id="cb19-11"><a></a>    m_create_engine.assert_called_once_with(</span>
-<span id="cb19-12"><a></a>      <span class="st">"mssql+pyodbc://my_dsn"</span></span>
-<span id="cb19-13"><a></a>    )</span>
-<span id="cb19-14"><a></a>    </span>
-<span id="cb19-15"><a></a>    m_read_sql_table.assert_called_once_with(</span>
-<span id="cb19-16"><a></a>      <span class="st">"my_table"</span>, <span class="st">"engine"</span></span>
-<span id="cb19-17"><a></a>    )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a aria-label="1"></a><span class="im">from</span> get_data <span class="im">import</span> get_data</span>
+<span id="cb19-2"><a aria-label="2"></a></span>
+<span id="cb19-3"><a aria-label="3"></a><span class="kw">def</span> test_get_data(mocker):</span>
+<span id="cb19-4"><a aria-label="4"></a>    ...</span>
+<span id="cb19-5"><a aria-label="5"></a>    <span class="co"># act</span></span>
+<span id="cb19-6"><a aria-label="6"></a>    actual <span class="op">=</span> get_data()</span>
+<span id="cb19-7"><a aria-label="7"></a></span>
+<span id="cb19-8"><a aria-label="8"></a>    <span class="co"># assert</span></span>
+<span id="cb19-9"><a aria-label="9"></a>    <span class="cf">assert</span> actual <span class="op">==</span> <span class="st">"table"</span></span>
+<span id="cb19-10"><a aria-label="10"></a></span>
+<span id="cb19-11"><a aria-label="11"></a>    m_create_engine.assert_called_once_with(</span>
+<span id="cb19-12"><a aria-label="12"></a>      <span class="st">"mssql+pyodbc://my_dsn"</span></span>
+<span id="cb19-13"><a aria-label="13"></a>    )</span>
+<span id="cb19-14"><a aria-label="14"></a>    </span>
+<span id="cb19-15"><a aria-label="15"></a>    m_read_sql_table.assert_called_once_with(</span>
+<span id="cb19-16"><a aria-label="16"></a>      <span class="st">"my_table"</span>, <span class="st">"engine"</span></span>
+<span id="cb19-17"><a aria-label="17"></a>    )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:25%;">
 <div class="small light-charcoal">
 <p><span class="yellow"><strong>Note</strong>:</span> the difference between mocking functions which are imported vs functions in modules which are imported.</p>
@@ -803,73 +806,73 @@ a <code>pyproject.toml</code> and a <code>src/</code> folder.
 <section id="using-mocks-with-my_function" class="slide level2 code-page">
 <h2>Using mocks with <code>my_function</code></h2>
 <h3 class="yellow" id="r-function-1">R function</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>my_function <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb20-2"><a></a>  <span class="fu">get_data</span>() <span class="sc">|&gt;</span></span>
-<span id="cb20-3"><a></a>    <span class="fu">mutate_data</span>() <span class="sc">|&gt;</span></span>
-<span id="cb20-4"><a></a>    <span class="fu">filter_data</span>() <span class="sc">|&gt;</span></span>
-<span id="cb20-5"><a></a>    <span class="fu">plot_data</span>()</span>
-<span id="cb20-6"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a aria-label="1"></a>my_function <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb20-2"><a aria-label="2"></a>  <span class="fu">get_data</span>() <span class="sc">|&gt;</span></span>
+<span id="cb20-3"><a aria-label="3"></a>    <span class="fu">mutate_data</span>() <span class="sc">|&gt;</span></span>
+<span id="cb20-4"><a aria-label="4"></a>    <span class="fu">filter_data</span>() <span class="sc">|&gt;</span></span>
+<span id="cb20-5"><a aria-label="5"></a>    <span class="fu">plot_data</span>()</span>
+<span id="cb20-6"><a aria-label="6"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="using-mocks-with-my_function-1" class="slide level2 code-page">
 <h2>Using mocks with <code>my_function</code></h2>
 <h3 class="yellow" id="unit-test-arrange">unit test (arrange)</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">test_that</span>(<span class="st">"it calls other functions correctly"</span>, {   </span>
-<span id="cb21-2"><a></a>  <span class="co"># arrange</span></span>
-<span id="cb21-3"><a></a>  m_get_data <span class="ot">&lt;-</span> <span class="fu">Mock</span>(<span class="st">"get_data"</span>)</span>
-<span id="cb21-4"><a></a>  m_mutate_data <span class="ot">&lt;-</span> <span class="fu">Mock</span>(<span class="st">"mutate_data"</span>)</span>
-<span id="cb21-5"><a></a>  m_filter_data <span class="ot">&lt;-</span> <span class="fu">Mock</span>(<span class="st">"filter_data"</span>)</span>
-<span id="cb21-6"><a></a>  m_plot_data <span class="ot">&lt;-</span> <span class="fu">Mock</span>(<span class="st">"plot_data"</span>)</span>
-<span id="cb21-7"><a></a></span>
-<span id="cb21-8"><a></a>  <span class="fu">local_mocked_bindings</span>(</span>
-<span id="cb21-9"><a></a>    <span class="at">get_data =</span> m_get_data,</span>
-<span id="cb21-10"><a></a>    <span class="at">mutate_data =</span> m_mutate_data,</span>
-<span id="cb21-11"><a></a>    <span class="at">filter_data =</span> m_filter_data,</span>
-<span id="cb21-12"><a></a>    <span class="at">plot_data =</span> m_plot_data</span>
-<span id="cb21-13"><a></a>  )</span>
-<span id="cb21-14"><a></a></span>
-<span id="cb21-15"><a></a>  <span class="co"># ...</span></span>
-<span id="cb21-16"><a></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a aria-label="1"></a><span class="fu">test_that</span>(<span class="st">"it calls other functions correctly"</span>, {   </span>
+<span id="cb21-2"><a aria-label="2"></a>  <span class="co"># arrange</span></span>
+<span id="cb21-3"><a aria-label="3"></a>  m_get_data <span class="ot">&lt;-</span> <span class="fu">Mock</span>(<span class="st">"get_data"</span>)</span>
+<span id="cb21-4"><a aria-label="4"></a>  m_mutate_data <span class="ot">&lt;-</span> <span class="fu">Mock</span>(<span class="st">"mutate_data"</span>)</span>
+<span id="cb21-5"><a aria-label="5"></a>  m_filter_data <span class="ot">&lt;-</span> <span class="fu">Mock</span>(<span class="st">"filter_data"</span>)</span>
+<span id="cb21-6"><a aria-label="6"></a>  m_plot_data <span class="ot">&lt;-</span> <span class="fu">Mock</span>(<span class="st">"plot_data"</span>)</span>
+<span id="cb21-7"><a aria-label="7"></a></span>
+<span id="cb21-8"><a aria-label="8"></a>  <span class="fu">local_mocked_bindings</span>(</span>
+<span id="cb21-9"><a aria-label="9"></a>    <span class="at">get_data =</span> m_get_data,</span>
+<span id="cb21-10"><a aria-label="10"></a>    <span class="at">mutate_data =</span> m_mutate_data,</span>
+<span id="cb21-11"><a aria-label="11"></a>    <span class="at">filter_data =</span> m_filter_data,</span>
+<span id="cb21-12"><a aria-label="12"></a>    <span class="at">plot_data =</span> m_plot_data</span>
+<span id="cb21-13"><a aria-label="13"></a>  )</span>
+<span id="cb21-14"><a aria-label="14"></a></span>
+<span id="cb21-15"><a aria-label="15"></a>  <span class="co"># ...</span></span>
+<span id="cb21-16"><a aria-label="16"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="using-mocks-with-my_function-2" class="slide level2 code-page">
 <h2>Using mocks with <code>my_function</code></h2>
 <h3 class="yellow" id="unit-test-arrange-1">unit test (arrange)</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">test_that</span>(<span class="st">"it calls other functions correctly"</span>, {</span>
-<span id="cb22-2"><a></a>  <span class="co"># ...</span></span>
-<span id="cb22-3"><a></a>  <span class="co"># act</span></span>
-<span id="cb22-4"><a></a>  actual <span class="ot">&lt;-</span> <span class="fu">my_function</span>()</span>
-<span id="cb22-5"><a></a></span>
-<span id="cb22-6"><a></a>  <span class="co"># assert</span></span>
-<span id="cb22-7"><a></a>  <span class="fu">expect_equal</span>(actual, <span class="st">"plot_data"</span>)</span>
-<span id="cb22-8"><a></a></span>
-<span id="cb22-9"><a></a>  <span class="fu">expect_called</span>(m_get_data, <span class="dv">1</span>)</span>
-<span id="cb22-10"><a></a>  <span class="fu">expect_args</span>(m_get_data, <span class="dv">1</span>)</span>
-<span id="cb22-11"><a></a></span>
-<span id="cb22-12"><a></a>  <span class="fu">expect_args</span>(m_mutate_data, <span class="dv">1</span>, <span class="st">"get_data"</span>)</span>
-<span id="cb22-13"><a></a>  <span class="fu">expect_args</span>(m_filter_data, <span class="dv">1</span>, <span class="st">"mutate_data"</span>)</span>
-<span id="cb22-14"><a></a></span>
-<span id="cb22-15"><a></a>  <span class="fu">expect_args</span>(m_plot_data, <span class="dv">1</span>, <span class="st">"filter_data"</span>)</span>
-<span id="cb22-16"><a></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a aria-label="1"></a><span class="fu">test_that</span>(<span class="st">"it calls other functions correctly"</span>, {</span>
+<span id="cb22-2"><a aria-label="2"></a>  <span class="co"># ...</span></span>
+<span id="cb22-3"><a aria-label="3"></a>  <span class="co"># act</span></span>
+<span id="cb22-4"><a aria-label="4"></a>  actual <span class="ot">&lt;-</span> <span class="fu">my_function</span>()</span>
+<span id="cb22-5"><a aria-label="5"></a></span>
+<span id="cb22-6"><a aria-label="6"></a>  <span class="co"># assert</span></span>
+<span id="cb22-7"><a aria-label="7"></a>  <span class="fu">expect_equal</span>(actual, <span class="st">"plot_data"</span>)</span>
+<span id="cb22-8"><a aria-label="8"></a></span>
+<span id="cb22-9"><a aria-label="9"></a>  <span class="fu">expect_called</span>(m_get_data, <span class="dv">1</span>)</span>
+<span id="cb22-10"><a aria-label="10"></a>  <span class="fu">expect_args</span>(m_get_data, <span class="dv">1</span>)</span>
+<span id="cb22-11"><a aria-label="11"></a></span>
+<span id="cb22-12"><a aria-label="12"></a>  <span class="fu">expect_args</span>(m_mutate_data, <span class="dv">1</span>, <span class="st">"get_data"</span>)</span>
+<span id="cb22-13"><a aria-label="13"></a>  <span class="fu">expect_args</span>(m_filter_data, <span class="dv">1</span>, <span class="st">"mutate_data"</span>)</span>
+<span id="cb22-14"><a aria-label="14"></a></span>
+<span id="cb22-15"><a aria-label="15"></a>  <span class="fu">expect_args</span>(m_plot_data, <span class="dv">1</span>, <span class="st">"filter_data"</span>)</span>
+<span id="cb22-16"><a aria-label="16"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="using-mocks-with-my_function-3" class="slide level2 code-page">
 <h2>Using mocks with <code>my_function</code></h2>
 <h3 class="yellow" id="integration-test">integration test</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">test_that</span>(<span class="st">"fn calls all the other functions"</span>, {</span>
-<span id="cb23-2"><a></a>  <span class="co"># arrange</span></span>
-<span id="cb23-3"><a></a>  df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>))</span>
-<span id="cb23-4"><a></a>  expected_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>), <span class="at">value =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.4</span>))</span>
-<span id="cb23-5"><a></a></span>
-<span id="cb23-6"><a></a>  m_get_data <span class="ot">&lt;-</span> <span class="fu">Mock</span>(df)</span>
-<span id="cb23-7"><a></a>  m_plot_data <span class="ot">&lt;-</span> <span class="fu">Mock</span>(<span class="st">"plot_data"</span>)</span>
-<span id="cb23-8"><a></a></span>
-<span id="cb23-9"><a></a>  <span class="fu">local_mocked_bindings</span>(<span class="at">get_data =</span> m_get_data, <span class="at">plot_data =</span> m_plot_data)</span>
-<span id="cb23-10"><a></a></span>
-<span id="cb23-11"><a></a>  <span class="co"># act</span></span>
-<span id="cb23-12"><a></a>  actual <span class="ot">&lt;-</span> <span class="fu">my_function</span>()</span>
-<span id="cb23-13"><a></a></span>
-<span id="cb23-14"><a></a>  <span class="co"># assert</span></span>
-<span id="cb23-15"><a></a>  <span class="fu">expect_equal</span>(actual, <span class="st">"plot_data"</span>)</span>
-<span id="cb23-16"><a></a>  <span class="fu">expect_args</span>(m_plot_data, <span class="dv">1</span>, expected_df)</span>
-<span id="cb23-17"><a></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a aria-label="1"></a><span class="fu">test_that</span>(<span class="st">"fn calls all the other functions"</span>, {</span>
+<span id="cb23-2"><a aria-label="2"></a>  <span class="co"># arrange</span></span>
+<span id="cb23-3"><a aria-label="3"></a>  df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>))</span>
+<span id="cb23-4"><a aria-label="4"></a>  expected_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>), <span class="at">value =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.4</span>))</span>
+<span id="cb23-5"><a aria-label="5"></a></span>
+<span id="cb23-6"><a aria-label="6"></a>  m_get_data <span class="ot">&lt;-</span> <span class="fu">Mock</span>(df)</span>
+<span id="cb23-7"><a aria-label="7"></a>  m_plot_data <span class="ot">&lt;-</span> <span class="fu">Mock</span>(<span class="st">"plot_data"</span>)</span>
+<span id="cb23-8"><a aria-label="8"></a></span>
+<span id="cb23-9"><a aria-label="9"></a>  <span class="fu">local_mocked_bindings</span>(<span class="at">get_data =</span> m_get_data, <span class="at">plot_data =</span> m_plot_data)</span>
+<span id="cb23-10"><a aria-label="10"></a></span>
+<span id="cb23-11"><a aria-label="11"></a>  <span class="co"># act</span></span>
+<span id="cb23-12"><a aria-label="12"></a>  actual <span class="ot">&lt;-</span> <span class="fu">my_function</span>()</span>
+<span id="cb23-13"><a aria-label="13"></a></span>
+<span id="cb23-14"><a aria-label="14"></a>  <span class="co"># assert</span></span>
+<span id="cb23-15"><a aria-label="15"></a>  <span class="fu">expect_equal</span>(actual, <span class="st">"plot_data"</span>)</span>
+<span id="cb23-16"><a aria-label="16"></a>  <span class="fu">expect_args</span>(m_plot_data, <span class="dv">1</span>, expected_df)</span>
+<span id="cb23-17"><a aria-label="17"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="but-what-about-the-plot-function" class="slide level2">
 <h2>But, what about the plot function?</h2>
@@ -890,18 +893,18 @@ a <code>pyproject.toml</code> and a <code>src/</code> folder.
 <h3 class="blue" id="r-4">R</h3>
 <div class="columns">
 <div class="column" style="width:75%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">test_that</span>(</span>
-<span id="cb24-2"><a></a>  <span class="st">"it creates the plot correctly"</span>, {</span>
-<span id="cb24-3"><a></a>    <span class="co"># arrange</span></span>
-<span id="cb24-4"><a></a>    df <span class="ot">&lt;-</span> <span class="fu">create_sample_data_frame</span>()</span>
-<span id="cb24-5"><a></a></span>
-<span id="cb24-6"><a></a>    <span class="co"># act</span></span>
-<span id="cb24-7"><a></a>    actual <span class="ot">&lt;-</span> <span class="fu">plot_data</span>(df)</span>
-<span id="cb24-8"><a></a></span>
-<span id="cb24-9"><a></a>    <span class="co"># assert</span></span>
-<span id="cb24-10"><a></a>    <span class="fu">expect_snapshot</span>(actual)</span>
-<span id="cb24-11"><a></a>  }</span>
-<span id="cb24-12"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a aria-label="1"></a><span class="fu">test_that</span>(</span>
+<span id="cb24-2"><a aria-label="2"></a>  <span class="st">"it creates the plot correctly"</span>, {</span>
+<span id="cb24-3"><a aria-label="3"></a>    <span class="co"># arrange</span></span>
+<span id="cb24-4"><a aria-label="4"></a>    df <span class="ot">&lt;-</span> <span class="fu">create_sample_data_frame</span>()</span>
+<span id="cb24-5"><a aria-label="5"></a></span>
+<span id="cb24-6"><a aria-label="6"></a>    <span class="co"># act</span></span>
+<span id="cb24-7"><a aria-label="7"></a>    actual <span class="ot">&lt;-</span> <span class="fu">plot_data</span>(df)</span>
+<span id="cb24-8"><a aria-label="8"></a></span>
+<span id="cb24-9"><a aria-label="9"></a>    <span class="co"># assert</span></span>
+<span id="cb24-10"><a aria-label="10"></a>    <span class="fu">expect_snapshot</span>(actual)</span>
+<span id="cb24-11"><a aria-label="11"></a>  }</span>
+<span id="cb24-12"><a aria-label="12"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:25%;">
 <div class="small light-charcoal">
 <p>The first time we run this, it will create a <span class="blue"><strong>snapshot</strong></span> of the plot. This will be a file saved to disk.</p>
@@ -915,17 +918,17 @@ a <code>pyproject.toml</code> and a <code>src/</code> folder.
 <h3 class="yellow" id="python-4">python</h3>
 <div class="columns">
 <div class="column" style="width:75%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a></a><span class="co"># with the pytest-snapshot plugin</span></span>
-<span id="cb25-2"><a></a></span>
-<span id="cb25-3"><a></a><span class="kw">def</span> test_plot_data(snapshot):</span>
-<span id="cb25-4"><a></a>  <span class="co"># arrange</span></span>
-<span id="cb25-5"><a></a>  df <span class="op">=</span> create_sample_data_frame()</span>
-<span id="cb25-6"><a></a></span>
-<span id="cb25-7"><a></a>  <span class="co"># act</span></span>
-<span id="cb25-8"><a></a>  actual <span class="op">=</span> plot_data(df)</span>
-<span id="cb25-9"><a></a></span>
-<span id="cb25-10"><a></a>  <span class="co"># assert</span></span>
-<span id="cb25-11"><a></a>  snapshot.assert_match(actual, <span class="st">"plot.png"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a aria-label="1"></a><span class="co"># with the pytest-snapshot plugin</span></span>
+<span id="cb25-2"><a aria-label="2"></a></span>
+<span id="cb25-3"><a aria-label="3"></a><span class="kw">def</span> test_plot_data(snapshot):</span>
+<span id="cb25-4"><a aria-label="4"></a>  <span class="co"># arrange</span></span>
+<span id="cb25-5"><a aria-label="5"></a>  df <span class="op">=</span> create_sample_data_frame()</span>
+<span id="cb25-6"><a aria-label="6"></a></span>
+<span id="cb25-7"><a aria-label="7"></a>  <span class="co"># act</span></span>
+<span id="cb25-8"><a aria-label="8"></a>  actual <span class="op">=</span> plot_data(df)</span>
+<span id="cb25-9"><a aria-label="9"></a></span>
+<span id="cb25-10"><a aria-label="10"></a>  <span class="co"># assert</span></span>
+<span id="cb25-11"><a aria-label="11"></a>  snapshot.assert_match(actual, <span class="st">"plot.png"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:25%;">
 <div class="small light-charcoal">
 <p>Similar to <span class="blue">R</span>, but you need to install the pytest-snapshot plugin first.</p>

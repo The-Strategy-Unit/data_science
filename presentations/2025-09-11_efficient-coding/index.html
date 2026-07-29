@@ -6,8 +6,8 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.38">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="Eirini &amp; Rhian, DS @ SU">
   <meta name="dcterms.date" content="2025-09-11">
@@ -21,10 +21,13 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
-    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -203,7 +206,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Eirini &amp; Rhian, DS @ SU 
+Eirini &amp; Rhian, DS @ SU
 </div>
 </div>
 </div>
@@ -238,18 +241,18 @@ Eirini &amp; Rhian, DS @ SU
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">from</span> timeit <span class="im">import</span> timeit</span>
-<span id="cb1-2"><a></a></span>
-<span id="cb1-3"><a></a>size <span class="op">=</span> <span class="dv">100_000</span></span>
-<span id="cb1-4"><a></a></span>
-<span id="cb1-5"><a></a><span class="kw">def</span> sum_of_squares():</span>
-<span id="cb1-6"><a></a>    <span class="cf">return</span> <span class="bu">sum</span>(i<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(size))</span>
-<span id="cb1-7"><a></a></span>
-<span id="cb1-8"><a></a>execution_time <span class="op">=</span> timeit(<span class="st">'sum_of_squares()'</span>,</span>
-<span id="cb1-9"><a></a>                       <span class="bu">globals</span><span class="op">=</span><span class="bu">globals</span>(),</span>
-<span id="cb1-10"><a></a>                       number<span class="op">=</span><span class="dv">100</span>)</span>
-<span id="cb1-11"><a></a></span>
-<span id="cb1-12"><a></a><span class="bu">print</span>(<span class="ss">f"Average execution time: </span><span class="sc">{</span>execution_time<span class="op">/</span><span class="dv">1000</span><span class="sc">:.6f}</span><span class="ss">s"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a><span class="im">from</span> timeit <span class="im">import</span> timeit</span>
+<span id="cb1-2"><a aria-label="2"></a></span>
+<span id="cb1-3"><a aria-label="3"></a>size <span class="op">=</span> <span class="dv">100_000</span></span>
+<span id="cb1-4"><a aria-label="4"></a></span>
+<span id="cb1-5"><a aria-label="5"></a><span class="kw">def</span> sum_of_squares():</span>
+<span id="cb1-6"><a aria-label="6"></a>    <span class="cf">return</span> <span class="bu">sum</span>(i<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(size))</span>
+<span id="cb1-7"><a aria-label="7"></a></span>
+<span id="cb1-8"><a aria-label="8"></a>execution_time <span class="op">=</span> timeit(<span class="st">'sum_of_squares()'</span>,</span>
+<span id="cb1-9"><a aria-label="9"></a>                       <span class="bu">globals</span><span class="op">=</span><span class="bu">globals</span>(),</span>
+<span id="cb1-10"><a aria-label="10"></a>                       number<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb1-11"><a aria-label="11"></a></span>
+<span id="cb1-12"><a aria-label="12"></a><span class="bu">print</span>(<span class="ss">f"Average execution time: </span><span class="sc">{</span>execution_time<span class="op">/</span><span class="dv">1000</span><span class="sc">:.6f}</span><span class="ss">s"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
@@ -274,24 +277,24 @@ Eirini &amp; Rhian, DS @ SU
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">from</span> random <span class="im">import</span> uniform</span>
-<span id="cb2-2"><a></a><span class="im">from</span> pyinstrument <span class="im">import</span> Profiler</span>
-<span id="cb2-3"><a></a></span>
-<span id="cb2-4"><a></a><span class="co"># Monte Carlo method estimating pi through simulation and geometric probability</span></span>
-<span id="cb2-5"><a></a><span class="kw">def</span> hits(point):</span>
-<span id="cb2-6"><a></a>    <span class="cf">return</span> <span class="bu">abs</span>(point) <span class="op">&lt;=</span> <span class="dv">1</span></span>
-<span id="cb2-7"><a></a></span>
-<span id="cb2-8"><a></a><span class="kw">def</span> point():</span>
-<span id="cb2-9"><a></a>    <span class="cf">return</span> <span class="bu">complex</span>(uniform(<span class="dv">0</span>, <span class="dv">1</span>), uniform(<span class="dv">0</span>, <span class="dv">1</span>))</span>
-<span id="cb2-10"><a></a></span>
-<span id="cb2-11"><a></a><span class="kw">def</span> estimate_pi(n):</span>
-<span id="cb2-12"><a></a>    <span class="cf">return</span> <span class="dv">4</span> <span class="op">*</span> <span class="bu">sum</span>(hits(point()) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(n)) <span class="op">/</span> n</span>
-<span id="cb2-13"><a></a></span>
-<span id="cb2-14"><a></a><span class="cf">with</span> Profiler(interval<span class="op">=</span><span class="fl">0.1</span>) <span class="im">as</span> profiler:</span>
-<span id="cb2-15"><a></a>    estimate_pi(n<span class="op">=</span><span class="dv">10_000_000</span>)</span>
-<span id="cb2-16"><a></a></span>
-<span id="cb2-17"><a></a>profiler.<span class="bu">print</span>()</span>
-<span id="cb2-18"><a></a><span class="co"># profiler.open_in_browser()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-label="1"></a><span class="im">from</span> random <span class="im">import</span> uniform</span>
+<span id="cb2-2"><a aria-label="2"></a><span class="im">from</span> pyinstrument <span class="im">import</span> Profiler</span>
+<span id="cb2-3"><a aria-label="3"></a></span>
+<span id="cb2-4"><a aria-label="4"></a><span class="co"># Monte Carlo method estimating pi through simulation and geometric probability</span></span>
+<span id="cb2-5"><a aria-label="5"></a><span class="kw">def</span> hits(point):</span>
+<span id="cb2-6"><a aria-label="6"></a>    <span class="cf">return</span> <span class="bu">abs</span>(point) <span class="op">&lt;=</span> <span class="dv">1</span></span>
+<span id="cb2-7"><a aria-label="7"></a></span>
+<span id="cb2-8"><a aria-label="8"></a><span class="kw">def</span> point():</span>
+<span id="cb2-9"><a aria-label="9"></a>    <span class="cf">return</span> <span class="bu">complex</span>(uniform(<span class="dv">0</span>, <span class="dv">1</span>), uniform(<span class="dv">0</span>, <span class="dv">1</span>))</span>
+<span id="cb2-10"><a aria-label="10"></a></span>
+<span id="cb2-11"><a aria-label="11"></a><span class="kw">def</span> estimate_pi(n):</span>
+<span id="cb2-12"><a aria-label="12"></a>    <span class="cf">return</span> <span class="dv">4</span> <span class="op">*</span> <span class="bu">sum</span>(hits(point()) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(n)) <span class="op">/</span> n</span>
+<span id="cb2-13"><a aria-label="13"></a></span>
+<span id="cb2-14"><a aria-label="14"></a><span class="cf">with</span> Profiler(interval<span class="op">=</span><span class="fl">0.1</span>) <span class="im">as</span> profiler:</span>
+<span id="cb2-15"><a aria-label="15"></a>    estimate_pi(n<span class="op">=</span><span class="dv">10_000_000</span>)</span>
+<span id="cb2-16"><a aria-label="16"></a></span>
+<span id="cb2-17"><a aria-label="17"></a>profiler.<span class="bu">print</span>()</span>
+<span id="cb2-18"><a aria-label="18"></a><span class="co"># profiler.open_in_browser()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
@@ -325,27 +328,27 @@ Eirini &amp; Rhian, DS @ SU
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">from</span> timeit <span class="im">import</span> timeit</span>
-<span id="cb3-2"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb3-3"><a></a></span>
-<span id="cb3-4"><a></a>size <span class="op">=</span> <span class="dv">100_000</span></span>
-<span id="cb3-5"><a></a></span>
-<span id="cb3-6"><a></a><span class="kw">def</span> growing_list():</span>
-<span id="cb3-7"><a></a>    result <span class="op">=</span> []</span>
-<span id="cb3-8"><a></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(size):</span>
-<span id="cb3-9"><a></a>        result.append(i<span class="op">**</span><span class="dv">2</span>)</span>
-<span id="cb3-10"><a></a>    <span class="cf">return</span> result</span>
-<span id="cb3-11"><a></a></span>
-<span id="cb3-12"><a></a><span class="kw">def</span> preallocated_array():</span>
-<span id="cb3-13"><a></a>    result <span class="op">=</span> np.zeros(size, dtype<span class="op">=</span><span class="bu">int</span>)</span>
-<span id="cb3-14"><a></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(size):</span>
-<span id="cb3-15"><a></a>        result[i] <span class="op">=</span> i<span class="op">**</span><span class="dv">2</span></span>
-<span id="cb3-16"><a></a>    <span class="cf">return</span> result</span>
-<span id="cb3-17"><a></a></span>
-<span id="cb3-18"><a></a>t1 <span class="op">=</span> timeit(growing_list, number<span class="op">=</span><span class="dv">100</span>)</span>
-<span id="cb3-19"><a></a>t2 <span class="op">=</span> timeit(preallocated_array, number<span class="op">=</span><span class="dv">100</span>)</span>
-<span id="cb3-20"><a></a><span class="bu">print</span>(<span class="ss">f"Growing list: </span><span class="sc">{</span>t1<span class="sc">:.6f}</span><span class="ss">s</span><span class="ch">\n</span><span class="ss">Pre-allocated: </span><span class="sc">{</span>t2<span class="sc">:.6f}</span><span class="ss">s"</span>)</span>
-<span id="cb3-21"><a></a><span class="bu">print</span>(<span class="ss">f"Speedup: </span><span class="sc">{</span>t2<span class="op">/</span>t1<span class="sc">:.1f}</span><span class="ss">x faster"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-label="1"></a><span class="im">from</span> timeit <span class="im">import</span> timeit</span>
+<span id="cb3-2"><a aria-label="2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-3"><a aria-label="3"></a></span>
+<span id="cb3-4"><a aria-label="4"></a>size <span class="op">=</span> <span class="dv">100_000</span></span>
+<span id="cb3-5"><a aria-label="5"></a></span>
+<span id="cb3-6"><a aria-label="6"></a><span class="kw">def</span> growing_list():</span>
+<span id="cb3-7"><a aria-label="7"></a>    result <span class="op">=</span> []</span>
+<span id="cb3-8"><a aria-label="8"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(size):</span>
+<span id="cb3-9"><a aria-label="9"></a>        result.append(i<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb3-10"><a aria-label="10"></a>    <span class="cf">return</span> result</span>
+<span id="cb3-11"><a aria-label="11"></a></span>
+<span id="cb3-12"><a aria-label="12"></a><span class="kw">def</span> preallocated_array():</span>
+<span id="cb3-13"><a aria-label="13"></a>    result <span class="op">=</span> np.zeros(size, dtype<span class="op">=</span><span class="bu">int</span>)</span>
+<span id="cb3-14"><a aria-label="14"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(size):</span>
+<span id="cb3-15"><a aria-label="15"></a>        result[i] <span class="op">=</span> i<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb3-16"><a aria-label="16"></a>    <span class="cf">return</span> result</span>
+<span id="cb3-17"><a aria-label="17"></a></span>
+<span id="cb3-18"><a aria-label="18"></a>t1 <span class="op">=</span> timeit(growing_list, number<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb3-19"><a aria-label="19"></a>t2 <span class="op">=</span> timeit(preallocated_array, number<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb3-20"><a aria-label="20"></a><span class="bu">print</span>(<span class="ss">f"Growing list: </span><span class="sc">{</span>t1<span class="sc">:.6f}</span><span class="ss">s</span><span class="ch">\n</span><span class="ss">Pre-allocated: </span><span class="sc">{</span>t2<span class="sc">:.6f}</span><span class="ss">s"</span>)</span>
+<span id="cb3-21"><a aria-label="21"></a><span class="bu">print</span>(<span class="ss">f"Speedup: </span><span class="sc">{</span>t2<span class="op">/</span>t1<span class="sc">:.1f}</span><span class="ss">x faster"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
@@ -452,24 +455,24 @@ Eirini &amp; Rhian, DS @ SU
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">from</span> timeit <span class="im">import</span> timeit</span>
-<span id="cb4-2"><a></a></span>
-<span id="cb4-3"><a></a>size <span class="op">=</span> <span class="dv">64</span></span>
-<span id="cb4-4"><a></a></span>
-<span id="cb4-5"><a></a><span class="kw">def</span> standard_loop():</span>
-<span id="cb4-6"><a></a>    result <span class="op">=</span> []</span>
-<span id="cb4-7"><a></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(size):</span>
-<span id="cb4-8"><a></a>        result.append(<span class="dv">2</span><span class="op">**</span>i)</span>
-<span id="cb4-9"><a></a>    <span class="cf">return</span> result</span>
-<span id="cb4-10"><a></a></span>
-<span id="cb4-11"><a></a><span class="kw">def</span> list_comprehension():</span>
-<span id="cb4-12"><a></a>    <span class="cf">return</span> [<span class="dv">2</span><span class="op">**</span>i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(size)]</span>
-<span id="cb4-13"><a></a></span>
-<span id="cb4-14"><a></a>t1 <span class="op">=</span> timeit(standard_loop, number<span class="op">=</span><span class="dv">100</span>)</span>
-<span id="cb4-15"><a></a>t2 <span class="op">=</span> timeit(list_comprehension, number<span class="op">=</span><span class="dv">100</span>)</span>
-<span id="cb4-16"><a></a></span>
-<span id="cb4-17"><a></a><span class="bu">print</span>(<span class="ss">f"Standard loop: </span><span class="sc">{</span>t1<span class="sc">:.6f}</span><span class="ss">s</span><span class="ch">\n</span><span class="ss">List comprehension: </span><span class="sc">{</span>t2<span class="sc">:.6f}</span><span class="ss">s"</span>)</span>
-<span id="cb4-18"><a></a><span class="bu">print</span>(<span class="ss">f"Speedup: </span><span class="sc">{</span>t1<span class="op">/</span>t2<span class="sc">:.1f}</span><span class="ss">x faster"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-label="1"></a><span class="im">from</span> timeit <span class="im">import</span> timeit</span>
+<span id="cb4-2"><a aria-label="2"></a></span>
+<span id="cb4-3"><a aria-label="3"></a>size <span class="op">=</span> <span class="dv">64</span></span>
+<span id="cb4-4"><a aria-label="4"></a></span>
+<span id="cb4-5"><a aria-label="5"></a><span class="kw">def</span> standard_loop():</span>
+<span id="cb4-6"><a aria-label="6"></a>    result <span class="op">=</span> []</span>
+<span id="cb4-7"><a aria-label="7"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(size):</span>
+<span id="cb4-8"><a aria-label="8"></a>        result.append(<span class="dv">2</span><span class="op">**</span>i)</span>
+<span id="cb4-9"><a aria-label="9"></a>    <span class="cf">return</span> result</span>
+<span id="cb4-10"><a aria-label="10"></a></span>
+<span id="cb4-11"><a aria-label="11"></a><span class="kw">def</span> list_comprehension():</span>
+<span id="cb4-12"><a aria-label="12"></a>    <span class="cf">return</span> [<span class="dv">2</span><span class="op">**</span>i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(size)]</span>
+<span id="cb4-13"><a aria-label="13"></a></span>
+<span id="cb4-14"><a aria-label="14"></a>t1 <span class="op">=</span> timeit(standard_loop, number<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb4-15"><a aria-label="15"></a>t2 <span class="op">=</span> timeit(list_comprehension, number<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb4-16"><a aria-label="16"></a></span>
+<span id="cb4-17"><a aria-label="17"></a><span class="bu">print</span>(<span class="ss">f"Standard loop: </span><span class="sc">{</span>t1<span class="sc">:.6f}</span><span class="ss">s</span><span class="ch">\n</span><span class="ss">List comprehension: </span><span class="sc">{</span>t2<span class="sc">:.6f}</span><span class="ss">s"</span>)</span>
+<span id="cb4-18"><a aria-label="18"></a><span class="bu">print</span>(<span class="ss">f"Speedup: </span><span class="sc">{</span>t1<span class="op">/</span>t2<span class="sc">:.1f}</span><span class="ss">x faster"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
@@ -478,22 +481,22 @@ Eirini &amp; Rhian, DS @ SU
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">from</span> timeit <span class="im">import</span> timeit</span>
-<span id="cb5-2"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb5-3"><a></a></span>
-<span id="cb5-4"><a></a>size <span class="op">=</span> <span class="dv">100_000</span></span>
-<span id="cb5-5"><a></a></span>
-<span id="cb5-6"><a></a><span class="kw">def</span> python_way():</span>
-<span id="cb5-7"><a></a>    <span class="cf">return</span> [i<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(size)]</span>
-<span id="cb5-8"><a></a></span>
-<span id="cb5-9"><a></a><span class="kw">def</span> numpy_way():</span>
-<span id="cb5-10"><a></a>    <span class="cf">return</span> np.arange(size)<span class="op">**</span><span class="dv">2</span> <span class="co"># Uses C implementation</span></span>
-<span id="cb5-11"><a></a></span>
-<span id="cb5-12"><a></a>t1 <span class="op">=</span> timeit(python_way, number<span class="op">=</span><span class="dv">100</span>)</span>
-<span id="cb5-13"><a></a>t2 <span class="op">=</span> timeit(numpy_way, number<span class="op">=</span><span class="dv">100</span>)</span>
-<span id="cb5-14"><a></a></span>
-<span id="cb5-15"><a></a><span class="bu">print</span>(<span class="ss">f"Python: </span><span class="sc">{</span>t1<span class="sc">:.6f}</span><span class="ss">s</span><span class="ch">\n</span><span class="ss">NumPy: </span><span class="sc">{</span>t2<span class="sc">:.6f}</span><span class="ss">s"</span>)</span>
-<span id="cb5-16"><a></a><span class="bu">print</span>(<span class="ss">f"Speedup: </span><span class="sc">{</span>t1<span class="op">/</span>t2<span class="sc">:.1f}</span><span class="ss">x faster"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-label="1"></a><span class="im">from</span> timeit <span class="im">import</span> timeit</span>
+<span id="cb5-2"><a aria-label="2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb5-3"><a aria-label="3"></a></span>
+<span id="cb5-4"><a aria-label="4"></a>size <span class="op">=</span> <span class="dv">100_000</span></span>
+<span id="cb5-5"><a aria-label="5"></a></span>
+<span id="cb5-6"><a aria-label="6"></a><span class="kw">def</span> python_way():</span>
+<span id="cb5-7"><a aria-label="7"></a>    <span class="cf">return</span> [i<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(size)]</span>
+<span id="cb5-8"><a aria-label="8"></a></span>
+<span id="cb5-9"><a aria-label="9"></a><span class="kw">def</span> numpy_way():</span>
+<span id="cb5-10"><a aria-label="10"></a>    <span class="cf">return</span> np.arange(size)<span class="op">**</span><span class="dv">2</span> <span class="co"># Uses C implementation</span></span>
+<span id="cb5-11"><a aria-label="11"></a></span>
+<span id="cb5-12"><a aria-label="12"></a>t1 <span class="op">=</span> timeit(python_way, number<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb5-13"><a aria-label="13"></a>t2 <span class="op">=</span> timeit(numpy_way, number<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb5-14"><a aria-label="14"></a></span>
+<span id="cb5-15"><a aria-label="15"></a><span class="bu">print</span>(<span class="ss">f"Python: </span><span class="sc">{</span>t1<span class="sc">:.6f}</span><span class="ss">s</span><span class="ch">\n</span><span class="ss">NumPy: </span><span class="sc">{</span>t2<span class="sc">:.6f}</span><span class="ss">s"</span>)</span>
+<span id="cb5-16"><a aria-label="16"></a><span class="bu">print</span>(<span class="ss">f"Speedup: </span><span class="sc">{</span>t1<span class="op">/</span>t2<span class="sc">:.1f}</span><span class="ss">x faster"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
@@ -502,24 +505,24 @@ Eirini &amp; Rhian, DS @ SU
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb6-2"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb6-3"><a></a><span class="im">from</span> timeit <span class="im">import</span> timeit</span>
-<span id="cb6-4"><a></a></span>
-<span id="cb6-5"><a></a>df <span class="op">=</span> pd.DataFrame({<span class="st">"value"</span>: np.random.rand(<span class="dv">10_000</span>)})</span>
-<span id="cb6-6"><a></a></span>
-<span id="cb6-7"><a></a><span class="kw">def</span> apply_method():</span>
-<span id="cb6-8"><a></a>    <span class="cf">return</span> df[<span class="st">"value"</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: x<span class="op">**</span><span class="dv">2</span>)</span>
-<span id="cb6-9"><a></a></span>
-<span id="cb6-10"><a></a><span class="kw">def</span> vector_method():</span>
-<span id="cb6-11"><a></a>    <span class="cf">return</span> df[<span class="st">"value"</span>]<span class="op">**</span><span class="dv">2</span></span>
-<span id="cb6-12"><a></a></span>
-<span id="cb6-13"><a></a><span class="co"># Compare execution times</span></span>
-<span id="cb6-14"><a></a>t1 <span class="op">=</span> timeit(apply_method, number<span class="op">=</span><span class="dv">100</span>)</span>
-<span id="cb6-15"><a></a>t2 <span class="op">=</span> timeit(vector_method, number<span class="op">=</span><span class="dv">100</span>)</span>
-<span id="cb6-16"><a></a></span>
-<span id="cb6-17"><a></a><span class="bu">print</span>(<span class="ss">f"apply: </span><span class="sc">{</span>t1<span class="sc">:.6f}</span><span class="ss">s</span><span class="ch">\n</span><span class="ss">vectorised: </span><span class="sc">{</span>t2<span class="sc">:.6f}</span><span class="ss">s"</span>)</span>
-<span id="cb6-18"><a></a><span class="bu">print</span>(<span class="ss">f"Speedup: </span><span class="sc">{</span>t1<span class="op">/</span>t2<span class="sc">:.1f}</span><span class="ss">x faster"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a aria-label="1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb6-2"><a aria-label="2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb6-3"><a aria-label="3"></a><span class="im">from</span> timeit <span class="im">import</span> timeit</span>
+<span id="cb6-4"><a aria-label="4"></a></span>
+<span id="cb6-5"><a aria-label="5"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">"value"</span>: np.random.rand(<span class="dv">10_000</span>)})</span>
+<span id="cb6-6"><a aria-label="6"></a></span>
+<span id="cb6-7"><a aria-label="7"></a><span class="kw">def</span> apply_method():</span>
+<span id="cb6-8"><a aria-label="8"></a>    <span class="cf">return</span> df[<span class="st">"value"</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: x<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb6-9"><a aria-label="9"></a></span>
+<span id="cb6-10"><a aria-label="10"></a><span class="kw">def</span> vector_method():</span>
+<span id="cb6-11"><a aria-label="11"></a>    <span class="cf">return</span> df[<span class="st">"value"</span>]<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb6-12"><a aria-label="12"></a></span>
+<span id="cb6-13"><a aria-label="13"></a><span class="co"># Compare execution times</span></span>
+<span id="cb6-14"><a aria-label="14"></a>t1 <span class="op">=</span> timeit(apply_method, number<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb6-15"><a aria-label="15"></a>t2 <span class="op">=</span> timeit(vector_method, number<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb6-16"><a aria-label="16"></a></span>
+<span id="cb6-17"><a aria-label="17"></a><span class="bu">print</span>(<span class="ss">f"apply: </span><span class="sc">{</span>t1<span class="sc">:.6f}</span><span class="ss">s</span><span class="ch">\n</span><span class="ss">vectorised: </span><span class="sc">{</span>t2<span class="sc">:.6f}</span><span class="ss">s"</span>)</span>
+<span id="cb6-18"><a aria-label="18"></a><span class="bu">print</span>(<span class="ss">f"Speedup: </span><span class="sc">{</span>t1<span class="op">/</span>t2<span class="sc">:.1f}</span><span class="ss">x faster"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
@@ -537,15 +540,15 @@ Eirini &amp; Rhian, DS @ SU
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">from</span> timeit <span class="im">import</span> timeit</span>
-<span id="cb7-2"><a></a></span>
-<span id="cb7-3"><a></a>size <span class="op">=</span> <span class="dv">100_000</span></span>
-<span id="cb7-4"><a></a></span>
-<span id="cb7-5"><a></a>t1 <span class="op">=</span> timeit(<span class="kw">lambda</span>: <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> x: x<span class="op">**</span><span class="dv">2</span>, <span class="bu">range</span>(size))), number<span class="op">=</span><span class="dv">100</span>)</span>
-<span id="cb7-6"><a></a>t2 <span class="op">=</span> timeit(<span class="kw">lambda</span>: [x<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(size)], number<span class="op">=</span><span class="dv">100</span>)</span>
-<span id="cb7-7"><a></a></span>
-<span id="cb7-8"><a></a><span class="bu">print</span>(<span class="ss">f"map: </span><span class="sc">{</span>t1<span class="sc">:.6f}</span><span class="ss">s</span><span class="ch">\n</span><span class="ss">comprehension: </span><span class="sc">{</span>t2<span class="sc">:.6f}</span><span class="ss">s"</span>)</span>
-<span id="cb7-9"><a></a><span class="bu">print</span>(<span class="ss">f"Speedup: </span><span class="sc">{</span>t1<span class="op">/</span>t2<span class="sc">:.1f}</span><span class="ss">x faster"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a aria-label="1"></a><span class="im">from</span> timeit <span class="im">import</span> timeit</span>
+<span id="cb7-2"><a aria-label="2"></a></span>
+<span id="cb7-3"><a aria-label="3"></a>size <span class="op">=</span> <span class="dv">100_000</span></span>
+<span id="cb7-4"><a aria-label="4"></a></span>
+<span id="cb7-5"><a aria-label="5"></a>t1 <span class="op">=</span> timeit(<span class="kw">lambda</span>: <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> x: x<span class="op">**</span><span class="dv">2</span>, <span class="bu">range</span>(size))), number<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb7-6"><a aria-label="6"></a>t2 <span class="op">=</span> timeit(<span class="kw">lambda</span>: [x<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(size)], number<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb7-7"><a aria-label="7"></a></span>
+<span id="cb7-8"><a aria-label="8"></a><span class="bu">print</span>(<span class="ss">f"map: </span><span class="sc">{</span>t1<span class="sc">:.6f}</span><span class="ss">s</span><span class="ch">\n</span><span class="ss">comprehension: </span><span class="sc">{</span>t2<span class="sc">:.6f}</span><span class="ss">s"</span>)</span>
+<span id="cb7-9"><a aria-label="9"></a><span class="bu">print</span>(<span class="ss">f"Speedup: </span><span class="sc">{</span>t1<span class="op">/</span>t2<span class="sc">:.1f}</span><span class="ss">x faster"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
@@ -554,14 +557,14 @@ Eirini &amp; Rhian, DS @ SU
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="co"># Generator</span></span>
-<span id="cb8-2"><a></a><span class="kw">def</span> count_up_to(limit):</span>
-<span id="cb8-3"><a></a>    count <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb8-4"><a></a>    <span class="cf">while</span> count <span class="op">&lt;</span> limit:</span>
-<span id="cb8-5"><a></a>        <span class="cf">yield</span> count</span>
-<span id="cb8-6"><a></a>        count <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb8-7"><a></a></span>
-<span id="cb8-8"><a></a><span class="bu">print</span>([n <span class="cf">for</span> n <span class="kw">in</span> count_up_to(<span class="dv">50</span>)])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a aria-label="1"></a><span class="co"># Generator</span></span>
+<span id="cb8-2"><a aria-label="2"></a><span class="kw">def</span> count_up_to(limit):</span>
+<span id="cb8-3"><a aria-label="3"></a>    count <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb8-4"><a aria-label="4"></a>    <span class="cf">while</span> count <span class="op">&lt;</span> limit:</span>
+<span id="cb8-5"><a aria-label="5"></a>        <span class="cf">yield</span> count</span>
+<span id="cb8-6"><a aria-label="6"></a>        count <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb8-7"><a aria-label="7"></a></span>
+<span id="cb8-8"><a aria-label="8"></a><span class="bu">print</span>([n <span class="cf">for</span> n <span class="kw">in</span> count_up_to(<span class="dv">50</span>)])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
@@ -630,34 +633,34 @@ Eirini &amp; Rhian, DS @ SU
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="im">from</span> timeit <span class="im">import</span> timeit</span>
-<span id="cb9-2"><a></a><span class="im">import</span> math</span>
-<span id="cb9-3"><a></a><span class="im">from</span> random <span class="im">import</span> randint</span>
-<span id="cb9-4"><a></a></span>
-<span id="cb9-5"><a></a>size <span class="op">=</span> <span class="dv">300_000</span></span>
-<span id="cb9-6"><a></a></span>
-<span id="cb9-7"><a></a>data <span class="op">=</span> [<span class="dv">2</span><span class="op">**</span>randint(<span class="dv">0</span>, <span class="dv">64</span>) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(size)]</span>
-<span id="cb9-8"><a></a></span>
-<span id="cb9-9"><a></a><span class="kw">def</span> regular_loop():</span>
-<span id="cb9-10"><a></a>    result <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb9-11"><a></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(data)):</span>
-<span id="cb9-12"><a></a>        x <span class="op">=</span> data[i]</span>
-<span id="cb9-13"><a></a>        result <span class="op">+=</span> math.sqrt(x) <span class="op">+</span> math.sin(x) <span class="op">+</span> math.cos(x)</span>
-<span id="cb9-14"><a></a>    <span class="cf">return</span> result</span>
-<span id="cb9-15"><a></a></span>
-<span id="cb9-16"><a></a><span class="kw">def</span> optimised_loop():</span>
-<span id="cb9-17"><a></a>    result <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb9-18"><a></a>    n <span class="op">=</span> <span class="bu">len</span>(data)</span>
-<span id="cb9-19"><a></a>    sqrt, sin, cos <span class="op">=</span> math.sqrt, math.sin, math.cos</span>
-<span id="cb9-20"><a></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
-<span id="cb9-21"><a></a>        x <span class="op">=</span> data[i]</span>
-<span id="cb9-22"><a></a>        result <span class="op">+=</span> sqrt(x) <span class="op">+</span> sin(x) <span class="op">+</span> cos(x)</span>
-<span id="cb9-23"><a></a>    <span class="cf">return</span> result</span>
-<span id="cb9-24"><a></a></span>
-<span id="cb9-25"><a></a>t1 <span class="op">=</span> timeit(regular_loop, number<span class="op">=</span><span class="dv">100</span>)</span>
-<span id="cb9-26"><a></a>t2 <span class="op">=</span> timeit(optimised_loop, number<span class="op">=</span><span class="dv">100</span>)</span>
-<span id="cb9-27"><a></a><span class="bu">print</span>(<span class="ss">f"Regular: </span><span class="sc">{</span>t1<span class="sc">:.6f}</span><span class="ss">s</span><span class="ch">\n</span><span class="ss">Optimised: </span><span class="sc">{</span>t2<span class="sc">:.6f}</span><span class="ss">s"</span>)</span>
-<span id="cb9-28"><a></a><span class="bu">print</span>(<span class="ss">f"Speedup: </span><span class="sc">{</span>t1<span class="op">/</span>t2<span class="sc">:.1f}</span><span class="ss">x faster"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a aria-label="1"></a><span class="im">from</span> timeit <span class="im">import</span> timeit</span>
+<span id="cb9-2"><a aria-label="2"></a><span class="im">import</span> math</span>
+<span id="cb9-3"><a aria-label="3"></a><span class="im">from</span> random <span class="im">import</span> randint</span>
+<span id="cb9-4"><a aria-label="4"></a></span>
+<span id="cb9-5"><a aria-label="5"></a>size <span class="op">=</span> <span class="dv">300_000</span></span>
+<span id="cb9-6"><a aria-label="6"></a></span>
+<span id="cb9-7"><a aria-label="7"></a>data <span class="op">=</span> [<span class="dv">2</span><span class="op">**</span>randint(<span class="dv">0</span>, <span class="dv">64</span>) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(size)]</span>
+<span id="cb9-8"><a aria-label="8"></a></span>
+<span id="cb9-9"><a aria-label="9"></a><span class="kw">def</span> regular_loop():</span>
+<span id="cb9-10"><a aria-label="10"></a>    result <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb9-11"><a aria-label="11"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(data)):</span>
+<span id="cb9-12"><a aria-label="12"></a>        x <span class="op">=</span> data[i]</span>
+<span id="cb9-13"><a aria-label="13"></a>        result <span class="op">+=</span> math.sqrt(x) <span class="op">+</span> math.sin(x) <span class="op">+</span> math.cos(x)</span>
+<span id="cb9-14"><a aria-label="14"></a>    <span class="cf">return</span> result</span>
+<span id="cb9-15"><a aria-label="15"></a></span>
+<span id="cb9-16"><a aria-label="16"></a><span class="kw">def</span> optimised_loop():</span>
+<span id="cb9-17"><a aria-label="17"></a>    result <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb9-18"><a aria-label="18"></a>    n <span class="op">=</span> <span class="bu">len</span>(data)</span>
+<span id="cb9-19"><a aria-label="19"></a>    sqrt, sin, cos <span class="op">=</span> math.sqrt, math.sin, math.cos</span>
+<span id="cb9-20"><a aria-label="20"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb9-21"><a aria-label="21"></a>        x <span class="op">=</span> data[i]</span>
+<span id="cb9-22"><a aria-label="22"></a>        result <span class="op">+=</span> sqrt(x) <span class="op">+</span> sin(x) <span class="op">+</span> cos(x)</span>
+<span id="cb9-23"><a aria-label="23"></a>    <span class="cf">return</span> result</span>
+<span id="cb9-24"><a aria-label="24"></a></span>
+<span id="cb9-25"><a aria-label="25"></a>t1 <span class="op">=</span> timeit(regular_loop, number<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb9-26"><a aria-label="26"></a>t2 <span class="op">=</span> timeit(optimised_loop, number<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb9-27"><a aria-label="27"></a><span class="bu">print</span>(<span class="ss">f"Regular: </span><span class="sc">{</span>t1<span class="sc">:.6f}</span><span class="ss">s</span><span class="ch">\n</span><span class="ss">Optimised: </span><span class="sc">{</span>t2<span class="sc">:.6f}</span><span class="ss">s"</span>)</span>
+<span id="cb9-28"><a aria-label="28"></a><span class="bu">print</span>(<span class="ss">f"Speedup: </span><span class="sc">{</span>t1<span class="op">/</span>t2<span class="sc">:.1f}</span><span class="ss">x faster"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
@@ -688,28 +691,28 @@ Eirini &amp; Rhian, DS @ SU
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="im">from</span> numba <span class="im">import</span> jit</span>
-<span id="cb10-2"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb10-3"><a></a><span class="im">from</span> timeit <span class="im">import</span> timeit</span>
-<span id="cb10-4"><a></a></span>
-<span id="cb10-5"><a></a><span class="kw">def</span> slow_func(x):</span>
-<span id="cb10-6"><a></a>    total <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb10-7"><a></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(x)):</span>
-<span id="cb10-8"><a></a>        total <span class="op">+=</span> np.sin(x[i]) <span class="op">*</span> np.cos(x[i])</span>
-<span id="cb10-9"><a></a>    <span class="cf">return</span> total</span>
-<span id="cb10-10"><a></a></span>
-<span id="cb10-11"><a></a><span class="at">@jit</span>(nopython<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb10-12"><a></a><span class="kw">def</span> fast_func(x):</span>
-<span id="cb10-13"><a></a>    total <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb10-14"><a></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(x)):</span>
-<span id="cb10-15"><a></a>        total <span class="op">+=</span> np.sin(x[i]) <span class="op">*</span> np.cos(x[i])</span>
-<span id="cb10-16"><a></a>    <span class="cf">return</span> total</span>
-<span id="cb10-17"><a></a></span>
-<span id="cb10-18"><a></a>x <span class="op">=</span> np.random.random(<span class="dv">10_000</span>)</span>
-<span id="cb10-19"><a></a>t1 <span class="op">=</span> timeit(<span class="kw">lambda</span>: slow_func(x), number<span class="op">=</span><span class="dv">100</span>)</span>
-<span id="cb10-20"><a></a>t2 <span class="op">=</span> timeit(<span class="kw">lambda</span>: fast_func(x), number<span class="op">=</span><span class="dv">100</span>)</span>
-<span id="cb10-21"><a></a><span class="bu">print</span>(<span class="ss">f"Python: </span><span class="sc">{</span>t1<span class="sc">:.6f}</span><span class="ss">s</span><span class="ch">\n</span><span class="ss">Numba: </span><span class="sc">{</span>t2<span class="sc">:.6f}</span><span class="ss">s"</span>)</span>
-<span id="cb10-22"><a></a><span class="bu">print</span>(<span class="ss">f"Speedup: </span><span class="sc">{</span>t1<span class="op">/</span>t2<span class="sc">:.1f}</span><span class="ss">x faster"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a aria-label="1"></a><span class="im">from</span> numba <span class="im">import</span> jit</span>
+<span id="cb10-2"><a aria-label="2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb10-3"><a aria-label="3"></a><span class="im">from</span> timeit <span class="im">import</span> timeit</span>
+<span id="cb10-4"><a aria-label="4"></a></span>
+<span id="cb10-5"><a aria-label="5"></a><span class="kw">def</span> slow_func(x):</span>
+<span id="cb10-6"><a aria-label="6"></a>    total <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb10-7"><a aria-label="7"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(x)):</span>
+<span id="cb10-8"><a aria-label="8"></a>        total <span class="op">+=</span> np.sin(x[i]) <span class="op">*</span> np.cos(x[i])</span>
+<span id="cb10-9"><a aria-label="9"></a>    <span class="cf">return</span> total</span>
+<span id="cb10-10"><a aria-label="10"></a></span>
+<span id="cb10-11"><a aria-label="11"></a><span class="at">@jit</span>(nopython<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb10-12"><a aria-label="12"></a><span class="kw">def</span> fast_func(x):</span>
+<span id="cb10-13"><a aria-label="13"></a>    total <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb10-14"><a aria-label="14"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(x)):</span>
+<span id="cb10-15"><a aria-label="15"></a>        total <span class="op">+=</span> np.sin(x[i]) <span class="op">*</span> np.cos(x[i])</span>
+<span id="cb10-16"><a aria-label="16"></a>    <span class="cf">return</span> total</span>
+<span id="cb10-17"><a aria-label="17"></a></span>
+<span id="cb10-18"><a aria-label="18"></a>x <span class="op">=</span> np.random.random(<span class="dv">10_000</span>)</span>
+<span id="cb10-19"><a aria-label="19"></a>t1 <span class="op">=</span> timeit(<span class="kw">lambda</span>: slow_func(x), number<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb10-20"><a aria-label="20"></a>t2 <span class="op">=</span> timeit(<span class="kw">lambda</span>: fast_func(x), number<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb10-21"><a aria-label="21"></a><span class="bu">print</span>(<span class="ss">f"Python: </span><span class="sc">{</span>t1<span class="sc">:.6f}</span><span class="ss">s</span><span class="ch">\n</span><span class="ss">Numba: </span><span class="sc">{</span>t2<span class="sc">:.6f}</span><span class="ss">s"</span>)</span>
+<span id="cb10-22"><a aria-label="22"></a><span class="bu">print</span>(<span class="ss">f"Speedup: </span><span class="sc">{</span>t1<span class="op">/</span>t2<span class="sc">:.1f}</span><span class="ss">x faster"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
@@ -770,68 +773,68 @@ Eirini &amp; Rhian, DS @ SU
 <section id="appendix-cython-basics" class="slide level2">
 <h2>Appendix: Cython (Basics)</h2>
 <p><strong>Pure Python version (slow.py):</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="kw">def</span> calculate_sum(n):</span>
-<span id="cb11-2"><a></a>    <span class="co">"""Sum the squares from 0 to n-1"""</span></span>
-<span id="cb11-3"><a></a>    total <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb11-4"><a></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
-<span id="cb11-5"><a></a>        total <span class="op">+=</span> i <span class="op">*</span> i</span>
-<span id="cb11-6"><a></a>    <span class="cf">return</span> total</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a aria-label="1"></a><span class="kw">def</span> calculate_sum(n):</span>
+<span id="cb11-2"><a aria-label="2"></a>    <span class="co">"""Sum the squares from 0 to n-1"""</span></span>
+<span id="cb11-3"><a aria-label="3"></a>    total <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb11-4"><a aria-label="4"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb11-5"><a aria-label="5"></a>        total <span class="op">+=</span> i <span class="op">*</span> i</span>
+<span id="cb11-6"><a aria-label="6"></a>    <span class="cf">return</span> total</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Cython version (fast.pyx):</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="kw">def</span> calculate_sum_cy(<span class="bu">int</span> n):</span>
-<span id="cb12-2"><a></a>    <span class="co">"""Same function with static typing"""</span></span>
-<span id="cb12-3"><a></a>    cdef <span class="bu">int</span> i, total <span class="op">=</span> <span class="dv">0</span>  <span class="co"># Static type declarations</span></span>
-<span id="cb12-4"><a></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
-<span id="cb12-5"><a></a>        total <span class="op">+=</span> i <span class="op">*</span> i</span>
-<span id="cb12-6"><a></a>    <span class="cf">return</span> total</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a aria-label="1"></a><span class="kw">def</span> calculate_sum_cy(<span class="bu">int</span> n):</span>
+<span id="cb12-2"><a aria-label="2"></a>    <span class="co">"""Same function with static typing"""</span></span>
+<span id="cb12-3"><a aria-label="3"></a>    cdef <span class="bu">int</span> i, total <span class="op">=</span> <span class="dv">0</span>  <span class="co"># Static type declarations</span></span>
+<span id="cb12-4"><a aria-label="4"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb12-5"><a aria-label="5"></a>        total <span class="op">+=</span> i <span class="op">*</span> i</span>
+<span id="cb12-6"><a aria-label="6"></a>    <span class="cf">return</span> total</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Result</strong>: Typically 20-100x faster performance</p>
 </section>
 <section id="appendix-cython-best-practices" class="slide level2">
 <h2>Appendix: Cython (Best Practices)</h2>
 <p><strong>Key techniques for maximum performance:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="co"># 1. Declare types for all variables</span></span>
-<span id="cb13-2"><a></a>cdef:</span>
-<span id="cb13-3"><a></a>    <span class="bu">int</span> i, n <span class="op">=</span> <span class="dv">10_000</span>  <span class="co"># Integer variables</span></span>
-<span id="cb13-4"><a></a>    double x <span class="op">=</span> <span class="fl">0.5</span>   <span class="co"># Floating point</span></span>
-<span id="cb13-5"><a></a>    <span class="bu">int</span><span class="op">*</span> ptr         <span class="co"># C pointer</span></span>
-<span id="cb13-6"><a></a></span>
-<span id="cb13-7"><a></a><span class="co"># 2. Use typed memoryviews for arrays (faster than NumPy)</span></span>
-<span id="cb13-8"><a></a><span class="kw">def</span> process(double[:] arr):  <span class="co"># Works with any array-like object</span></span>
-<span id="cb13-9"><a></a>    cdef <span class="bu">int</span> i</span>
-<span id="cb13-10"><a></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(arr.shape[<span class="dv">0</span>]):</span>
-<span id="cb13-11"><a></a>        arr[i] <span class="op">=</span> arr[i] <span class="op">*</span> <span class="dv">2</span>  <span class="co"># Direct memory access</span></span>
-<span id="cb13-12"><a></a></span>
-<span id="cb13-13"><a></a><span class="co"># 3. Move Python operations outside loops</span></span>
-<span id="cb13-14"><a></a>cdef double total <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb13-15"><a></a>py_func <span class="op">=</span> some_python_function  <span class="co"># Store reference outside loop</span></span>
-<span id="cb13-16"><a></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
-<span id="cb13-17"><a></a>    total <span class="op">+=</span> c_only_operations(i)</span>
-<span id="cb13-18"><a></a></span>
-<span id="cb13-19"><a></a><span class="co"># 4. Use nogil for parallel execution with OpenMP</span></span>
-<span id="cb13-20"><a></a>cpdef process_parallel(double[:] data) nogil:  <span class="co"># No Python GIL</span></span>
-<span id="cb13-21"><a></a>    <span class="co"># Can now use OpenMP for parallelism</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-label="1"></a><span class="co"># 1. Declare types for all variables</span></span>
+<span id="cb13-2"><a aria-label="2"></a>cdef:</span>
+<span id="cb13-3"><a aria-label="3"></a>    <span class="bu">int</span> i, n <span class="op">=</span> <span class="dv">10_000</span>  <span class="co"># Integer variables</span></span>
+<span id="cb13-4"><a aria-label="4"></a>    double x <span class="op">=</span> <span class="fl">0.5</span>   <span class="co"># Floating point</span></span>
+<span id="cb13-5"><a aria-label="5"></a>    <span class="bu">int</span><span class="op">*</span> ptr         <span class="co"># C pointer</span></span>
+<span id="cb13-6"><a aria-label="6"></a></span>
+<span id="cb13-7"><a aria-label="7"></a><span class="co"># 2. Use typed memoryviews for arrays (faster than NumPy)</span></span>
+<span id="cb13-8"><a aria-label="8"></a><span class="kw">def</span> process(double[:] arr):  <span class="co"># Works with any array-like object</span></span>
+<span id="cb13-9"><a aria-label="9"></a>    cdef <span class="bu">int</span> i</span>
+<span id="cb13-10"><a aria-label="10"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(arr.shape[<span class="dv">0</span>]):</span>
+<span id="cb13-11"><a aria-label="11"></a>        arr[i] <span class="op">=</span> arr[i] <span class="op">*</span> <span class="dv">2</span>  <span class="co"># Direct memory access</span></span>
+<span id="cb13-12"><a aria-label="12"></a></span>
+<span id="cb13-13"><a aria-label="13"></a><span class="co"># 3. Move Python operations outside loops</span></span>
+<span id="cb13-14"><a aria-label="14"></a>cdef double total <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb13-15"><a aria-label="15"></a>py_func <span class="op">=</span> some_python_function  <span class="co"># Store reference outside loop</span></span>
+<span id="cb13-16"><a aria-label="16"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb13-17"><a aria-label="17"></a>    total <span class="op">+=</span> c_only_operations(i)</span>
+<span id="cb13-18"><a aria-label="18"></a></span>
+<span id="cb13-19"><a aria-label="19"></a><span class="co"># 4. Use nogil for parallel execution with OpenMP</span></span>
+<span id="cb13-20"><a aria-label="20"></a>cpdef process_parallel(double[:] data) nogil:  <span class="co"># No Python GIL</span></span>
+<span id="cb13-21"><a aria-label="21"></a>    <span class="co"># Can now use OpenMP for parallelism</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="appendix-cython-compiling" class="slide level2">
 <h2>Appendix: Cython (Compiling)</h2>
 <p><strong>Option 1: Using setuptools (recommended for projects)</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="co"># Create setup.py in your project directory:</span></span>
-<span id="cb14-2"><a></a><span class="im">from</span> setuptools <span class="im">import</span> setup, Extension</span>
-<span id="cb14-3"><a></a><span class="im">from</span> Cython.Build <span class="im">import</span> cythonize</span>
-<span id="cb14-4"><a></a></span>
-<span id="cb14-5"><a></a>setup(</span>
-<span id="cb14-6"><a></a>    ext_modules <span class="op">=</span> cythonize([</span>
-<span id="cb14-7"><a></a>        Extension(<span class="st">"fast"</span>, [<span class="st">"fast.pyx"</span>]),</span>
-<span id="cb14-8"><a></a>    ])</span>
-<span id="cb14-9"><a></a>)</span>
-<span id="cb14-10"><a></a></span>
-<span id="cb14-11"><a></a><span class="co"># Then compile: python setup.py build_ext --inplace</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a aria-label="1"></a><span class="co"># Create setup.py in your project directory:</span></span>
+<span id="cb14-2"><a aria-label="2"></a><span class="im">from</span> setuptools <span class="im">import</span> setup, Extension</span>
+<span id="cb14-3"><a aria-label="3"></a><span class="im">from</span> Cython.Build <span class="im">import</span> cythonize</span>
+<span id="cb14-4"><a aria-label="4"></a></span>
+<span id="cb14-5"><a aria-label="5"></a>setup(</span>
+<span id="cb14-6"><a aria-label="6"></a>    ext_modules <span class="op">=</span> cythonize([</span>
+<span id="cb14-7"><a aria-label="7"></a>        Extension(<span class="st">"fast"</span>, [<span class="st">"fast.pyx"</span>]),</span>
+<span id="cb14-8"><a aria-label="8"></a>    ])</span>
+<span id="cb14-9"><a aria-label="9"></a>)</span>
+<span id="cb14-10"><a aria-label="10"></a></span>
+<span id="cb14-11"><a aria-label="11"></a><span class="co"># Then compile: python setup.py build_ext --inplace</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Option 2: Quick development with pyximport</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="im">import</span> pyximport</span>
-<span id="cb15-2"><a></a>pyximport.install()  <span class="co"># Automatically compiles .pyx files</span></span>
-<span id="cb15-3"><a></a><span class="im">import</span> fast  <span class="co"># Will compile fast.pyx on first import</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a aria-label="1"></a><span class="im">import</span> pyximport</span>
+<span id="cb15-2"><a aria-label="2"></a>pyximport.install()  <span class="co"># Automatically compiles .pyx files</span></span>
+<span id="cb15-3"><a aria-label="3"></a><span class="im">import</span> fast  <span class="co"># Will compile fast.pyx on first import</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Option 3: Direct compilation</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a></a><span class="ex">cython</span> <span class="at">-a</span> fast.pyx  <span class="co"># Generates fast.c and HTML report</span></span>
-<span id="cb16-2"><a></a><span class="fu">gcc</span> <span class="at">-shared</span> <span class="at">-fPIC</span> <span class="at">-o</span> fast.so fast.c <span class="dt">\</span></span>
-<span id="cb16-3"><a></a>    <span class="va">$(</span><span class="ex">python3-config</span> <span class="at">--includes</span><span class="va">)</span> <span class="va">$(</span><span class="ex">python3-config</span> <span class="at">--ldflags</span><span class="va">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a aria-label="1"></a><span class="ex">cython</span> <span class="at">-a</span> fast.pyx  <span class="co"># Generates fast.c and HTML report</span></span>
+<span id="cb16-2"><a aria-label="2"></a><span class="fu">gcc</span> <span class="at">-shared</span> <span class="at">-fPIC</span> <span class="at">-o</span> fast.so fast.c <span class="dt">\</span></span>
+<span id="cb16-3"><a aria-label="3"></a>    <span class="va">$(</span><span class="ex">python3-config</span> <span class="at">--includes</span><span class="va">)</span> <span class="va">$(</span><span class="ex">python3-config</span> <span class="at">--ldflags</span><span class="va">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 
 </section></section>

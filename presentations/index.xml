@@ -9,8 +9,16 @@
 <link>https://the-strategy-unit.github.io/data_science/presentations/</link>
 <atom:link href="https://the-strategy-unit.github.io/data_science/presentations/index.xml" rel="self" type="application/rss+xml"/>
 <description>Blogs from the Data Science Team at The Strategy Unit</description>
-<generator>quarto-1.9.38</generator>
-<lastBuildDate>Wed, 15 Jul 2026 00:00:00 GMT</lastBuildDate>
+<generator>quarto-1.10.18</generator>
+<lastBuildDate>Tue, 28 Jul 2026 00:00:00 GMT</lastBuildDate>
+<item>
+  <title></title>
+  <dc:creator>SU Data Science Team</dc:creator>
+  <link>https://the-strategy-unit.github.io/data_science/presentations/2026-07-28_tpma-dev-day/</link>
+  <description><![CDATA[ undefined ]]></description>
+  <guid>https://the-strategy-unit.github.io/data_science/presentations/2026-07-28_tpma-dev-day/</guid>
+  <pubDate>Tue, 28 Jul 2026 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title></title>
   <dc:creator>[Chris Beeley](mailto:chris.beeley1@nhs.net)</dc:creator>
@@ -47,14 +55,6 @@
 <item>
   <title></title>
   <dc:creator>[Chris Beeley](mailto:chris.beeley1@nhs.net)</dc:creator>
-  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-12-04_whose_application/</link>
-  <description><![CDATA[ undefined ]]></description>
-  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-12-04_whose_application/</guid>
-  <pubDate>Thu, 04 Dec 2025 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <dc:creator>[Chris Beeley](mailto:chris.beeley1@nhs.net)</dc:creator>
   <link>https://the-strategy-unit.github.io/data_science/presentations/2025-12-04_multidisciplinary_pipelines/</link>
   <description><![CDATA[ undefined ]]></description>
   <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-12-04_multidisciplinary_pipelines/</guid>
@@ -62,11 +62,11 @@
 </item>
 <item>
   <title></title>
-  <dc:creator>[Tom Jemmett](mailto:thomas.jemmett@nhs.net)</dc:creator>
-  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-11-14_unit-testing/</link>
+  <dc:creator>[Chris Beeley](mailto:chris.beeley1@nhs.net)</dc:creator>
+  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-12-04_whose_application/</link>
   <description><![CDATA[ undefined ]]></description>
-  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-11-14_unit-testing/</guid>
-  <pubDate>Fri, 14 Nov 2025 00:00:00 GMT</pubDate>
+  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-12-04_whose_application/</guid>
+  <pubDate>Thu, 04 Dec 2025 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -74,6 +74,14 @@
   <link>https://the-strategy-unit.github.io/data_science/presentations/2025-11-14_rap-drop-ins-nhsr2025/</link>
   <description><![CDATA[ undefined ]]></description>
   <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-11-14_rap-drop-ins-nhsr2025/</guid>
+  <pubDate>Fri, 14 Nov 2025 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <dc:creator>[Tom Jemmett](mailto:thomas.jemmett@nhs.net)</dc:creator>
+  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-11-14_unit-testing/</link>
+  <description><![CDATA[ undefined ]]></description>
+  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-11-14_unit-testing/</guid>
   <pubDate>Fri, 14 Nov 2025 00:00:00 GMT</pubDate>
 </item>
 <item>
@@ -166,14 +174,6 @@
   <description><![CDATA[ undefined ]]></description>
   <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-03-13_sconn-r-pkg-databricks/</guid>
   <pubDate>Thu, 13 Mar 2025 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <dc:creator>[Chris Beeley](mailto:chris.beeley1@nhs.net)</dc:creator>
-  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-02-27_nhp-deployment/</link>
-  <description><![CDATA[ undefined ]]></description>
-  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-02-27_nhp-deployment/</guid>
-  <pubDate>Thu, 27 Feb 2025 00:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

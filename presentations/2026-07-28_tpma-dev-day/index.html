@@ -9,9 +9,8 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.10.18">
 
-  <meta name="author" content="Chris Beeley">
-  <meta name="dcterms.date" content="2024-05-30">
-  <title>Data Science @ The Strategy Unit – Open source licensing</title>
+  <meta name="author" content="SU Data Science Team">
+  <title>Data Science @ The Strategy Unit – TPMAs (Types of Potentially Mitigatable Activity)</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -54,6 +53,7 @@
     }
     .reveal .slide:not(.center) {
       height: 100%;
+      overflow-y: auto;
     }
     .reveal .slide.scrollable {
       overflow-y: auto;
@@ -136,176 +136,62 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Open source licensing</h1>
-  <p class="subtitle">Or: how I learned to stop worrying and love openness</p>
+  <h1 class="title">TPMAs (Types of Potentially Mitigatable Activity)</h1>
+  <p class="subtitle">Your questions answered!</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-<a href="mailto:chris.beeley1@nhs.net" target="_blank">Chris Beeley</a>
+SU Data Science Team
 </div>
 </div>
 </div>
 
-  <p class="date">May 30, 2024</p>
+  <p class="date">Jul 28, 2026</p>
 </section>
-<section id="a-note-on-richard-stallman" class="slide level2">
-<h2>A note on Richard Stallman</h2>
+<section id="what-are-tpmas-anyway" class="slide level2">
+<h2>What are TPMAs anyway?</h2>
+<p>Types of Potentially Mitigatable Activity: Hospital activity that could be reduced by deliberate action, through:</p>
 <ul>
-<li>Richard Stallman has been <a href="https://drewdevault.com/2023/11/25/2023-11-26-RMS-on-sex.html">heavily criticised for some of this views</a></li>
-<li>He is hard to ignore when talking about open source so I am going to talk about him</li>
-<li>Nothing in this talk should be read as endorsing any of his comments outside (or inside) the world of open source</li>
+<li>Prevention</li>
+<li>De-adoption</li>
+<li>Redirection/substitution</li>
+<li>Hospital efficiency</li>
 </ul>
+<p>We have identified this in patient-level data in the Hospital Episode Statistics dataset up to the 2024/25 financial year as part of the NHP (New Hospital Programme) model.</p>
 </section>
-<section id="the-origin-of-open-source" class="slide level2">
-<h2>The origin of open source</h2>
+<section id="how-have-the-tpmas-been-used-so-far" class="slide level2">
+<h2>How have the TPMAs been used so far?</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
 <ul>
-<li>In the 50s and 60s source code was routinely shared with hardware and users were often expected to modify to run on their hardware</li>
-<li>By the late 1960s the production cost of software was rising relative to hardware and proprietary licences became more prevalent</li>
-<li>In 1980 Richard Stallman’s department at MIT took delivery of a printer they were not able to modify the source code for</li>
-<li>Richard Stallman launched the GNU project in 1983 to fight for software freedoms</li>
-<li>MIT licence was launched in the late 1980s</li>
-<li><a href="http://www.catb.org/esr/writings/cathedral-bazaar/">Cathedral and the bazaar</a> was released in 1997 (more on which later)</li>
+<li>NHP schemes use the TPMAs to shape discussions with clinicians, ICBs and community providers on what is/isn’t possible in their context</li>
+<li><a href="https://www.strategyunitwm.nhs.uk/sites/default/files/2025-09/Future%20Demand%20for%20Community%20Care.pdf">High-level analyses</a> estimating future demand for healthcare services (regionally or nationally)</li>
 </ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="jaws-of-death.png"></p>
+</div></div>
 </section>
-<section id="what-is-open-source" class="slide level2">
-<h2>What is open source?</h2>
-<blockquote>
-<p>Think free as in free speech, not free beer (Stallman)</p>
-</blockquote>
+<section id="session-aims" class="slide level2">
+<h2>Session aims</h2>
 <ul>
-<li>Open source does not mean free of charge! Software freedom implies the ability to sell code</li>
-<li>Free of charge does not mean open source! Many free to download pieces of software are not open source (Zoom, for example)</li>
+<li>Answer questions from SU analysts on how to work with TPMAs</li>
+<li>Co-create documentation for us to maintain collaboratively</li>
 </ul>
-
-<img data-src="software_diagram.svg" class="r-stretch"><p>By Chao-Kuei et al.&nbsp;- <a rel="nofollow" class="external free" href="https://www.gnu.org/philosophy/categories.en.html">https://www.gnu.org/philosophy/categories.en.html</a>, <a href="http://www.gnu.org/licenses/gpl.html" title="GNU General Public License">GPL</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=41220550">Link</a></p>
+<p>⚠️🤓 This is quite a technical nitty-gritty session aimed primarily at analysts</p>
 </section>
-<section id="the-four-freedoms" class="slide level2">
-<h2>The four freedoms</h2>
+<section id="how-is-this-session-going-to-work" class="slide level2">
+<h2>How is this session going to work?</h2>
 <ul>
-<li>Freedom 0: The freedom to use the program for any purpose.</li>
-<li>Freedom 1: The freedom to study how the program works, and change it to make it do what you wish.</li>
-<li>Freedom 2: The freedom to redistribute and make copies so you can help your neighbor.</li>
-<li>Freedom 3: The freedom to improve the program, and release your improvements (and modified versions in general) to the public, so that the whole community benefits.</li>
+<li>Pick a question from <a href="https://github.com/The-Strategy-Unit/TPMAs/wiki">the Wiki</a></li>
+<li>Work out the answer together</li>
+<li>Add the answer (in your own words) to the Wiki</li>
 </ul>
-</section>
-<section id="cathedral-and-the-bazaar" class="slide level2">
-<h2>Cathedral and the bazaar</h2>
+<p>The Wiki is a living, co-created document - feel free to edit and add things to it as you use TPMAs and questions arise. Breakout rooms to start:</p>
 <ul>
-<li>Every good work of software starts by scratching a developer’s personal itch.</li>
-<li>Good programmers know what to write. Great ones know what to rewrite (and reuse).</li>
-<li>Plan to throw one [version] away; you will, anyhow (copied from Frederick Brooks’s The Mythical Man-Month).</li>
-<li>If you have the right attitude, interesting problems will find you.</li>
-<li>When you lose interest in a program, your last duty to it is to hand it off to a competent successor.</li>
-<li>Treating your users as co-developers is your least-hassle route to rapid code improvement and effective debugging.</li>
-<li>Release early. Release often. And listen to your customers.</li>
-<li>Given a large enough beta-tester and co-developer base, almost every problem will be characterized quickly and the fix obvious to someone.</li>
-<li>Smart data structures and dumb code works a lot better than the other way around.</li>
-<li>If you treat your beta-testers as if they’re your most valuable resource, they will respond by becoming your most valuable resource.</li>
-</ul>
-</section>
-<section id="cathedral-and-the-bazaar-cont." class="slide level2">
-<h2>Cathedral and the bazaar (cont.)</h2>
-<ul>
-<li>The next best thing to having good ideas is recognizing good ideas from your users. Sometimes the latter is better.</li>
-<li>Often, the most striking and innovative solutions come from realizing that your concept of the problem was wrong.</li>
-<li>Perfection (in design) is achieved not when there is nothing more to add, but rather when there is nothing more to take away. (Attributed to Antoine de Saint-Exupéry)</li>
-<li>Any tool should be useful in the expected way, but a truly great tool lends itself to uses you never expected.</li>
-<li>When writing gateway software of any kind, take pains to disturb the data stream as little as possible—and never throw away information unless the recipient forces you to!</li>
-<li>When your language is nowhere near Turing-complete, syntactic sugar can be your friend.</li>
-<li>A security system is only as secure as its secret. Beware of pseudo-secrets.</li>
-<li>To solve an interesting problem, start by finding a problem that is interesting to you.</li>
-<li>Provided the development coordinator has a communications medium at least as good as the Internet, and knows how to lead without coercion, many heads are inevitably better than one.</li>
-</ul>
-</section>
-<section id="the-disciplines-of-open-source-are-the-disciplines-of-good-data-science" class="slide level2">
-<h2>The disciplines of open source are the disciplines of good data science</h2>
-<ul>
-<li>Meaningful README</li>
-<li>Meaningful commit messages</li>
-<li>Modularity</li>
-<li>Separating data code from analytic code from interactive code</li>
-<li>Assigning issues and pull requests for action/ review</li>
-<li>Don’t forget one of the most lazy and incompetent developers you will ever work with is yourself, six months later</li>
-</ul>
-</section>
-<section id="what-licences-exist" class="slide level2">
-<h2>What licences exist?</h2>
-<ul>
-<li>Permissive
-<ul>
-<li>Such as MIT but there are others. Recommended by NHSX <a href="https://github.com/nhsx/open-source-policy">draft guidelines on open source</a></li>
-<li>Apache is a notable permissive licence- includes a patent licence</li>
-<li>In our work the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">OGL</a> is also relevant- civil servant publish stuff under OGL (and MIT- it isn’t particularly recommended for code)</li>
-</ul></li>
-<li>Copyleft
-<ul>
-<li>GPL2, GPL3, AGPL <a href="https://www.tldrlegal.com/license/gnu-affero-general-public-license-v3-agpl-3-0">(“the GPL of the web”)</a></li>
-<li>Note that the provisions of the GPL only apply when you <strong>distribute</strong> the code</li>
-<li>At a certain point it all gets too complicated and you need a lawyer</li>
-<li>MPL is a notable copyleft licence- can combine with proprietary code as long as kept separate</li>
-</ul></li>
-<li>Arguments for permissive/ copyleft- getting your code used versus preserving software freedoms for other people</li>
-<li>Note that most of the licences are impossible to read! There is a website to explain <a href="https://www.tldrlegal.com/">tl;dr</a></li>
-</ul>
-</section>
-<section id="what-is-copyright-and-why-does-it-matter" class="slide level2">
-<h2>What is copyright and why does it matter</h2>
-<ul>
-<li>Copyright is assigned at the moment of creation</li>
-<li>If you made it in your own time, it’s yours (usually!)</li>
-<li>If you made it at work, it belongs to your employer</li>
-<li>If someone paid you to make it (“work for hire”) it belongs to them</li>
-<li>Crucially, the copyright holder can relicence software
-<ul>
-<li>If it’s jointly authored it depends if it’s a “collective” or “joint” work</li>
-<li>Honestly it’s pretty complicated. Just vest copyright in an organisation or group of individuals you trust</li>
-<li>Goldacre review suggests using Crown copyright for copyright in the NHS because it’s a “shoal, not a big fish” (with apologies to Ben whom I am misquoting)</li>
-</ul></li>
-</ul>
-</section>
-<section id="iceweasel" class="slide level2">
-<h2>Iceweasel</h2>
-<ul>
-<li>Iceweasel is a story of <strong>trademark</strong> rather than copyright</li>
-<li>Debian (a Linux flavour) had the permission to use the source code of Firefox, but not the logo</li>
-<li>So they took the source code and made their own version</li>
-<li>This sounds very obscure and unimportant but it could become important in future projects of ours, like…</li>
-</ul>
-</section>
-<section id="what-we-have-learned-in-recent-projects" class="slide level2">
-<h2>What we have learned in recent projects</h2>
-<ul>
-<li>The huge benefits of being open
-<ul>
-<li>Transparency</li>
-<li>Working with customers</li>
-<li>Goodwill</li>
-</ul></li>
-<li>Nonfree mitigators</li>
-<li>Different licences for different repos</li>
-</ul>
-</section>
-<section id="software-freedom-means-allowing-people-to-do-stuff-you-dont-like" class="slide level2">
-<h2>Software freedom means allowing people to do stuff you don’t like</h2>
-<ul>
-<li>Freedom 0: The freedom to use the program for any purpose.</li>
-<li>Freedom 3: The freedom to improve the program, and release your improvements (and modified versions in general) to the public, so that the whole community benefits.</li>
-<li>The code isn’t the only thing with worth in the project</li>
-<li>This is why there are whole businesses founded on “here’s the Linux source code”</li>
-<li>So when we’re sharing code we are <strong>letting</strong> people do stupid things with it but we’re not <strong>recommending</strong> that they do stupid things with it</li>
-<li>People do stupid things with Excel and Microsoft don’t accept liability for that, and neither should we</li>
-<li>This issue of sharing analytic code and merchantability for a particular purpose is poorly understood and I think everyone needs to be clearer on it (us, and our customers)</li>
-<li>In my view a world where consultants are selling <strong>our</strong> code is better than a world where they’re selling <strong>their</strong> spreadsheets</li>
-</ul>
-</section>
-<section id="open-source-as-in-piano" class="slide level2">
-<h2>“Open source as in piano”</h2>
-<ul>
-<li>The patient experience QDC project</li>
-<li>Our current project</li>
-<li>Open source code is not necessarily to be run, but understood and learned from</li>
-<li>Building a group of people who can use and contribute to your code is arguably as important as writing it</li>
+<li>Examples of TPMA tasks with Gabriel</li>
+<li>How are the TPMAs generated? with YiWen</li>
+<li>Where does TPMA data live? with Matt and Fran</li>
 </ul>
 
 
@@ -313,7 +199,7 @@
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-<p>view slides at <a href="the-strategy-unit.github.io/data_science/presentations" target="_blank">the-strategy-unit.github.io/data_science/presentations</a></p>
+
 </div>
 </div></div>
 
@@ -493,9 +379,9 @@
         // The "normal" size of the presentation, aspect ratio will be preserved
         // when the presentation is scaled to fit different resolutions. Can be
         // specified using percentage units.
-        width: 1920,
+        width: 1050,
 
-        height: 1080,
+        height: 700,
 
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
@@ -527,44 +413,6 @@
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")

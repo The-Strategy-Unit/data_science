@@ -196,7 +196,7 @@ To explain your code's purpose:
 
 So people can understand the state of your project:
 
-* use `README` badges to indicate statuses like passing checks, [project lifecycle stage](https://www.repostatus.org/) and publication to package indexes (e.g. PyPi, CRAN)
+* indicate the lifecycle stage of the repository (see 'Lifecycle' section below), for example, use `README` badges to indicate statuses like passing checks, [project lifecycle stage](https://www.repostatus.org/) and publication to package indexes (e.g. PyPi, CRAN)
 * [tag and release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository) your code using [semantic versioning](https://semver.org/) and add clear notes of the changes made
 * keep a human-readable changelog up-to-date (e.g. [a NEWS.md file](https://r-pkgs.org/other-markdown.html#sec-news) in an R package)
 
@@ -228,6 +228,30 @@ To make it easier for developers to get an at-a-glance understanding:
 * follow conventions and good-practice for the language being used, e.g. R and Python packages
 * use a simple, self-explanatory directory structure (e.g. images in `img/`, data in `data/`)
 * start with [the SU template repository](https://github.com/The-Strategy-Unit/template-repository) (click 'use this template' button or '+ create new' > 'new repository' > 'start with template')
+
+### Lifecycle
+
+It should be clear to users what lifecycle stage each of our repos is at.
+This signals how mature the content is, how useable it might be and how much support we can provide.
+It can help set expectations and prevent misunderstandings.
+
+Two statuses are particularly important to flag.
+When the repository:
+
+1. Is a work in progress or demo, which means that code is not guaranteed to work and features may be missing.
+2. Has been archived, which means the content is no longer in use, will not be developed further and that little to no support will be provided.
+
+Codeowners are responsible for considering how best to indicate a repository's lifecycle stage.
+Some ideas are to:
+
+* add a note early in the README to explain how developed the work is (perhaps in [a callout](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts))
+* add a README badge from [repostatus.org](https://www.repostatus.org/), particularly 'WIP' (work in progress) and active (stable but developing)
+* reference the lifecycle stage in the repo's description (to edit, click the cog above the 'About' section of your repository's home page), such as '(work in progress)'
+* [archive the repo](https://docs.github.com/en/repositories/archiving-a-github-repository/archiving-repositories), a special status that indicates a repo is not maintained or supported, which keeps the repo open but disables interaction
+
+We prefer to archive repositories rather than delete them.
+This keeps our work in the open so that we and others can reuse, develop and/or learn from it later.
+This also makes it easier to reactivate a repository in future, should the need arise.
 
 ## Further reading
 

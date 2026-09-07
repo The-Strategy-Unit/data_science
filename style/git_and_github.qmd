@@ -246,7 +246,7 @@ Some ideas are to:
 
 * add a note early in the README to explain how developed the work is (perhaps in [a callout](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts))
 * add a README badge from [repostatus.org](https://www.repostatus.org/), particularly 'WIP' (work in progress) and active (stable but developing)
-* add a reference in the repo's 'About' section, such as '(work in progress)'
+* reference the lifecycle stage in the repo's description (to edit, click the cog above the 'About' section of your repository's home page), such as '(work in progress)'
 * [archive the repo](https://docs.github.com/en/repositories/archiving-a-github-repository/archiving-repositories), a special status that indicates a repo is not maintained or supported, which keeps the repo open but disables interaction
 
 We prefer to archive repositories rather than delete them.

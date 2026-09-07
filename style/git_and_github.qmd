@@ -238,10 +238,10 @@ It can help set expectations and prevent misunderstandings.
 Two statuses are particularly important to flag.
 When the repository:
 
-1. Is a work in progress or demo, when code may not be guaranteed to work and features are missing.
-2. Has been archived, when the content is no longer in use, will not be developed further and when little to no support will be provided.
+1. Is a work in progress or demo, which means that code is not guaranteed to work and features may be missing.
+2. Has been archived, which means the content is no longer in use, will not be developed further and that little to no support will be provided.
 
-Codeowners are responsible for considering how best to indicate a repository's lifecycle.
+Codeowners are responsible for considering how best to indicate a repository's lifecycle stage.
 Some ideas are to:
 
 * add a note early in the README to explain how developed the work is (perhaps in [a callout](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts))

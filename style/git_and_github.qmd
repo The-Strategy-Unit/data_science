@@ -249,6 +249,10 @@ Some ideas are to:
 * add a reference in the repo's 'About' section, such as '(work in progress)'
 * [archive the repo](https://docs.github.com/en/repositories/archiving-a-github-repository/archiving-repositories), a special status that indicates a repo is not maintained or supported, which keeps the repo open but disables interaction
 
+We prefer to archive repositories rather than delete them.
+This keeps our work in the open so that we and others can reuse, develop and/or learn from it later.
+This also makes it easier to reactivate a repository in future, should the need arise.
+
 ## Further reading
 
 See also our [GitHub as a Team Sport](../presentations/2024-05-23_github-team-sport/index.qmd) presentation for ideas about working together in GitHub repos.

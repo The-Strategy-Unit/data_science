@@ -70,14 +70,6 @@
 </item>
 <item>
   <title></title>
-  <dc:creator>[YiWen Hon](mailto:yiwen.hon1@nhs.net)</dc:creator>
-  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-11-14_rap-drop-ins-nhsr2025/</link>
-  <description><![CDATA[ undefined ]]></description>
-  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-11-14_rap-drop-ins-nhsr2025/</guid>
-  <pubDate>Fri, 14 Nov 2025 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title></title>
   <dc:creator>[Tom Jemmett](mailto:thomas.jemmett@nhs.net)</dc:creator>
   <link>https://the-strategy-unit.github.io/data_science/presentations/2025-11-14_unit-testing/</link>
   <description><![CDATA[ undefined ]]></description>
@@ -86,11 +78,11 @@
 </item>
 <item>
   <title></title>
-  <dc:creator>[Fran Barton](mailto:francis.barton@nhs.net)</dc:creator>
-  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-11-13_error_messages_with_cli/</link>
+  <dc:creator>[YiWen Hon](mailto:yiwen.hon1@nhs.net)</dc:creator>
+  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-11-14_rap-drop-ins-nhsr2025/</link>
   <description><![CDATA[ undefined ]]></description>
-  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-11-13_error_messages_with_cli/</guid>
-  <pubDate>Thu, 13 Nov 2025 00:00:00 GMT</pubDate>
+  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-11-14_rap-drop-ins-nhsr2025/</guid>
+  <pubDate>Fri, 14 Nov 2025 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -99,6 +91,14 @@
   <link>https://the-strategy-unit.github.io/data_science/presentations/2025-11-13_nhsrpysoc-2025-word/</link>
   <description><![CDATA[ undefined ]]></description>
   <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-11-13_nhsrpysoc-2025-word/</guid>
+  <pubDate>Thu, 13 Nov 2025 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <dc:creator>[Fran Barton](mailto:francis.barton@nhs.net)</dc:creator>
+  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-11-13_error_messages_with_cli/</link>
+  <description><![CDATA[ undefined ]]></description>
+  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-11-13_error_messages_with_cli/</guid>
   <pubDate>Thu, 13 Nov 2025 00:00:00 GMT</pubDate>
 </item>
 <item>

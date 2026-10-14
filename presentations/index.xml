@@ -9,8 +9,15 @@
 <link>https://the-strategy-unit.github.io/data_science/presentations/</link>
 <atom:link href="https://the-strategy-unit.github.io/data_science/presentations/index.xml" rel="self" type="application/rss+xml"/>
 <description>Blogs from the Data Science Team at The Strategy Unit</description>
-<generator>quarto-1.10.18</generator>
-<lastBuildDate>Thu, 24 Sep 2026 00:00:00 GMT</lastBuildDate>
+<generator>quarto-1.10.19</generator>
+<lastBuildDate>Wed, 14 Oct 2026 15:22:35 GMT</lastBuildDate>
+<item>
+  <title></title>
+  <link>https://the-strategy-unit.github.io/data_science/presentations/2026-10-14_capcon_team_brief/</link>
+  <description><![CDATA[ undefined ]]></description>
+  <guid>https://the-strategy-unit.github.io/data_science/presentations/2026-10-14_capcon_team_brief/</guid>
+  <pubDate>Wed, 14 Oct 2026 15:22:35 GMT</pubDate>
+</item>
 <item>
   <title></title>
   <dc:creator>Chris Beeley</dc:creator>
@@ -166,14 +173,6 @@
   <description><![CDATA[ undefined ]]></description>
   <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-06-06_nhsr_nhp/</guid>
   <pubDate>Fri, 06 Jun 2025 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <dc:creator>[Claire Welsh](mailto:claire.welsh8@nhs.net)</dc:creator>
-  <link>https://the-strategy-unit.github.io/data_science/presentations/2025-05-13_NHP_DS_deep_dive/</link>
-  <description><![CDATA[ undefined ]]></description>
-  <guid>https://the-strategy-unit.github.io/data_science/presentations/2025-05-13_NHP_DS_deep_dive/</guid>
-  <pubDate>Wed, 07 May 2025 00:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
